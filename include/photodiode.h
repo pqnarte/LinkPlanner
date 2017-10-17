@@ -8,16 +8,17 @@
 class Photodiode : public Block {
 
 	bool firstTime{ true };
+	int aux = 0;
+	double t = 0;
+
+	double responsivity{ 1 };
+
+	bool shotNoise{ false };
+
+	t_real thermalNoiseAmplitude{ 0.0 };
+
 
 public:
-
-	double outputOpticalWavelength{ 1550e-9 };
-	double outputOpticalFrequency{ SPEED_OF_LIGHT / outputOpticalWavelength };
-	double responsivity = 1;
-	bool shotNoise = false;
-
-	default_random_engine generator1;
-	default_random_engine generator2;
 
 	Photodiode() {};
 	Photodiode(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig){};
@@ -27,11 +28,13 @@ public:
 
 	void setResponsivity(double Responsivity) { responsivity = Responsivity; }
 	double const getResponsivity(void) { return responsivity; }
+	
+	void setShotNoise(bool sNoise) { shotNoise = sNoise; }
+	bool getShotNoise(void) { return shotNoise; }
 
-	void useNoise(bool sNoise) { shotNoise = sNoise; }
+	void setThermalNoiseAmplitude(double amplitude) { thermalNoiseAmplitude = amplitude; }
+	double getThermalNoiseAmplitude(void) { return thermalNoiseAmplitude; };
 
-private:
 };
-
 
 #endif // !PROGRAM_INCLUDE_PHOTODIODE_H_

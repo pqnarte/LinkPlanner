@@ -17,7 +17,7 @@ public:
 	bool runBlock(void);
 
 	double coincidences = 0;
-	double recievedBits = 0;
+	double receivedBits = 0;
 
 	void setConfidence(double P) { alpha = 1-P; }
 	double const getConfidence(void) { return 1 - alpha; }
@@ -26,6 +26,7 @@ public:
 	int const getMidReportSize(void) { return m; }
 
 private:
+
 	int firstPass = 1;
 
 	double alpha = 0.05;

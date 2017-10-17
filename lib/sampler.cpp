@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <complex>
 #include <iostream>
+#include <fstream>
 
 #include "netxpto.h"
 #include "sampler.h"
@@ -15,40 +16,43 @@ void Sampler::initialize(void){
 }
 
 
-bool Sampler::runBlock(void){
+bool Sampler::runBlock(void) {
 
-	int ready = inputSignals[0]->ready();
-	
-	/*if (samplesToSkip > 0) {
-		int process = min(ready, samplesToSkip);
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSymbolPeriod());
+	numberOfInputSignals = inputSignals.size();
 
-		for (int k = 0; k < process; k++) {
-			t_real in;
-			inputSignals[0]->bufferGet(&in);
+	// Sampler with only one input signal (internal clock), only works with an integer number of samplesPerSynbol
+	if (numberOfInputSignals == 1) {
+		int ready = inputSignals[0]->ready();
+		if (samplesToSkip > 0) {
+			int process = min(ready, samplesToSkip);
+			for (int k = 0; k < process; k++) {
+				t_real in;
+				inputSignals[0]->bufferGet(&in);
+			}
+			samplesToSkip = samplesToSkip - process;
+			if (samplesToSkip > 0) return true;
+			if (samplesToSkip == 0) return false;
 		}
-
-		samplesToSkip = samplesToSkip - process;
-
 		ready = inputSignals[0]->ready();
+		int space = outputSignals[0]->space();
+		int process = min(ready, space);
 
-	}*/
+		if (process == 0) return false;
 
-	int space = outputSignals[0]->space();
-	int process = min(ready, space);
-	
-	
-	if (process == 0) return false;
+		int samplesPerSymbol = (int) inputSignals[0]->getSamplesPerSymbol();
+		if (samplesToSkip == 0)
+		{
+			for (int k = 0; k < process; k++) {
+				t_real in;
+				inputSignals[0]->bufferGet(&in);
+				if (count % samplesPerSymbol == 0) {
+					outputSignals[0]->bufferPut((t_real)in);
+				}
+				count++;
+			}
 
-	double sPerSymbol = inputSignals[0]->getSamplesPerSymbol();
-	
-	for (int k = 0; k < process; k++) {
-		t_real in;
-		inputSignals[0]->bufferGet(&in);
-		count++;
-		if (k % (int) sPerSymbol == 0 && count>samplesToSkip) {
-			outputSignals[0]->bufferPut((t_real) in);
 		}
+		return true;
 	}
-
-	return true;
 }

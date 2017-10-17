@@ -29,6 +29,7 @@ typedef complex<t_real> t_complex;
 typedef struct { t_complex x; t_complex y; } t_complex_xy;
 typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
+typedef complex<t_real> t_iqValues;
 
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP};
 
@@ -56,8 +57,8 @@ public:
 	
 	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 
-	int inPosition{ 0 };							// Next position for the input values
-	int outPosition{ 0 };							// Next position for the output values
+	int inPosition{ 0 };							// Next position for the buffer input values
+	int outPosition{ 0 };							// Next position for the buffer output values
 	bool bufferEmpty{ true };						// Flag bufferEmpty
 	bool bufferFull{ false };						// Flag bufferFull
 	long int numberOfSavedValues{ 0 };				// Number of saved values
@@ -67,9 +68,9 @@ public:
 
 	int bufferLength{ 512 };						// Buffer length
 
-	double symbolPeriod{ 1 };										// Signal symbol period (it is the inverse of the symbol rate)
-	double samplingPeriod{ 1 };										// Signal sampling period (it is the time space between two samples)
-	double samplesPerSymbol{ symbolPeriod / samplingPeriod };		// samplesPerSymbol = symbolPeriod / samplingPeriod;
+	double symbolPeriod{ 1.0 };						// Signal symbol period (it is the inverse of the symbol rate)
+	double samplingPeriod{ 1.0 };					// Signal sampling period (it is the time space between two samples)
+	double samplesPerSymbol{ 1.0 };					// samplesPerSymbol = symbolPeriod / samplingPeriod;
 
 	double centralWavelength{ 1550E-9 };
 	double centralFrequency{ SPEED_OF_LIGHT / centralWavelength };
@@ -81,7 +82,8 @@ public:
 	Signal(string fName) {setFileName(fName); };	// Signal constructor
 	Signal(string fName, bool sSignal) { setFileName(fName); setSaveSignal(sSignal); };
 	Signal(int bLength) { setBufferLength(bLength); };
-										// Signal constructor
+
+	// Signal constructor
 
 	~Signal(){ delete buffer; };					// Signal destructor
 
@@ -92,8 +94,7 @@ public:
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 
 
-
-	template<typename T>							// Puts a value in the buffer
+		template<typename T>							// Puts a value in the buffer
 	void bufferPut(T value) {
 		(static_cast<T *>(buffer))[inPosition] = value;
 		if (bufferEmpty) bufferEmpty = false;
@@ -418,7 +419,7 @@ public:
 
 
 	/* Methods */
-
+	SuperBlock() {};
 	SuperBlock(vector<Signal *> &inputSignal, vector<Signal *> &outputSignal) :Block(inputSignal, outputSignal){ setSaveInternalSignals(false); };
 
 	void initialize(void);
@@ -478,6 +479,58 @@ public:
 };
 
 
+class FD_Filter : public Block {
+	
+	/* State Variable */
+	
+	vector<t_real> inputBufferTimeDomain;
+	vector<t_real> outputBufferTimeDomain;
+
+	int inputBufferPointer{ 0 };
+	int outputBufferPointer{ 0 };
+	
+	/* Input Parameters */
+	bool saveTransferFunction{ true };
+	string transferFunctionFilename{ "transfer_function.tfn" };
+	int transferFunctionLength{ 128 };
+
+	int inputBufferTimeDomainLength{ transferFunctionLength };
+	int outputBufferTimeDomainLength{ transferFunctionLength };
+
+public:
+	/* State Variable */
+	vector<t_complex> transferFunction;
+
+	/* Methods */
+	FD_Filter() {};
+	FD_Filter(vector<Signal *> &InputSig, vector<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
+
+	void initializeFD_Filter(void);
+
+	bool runBlock(void);
+
+	void terminate(void) {};
+
+	void setInputBufferTimeDomainLength(int iBufferTimeDomainLength) { inputBufferTimeDomainLength = iBufferTimeDomainLength; };
+	int const getInputBufferTimeDomainLength() { return inputBufferTimeDomainLength; }
+
+	void setOutputBufferTimeDomainLength(int oBufferTimeDomainLength) { outputBufferTimeDomainLength = oBufferTimeDomainLength; };
+	int const getOutputBufferTimeDomainLength() { return outputBufferTimeDomainLength; }
+
+	void setInputBufferPointer(int iBufferPointer) { inputBufferPointer = iBufferPointer; };
+	int const getInputBufferPointer() { return inputBufferPointer; }
+
+	void setOutputBufferPointer(int oBufferPointer) { outputBufferPointer = oBufferPointer; };
+	int const getOutputBufferPointer() { return outputBufferPointer; }
+
+	void setSaveTransferFunction(bool sTransferFunction) { saveTransferFunction = sTransferFunction; };
+	bool getSaveTransferFunction(void) { return saveTransferFunction; };
+
+	void setTransferFunctionLength(int iTransferFunctionLength) { transferFunctionLength = iTransferFunctionLength; };
+	int const getTransferFunctionLength() { return transferFunctionLength; };
+
+};
+
 
 // Generates a complex signal knowing the real part and the complex part.
 class RealToComplex : public Block {
@@ -488,12 +541,12 @@ class RealToComplex : public Block {
 };
 
 // Separates the complex signal into two parts: real and imaginary.
-class ComplexToReal : public Block {
+/*class ComplexToReal : public Block {
  public:
 	 ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
-  bool runBlock(void);
+	 bool runBlock(void);
  //private:
-};
+};*/
 
 
 
@@ -519,6 +572,60 @@ class System {
   vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
 };
 
+//########################################################################################################################################################
+//############################################################### GENERIC DSP FUNCTIONS ##################################################################
+//########################################################################################################################################################
+
+
+class OverlapMethod
+{
+
+public:
+
+	void overlapSaveSymComplexIn(vector<complex <double>> &v_in, vector<complex <double>> &v_out, vector<complex <double>> Hf, int NFFT);
+	void overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT);
+	void overlapSaveAsym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int M, int L, int N);
+	void overlapSaveSym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int NFFT);
+	void checkSize(vector<double> &real_in, vector<double> &imag_in, int L);
+
+};
+
+class Fft
+{
+
+public:
+	std::vector<complex <double>> directTransformInReal(std::vector<double> real);
+
+	std::vector<double> inverseTransformInCP(std::vector<complex <double>> &In);
+
+	void directTransform(std::vector<double> &real, std::vector<double> &imag);
+
+	void inverseTransform(std::vector<double> &real, std::vector<double> &imag);
+
+	void transformRadix2(std::vector<double> &real, std::vector<double> &imag);
+
+	void transformBluestein(std::vector<double> &real, std::vector<double> &imag);
+
+	void convolve(const std::vector<double> &x, const std::vector<double> &y, std::vector<double> &out);
+
+	void convolve(const std::vector<double> &xreal, const std::vector<double> &ximag, const std::vector<double> &yreal, const std::vector<double> &yimag, std::vector<double> &outreal, std::vector<double> &outimag);
+
+
+};
+
+class ComplexMult
+{
+
+public:
+
+	void CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
+	void CMultVector_Loop(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
+	vector<complex <double>> CMultVectorInCP(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
+	void ComplexVect2ReImVect(vector<complex <double>> &v_in, vector<double> &v1_real, vector<double> &v1_imag);
+	void CMultVector_InComplex(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
+	void ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag, vector<complex <double>> &v_out);
+
+};
+
+
 # endif // PROGRAM_INCLUDE_netxpto_H_
-
-

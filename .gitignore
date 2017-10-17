@@ -1,4 +1,15 @@
 ######################
+# GIT Files
+######################
+*.pdf~*
+
+######################
+# PDF Files
+######################
+
+doc/tex/main_netxpto.pdf
+
+######################
 # Visual C++
 ######################
 *.obj
@@ -8,12 +19,58 @@
 *.ilk
 *.pdb
 *.tlog
+*.VC.opendb
+*.VC.db
+*.idb
+*.lastbuildstate
+*.user
+*.json
+*.sqlite
+*.ipch
+
+######################
+# Winedt
+######################
+*.synctex
+*.log
+*.ilg
+*.gz
+*.toc
+*.bak
+*.out
+*.toc
+*.blg
 
 ######################
 # Matlab
 ######################
 
 *.mat
+
+######################
+# Matlools
+######################
+
+*.wfm
+
+######################
+# Visio
+######################
+
+*.~vsdx
+
+######################
+# netxpto
+######################
+
+*.sgn
+
+
+######################
+# netxpto/mtools
+######################
+
+*.wfm
 
 # Windows image file caches
 Thumbs.db
@@ -63,7 +120,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 *.obj
-*.obj
 *.exe
 *.mat
 *.mat
+*.sgn
+*.sgn
+*.aux
+*.out
+*.aux

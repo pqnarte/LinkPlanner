@@ -1,9 +1,12 @@
-function [ data, symbolPeriod, samplingPeriod, type, numberOfSymbols ] = readSignal( fname )
+function [ data, symbolPeriod, samplingPeriod, type, numberOfSymbols ] = readSignal( fname, nReadr )
+
 %READSIGNALDATA Reads signal data to "visualizer".
 %   [ data, samplingFrequency ] = READSIGNALDATA(fid, type, symbolPeriod, samplingPeriod)
 %   just reads data ("data") from a file ("fid")
 %   knowing the data parameters ("type", "symbolPeriod" and "samplingPeriod") and 
 %   returning the new sampling simulation frequency ("samplingFrequency").
+
+%   nReadr specifies the number of symbols to read
 
 fid = fopen(fname,'r');
 
@@ -23,7 +26,11 @@ toxy = 'OpticalSignalXY';
 
 %% Get global variable "nRead"
 %nReadr = getGlobalnRead;
-nReadr = 256;
+
+if nargin == 1
+    nReadr = Inf;
+end
+
 % 
 % %% Get global variable "t_binary"
 % t_binaryr = getGlobalt_binary;
@@ -31,7 +38,7 @@ t_binaryr = 'int';
 % 
 % %% Get global variable "t_real"
 %t_realr = getGlobalt_real;
-t_realr = 'double'
+t_realr = 'double';
 % 
 % %% Get global variable "t_complex"
 % t_complexr = getGlobalt_complex;
