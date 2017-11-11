@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \begin{thebibliography}{1}
 
 \bibitem{thorlabs}
@@ -9,6 +10,9 @@ Thorlabs.
 Ryo Namiki and Takuya Hirano.
 \newblock Security of quantum cryptography using balanced homodyne detection.
 \newblock {\em Physical Review A}, 67(2):022308, 2003.
+=======
+\begin{thebibliography}{}
+>>>>>>> 0a531e15ee2bbbe5a4ce53c7cfe17865597c57d3
 
 \bibitem{Liu2009}
 Tie-Ming Liu, Lie-hui Jiang, Hong-qi He, Ji-zhong Li, and Xian Yu.
