@@ -1,29 +1,9 @@
-<<<<<<< HEAD
 \begin{thebibliography}{1}
 
 \bibitem{thorlabs}
 Thorlabs.
 \newblock {\em Thorlabs Balance Amplified Photodetectors: PDB4xx Series
   Operation Manual}, 2014.
-
-\bibitem{namiki2003security}
-Ryo Namiki and Takuya Hirano.
-\newblock Security of quantum cryptography using balanced homodyne detection.
-\newblock {\em Physical Review A}, 67(2):022308, 2003.
-=======
-\begin{thebibliography}{}
->>>>>>> 0a531e15ee2bbbe5a4ce53c7cfe17865597c57d3
-
-\bibitem{Liu2009}
-Tie-Ming Liu, Lie-hui Jiang, Hong-qi He, Ji-zhong Li, and Xian Yu.
-\newblock {\em Researching on Cryptographic Algorithm Recognition Based on
-  Static Characteristic-Code}, pages 140--147.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2009.
-
-\bibitem{Brassard1994}
-Gilles Brassard and Louis Salvail.
-\newblock {\em Secret-Key Reconciliation by Public Discussion}, pages 410--423.
-\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 1994.
 
 \bibitem{almeida2016continuous}
 {\'A}lvaro~J Almeida, Nelson~J Muga, Nuno~A Silva, Jo{\~a}o~M Prata, Paulo~S
