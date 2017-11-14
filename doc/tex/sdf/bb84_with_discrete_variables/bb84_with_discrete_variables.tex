@@ -9,12 +9,15 @@
 \end{tabular}
 \end{tcolorbox}
 
-BB84 is a key distribution protocol.
+BB84 is a key distribution protocol which involves three parties, Alice, Bob and Eve. Alice and Bob exchange information between each other by using a classical channel and a quantum channel. The main goal is to use a set of encryption keys only known by Alice and Bob, and guarantee that eavesdropper, Eve, does not gain any information when she can intercept the communication between Alice and Bob.
 
-\begin{enumerate}
-	\item{The protocol must be... .}
-	\item{The protocol ....}
-\end {enumerate}
+\begin{description}
+  \item[$\cdot$] The protocol must guarantee that Eve does not take advantage enough to learn the information exchanged between Alice and Bob. Furthermore, the protocol must contain a key reconciliation phase and a eavesdropper presence test in order to know if the channel is secure or not.
+  \item[$\cdot$] The protocol takes advantage of some properties of qubits in order to guarantee the communication security. Which means, a qubit cannot be copy and it is not possible determined in which state the qubit was encoded.
+  \item[$\cdot$] If Eve intercepts the qubits before they reach Bob, she also makes measurements using random basis and she may change the encoded bit and send it to Bob.
+  \item[$\cdot$] By using this protocol Bob has $62.5\%$ of possibilities to get the right bit values on average.
+\end{description}
+
 
 \subsection{BB84 Protocol Detailed}
 
@@ -170,12 +173,116 @@ BB84 is a key distribution protocol.
 
 \subsection{Simulation Setup}
 
-First of all, the protocol will be simulated and then a experimental setup will be built in the laboratory.
 
-The main goal of this simulation is to demonstrate that Bob was able to learn correctly message $m_{b}$ and he does not know the message $m_{\overline{b}}$.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/Simulation_BB84.png}
+	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/toplevel_simulation.png}
 	\caption{Simulation diagram at a top level}\label{toplevelsimulation}
 \end{figure}
+
+Figure \ref{toplevelsimulation} presents the top level diagram of our simulation. The setup contains three parties, Alice, Eve and Bob where the communication between them is done throughout two classical and one quantum channel. In the middle of the classical channel there is a Fork's diagram which has one input and two outputs. In the case of the classical channel \textbf{C\_C\_4} which has the information sent by Bob, the fork's block enables Alice and Eve have access to it. In the quantum communication, the information sent by Alice can be intercepted by Eve and changed by her, or can follow directly to Bob as we can see later in figure \ref{evesimulation}. Furthermore, for mutual information calculation there must be two blocks \textbf{MI}, one to calculate the mutual information between Alice and Eve, and other to calculate the mutual information between Alice and Bob.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/bob_simulation.png}
+	\caption{Simulation diagram at Bob's side}\label{bobsimulation}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/alice_simulation.png}
+	\caption{Simulation diagram at Alice's side}\label{alicesimulation}
+\end{figure}
+
+     In figure \ref{bobsimulation} one can observe a block diagram of the simulation at Bob's side. From this side, Bob has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Like Alice, Bob has a Processor block responsible for all logical tasks, analysing functions, requests for random number generator block, etc. Additionally, it receives information from Alice throughout a classical channel after passed through a fork's block and a quantum channel. However, Bob only sends information to Alice throughout a classical channel. Furthermore, Bob has one more block for single photon detection which receives from processor block a real discrete time signal, in order to obtain the basis it should use to measure the photons.
+
+    Finally, Bob's processor has an output to Mutual Information top level block, $Ms_{B}$.
+    
+    In figure \ref{alicesimulation} one can observe a block diagram of the simulation at Alice's side. As it is shown in the figure, Alice must have one block for random number generation which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. Furthermore, she has a Processor block for all logical operations: array analysis, random number generation requests, and others. This block also receives the information from Bob after it has passed through a fork's block. In addition, it is responsible for set the initial length $l$ of the first array of photons which will send to Bob. This block also must be responsible for send classical information to Bob. Finally, Processor block will also send a real continuous time signal to single photon generator, in order to generate photons according to this signal, and finally this block also sends to the polarizer a real discrete signal in order to inform the polarizer which basis it should use. Therefore, she has two more blocks for quantum tasks: the single photon generator and the polarizer block which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
+
+    Finally, Alice's processor has an output to Mutual Information top level block, $Ms_{A}$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth, height=7cm]{./sdf/bb84_with_discrete_variables/figures/eve_simulation.png}
+	\caption{Simulation diagram at Eve's side}\label{evesimulation}
+\end{figure}
+
+Figure \ref{evesimulation} presents the Eve's side diagram. Eve's processor has two receiver classical signals, one from Alice (\textbf{C\_C\_2}) and other from Bob (\textbf{C\_C\_5}). About quantum channel, Eve received a quantum message from Alice through the channel \textbf{Q\_C\_1} and depends on her decision the photon can follows directly to Bob or the photon's state can be changed by her. In this case, the photon is received by a block similar to Bob's diagram \ref{bobsimulation} and this block sends a message to Eve's processor in order to reveal the measurement result. After that, Eve's processor sends a message to Alice's diagram similar to figure \ref{alicesimulation} and this block is responsible for encode the photon in a new state. Now, the changed photon is sent to Bob. 
+
+In addition, Eve's diagram has one more output $Ms_{E}$ which is a message sent to the mutual information block as an input parameter.
+
+\begin{table}[hbt]
+\centering
+\caption{System Signals}
+\label{tb:signals}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Signal name}         & \textbf{Signal type} & \textbf{Status} \\ \hline
+C\_C\_1 ... C\_C\_6          & Message              &                 \\ \hline
+Q\_C\_1 .. Q\_C\_4           & Photon Stream        &                 \\ \hline
+Ms\_A, Ms\_B, Ms\_E          & Message              &                 \\ \hline
+NUM\_A , NUM\_B              & Binary               &                 \\ \hline
+CLK\_A, CLK\_B               & Real continuous time &                 \\ \hline
+SB\_1, SB\_2                 & Real continuous time &                 \\ \hline
+SA\_1, SA\_2                 & Real discrete time   &                 \\ \hline
+SA\_3                        & Photon  Stream       &                 \\ \hline
+S\_2, S\_3, S\_4             & Photon Stream        &                 \\ \hline
+BS\_1, BS\_2                 & Binary               &                 \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tb:signals} presents the system signals as well as them type.
+
+\begin{table}[hbt]
+\centering
+\caption{System Input Parameters}
+\label{tb:inputparameters}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Parameter}           & \textbf{Default Value}                           & \textbf{Description} \\ \hline
+SymbolRate                   & 100K                                             &                 \\ \hline
+NumberOfBits                 & Number of photons that Alice sends to Bob        &                 \\ \hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[hbt]
+\centering
+\caption{Header Files}
+\label{tb:signals}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{File name}              & \textbf{Description} & \textbf{Status} \\ \hline
+random\_number\_generator.h       &                      &                 \\ \hline
+single\_photons\_generator.h      &                      &                 \\ \hline
+single\_photons\_detector.h       &                      &                 \\ \hline
+encoder.h                       &                      &                 \\ \hline
+decoder.h                       &                      &                 \\ \hline
+mutual\_information.h            &                      &                 \\ \hline
+message\_to\_send.h               &                      &                 \\ \hline
+message\_to\_receive.h            &                      &                 \\ \hline
+netxpto.h                       &                      &                 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[hbt]
+\centering
+\caption{Source Files}
+\label{tb:signals}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{File name}              & \textbf{Description} & \textbf{Status} \\ \hline
+random\_number\_generator.c       &                      &                 \\ \hline
+single\_photons\_generator.c      &                      &                 \\ \hline
+single\_photons\_detector.c       &                      &                 \\ \hline
+encoder.c                       &                      &                 \\ \hline
+decoder.c                       &                      &                 \\ \hline
+mutual\_information.c            &                      &                 \\ \hline
+message\_to\_send.c               &                      &                 \\ \hline
+message\_to\_receive.c            &                      &                 \\ \hline
+netxpto.c                       &                      &                 \\ \hline
+bb84\_sdf.c                       &                      &                 \\ \hline
+\end{tabular}
+\end{table}
