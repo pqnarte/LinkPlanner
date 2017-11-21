@@ -15,6 +15,52 @@ BB84 is a key distribution protocol which involves three parties, Alice, Bob and
 
 \subsection{Theoretical Description}
 
+BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984. This was the first created Quantum Key Distribution (QKD) protocol. A basic model is depicted in figure \ref{fig:qkd model}. It involves two parties sharing keys through a quantum channel to decipher the classical channel data with an eavesdropper, Eve, between them.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.0\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/QKD_Model.png}
+	\caption{Basic QKD Model.}\label{fig:qkd model}
+\end{figure}
+
+BB84 protocol encodes bits into photon state polarization. This either can have an angle of 0 or 45 degrees, to represent bit 0, or an angle of 90 or 135 degrees, to represent bit 1, in rectilinear or diagonal basis, respectively. Figure \ref{fig:bb84_encoding} shows this bit encoding and basis.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/basis.png}
+	\caption{Bit Encoding and polarization basis.}\label{fig:bb84_encoding}
+\end{figure}
+The BB82 protocol is divided in different phases. For the first phase, by using the quantum communication channel,
+\begin{enumerate}
+	\item Alice chooses a random bit string and polarization, for each bit.
+	\item For each bit, a photon is transmitted, with an associated polarization, to Bob.
+	\item Bob receives, measure photon polarization by using a random basis.
+	\item If Bob chooses a matched polarization basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read.
+\end{enumerate}
+
+The second phase, uses the classical communication channel:
+\begin{enumerate}
+	\item Bob notifies Alice about what basis he used to deduce each bit.
+	\item Alice announces, to Bob, if the deduced basis is correct for each photon, and so, discards the bits measured with different one.
+	\item If no errors occurred the secret key should be the same for Bob and Alice.
+\end{enumerate}
+
+This two phases are depicted in figure \ref{fig:bb84_share}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth,height=4cm]{./sdf/bb84_with_discrete_variables/figures/siftedKey.png}
+	\caption{Bit Encoding and polarization basis.}\label{fig:bb84_share}
+\end{figure}
+
+In the presence of Eve, error will be introduced, because for Eve to determine the key, she will have to measure the photons sent between Alice and send them to Bob. By doing so, errors will be introduced since its impossible to replicate a particle with an unknown state. Eve will try to guess and these guesses will increase the QBER.
+--/--/--/--/
+
+
+
+
+
 \begin{table}[H]
 \centering
 \begin{tabular}{c|c}
