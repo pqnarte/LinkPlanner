@@ -1,6 +1,0 @@
-2017-11-07
-TO BE DONE
-Mariana
-	escrever os objetivos do trabalho
-	diagramas do sistema global
-	diagramas da Alice, Eve, Bob
