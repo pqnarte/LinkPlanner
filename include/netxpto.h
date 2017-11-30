@@ -33,8 +33,6 @@ typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
-
-
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
 
 
@@ -139,6 +137,12 @@ public:
 	void setType(string sType, signal_value_type vType) { type = sType; valueType = vType; };
 	void setType(string sType) { type = sType; };
 	string getType(){ return type; };
+
+	void setInPosition(int iPosition) { inPosition = iPosition; };
+	int getInPosition() { return inPosition; };
+
+	void setOutPosition(int oPosition) { outPosition = oPosition; };
+	int getOutPosition() { return outPosition; };
 
 	void setValueType(signal_value_type vType) { valueType = vType; };
 	signal_value_type getValueType(){ return valueType; };
@@ -351,18 +355,9 @@ public:
 	OpticalSignal() { setType("BandpassSignal", ComplexValue); if (buffer == nullptr) buffer = new t_complex[bufferLength]; }
 
 	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
+
 };
 
-//Electrical Signal
-class ElectricalSignal : public Signal {
-public:
-	ElectricalSignal(string fName) { setType("ElectricalSignal", RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real [bufferLength]; }
-	ElectricalSignal(string fName, int bLength) { setType("ElectricalSignal", RealValue); setFileName(fName); setBufferLength(bLength); }
-	ElectricalSignal(int bLength) { setType("ElectricalSignal", RealValue); setBufferLength(bLength); }
-	ElectricalSignal() { setType("ElectricalSignal", RealValue); if (buffer == nullptr) buffer = new t_real[bufferLength];}
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
-};
 
 class OpticalSignalXY : public Signal {
 public:
@@ -619,24 +614,25 @@ class Fft
 {
 
 public:
-	std::vector<complex <double>> directTransformInReal(std::vector<double> real);
+	vector<complex <double>> directTransformInReal(vector<double> real);
 
-	std::vector<double> inverseTransformInCP(std::vector<complex <double>> &In);
+	vector<double> inverseTransformInCP(vector<complex <double>> &In);
 
-	void directTransform(std::vector<double> &real, std::vector<double> &imag);
+	void directTransform(vector<double> &real, vector<double> &imag);
 
-	void inverseTransform(std::vector<double> &real, std::vector<double> &imag);
+	void inverseTransform(vector<double> &real, vector<double> &imag);
 
-	void transformRadix2(std::vector<double> &real, std::vector<double> &imag);
+	void transformRadix2(vector<double> &real, vector<double> &imag);
 
-	void transformBluestein(std::vector<double> &real, std::vector<double> &imag);
+	void transformBluestein(vector<double> &real, vector<double> &imag);
 
-	void convolve(const std::vector<double> &x, const std::vector<double> &y, std::vector<double> &out);
+	void convolve(const vector<double> &x, const vector<double> &y, vector<double> &out);
 
-	void convolve(const std::vector<double> &xreal, const std::vector<double> &ximag, const std::vector<double> &yreal, const std::vector<double> &yimag, std::vector<double> &outreal, std::vector<double> &outimag);
-
+	void convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag);
 
 };
+
+
 
 class ComplexMult
 {
@@ -651,6 +647,60 @@ public:
 	void ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag, vector<complex <double>> &v_out);
 
 };
+
+/*
+///////////////////// FFT function ////////////////////////
+vector <complex<double>> fft(vector <double> real)
+{
+	Fft F;
+
+	vector <complex<double>> Output;						// Type of output of this function : vector <complex<double> & Name of the function : Output
+	
+	ComplexMult CMult;
+	vector<double> im(real.size(), 0);						// Create a vector for imaginary values 
+	vector<complex <double>> v_out(real.size(), 0);
+	size_t n = real.size();
+
+
+	if (n == 0)
+		return v_out;
+	else if ((n & (n - 1)) == 0)							// Is power of 2 : Radix-2 Algorithim
+		F.transformRadix2(real, im);
+	else													// More complicated algorithm for arbitrary sizes : Bluestein Algorithim
+		F.transformBluestein(real, im);
+
+
+	CMult.ReImVect2ComplexVect(real, im, Output);
+	return Output;
+
+};
+
+///////////////////// IFFT function ////////////////////////
+vector<double> ifft(vector<complex<double>> input)
+{
+	Fft IF;
+	ComplexMult split;
+	
+	vector <double> re(input.size(),0);						// Vector for holding REAL data
+	vector <double> im(input.size(),0);						// Vector for holding IMAG data
+
+	split.ComplexVect2ReImVect(input, re, im);				// Split complex data into real and imaginary vector
+
+	IF.directTransform(im,re);								// Inverse fourier transformation
+
+	for (int i=0; i<re.size(); i++)
+	{
+		re[i] = re[i] / re.size();							// Normalization of real data
+		im[i] = im[i] / re.size();							// This will be zero in case of real time signal
+	}
+	
+	vector <double> Output;
+	Output = re;
+
+	return Output;
+};
+
+*/
 
 
 # endif // PROGRAM_INCLUDE_netxpto_H_
