@@ -12,54 +12,107 @@
 BB84 is a key distribution protocol which involves three parties, Alice, Bob and Eve. Alice and Bob exchange information between each other by using a quantum channel and a classical channel. The main goal is continuously build keys only known by Alice and Bob, and guarantee that eavesdropper, Eve, does not gain any information about the keys.
 
 
-
 \subsection{Theoretical Description}
 
-BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984. This was the first created Quantum Key Distribution (QKD) protocol. A basic model is depicted in figure \ref{fig:qkd model}. It involves two parties sharing keys through a quantum channel to decipher the classical channel data with an eavesdropper, Eve, between them.
-
+BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. This was the first created Quantum Key Distribution (QKD) protocol. A basic model is depicted in figure \ref{fig:qkd model}. It involves two parties sharing keys through a quantum channel to decipher the classical channel data. It is assumed that there is a eavesdropper, Eve to intercept the data.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1.0\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/QKD_Model.png}
-	\caption{Basic QKD Model.}\label{fig:qkd model}
+	\caption{Basic QKD Model. Alice and Bob are connected by 2 communication channels, quantum and classical, with an eavesdropper, Eve, in the quantum communication channel. \cite{iqo}}\label{fig:qkd model}
 \end{figure}
 
-BB84 protocol encodes bits into photon state polarization. This either can have an angle of 0 or 45 degrees, to represent bit 0, or an angle of 90 or 135 degrees, to represent bit 1, in rectilinear or diagonal basis, respectively. Figure \ref{fig:bb84_encoding} shows this bit encoding and basis.
+
+BB84 protocol uses bit encoding into photon state polarization. Two non-orthogonal basis are used to encoded the information, the rectilinear and diagonal basis. The following table shows this bit encoding and figure \ref{fig:basis} shows a simple representation of it.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{c|c|c}
+		 &  \textbf{\textit{Rectilinear Basis}} & \textbf{\textit{Diagonal Basis}}\\ \hline
+		0 &  0$º$ & -45$º$ \\
+		1 & 90$º$ & 45$º$\\
+	\end{tabular}
+\end{table}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/basis.png}
-	\caption{Bit Encoding and polarization basis.}\label{fig:bb84_encoding}
-\end{figure}
-The BB82 protocol is divided in different phases. For the first phase, by using the quantum communication channel,
-\begin{enumerate}
-	\item Alice chooses a random bit string and polarization, for each bit.
-	\item For each bit, a photon is transmitted, with an associated polarization, to Bob.
-	\item Bob receives, measure photon polarization by using a random basis.
-	\item If Bob chooses a matched polarization basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read.
-\end{enumerate}
-
-The second phase, uses the classical communication channel:
-\begin{enumerate}
-	\item Bob notifies Alice about what basis he used to deduce each bit.
-	\item Alice announces, to Bob, if the deduced basis is correct for each photon, and so, discards the bits measured with different one.
-	\item If no errors occurred the secret key should be the same for Bob and Alice.
-\end{enumerate}
-
-This two phases are depicted in figure \ref{fig:bb84_share}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth,height=4cm]{./sdf/bb84_with_discrete_variables/figures/siftedKey.png}
-	\caption{Bit Encoding and polarization basis.}\label{fig:bb84_share}
+	\includegraphics[width=0.4\textwidth,height=4cm]{./sdf/bb84_with_discrete_variables/figures/basis.png}
+	\caption{Simple representation of the bit encoding using the corresponding bases.\cite{SURV}}\label{fig:basis}
 \end{figure}
 
-In the presence of Eve, error will be introduced, because for Eve to determine the key, she will have to measure the photons sent between Alice and send them to Bob. By doing so, errors will be introduced since its impossible to replicate a particle with an unknown state. Eve will try to guess and these guesses will increase the QBER.
---/--/--/--/
 
+The protocol is implemented with the following steps:
 
+\begin{enumerate}
+	\item Alice generates two random bit strings. The random string ,$R_{A1}$, is the data to be encoded while $R_{A2} $is a string which 0 and 1 corresponds to rectilinear and diagonal basis $B_{A}$, respectively.
+	
+	$$ R_{A1} = \{0,1,1,0,1,0,0,1,1,0,1,1,1,0,0,1,0,0,0,1\}$$
+	$$ R_{A2} = \{0,0,1,0,1,1,1,0,1,1,1,0,1,0,0,0,1,0,1,0\}$$
+	$$ B_{A} = \{+,+,\times,+,\times, \times, \times, +,\times, \times, \times,+,\times,+,+,+,\times,+,\times,+\}$$
+	
+	\item Alice transmits a train of photons,$S_{AB}$, in which, each photon represents a bit of the random string, Ra1, with the correspondent polarization regarding to the bit value.
+	
+	$$S_{AB} = \{\to, \uparrow, \searrow, \to, \searrow, \nearrow, \nearrow, \uparrow, \searrow, \nearrow, \searrow, \uparrow, \searrow, \to, \to, \uparrow, \nearrow, \to, \nearrow, \uparrow\}.$$
+	
+	\item Bob generates a random string, $R_{B}$, such as Alice, to receive the photon trains with the correspondent basis.
+	
+	$$ R_{B} = \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\}$$
+	$$B_{B} = \{ +,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\}.$$
+	
+	\item If Bob chooses a matched basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read. It is considered that the channel contains attenuation, this will not click the polarization detector 
+	
+	$$D_{B} = \{0,1,1,0,-,0,1,1,-,0,0,1,-,1,0,1,0,-,1,1\}$$
+	
+\end{enumerate}
 
+Since less than half of the data is deduced, a second phase is needed so that Alice can announce to Bob which deduced bits are correct This second phase, uses the classical communication channel:
+\begin{enumerate}
+	
+	\item Bob sends Alice about the no clicks, in which 1 represents a no click.
+	
+	$$NC_{BA} = \{ 0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0\}.$$
+	
+	\item Bob notifies Alice about what random basis he used to deduce each bit, $R_{B}$, and Alice also sends to Bob the basis $R_{A1}$, she used.
+	
+	\item Both performs an XOR to deduce the correct sequence.
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
+			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+			$R_{B}$  & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
+			$\oplus$ & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\ 
+		\end{tabular}
+	\end{table}
+	
+	\item By using the deducid bits and removing the no clicks, the final obtained sequence is $K_{AB}$
+	
+  	$$ K_{AB} = \{0,1,0,1,0,1,0,1,0,1\}.$$
+		
+\end{enumerate}
 
+	The Quantum Bit Error Rate (QBER) is calculated by knowing the amount of no clicks and correct deduced bits by Bob.
+	
+	$$ QBER = no\_clicks\_qty / correct\_deduced\_bits $$
+	
+	In the previous example, the QBER is 33$\%$, since there are 4 no clicks.	
+
+The presence of a eavesdropper will carry the risk of changing the bits. This will produce disagreement between Bob and Alice in the bits they should agree. When Eve measures and retransmits a photon she can deduce correctly with a probability of 50\%. So by learning the correct polarization of half of the photons, the induced error is 25\%. Alice and Bob can detect Eve presence by sacrifice the secrecy of some bits in order to test.
+
+\begin{thebibliography}{2}
+\bibitem{BB84} 
+Bennett, C. H. and Brassard,
+G. Quantum Cryptography: Public key distribution and coin tossing.
+International Conference on Computers, Systems and Signal Processing, Bangalore, India, 10-12 December 1984, pp. 175-179.
+
+\bibitem{SURV}
+Mart Haitjema, A Survey of the Prominent Quantum Key Distribution Protocols
+
+\bibitem{iqo}
+Christopher Gerry, Peter Knight, "Introductory Quantum Optics" Cambridge University Press, 2005
+
+\end{thebibliography}
+\cleardoublepage
 
 \begin{table}[H]
 \centering
