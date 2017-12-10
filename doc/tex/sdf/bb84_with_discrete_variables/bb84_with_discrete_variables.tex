@@ -12,14 +12,21 @@
 BB84 is a key distribution protocol which involves three parties, Alice, Bob and Eve. Alice and Bob exchange information between each other by using a quantum channel and a classical channel. The main goal is continuously build keys only known by Alice and Bob, and guarantee that eavesdropper, Eve, does not gain any information about the keys.
 
 
-\subsection{Theoretical Description}
+\subsection{Protocol Analysis}
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Studens Name}  &:& Kevin Filipe\\
+		\textbf{Starting Date} &:& December 10, 2017\\
+		\textbf{Goal}          &:& BB84 Theoretical Analysis - Quantum Communication
+	\end{tabular}
+\end{tcolorbox}
 
-BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. This was the first created Quantum Key Distribution (QKD) protocol. A basic model is depicted in figure \ref{fig:qkd model}. It involves two parties sharing keys through a quantum channel to decipher the classical channel data. It is assumed that there is a eavesdropper, Eve to intercept the data.
+BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. A basic model is depicted in figure \ref{fig:qkd model}. It involves two parties, Alice and Bob, sharing keys through a quantum channel in which could be compromised by a eavesdropper, Eve. The data transmission is done by encoding a random set of Qubits into a specific basis and measure it at Bob. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1.0\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/QKD_Model.png}
-	\caption{Basic QKD Model. Alice and Bob are connected by 2 communication channels, quantum and classical, with an eavesdropper, Eve, in the quantum communication channel. \cite{iqo}}\label{fig:qkd model}
+	\includegraphics[width=0.8\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/QKD_Model.png}
+	\caption{Basic QKD Model. Alice and Bob are connected by 2 communication channels, quantum and classical, with an eavesdropper, Eve, in the quantum communication channel. Adapted from \cite{iqo}.}\label{fig:qkd model}
 \end{figure}
 
 
@@ -36,21 +43,19 @@ BB84 protocol uses bit encoding into photon state polarization. Two non-orthogon
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\textwidth,height=4cm]{./sdf/bb84_with_discrete_variables/figures/basis.png}
-	\caption{Simple representation of the bit encoding using the corresponding bases.\cite{SURV}}\label{fig:basis}
+	\includegraphics[width=0.4\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/basis.png}
+	\caption{Simple representation of the bit encoding using the corresponding bases. Adapted from \cite{SURV}.}\label{fig:basis}
 \end{figure}
 
-
 The protocol is implemented with the following steps:
-
 \begin{enumerate}
-	\item Alice generates two random bit strings. The random string ,$R_{A1}$, is the data to be encoded while $R_{A2} $is a string which 0 and 1 corresponds to rectilinear and diagonal basis $B_{A}$, respectively.
+	\item Alice generates two random bit strings. The random string ,$R_{A1}$, corresponds to the data to be encoded into photon state polarization. $R_{A2}$ is a random string in which 0 and 1 corresponds to the rectilinear, +, and diagonal, $\times$, basis of $B_{A}$, respectively.
 	
 	$$ R_{A1} = \{0,1,1,0,1,0,0,1,1,0,1,1,1,0,0,1,0,0,0,1\}$$
 	$$ R_{A2} = \{0,0,1,0,1,1,1,0,1,1,1,0,1,0,0,0,1,0,1,0\}$$
 	$$ B_{A} = \{+,+,\times,+,\times, \times, \times, +,\times, \times, \times,+,\times,+,+,+,\times,+,\times,+\}$$
 	
-	\item Alice transmits a train of photons,$S_{AB}$, in which, each photon represents a bit of the random string, Ra1, with the correspondent polarization regarding to the bit value.
+	\item Alice transmits a train of photons,$S_{AB}$, obtained by encoding the bits, $R_{A1}$ with the respective photon polarization state $R_{A2}$.
 	
 	$$S_{AB} = \{\to, \uparrow, \searrow, \to, \searrow, \nearrow, \nearrow, \uparrow, \searrow, \nearrow, \searrow, \uparrow, \searrow, \to, \to, \uparrow, \nearrow, \to, \nearrow, \uparrow\}.$$
 	
@@ -59,39 +64,34 @@ The protocol is implemented with the following steps:
 	$$ R_{B} = \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\}$$
 	$$B_{B} = \{ +,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\}.$$
 	
-	\item If Bob chooses a matched basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read. It is considered that the channel contains attenuation, this will not click the polarization detector 
+	\item Bob performs the incoming photon states measurement, $M_{B}$ with its generated random basis. It is considered the channel attenuation,-1, false positives,-2, rectilinear basis, 0, and diagonal basis,1.
 	
-	$$D_{B} = \{0,1,1,0,-,0,1,1,-,0,0,1,-,1,0,1,0,-,1,1\}$$
+	$$M_{B} = \{0,1,1,1,-1,1,0,0,-2,1,0,0,-2,1,0,0,1,-1,0,0\}$$	
 	
 \end{enumerate}
 
 Since less than half of the data is deduced, a second phase is needed so that Alice can announce to Bob which deduced bits are correct This second phase, uses the classical communication channel:
 \begin{enumerate}
 	
-	\item Bob sends Alice about the no clicks, in which 1 represents a no click.
-	
-	$$NC_{BA} = \{ 0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0\}.$$
-	
-	\item Bob notifies Alice about what random basis he used to deduce each bit, $R_{B}$, and Alice also sends to Bob the basis $R_{A1}$, she used.
-	
-	\item Both performs an XOR to deduce the correct sequence.
+	\item After the measurement, Bob sends to Alice the values of $M_{B}$ and Alice sends to Bob the random basis she used, Bob
+	\item Both removes the false positives and errors by attenuation and performs an XOR operation to deduce the correct sequence.
 	
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
-			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
-			$R_{B}$  & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
-			$\oplus$ & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\ 
+		\begin{tabular}{c|c c c c c c c c c c c c c c c c}
+			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
+			$R_{B}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ \hline
+			$\oplus$ & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\ 
 		\end{tabular}
 	\end{table}
 	
-	\item By using the deducid bits and removing the no clicks, the final obtained sequence is $K_{AB}$
+	\item Using the selected bits, the deduced key is, $K_{AB}$
 	
   	$$ K_{AB} = \{0,1,0,1,0,1,0,1,0,1\}.$$
 		
 \end{enumerate}
 
-	The Quantum Bit Error Rate (QBER) is calculated by knowing the amount of no clicks and correct deduced bits by Bob.
+	To determine the Quantum Bit Error Rate (QBER), 
 	
 	$$ QBER = no\_clicks\_qty / correct\_deduced\_bits $$
 	
