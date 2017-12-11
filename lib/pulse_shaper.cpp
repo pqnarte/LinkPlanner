@@ -5,6 +5,7 @@ using namespace std;
 
 void raisedCosine(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
 void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
+void square(vector<t_real> &impulseResponse, int impulseResponseLength);
 
 
 void PulseShaper::initialize(void) {
@@ -13,7 +14,6 @@ void PulseShaper::initialize(void) {
 	double symbolPeriod = inputSignals[0]->symbolPeriod;
 
 	impulseResponseLength = (int)floor(impulseResponseTimeLength * symbolPeriod / samplingPeriod);
-	//impulseResponseLength = 16;
 	impulseResponse.resize(impulseResponseLength);
 
 	switch (getFilterType()) {
@@ -23,6 +23,10 @@ void PulseShaper::initialize(void) {
 			break;
 		case Gaussian:
 			gaussian(impulseResponse, impulseResponseLength, rollOffFactor, samplingPeriod, symbolPeriod, passiveFilterMode);
+			break;
+
+		case Square:
+			square(impulseResponse, impulseResponseLength, rollOffFactor, samplingPeriod, symbolPeriod, passiveFilterMode);
 			break;
 	};
 
@@ -69,4 +73,11 @@ void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double
 			impulseResponse[i] = impulseResponse[i] / gain;
 		}
 	}
+};
+
+void square(vector<t_real> &impulseResponse, int impulseResponseLength) {
+
+	for (int i = 0; i < impulseResponseLength; i++) {
+		impulseResponse[i] = 1;
+	};
 };
