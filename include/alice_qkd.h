@@ -6,24 +6,32 @@
 #include "m_qam_mapper.h"
 #include "discrete_to_continuous_time.h"
 #include "pulse_shaper.h"
+#include "clock.h"
 #include "sink.h"
 
 class AliceQKD : public SuperBlock {
-
 	/* State Variables */
 
 	// #####################################################################################################
 	// ################## Internal Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
+
 	Binary S1{ "NUM_A.sgn" };
+
 	TimeDiscreteAmplitudeDiscreteReal S2{ "MQAM_I.sgn" };
+
 	TimeDiscreteAmplitudeDiscreteReal S3{ "MQAM_Q.sgn" };
+
 	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
+
 	TimeContinuousAmplitudeContinuousReal S5{ "S5.sgn" };
+
+	TimeContinuousAmplitudeContinuousReal CLK_A{ "CLK_A.sgn" };
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
+
 	BinarySource B1;
 
 	MQamMapper B2;
@@ -32,7 +40,11 @@ class AliceQKD : public SuperBlock {
 
 	PulseShaper B4;
 
-	Sink B5;
+	Sink B5{ vector<Signal*>{&S3}, vector<Signal*>{} };
+
+	Clock B6;
+
+
 
 public:
 	/* input parameters*/
@@ -64,29 +76,31 @@ public:
 	void setBitPeriod(double bPeriod) { B1.setBitPeriod(bPeriod); };
 	double const getBitPeriod(void) { return B1.getBitPeriod(); }
 
-	void setRateOfPhotons(double RPhotons) { RateOfPhotons = RPhotons; };
-	double const getRateOfPhotons(void) { return RateOfPhotons; };
-
-	void setStringPhotonsLength(int pLength) { StringPhotonsLength = pLength; };
-	int const getStringPhotonsLength(void) { return StringPhotonsLength; };
-
 	void setM(int mValue) { B2.m = mValue; };
 	int const getM(void) { return B2.m; };
 
-	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { B2.m = iqAmplitudesValues.size(); B2.iqAmplitudes.resize(B1.m); B2.iqAmplitudes = iqAmplitudesValues; };
+	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { B2.m = iqAmplitudesValues.size(); B2.iqAmplitudes.resize(B2.m); B2.iqAmplitudes = iqAmplitudesValues; };
 	vector<t_iqValues> const getIqAmplitudes(void) { return B2.iqAmplitudes; };
 
 	void setNumberOfSamplesPerSymbol(int n) { B3.setNumberOfSamplesPerSymbol(n); };
 	int const getNumberOfSamplesPerSymbol(void) { return B3.getNumberOfSamplesPerSymbol(); };
 
-	void setRollOffFactor(double rOffFactor) { B5.setRollOffFactor(rOffFactor); };
-	double const getRollOffFactor(void) { return B5.getRollOffFactor(); };
+	void setRollOffFactor(double rOffFactor) { B4.setRollOffFactor(rOffFactor); };
+	double const getRollOffFactor(void) { return B4.getRollOffFactor(); };
 
-	void setSeeBeginningOfImpulseResponse(bool sBeginningOfImpulseResponse) { B5.setSeeBeginningOfImpulseResponse(sBeginningOfImpulseResponse); };
-	double const getSeeBeginningOfImpulseResponse(void) { return B5.getSeeBeginningOfImpulseResponse(); };
+	void setSeeBeginningOfImpulseResponse(bool sBeginningOfImpulseResponse) { B4.setSeeBeginningOfImpulseResponse(sBeginningOfImpulseResponse); };
+	double const getSeeBeginningOfImpulseResponse(void) { return B4.getSeeBeginningOfImpulseResponse(); };
 
-	void setPulseShaperFilter(PulseShaperFilter fType) { B5.setFilterType(fType); };
+	void setPulseShaperFilter(PulseShaperFilter fType) { B4.setFilterType(fType); };
 
+	void setNumberOfSamples(long int nOfSamples) { B5.setNumberOfSamples(nOfSamples); };
+
+	void setDisplayNumberOfSamples(bool opt) { B5.setDisplayNumberOfSamples(opt); };
+
+	void setClockPeriod(double per) { B6.setClockPeriod(per); };
+
+	void setSamplingPeriod(double speriod) { B6.setSamplingPeriod(speriod); };
+	
 };
 
 #endif

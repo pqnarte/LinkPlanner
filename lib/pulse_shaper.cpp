@@ -26,7 +26,7 @@ void PulseShaper::initialize(void) {
 			break;
 
 		case Square:
-			square(impulseResponse, impulseResponseLength, rollOffFactor, samplingPeriod, symbolPeriod, passiveFilterMode);
+			square(impulseResponse, impulseResponseLength);
 			break;
 	};
 
