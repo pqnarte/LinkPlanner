@@ -7,8 +7,8 @@ AliceQKD::AliceQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal)
 	//inputSignal[0]->bufferGet(&clock_value);
 	//outputSignal[0]->bufferPut(clock_value);
 
-	numberOfInputSignals = inputSignal.size();
-	numberOfOutputSignals = outputSignal.size();
+	numberOfInputSignals = (int) inputSignal.size();
+	numberOfOutputSignals = (int) outputSignal.size();
 
 	//signal_value_type sType = outputSignals[0]->getValueType();
 
