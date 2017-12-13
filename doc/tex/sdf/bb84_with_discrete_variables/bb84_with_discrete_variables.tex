@@ -64,7 +64,7 @@ The protocol is implemented with the following steps:
 	$$ R_{B} = \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\}$$
 	$$B_{B} = \{ +,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\}.$$
 	
-	\item Bob performs the incoming photon states measurement, $M_{B}$ with its generated random basis. It is considered the channel attenuation,-1, false positives,-2, rectilinear basis, 0, and diagonal basis,1.
+	\item Bob performs the incoming photon states measurement, $M_{B}$ with its generated random basis. It is considered the channel attenuation,-1, false positives,-2, rectilinear basis, 0, and diagonal basis, 1. This is obtained by using (não encontrei a imagem). 
 	
 	$$M_{B} = \{0,1,1,1,-1,1,0,0,-2,1,0,0,-2,1,0,0,1,-1,0,0\}$$	
 	
@@ -91,13 +91,13 @@ Since less than half of the data is deduced, a second phase is needed so that Al
 		
 \end{enumerate}
 
-	To determine the Quantum Bit Error Rate (QBER), 
+	To determine the Quantum Bit Error Rate (QBER), Bob will reveal a bit sequence from the deduced key to Alice. Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qLB]. To verify if the channel is reliable or not the flowchart presented in figure \ref{flowQber} must be followed and a acceptable QBER limit, qLim, must be imposed. Alice performs the QBER and confidence interval calculation by using the equations in the Bit Error Rate section, but applied to this protocol. By following the presented flowchart if the qLimit is inside the confidence interval, Bob should use more bits from key until qLim is bigger than qLB and qUB. If this condition is achieved, the QBER is successfully estimated and a reliable communication can be achieved. Otherwise the link is declared as unreliable and no further communication is made.
 	
-	$$ QBER = no\_clicks\_qty / correct\_deduced\_bits $$
-	
-	In the previous example, the QBER is 33$\%$, since there are 4 no clicks.	
-
-The presence of a eavesdropper will carry the risk of changing the bits. This will produce disagreement between Bob and Alice in the bits they should agree. When Eve measures and retransmits a photon she can deduce correctly with a probability of 50\%. So by learning the correct polarization of half of the photons, the induced error is 25\%. Alice and Bob can detect Eve presence by sacrifice the secrecy of some bits in order to test.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/qberEstimation.png}
+	\caption{Flowchart to determine if the channel is reliable or not.}\label{fig:flowQber}
+\end{figure}
 
 \begin{thebibliography}{2}
 \bibitem{BB84} 
