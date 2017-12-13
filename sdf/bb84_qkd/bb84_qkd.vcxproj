@@ -87,11 +87,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,6 +161,7 @@
     <ClCompile Include="..\..\lib\single_photon_detector.cpp" />
     <ClCompile Include="..\..\lib\single_photon_source.cpp" />
     <ClCompile Include="..\..\lib\sink.cpp" />
+    <ClCompile Include="..\..\lib\super_block_interface.cpp" />
     <ClCompile Include="bb84_qkd.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +181,7 @@
     <ClInclude Include="..\..\include\single_photon_detector.h" />
     <ClInclude Include="..\..\include\single_photon_source.h" />
     <ClInclude Include="..\..\include\sink.h" />
+    <ClInclude Include="..\..\include\super_block_interface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
