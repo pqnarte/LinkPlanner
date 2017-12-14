@@ -15,6 +15,8 @@ class Clock : public Block {
 	/* state variables */
 	int index{ 0 };
 	double first{ true };
+	int delay{ 0 };
+
 	
 public:
 

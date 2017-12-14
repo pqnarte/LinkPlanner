@@ -17,7 +17,8 @@ void Clock::initialize(void) {
 
 	outputSignals[0]->setSamplesPerSymbol(numberOfSamplesPerSymbol);
 
-	index = (int)(phase*numberOfSamplesPerSymbol / (2 * PI));
+	delay = (int)(phase*numberOfSamplesPerSymbol / (2 * PI));
+
 };
 
 bool Clock::runBlock(void) {
@@ -30,6 +31,7 @@ bool Clock::runBlock(void) {
 
 	if (index != 0) {
 		int aux{ 0 };
+		
 		for (int i = index; (i < numberOfSamplesPerSymbol) & (space>0); i++) {
 			outputSignals[0]->bufferPut(0);
 			space--;
@@ -40,7 +42,8 @@ bool Clock::runBlock(void) {
 	};
 
 	for (int k = 0; k < space; k++) {
-		if (index == 0) {
+		if (index == delay) {
+			
 			outputSignals[0]->bufferPut((t_real) 1.0);
 		}
 		else {
