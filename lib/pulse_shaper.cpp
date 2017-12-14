@@ -5,7 +5,7 @@ using namespace std;
 
 void raisedCosine(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
 void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
-void square(vector<t_real> &impulseResponse, int impulseResponseLength);
+void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod);
 
 
 void PulseShaper::initialize(void) {
@@ -24,9 +24,8 @@ void PulseShaper::initialize(void) {
 		case Gaussian:
 			gaussian(impulseResponse, impulseResponseLength, rollOffFactor, samplingPeriod, symbolPeriod, passiveFilterMode);
 			break;
-
 		case Square:
-			square(impulseResponse, impulseResponseLength);
+			square(impulseResponse, impulseResponseLength, samplingPeriod, symbolPeriod);
 			break;
 	};
 
@@ -75,9 +74,15 @@ void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double
 	}
 };
 
-void square(vector<t_real> &impulseResponse, int impulseResponseLength) {
+void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod) {
 
-	for (int i = 0; i < impulseResponseLength; i++) {
-		impulseResponse[i] = 1;
+	int samplesPerSymbol = (int) (symbolPeriod / samplingPeriod);
+
+	for (int k = 0; k < samplesPerSymbol; k++) {
+		impulseResponse[k] = 1.0;
+	};
+
+	for (int k = samplesPerSymbol; k < impulseResponseLength; k++) {
+		impulseResponse[k] = 0.0;
 	};
 };

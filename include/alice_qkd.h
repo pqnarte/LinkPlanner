@@ -63,7 +63,7 @@ public:
 	void setM(int mValue) { B1.m = mValue; };
 	int const getM(void) { return B1.m; };
 
-	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { B1.m = iqAmplitudesValues.size(); B1.iqAmplitudes.resize(B1.m); B1.iqAmplitudes = iqAmplitudesValues; };
+	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { B1.m = (t_integer) iqAmplitudesValues.size(); B1.iqAmplitudes.resize(B1.m); B1.iqAmplitudes = iqAmplitudesValues; };
 	vector<t_iqValues> const getIqAmplitudes(void) { return B1.iqAmplitudes; };
 
 	void setNumberOfSamplesPerSymbol(int n) { B2.setNumberOfSamplesPerSymbol(n); };
