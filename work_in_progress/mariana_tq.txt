@@ -1,3 +1,12 @@
+2017-12-15
+TO BE DONE
+	alterar o nome do clock para clock_20171215.h e clock_20171215.cpp
+
+	colocar um help para o clock, acrescentando o autor
+
+	single_photon_sourceXY_20171215.h e *.cpp
+
+
 2017-12-13
 TO BE DONE
 	trocar o nome para bb84_with_discrete_variables
