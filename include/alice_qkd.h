@@ -19,17 +19,17 @@ class AliceQKD : public SuperBlock {
 
 	//Binary S1{ "NUM_A.sgn" };
 
-	TimeDiscreteAmplitudeDiscreteReal S1{ "MQAM_I.sgn" };
+	TimeDiscreteAmplitudeDiscreteReal S1{ "Alice_1.sgn" };
 
-	TimeDiscreteAmplitudeDiscreteReal S2{ "MQAM_Q.sgn" };
+	TimeDiscreteAmplitudeDiscreteReal S2{ "Alice_2.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S3{ "S3.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S3{ "Alice_3.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S4{ "Alice_4.sgn" };
 
-	TimeContinuousAmplitudeContinuousReal CLK_A{ "CLK_A.sgn" };
+	TimeContinuousAmplitudeContinuousReal CLK_A{ "Alice_5.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S5{ "Alice_6.sgn" };
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
