@@ -23,16 +23,18 @@ bool SinglePhotonSource::runBlock(void) {
 
 	length = min(ready, space);
 
-	if (length <= 0) return false;
+	if (length == 0) return false;
 
 	t_real re;
 
 	for (int i = 0; i < length; i++) {
+		
 		inputSignals[0]->bufferGet(&re);
-		t_complex valueX(re, 0);
+
+		t_complex valueX(re,0);
 		t_complex valueY(0, 0);
 
-		t_complex_xy valueXY = { valueX, valueY };
+		t_complex_xy valueXY = {valueX, valueY};
 
 		outputSignals[0]->bufferPut(valueXY);
 		
