@@ -1,14 +1,15 @@
 \clearpage
 
-\section{Clock_20171219}
+\section{Clock\_20171219}
 
-This block doesn't accept any input signal. It outputs one signal that corresponds to a sequence of Dirac's delta functions with a user defined \textit{period}.
+This block doesn't accept any input signal. It outputs one signal that corresponds to a sequence of Dirac's delta functions with a user defined \textit{period}, \textit{phase} and \textit{sampling period}.
 
 \subsection*{Input Parameters}
 
 \begin{itemize}
 	\item period\{ 0.0 \};
 	\item samplingPeriod\{ 0.0 \};
+    \item phase \{0.0\};
 \end{itemize}
 
 \subsection*{Methods}
@@ -22,13 +23,16 @@ void initialize(void)
 bool runBlock(void)
 \bigbreak
 void setClockPeriod(double per)
+double getClockPeriod()
+\bigbreak
+void setClockPhase(double pha)
+double getClockPhase()
 \bigbreak
 void setSamplingPeriod(double sPeriod)
+double getSamplingPeriod()
 
 \subsection*{Functional description}
 
-
-\pagebreak
 
 \subsection*{Input Signals}
 
@@ -44,8 +48,14 @@ void setSamplingPeriod(double sPeriod)
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{./lib/clock/figures/Clock_output}
-	\caption{Example of the output signal of the clock}\label{Clock_output}
+	\includegraphics[width=\textwidth]{./lib/clock_20171219/figures/clock_withoutpha}
+	\caption{Example of the output signal of the clock without phase shift.}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{./lib/clock_20171219/figures/clockPhased}
+	\caption{Example of the output signal of the clock with phase shift.}
 \end{figure}
 
 \subsection*{Sugestions for future improvement}
