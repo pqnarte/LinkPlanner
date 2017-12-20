@@ -1,4 +1,4 @@
-function [ data, symbolPeriod, samplingPeriod, type, numberOfSymbols ] = readSignal( fname, nReadr )
+function [ data, symbolPeriod, samplingPeriod, type, numberOfSymbols ] = readSignal_20171220( fname, nReadr )
 
 %READSIGNALDATA Reads signal data to "visualizer".
 %   [ data, samplingFrequency ] = READSIGNALDATA(fid, type, symbolPeriod, samplingPeriod)
@@ -23,7 +23,7 @@ tc3 = 'TimeContinuousAmplitudeDiscreteComplex';
 tc4 = 'TimeContinuousAmplitudeContinuousComplex';
 tc5 = 'BandpassSignal';
 toxy = 'OpticalSignalXY';
-phxy = 'OpticalSignalXY';
+phxy = 'PhotonStreamXY';
 
 %% Get global variable "nRead"
 %nReadr = getGlobalnRead;
@@ -87,9 +87,9 @@ if strcmp(type, toxy)
 end
 
 if strcmp(type, phxy)
-   data = fread(fid, 4*double(samplesPerSymbol)*nReadr, t_complexr);
+   data = fread(fid, 4*samplesPerSymbol*nReadr, 'double' );
    
-   numberOfSymbols = (length(data)/samplesPerSymbol);
+   numberOfSymbols = length(data)/(4*samplesPerSymbol);
    
    return;
 end
