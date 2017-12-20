@@ -23,6 +23,7 @@ tc3 = 'TimeContinuousAmplitudeDiscreteComplex';
 tc4 = 'TimeContinuousAmplitudeContinuousComplex';
 tc5 = 'BandpassSignal';
 toxy = 'OpticalSignalXY';
+phxy = 'OpticalSignalXY';
 
 %% Get global variable "nRead"
 %nReadr = getGlobalnRead;
@@ -78,6 +79,14 @@ if strcmp(type, tc1) || strcmp(type, tc2) || strcmp(type, tc3) || strcmp(type, t
 end
 
 if strcmp(type, toxy)
+   data = fread(fid, 4*double(samplesPerSymbol)*nReadr, t_complexr);
+   
+   numberOfSymbols = (length(data)/samplesPerSymbol);
+   
+   return;
+end
+
+if strcmp(type, phxy)
    data = fread(fid, 4*double(samplesPerSymbol)*nReadr, t_complexr);
    
    numberOfSymbols = (length(data)/samplesPerSymbol);

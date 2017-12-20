@@ -59,7 +59,7 @@ The protocol is implemented with the following steps:
 	$$ R_{B} = \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\}$$
 	$$B_{B} = \{ +,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\}.$$
 	
-	\item If Bob chooses a matched basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read. It is considered that the channel contains attenuation, this will not click the polarization detector 
+	\item If Bob chooses a matched basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read. It is considered that the channel contains attenuation, this will not click the polarization detector
 	
 	$$D_{B} = \{0,1,1,0,-,0,1,1,-,0,0,1,-,1,0,1,0,-,1,1\}$$
 	
@@ -81,7 +81,7 @@ Since less than half of the data is deduced, a second phase is needed so that Al
 		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
 			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
 			$R_{B}$  & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
-			$\oplus$ & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\ 
+			$\oplus$ & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\
 		\end{tabular}
 	\end{table}
 	
@@ -100,7 +100,7 @@ Since less than half of the data is deduced, a second phase is needed so that Al
 The presence of a eavesdropper will carry the risk of changing the bits. This will produce disagreement between Bob and Alice in the bits they should agree. When Eve measures and retransmits a photon she can deduce correctly with a probability of 50\%. So by learning the correct polarization of half of the photons, the induced error is 25\%. Alice and Bob can detect Eve presence by sacrifice the secrecy of some bits in order to test.
 
 \begin{thebibliography}{2}
-\bibitem{BB84} 
+\bibitem{BB84}
 Bennett, C. H. and Brassard,
 G. Quantum Cryptography: Public key distribution and coin tossing.
 International Conference on Computers, Systems and Signal Processing, Bangalore, India, 10-12 December 1984, pp. 175-179.
@@ -264,9 +264,17 @@ Christopher Gerry, Peter Knight, "Introductory Quantum Optics" Cambridge Univers
 
 \end{enumerate}
 
-\subsection{Simulation Setup}
+\subsection{Simulation Analysis}
 
+\begin{tcolorbox}	
+\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+\textbf{Students Name}  &:& Mariana Ramos \\
+\textbf{Starting Date} &:& November 7, 2017\\
+\textbf{Goal}          &:& Perform a simulation of the setup presented bellow in order to implement BB84 communication protocol.
+\end{tabular}
+\end{tcolorbox}
 
+In this sub section the simulation setup implementation will be described in order to implement the BB84 protocol. In figure \ref{toplevelsimulation} a top level diagram is presented. Then it will be presented the block diagram of the transmitter block (Alice) in figure \ref{alicesimulation}, the receiver block (Bob) in figure \ref{bobsimulation} and finally the eavesdropper block (Eve) in figure \ref{evesimulation}.
 
 \begin{figure}[H]
 	\centering
