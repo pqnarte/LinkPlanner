@@ -100,3 +100,5 @@ data = data';
 
 numberOfSymbols = (length(data)/samplesPerSymbol);
 
+fclose(fid);
+

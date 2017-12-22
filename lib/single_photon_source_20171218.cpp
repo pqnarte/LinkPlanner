@@ -36,7 +36,7 @@ bool SinglePhotonSource::runBlock(void) {
 
 		t_complex_xy valueXY = {valueX, valueY};
 
-		outputSignals[0]->bufferPut(valueXY);
+		outputSignals[0]->bufferPut((t_complex_xy) valueXY);
 		
 	}
 			
