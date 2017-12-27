@@ -1,7 +1,7 @@
 clc;
 clear all;
 
-[data, symbolperiod,sampling,type,number]=readSignal_20171220('S2.sgn');
+[data, symbolperiod,sampling,type,number]=readSignal_20171220('Q_C_1.sgn');
 data_x = data(1:4:end) + 1i.*data(2:4:end);
 data_x = real(data_x)' + imag(data_x)'.*1i;
 data_y = data(3:4:end) + 1i.*data(4:4:end);
@@ -13,7 +13,7 @@ real_y = real(data_y(1:end));
 imag_y = imag(data_y(1:end));
 
 
-phase_dif = angle(data_x(1:end-1)) - angle(data_y(1:end));
+phase_dif = angle(data_x(1:end)) - angle(data_y(1:end));
 
 
 figure (1)
