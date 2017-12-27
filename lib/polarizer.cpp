@@ -2,10 +2,10 @@
 #include "polarizer.h"
 
 void Polarizer::initialize(void) {
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
-	outputSignals[0]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 }
 
 bool Polarizer::runBlock(void) {
@@ -33,8 +33,8 @@ bool Polarizer::runBlock(void) {
 		valueX = valueXY.x;
 		valueY = valueXY.y;
 
-		valueX = valueX * cos(-pol) + valueY * (-sin(-pol));
-		valueY = valueX * sin(-pol) + valueY * cos(-pol);
+		valueX = valueX * cos(-pol*PI / 180);
+		valueY = valueX *(-sin(-pol*PI / 180));
 
 		valueXY = { valueX, valueY };
 

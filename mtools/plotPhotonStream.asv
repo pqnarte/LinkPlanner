@@ -6,8 +6,16 @@ data_x = real(data_x)' + imag(data_x)'.*1i;
 data_y = data(3:4:end) + 1i.*data(4:4:end);
 data_y = real(data_y)' + imag(data_y)'.*1i;
 
-mag_x = abs(data_x(1:end));
-mag_y = abs(data_y(1:end));
+% mag_x = abs(data_x(1:end));
+% mag_y = abs(data_y(1:end));
+
+real_x = real(data_x(1:end));
+imag_x = imag(data_x(1:end));
+real_y = real(data_y(1:end));
+imag_y = imag(data_y(1:end));
+
+mag_x = sqrt((real_x^2)+(imag_x^2));
+mag_y = sqrt((real_y^2)+(imag_x^2));
 
 
 phase_dif = angle(data_x(1:end)) - angle(data_y(1:end));
