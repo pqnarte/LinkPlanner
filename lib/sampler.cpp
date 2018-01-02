@@ -2,6 +2,7 @@
 #include <complex>
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "netxpto.h"
 #include "sampler.h"
@@ -40,7 +41,7 @@ bool Sampler::runBlock(void) {
 
 		if (process == 0) return false;
 
-		int samplesPerSymbol = (int) inputSignals[0]->getSamplesPerSymbol();
+		int samplesPerSymbol = (int)inputSignals[0]->getSamplesPerSymbol();
 		if (samplesToSkip == 0)
 		{
 			for (int k = 0; k < process; k++) {
@@ -53,6 +54,32 @@ bool Sampler::runBlock(void) {
 			}
 
 		}
+		return true;
+	}
+	//Sampler with external clock
+	else {
+
+		int ready = inputSignals[0]->ready();
+		int space = outputSignals[0]->space();
+		int process = min(ready, space);
+
+		if (process <= 0) return false;
+
+		t_real inClock;
+		t_real inSignal;
+
+		for (int k = 0; k < process; k++) {
+
+			inputSignals[1]->bufferGet(&inClock);
+			inputSignals[0]->bufferGet(&inSignal);
+
+			if (inClock == 1.0) {
+
+				outputSignals[0]->bufferPut((t_real)inSignal);
+			}
+
+		}
+		
 		return true;
 	}
 }
