@@ -222,16 +222,28 @@ In this sub section the simulation setup implementation will be described in ord
 Figure \ref{toplevelsimulation} presents the top level diagram of our simulation. The setup contains three parties, Alice, Eve and Bob where the communication between them is done throughout two classical and one quantum channel. In the middle of the classical channel there is a Fork's diagram which has one input and two outputs. In the case of the classical channel \textbf{C\_C\_4} which has the information sent by Bob, the fork's block enables Alice and Eve have access to it. In the quantum communication, the information sent by Alice can be intercepted by Eve and changed by her, or can follow directly to Bob as we can see later in figure \ref{evesimulation}. Furthermore, for mutual information calculation there must be two blocks \textbf{MI}, one to calculate the mutual information between Alice and Eve, and other to calculate the mutual information between Alice and Bob.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/alice_simulation.png}
-	\caption{Simulation diagram at Alice's side}\label{alicesimulation}
+    \centering
+        \includegraphics[clip, trim=0.5cm 7cm 0.5cm 10cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Alice_bb84.pdf}
+    \caption{Simulation diagram at Alice's side}\label{alicesimulation}
 \end{figure}
 
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/alice_simulation.png}
+%	\caption{Simulation diagram at Alice's side}\label{alicesimulation}
+%\end{figure}
+
 \begin{figure}[h]
-	\centering
-	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/bob_simulation.png}
-	\caption{Simulation diagram at Bob's side}\label{bobsimulation}
+    \centering
+        \includegraphics[clip, trim=0.5cm 17cm 0.5cm 2cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Bob_bb84.pdf}
+    \caption{Simulation diagram at Bob's side}\label{bobsimulation}
 \end{figure}
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/bob_simulation.png}
+%	\caption{Simulation diagram at Bob's side}\label{bobsimulation}
+%\end{figure}
 
     In figure \ref{alicesimulation} one can observe a block diagram of the simulation at Alice's side. As it is shown in the figure, Alice must have one block for random number generation which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. Furthermore, she has a Processor block for all logical operations: array analysis, random number generation requests, and others. This block also receives the information from Bob after it has passed through a fork's block. In addition, it is responsible for set the initial length $l$ of the first array of photons which will send to Bob. This block also must be responsible for send classical information to Bob. Finally, Processor block will also send a real continuous time signal to single photon generator, in order to generate photons according to this signal, and finally this block also sends to the polarizer a real discrete signal in order to inform the polarizer which basis it should use. Therefore, she has two more blocks for quantum tasks: the single photon generator and the polarizer block which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
 
@@ -341,7 +353,7 @@ single\_photon\_source\_20171218.cpp    &                      &    \checkmark  
 sink.cpp                                &                      &    \checkmark   \\ \hline
 super\_block\_interface.cpp             &                      &    \checkmark   \\ \hline
 \end{tabular}
-\end{table} 
+\end{table}
 
 <<<<<<< HEAD
 \subsection{Open Issues}
