@@ -20,7 +20,7 @@ BB84 is a key distribution protocol which involves three parties, Alice, Bob and
 	\end{tabular}
 \end{tcolorbox}
 
-BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. It involves two parties, Alice and Bob, sharing keys through a quantum channel in which could be accessed by a eavesdropper, Eve. A basic model is depicted in figure \ref{fig:qkd model}. 
+BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. It involves two parties, Alice and Bob, sharing keys through a quantum channel in which could be accessed by a eavesdropper, Eve. A basic model is depicted in figure \ref{fig:qkd model}.
 
 \begin{figure}[H]
 	\centering
@@ -60,11 +60,7 @@ The protocol is implemented with the following steps:
 	
 	\item Bob performs the incoming photon states measurement, $M_{B}$, with its generated random basis, $R_{B}$. If the two photon detectors don't click, means the bit was lost during transference due to attenuation. If both photon detectors click, a false positive was detected. In the measurements, $M_{B}$, the no-click in both detectors is represented by a -1 and the false positives to -2. The measurements done in rectilinear or diagonal basis are represented by 0 and 1, respectively. This is represented \ref{fig:bb84 detector}
 	
-<<<<<<< HEAD
-	\item If Bob chooses a matched basis compared to the one encoded in the photon, then he can correctly deduce the right bit, otherwise deduced bit is randomly read. It is considered that the channel contains attenuation, this will not click the polarization detector
-=======
 	$$M_{B} = \{0,1,1,1,-1,1,0,0,-2,1,0,0,-2,1,0,0,1,-1,0,0\}$$	
->>>>>>> Kevin_TQ
 	
 	\begin{figure}[H]
 		\centering
@@ -85,24 +81,17 @@ The second phase, uses the classical communication channel:
 	
 	\begin{table}[H]
 		\centering
-<<<<<<< HEAD
-		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
-			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
-			$R_{B}$  & 0 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 0 \\ \hline
-			$\oplus$ & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 1 & 1 & 0 \\
-=======
 		\begin{tabular}{c|c c c c c c c c c c c c c c c c}
 			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
 			$R_{B}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ \hline
-			$B_{A}$ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 \\ 
->>>>>>> Kevin_TQ
+			$B_{A}$ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 \\
 		\end{tabular}
 	\end{table}
 	
 	\item Perform a scrambling over $B_{B}$ using a known algorithm by Alice and Bob to accomplish distribute the error over all key to later and avoid error burst. Later, this will permit to have a good bit error rate estimation \cite{SPREADING}. As a example, the even positions of the $B_{B}$ will be shifted 2 positions.
 	\begin{tabular}{c|c c c c c c c c c c c c c c c c}
 		$Positions$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
-		$B_{A}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ 
+		$B_{A}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\
 		$P_{A}$  & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
 	\end{tabular}
 			
@@ -115,79 +104,18 @@ The second phase, uses the classical communication channel:
 
 	To determine the Quantum Bit Error Rate (QBER), it is necessary some input parameters such as:
 	
-<<<<<<< HEAD
-	In the previous example, the QBER is 33$\%$, since there are 4 no clicks.	
-
-The presence of a eavesdropper will carry the risk of changing the bits. This will produce disagreement between Bob and Alice in the bits they should agree. When Eve measures and retransmits a photon she can deduce correctly with a probability of 50\%. So by learning the correct polarization of half of the photons, the induced error is 25\%. Alice and Bob can detect Eve presence by sacrifice the secrecy of some bits in order to test.
-
-\begin{thebibliography}{2}
-\bibitem{BB84}
-Bennett, C. H. and Brassard,
-G. Quantum Cryptography: Public key distribution and coin tossing.
-International Conference on Computers, Systems and Signal Processing, Bangalore, India, 10-12 December 1984, pp. 175-179.
-
-\bibitem{SURV}
-Mart Haitjema, A Survey of the Prominent Quantum Key Distribution Protocols
-
-\bibitem{iqo}
-Christopher Gerry, Peter Knight, "Introductory Quantum Optics" Cambridge University Press, 2005
-
-\end{thebibliography}
-\cleardoublepage
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c|c}
-\textbf{\textit{Basis}}         &  \\ \hline
- 0 & $+$ \\
- 1 & $\times$ \\
-\end{tabular}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c|c}
-            & Basis "+" \\ \hline
- 0 & $\to (0^{\circ})$ \\
- 1 & $\uparrow (90^{\circ})$ \\
-\end{tabular}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-\begin{tabular}{c|c}
-      & Basis "$\times$" \\ \hline
- 0 & $\searrow (-45^{\circ})$ \\
- 1 & $\nearrow (45^{\circ})$ \\
-\end{tabular}
-\end{table}
-
-
-\begin{enumerate}
-  \item Alice randomly generate a bit sequence with length $ks$ being, in this case, $k=2$ and $s=4$ as it was defined at the beginning.
-      Therefore, she must define two sets randomly: $S_{A1}$ which contains the basis values; and $S_{A2}$, which contains the key values.
-
-      In that case, lets assume she gets the following sets $S_{A1}$ and $S_{A2}$:
-      $$S_{A1} = \{0,1,1,0,0,1,0,1 \},$$
-      $$S_{A2} = \{1,1,0,0,0,1,0,0 \}.$$
-
-  \item Next, Alice sends to Bob throughout a quantum channel $ks$ photons encrypted using the basis defined in $S_{A1}$ and according to the keys defined in $S_{A2}$.
-=======
 	\begin{enumerate}
 		\item qLB - QBER lower bound.
 		\item qUB - QBER upper bound.
 		\item qLim - acceptable QBER limit.
 	\end{enumerate}
->>>>>>> Kevin_TQ
 
 	Then to verify if the channel is reliable or not, the flowchart presented in figure \ref{fig:flowQber}.
 	
 	\begin{enumerate}
-		\item Bob will reveals a bit sequence from the deduced key, $K_{AB}$ to Alice. 
+		\item Bob will reveals a bit sequence from the deduced key, $K_{AB}$ to Alice.
 		\item Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qUB] using the using the equations in the Bit Error Rate section, but applied to this protocol
-		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more bits from the key. Otherwise the channel is compromised and the key determination process needs to restart. 
+		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more bits from the key. Otherwise the channel is compromised and the key determination process needs to restart.
 	\end{enumerate}
 	
 	
@@ -355,15 +283,14 @@ super\_block\_interface.cpp             &                      &    \checkmark  
 \end{tabular}
 \end{table}
 
-<<<<<<< HEAD
 \subsection{Open Issues}
 
 There still are some open issues in simulation code.
 
-One of them was detected in block \textbf{single\_photon\_source\_20171218.cpp}. This block should assume each sample with 4 real values, since it writes two complex values each time the block runs, i.e each \textit{bufferput()} should write an array of two complex values in outputSignal, outputSignals[0]->bufferPut(valueXY), where \textit{t\_complex\_xy valueXY = \{valueX, valueY\}} and \textit{t\_complex valueX = (realValue\_1,realValue\_2)}. This way, independently of the number of samples these four values should always be written. However, if we chose a number of samples which is not divisible by 4, the four numbers are not written in the last "sample" and the array data for X's values and Y's values have different sizes which is wrong. For example, if we chose 10 samples to acquire, the last values correspond to X's values instead of Y's values and the first array data is longer than the other. 
-=======
+One of them was detected in block \textbf{single\_photon\_source\_20171218.cpp}. This block should assume each sample with 4 real values, since it writes two complex values each time the block runs, i.e each \textit{bufferput()} should write an array of two complex values in outputSignal, outputSignals[0]->bufferPut(valueXY), where \textit{t\_complex\_xy valueXY = \{valueX, valueY\}} and \textit{t\_complex valueX = (realValue\_1,realValue\_2)}. This way, independently of the number of samples these four values should always be written. However, if we chose a number of samples which is not divisible by 4, the four numbers are not written in the last "sample" and the array data for X's values and Y's values have different sizes which is wrong. For example, if we chose 10 samples to acquire, the last values correspond to X's values instead of Y's values and the first array data is longer than the other.
+
 \begin{thebibliography}{2}
-	\bibitem{BB84} 
+	\bibitem{BB84}
 	Bennett, C. H. and Brassard,
 	G. Quantum Cryptography: Public key distribution and coin tossing.
 	International Conference on Computers, Systems and Signal Processing, Bangalore, India, 10-12 December 1984, pp. 175-179.
@@ -379,4 +306,4 @@ One of them was detected in block \textbf{single\_photon\_source\_20171218.cpp}.
 	
 \end{thebibliography}
 \cleardoublepage
->>>>>>> Kevin_TQ
+
