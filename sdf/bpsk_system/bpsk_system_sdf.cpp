@@ -9,6 +9,7 @@
 # include "ti_amplifier.h"
 # include "sampler.h"
 # include "sink.h"
+# include "bit_decider.h"
 
 int main(){
 
