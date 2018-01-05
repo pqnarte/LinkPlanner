@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\lib\binary_source.cpp" />
     <ClCompile Include="..\..\lib\bob_qkd.cpp" />
     <ClCompile Include="..\..\lib\clock_20171219.cpp" />
+    <ClCompile Include="..\..\lib\demux_1_2.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time.cpp" />
     <ClCompile Include="..\..\lib\eve_qkd.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="..\..\include\binary_source.h" />
     <ClInclude Include="..\..\include\bob_qkd.h" />
     <ClInclude Include="..\..\include\clock_20171219.h" />
+    <ClInclude Include="..\..\include\demux_1_2.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time.h" />
     <ClInclude Include="..\..\include\eve_qkd.h" />
     <ClInclude Include="..\..\include\m_qam_mapper.h" />
