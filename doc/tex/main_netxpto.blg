@@ -9,7 +9,8 @@ The style file: unsrt.bst
 A level-1 auxiliary file: bu.aux
 A level-1 auxiliary file: chapter/mtools.aux
 A level-1 auxiliary file: chapter/algorithms.aux
-Illegal, another \bibstyle command---line 34 of file main_netxpto.aux
+A level-1 auxiliary file: chapter/msbuild.aux
+Illegal, another \bibstyle command---line 35 of file main_netxpto.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
