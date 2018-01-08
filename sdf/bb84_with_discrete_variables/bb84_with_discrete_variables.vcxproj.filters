@@ -69,6 +69,9 @@
     <ClCompile Include="..\..\lib\clock_20171219.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\demux_1_2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\netxpto.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\clock_20171219.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\demux_1_2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
