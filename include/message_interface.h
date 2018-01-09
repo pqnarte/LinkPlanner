@@ -3,35 +3,53 @@
 
 #include "netxpto.h"
 
-class MessageInterface : public Block {
+enum message_value_type{ BasisReconciliation };
+enum state_machine_type{ EnableToWrite, enableToRead, BitToProcess, IdleState};
+
+class MessageProcessorAlice : public Block {
+
+	/*Input Parameters*/
+	int bufferLengthIn{ 512 };
+	int bufferLengthOut{ 512 };
+
+
 	/*State Variables*/
-	
-	int* pBufferIn = new int[512];
-	int* ptrIn = pBufferIn;
-	int* pBufferOut = new int[512];
-	int* ptrOut = pBufferOut;
-	int dataLength{ 64 };
-	bool newMessage{ true };
-	int StateMachine;
+	message_value_type messageType{ BasisReconciliation };
+	int messageDataLength{ 64 };
 
-	
+	int* pBufferIn = new int[bufferLengthIn];
+	int inPositionBufferIn{ 0 };
+	int outPositionBufferIn{ 0 };
+	bool bufferEmptyIn{ true };
+	bool bufferFullIn{ true };
 
+	int* pBufferOut = new int[bufferLengthOut];
+	int inPositionBufferOut{ 0 };
+	int outPositionBufferOut{ 0 };
+	bool bufferEmptyOut{ true };
+	bool bufferFullOut{ true };
+
+	state_machine_type StateMachine;
 
 public:
-	/*Input Parameters*/
-	int bufferLength{ 512 };
-	int bIn{ 0 };
-	int bOut{ 0 };
-	
-	/*Message types*/
-	int basisReconciliation{ 0 };
+
 
 	/*Methods*/
-	MessageInterface() {};
-	MessageInterface(vector <Signal*> &inputSignals, vector <Signal*> &outputSignals) : Block(inputSignals, outputSignals) {};
+	MessageProcessorAlice() {};
+	MessageProcessorAlice(vector <Signal*> &inputSignals, vector <Signal*> &outputSignals) : Block(inputSignals, outputSignals) {};
+
+	void setBufferLengthIn(int bLength) { bufferLengthIn = bLength; };
+	int getBufferLengthIn() { return bufferLengthIn; };
+
+	void setBufferLengthOut(int bLength) { bufferLengthOut = bLength; };
+	int getBufferLengthOut() { return bufferLengthOut; };
+
+	int spaceBufferIn(void);
+	int spaceBufferOut(void);
 
 	void initialize(void);
 	bool runBlock(void);
 };
+
 
 #endif

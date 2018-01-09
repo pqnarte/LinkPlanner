@@ -1,7 +1,9 @@
 #include "netxpto.h"
 #include "message_interface.h"
 
-void MessageInterface::initialize(void) {
+#include <math.h>
+
+void MessageProcessorAlice::initialize(void) {
 	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
 	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
@@ -13,19 +15,26 @@ void MessageInterface::initialize(void) {
 	outputSignals[1]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
 }
 
-bool MessageInterface::runBlock(void) {
+bool MessageProcessorAlice::runBlock(void) {
 
-	const int enableToWrite = 0;
-	const int enableToRead = 1;
-	const int bitsToProcess = 2;
-	const int idleState = 3;
+	/*Number of message ready to be read*/
+	int ready = inputSignals[1]->ready();
 
-	/*Data to read from message*/
-	int ready1 = inputSignals[1]->ready();
-	/*Data to Process from binary source*/
+	int spaceIn = spaceBufferIn();					//in units of bits
+	int spaceIn = spaceIn / messageDataLength;		//in units of messages
+
+	int process = min(ready, spaceIn);
+
+	for (auto k = 1; k <= process; k++) {
+		t_message message;
+		inputSignals[1]->bufferGet(&message);
+	}
+
+	/*Number of bits ready to be read*/
 	int ready2 = inputSignals[0]->ready();
-	/*State Variable set*/
-	StateMachine = idleState;
+
+	/*State variable set*/
+	StateMachine = IdleState;
 
 	bool alive = false;
 
@@ -118,3 +127,25 @@ bool MessageInterface::runBlock(void) {
 	
 	return alive;
 }
+
+int MessageProcessorAlice::spaceBufferIn() {
+
+	if (bufferFullIn) return 0;
+	if (inPositionBufferIn == outPositionBufferIn) return bufferLengthIn;
+	if (inPositionBufferIn < outPositionBufferIn) return (outPositionBufferIn - inPositionBufferIn);
+	if (outPositionBufferIn >= 0) return (bufferLengthIn - inPositionBufferIn + outPositionBufferIn);
+	if (outPositionBufferIn == -1) return (bufferLengthIn - inPositionBufferIn);
+	return -1;
+
+};
+
+int MessageProcessorAlice::spaceBufferOut() {
+
+	if (bufferFullOut) return 0;
+	if (inPositionBufferOut == outPositionBufferOut) return bufferLengthOut;
+	if (inPositionBufferOut < outPositionBufferOut) return (outPositionBufferOut - inPositionBufferOut);
+	if (outPositionBufferOut >= 0) return (bufferLengthOut - inPositionBufferOut + outPositionBufferOut);
+	if (outPositionBufferOut == -1) return (bufferLengthOut - inPositionBufferOut);
+	return -1;
+
+};
