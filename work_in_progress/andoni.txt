@@ -1,0 +1,11 @@
+2018-01-09
+TO BE DONE
+
+Analisar o sistema M-QAM, para M=4, QPSK
+
+	- analise teórica (próxima semana)
+
+	- análise de simulação (começasses)
+
+	- análise experimentla (futuro)
+
