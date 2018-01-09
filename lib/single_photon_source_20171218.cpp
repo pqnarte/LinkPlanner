@@ -6,7 +6,9 @@
 void SinglePhotonSource::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	double SamplingPeriod = (double)inputSignals[0]->getSamplingPeriod();
+	SamplingPeriod = SamplingPeriod / 4;
+	outputSignals[0]->setSamplingPeriod(SamplingPeriod);
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 	outputSignals[0]->centralWavelength = outputOpticalWavelength;
 	outputSignals[0]->centralFrequency = outputOpticalFrequency;
@@ -15,14 +17,14 @@ void SinglePhotonSource::initialize(void) {
 
 bool SinglePhotonSource::runBlock(void) {
 
-	int ready, space, length;
+	
 
-	ready = inputSignals[0]->ready();
-	space = outputSignals[0]->space();
+	int ready = inputSignals[0]->ready();
+	int space = outputSignals[0]->space();
 
-	length = min(ready, space);
+	int length = min(ready, space);
 
-	if (length == 0) return false;
+	if (length <= 0) return false;
 
 	t_real re;
 
@@ -30,12 +32,13 @@ bool SinglePhotonSource::runBlock(void) {
 		
 		inputSignals[0]->bufferGet(&re);
 
-		t_complex valueX(re,0);
-		t_complex valueY(0, 0);
+		t_complex valueX(re,0.0);
+		
+		t_complex valueY(0.0, 0.0);
 
 		t_complex_xy valueXY = {valueX, valueY};
 
-		outputSignals[0]->bufferPut(valueXY);
+		outputSignals[0]->bufferPut((t_complex_xy) valueXY);
 		
 	}
 			
