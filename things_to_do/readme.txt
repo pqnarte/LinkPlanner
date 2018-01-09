@@ -1,4 +1,15 @@
 #################################################################
+2018-01-09
+
+Analyze the compiler options.
+Study better the Visual Studio Compiler to generate a better executable file.
+
+#################################################################
+
+
+
+
+#################################################################
 2017-11-25
 
 Allows the generation of the executable without installing the Visual C++.

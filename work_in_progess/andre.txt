@@ -1,0 +1,6 @@
+2018-01-09
+TO BE DONE
+- colocar a funcionar o msbuild
+	- verificar porque é que os sinais não estão a ser gerados
+
+- rever e melhorar a documentação do sistema bpsk_system
