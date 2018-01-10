@@ -15,7 +15,7 @@ BB84 is a key distribution protocol which involves three parties, Alice, Bob and
 \subsection{Protocol Analysis}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-		\textbf{Students Name}  &:& Kevin Filipe (7/11/2017)\\
+		\textbf{Students Name}  &:& Kevin Filipe (7/11/2017 - 10/11/2017)\\
 		\textbf{Goal}          &:& BB84 - Protocol Description
 	\end{tabular}
 \end{tcolorbox}
@@ -25,27 +25,42 @@ BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{B
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/QKD_Model.png}
-	\caption{Basic QKD Model. Alice and Bob are connected by 2 communication channels, quantum and classical, with an eavesdropper, Eve, in the quantum communication channel (figure adapted from \cite{iqo}).}\label{fig:qkd model}
+	\caption{Basic QKD Model. Alice and Bob are connected by 2 communication channels, a public quantum channel and a authenticated classical channel, with an eavesdropper, Eve (figure adapted from \cite{iqo}).}\label{fig:qkd model}
 \end{figure}
 
 We are going to analyse the BB84 protocol with bit encoding into photon state polarization. Two non-orthogonal basis are used to encode the information, the rectilinear and diagonal basis, + and x respectively. The following table shows this bit encoding.
 \begin{table}[H]
 	\centering
 	\begin{tabular}{c|c|c}
-		 Bit &  \textbf{\textit{Rectilinear Basis,+}} & \textbf{\textit{Diagonal Basis,$\times$}}\\ \hline
+		 Bit &  \textit{Rectilinear Basis,+} & \textit{Diagonal Basis,$\times$}\\ \hline
 		0 &  0$º$ & -45$º$ \\
 		1 & 90$º$ & 45$º$\\
 	\end{tabular}
 \end{table}
 
-The protocol is implemented with the following steps:
+The protocol requires the following parameter and it is implemented with the following steps:
+
+\begin{table}[hbt]
+	\centering
+	\caption{Initial Parameters.}
+	\label{tb:param}
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{Parameter}  & \textbf{Description} 	   \\ \hline
+			$M \times N$    & Scrambling Matrix M by N \\ \hline
+			k				& Number of revealed bits for BER calculation \\ \hline
+			$\alpha$        & Confidence level 	       \\ \hline
+			    A    & B                \\ \hline
+	\end{tabular}
+\end{table}
+
 \begin{enumerate}
 	\item Alice generates two random bit strings. The random string , $R_{A1}$, corresponds to the data to be encoded into photon state polarization. $R_{A2}$ is a random string in which 0 and 1 corresponds to the rectilinear, +, and diagonal, $\times$, respectively.
 	
 	$$ R_{A1} = \{0,1,1,0,1,0,0,1,1,0,1,1,1,0,0,1,0,0,0,1\}$$
 	\begin{eqnarray}
-		R_{A2} = \{0,0,1,0,1,1,1,0,1,1,1,0,1,0,0,0,1,0,1,0\} \\
-		= \{+,+,\times,+,\times, \times, \times, +,\times, \times, \times,+,\times,+,+,+,\times,+,\times,+\}
+		R_{A2} &=& \{0,0,1,0,1,1,1,0,1,1,1,0,1,0,0,0,1,0,1,0\} \nonumber \\
+		&=& \{+,+,\times,+,\times, \times, \times, +,\times, \times, \times,+,\times,+,+,+,\times,+,\times,+\}\nonumber
 	\end{eqnarray}
 	
 	\item Alice transmits a train of photons, $S_{AB}$, obtained by encoding the bits, $R_{A1}$ with the respective photon polarization state $R_{A2}$.
@@ -54,68 +69,65 @@ The protocol is implemented with the following steps:
 	
 	\item Bob generates a random string, $R_{B}$, to receive the photon trains with the correspondent basis.
 	\begin{eqnarray}
-	R_{B} = \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\} \\
-	=\{+,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\}.
+		R_{B} &=& \{0,1,1,1,0,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0\} \nonumber\\
+		&=&\{+,\times,\times,\times,+,\times,+,+,\times,\times,+,+,\times,\times,+,+,\times,\times,+,+\} \nonumber
 	\end{eqnarray}
 	
-	\item Bob performs the incoming photon states measurement, $M_{B}$, with its generated random basis, $R_{B}$. If the two photon detectors don't click, means the bit was lost during transference due to attenuation. If both photon detectors click, a false positive was detected. In the measurements, $M_{B}$, the no-click in both detectors is represented by a -1 and the false positives to -2. The measurements done in rectilinear or diagonal basis are represented by 0 and 1, respectively. This is represented \ref{fig:bb84 detector}
+	\item Bob performs the incoming photon states measurement, $M_{B}$, with its generated random basis, $R_{B}$. If the two photon detectors don't click, means the bit was lost during transference due to attenuation. If both photon detectors click, a false positive was detected. In the measurements, $M_{B}$, the no-click in both detectors is represented by a -1 and the false positives to -2. The measurements done in rectilinear or diagonal basis are represented by 0 or 1, respectively. This is represented \ref{fig:bb84 detector}
 	
 	$$M_{B} = \{0,1,1,1,-1,1,0,0,-2,1,0,0,-2,1,0,0,1,-1,0,0\}$$	
-	
+
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/detector.png}
 		\caption{Photon Detection block with false-positives, -2, and attenuation, -1, detection depending on D1 and D2 output.\label{fig:bb84 detector}}
 	\end{figure}
 	
-\end{enumerate}
-
-\textbf{Esta parte está muito confusa, preciso que o professor me explique melhor}	
-The second phase, uses the classical communication channel:
-\begin{enumerate}
-
-	\item After the measurement, Bob sends to Alice the values of $M_{B}$
-	\item Alice remove the bits from $R_{A2}$ corresponding to -1 and -2, performs a negated XOR, generating the bit sequence $B_{B}$ with correspondent key as $K_{A}$.
-	
-  	$$ K_{A} = \{0,1,0,1,0,1,0,1,0,1\}.$$
+	\item After the measurement, Bob sends to Alice, using the classical channel, the used basis values, $R_{B}$ with the attenuation, -1, and false positives,-2. 
+	\item Alice performs a modified negated XOR, generating a sequence that detects when the same basis she used $B_{AB}$.
 	
 	\begin{table}[H]
 		\centering
-		\begin{tabular}{c|c c c c c c c c c c c c c c c c}
-			$R_{A2}$ & 0 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
-			$R_{B}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ \hline
-			$B_{A}$ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 1 & 0 & 1 & 0 & 1 & 1 & 1 & 0 & 1 \\ 
+		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
+			$R_{A2}$ & 0 & 0 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 0 & 0 & 0 & 1 &  0 & 1 & 0 \\
+			$R_{B}$  & 0 & 1 & 1 & 1 & -1 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & 1 & -1 & 0 & 0 \\ \hline
+			$B_{AB}$ & 1 & 0 & 1 & 0 &  0 & 1 & 0 & 1 &  0 & 1 & 0 & 1 &  0 & 0 & 1 & 1 & 1 &  0 & 0 & 1 \\ 
 		\end{tabular}
 	\end{table}
+
+	\item Alice sends the $B_{AB}$ sequence to Bob, in which he can correlate with, $M_{B}$, and deduce the key $K_{AB}$.
 	
-	\item Perform a scrambling over $B_{B}$ using a known algorithm by Alice and Bob to accomplish distribute the error over all key to later and avoid error burst. Later, this will permit to have a good bit error rate estimation \cite{SPREADING}. As a example, the even positions of the $B_{B}$ will be shifted 2 positions.
-	\begin{tabular}{c|c c c c c c c c c c c c c c c c}
-		$Positions$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
-		$B_{A}$  & 0 & 1 & 1 & 1 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 0 \\ 
-		$P_{A}$  & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-	\end{tabular}
-			
+			$$ K_{AB} = \{0,1,0,1,0,1,0,1,0,1\}.$$
 	
-	\item For Bob to also have the same information, he will perform the same steps, 2 and 3 as Alice and the Key will be deduced.  $K_{AB}$
+	\item Alice then by having knowledge of $R_{A2}$ and $B_{AB}$ performs a scrambling algorithm over the deduced key. It is generated a matrix $M \times N$, according to the input parameter. Assuming a scrambling matrix of 3x4, \ref{tb:scram}. And being the scramble key represented as $KS_{AB}$
 	
-  	$$ K_{AB} = \{0,1,0,1,0,1,0,1,0,1\}.$$
+	\begin{table}[hbt]
+		\centering
+		\caption{Scrambling matrix}
+		\label{tb:scram}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+				0 & 1 & 0 & 1 \\ \hline 
+			    0 & 1 & 0 & 1 \\ \hline 
+				0 & 1 & - & - \\ \hline
+		\end{tabular}
+	\end{table}
+
+	$$KS_{B} = \{0,0,0,1,1,1,0,0,1,1\}$$	
+	
+	\item Bob uses the same algorithm as Alice and scrambles his key. 
+	
+	\item Bob then reveals a fixed number of his key to Alice. This number is also an input parameter value, k. With this the Quantum Bit Error Rate (QBER).
 		
 \end{enumerate}
 
-	To determine the Quantum Bit Error Rate (QBER), it is necessary some input parameters such as:
-	
-	\begin{enumerate}
-		\item qLB - QBER lower bound.
-		\item qUB - QBER upper bound.
-		\item qLim - acceptable QBER limit.
-	\end{enumerate}
-
+	To determine the QBER, it is necessary to know the confidence interval parameter, $\alpha$ and the QBER limit, in which states the maximum allowed QBER by the user.
 	Then to verify if the channel is reliable or not, the flowchart presented in figure \ref{fig:flowQber}.
 	
 	\begin{enumerate}
-		\item Bob will reveals a bit sequence from the deduced key, $K_{AB}$ to Alice. 
+		\item Bob will reveals k bits sequence from the scrambled key, $SK_{AB}$ to Alice. 
 		\item Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qUB] using the using the equations in the Bit Error Rate section, but applied to this protocol
-		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more bits from the key. Otherwise the channel is compromised and the key determination process needs to restart. 
+		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more k bits from the key. Otherwise the channel is compromised and the key determination process needs to restart. 
 	\end{enumerate}
 	
 	
