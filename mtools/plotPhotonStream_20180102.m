@@ -1,4 +1,4 @@
-function [mag_x, mag_y, phase_dif] = plotPhotonStream_20180102(fname, opt, h)
+function [mag_x, mag_y, phase_dif, h] = plotPhotonStream_20180102(fname, opt, h)
 % If opt equals 0, or no opt, we plot the absolute value of X and Y and the phase
 % difference.
 % If opt equals 1, we plot the the amplitude of X and Y, this is only
@@ -6,8 +6,9 @@ function [mag_x, mag_y, phase_dif] = plotPhotonStream_20180102(fname, opt, h)
 
 if nargin==1
     opt = 0;
+    h = figure();
 elseif nargin==2
-    h = figure;
+    h = figure();
 end
 
 [data, symbolperiod,sampling,type,number] = readSignal_20171220(fname);
