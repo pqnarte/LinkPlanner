@@ -147,39 +147,27 @@ In this sub section the simulation setup implementation will be described in ord
 	\caption{Simulation diagram at a top level}\label{toplevelsimulation}
 \end{figure}
 
-Figure \ref{toplevelsimulation} presents the top level diagram of our simulation. The setup contains three parties, Alice, Eve and Bob where the communication between them is done throughout two classical and one quantum channel. In the middle of the classical channel there is a Fork's diagram which has one input and two outputs. In the case of the classical channel \textbf{C\_C\_4} which has the information sent by Bob, the fork's block enables Alice and Eve have access to it. In the quantum communication, the information sent by Alice can be intercepted by Eve and changed by her, or can follow directly to Bob as we can see later in figure \ref{evesimulation}. Furthermore, for mutual information calculation there must be two blocks \textbf{MI}, one to calculate the mutual information between Alice and Eve, and other to calculate the mutual information between Alice and Bob.
+Figure \ref{toplevelsimulation} presents the top level diagram of our simulation. The setup contains three parties, Alice, Eve and Bob where the communication between them is done throughout two authenticated classical channels and one public quantum channel. In the middle of the classical channel there is a Fork's diagram which has one input and two outputs. In the case of the classical channel \textbf{C\_C\_4} which has the information sent by Bob, the fork's block enables Alice and Eve access it. In the quantum communication, the information sent by Alice can be intercepted by Eve and changed by her, or can follow directly to Bob as we can see later in figure \ref{evesimulation}. Furthermore, for mutual information calculation there must be two blocks \textbf{MI}, one to calculate the mutual information between Alice and Eve, and other to calculate the mutual information between Alice and Bob.
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=0.5cm 7cm 0.5cm 10cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Alice_bb84.pdf}
+        \includegraphics[clip, trim=0.5cm 6cm 0.5cm 10cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Alice_bb84.pdf}
     \caption{Simulation diagram at Alice's side}\label{alicesimulation}
 \end{figure}
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/alice_simulation.png}
-%	\caption{Simulation diagram at Alice's side}\label{alicesimulation}
-%\end{figure}
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=0.5cm 17cm 0.5cm 2cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Bob_bb84.pdf}
+        \includegraphics[clip, trim=0.5cm 16cm 0.5cm 2cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Bob_bb84.pdf}
     \caption{Simulation diagram at Bob's side}\label{bobsimulation}
 \end{figure}
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/bob_simulation.png}
-%	\caption{Simulation diagram at Bob's side}\label{bobsimulation}
-%\end{figure}
 
-    In figure \ref{alicesimulation} one can observe a block diagram of the simulation at Alice's side. As it is shown in the figure, Alice must have one block for random number generation which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. Furthermore, she has a Processor block for all logical operations: array analysis, random number generation requests, and others. This block also receives the information from Bob after it has passed through a fork's block. In addition, it is responsible for set the initial length $l$ of the first array of photons which will send to Bob. This block also must be responsible for send classical information to Bob. Finally, Processor block will also send a real continuous time signal to single photon generator, in order to generate photons according to this signal, and finally this block also sends to the polarizer a real discrete signal in order to inform the polarizer which basis it should use. Therefore, she has two more blocks for quantum tasks: the single photon generator and the polarizer block which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
 
-    Finally, Alice's processor has an output to Mutual Information top level block, $Ms_{A}$.
+    In figure \ref{alicesimulation} one can observe a block diagram of the transmitter. As it is shown in the figure, the transmitter must have one block for random number generation (binary source) which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. This block has three outputs which will be inputs for the super block Alice. Furthermore, Alice block is responsible for all logical operations: random single photons state values generation, receive and send messages to the receiver Bob by using the classical channels, binary output for mutual information calculations. Each block of the super block is described in Library chapter. Finally, Alice block will also send a real continuous time signal to single photon generator (clock sets the rate oh photons generation), in order to generate photons polarized in the horizontal axis by default. Therefore, the transmitter has one more block, the polarizer block, which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
 
-     In figure \ref{bobsimulation} one can observe a block diagram of the simulation at Bob's side. From this side, Bob has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Like Alice, Bob has a Processor block responsible for all logical tasks, analysing functions, requests for random number generator block, etc. Additionally, it receives information from Alice throughout a classical channel after passed through a fork's block and a quantum channel. However, Bob only sends information to Alice throughout a classical channel. Furthermore, Bob has one more block for single photon detection which receives from processor block a real discrete time signal, in order to obtain the basis it should use to measure the photons.
-
-    Finally, Bob's processor has an output to Mutual Information top level block, $Ms_{B}$.
+     In figure \ref{bobsimulation} one can see a block diagram of the simulation for receiver (Bob). The receiver has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Like transmitter, the receiver has the Bob block responsible for receive and send messages through the classical channel, receive single photons values detection from the single photon detectors, provides a clock signal to the detectors and send binary values for mutual information calculation. Furthermore, the receiver has two blocks for single photon detection (one for horizontal detection and other for vertical detection) which receives from Bob block a real continuous time signal which will set the detection window for the detector and outputs for Bob block the result value for detection. In addition, there is a polarizer which receives from Bob block a time continuous real signal which provides information about the rotation angle. If the basis chosen by Bob is the diagonal basis he sends $45º$, otherwise sends "0º". The polarization beam splitter divides the input photon stream in horizontal component and vertical component.
+     
 
 
 
@@ -199,16 +187,17 @@ In addition, Eve's diagram has one more output $Ms_{E}$ which is a message sent 
 \label{tb:signals}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{Signal name}            & \textbf{Signal type}                      & \textbf{Status} \\ \hline
-NUM\_A                          &  Binary                                   &                 \\ \hline
-MI\_A                           &  Binary                                   &                 \\ \hline
-CLK\_A                          &  TimeContinuousAmplitudeContinuous        &                 \\ \hline
-CLK\_A\_1                       &  TimeContinuousAmplitudeContinuous        &                 \\ \hline
-S2                              &  PhotonStreamXY                           &                 \\ \hline
-S3                              &  TimeContinuousAmplitudeDiscreteReal      &                 \\ \hline
-C\_C\_1                         &  Messages                                 &                 \\ \hline
-C\_C\_6                         &  Messages                                 &                 \\ \hline
-Q\_C\_1                         &  PhotonStreamXY                           &                 \\ \hline
+\textbf{Signal name}                        & \textbf{Signal type}                      \\ \hline
+NUM\_A, NUM\_B, Bin\_1, Bin\_2, Bin\_6      &  Binary                                   \\ \hline
+MI\_A, MI\_B                                &  Binary                                   \\ \hline
+CLK\_A, CLK\_B                              &  TimeContinuousAmplitudeContinuous        \\ \hline
+CLK\_A\_out, CLKB\_out1, CLKB\_out2         &  TimeContinuousAmplitudeContinuous        \\ \hline
+S2, S5, S6, S8                              &  PhotonStreamXY                           \\ \hline
+S3, S7, S9                                  &  TimeContinuousAmplitudeDiscreteReal      \\ \hline
+S4                                          &  TimeContinuousAmplitudeContinuousReal      \\ \hline
+C\_C\_1, C\_C\_3                            &  Messages                                 \\ \hline
+C\_C\_6, C\_C\_4                            &  Messages                                 \\ \hline
+Q\_C\_1, Q\_C\_4                            &  PhotonStreamXY                           \\ \hline
 
 \end{tabular}
 \end{table}
@@ -234,24 +223,29 @@ vector<t\_iqValues> iqAmplitudeValues   & \{-45.0,0.0\},\{0.0,0.0\},\{45.0,0.0\}
 \label{tb:signals}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{File name}              & \textbf{Description} & \textbf{Status} \\ \hline
-netxpto.h                             &                      &    \checkmark   \\ \hline
-alice\_qkd.h                          &                      &  Working on     \\ \hline
-binary\_source.h                      &                      &    \checkmark   \\ \hline
-bob\_qkd.h                            &                      &   Missing       \\ \hline
-clock\_20171219.h                     &                      &    \checkmark   \\ \hline
-discrete\_to\_continuous\_time.h      &                      &    \checkmark   \\ \hline
-eve\_qkd.h                            &                      &   Missing       \\ \hline
-m\_qam\_mapper.h                      &                      &    \checkmark   \\ \hline
-optical\_switch.h                     &                      &   Missing       \\ \hline
-polarization\_beam\_splitter.h        &                      &  Working on     \\ \hline
-polarizer.h                           &                      &  Working on     \\ \hline
-pulse\_shaper.h                       &                      &     \checkmark  \\ \hline
-rotator\_linear\_polarizer.h          &                      &  Working on     \\ \hline
-single\_photon\_detector.h            &                      &   Missing       \\ \hline
-single\_photon\_source\_20171218.h    &                      &    \checkmark   \\ \hline
-sink.h                                &                      &    \checkmark   \\ \hline
-super\_block\_interface.h             &                      &    \checkmark   \\ \hline
+\textbf{File name}                              & \textbf{Description} & \textbf{Status} \\ \hline
+netxpto.h                                       &                      &    \checkmark   \\ \hline
+alice\_qkd.h                                    &                      &  Working on     \\ \hline
+binary\_source.h                                &                      &    \checkmark   \\ \hline
+bob\_qkd.h                                      &                      &   Working on    \\ \hline
+clock\_20171219.h                               &                      &    \checkmark   \\ \hline
+discrete\_to\_continuous\_time.h                &                      &    \checkmark   \\ \hline
+eve\_qkd.h                                      &                      &   Missing       \\ \hline
+m\_qam\_mapper.h                                &                      &    \checkmark   \\ \hline
+optical\_switch.h                               &                      &   Missing       \\ \hline
+polarization\_beam\_splitter\_20180109.h        &                      &  Working on     \\ \hline
+polarizer.h                                     &                      &    \checkmark   \\ \hline
+pulse\_shaper.h                                 &                      &     \checkmark  \\ \hline
+single\_photon\_detector.h                      &                      &    \checkmark   \\ \hline
+single\_photon\_source\_20171218.h              &                      &    \checkmark   \\ \hline
+sink.h                                          &                      &    \checkmark   \\ \hline
+super\_block\_interface.h                       &                      &    \checkmark   \\ \hline
+message\_processor\_alice.h                     &                      &    Working on   \\ \hline
+demux\_1\_2.h                                   &                      &    \checkmark   \\ \hline
+scrambling.h                                    &                      &    Missing      \\ \hline
+binary\_mapper.h                                &                      &    \checkmark   \\ \hline
+bobBB84.h                                       &                      &    Missing      \\ \hline
+message\_processor\_bob.h                       &                      &    Missing      \\ \hline
 \end{tabular}
 \end{table}
 
@@ -261,25 +255,31 @@ super\_block\_interface.h             &                      &    \checkmark   \
 \label{tb:signals}
 \begin{tabular}{|c|c|c|}
 \hline
-\textbf{File name}                      & \textbf{Description} & \textbf{Status} \\ \hline
-netxpto.cpp                             &                      &    \checkmark   \\ \hline
-bb84\_with\_discrete\_variables.cpp     &                      &  Working on     \\ \hline
-alice\_qkd.cpp                          &                      &  Working on     \\ \hline
-binary\_source.cpp                      &                      &    \checkmark   \\ \hline
-bob\_qkd.cpp                            &                      &   Missing       \\ \hline
-clock\_20171219.cpp                     &                      &    \checkmark   \\ \hline
-discrete\_to\_continuous\_time.cpp      &                      &    \checkmark   \\ \hline
-eve\_qkd.cpp                            &                      &   Missing       \\ \hline
-m\_qam\_mapper.cpp                      &                      &    \checkmark   \\ \hline
-optical\_switch.cpp                     &                      &   Missing       \\ \hline
-polarization\_beam\_splitter.cpp        &                      &  Working on     \\ \hline
-polarizer.cpp                           &                      &  Working on     \\ \hline
-pulse\_shaper.cpp                       &                      &     \checkmark  \\ \hline
-rotator\_linear\_polarizer.cpp          &                      &  Working on     \\ \hline
-single\_photon\_detector.cpp            &                      &   Missing       \\ \hline
-single\_photon\_source\_20171218.cpp    &                      &    \checkmark   \\ \hline
-sink.cpp                                &                      &    \checkmark   \\ \hline
-super\_block\_interface.cpp             &                      &    \checkmark   \\ \hline
+\textbf{File name}                                  & \textbf{Description} & \textbf{Status} \\ \hline
+netxpto.cpp                                         &                      &    \checkmark   \\ \hline
+bb84\_with\_discrete\_variables.cpp                 &                      &  Working on     \\ \hline
+alice\_qkd.cpp                                      &                      &  Working on     \\ \hline
+binary\_source.cpp                                  &                      &    \checkmark   \\ \hline
+bob\_qkd.cpp                                        &                      &   Missing       \\ \hline
+clock\_20171219.cpp                                 &                      &    \checkmark   \\ \hline
+discrete\_to\_continuous\_time.cpp                  &                      &    \checkmark   \\ \hline
+eve\_qkd.cpp                                        &                      &   Missing       \\ \hline
+m\_qam\_mapper.cpp                                  &                      &    \checkmark   \\ \hline
+optical\_switch.cpp                                 &                      &   Missing       \\ \hline
+polarization\_beam\_splitter\_20180109.cpp          &                      &  Working on     \\ \hline
+polarizer.cpp                                       &                      &  Working on     \\ \hline
+pulse\_shaper.cpp                                   &                      &     \checkmark  \\ \hline
+rotator\_linear\_polarizer.cpp                      &                      &  Working on     \\ \hline
+single\_photon\_detector.cpp                        &                      &   Missing       \\ \hline
+single\_photon\_source\_20171218.cpp                &                      &    \checkmark   \\ \hline
+sink.cpp                                            &                      &    \checkmark   \\ \hline
+super\_block\_interface.cpp                         &                      &    \checkmark   \\ \hline
+message\_processor\_alice.cpp                       &                      &    Working on   \\ \hline
+demux\_1\_2.cpp                                     &                      &    \checkmark   \\ \hline
+scrambling.cpp                                      &                      &    Missing      \\ \hline
+binary\_mapper.cpp                                  &                      &    \checkmark   \\ \hline
+bobBB84.cpp                                         &                      &    Missing      \\ \hline
+message\_processor\_bob.cpp                         &                      &    Missing      \\ \hline
 \end{tabular}
 \end{table}
 
