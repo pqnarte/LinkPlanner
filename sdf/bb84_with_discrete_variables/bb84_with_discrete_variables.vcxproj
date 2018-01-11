@@ -159,8 +159,8 @@
     <ClCompile Include="..\..\lib\optical_switch.cpp" />
     <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp" />
     <ClCompile Include="..\..\lib\polarizer.cpp" />
-    <ClCompile Include="..\..\lib\pulse_shaper.cpp" />
-    <ClCompile Include="..\..\lib\single_photon_detector.cpp" />
+    <ClCompile Include="..\..\lib\pulse_shaper_20180111.cpp" />
+    <ClCompile Include="..\..\lib\single_photon_detector_20180111.cpp" />
     <ClCompile Include="..\..\lib\single_photon_source_20171218.cpp" />
     <ClCompile Include="..\..\lib\sink.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface.cpp" />
@@ -181,8 +181,8 @@
     <ClInclude Include="..\..\include\optical_switch.h" />
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
     <ClInclude Include="..\..\include\polarizer.h" />
-    <ClInclude Include="..\..\include\pulse_shaper.h" />
-    <ClInclude Include="..\..\include\single_photon_detector.h" />
+    <ClInclude Include="..\..\include\pulse_shaper_20180111.h" />
+    <ClInclude Include="..\..\include\single_photon_detector_20180111.h" />
     <ClInclude Include="..\..\include\single_photon_source_20171218.h" />
     <ClInclude Include="..\..\include\sink.h" />
     <ClInclude Include="..\..\include\super_block_interface.h" />

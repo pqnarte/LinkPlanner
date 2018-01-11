@@ -8,7 +8,7 @@ using namespace std;
 
 enum PulseShaperFilter { RaisedCosine, Gaussian, Square };
 
-/* Raised-cosine filter FIR implementation. */
+
 class PulseShaper : public FIR_Filter{
 
 	/* Input Parameters */
@@ -38,6 +38,9 @@ public:
 	double const getRollOffFactor(){ return rollOffFactor; };
 
 	void usePassiveFilterMode(bool pFilterMode){ passiveFilterMode = pFilterMode; };
+
+	void setImpulseResponseLength(int impLength) { impulseResponseLength = impLength; };
+	int getImpulseResponseLength() { return impulseResponseLength; };
 		
 };
 
