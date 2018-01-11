@@ -2,38 +2,36 @@
 #include "polarizer.h"
 
 void Polarizer::initialize(void) {
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
-	outputSignals[0]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 }
 
 bool Polarizer::runBlock(void) {
-	int ready1 = inputSignals[0]->ready();
-	int ready2 = inputSignals[1]->ready();
+	int ready0 = inputSignals[0]->ready();
+	int ready1 = inputSignals[1]->ready();
 
-	int ready = min(ready1, ready2);
+	int ready = min(ready0, ready1);
 
 	int space = outputSignals[0]->space();
 
-	int length = min(ready, space);
+	int process = min(ready, space);
 
-	if (length <= 0) return false;
+	if (process <= 0) return false;
 
+	for (auto k = 0; k < process; k++) {
 
-	t_complex_xy valueXY;
-	t_complex valueX, valueY, valueXout, ValueYout;
+		t_complex_xy valueXY;
+		double tetha;
 
-	double tetha;
+		inputSignals[0]->bufferGet(&valueXY);
+		inputSignals[1]->bufferGet(&tetha);
+		
+		t_complex valueX = valueXY.x;
+		t_complex valueY = valueXY.y;
 
-	for (int i = 0; i < length; i++) {
-		inputSignals[0]->bufferGet(&tetha);
-		inputSignals[1]->bufferGet(&valueXY);
-
-		valueX = valueXY.x;
-		valueY = valueXY.y;
-
-		valueXout = cos(-tetha*PI / 180)*valueX + sin(-tetha*PI / 180)*valueY;
-		ValueYout = -sin(-tetha*PI / 180)*valueX + cos(-tetha*PI / 180)*valueY;
+		t_complex valueXout = cos(-tetha*PI / 180)*valueX + sin(-tetha*PI / 180)*valueY;
+		t_complex ValueYout = -sin(-tetha*PI / 180)*valueX + cos(-tetha*PI / 180)*valueY;
 
 		valueXY = { valueXout, ValueYout };
 

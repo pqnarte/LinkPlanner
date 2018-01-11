@@ -21,7 +21,7 @@ bool MessageProcessorAlice::runBlock(void) {
 	int ready = inputSignals[1]->ready();
 
 	int spaceIn = spaceBufferIn();					//in units of bits
-	int spaceIn = spaceIn / messageDataLength;		//in units of messages
+	spaceIn = spaceIn / messageDataLength;		//in units of messages
 
 	int process = min(ready, spaceIn);
 
@@ -51,7 +51,7 @@ bool MessageProcessorAlice::runBlock(void) {
 	bool alive = false;
 
 	/*While there are bits to process from binary source*/
-	while (ready2 != 0) {
+/*	while (ready2 != 0) {
 		if (ready1 != 0) {
 			int mType;
 			int emptySpace;
@@ -136,7 +136,7 @@ bool MessageProcessorAlice::runBlock(void) {
 		}
 	}
 	
-	
+*/	
 	return alive;
 }
 
