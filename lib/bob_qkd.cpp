@@ -11,9 +11,9 @@ BobQKD::BobQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal) : S
 	BB1.initializeBlock(vector<Signal*>{&S1}, vector<Signal*>{&S2});
 	BB1.setNumberOfSamplesPerSymbol( 16 );
 	BB2.initializeBlock(vector<Signal*>{&S2}, vector<Signal*>{&S3});
-	BB9.initializeBlock(vector<Signal*>{&S3}, vector<Signal*>{outputSignals[0]});
+	BB9.initializeBlock(vector<Signal*>{&S3}, vector<Signal*>{&S4});
 	
 
-	setModuleBlocks({ &BB0, &BB1, &BB2, &BB9 });
+	setModuleBlocks({ &BB0, &BB1, &BB2 , &BB9});
 	
 }

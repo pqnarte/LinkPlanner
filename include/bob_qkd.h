@@ -14,7 +14,8 @@ class BobQKD : public SuperBlock {
 	// #####################################################################################################
 	TimeDiscreteAmplitudeDiscreteReal S1{ "Bob_1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal S2{ "Bob_2.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S3{ "S44.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S3{ "SB4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################

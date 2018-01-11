@@ -26,33 +26,26 @@ bool PolarizationBeamSplitter::runBlock(void) {
 
 	int space = min(space1, space2);
 
-	int length = min(ready, space);
+	int process = min(ready, space);
 
-	if (length <= 0) return false;
+	if (process <= 0) return false;
 
-	signal_value_type inSignalType = inputSignals[0]->getValueType();
+	
+	t_complex_xy valueXY;
 
-	if (inSignalType == ComplexValueXY) {
-		t_complex_xy valueXY;
+	for (int k = 0; k <= process; k++) {
+		inputSignals[0]->bufferGet(&valueXY);
 
-		for (int i = 0; i <= length; i++) {
-			inputSignals[0]->bufferGet(&valueXY);
+		t_complex valueX = valueXY.x;
+		t_complex valueY = valueXY.y;
 
-			t_complex valueXX = valueXY.x;
-			t_complex valueYY = valueXY.y;
-			t_complex valueXY = 0.0;
-			t_complex valueYX = 0.0;
+		t_complex_xy ValueXout = { valueX * 1.0, valueY * 0.0 };
+		t_complex_xy ValueYout = { valueX * 0.0, valueY * 1.0 };
 
-			t_complex_xy ValueXout = { valueXX, valueXY };
-			t_complex_xy ValueYout = { valueYX, valueYY };
-
-			outputSignals[0]->bufferPut((t_complex_xy)ValueXout);
-			outputSignals[1]->bufferPut((t_complex_xy)ValueYout);
-		}
+		outputSignals[0]->bufferPut((t_complex_xy)ValueXout);
+		outputSignals[1]->bufferPut((t_complex_xy)ValueYout);
 	}
-	else {
-		
-	}
+	
 	
 
 	return true;

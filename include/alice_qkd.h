@@ -26,17 +26,21 @@ class AliceQKD : public SuperBlock {
 
 	TimeContinuousAmplitudeDiscreteReal S3{ "Alice_3.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S4{ "Alice_4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S4{  };
+
+	TimeContinuousAmplitudeDiscreteReal Sout1{ "Alice_4.sgn" };
 
 	TimeContinuousAmplitudeContinuousReal CLK_A{ "Alice_5.sgn" };
 
-	Binary S5{ "Alice_6.sgn" };
+	Binary S5{  };
+	Binary Sout2{ "Alice_6.sgn" };
 
 	Binary S6{ "Alice_7.sgn" };
 
 	Binary S7{ "Alice_8.sgn" };
 
-	Binary S8{ "Alice_9.sgn" };
+	Binary S8{  };
+	Binary Sout3{ "Alice_9.sgn" };
 
 	Binary S9{ "Alice_10.sgn" };
 
