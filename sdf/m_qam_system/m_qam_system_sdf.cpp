@@ -104,7 +104,7 @@ int main(){
 	B2.setSaveInternalSignals(true);
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
-	B2.setClockPeriod(symbolPeriod);
+//	B2.setClockPeriod(symbolPeriod);
 
 	//With BER measurement
 	BitErrorRate B3{ vector<Signal*> { &S2, &S0 }, vector<Signal*> { &S3 } };
