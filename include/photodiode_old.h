@@ -30,7 +30,7 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setResponsivity(double Responsivity) { responsivity = Responsivity; }
+	void setResponsivity(t_real Responsivity) { responsivity = Responsivity; }
 	double const getResponsivity(void) { return responsivity; }
 
 	void useNoise(bool sNoise) { shotNoise = sNoise; }
