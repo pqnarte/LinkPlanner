@@ -47,10 +47,11 @@ The protocol requires the following parameter and it is implemented with the fol
 	\begin{tabular}{|c|c|}
 		\hline
 		\textbf{Parameter}  & \textbf{Description} 	   \\ \hline
-			$M \times N$    & Scrambling Matrix M by N \\ \hline
-			k				& Number of revealed bits for BER calculation \\ \hline
+			M				& Number of Lines in scrambling matrix \\ \hline
+		    N   			& Number of Columns in scrambling matrix \\ \hline
+			k				& Initial number of revealed bits for BER calculation \\ \hline
 			$\alpha$        & Confidence level 	       \\ \hline
-			    A    & B                \\ \hline
+			qLim    		& QBER defined value               \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -79,11 +80,11 @@ The protocol requires the following parameter and it is implemented with the fol
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\textwidth,height=7cm]{./sdf/bb84_with_discrete_variables/figures/detector.png}
+		\includegraphics[width=0.7\textwidth,height=6cm]{./sdf/bb84_with_discrete_variables/figures/detector.png}
 		\caption{Photon Detection block with false-positives, -2, and attenuation, -1, detection depending on D1 and D2 output.\label{fig:bb84 detector}}
 	\end{figure}
 	
-	\item After the measurement, Bob sends to Alice, using the classical channel, the used basis values, $R_{B}$ with the attenuation, -1, and false positives,-2. 
+	\item After the measurement, Bob sends to Alice, using the classical channel, the used basis values, $R_{B}$, with information of the no-clicks, -1, and double-clicks, -2,
 	\item Alice performs a modified negated XOR, generating a sequence that detects when the same basis she used $B_{AB}$.
 	
 	\begin{table}[H]
@@ -91,15 +92,15 @@ The protocol requires the following parameter and it is implemented with the fol
 		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
 			$R_{A2}$ & 0 & 0 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 0 & 0 & 0 & 1 &  0 & 1 & 0 \\
 			$R_{B}$  & 0 & 1 & 1 & 1 & -1 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & 1 & -1 & 0 & 0 \\ \hline
-			$B_{AB}$ & 1 & 0 & 1 & 0 &  0 & 1 & 0 & 1 &  0 & 1 & 0 & 1 &  0 & 0 & 1 & 1 & 1 &  0 & 0 & 1 \\ 
+			$B_{AB}$ & 1 & 0 & 1 & 0 & -1 & 1 & 0 & 1 & -2 & 1 & 0 & 1 & -2 & 0 & 1 & 1 & 1 & -1 & 0 & 1 \\ 
 		\end{tabular}
 	\end{table}
 
-	\item Alice sends the $B_{AB}$ sequence to Bob, in which he can correlate with, $M_{B}$, and deduce the key $K_{AB}$.
+	\item Alice sends the $B_{AB}$ sequence to Bob, in which he can correlate with, $M_{B}$, and deduce the key $K_{AB}$. Alice can also calculate $K_{AB}$.
 	
 			$$ K_{AB} = \{0,1,0,1,0,1,0,1,0,1\}.$$
 	
-	\item Alice then by having knowledge of $R_{A2}$ and $B_{AB}$ performs a scrambling algorithm over the deduced key. It is generated a matrix $M \times N$, according to the input parameter. Assuming a scrambling matrix of 3x4, \ref{tb:scram}. And being the scramble key represented as $KS_{AB}$
+	\item It is generated a matrix $M \times N$, according to $K_{AB}$. Assuming a scrambling matrix of 2x4. And being the scramble key represented as $K_{SA}$. The key is inserted into the matrix line by line. And it is read by column.
 	
 	\begin{table}[hbt]
 		\centering
@@ -109,27 +110,23 @@ The protocol requires the following parameter and it is implemented with the fol
 			\hline
 				0 & 1 & 0 & 1 \\ \hline 
 			    0 & 1 & 0 & 1 \\ \hline 
-				0 & 1 & - & - \\ \hline
 		\end{tabular}
 	\end{table}
 
-	$$KS_{B} = \{0,0,0,1,1,1,0,0,1,1\}$$	
+	$$K_{SA} = \{0,0,0,1,1,1,0,0\}$$	
 	
-	\item Bob uses the same algorithm as Alice and scrambles his key. 
+	\item Bob uses the same algorithm as Alice and scrambles his key, $K_{SB}$.
 	
-	\item Bob then reveals a fixed number of his key to Alice. This number is also an input parameter value, k. With this the Quantum Bit Error Rate (QBER).
-		
-\end{enumerate}
-
-	To determine the QBER, it is necessary to know the confidence interval parameter, $\alpha$ and the QBER limit, in which states the maximum allowed QBER by the user.
-	Then to verify if the channel is reliable or not, the flowchart presented in figure \ref{fig:flowQber}.
+	$$K_{SB} = \{0,0,0,1,1,1,0,0\}$$	
 	
-	\begin{enumerate}
-		\item Bob will reveals k bits sequence from the scrambled key, $SK_{AB}$ to Alice. 
-		\item Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qUB] using the using the equations in the Bit Error Rate section, but applied to this protocol
-		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more k bits from the key. Otherwise the channel is compromised and the key determination process needs to restart. 
+	\item To estimate the QBER, it is necessary to know the confidence parameter, $\alpha$ to calculate the QBER lower and upper bound, qLB and qUB, the QBER limit, in which states the maximum allowed QBER by the user and also the quantity of revealed bits from the key to perform this measurement and to verify if the channel is reliable or not, the flowchart presented in figure \ref{fig:flowQber} is used.  
+	
+	\item Bob will reveals k bits sequence from the scrambled key, $SK_{AB}$ to Alice. 
+	
+	\item Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qUB] using the using the equations in the Bit Error Rate section, but applied to this protocol
+	
+	\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more k bits from the key. Otherwise the channel is compromised and the key determination process needs to restart.
 	\end{enumerate}
-	
 	
 \begin{figure}[H]
 	\centering
@@ -140,8 +137,6 @@ The protocol requires the following parameter and it is implemented with the fol
 
 
 \subsection{Simulation Setup}
-
-
 
 \begin{figure}[H]
 	\centering
