@@ -5,7 +5,7 @@
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 \textbf{Student Name}  &:& Daniel Pereira (2017/09/01 - 2017/11/16)\\
 \textbf{Goal}          &:& Estimate the BER in a Binary Phase Shift Keying optical transmission system with additive white Gaussian noise. Comparison with theoretical results.\\
-\textbf{Directory}              &:& sdf/bpsk\_system  
+\textbf{Directory}              &:& sdf/bpsk\_system
 \end{tabular}
 \end{tcolorbox}
 
@@ -13,7 +13,7 @@ Binary Phase Shift Keying (BPSK) is the simplest form of Phase Shift Keying (PSK
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=.3\linewidth]{bpskconstellation.pdf}
+\includegraphics[width=.3\linewidth]{./sdf/bpsk_system/figures/bpskconstellation.pdf}
 \caption{BPSK symbol constellation.}
 \label{fig:BPSKConst}
 \end{figure}
@@ -50,7 +50,7 @@ BER=\int_0^{+\infty}f(x|\Delta\theta=\pi)\text{d}x=\frac{1}{2}\text{erfc}\left(\
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\linewidth]{BER_Evolution_theo.pdf}
+\includegraphics[width=.7\linewidth]{./sdf/bpsk_system/figures/BER_Evolution_theo.pdf}
 \caption{Bit Error Rate in function of the signal power in dBm at a constant local oscillator power level of 0~dBm.}
 \label{fig:berevolution}
 \end{figure}
@@ -181,21 +181,23 @@ This system outputs the following objects:
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\linewidth]{BER_Evolution_simu.pdf}
+\includegraphics[width=.7\linewidth]{./sdf/bpsk_system/figures/BER_Evolution_simu.pdf}
 \caption{Bit Error Rate in function of the signal power in dBm at a constant local oscillator power level of 0~dBm.}
 \label{fig:berevolution}
 \end{figure}
 
 \subsection{Comparative Analysis}
 
-The following results show the dependence of the error rate with the signal power assuming a constant Local Oscillator power of $0~dBm$, the signal power was evaluated at levels between -70~and~-25~dBm, in steps of 5~dBm between each. The simulation results are presented in orange with the computed lower and upper bounds, while the expected value, obtained from~\eqref{eq:BERtheoretical}, is presented as a full blue line. A close agreement is observed between the simulation results and the expected value. The noise spectral density was set at $5\times10^{-4}\sqrt{2}$~V$^2$~\cite{thorlabs}. 
+The following results show the dependence of the error rate with the signal power assuming a constant Local Oscillator power of $0~dBm$, the signal power was evaluated at levels between -70~and~-25~dBm, in steps of 5~dBm between each. The simulation results are presented in orange with the computed lower and upper bounds, while the expected value, obtained from~\eqref{eq:BERtheoretical}, is presented as a full blue line. A close agreement is observed between the simulation results and the expected value. The noise spectral density was set at $5\times10^{-4}\sqrt{2}$~V$^2$~\cite{thorlabs}.
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\linewidth]{BER_Evolution.pdf}
+\includegraphics[width=.7\linewidth]{./sdf/bpsk_system/figures/BER_Evolution.pdf}
 \caption{Bit Error Rate in function of the signal power in dBm at a constant local oscillator power level of 0~dBm. Theoretical values are presented as a full blue line while the simulated results are presented as a errorbar plot in orange, with the upper and lower bound computed in accordance with the method described in~\ref{bercalc}}
 \label{fig:berevolution}
 \end{figure}
 
+
+
 \bibliographystyle{unsrt}
- 
-\bibliography{bibliography}
+
+\bibliography{bibliography} 
