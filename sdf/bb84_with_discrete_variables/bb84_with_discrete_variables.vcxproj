@@ -153,6 +153,7 @@
     <ClCompile Include="..\..\lib\demux_1_2.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time.cpp" />
     <ClCompile Include="..\..\lib\eve_qkd.cpp" />
+    <ClCompile Include="..\..\lib\fork_20180112.cpp" />
     <ClCompile Include="..\..\lib\message_interface.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper.cpp" />
     <ClCompile Include="..\..\lib\netxpto.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="..\..\include\demux_1_2.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time.h" />
     <ClInclude Include="..\..\include\eve_qkd.h" />
+    <ClInclude Include="..\..\include\fork_20180112.h" />
     <ClInclude Include="..\..\include\message_interface.h" />
     <ClInclude Include="..\..\include\m_qam_mapper.h" />
     <ClInclude Include="..\..\include\netxpto.h" />

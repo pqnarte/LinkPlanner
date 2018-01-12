@@ -5,7 +5,7 @@ using namespace std;
 
 void raisedCosine(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
 void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double rollOffFactor, double samplingPeriod, double symbolPeriod, bool passiveFilterMode);
-void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod);
+void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod, double pulseDelay, double pulseWidth);
 
 
 void PulseShaper::initialize(void) {
@@ -25,7 +25,7 @@ void PulseShaper::initialize(void) {
 			gaussian(impulseResponse, impulseResponseLength, rollOffFactor, samplingPeriod, symbolPeriod, passiveFilterMode);
 			break;
 		case Square:
-			square(impulseResponse, impulseResponseLength, samplingPeriod, symbolPeriod);
+			square(impulseResponse, impulseResponseLength, samplingPeriod, symbolPeriod, pulseDelay, pulseWidth);
 			break;
 	};
 
@@ -74,10 +74,23 @@ void gaussian(vector<t_real> &impulseResponse, int impulseResponseLength, double
 	}
 };
 
-void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod) {
+void square(vector<t_real> &impulseResponse, int impulseResponseLength, double samplingPeriod, double symbolPeriod, double pulseDelay, double pulseWidth) {
 
 	int samplesPerSymbol = (int) (symbolPeriod / samplingPeriod);
 
+	int pulseWidthLength = (int) floor(pulseWidth * samplesPerSymbol);
+	int pulseDelaySamples = (int)floor(pulseDelay * samplesPerSymbol);
+
+	pulseWidthLength = pulseWidthLength + pulseDelaySamples;
+
+	for (int k = 0; k < impulseResponseLength; k++) {
+		impulseResponse[k] = 0.0;
+	};
+	
+	for (int k = pulseDelaySamples; k < pulseWidthLength; k++) {
+		impulseResponse[k] = 1.0;
+	};
+/*
 	for (int k = 0; k < samplesPerSymbol; k++) {
 		impulseResponse[k] = 1.0;
 	};
@@ -85,4 +98,5 @@ void square(vector<t_real> &impulseResponse, int impulseResponseLength, double s
 	for (int k = samplesPerSymbol; k < impulseResponseLength; k++) {
 		impulseResponse[k] = 0.0;
 	};
+	*/
 };

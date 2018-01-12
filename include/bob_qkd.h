@@ -6,6 +6,7 @@
 #include "discrete_to_continuous_time.h"
 #include "pulse_shaper_20180111.h"
 #include "super_block_interface.h"
+#include "fork_20180112.h"
 
 class BobQKD : public SuperBlock {
 
@@ -16,9 +17,11 @@ class BobQKD : public SuperBlock {
 	TimeContinuousAmplitudeDiscreteReal S2{ "Bob_2.sgn" };
 	TimeContinuousAmplitudeDiscreteReal S3{ "SB4.sgn" };
 	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
-	TimeContinuousAmplitudeContinuousReal S5{ "Bob_3.sgn" };
-	TimeContinuousAmplitudeContinuousReal S6{ "CLKB_out1.sgn" };
-	TimeContinuousAmplitudeContinuousReal S7{ "CLKB_out2.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S5{ "Bob_3.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S6{ "CLKB_1.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S7{ "CLKB_2.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S8{ };
+	TimeContinuousAmplitudeDiscreteReal S9{ };
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -28,7 +31,7 @@ class BobQKD : public SuperBlock {
 	PulseShaper BB2;
 
 	PulseShaper BB3;
-
+	Fork BB4;
 
 	SuperBlockInterface BB9;
 
@@ -47,8 +50,11 @@ public:
 
 	void setPulseShaperFilter(PulseShaperFilter fType) { BB2.setFilterType(fType); BB3.setFilterType(fType); };
 
-	void setTimeWidth(int tWidth) { BB3.setImpulseResponseLength(tWidth); };
-	int getTimeWidth() { return BB3.impulseResponseLength; };
+	void setPulseWidth(double tWidth) { BB3.setPulseWidth(tWidth); };
+	double getPulseWidth() { return BB3.getPulseWidth(); };
+
+	void setPulseDelay(double pDelay) { BB3.setPulseDelay(pDelay); };
+	double getPulseDelay() { return BB3.getPulseDelay(); };
 
 };
 

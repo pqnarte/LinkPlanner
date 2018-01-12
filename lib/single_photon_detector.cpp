@@ -19,9 +19,9 @@ bool SinglePhotonDetector::runBlock(void) {
 	int ready = inputSignals[0]->ready();
 	int space = outputSignals[0]->space();
 
-	int process = min(ready, space);
+	int length = min(ready, space);
 
-	if (process <= 0) return false;
+	if (length <= 0) return false;
 
 
 	std::default_random_engine generator;
@@ -30,7 +30,7 @@ bool SinglePhotonDetector::runBlock(void) {
 	signal_value_type inSignalType = inputSignals[0]->getValueType();
 	switch (inSignalType) {
 		case PhotonValue:
-			for (int k = 0; k < process; k++) {
+			for (int k = 0; k < length; k++) {
 				t_photon inValue;
 				inputSignals[0]->bufferGet(&inValue);
 				if (inValue.probabilityAmplitude == 1) {
@@ -42,7 +42,7 @@ bool SinglePhotonDetector::runBlock(void) {
 			}
 			return true;
 		case PhotonValueMP:
-			for (int k = 0; k < process; k++) {
+			for (int k = 0; k < length; k++) {
 				t_photon_mp inValueMP;
 				inputSignals[0]->bufferGet(&inValueMP);
 				if (inValueMP.path[path].probabilityAmplitude > 0.0) {	// Process Photon Path

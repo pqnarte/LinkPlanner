@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\lib\pulse_shaper_20180111.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\fork_20180112.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\netxpto.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\pulse_shaper_20180111.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\fork_20180112.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

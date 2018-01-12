@@ -20,6 +20,11 @@ class PulseShaper : public FIR_Filter{
 
 	bool passiveFilterMode{ false };
 
+	double pulseWidth{ 1.0 };								// in units of time (ms)
+
+	double pulseDelay{ 0.0 };								// in units of time (ms)
+
+
 public:
 
 	/* Methods */
@@ -41,6 +46,12 @@ public:
 
 	void setImpulseResponseLength(int impLength) { impulseResponseLength = impLength; };
 	int getImpulseResponseLength() { return impulseResponseLength; };
+
+	void setPulseWidth(double pWidth) { pulseWidth = pWidth; };
+	double getPulseWidth() { return pulseWidth; };
+
+	void setPulseDelay(double pDelay) { pulseDelay = pDelay; };
+	double getPulseDelay() { return pulseDelay; };
 		
 };
 
