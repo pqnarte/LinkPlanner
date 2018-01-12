@@ -30,7 +30,7 @@ int main(){
 
 	int prbsPatternLength = 5;
 
-	vector<t_iqValues> iqAmplitudeValues = { { 1.0, 1.0 },{ -1.0, 1.0 },{ -1.0, -1.0 },{ 1.0, -1.0 } };
+	vector<t_iqValues> iqAmplitudeValues = { { 1.0, 1.0 },{ -1.0, 1.0 },{ 1.0, -1.0 },{ -1.0, -1.0 } };
 	
 	//double rollOffFactor = 0.3;
 
