@@ -13,20 +13,13 @@ void PolarizationBeamSplitter::initialize(void) {
 	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[1]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[1]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[1]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
 
 bool PolarizationBeamSplitter::runBlock(void) {
 
 	int ready = inputSignals[0]->ready();
-
-	int space1 = outputSignals[0]->space();
-	int space2 = outputSignals[1]->space();
-	int space = min(space1, space2);
+	int space = outputSignals[0]->space();
 
 	int process = min(ready, space);
 
@@ -35,6 +28,7 @@ bool PolarizationBeamSplitter::runBlock(void) {
 	for (auto i = 0; i < process; i++) {
 
 		t_complex_xy inSignal1;
+		t_complex_xy_mp outSignal1;
 		//This should implement a 1x2 beam splitters
 
 		inputSignals[0]->bufferGet(&inSignal1);
@@ -42,11 +36,13 @@ bool PolarizationBeamSplitter::runBlock(void) {
 		t_complex xValue = inSignal1.x * matrix[0] + inSignal1.y * matrix[1];
 		t_complex yValue = inSignal1.x * matrix[2] + inSignal1.y * matrix[3];
 
-		t_complex_xy outSignal1 = { xValue, 0.0 };
-		t_complex_xy outSignal2 = { 0.0, yValue };
+		outSignal1.path[0].x = xValue;
+		outSignal1.path[0].y = yValue;
 
-		outputSignals[0]->bufferPut(outSignal1);
-		outputSignals[1]->bufferPut(outSignal2);
+		outSignal1.path[1].x = xValue;
+		outSignal1.path[1].y = yValue;
+
+		outputSignals[0]->bufferPut((t_complex_xy_mp)outSignal1);
 	}
 	
 	return true;
