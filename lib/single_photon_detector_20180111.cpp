@@ -77,11 +77,17 @@ bool SinglePhotonDetector::runBlock(void) {
 				{
 					outputSignals[0]->bufferPut((t_real) 1.0);
 					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
+					inValueMP.path[path].x = - 1.0;
+					inValueMP.path[path].y = 0.0;
 				}
 				if ((path == Vertical) && (abs(inValueMP.path[Vertical].y) == 1.0))
 				{
 					outputSignals[0]->bufferPut((t_real) 1.0);
+					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
 					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
+					inValueMP.path[path].x = 0.0;
+					inValueMP.path[path].y = -1.0;
 				}
 				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (abs(inValueMP.path[path].x) != 0.0))
 				{
@@ -108,7 +114,7 @@ bool SinglePhotonDetector::runBlock(void) {
 					outputSignals[0]->bufferPut((t_real) 0.0);
 				}
 
-				if ((abs(inValueMP.path[(path + 1) % 2].x) >= 0.0) || (abs(inValueMP.path[(path + 1) % 2].y) >= 0.0)) {
+				if ((real(inValueMP.path[(path + 1) % 2].x) >= 0.0) || (real(inValueMP.path[(path + 1) % 2].y) >= 0.0)) {
 					inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
 				}
 			}
