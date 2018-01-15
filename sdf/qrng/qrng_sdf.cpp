@@ -48,20 +48,6 @@ int main(){
 
 	Binary S12{ "S12.sgn" };
 
-
-	/*
-	TimeContinuousAmplitudeDiscreteReal S2{ "S2.sgn" };
-
-	PhotonStream S3{};
-
-	PhotonStreamMP S4{};
-
-	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
-
-	TimeContinuousAmplitudeDiscreteReal S6{ "S6.sgn" };
-	
-	Binary S7{ "S7.sgn" };
-	*/
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
