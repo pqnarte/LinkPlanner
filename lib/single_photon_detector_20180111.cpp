@@ -76,38 +76,30 @@ bool SinglePhotonDetector::runBlock(void) {
 				if ((path == Horizontal) && (abs(inValueMP.path[Horizontal].x) == 1.0))
 				{
 					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[Vertical].x = (t_complex) 0.0;
+					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
 				}
 				if ((path == Vertical) && (abs(inValueMP.path[Vertical].y) == 1.0))
 				{
 					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[Horizontal].y = (t_complex) 0.0;
+					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
 				}
 				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (abs(inValueMP.path[path].x) != 0.0))
 				{
 					double number = distribution(generator);
 					if (number < pow(abs(inValueMP.path[path].x), 2)) {
 						outputSignals[0]->bufferPut((t_real) 1.0);
-						if (path == Horizontal) {
-							inValueMP.path[Vertical].x = (t_complex) 0.0;
-							inValueMP.path[Vertical].y = (t_complex)  0.0;
-						}
-						else {
-							inValueMP.path[Horizontal].x = (t_complex) 0.0;
-							inValueMP.path[Horizontal].y = (t_complex) 0.0;
-						}
-							
-						
+						inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+						inValueMP.path[(path + 1) % 2].y = (t_complex)  0.0;
 					}
 					else {
 						outputSignals[0]->bufferPut((t_real) 0.0);
 						if (path == Horizontal) {
-							inValueMP.path[Vertical].y = (t_complex) 1.0;
-							inValueMP.path[Vertical].x = (t_complex) 0.0;
+							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
 						}
 						else {
-							inValueMP.path[Horizontal].y = (t_complex) 0.0;
-							inValueMP.path[Horizontal].x = (t_complex) 1.0;
+							inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 1.0;
 						}
 					}
 				}
@@ -115,43 +107,10 @@ bool SinglePhotonDetector::runBlock(void) {
 				else {
 					outputSignals[0]->bufferPut((t_real) 0.0);
 				}
-				/*
-				if ((path == Horizontal) && (abs(inValueMP.path[Horizontal].x) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].x = 0.0;
+
+				if ((abs(inValueMP.path[(path + 1) % 2].x) >= 0.0) || (abs(inValueMP.path[(path + 1) % 2].y) >= 0.0)) {
+					inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
 				}
-				if((path == Vertical) && (abs(inValueMP.path[Vertical].y) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].y = 0.0;
-				}
-				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (abs(inValueMP.path[path].x) != 0.0))
-				{
-					double number = distribution(generator);
-					if (number < pow(abs(inValueMP.path[path].x), 2)) {
-						outputSignals[0]->bufferPut((t_real) 1.0);
-						inValueMP.path[(path + 1) % 2].x = 0.0;
-						inValueMP.path[(path + 1) % 2].y = 0.0;
-					}
-					else {
-						outputSignals[0]->bufferPut((t_real) 0.0);
-						if (path == Horizontal) {
-							inValueMP.path[(path + 1) % 2].y = 1.0;
-							inValueMP.path[(path + 1) % 2].x = 0.0;
-						}
-						else {
-							inValueMP.path[(path + 1) % 2].y = 0.0;
-							inValueMP.path[(path + 1) % 2].x = 1.0;
-						}
-					}
-				}
-				
-				if ((inValueMP.path[path].x == 0.0) && (inValueMP.path[path].y == 0.0)) {
-					outputSignals[0]->bufferPut((t_real) 0.0);
-					inValueMP.path[path].x = -1.0; // Photon Path Processed
-					inValueMP.path[path].y = -1.0; // Photon Path Processed
-				}*/
 			}
 			break;
 		default:
