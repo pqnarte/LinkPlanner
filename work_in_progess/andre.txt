@@ -1,3 +1,13 @@
+2018-01-16
+TO BE DONE
+	quando se usa o msbuild gerar o executável na pasta sdf/bpsk_system
+
+	resolver o problema da pasta signals
+		a diretorio signals é um propriedade do sinal, string folderName{ "signals" };
+		se o diretorio existir tudo bem, o programa avança, se o diretorio não existir ele deve perguntar se quer criar o diretorio, se sim cria e avança, e senão aborta.
+		
+
+
 2018-01-09
 TO BE DONE
 - colocar a funcionar o msbuild
