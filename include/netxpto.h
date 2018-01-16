@@ -27,13 +27,14 @@ typedef int t_integer;
 typedef double t_real;
 typedef complex<t_real> t_complex;
 typedef struct { t_complex x; t_complex y; } t_complex_xy;
+typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_complex_xy_mp;;
 typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
 typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
-enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
+enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, ComplexValueXYMP, PhotonValue, PhotonValueMP, Message};
 
 
 //########################################################################################################################################################
@@ -127,6 +128,7 @@ public:
 	void virtual bufferGet(t_real *valueAddr);
 	void virtual bufferGet(t_complex *valueAddr);
 	void virtual bufferGet(t_complex_xy *valueAddr);
+	void virtual bufferGet(t_complex_xy_mp *valueAddr);
 	void virtual bufferGet(t_photon *valueAddr);
 	void virtual bufferGet(t_photon_mp *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
@@ -385,6 +387,17 @@ public:
 	PhotonStreamXY() { setType("PhotonStreamXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[bufferLength]; }
 
 	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex_xy[bLength]; };
+};
+
+class PhotonStreamXYMP : public Signal {
+
+public:
+	PhotonStreamXYMP(string fName) { setType("PhotonStreamXYMP", ComplexValueXYMP); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy_mp[bufferLength]; }
+	PhotonStreamXYMP(string fName, int bLength) { setType("PhotonStreamXYMP", ComplexValueXYMP); setFileName(fName); setBufferLength(bLength); }
+	PhotonStreamXYMP(int bLength) { setType("PhotonStreamXYMP", ComplexValueXYMP); setBufferLength(bLength); }
+	PhotonStreamXYMP() { setType("PhotonStreamXYMP", ComplexValueXYMP); if (buffer == nullptr) buffer = new t_complex_xy_mp[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex_xy_mp[bLength]; };
 };
 
 class PhotonStreamMP : public Signal {

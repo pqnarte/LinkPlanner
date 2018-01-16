@@ -20,7 +20,7 @@ BB84 is a key distribution protocol which involves three parties, Alice, Bob and
 	\end{tabular}
 \end{tcolorbox}
 
-BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. It involves two parties, Alice and Bob, sharing keys through a quantum channel in which could be accessed by a eavesdropper, Eve. A basic model is depicted in figure \ref{fig:qkd model}. 
+BB84 protocol was created by Charles Bennett and Gilles Brassard in 1984 \cite{BB84}. It involves two parties, Alice and Bob, sharing keys through a quantum channel in which could be accessed by a eavesdropper, Eve. A basic model is depicted in figure \ref{fig:qkd model}.
 
 \begin{figure}[H]
 	\centering
@@ -83,7 +83,7 @@ The protocol requires the following parameter and it is implemented with the fol
 		\caption{Photon Detection block with false-positives, -2, and attenuation, -1, detection depending on D1 and D2 output.\label{fig:bb84 detector}}
 	\end{figure}
 	
-	\item After the measurement, Bob sends to Alice, using the classical channel, the used basis values, $R_{B}$ with the attenuation, -1, and false positives,-2. 
+	\item After the measurement, Bob sends to Alice, using the classical channel, the used basis values, $R_{B}$ with the attenuation, -1, and false positives,-2.
 	\item Alice performs a modified negated XOR, generating a sequence that detects when the same basis she used $B_{AB}$.
 	
 	\begin{table}[H]
@@ -91,7 +91,7 @@ The protocol requires the following parameter and it is implemented with the fol
 		\begin{tabular}{c|c c c c c c c c c c c c c c c c c c c c}
 			$R_{A2}$ & 0 & 0 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 1 & 1 & 0 &  1 & 0 & 0 & 0 & 1 &  0 & 1 & 0 \\
 			$R_{B}$  & 0 & 1 & 1 & 1 & -1 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & -2 & 1 & 0 & 0 & 1 & -1 & 0 & 0 \\ \hline
-			$B_{AB}$ & 1 & 0 & 1 & 0 &  0 & 1 & 0 & 1 &  0 & 1 & 0 & 1 &  0 & 0 & 1 & 1 & 1 &  0 & 0 & 1 \\ 
+			$B_{AB}$ & 1 & 0 & 1 & 0 &  0 & 1 & 0 & 1 &  0 & 1 & 0 & 1 &  0 & 0 & 1 & 1 & 1 &  0 & 0 & 1 \\
 		\end{tabular}
 	\end{table}
 
@@ -107,15 +107,15 @@ The protocol requires the following parameter and it is implemented with the fol
 		\label{tb:scram}
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline
-				0 & 1 & 0 & 1 \\ \hline 
-			    0 & 1 & 0 & 1 \\ \hline 
+				0 & 1 & 0 & 1 \\ \hline
+			    0 & 1 & 0 & 1 \\ \hline
 				0 & 1 & - & - \\ \hline
 		\end{tabular}
 	\end{table}
 
 	$$KS_{B} = \{0,0,0,1,1,1,0,0,1,1\}$$	
 	
-	\item Bob uses the same algorithm as Alice and scrambles his key. 
+	\item Bob uses the same algorithm as Alice and scrambles his key.
 	
 	\item Bob then reveals a fixed number of his key to Alice. This number is also an input parameter value, k. With this the Quantum Bit Error Rate (QBER).
 		
@@ -125,9 +125,9 @@ The protocol requires the following parameter and it is implemented with the fol
 	Then to verify if the channel is reliable or not, the flowchart presented in figure \ref{fig:flowQber}.
 	
 	\begin{enumerate}
-		\item Bob will reveals k bits sequence from the scrambled key, $SK_{AB}$ to Alice. 
+		\item Bob will reveals k bits sequence from the scrambled key, $SK_{AB}$ to Alice.
 		\item Alice then returns to Bob the estimated QBER value, mQBER, with a confidence interval, [qLB, qUB] using the using the equations in the Bit Error Rate section, but applied to this protocol
-		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more k bits from the key. Otherwise the channel is compromised and the key determination process needs to restart. 
+		\item To check if the channel is compromised or not it is necessary to check if the QBER limit is higher than the QBER upper bound. If QBER limit is between the QBER lower and upper bound it is necessary to reveal more k bits from the key. Otherwise the channel is compromised and the key determination process needs to restart.
 	\end{enumerate}
 	
 	
@@ -145,9 +145,8 @@ The protocol requires the following parameter and it is implemented with the fol
 
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Students Name}  &:& Mariana Ramos \\
-\textbf{Starting Date} &:& November 7, 2017\\
-\textbf{Goal}          &:& Perform a simulation of the setup presented bellow in order to implement BB84 communication protocol.
+\textbf{Students Name}  &:& Mariana Ramos (7/11/2017 - 12/1/2018) \\
+\textbf{Goal}          &:& Perform a simulation of BB84 communication protocol.
 \end{tabular}
 \end{tcolorbox}
 
@@ -181,7 +180,7 @@ Figure \ref{toplevelsimulation} presents the top level diagram of our simulation
     In figure \ref{alicesimulation} one can observe a block diagram of the transmitter. As it is shown in the figure, the transmitter must have one block for random number generation (binary source) which is responsible for basis generation to polarize the photons, and for key random generation in order to have a random state to encode each photon. This block has three outputs which will be inputs for the super block Alice. Furthermore, Alice block is responsible for all logical operations: random single photons state values generation, receive and send messages to the receiver Bob by using the classical channels, binary output for mutual information calculations. Each block of the super block is described in Library chapter. Finally, Alice block will also send a real continuous time signal to single photon generator (clock sets the rate oh photons generation), in order to generate photons polarized in the horizontal axis by default. Therefore, the transmitter has one more block, the polarizer block, which is responsible to encode the photons generated from the previous block and send them throughout a quantum channel from Alice to Bob.
 
      In figure \ref{bobsimulation} one can see a block diagram of the simulation for receiver (Bob). The receiver has one block for Random Number Generation which is responsible for randomly generate basis values which Bob will use to measure the photons sent by Alice throughout the quantum channel. Like transmitter, the receiver has the Bob block responsible for receive and send messages through the classical channel, receive single photons values detection from the single photon detectors, provides a clock signal to the detectors and send binary values for mutual information calculation. Furthermore, the receiver has two blocks for single photon detection (one for horizontal detection and other for vertical detection) which receives from Bob block a real continuous time signal which will set the detection window for the detector and outputs for Bob block the result value for detection. In addition, there is a polarizer which receives from Bob block a time continuous real signal which provides information about the rotation angle. If the basis chosen by Bob is the diagonal basis he sends $45º$, otherwise sends "0º". The polarization beam splitter divides the input photon stream in horizontal component and vertical component.
-     
+
 
 
 

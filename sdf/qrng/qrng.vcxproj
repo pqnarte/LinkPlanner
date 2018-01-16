@@ -22,7 +22,7 @@
     <ProjectGuid>{CC504360-8E52-4F8E-9B85-CD5D2579FD63}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>qrng</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -41,7 +41,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -75,6 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -144,23 +145,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lib\binary_source.cpp" />
+    <ClCompile Include="..\..\lib\clock_20171219.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time.cpp" />
+    <ClCompile Include="..\..\lib\m_qam_mapper.cpp" />
     <ClCompile Include="..\..\lib\netxpto.cpp" />
-    <ClCompile Include="..\..\lib\polarization_beam_splitter.cpp" />
+    <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp" />
+    <ClCompile Include="..\..\lib\polarizer_20180113.cpp" />
+    <ClCompile Include="..\..\lib\pulse_shaper_20180111.cpp" />
     <ClCompile Include="..\..\lib\qrng_decision_circuit.cpp" />
-    <ClCompile Include="..\..\lib\single_photon_detector.cpp" />
-    <ClCompile Include="..\..\lib\single_photon_source.cpp" />
+    <ClCompile Include="..\..\lib\single_photon_detector_20180111.cpp" />
+    <ClCompile Include="..\..\lib\single_photon_source_20171218.cpp" />
     <ClCompile Include="..\..\lib\sink.cpp" />
     <ClCompile Include="qrng_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\binary_source.h" />
+    <ClInclude Include="..\..\include\clock_20171219.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time.h" />
+    <ClInclude Include="..\..\include\m_qam_mapper.h" />
     <ClInclude Include="..\..\include\netxpto.h" />
-    <ClInclude Include="..\..\include\polarization_beam_splitter.h" />
+    <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
+    <ClInclude Include="..\..\include\pulse_shaper_20180111.h" />
     <ClInclude Include="..\..\include\qrng_decision_circuit.h" />
-    <ClInclude Include="..\..\include\single_photon_detector.h" />
-    <ClInclude Include="..\..\include\single_photon_source.h" />
+    <ClInclude Include="..\..\include\single_photon_detector_20180111.h" />
+    <ClInclude Include="..\..\include\single_photon_source_20171218.h" />
     <ClInclude Include="..\..\include\sink.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
