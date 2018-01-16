@@ -7,7 +7,9 @@ class SinglePhotonDetector : public Block {
 	
 	// Input Parameters
 	t_integer path{ 0 };
-	double threshold{ 0.5 };
+	double threshold{ 0.8 };
+	t_integer Horizontal{ 0 };
+	t_integer Vertical{ 1 };
 
 public:
 

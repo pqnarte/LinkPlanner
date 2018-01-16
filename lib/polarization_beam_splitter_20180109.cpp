@@ -2,59 +2,49 @@
 # include <math.h>     // cos(), sin()
 
 # include "netxpto.h"
-# include "polarization_beam_splitter.h"
+# include "polarization_beam_splitter_20180109.h"
 
 void PolarizationBeamSplitter::initialize(void) {
 
-	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
-	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
-	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
+	firstTime = false;
+
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[1]->symbolPeriod = inputSignals[0]->symbolPeriod;
-	outputSignals[1]->samplingPeriod = inputSignals[0]->samplingPeriod;
-	outputSignals[1]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
-	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
 
 bool PolarizationBeamSplitter::runBlock(void) {
 
 	int ready = inputSignals[0]->ready();
-	int space1 = outputSignals[0]->space();
-	int space2 = outputSignals[1]->space();
+	int space = outputSignals[0]->space();
 
-	int space = min(space1, space2);
+	int process = min(ready, space);
 
-	int length = min(ready, space);
+	if (process <= 0) return false;
 
-	if (length <= 0) return false;
+	for (auto i = 0; i < process; i++) {
 
-	signal_value_type inSignalType = inputSignals[0]->getValueType();
+		t_complex_xy inSignal1;
+		t_complex_xy_mp outSignal1;
+		//This should implement a 1x2 beam splitters
 
-	if (inSignalType == ComplexValueXY) {
-		t_complex_xy valueXY;
-
-		for (int i = 0; i <= length; i++) {
-			inputSignals[0]->bufferGet(&valueXY);
-
-			t_complex valueXX = valueXY.x;
-			t_complex valueYY = valueXY.y;
-			t_complex valueXY = 0.0;
-			t_complex valueYX = 0.0;
-
-			t_complex_xy ValueXout = { valueXX, valueXY };
-			t_complex_xy ValueYout = { valueYX, valueYY };
-
-			outputSignals[0]->bufferPut((t_complex_xy)ValueXout);
-			outputSignals[1]->bufferPut((t_complex_xy)ValueYout);
-		}
-	}
-	else {
+		inputSignals[0]->bufferGet(&inSignal1);
 		
+		t_complex xValue = inSignal1.x * matrix[0] + inSignal1.y * matrix[1];
+		t_complex yValue = inSignal1.x * matrix[2] + inSignal1.y * matrix[3];
+
+		outSignal1.path[0].x = xValue;
+		outSignal1.path[0].y = yValue;
+
+		outSignal1.path[1].x = xValue;
+		outSignal1.path[1].y = yValue;
+
+		outputSignals[0]->bufferPut((t_complex_xy_mp)outSignal1);
 	}
 	
-
 	return true;
 
 };
