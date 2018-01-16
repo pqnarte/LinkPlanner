@@ -1,10 +1,17 @@
 2018-01-16
 TO BE DONE
-	quando se usa o msbuild gerar o executável na pasta sdf/bpsk_system
+	- quando se usa o msbuild gerar o executável na pasta sdf/bpsk_system
 
-	resolver o problema da pasta signals
+	- resolver o problema da pasta signals
 		a diretorio signals é um propriedade do sinal, string folderName{ "signals" };
 		se o diretorio existir tudo bem, o programa avança, se o diretorio não existir ele deve perguntar se quer criar o diretorio, se sim cria e avança, e senão aborta.
+
+
+	- fazer refletir as alterações na documentação, nomeadamente a versão extendida do msbuild
+
+	- rever o projecto bpsk_system (todos os ficheiros deveriam ter o time stamp, nomeDoFicheiro_20180912.cpp/h (corrigir isto), todos os blocos deveriam ter um entrada no manual (identificar os que têm mas precisa de ser melhora e os que não têm)
+
+
 		
 
 

@@ -24,7 +24,7 @@ AliceQKD::AliceQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal)
 	BA14.initializeBlock(vector<Signal*>{&S9}, vector<Signal*>{});
 	BA5.initializeBlock(vector<Signal*>{inputSignals[0], &S4, &S5, &S8}, vector<Signal*>{outputSignals[0], outputSignals[1], outputSignals[2], outputSignals[3]});
 
-	setModuleBlocks({ &BA1 , &BA2, &BA4, &BA3 , & BA11, &BA6, &BA12, &BA13, &BA8, &BA14, &BA5});
+	setModuleBlocks({ &BA1 , &BA2, &BA4, &BA3 , &BA11, &BA6, &BA12, &BA13, &BA8, &BA14, &BA5});
 
 }
 

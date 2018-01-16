@@ -5,13 +5,6 @@
 
 using namespace std;
 
-/////////////////////// Required Functions declaration //////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////
-vector<complex<double>> ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag);
-vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-
-
-
 
 void HilbertTransform::initialize(void)
 {
@@ -38,7 +31,8 @@ bool HilbertTransform::runBlock(void)
 	vector <double> outputSignalTimeDomain(process);
 
 	ComplexMult C;
-	FourierTransform FT;
+	//FourierTransform FT;
+	FourierTransformA FT;
 	vector<double> c(process);
 	vector<double> d(process);
 	vector<complex<double>> hilbertTransformerFrequencyDomain(process);
@@ -87,23 +81,22 @@ bool HilbertTransform::runBlock(void)
 		im[i] = 0;										// Imaginary part which is manipulated as "0"
 	}
 
-	C.ReImVect2ComplexVect(re, im, IN);					// Time domain complex form signal
+	IN = C.ReImVect2ComplexVector(re, im);					// Time domain complex form signal
 
-	inputSignalFreqencyDomain = FT.transform(IN, -1);	// Fast Fourier Transform (FFT) 
+	inputSignalFreqencyDomain = FT.transform(IN, -1);	// Fast Fourier Transform (FFT)
 
 	hilbertTransformedFrequencyDomain = C.complexVectorMultiplication(inputSignalFreqencyDomain, hilbertTransformerFrequencyDomain); // Multiplication of two complex vector
 
 	hilbertTransformedTimeDomain = FT.transform(hilbertTransformedFrequencyDomain, 1);	// Inverse Fast Fourier Transform (IFFT)
 
-
-
 	for (int i = 0; i < process; i++)					// Put the data using bufferput
+
 	{
 		t_real OUT;
-	    OUT = hilbertTransformedTimeDomain[i].real();
+	    OUT = inputSignalFreqencyDomain[i].real();
 		outputSignals[0]->bufferPut((t_real)(OUT));
 	}
-			
+	
 	return true;
 
 }
