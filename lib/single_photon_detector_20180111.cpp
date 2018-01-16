@@ -73,6 +73,9 @@ bool SinglePhotonDetector::runBlock(void) {
 				t_complex_xy_mp inValueMP;
 				inputSignals[0]->bufferGet(&inValueMP);
 
+				t_complex AmplitudeX = inValueMP.path[path].x;
+				t_complex AmplitudeY = inValueMP.path[path].y;
+
 				if ((path == Horizontal) && (abs(inValueMP.path[Horizontal].x) == 1.0))
 				{
 					outputSignals[0]->bufferPut((t_real) 1.0);
@@ -89,10 +92,49 @@ bool SinglePhotonDetector::runBlock(void) {
 					inValueMP.path[path].x = 0.0;
 					inValueMP.path[path].y = -1.0;
 				}
-				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (abs(inValueMP.path[path].x) != 0.0))
+
+				if (abs(AmplitudeX) > abs(AmplitudeY))
 				{
 					double number = distribution(generator);
-					if (number < pow(abs(inValueMP.path[path].x), 2)) {
+					if (path == Horizontal) {
+						if (number < pow(abs(AmplitudeX), 2)) {
+							outputSignals[0]->bufferPut((t_real) 1.0);
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+							inValueMP.path[(path + 1) % 2].y = (t_complex)  0.0;
+						}
+						else {
+							outputSignals[0]->bufferPut((t_real) 0.0);
+							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+						}
+					}
+					
+					
+				}
+
+				if (abs(AmplitudeY) > abs(AmplitudeX))
+				{
+					double number = distribution(generator);
+					if (path == Horizontal) {
+						if (number < pow(abs(AmplitudeY), 2)) {
+							outputSignals[0]->bufferPut((t_real) 0.0);
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
+						}
+						else {
+							outputSignals[0]->bufferPut((t_real) 1.0);
+							inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
+							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+						}
+					}
+
+
+				}
+				/*
+				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (AmplitudeProbability != 0.0))
+				{
+					double number = distribution(generator);
+					if (number < pow(abs(AmplitudeProbability), 2)) {
 						outputSignals[0]->bufferPut((t_real) 1.0);
 						inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
 						inValueMP.path[(path + 1) % 2].y = (t_complex)  0.0;
@@ -108,9 +150,9 @@ bool SinglePhotonDetector::runBlock(void) {
 							inValueMP.path[(path + 1) % 2].x = (t_complex) 1.0;
 						}
 					}
-				}
+				}*/
 				
-				else {
+				if((abs(AmplitudeX)==0) && (abs(AmplitudeY)==0)){
 					outputSignals[0]->bufferPut((t_real) 0.0);
 				}
 

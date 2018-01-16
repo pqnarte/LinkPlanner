@@ -33,14 +33,16 @@ bool PolarizationBeamSplitter::runBlock(void) {
 
 		inputSignals[0]->bufferGet(&inSignal1);
 		
-		t_complex xValue = inSignal1.x * matrix[0] + inSignal1.y * matrix[1];
-		t_complex yValue = inSignal1.x * matrix[2] + inSignal1.y * matrix[3];
+		t_complex xValueH = (inSignal1.x * matrixH[0] * (1/sqrt(pow(abs(inSignal1.x),2)+ pow(abs(inSignal1.y),2))))  + (inSignal1.y * matrixH[1] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2))));
+		t_complex yValueH = (inSignal1.x * matrixH[2] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2))))  + (inSignal1.y * matrixH[3] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2))));
 
-		outSignal1.path[0].x = xValue;
-		outSignal1.path[0].y = yValue;
+		t_complex xValueV = (inSignal1.x * matrixV[0] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2)))) + (inSignal1.y * matrixV[1] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2))));
+		t_complex yValueV = (inSignal1.x * matrixV[2] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2)))) + (inSignal1.y * matrixV[3] * (1 / sqrt(pow(abs(inSignal1.x), 2) + pow(abs(inSignal1.y), 2))));
 
-		outSignal1.path[1].x = xValue;
-		outSignal1.path[1].y = yValue;
+		outSignal1.path[0] = { xValueH, yValueH };
+
+		outSignal1.path[1] = { xValueV, yValueV };
+	
 
 		outputSignals[0]->bufferPut((t_complex_xy_mp)outSignal1);
 	}
