@@ -18,7 +18,7 @@ int main(){
 
 	double RateOfPhotons{ 1e6 };
 	int NumberOfSamplesPerSymbol{ 16 };
-	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 30.0,0.0 } };
+	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 45.0,0.0 } };
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
