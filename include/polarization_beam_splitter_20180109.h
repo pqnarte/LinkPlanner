@@ -12,7 +12,8 @@ class PolarizationBeamSplitter : public Block {
 
 	t_real F = 1;
 	t_complex unit = 1;
-	array <t_complex, 4> matrix = { { F*unit, 0, 0, F*unit } };
+	array <t_complex, 4> matrixH = { { F*unit, 0, 0, 0 } };
+	array <t_complex, 4> matrixV = { { 0, 0, 0, F*unit } };
 	/*
 	Jones Matrix for PBS:
 
@@ -28,8 +29,11 @@ public:
 
 	bool runBlock(void);
 
-	void setTransferMatrix(array<complex<double>, 4> TransferMatrix) { matrix = TransferMatrix; }
-	array<complex<double>, 4> const getTransferMatrix(void) { return matrix; }
+	void setTransferMatrixH(array<complex<double>, 4> TransferMatrix) { matrixH = TransferMatrix; }
+	array<complex<double>, 4> const getTransferMatrixH(void) { return matrixH; }
+
+	void setTransferMatrixV(array<complex<double>, 4> TransferMatrix) { matrixV = TransferMatrix; }
+	array<complex<double>, 4> const getTransferMatrixV(void) { return matrixV; }
 
 };
 
