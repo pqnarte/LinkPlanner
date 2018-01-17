@@ -18,7 +18,7 @@ int main(){
 
 	double RateOfPhotons{ 1e6 };
 	int NumberOfSamplesPerSymbol{ 16 };
-	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 45.0,0.0 } };
+	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 60.0,0.0 } };
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
@@ -27,6 +27,7 @@ int main(){
 	Binary S1{ "S1.sgn" };
 
 	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
+	S2.setBufferLength(512);
 
 	TimeDiscreteAmplitudeDiscreteReal S3{ "S3.sgn" };
 
@@ -57,7 +58,7 @@ int main(){
 	B1.setMode(DeterministicCyclic);
 	B1.setBitPeriod(1/(2*RateOfPhotons));
 	B1.setBitStream("11");
-	//B1.setNumberOfBits(10e6);
+	B1.setNumberOfBits(100000);
 
 	Clock B2{ vector<Signal*>{}, vector<Signal*>{&S2} };
 	B2.setClockPeriod(1 / RateOfPhotons);
@@ -68,6 +69,8 @@ int main(){
 	B3.setIqAmplitudes(iqAmplitudeValues);
 
 	Sink B4{ vector<Signal*>{&S4}, vector<Signal*>{} };
+	//B4.setNumberOfSamples(10000);
+	//B4.setDisplayNumberOfSamples(true);
 
 	DiscreteToContinuousTime B5{ vector<Signal*>{&S3}, vector<Signal*>{&S5} };
 	B5.setNumberOfSamplesPerSymbol(NumberOfSamplesPerSymbol);
@@ -76,6 +79,7 @@ int main(){
 	B6.setFilterType(Square);
 
 	SinglePhotonSource B7{ vector<Signal*>{&S2},vector<Signal*>{&S7} };
+	
 
 	Polarizer B8{ vector<Signal*>{&S7, &S6}, vector<Signal*>{&S8} };
 
@@ -90,9 +94,13 @@ int main(){
 	QRNG_DecisionCircuit B12{ vector<Signal*>{&S10,&S11}, vector<Signal*>{&S12} };
 
 	Sink B13{ vector<Signal*>{&S12}, vector<Signal*>{} };
-	B13.setNumberOfSamples((long int) 10000);
+	B13.setNumberOfSamples((long)10e6);
 	B13.setDisplayNumberOfSamples(true);
-
+	/*
+	Sink B14{ vector<Signal*>{&S11}, vector<Signal*>{} };
+	B14.setNumberOfSamples((long)10e3);
+	B14.setDisplayNumberOfSamples(true);
+	*/
 	
 	
 	// #####################################################################################################

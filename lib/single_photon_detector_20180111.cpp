@@ -72,62 +72,37 @@ bool SinglePhotonDetector::runBlock(void) {
 			for (auto k = 0; k < process; k++) {
 				t_complex_xy_mp inValueMP;
 				inputSignals[0]->bufferGet(&inValueMP);
-
-				t_complex AmplitudeX = inValueMP.path[path].x;
-				t_complex AmplitudeY = inValueMP.path[path].y;
-
-				if ((path == Horizontal) && (abs(inValueMP.path[Horizontal].x) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-					inValueMP.path[path].x = - 1.0;
-					inValueMP.path[path].y = 0.0;
-				}
-				if ((path == Vertical) && (abs(inValueMP.path[Vertical].y) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-					inValueMP.path[path].x = 0.0;
-					inValueMP.path[path].y = -1.0;
-				}
-
-				if (abs(AmplitudeX) > abs(AmplitudeY))
-				{
-					double number = distribution(generator);
-					if (path == Horizontal) {
-						if (number < pow(abs(AmplitudeX), 2)) {
-							outputSignals[0]->bufferPut((t_real) 1.0);
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-							inValueMP.path[(path + 1) % 2].y = (t_complex)  0.0;
+				t_complex_xy inValue = (t_complex_xy) inValueMP.path[path];
+				t_complex xValue = inValue.x;
+				t_complex yValue = inValue.y;
+				
+				switch (path) {
+				case 0:
+					if ((abs(xValue) > 0.0) && (abs(xValue) <= 1.0)) {
+						double number = distribution(generator);
+						if (number < pow(abs(xValue), 2)) {
+							outputSignals[0]->bufferPut((t_real)1.0);
+							inValueMP.path[1].x = (t_complex) 0.0;
+							inValueMP.path[1].y = (t_complex) 0.0;
 						}
 						else {
-							outputSignals[0]->bufferPut((t_real) 0.0);
-							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
+							outputSignals[0]->bufferPut((t_real)0.0);
+							inValueMP.path[1].x = (t_complex) 0.0;
+							inValueMP.path[1].y = (t_complex) 1.0;
 						}
 					}
-					
-					
-				}
+					break;
 
-				if (abs(AmplitudeY) > abs(AmplitudeX))
-				{
-					double number = distribution(generator);
-					if (path == Horizontal) {
-						if (number < pow(abs(AmplitudeY), 2)) {
-							outputSignals[0]->bufferPut((t_real) 0.0);
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
-						}
-						else {
-							outputSignals[0]->bufferPut((t_real) 1.0);
-							inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-						}
-					}
+				case 1:
+					if (abs(yValue) == 1.0)
+						outputSignals[0]->bufferPut((t_real)1.0);
+					else
+						outputSignals[0]->bufferPut((t_real)0.0);
+					break;
 
+				default:
+					cout << "x:" << abs(xValue) << "y:" << abs(yValue) << "\n";
+					break;
 
 				}
 				/*
@@ -149,17 +124,12 @@ bool SinglePhotonDetector::runBlock(void) {
 							inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
 							inValueMP.path[(path + 1) % 2].x = (t_complex) 1.0;
 						}
+					}				*/
+					if ((abs(inValueMP.path[1].x) == 0.0) || (abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].x) == 1.0) || (abs(inValueMP.path[1].y) == 1.0)) {
+						inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
 					}
-				}*/
-				
-				if((abs(AmplitudeX)==0) && (abs(AmplitudeY)==0)){
-					outputSignals[0]->bufferPut((t_real) 0.0);
 				}
 
-				if ((real(inValueMP.path[(path + 1) % 2].x) >= 0.0) || (real(inValueMP.path[(path + 1) % 2].y) >= 0.0)) {
-					inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
-				}
-			}
 			break;
 		default:
 			cout << "ERRO: single_photon_detector.cpp" << "\n";

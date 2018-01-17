@@ -165,6 +165,7 @@
     <ClInclude Include="..\..\include\m_qam_mapper.h" />
     <ClInclude Include="..\..\include\netxpto.h" />
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
+    <ClInclude Include="..\..\include\polarizer_20180113.h" />
     <ClInclude Include="..\..\include\pulse_shaper_20180111.h" />
     <ClInclude Include="..\..\include\qrng_decision_circuit.h" />
     <ClInclude Include="..\..\include\single_photon_detector_20180111.h" />
