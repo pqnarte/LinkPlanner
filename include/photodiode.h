@@ -11,7 +11,7 @@ class Photodiode : public Block {
 	int aux = 0;
 	double t = 0;
 
-	t_real responsivity{ 1 };
+	double responsivity{ 1 };
 
 	bool shotNoise{ false };
 

@@ -1,3 +1,21 @@
+2018-01-17
+TO BE DONE
+
+	- conlcuir a teoria 
+
+	- avançar para a simulação
+		todos os ficheiros usados devem ter um time_tag no final (*.cpp e *.h)
+		todos os blocos e sub-blocos devem ter uma entrada no help do Manual
+		tabela com uma anáise a estas duas situações
+
+Bibliografia
+	Mischa Schwartz, Information Transmission, Modulation and Noise
+	Carlson, Communication Systems
+
+Próxima Reunião: 
+	23/01, 17h
+	
+
 2018-01-09
 TO BE DONE
 

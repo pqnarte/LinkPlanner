@@ -116,7 +116,7 @@ public:
 	void setOutputOpticalPower(t_real outOpticalPower) { B7.outputOpticalPower = outOpticalPower; };
 	t_real const getOutputOpticalPower(void) { return B7.outputOpticalPower; };
 
-	void setOutputOpticalPower_dBm(t_real outOpticalPower_dBm) { B7.setOutputOpticalPower_dBm(outOpticalPower_dBm); };
+	void setOutputOpticalPower_dBm(t_real outOpticalPower_dBm) { B7.outputOpticalPower = 1e-3*pow(10, outOpticalPower_dBm / 10); };
 	t_real const getOutputOpticalPower_dBm(void) { return 10*log10(B7.outputOpticalPower/1e-3); }
 
 	void setPulseShaperFilter(PulseShaperFilter fType){ B5.setFilterType(fType); B6.setFilterType(fType); };
