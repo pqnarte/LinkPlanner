@@ -1,20 +1,19 @@
 # ifndef PROGRAM_INCLUDE_HOMODYNE_RECEIVER_H_
 # define PROGRAM_INCLUDE_HOMODYNE_RECEIVER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
-# include "optical_hybrid.h"
-# include "photodiode_old.h"
-# include "subtractor.h"
-# include "ideal_amplifier.h"
-# include "decoder.h"
-# include "local_oscillator.h"
-# include "sampler.h"
-# include "super_block_interface.h"
-# include "pulse_shaper.h"
-# include "clock.h"
-# include "white_noise.h"
-# include "add.h"
+# include "optical_hybrid_20180118.h"
+# include "photodiode_old_20180118.h"
+# include "subtractor_20180118.h"
+# include "ideal_amplifier_20180118.h"
+# include "decoder_20180118.h"
+# include "local_oscillator_20180118.h"
+# include "sampler_20171119.h"
+# include "super_block_interface_20180118.h"
+# include "pulse_shaper_20180118.h"
+# include "white_noise_20180118.h"
+# include "add_20180118.h"
 
 
 // this is a test block for the purpose of beta testing new code

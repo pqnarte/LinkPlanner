@@ -1,9 +1,9 @@
 # include "netxpto.h"
 
 # include "m_qam_transmitter.h"
-# include "homodyne_receiver.h"
-# include "bit_error_rate.h"
-# include "sink.h"
+# include "homodyne_receiver_20171203.h"
+# include "bit_error_rate_20171810.h"
+# include "sink_20180118.h"
 
 int main(){
 
@@ -11,13 +11,14 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-	t_integer numberOfBitsGenerated(10000);
+	t_integer numberOfBitsGenerated(1000);
 	t_integer samplesPerSymbol(16);
 	t_integer pLength = 5;
-	t_real bitPeriod = 1.0 / 50e9;
+//	t_real bitPeriod = 1.0 / 50e9;
+	t_real bitPeriod = 20e-12;
 	t_real rollOffFactor = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower = 1*pow(10,-6);
+	t_real signalOutputPower = 1e-6;
 
 
 	// #####################################################################################################
@@ -114,7 +115,7 @@ int main(){
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
 //	B2.setClockPeriod(symbolPeriod);
-//	B2.setRollOffFactor(rollOffFactor);
+	B2.setRollOffFactor(rollOffFactor);
 
 
 	//With BER measurement
