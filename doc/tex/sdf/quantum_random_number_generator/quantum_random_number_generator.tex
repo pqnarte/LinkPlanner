@@ -168,6 +168,34 @@ qrng\_sdf.cpp                                   &                      &    \che
 \end{tabular}
 \end{table}
 
+In theory, considering the results space $\Omega$ associated with a random experience and $A$ an event such that $P(A)=p\in]0,1[$. Lets $X:\Omega\longrightarrow\mathbb{R}$ such that
+
+\begin{eqnarray}
+		X(\omega) = 1&\textrm{ ,if } \omega \in A \nonumber \\
+		X(\omega) = 1&\textrm{ ,if } \omega \in \bar{A} \nonumber\\
+\end{eqnarray}
+
+This way, 
+\begin{eqnarray}
+		P(X=1) =& P(A) & = p \nonumber\\
+		P(X=0) =&P(\bar{A})&=1-p  \nonumber\\
+\end{eqnarray}
+
+$X$ follows the Bernoulli law of the parameter \textbf{p}, $X~\mathbf{B}(p)$, being the expected value of the Bernoulli random value $E(X)=p$ and the variance $VAR(X)=p(1-p)$.
+
+We want to estimate the number of samples that we need to obtain $X$ inside a confidence interval.
+
+We will use \textit{z-score} to calculate the number of samples by using the margin error equation,
+
+\begin{equation}\label{eq:marginerror}
+  E = z_{\alpha/2}\frac{\sigma}{\sqrt{N}},
+  \nonumber
+\end{equation}
+
+where, $E$ is the error margin, $z_{\alpha/2}$ is the \textit{z-score} for a specific confidence interval, $\sigma = \hat{p}(1-\hat{p})$ is the variance and $N$ the number of samples. Lets assume $E=10^{-4}$ and the expected $\hat{p} = 0.5$, for a polarization angle of $45^{\circ}$, we have $N=165894400$ at least. This way, the simulation will be performed for $N=166 \times 10^{6}$ samples for different angles of polarization. 
+
+For a quantum random number generator with equal probability of obtain a "0" or "1" the polarizer must be set at $45^{\circ}$. This way, we have $50\%$ possibilities to obtain a "0" and $50\%$ of possibilities to obtain a "1". These theoretical value meets the value obtained from the simulation when it is performed for the number of samples mentioned above.
+
 \subsection{Open Issues}
 
 

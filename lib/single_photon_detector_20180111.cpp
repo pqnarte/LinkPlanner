@@ -1,7 +1,7 @@
 # include <algorithm>  // min()
-# include <random>
-# include <math.h>	   // remainder(), pow()
 
+# include <math.h>	   // remainder(), pow()
+# include <chrono>
 # include "netxpto.h"
 # include "single_photon_detector_20180111.h"
 
@@ -24,8 +24,11 @@ bool SinglePhotonDetector::runBlock(void) {
 	if (process <= 0) return false;
 
 
-	std::default_random_engine generator;
 	std::uniform_real_distribution<double> distribution(0.0, 1.0);
+
+	unsigned int seed = (unsigned int)chrono::system_clock::now().time_since_epoch().count();
+
+	generator.seed(seed);
 
 	signal_value_type inSignalType = inputSignals[0]->getValueType();
 	switch (inSignalType) {
@@ -75,10 +78,13 @@ bool SinglePhotonDetector::runBlock(void) {
 				t_complex_xy inValue = (t_complex_xy) inValueMP.path[path];
 				t_complex xValue = inValue.x;
 				t_complex yValue = inValue.y;
+
+				double probabilityAmplitude = sqrt(pow(abs(xValue),2) + pow(abs(yValue),2));
+				
 				
 				switch (path) {
 				case 0:
-					if ((abs(xValue) > 0.0) && (abs(xValue) <= 1.0)) {
+					if ((abs(xValue) >= 0.0) && (abs(xValue) <= 1.0)) {
 						double number = distribution(generator);
 						if (number < pow(abs(xValue), 2)) {
 							outputSignals[0]->bufferPut((t_real)1.0);
@@ -91,6 +97,7 @@ bool SinglePhotonDetector::runBlock(void) {
 							inValueMP.path[1].y = (t_complex) 1.0;
 						}
 					}
+					
 					break;
 
 				case 1:
@@ -125,7 +132,7 @@ bool SinglePhotonDetector::runBlock(void) {
 							inValueMP.path[(path + 1) % 2].x = (t_complex) 1.0;
 						}
 					}				*/
-					if ((abs(inValueMP.path[1].x) == 0.0) || (abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].x) == 1.0) || (abs(inValueMP.path[1].y) == 1.0)) {
+					if ((abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].y) == 1.0) || (abs(inValueMP.path[1].x) == 0.0) || (abs(inValueMP.path[1].x) == 1.0)) {
 						inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
 					}
 				}
