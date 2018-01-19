@@ -112,7 +112,6 @@
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171119.h" />
     <ClInclude Include="..\..\include\sink_20180118.h" />
-    <ClInclude Include="..\..\include\subtractor_20180118.h" />
     <ClInclude Include="..\..\include\super_block_interface_20180118.h" />
     <ClInclude Include="..\..\include\white_noise_20180118.h" />
   </ItemGroup>

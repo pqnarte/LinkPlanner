@@ -192,7 +192,7 @@ bool BinarySource::runBlock(void) {
 	if (mode == Random){
 
 		std::random_device rd;
-		std::mt19937 gen(rd());
+		std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
 		std::uniform_int_distribution<> dis(0, 1);
 
 		t_binary aux;
