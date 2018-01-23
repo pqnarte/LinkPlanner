@@ -88,6 +88,9 @@ end
 
 if strcmp(type, phxy)
    data = fread(fid, 4*samplesPerSymbol*nReadr, 'double' );
+%    l = mod(length(data),4);
+%    len = length(data) - l;
+%    data = data(1:len);
    
    numberOfSymbols = length(data)/(4*samplesPerSymbol);
    

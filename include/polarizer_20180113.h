@@ -6,11 +6,10 @@
 enum functionalMode {Sender, Receiver};
 
 class Polarizer : public Block{
-	
-	
-public:
 	// Input parameters
 	functionalMode mode{ Sender };
+	
+public:
 
 	Polarizer (vector <Signal*> &inputSignals, vector <Signal*> &outputSignals) : Block(inputSignals, outputSignals) {};
 

@@ -18,33 +18,45 @@ int main(){
 
 	double RateOfPhotons{ 1e6 };
 	int NumberOfSamplesPerSymbol{ 16 };
-	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 45.0,0.0 } };
+	vector<t_iqValues> iqAmplitudeValues = { { 0.0,0.0 },{ -45.0,0.0 },{ 90.0,0.0 },{ 337.5,0.0 } };
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
 	
 	Binary S1{ "S1.sgn" };
+	S1.setSaveSignal(false);
 
 	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
+	S2.setBufferLength(512);
+	S2.setSaveSignal(false);
 
 	TimeDiscreteAmplitudeDiscreteReal S3{ "S3.sgn" };
+	S3.setSaveSignal(false);
 
 	TimeDiscreteAmplitudeDiscreteReal S4{ "S4.sgn" };
+	S4.setSaveSignal(false);
 
 	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
+	S5.setSaveSignal(false);
 
 	TimeContinuousAmplitudeDiscreteReal S6{ "S6.sgn" };
+	S6.setSaveSignal(false);
 
 	PhotonStreamXY S7{ "S7.sgn" };
+	S7.setSaveSignal(false);
 
 	PhotonStreamXY S8{ "S8.sgn" };
+	S8.setSaveSignal(false);
 
 	PhotonStreamXYMP S9{ "S9.sgn" };
+	S9.setSaveSignal(false);
 
 	TimeContinuousAmplitudeDiscreteReal S10{ "S10.sgn" };
+	S10.setSaveSignal(false);
 
 	TimeContinuousAmplitudeDiscreteReal S11{ "S11.sgn" };
+	S11.setSaveSignal(false);
 
 	Binary S12{ "S12.sgn" };
 
@@ -57,7 +69,7 @@ int main(){
 	B1.setMode(DeterministicCyclic);
 	B1.setBitPeriod(1/(2*RateOfPhotons));
 	B1.setBitStream("11");
-	//B1.setNumberOfBits(10e6);
+
 
 	Clock B2{ vector<Signal*>{}, vector<Signal*>{&S2} };
 	B2.setClockPeriod(1 / RateOfPhotons);
@@ -68,6 +80,8 @@ int main(){
 	B3.setIqAmplitudes(iqAmplitudeValues);
 
 	Sink B4{ vector<Signal*>{&S4}, vector<Signal*>{} };
+	//B4.setNumberOfSamples(10000);
+	//B4.setDisplayNumberOfSamples(true);
 
 	DiscreteToContinuousTime B5{ vector<Signal*>{&S3}, vector<Signal*>{&S5} };
 	B5.setNumberOfSamplesPerSymbol(NumberOfSamplesPerSymbol);
@@ -76,6 +90,7 @@ int main(){
 	B6.setFilterType(Square);
 
 	SinglePhotonSource B7{ vector<Signal*>{&S2},vector<Signal*>{&S7} };
+	
 
 	Polarizer B8{ vector<Signal*>{&S7, &S6}, vector<Signal*>{&S8} };
 
@@ -90,9 +105,13 @@ int main(){
 	QRNG_DecisionCircuit B12{ vector<Signal*>{&S10,&S11}, vector<Signal*>{&S12} };
 
 	Sink B13{ vector<Signal*>{&S12}, vector<Signal*>{} };
-	B13.setNumberOfSamples((long int) 10000);
+	B13.setNumberOfSamples((long)1e8);
 	B13.setDisplayNumberOfSamples(true);
-
+	/*
+	Sink B14{ vector<Signal*>{&S11}, vector<Signal*>{} };
+	B14.setNumberOfSamples((long)10e3);
+	B14.setDisplayNumberOfSamples(true);
+	*/
 	
 	
 	// #####################################################################################################
