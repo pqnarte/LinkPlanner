@@ -14,20 +14,14 @@ void ElectricalSignalGenerator::initialize(void) {
 
 bool ElectricalSignalGenerator::runBlock(void) {
 	long int space = outputSignals[0]->space();
-	long int process;
-
-	if (numberOfSamples >= 0) {
-		process = min(space, numberOfSamples);
-	}
-	else
-		process = space;
+	long int process = space;
 
 	if (process <= 0) return false;
-
+	
 	if (signalFunction == ContinuousWave) {
 
-		for (int i = 0; i <= numberOfSamples; i++) {
-			outputSignals[0]->bufferPut((t_real)1.0);
+		for (int i = 0; i <= process; i++) {
+			outputSignals[0]->bufferPut((t_real)(1.0 * gainValue));
 		}
 	}
 

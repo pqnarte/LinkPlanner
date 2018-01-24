@@ -45,6 +45,9 @@
     <ClCompile Include="..\..\lib\electrical_signal_generator_20180124.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\probability_estimator_20180124.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\netxpto.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\electrical_signal_generator_20180124.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\probability_estimator_20180124.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

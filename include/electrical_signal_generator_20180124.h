@@ -14,7 +14,7 @@ class ElectricalSignalGenerator : public Block {
 	double samplingPeriod{ 0.0 };
 	double symbolPeriod{ 0.0 };
 	double gainValue{ 1.0 };
-	long int numberOfSamples{ -1.0 };
+	
 
 public:
 	ElectricalSignalGenerator() {};
@@ -36,8 +36,6 @@ public:
 	void setGain(double gvalue) { gainValue = gvalue; };
 	double getGain() { return gainValue; };
 
-	void setNumberOfSamples(long int nSample) { numberOfSamples = nSample; };
-	long int getNumberOfSamples() { return numberOfSamples; };
 
 };
 

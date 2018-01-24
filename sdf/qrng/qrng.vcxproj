@@ -149,6 +149,7 @@
     <ClCompile Include="..\..\lib\netxpto.cpp" />
     <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp" />
     <ClCompile Include="..\..\lib\polarizer_20180113.cpp" />
+    <ClCompile Include="..\..\lib\probability_estimator_20180124.cpp" />
     <ClCompile Include="..\..\lib\qrng_decision_circuit.cpp" />
     <ClCompile Include="..\..\lib\single_photon_detector_20180111.cpp" />
     <ClCompile Include="..\..\lib\single_photon_source_20171218.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="..\..\include\netxpto.h" />
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
     <ClInclude Include="..\..\include\polarizer_20180113.h" />
+    <ClInclude Include="..\..\include\probability_estimator_20180124.h" />
     <ClInclude Include="..\..\include\qrng_decision_circuit.h" />
     <ClInclude Include="..\..\include\single_photon_detector_20180111.h" />
     <ClInclude Include="..\..\include\single_photon_source_20171218.h" />
