@@ -3,13 +3,13 @@
 # include <math.h>	   // remainder(), pow()
 
 # include "netxpto.h"
-# include "single_photon_detector.h"
+# include "single_photon_detector_20180111.h"
 
 void SinglePhotonDetector::initialize(void) {
 
-	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
-	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
-	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }

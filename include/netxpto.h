@@ -27,13 +27,14 @@ typedef int t_integer;
 typedef double t_real;
 typedef complex<t_real> t_complex;
 typedef struct { t_complex x; t_complex y; } t_complex_xy;
+typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_complex_xy_mp;;
 typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
 typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
-enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
+enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, ComplexValueXYMP, PhotonValue, PhotonValueMP, Message};
 
 
 //########################################################################################################################################################
@@ -76,7 +77,6 @@ public:
 
 	double centralWavelength{ 1550E-9 };
 	double centralFrequency{ SPEED_OF_LIGHT / centralWavelength };
-
 
 	/* Methods */
 
@@ -127,6 +127,7 @@ public:
 	void virtual bufferGet(t_real *valueAddr);
 	void virtual bufferGet(t_complex *valueAddr);
 	void virtual bufferGet(t_complex_xy *valueAddr);
+	void virtual bufferGet(t_complex_xy_mp *valueAddr);
 	void virtual bufferGet(t_photon *valueAddr);
 	void virtual bufferGet(t_photon_mp *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
@@ -253,11 +254,30 @@ public:
 	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex[bLength]; };
 };
 
-
 class TimeContinuous : public Signal {
 public:
 	TimeContinuous(){}
 };
+
+/*class PhotonStream : public Signal {
+
+public:
+	PhotonStream(int bLength) { setType("PhotonStream", PhotonValue); setBufferLength(bLength); }
+	PhotonStream() { setType("PhotonStream", PhotonValue); if (buffer == nullptr) buffer = new t_photon[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon[bLength]; };
+};
+
+class PhotonStreamMP : public Signal {
+
+public:
+	PhotonStreamMP(int bLength) { setType("PhotonStreamMP", PhotonValueMP); setBufferLength(bLength); }
+	PhotonStreamMP() { setType("PhotonStreamMP", PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon_mp[bLength]; };
+
+};*/
+
 
 class TimeContinuousAmplitudeDiscrete : public Signal {
 public:
@@ -385,6 +405,17 @@ public:
 	PhotonStreamXY() { setType("PhotonStreamXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[bufferLength]; }
 
 	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex_xy[bLength]; };
+};
+
+class PhotonStreamXYMP : public Signal {
+
+public:
+	PhotonStreamXYMP(string fName) { setType("PhotonStreamXYMP", ComplexValueXYMP); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy_mp[bufferLength]; }
+	PhotonStreamXYMP(string fName, int bLength) { setType("PhotonStreamXYMP", ComplexValueXYMP); setFileName(fName); setBufferLength(bLength); }
+	PhotonStreamXYMP(int bLength) { setType("PhotonStreamXYMP", ComplexValueXYMP); setBufferLength(bLength); }
+	PhotonStreamXYMP() { setType("PhotonStreamXYMP", ComplexValueXYMP); if (buffer == nullptr) buffer = new t_complex_xy_mp[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex_xy_mp[bLength]; };
 };
 
 class PhotonStreamMP : public Signal {
@@ -678,18 +709,19 @@ public:
 
 // PROGRAM_INCLUDE_netxpto_H_
 
-
+/*
 class FourierTransformA
 {
 public:
 	vector<complex<double>> transform(vector<complex<double> > &vec, int sign);
 };
+*/
 
-
-class FftA {
+class FourierTransform {
 
 public:
 
+	vector<complex<double>> transform(vector<complex<double> > &vec, int sign);
 	vector<complex<double>> fft(std::vector<std::complex<double> > &vec);
 	vector<complex<double>> ifft(std::vector<std::complex<double> > &vec);
 	void transformRadix2(std::vector<std::complex<double> > &vec);
@@ -698,6 +730,14 @@ public:
 		const std::vector<std::complex<double> > &vecx,
 		const std::vector<std::complex<double> > &vecy,
 		std::vector<std::complex<double> > &vecout);
+};
+
+
+
+class ovelapAndSaveMethod
+{
+public:
+	vector<complex<double>> overlapSave(vector<complex<double>> &inputData, vector<complex<double>> &filterData);
 };
 
 #endif
