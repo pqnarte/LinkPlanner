@@ -32,7 +32,7 @@ bool HilbertTransform::runBlock(void)
 
 	ComplexMult C;
 	//FourierTransform FT;
-	FourierTransformA FT;
+	FourierTransform FT;
 	vector<double> c(process);
 	vector<double> d(process);
 	vector<complex<double>> hilbertTransformerFrequencyDomain(process);
@@ -40,6 +40,8 @@ bool HilbertTransform::runBlock(void)
 	vector<complex<double>> hilbertTransformedTimeDomain(process);
 	vector<double> re(process);
 	vector<double> im(process);
+	
+	vector<complex<double>> inPresent(process);
 
 	///////////// Hilbert transformer in frequency domain ///////////////
 	for (int i = 0; i < process; i++)
@@ -67,21 +69,21 @@ bool HilbertTransform::runBlock(void)
 
 	///////////////////////////////////////////////////////////////////////
 
-	
 	for (int i = 0; i < process; i++)					// Get the Input signal as a vector of size "n"
 	{
 		inputSignals[0]->bufferGet(&input);
 		inputBufferTimeDomain.at(i) = input;
 	}
 						
-
 	for (int i = 0; i < process; i++)
 	{
 		re[i] = inputBufferTimeDomain.at(i);			// Real part of input
 		im[i] = 0;										// Imaginary part which is manipulated as "0"
 	}
 
-	IN = C.ReImVect2ComplexVector(re, im);					// Time domain complex form signal
+	IN = C.ReImVect2ComplexVector(re, im);				// Time domain complex form signal
+
+	const vector<complex<double>> inPrevious(IN);
 
 	inputSignalFreqencyDomain = FT.transform(IN, -1);	// Fast Fourier Transform (FFT)
 
@@ -90,12 +92,12 @@ bool HilbertTransform::runBlock(void)
 	hilbertTransformedTimeDomain = FT.transform(hilbertTransformedFrequencyDomain, 1);	// Inverse Fast Fourier Transform (IFFT)
 
 	for (int i = 0; i < process; i++)					// Put the data using bufferput
-
 	{
 		t_real OUT;
-	    OUT = inputSignalFreqencyDomain[i].real();
+	    OUT = hilbertTransformedTimeDomain[i].real();
 		outputSignals[0]->bufferPut((t_real)(OUT));
 	}
+
 	
 	return true;
 

@@ -10,14 +10,11 @@ Study better the Visual Studio Compiler to generate a better executable file.
 
 
 #################################################################
-2017-11-25
+2018-01-24
 
-Allows the generation of the executable without installing the Visual C++.
+Integração da simualação de VHDL no simulador
 
-You can use the MSBuild tool to build a Visual C++ application from the command prompt.
-
-msbuild.exe [ project file ] [ options ]
-
-https://msdn.microsoft.com/en-us/library/dd293626.aspx
+Simulação de VHDL
+Interface para ler sinais do simulador->VHDL e uma interface para passar do VHDL->Simulador 
 
 #################################################################

@@ -1,3 +1,14 @@
+2018-01-24
+TO BE DONE
+	rever o sistema bpsk_system
+
+	integração com simulação em VHDL
+
+next meeting:
+	30/1/2018, 15h
+	
+
+
 2018-01-16
 TO BE DONE
 	- quando se usa o msbuild gerar o executável na pasta sdf/bpsk_system

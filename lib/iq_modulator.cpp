@@ -74,7 +74,7 @@ bool IqModulator::runBlock(void) {
 		inputSignals[1]->bufferGet(&im);
 
 		t_complex valueX(re, im);
-		valueX = .5*sqrt(outputOpticalPower)*valueX;
+		valueX = 0.5*sqrt(outputOpticalPower)*valueX;
 
 		signal_value_type sType = outputSignals[0]->getValueType();
 

@@ -7,7 +7,7 @@ void QRNG_DecisionCircuit::initialize(void) {
 
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
 	outputSignals[0]->samplingPeriod = inputSignals[0]->symbolPeriod;;
-	outputSignals[0]->samplesPerSymbol = 1;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
