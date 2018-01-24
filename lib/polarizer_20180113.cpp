@@ -1,11 +1,10 @@
 #include "netxpto.h"
-#include "polarizer_20180113.h"
+#include "polarizer.h"
 
 void Polarizer::initialize(void) {
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 }
 
 bool Polarizer::runBlock(void) {

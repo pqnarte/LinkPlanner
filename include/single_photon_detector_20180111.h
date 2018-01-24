@@ -2,8 +2,6 @@
 # define SINGLE_PHOTON_DETECTOR_H_
 
 # include "netxpto.h"
-# include <array>
-# include <random>
 
 class SinglePhotonDetector : public Block {
 	
@@ -12,10 +10,7 @@ class SinglePhotonDetector : public Block {
 	double threshold{ 0.8 };
 	t_integer Horizontal{ 0 };
 	t_integer Vertical{ 1 };
-	t_complex unit = 1.0;
-	t_real F = 1.0;
-	array<t_complex, 4> matrix = { { F*unit, 0, 0, F*unit } };
-	std::default_random_engine generator;
+
 public:
 
 	SinglePhotonDetector(vector<Signal *> &inputSignals, vector<Signal *> &outputSignals) : Block(inputSignals, outputSignals){};
