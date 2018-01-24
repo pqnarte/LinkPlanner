@@ -8,7 +8,7 @@
 \end{tabular}
 \end{tcolorbox}
 
-True random numbers are indispensable in the field of cryptography to guarantee the security of the communication protocols \cite{katsoprinakis2008quantum}. There are two approaches for random number generation, which in some applications must be unpredictable: the pseudorandom generation which are based on some kind of classical algorithms implemented on a computing device, or the physical random generators which consist in measuring some physical observable with random behaviour.
+True random numbers are indispensable in the field of cryptography to guarantee the security of the communication protocols \cite{katsoprinakis2008quantum}. There are two approaches for random number generation: the pseudorandom generation which are based on an algorithm implemented on a computer, and the physical random generators which consist in measuring some physical observable with random behaviour. Since classical physics description is deterministic, all classical processes are in principle predictable. Therefore, a true random number generator must be based on a quantum process.
 
 In this chapter, it is presented the theoretical analysis and simulation of a quantum random generator by measuring the polarization of single photons with a polarizing beam splitter.
 
@@ -19,10 +19,10 @@ Nowadays, the only known way to generate truly random numbers is by building a p
 \begin{figure}[H]
     \centering
         \includegraphics[clip, trim=3cm 20cm 5cm 5cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Random_Number_Generator.pdf}
-    \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is polarized with POL at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
+    \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is linearly polarized at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
 \end{figure}
 
-The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is polarized at $45^\circ$ and has equal probability of found in the horizontal polarization (H) or in the vertical polarization (V) output of the PBS. However, quantum theory estimates for both cases the individual choices are truly random and independent one from each other. This way, the detection of the photons in each output of the polarization beam splitter is done with single photon detectors and combining the detection pulse in a switch, which has two possible states: "0" \space or "1". When the detector \textbf{D1} fires, the switch is flipped to state "0" \space and does not mode until a detection event in detector \textbf{B2} occurs and it does not move until a detection occurs in detector \textbf{D1}. In the case of some detections occur in a row in the same detector, only the first detection clicks and the following detections leave the switch unaltered.
+The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is linearly polarized at $45^\circ$ and has equal probability of found in the horizontal polarization (H) or in the vertical polarization (V) output of the PBS. Quantum theory estimates for both cases the individual choices are truly random and independent one from each other. This way, the detection of the photons in each output of the polarization beam splitter is done with single photon detectors and combining the detection pulse in a switch, which has two possible states: "0" \space or "1". When the detector \textbf{D1} fires, the switch is flipped to state "0" \space and does not move until a detection event in detector \textbf{B2} occurs and it does not move until a detection occurs in detector \textbf{D1}. In the case of some detections occur in a row in the same detector, only the first detection clicks and the following detections leave the switch unaltered.
 
 \subsection{Simulation Analysis}
 
@@ -32,48 +32,7 @@ The principle of operation of the random generator is shown in figure \ref{qrng}
     \caption{Block diagram of the simulation of a Quantum Random Generator.}\label{sim_qrng}
 \end{figure}
 
-The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. As one can see in the figure, there is a binary source which, in this case, produces a deterministic cycle of binary numbers. The binary stream should be set according to the polarization wished after block Polarizer. Bit stream has two bits, the first bit sets the axis direction and the second bit sets the basis. Table \ref{tb:basisbits} shows the correspondence bits to each basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence to each basis.}
-     \label{tb:basisbits}
-    \centering
-    \begin{tabular}{c|c}
-    \textbf{\textit{Basis}}         &  \\ \hline
-     0 & $+$ \\
-     1 & $\times$ \\
-    \end{tabular}
-
-\end{table}
-Table \ref{tb:rectilinear} shows the correspondent bits for each axis in rectilinear basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence of Rectilinear Basis.}
-    \label{tb:rectilinear}
-    \centering
-    \begin{tabular}{c|c}
-                & Basis "+" \\ \hline
-     0 & $\to (0^{\circ})$ \\
-     1 & $\uparrow (90^{\circ})$ \\
-    \end{tabular}
-
-\end{table}
-
-Table \ref{tb:diagonal} shows the correspondent bits for each axis in diagonal basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence of Diagonal Basis.}
-    \label{tb:diagonal}
-    \centering
-    \begin{tabular}{c|c}
-          & Basis "$\times$" \\ \hline
-     0 & $\searrow (-45^{\circ})$ \\
-     1 & $\nearrow (45^{\circ})$ \\
-    \end{tabular}
-
-\end{table}
-
-According with the previous tables, in order to have a polarizer at $45^\circ$, the bit stream in binary source block should be $\{1,1\}$. This way, single photons from source will reach the polarization beam splitter polarized at $45^\circ$ and the photon has $50\%$ of follow the horizontal path or the vertical path. Therefore, each single photon detector has the same probability of detect the photon. However, if one of the detectors flips, the other will not flip.
+The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. The linear polarizer has an input control signal (S6) which allows to change the rotation angle. Nevertheless, the only purpose is to generate a time and amplitude continuous real signal with the value of the rotation angle in degrees. 
 
 In addition, the photons are generated by single photon source block at a rate defined by the clock rate.
 
