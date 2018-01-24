@@ -91,9 +91,9 @@ class HomodyneReceiver : public SuperBlock {
 
 	Add B10;
 
-//	PulseShaper B11;
+	PulseShaper B11;
 
-//	PulseShaper B12;
+	PulseShaper B12;
 
 	//Clock B13A;
 
@@ -143,9 +143,9 @@ public:
 	void setAmplification(t_real Amplification) { B5.setGain(Amplification); B6.setGain(Amplification); };
 	void setNoiseAmplitude(t_real NoiseAmplitude) { B7.setNoiseSpectralDensity(NoiseAmplitude); B8.setNoiseSpectralDensity(NoiseAmplitude);};
 
-//	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
-//	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
-//	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
+	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
+	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
+	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
 
 	//void setClockPeriod(double per) { B13A.setClockPeriod(per); B13B.setClockPeriod(per); };
 
