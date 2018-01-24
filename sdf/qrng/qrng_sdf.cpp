@@ -1,10 +1,7 @@
 # include "netxpto.h"
 
-# include "binary_source.h"
+# include "electrical_signal_generator_20180124.h"
 # include "clock_20171219.h"
-# include "m_qam_mapper.h"
-# include "discrete_to_continuous_time.h"
-# include "pulse_shaper_20180111.h"
 # include "single_photon_source_20171218.h"
 # include "polarizer_20180113.h"
 # include "polarization_beam_splitter_20180109.h"
@@ -24,71 +21,54 @@ int main(){
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
 	
-	Binary S1{ "S1.sgn" };
-	S1.setSaveSignal(false);
+	TimeContinuousAmplitudeContinuousReal S1{ "S1.sgn" };
+	//S1.setSaveSignal(false);
 
 	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
-	S2.setBufferLength(512);
-	S2.setSaveSignal(false);
+	//S2.setSaveSignal(false);
 
-	TimeDiscreteAmplitudeDiscreteReal S3{ "S3.sgn" };
+	PhotonStreamXY S3{ "S3.sgn" };
 	S3.setSaveSignal(false);
 
-	TimeDiscreteAmplitudeDiscreteReal S4{ "S4.sgn" };
+	PhotonStreamXY S4{ "S4.sgn" };
 	S4.setSaveSignal(false);
 
-	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
+	PhotonStreamXYMP S5{ "S5.sgn" };
 	S5.setSaveSignal(false);
 
 	TimeContinuousAmplitudeDiscreteReal S6{ "S6.sgn" };
 	S6.setSaveSignal(false);
 
-	PhotonStreamXY S7{ "S7.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S7{ "S7.sgn" };
 	S7.setSaveSignal(false);
 
-	PhotonStreamXY S8{ "S8.sgn" };
+	Binary S8{ "S8.sgn" };
 	S8.setSaveSignal(false);
 
-	PhotonStreamXYMP S9{ "S9.sgn" };
-	S9.setSaveSignal(false);
+	Binary S9{ "S9.sgn" };
+	//S9.setSaveSignal(false);
 
-	TimeContinuousAmplitudeDiscreteReal S10{ "S10.sgn" };
-	S10.setSaveSignal(false);
-
-	TimeContinuousAmplitudeDiscreteReal S11{ "S11.sgn" };
-	S11.setSaveSignal(false);
-
-	Binary S12{ "S12.sgn" };
-
+	
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
-
-
-	BinarySource B1{ vector<Signal*> {}, vector<Signal*> { &S1 } };
-	B1.setMode(DeterministicCyclic);
-	B1.setBitPeriod(1/(2*RateOfPhotons));
-	B1.setBitStream("11");
-
+	ElectricalSignalGenerator B1{ vector <Signal*>{}, vector<Signal*>{&S1} };
+	B1.setSamplingPeriod((1 / RateOfPhotons));
+	B1.setSymbolPeriod(NumberOfSamplesPerSymbol * (1 / RateOfPhotons));
+	B1.setFunction(ContinuousWave);
+	B1.setGain(45.0);
 
 	Clock B2{ vector<Signal*>{}, vector<Signal*>{&S2} };
 	B2.setClockPeriod(1 / RateOfPhotons);
 	B2.setSamplingPeriod((1 / RateOfPhotons) / NumberOfSamplesPerSymbol);
 	B2.setClockPhase(3 * PI / 2);
 
-	MQamMapper B3{ vector<Signal*>{&S1}, vector<Signal*>{&S3, &S4} };
-	B3.setIqAmplitudes(iqAmplitudeValues);
-
-	Sink B4{ vector<Signal*>{&S4}, vector<Signal*>{} };
-	//B4.setNumberOfSamples(10000);
+	Sink BB4{ vector<Signal*>{&S2}, vector<Signal*>{} };
+	BB4.setNumberOfSamples(512);
+	Sink BB3{ vector<Signal*>{&S1}, vector<Signal*>{} };
+	BB3.setNumberOfSamples(512);
 	//B4.setDisplayNumberOfSamples(true);
-
-	DiscreteToContinuousTime B5{ vector<Signal*>{&S3}, vector<Signal*>{&S5} };
-	B5.setNumberOfSamplesPerSymbol(NumberOfSamplesPerSymbol);
-
-	PulseShaper B6{ vector<Signal*>{&S5}, vector<Signal*>{&S6} };
-	B6.setFilterType(Square);
-
+	/*
 	SinglePhotonSource B7{ vector<Signal*>{&S2},vector<Signal*>{&S7} };
 	
 
@@ -106,7 +86,7 @@ int main(){
 
 	Sink B13{ vector<Signal*>{&S12}, vector<Signal*>{} };
 	B13.setNumberOfSamples((long)1e8);
-	B13.setDisplayNumberOfSamples(true);
+	B13.setDisplayNumberOfSamples(true);*/
 	/*
 	Sink B14{ vector<Signal*>{&S11}, vector<Signal*>{} };
 	B14.setNumberOfSamples((long)10e3);
@@ -118,7 +98,7 @@ int main(){
 	// ########################### System Declaration and Inicialization ###################################
 	// #####################################################################################################
 
-	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9,&B10, &B11, &B12, &B13 } };
+	System MainSystem{ vector<Block*> { &B1, &B2, &BB4, &BB3 } };
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
