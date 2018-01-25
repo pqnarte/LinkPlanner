@@ -1,3 +1,0 @@
-Number of received Bits: 0
-Probability Of 0: -nan(ind)% 
-Probability Of 1: -nan(ind)% 

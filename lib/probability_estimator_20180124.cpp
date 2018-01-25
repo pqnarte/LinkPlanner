@@ -20,10 +20,15 @@ bool ProbabilityEstimator::runBlock(void) {
 		double ProbabilityOf1 = (double)(NumberOf1 / receivedData) * 100;
 		double ProbabilityOf0 = (double)(NumberOf0 / receivedData) * 100;
 
+		double ErrorOf1 = (double)(zscore * sqrt((probabilityY*(1-probabilityY))/receivedData));
+		double ErrorOf0 = (double)(zscore * sqrt((probabilityX*(1 - probabilityX)) / receivedData));
+
 		/*Outputing a .txt report*/
 		ofstream myfile;
 		myfile.open("QRNG.txt");
 		myfile << "Number of received Bits: " << receivedData << "\n";
+		myfile << "Error Margin of Prob1: " << ErrorOf1 << "\n";
+		myfile << "Error Margin of Prob0: " << ErrorOf0 << "\n";
 		myfile << "Probability Of 0: " << ProbabilityOf0 << "% \n";
 		myfile << "Probability Of 1: " << ProbabilityOf1 << "% \n";
 

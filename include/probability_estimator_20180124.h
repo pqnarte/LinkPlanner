@@ -6,7 +6,9 @@
 class ProbabilityEstimator : public Block {
 
 	/*Input Parameters*/
-
+	double probabilityX{ 0.0 };
+	double probabilityY{ 0.0 };
+	double zscore{ 2.576 }; // For a 99% Confidence Interval
 
 	/*State variables*/	
 
@@ -22,6 +24,15 @@ public:
 	void initialize(void);
 
 	bool runBlock(void);
+
+	void setProbabilityExpectedX(double probx) { probabilityX = probx; };
+	double getProbabilityExpectedX() { return probabilityX; };
+
+	void setProbabilityExpectedY(double proby) { probabilityY = proby; };
+	double getProbabilityExpectedY() { return probabilityY; };
+
+	void setZScore(double z) { zscore = z; };
+	double getZScore() { return zscore; };
 
 private:
 	int firstTime = 1;
