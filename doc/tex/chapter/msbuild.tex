@@ -28,7 +28,8 @@ All the necessary files will be available in the \textbackslash{}msbuild\textbac
     \item Open the \textbf{Command Line} and navigate to your project folder (where the .vcxproj file is located).
     \item Enter the command:\\ \hbox{\textbf{msbuild <filename> /tv:14.0 /p:PlatformToolset=v140,TargetPlatformVersion=8.1,OutDir=``.\textbackslash{}''}} , where <filename> is your .vcxproj file.
   \end{enumerate}
-  After building the project, the .exe file should be automatically generated to the current folder.
+  After building the project, the .exe file should be automatically generated to the current folder.\\
+  The signals will be generated into the sub-directory \textbf{\textbackslash{}signals\textbackslash{}}, which must already exist.
 \section{Known issues}
   \subsection{Missing ucrtbased.dll}
   In order to solve this issue, please follow the instructions below:
