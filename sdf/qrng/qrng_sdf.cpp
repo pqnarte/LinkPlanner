@@ -23,28 +23,28 @@ int main(){
 	// #####################################################################################################
 	
 	TimeContinuousAmplitudeContinuousReal S1{ "S1.sgn" };
-	//S1.setSaveSignal(false);
+	S1.setSaveSignal(false);
 
 	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
-	//S2.setSaveSignal(false);
+	S2.setSaveSignal(false);
 
 	PhotonStreamXY S3{ "S3.sgn" };
-	//S3.setSaveSignal(false);
+	S3.setSaveSignal(false);
 
 	PhotonStreamXY S4{ "S4.sgn" };
-	//S4.setSaveSignal(false);
+	S4.setSaveSignal(false);
 
 	PhotonStreamXYMP S5{ "S5.sgn" };
-	//S5.setSaveSignal(false);
+	S5.setSaveSignal(false);
 
-	TimeContinuousAmplitudeDiscreteReal S6{ "S6.sgn" };
-	//S6.setSaveSignal(false);
+	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };
+	S6.setSaveSignal(false);
 
-	TimeContinuousAmplitudeDiscreteReal S7{ "S7.sgn" };
-	//S7.setSaveSignal(false);
+	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn" };
+	S7.setSaveSignal(false);
 
 	Binary S8{ "S8.sgn" };
-	//S8.setSaveSignal(false);
+	S8.setSaveSignal(false);
 
 	Binary S9{ "S9.sgn" };
 	S9.setSaveSignal(false);
@@ -81,7 +81,7 @@ int main(){
 	ProbabilityEstimator B9{ vector<Signal*>{&S8}, vector<Signal*>{&S9} };
 
 	Sink B10{ vector<Signal*>{&S9}, vector<Signal*>{} };
-	B10.setNumberOfSamples((long)1000);
+	B10.setNumberOfSamples((long)1e9);
 	B10.setDisplayNumberOfSamples(true);
 	
 	
