@@ -20,8 +20,9 @@ architecture Behavioral of VHDL_IO is
 	--------------------------------------------------------
 	-- TestBench Internal Signals	--
 	--------------------------------------------------------
-	file file_input_signal : text;
-	file file_output_signal : text;
+	type CHARF is file of character;
+	file file_input_signal : CHARF; -- Pointer to the input .sgn file
+	file file_output_signal : CHARF;-- Pointer to the output .sgn file
 
 		
 begin
@@ -33,29 +34,32 @@ begin
 	--port map(rawSignalIn => s_simulated_signal,
 	--	   modulatedOut => s_modulated_signal);
 				
-----------------------------------------------------------------------------------------------------------------
--- I/O HANDLER PROCESS
-----------------------------------------------------------------------------------------------------------------
+	--------------------------------------------------------
+	-- I/O HANDLER PROCESS
+	--------------------------------------------------------
 io_proc: process
 	
-				variable input_line  : line; -- pointer to string
-				variable output_line : line;
+				variable input_line  : character; -- pointer to char buffer
+				variable output_line : character;
+				constant input_file_path : string := "C:\bolsaIT\LinkPlanner\vhdl_io\input_files\S5.sgn";
+				constant output_file_path : string := "C:\bolsaIT\LinkPlanner\vhdl_io\output_files\S5.sgn";
 				
 			begin
-				-- Reads content of file ficheiro_teste.txt and writes it to file output_teste.txt
-				file_open(file_input_signal, "C:\bolsaIT\VHDL_IO\ficheiro_teste.txt", READ_MODE);
-				file_open(file_output_signal, "C:\bolsaIT\VHDL_IO\output_teste.txt", WRITE_MODE);
-				
-				--Later it will read from a .sgn file and write to a .sgn file
-				--file_open(file_input_signal, "C:\bolsaIT\VHDL_IO\S5.sgn", READ_MODE);
-				--file_open(file_output_signal, "C:\bolsaIT\VHDL_IO\S5_OUT.sgn", WRITE_MODE);
+			
+				file_open(file_input_signal, input_file_path, READ_MODE);
+				file_open(file_output_signal, output_file_path, WRITE_MODE);
 				
 				while not endfile(file_input_signal) loop -- Reads all the lines
 					-- Reads each line from the input file
-					readline(file_input_signal, input_line);
+					read(file_input_signal, input_line);
+					-----------------
+					-- Computation --
+					-----------------
+					-- ... 
+					
+					
 					-- Writes each line to the output file
-					write(output_line, input_line.all); -- input_line.all returns the string it points to
-					writeline(file_output_signal, output_line);
+					write(file_output_signal, input_line);
 				end loop;
 			
 				file_close(file_input_signal);
