@@ -34,8 +34,6 @@ public:
 	void setZScore(double z) { zscore = z; };
 	double getZScore() { return zscore; };
 
-private:
-	int firstTime = 1;
 
 
 };
