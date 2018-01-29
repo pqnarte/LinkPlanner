@@ -18,10 +18,13 @@
     <ClCompile Include="quantum_random_number_generator_sdf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\netxpto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\lib\sink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\quantum_random_number_generator_decision_circuit.cpp">
+    <ClCompile Include="..\..\lib\qrng_decision_circuit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\clock_20171219.cpp">
@@ -45,15 +48,15 @@
     <ClCompile Include="..\..\lib\probability_estimator_20180124.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\netxpto.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\include\netxpto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\include\sink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\quantum_random_number_generator_decision_circuit.h">
+    <ClInclude Include="..\..\include\qrng_decision_circuit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\clock_20171219.h">
@@ -75,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\probability_estimator_20180124.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\netxpto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
