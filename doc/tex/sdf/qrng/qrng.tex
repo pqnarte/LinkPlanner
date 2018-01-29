@@ -8,7 +8,7 @@
 \end{tabular}
 \end{tcolorbox}
 
-True random numbers are indispensable in the field of cryptography to guarantee the security of the communication protocols \cite{katsoprinakis2008quantum}. There are two approaches for random number generation, which in some applications must be unpredictable: the pseudorandom generation which are based on some kind of classical algorithms implemented on a computing device, or the physical random generators which consist in measuring some physical observable with random behaviour.
+True random numbers are indispensable in the field of cryptography to guarantee the security of the communication protocols \cite{katsoprinakis2008quantum}. There are two approaches for random number generation: the pseudorandom generation which are based on an algorithm implemented on a computer, and the physical random generators which consist in measuring some physical observable with random behaviour. Since classical physics description is deterministic, all classical processes are in principle predictable. Therefore, a true random number generator must be based on a quantum process.
 
 In this chapter, it is presented the theoretical analysis and simulation of a quantum random generator by measuring the polarization of single photons with a polarizing beam splitter.
 
@@ -19,61 +19,20 @@ Nowadays, the only known way to generate truly random numbers is by building a p
 \begin{figure}[H]
     \centering
         \includegraphics[clip, trim=3cm 20cm 5cm 5cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Random_Number_Generator.pdf}
-    \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is polarized with POL at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
+    \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is linearly polarized at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
 \end{figure}
 
-The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is polarized at $45^\circ$ and has equal probability of found in the horizontal polarization (H) or in the vertical polarization (V) output of the PBS. However, quantum theory estimates for both cases the individual choices are truly random and independent one from each other. This way, the detection of the photons in each output of the polarization beam splitter is done with single photon detectors and combining the detection pulse in a switch, which has two possible states: "0" \space or "1". When the detector \textbf{D1} fires, the switch is flipped to state "0" \space and does not mode until a detection event in detector \textbf{B2} occurs and it does not move until a detection occurs in detector \textbf{D1}. In the case of some detections occur in a row in the same detector, only the first detection clicks and the following detections leave the switch unaltered.
+The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is linearly polarized at $45^\circ$ and has equal probability of found in the horizontal polarization (H) or in the vertical polarization (V) output of the PBS. Quantum theory estimates for both cases the individual choices are truly random and independent one from each other. This way, the detection of the photons in each output of the polarization beam splitter is done with single photon detectors and combining the detection pulse in a switch, which has two possible states: "0" \space or "1". When the detector \textbf{D1} fires, the switch is flipped to state "0" \space and does not move until a detection event in detector \textbf{B2} occurs and it does not move until a detection occurs in detector \textbf{D1}. In the case of some detections occur in a row in the same detector, only the first detection clicks and the following detections leave the switch unaltered.
 
 \subsection{Simulation Analysis}
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=0.5cm 5cm 0.5cm 14cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Simulation_qrng.pdf}
+        \includegraphics[clip, trim=5cm 5cm 0.5cm 15cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Simulation_qrng.pdf}
     \caption{Block diagram of the simulation of a Quantum Random Generator.}\label{sim_qrng}
 \end{figure}
 
-The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. As one can see in the figure, there is a binary source which, in this case, produces a deterministic cycle of binary numbers. The binary stream should be set according to the polarization wished after block Polarizer. Bit stream has two bits, the first bit sets the axis direction and the second bit sets the basis. Table \ref{tb:basisbits} shows the correspondence bits to each basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence to each basis.}
-     \label{tb:basisbits}
-    \centering
-    \begin{tabular}{c|c}
-    \textbf{\textit{Basis}}         &  \\ \hline
-     0 & $+$ \\
-     1 & $\times$ \\
-    \end{tabular}
-
-\end{table}
-Table \ref{tb:rectilinear} shows the correspondent bits for each axis in rectilinear basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence of Rectilinear Basis.}
-    \label{tb:rectilinear}
-    \centering
-    \begin{tabular}{c|c}
-                & Basis "+" \\ \hline
-     0 & $\to (0^{\circ})$ \\
-     1 & $\uparrow (90^{\circ})$ \\
-    \end{tabular}
-
-\end{table}
-
-Table \ref{tb:diagonal} shows the correspondent bits for each axis in diagonal basis.
-
-\begin{table}[H]
-    \caption{Bits correspondence of Diagonal Basis.}
-    \label{tb:diagonal}
-    \centering
-    \begin{tabular}{c|c}
-          & Basis "$\times$" \\ \hline
-     0 & $\searrow (-45^{\circ})$ \\
-     1 & $\nearrow (45^{\circ})$ \\
-    \end{tabular}
-
-\end{table}
-
-According with the previous tables, in order to have a polarizer at $45^\circ$, the bit stream in binary source block should be $\{1,1\}$. This way, single photons from source will reach the polarization beam splitter polarized at $45^\circ$ and the photon has $50\%$ of follow the horizontal path or the vertical path. Therefore, each single photon detector has the same probability of detect the photon. However, if one of the detectors flips, the other will not flip.
+The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. The linear polarizer has an input control signal (S1) which allows to change the rotation angle. Nevertheless, the only purpose is to generate a time and amplitude continuous real signal with the value of the rotation angle in degrees.
 
 In addition, the photons are generated by single photon source block at a rate defined by the clock rate.
 
@@ -91,7 +50,7 @@ In table \ref{tb:inputparameters2} are presented the input parameters of the sys
 \textbf{Parameter}                      & \textbf{Default Value}                                       \\ \hline
 RateOfPhotons                           & 1e6                                                          \\ \hline
 NumberOfSamplesPerSymbol                & 16                                                           \\ \hline
-vector<t\_iqValues> iqAmplitudeValues   & \{ 0.0,0.0 \},\{ -45.0,0.0 \},\{ 90.0,0.0 \},\{ 45.0,0.0 \}  \\ \hline
+PolarizerAngle                          & 45.0                                                         \\ \hline
 
 \end{tabular}
 \end{table}
@@ -104,18 +63,15 @@ In table \ref{tb:signals2} are presented the system signals to implement the sim
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Signal name}                            & \textbf{Signal type}                      \\ \hline
-S1                                              &  Binary                                   \\ \hline
+S1                                              &  TimeContinuousAmplitudeContinuousReal    \\ \hline
 S2                                              &  TimeContinuousAmplitudeContinuousReal    \\ \hline
-S3                                              &  TimeDiscreteAmplitudeDiscreteReal        \\ \hline
-S4                                              &  TimeDiscreteAmplitudeDiscreteReal        \\ \hline
-S5                                              &  TimeContinuousAmplitudeDiscreteReal      \\ \hline
-S6                                              &  TimeContinuousAmplitudeDiscreteReal      \\ \hline
-S7                                              &  PhotonStreamXY                           \\ \hline
-S8                                              &  PhotonStreamXY                           \\ \hline
-S9                                              &  PhotonStreamXY\_MP                       \\ \hline
-S10                                             &  TimeContinuousAmplitudeDiscreteReal      \\ \hline
-S11                                             &  TimeContinuousAmplitudeDiscreteReal      \\ \hline
-S12                                             &  Binary                                   \\ \hline
+S3                                              &  PhotonStreamXY                           \\ \hline
+S4                                              &  PhotonStreamXY                           \\ \hline
+S5                                              &  PhotonStreamXYMP                         \\ \hline
+S6                                              &  TimeContinuousAmplitudeContinuousReal    \\ \hline
+S7                                              &  TimeContinuousAmplitudeContinuousReal    \\ \hline
+S8                                              &  Binary                                   \\ \hline
+S9                                              &  Binary                                   \\ \hline
 \end{tabular}
 \end{table}
 
@@ -129,17 +85,13 @@ Table \ref{tb:signalsh} presents the header files used to implement the simulati
 \hline
 \textbf{File name}                              & \textbf{Description}                                                          & \textbf{Status} \\ \hline
 netxpto.h                                       &                                                                               &    \checkmark   \\ \hline
-binary\_source.h                                &Mode(DeterministicCyclic)                                                      & \checkmark   \\
-                                                &BitStream("01")                                                                & \checkmark   \\
-                                                &BitPeriod(1/(2*RateOfPhotons))                                                 & \checkmark   \\ \hline
+electrical\_signal\_generator\_20180124.h       &setFunction(), setGain()                                                       &    \checkmark   \\ \hline
 clock\_20171219.h                               &ClockPeriod(1 / RateOfPhotons)                                                 &    \checkmark   \\ \hline
-discrete\_to\_continuous\_time.h                &NumberOfSamplesPerSymbol                                                       &    \checkmark   \\ \hline
-m\_qam\_mapper.h                                &IqAmplitudes(iqAmplitudeValues)                                                &    \checkmark   \\ \hline
 polarization\_beam\_splitter\_20180109.h        &                                                                               &   \checkmark   \\ \hline
 polarizer\_20180113.h                           &                                                                               &    \checkmark   \\ \hline
-pulse\_shaper\_20180111.h                       &FilterType(Square)                                                             &     \checkmark  \\ \hline
 single\_photon\_detector\_20180111.h            &setPath(0), setPath(1)                                                         &    \checkmark   \\ \hline
 single\_photon\_source\_20171218.h              &                                                                               &    \checkmark   \\ \hline
+probability\_estimator\_20180124.h              &                                                                               &    \checkmark   \\ \hline
 sink.h                                          &                                                                               &    \checkmark   \\ \hline
 qrng\_decision\_circuit.h                       &                                                                               &    \checkmark   \\ \hline
 \end{tabular}
@@ -153,15 +105,13 @@ qrng\_decision\_circuit.h                       &                               
 \hline
 \textbf{File name}                              & \textbf{Description} & \textbf{Status} \\ \hline
 netxpto.cpp                                     &                      &    \checkmark   \\ \hline
-binary\_source.cpp                              &                      &    \checkmark   \\ \hline
+electrical\_signal\_generator\_20180124.cpp     &                      &    \checkmark   \\ \hline
 clock\_20171219.cpp                             &                      &    \checkmark   \\ \hline
-discrete\_to\_continuous\_time.cpp              &                      &    \checkmark   \\ \hline
-m\_qam\_mapper.cpp                              &                      &    \checkmark   \\ \hline
 polarization\_beam\_splitter\_20180109.cpp      &                      &   \checkmark   \\ \hline
 polarizer\_20180113.cpp                         &                      &    \checkmark   \\ \hline
-pulse\_shaper\_20180111.cpp                     &                      &     \checkmark  \\ \hline
 single\_photon\_detector\_20180111.cpp          &                      &    \checkmark   \\ \hline
 single\_photon\_source\_20171218.cpp            &                      &    \checkmark   \\ \hline
+probability\_estimator\_20180124.cpp            &                      &    \checkmark   \\ \hline
 sink.cpp                                        &                      &    \checkmark   \\ \hline
 qrng\_decision\_circuit.cpp                     &                      &    \checkmark   \\ \hline
 qrng\_sdf.cpp                                   &                      &    \checkmark   \\ \hline
@@ -192,7 +142,7 @@ We will use \textit{z-score }(in this case $2.576$, since a confidence interval 
   \nonumber
 \end{equation}
 
-where, $E$ is the error margin, $z_{\alpha/2}$ is the \textit{z-score} for a specific confidence interval, $\sigma = \sqrt{\textrm{VAR(X})} = \sqrt{\hat{p}(1-\hat{p})}$ is the standard deviation and $N$ the number of samples. Lets assume $N=1 \times 10^{8}$ and the expected $\hat{p} = 0.5$, for a polarization angle of $45^{\circ}$, we have a error margin of $E = 1.288 \times 10^{-4}$, which is acceptable. This way, the simulation will be performed for $N=1 \times 10^{8}$ samples for different angles of polarization shown in figure \ref{sphere}.
+where, $E$ is the error margin, $z_{\alpha/2}$ is the \textit{z-score} for a specific confidence interval, $\sigma = \sqrt{\textrm{VAR(X})} = \sqrt{\hat{p}(1-\hat{p})}$ is the standard deviation and $N$ the number of samples. Lets assume, for an angle of $45^{\circ}$, a number of samples$N=1 \times 10^{6}$ and the expected probability of reach each detector of $\hat{p} = 0.5$. We have an error margin of $E = 1.288 \times 10 ^{-3}$, which is acceptable. This way, the simulation will be performed for $N=1 \times 10^{6}$ samples for different angles of polarization shown in figure \ref{sphere} with different error margin's values since the expected probability changes depending on the polarization angle.
 
 \begin{figure}[h]
     \centering
@@ -203,20 +153,34 @@ where, $E$ is the error margin, $z_{\alpha/2}$ is the \textit{z-score} for a spe
 For a quantum random number generator with equal probability of obtain a "0" \space or "1" \space the polarizer must be set at $45^{\circ}$. This way, we have $50\%$ possibilities to obtain a "0" \space and $50\%$ of possibilities to obtain a "1" \space. This theoretical value meets the value obtained from the simulation when it is performed for the number of samples mentioned above.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\textwidth, height=7cm]{./sdf/qrng/figures_raw/probx.jpg}
-	\caption{Simulation results for the probability of clicks in detector placed on Horizontal axis.}\label{probx}
+    \centering
+        \includegraphics[clip, trim=4cm 9cm 4cm 6cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/prob0.pdf}
+    \caption{Probability of outputs a number "0" \space depending on the polarization angle.}\label{probx}
 \end{figure}
-Figure \ref{probx} shows the probability of a single photons reaches the detector placed on Horizontal axis depending on the polarization angle of the photon. On the other hand, figure \ref{proby} shows the probability of a single photon reaches the detector placed on Vertical axis. As we can see in the figures the two detectors have complementary probabilities, i.e the summation of both values must be equals to $1$.
 
-In addition, one can see that "Probability of $1$" \space behaves like a sine function and "Probability of 0" \space behaves like a cosine function with an angle which is variable.
+Figure \ref{probx} shows the probability of a single photons reaches the detector placed on Horizontal axis depending on the polarization angle of the photon, and this way the output number is "0". On the other hand, figure \ref{proby} shows the probability of a single photon reaches the detector placed on Vertical component of the polarization beam splitter, and this way the output number is "1". As we can see in the figures the two detectors have complementary probabilities, i.e the summation of both values must be equals to $1$.
+
+One can see that "Probability of $1$" \space behaves almost like a sine function and "Probability of 0" \space behaves almost like a cosine function with a variable angle.
 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth, height=7cm]{./sdf/qrng/figures_raw/proby.jpg}
-	\caption{Simulation results for the probability of clicks in detector placed on Vertical axis.}\label{proby}
+\begin{figure}[H]
+    \centering
+        \includegraphics[clip, trim=4cm 9cm 4cm 6cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/prob1.pdf}
+    \caption{Probability of outputs a number "1" \space depending on the polarization angle.}\label{proby}
 \end{figure}
+
+\subsection{Experimental Analysis}
+
+In order to have a real experimental quantum random number generator, a setup shown in figure \ref{experimental_qrng} was built in the lab. To simulate a single photon source we have a CW-Pump laser with $1550$ nm wavelength followed by an interferometer Mach-Zenhder in order to have a pulsed beam. The interferometer has an input signal given by a Pulse Pattern Generator. This device also gives a clock signal for the Single Photon Detector (APD-Avalanche Photodiode) which sets the time during which the window of the detector is open. After the MZM there is a Variable Optical Attenuator (VOA) which reduces the amplitude of each pulse until the probability of one photon per pulse is achieved. Next, there is a polarizer controller followed by a Linear Polarized, which is set at $45^{\circ}$, then a Polarization Beam Splitter (PBS) and finally, one detector at the end of each output of the PBS. The output signals from the detector will be received by a Processing Unit. Regarding to acquired the output of the detectors, there is an oscilloscope capable of record $1 \times 10^{6}$ samples.
+
+
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[clip, trim=0.5cm 7cm 0.5cm 17cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/experimental_qrng.pdf}
+    \caption{Experimental setup to implement a quantum random number generator.}\label{experimental_qrng}
+\end{figure}
+
 
 \subsection{Open Issues}
 

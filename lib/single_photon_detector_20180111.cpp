@@ -1,7 +1,7 @@
 # include <algorithm>  // min()
-# include <random>
-# include <math.h>	   // remainder(), pow()
 
+# include <math.h>	   // remainder(), pow()
+# include <chrono>
 # include "netxpto.h"
 # include "single_photon_detector_20180111.h"
 
@@ -24,104 +24,103 @@ bool SinglePhotonDetector::runBlock(void) {
 	if (process <= 0) return false;
 
 
-	std::default_random_engine generator;
 	std::uniform_real_distribution<double> distribution(0.0, 1.0);
+
+	unsigned int seed = (unsigned int)chrono::system_clock::now().time_since_epoch().count();
+
+	generator.seed(seed);
 
 	signal_value_type inSignalType = inputSignals[0]->getValueType();
 	switch (inSignalType) {
-		case PhotonValue:
-			for (auto k = 0; k < process; k++) {
-				t_photon inValue;
-				inputSignals[0]->bufferGet(&inValue);
-				if (inValue.probabilityAmplitude == 1) {
-					outputSignals[0]->bufferPut((t_real) 1.0);
-				}
-				else {
-					outputSignals[0]->bufferPut((t_real) 0.0);
-				}
+	case PhotonValue:
+		for (auto k = 0; k < process; k++) {
+			t_photon inValue;
+			inputSignals[0]->bufferGet(&inValue);
+			if (inValue.probabilityAmplitude == 1) {
+				outputSignals[0]->bufferPut((t_real) 1.0);
 			}
-			break;
-		case PhotonValueMP:
-			for (auto k = 0; k < process; k++) {
-				t_photon_mp inValueMP;
-				inputSignals[0]->bufferGet(&inValueMP);
-				if (inValueMP.path[path].probabilityAmplitude > 0.0) {	// Process Photon Path
-					double number = distribution(generator);
-					if (number < pow(inValueMP.path[path].probabilityAmplitude, 2)) {
-						outputSignals[0]->bufferPut((t_real) 1.0);
-						inValueMP.path[(path + 1) % 2].probabilityAmplitude = 0.0;
-						inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
-					}
-					else {
-						outputSignals[0]->bufferPut((t_real) 0.0);
-						inValueMP.path[(path + 1) % 2].probabilityAmplitude = 1.0;
-						inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
-					}
-				};
-				if (inValueMP.path[path].probabilityAmplitude == 0.0) {
-					outputSignals[0]->bufferPut((t_real) 0.0);
+			else {
+				outputSignals[0]->bufferPut((t_real) 0.0);
+			}
+		}
+		break;
+	case PhotonValueMP:
+		for (auto k = 0; k < process; k++) {
+			t_photon_mp inValueMP;
+			inputSignals[0]->bufferGet(&inValueMP);
+			if (inValueMP.path[path].probabilityAmplitude > 0.0) {	// Process Photon Path
+				double number = distribution(generator);
+				if (number < pow(inValueMP.path[path].probabilityAmplitude, 2)) {
+					outputSignals[0]->bufferPut((t_real) 1.0);
+					inValueMP.path[(path + 1) % 2].probabilityAmplitude = 0.0;
 					inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
 				}
-				if (inValueMP.path[(path + 1) % 2].probabilityAmplitude >= 0.0) {
-						inputSignals[0]->bufferPut((t_photon_mp)inValueMP);
-				}
-			}
-			break;
-
-		case ComplexValueXYMP:
-			for (auto k = 0; k < process; k++) {
-				t_complex_xy_mp inValueMP;
-				inputSignals[0]->bufferGet(&inValueMP);
-
-				if ((path == Horizontal) && (abs(inValueMP.path[Horizontal].x) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-					inValueMP.path[path].x = - 1.0;
-					inValueMP.path[path].y = 0.0;
-				}
-				if ((path == Vertical) && (abs(inValueMP.path[Vertical].y) == 1.0))
-				{
-					outputSignals[0]->bufferPut((t_real) 1.0);
-					inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-					inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-					inValueMP.path[path].x = 0.0;
-					inValueMP.path[path].y = -1.0;
-				}
-				if ((abs(inValueMP.path[path].x) == abs(inValueMP.path[path].y)) && (abs(inValueMP.path[path].x) != 0.0))
-				{
-					double number = distribution(generator);
-					if (number < pow(abs(inValueMP.path[path].x), 2)) {
-						outputSignals[0]->bufferPut((t_real) 1.0);
-						inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-						inValueMP.path[(path + 1) % 2].y = (t_complex)  0.0;
-					}
-					else {
-						outputSignals[0]->bufferPut((t_real) 0.0);
-						if (path == Horizontal) {
-							inValueMP.path[(path + 1) % 2].y = (t_complex) 1.0;
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 0.0;
-						}
-						else {
-							inValueMP.path[(path + 1) % 2].y = (t_complex) 0.0;
-							inValueMP.path[(path + 1) % 2].x = (t_complex) 1.0;
-						}
-					}
-				}
-				
 				else {
 					outputSignals[0]->bufferPut((t_real) 0.0);
+					inValueMP.path[(path + 1) % 2].probabilityAmplitude = 1.0;
+					inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
+				}
+			};
+			if (inValueMP.path[path].probabilityAmplitude == 0.0) {
+				outputSignals[0]->bufferPut((t_real) 0.0);
+				inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
+			}
+			if (inValueMP.path[(path + 1) % 2].probabilityAmplitude >= 0.0) {
+				inputSignals[0]->bufferPut((t_photon_mp)inValueMP);
+			}
+		}
+		break;
+
+	case ComplexValueXYMP:
+		for (auto k = 0; k < process; k++) {
+			t_complex_xy_mp inValueMP;
+			inputSignals[0]->bufferGet(&inValueMP);
+			t_complex_xy inValue = (t_complex_xy)inValueMP.path[path];
+			t_complex xValue = inValue.x;
+			t_complex yValue = inValue.y;
+
+
+
+			switch (path) {
+			case 0:
+				if ((abs(xValue) >= 0.0) && (abs(xValue) <= 1.0)) {
+					double number = distribution(generator);
+					if (number < pow(abs(xValue), 2)) {
+						outputSignals[0]->bufferPut((t_real)1.0);
+						inValueMP.path[1].x = (t_complex) 0.0;
+						inValueMP.path[1].y = (t_complex) 0.0;
+					}
+					else {
+						outputSignals[0]->bufferPut((t_real)0.0);
+						inValueMP.path[1].x = (t_complex) 0.0;
+						inValueMP.path[1].y = (t_complex) 1.0;
+					}
 				}
 
-				if ((real(inValueMP.path[(path + 1) % 2].x) >= 0.0) || (real(inValueMP.path[(path + 1) % 2].y) >= 0.0)) {
-					inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
-				}
+				break;
+
+			case 1:
+				if (abs(yValue) == 1.0)
+					outputSignals[0]->bufferPut((t_real)1.0);
+				else
+					outputSignals[0]->bufferPut((t_real)0.0);
+				break;
+
+			default:
+				cout << "x:" << abs(xValue) << "y:" << abs(yValue) << "\n";
+				break;
+
 			}
-			break;
-		default:
-			cout << "ERRO: single_photon_detector.cpp" << "\n";
-			return false;
+	
+			if ((abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].y) == 1.0) ) {
+				inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
+			}
+		}
+
+		break;
+	default:
+		cout << "ERRO: single_photon_detector.cpp" << "\n";
+		return false;
 	};
 
 	return true;
