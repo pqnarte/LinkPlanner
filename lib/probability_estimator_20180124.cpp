@@ -1,11 +1,35 @@
 # include "probability_estimator_20180124.h"
 
-void ProbabilityEstimator::initialize(void) {
+ProbabilityEstimator::~ProbabilityEstimator() {
+
+	double probabilityOf1 = (double)(numberOf1 / numberOfReceivedBits) * 100;
+	double probabilityOf0 = (double)(numberOf0 / numberOfReceivedBits) * 100;
+
+	double errorOf1 = (double)(zScore * sqrt((probabilityOf1*(1 - probabilityOf1)) / numberOfReceivedBits));
+	double errorOf0 = (double)(zScore * sqrt((probabilityOf0*(1 - probabilityOf0)) / numberOfReceivedBits));
+
+	/*Outputing a .txt report*/
+	ofstream myfile;
+	myfile.open(fileName);
+	myfile << "Number of received Bits: " << numberOfReceivedBits << "\n";
+	myfile << "Error Margin of Prob1: " << errorOf1 << "\n";
+	myfile << "Error Margin of Prob0: " << errorOf0 << "\n";
+	myfile << "Probability Of 0: " << probabilityOf0 << "% \n";
+	myfile << "Probability Of 1: " << probabilityOf1 << "% \n";
+
+	myfile.close();
+
+	return;
+
+}
+
+void ProbabilityEstimator::initialize() {
 
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 }
+
 
 bool ProbabilityEstimator::runBlock(void) {
 
@@ -14,49 +38,25 @@ bool ProbabilityEstimator::runBlock(void) {
 
 	int process = min(ready, space);
 
-	/*Outputing file*/
-	if ((process == 0) && (firstTime != 1)) {
-
-		double ProbabilityOf1 = (double)(NumberOf1 / receivedData) * 100;
-		double ProbabilityOf0 = (double)(NumberOf0 / receivedData) * 100;
-
-		double ErrorOf1 = (double)(zscore * sqrt((probabilityY*(1-probabilityY))/receivedData));
-		double ErrorOf0 = (double)(zscore * sqrt((probabilityX*(1 - probabilityX)) / receivedData));
-
-		/*Outputing a .txt report*/
-		ofstream myfile;
-		myfile.open("QRNG.txt");
-		myfile << "Number of received Bits: " << receivedData << "\n";
-		myfile << "Error Margin of Prob1: " << ErrorOf1 << "\n";
-		myfile << "Error Margin of Prob0: " << ErrorOf0 << "\n";
-		myfile << "Probability Of 0: " << ProbabilityOf0 << "% \n";
-		myfile << "Probability Of 1: " << ProbabilityOf1 << "% \n";
-
-
-		return false;
-	}
-
-	if (firstTime == 1) firstTime = 0;
-	
+	if (process <= 0) return false;
 
 	for (auto i = 0; i < process; i++) {
+		
 		t_binary inValue;
-
 		inputSignals[0]->bufferGet(&inValue);
 
 		if (inValue == 0) {
-			NumberOf0 = NumberOf0 + 1;
-			receivedData++;
+			numberOf0++;
+			numberOfReceivedBits++;
 		}
 		if (inValue == 1) {
-			NumberOf1 = NumberOf1 + 1;
-			receivedData++;
+			numberOf1++;
+			numberOfReceivedBits++;
 		}
 
 		outputSignals[0]->bufferPut((t_binary)inValue);
 
 	}
-
 
 	return true;
 }
