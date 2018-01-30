@@ -1,8 +1,7 @@
+# include "polarization_beam_splitter_20180109.h"
+
 # include <algorithm>  // min()
 # include <math.h>     // cos(), sin()
-
-# include "netxpto.h"
-# include "polarization_beam_splitter_20180109.h"
 
 void PolarizationBeamSplitter::initialize(void) {
 
@@ -28,7 +27,7 @@ bool PolarizationBeamSplitter::runBlock(void) {
 	for (auto i = 0; i < process; i++) {
 
 		t_complex_xy inSignal1;
-		t_complex_xy_mp outSignal1;
+		t_photon_mp_xy outSignal1;
 		//This should implement a 1x2 beam splitters
 
 		inputSignals[0]->bufferGet(&inSignal1);
@@ -44,7 +43,7 @@ bool PolarizationBeamSplitter::runBlock(void) {
 		outSignal1.path[1] = { xValueV, yValueV };
 
 
-		outputSignals[0]->bufferPut((t_complex_xy_mp)outSignal1);
+		outputSignals[0]->bufferPut((t_photon_mp_xy)outSignal1);
 	}
 	
 	return true;

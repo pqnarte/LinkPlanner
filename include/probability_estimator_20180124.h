@@ -1,8 +1,8 @@
 #ifndef  PROBABILITY_ESTIMATOR_H
 #define PROBABILITY_ESTIMATOR_H
 
-#include "netxpto.h"
-# include <string>
+#include "netxpto_20180118.h"
+#include <string>
 
 class ProbabilityEstimator : public Block {
 

@@ -1,5 +1,4 @@
 #include "electrical_signal_generator_20180124.h"
-#include "netxpto.h"
 
 
 void ElectricalSignalGenerator::initialize(void) {

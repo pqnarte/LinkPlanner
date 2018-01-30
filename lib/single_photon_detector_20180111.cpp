@@ -1,9 +1,9 @@
-# include <algorithm>  // min()
+# include "single_photon_detector_20180111.h"
 
+# include <algorithm>  // min()
 # include <math.h>	   // remainder(), pow()
 # include <chrono>
-# include "netxpto.h"
-# include "single_photon_detector_20180111.h"
+
 
 void SinglePhotonDetector::initialize(void) {
 
@@ -71,9 +71,9 @@ bool SinglePhotonDetector::runBlock(void) {
 		}
 		break;
 
-	case ComplexValueXYMP:
+	case PhotonValueMPXY:
 		for (auto k = 0; k < process; k++) {
-			t_complex_xy_mp inValueMP;
+			t_photon_mp_xy inValueMP;
 			inputSignals[0]->bufferGet(&inValueMP);
 			t_complex_xy inValue = (t_complex_xy)inValueMP.path[path];
 			t_complex xValue = inValue.x;
@@ -113,7 +113,7 @@ bool SinglePhotonDetector::runBlock(void) {
 			}
 	
 			if ((abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].y) == 1.0) ) {
-				inputSignals[0]->bufferPut((t_complex_xy_mp)inValueMP);
+				inputSignals[0]->bufferPut((t_photon_mp_xy)inValueMP);
 			}
 		}
 

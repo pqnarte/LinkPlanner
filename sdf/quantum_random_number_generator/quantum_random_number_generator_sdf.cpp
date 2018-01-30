@@ -1,4 +1,4 @@
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
 # include "electrical_signal_generator_20180124.h"
 # include "clock_20171219.h"
@@ -34,7 +34,7 @@ int main(){
 	PhotonStreamXY S4{ "S4.sgn" };
 	S4.setSaveSignal(false);
 
-	PhotonStreamXYMP S5{ "S5.sgn" };
+	PhotonStreamMPXY S5{ "S5.sgn" };
 	S5.setSaveSignal(false);
 
 	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };

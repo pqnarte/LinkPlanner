@@ -29,11 +29,12 @@ typedef complex<t_real> t_complex;
 typedef struct { t_complex x; t_complex y; } t_complex_xy;
 typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
+typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_photon_mp_xy;
 typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
-enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
+enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
 
 //########################################################################################################################################################
@@ -129,7 +130,9 @@ public:
 	void virtual bufferGet(t_complex_xy *valueAddr);
 	void virtual bufferGet(t_photon *valueAddr);
 	void virtual bufferGet(t_photon_mp *valueAddr);
+	void virtual bufferGet(t_photon_mp_xy *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
+
 	
 	void setSaveSignal(bool sSignal){ saveSignal = sSignal; };
 	bool const getSaveSignal(){ return saveSignal; };
@@ -404,7 +407,16 @@ public:
 
 };
 
+class PhotonStreamMPXY : public Signal {
 
+public:
+	PhotonStreamMPXY(string fName) { setType("PhotonStreamMPXY", PhotonValueMPXY); setFileName(fName); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
+	PhotonStreamMPXY(string fName, int bLength) { setType("PhotonStreamMPXY", PhotonValueMPXY); setFileName(fName); setBufferLength(bLength); }
+	PhotonStreamMPXY(int bLength) { setType("PhotonStreamMPXY", PhotonValueMPXY); setBufferLength(bLength); }
+	PhotonStreamMPXY() { setType("PhotonStreamMPXY", PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
+
+	void setBufferLength(int bLength) { setBufferLength(bLength); delete[] buffer; if (bLength != 0) buffer = new t_photon_mp_xy[bLength]; };
+};
 
 class Messages : public Signal {
 public:

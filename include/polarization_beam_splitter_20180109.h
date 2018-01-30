@@ -1,7 +1,8 @@
 # ifndef POLARIZATION_BEAM_SPLITTER_H_
 # define POLARIZATION_BEAM_SPLITTER_H_
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
+
 #include <array>
 
 class PolarizationBeamSplitter : public Block {
