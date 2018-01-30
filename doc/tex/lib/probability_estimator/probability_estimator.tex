@@ -9,12 +9,10 @@ This blocks accepts an input binary signal and it calculates the probability of 
 \subsection*{Input Parameters}
 
 	\begin{itemize}
-		\item probabilityX\linebreak
-		(double)
-		\item probabilityY\linebreak
-		(double)
 		\item zscore \linebreak
 		(double)
+    \item fileName \linebreak
+		(string)
 	
 	\end{itemize}
 
@@ -38,20 +36,37 @@ double getZScore()
 
 \subsection*{Functional description}
 
-This block receives an input binary signal with values "0" \space or "1" \space and it calculates the probability of having each number according with the number of samples acquired. The error margin is calculated based on the z-score set which specifies the confidence interval.
+This block receives an input binary signal with values "0" \space or "1" \space and it calculates the probability of having each number according with the number of samples acquired. This probability is calculated using the following formulas:
+\begin{equation}\label{eq:prob1}
+  \textrm{Probability}_{1}=\frac{\textrm{Number of 1's}}{\textrm{Number of Received Bits}}
+\end{equation}
+
+\begin{equation}\label{eq:prob0}
+  \textrm{Probability}_{0}=\frac{\textrm{Number of 0's}}{\textrm{Number of Received Bits}}.
+\end{equation}
+
+The error margin is calculated based on the z-score set which specifies the confidence interval using the following formula:
+
+\begin{equation}\label{eq:marginerror}
+  \textrm{ME} = \textrm{z}_{\textrm{score}}\times \sqrt{\frac{\hat{p}(1-\hat{p})}{N}}
+\end{equation}
+
+being $\hat{p}$ the expected probability calculated using the formulas above and $N$ the total number of samples.
+
+This block outputs a txt file with information regarding with the total number of received bits, the probability of 1, the probability of 0 and the respective errors.
 
 \subsection*{Input Signals}
 
 
 \subparagraph*{Number:} 1
 
-\subparagraph*{Type:} Binary 
+\subparagraph*{Type:} Binary
 
 \subsection*{Output Signals}
 
 \subparagraph*{Number:} 2
 
-\subparagraph*{Type:} Binary 
+\subparagraph*{Type:} Binary
 \subparagraph*{Type:} txt file
 
 \subsection*{Examples}
