@@ -1,15 +1,15 @@
+# include "single_photon_source_20171218.h"
+
 # include <algorithm>  // min
 
-# include "netxpto.h"
-# include "single_photon_source_20171218.h"
 
 void SinglePhotonSource::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
-	outputSignals[0]->centralWavelength = outputOpticalWavelength;
-	outputSignals[0]->centralFrequency = outputOpticalFrequency;
+	outputSignals[0]->setCentralWavelength(outputOpticalWavelength);
+	outputSignals[0]->setCentralFrequency(outputOpticalFrequency);
 
 }
 

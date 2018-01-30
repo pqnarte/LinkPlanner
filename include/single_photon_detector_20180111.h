@@ -1,7 +1,7 @@
 # ifndef SINGLE_PHOTON_DETECTOR_H_
 # define SINGLE_PHOTON_DETECTOR_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include <random>
 
 class SinglePhotonDetector : public Block {
@@ -21,7 +21,7 @@ public:
 	void setPath(t_integer p) { path = p; };
 	t_integer getPath() { return path; };
 
-		
+	
 };
 
 #endif

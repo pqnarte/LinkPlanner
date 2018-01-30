@@ -1,40 +1,39 @@
 #ifndef  PROBABILITY_ESTIMATOR_H
 #define PROBABILITY_ESTIMATOR_H
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
+#include <string>
 
 class ProbabilityEstimator : public Block {
 
-	/*Input Parameters*/
-	double probabilityX{ 0.0 };
-	double probabilityY{ 0.0 };
-	double zscore{ 2.576 }; // For a 99% Confidence Interval
-
-	/*State variables*/	
 
 public:
 
-	 double NumberOf1 = 0;
-	 double NumberOf0 = 0;
-	 double receivedData = 0;
-
 	ProbabilityEstimator() { };
 	ProbabilityEstimator(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
+
+	~ProbabilityEstimator();
 
 	void initialize(void);
 
 	bool runBlock(void);
 
-	void setProbabilityExpectedX(double probx) { probabilityX = probx; };
-	double getProbabilityExpectedX() { return probabilityX; };
+	void setZScore(double z) { zScore = z; };
+	double getZScore() { return zScore; };
 
-	void setProbabilityExpectedY(double proby) { probabilityY = proby; };
-	double getProbabilityExpectedY() { return probabilityY; };
+	void setFileName(string fName) { fileName = fName; };
+	string getFileName() { return fileName; };
 
-	void setZScore(double z) { zscore = z; };
-	double getZScore() { return zscore; };
+private:
 
+	/*Input Parameters*/
+	double zScore{ 2.576 };				// For a 99% Confidence Interval
+	string fileName{ "results.txt" };
 
+	/*State variables*/
+	double numberOf1{ 0 };
+	double numberOf0{ 0 };
+	double numberOfReceivedBits{ 0 };
 
 };
 

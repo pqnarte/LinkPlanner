@@ -1,7 +1,7 @@
 #ifndef ELECTRICAL_SIGNAL_GENERATOR_H
 #define ELECTRICAL_SIGNAL_GENERATOR_H
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
 
 using namespace std;
  

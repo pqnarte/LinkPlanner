@@ -7,7 +7,9 @@
 # include <strstream>
 # include <algorithm>
 
+
 # include "netxpto.h"
+
 
 using namespace std;
 
@@ -76,6 +78,7 @@ int Signal::space() {
 	if (outPosition >= 0) return (bufferLength - inPosition + outPosition);
 	if (outPosition == -1) return (bufferLength - inPosition);
 	return -1;
+
 };
 
 int Signal::ready() {
@@ -143,8 +146,6 @@ void Signal::bufferGet() {
 	return;
 };
 
-
-
 void Signal::bufferGet(t_binary *valueAddr) {
 	*valueAddr = static_cast<t_binary *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
@@ -153,7 +154,6 @@ void Signal::bufferGet(t_binary *valueAddr) {
 	if (outPosition == inPosition) bufferEmpty = true;
 	return;
 };
-
 
 void Signal::bufferGet(t_integer *valueAddr) {
 	*valueAddr = static_cast<t_integer *>(buffer)[outPosition];
@@ -184,15 +184,6 @@ void Signal::bufferGet(t_complex *valueAddr) {
 
 void Signal::bufferGet(t_complex_xy *valueAddr) {
 	*valueAddr = static_cast<t_complex_xy *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(t_complex_xy_mp *valueAddr) {
-	*valueAddr = static_cast<t_complex_xy_mp *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
 	outPosition++;
 	if (outPosition == bufferLength) outPosition = 0;
@@ -289,8 +280,7 @@ void Block::initializeBlock(void) {
 
 }
 
-bool Block::runBlock(void) 
-{
+bool Block::runBlock(void) {
 	return false;
 }
 
@@ -608,6 +598,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 
 bool FD_Filter::runBlock(void) {
 
+	
 	Fft fft;
 	ComplexMult CMult;
 
@@ -654,7 +645,7 @@ bool FD_Filter::runBlock(void) {
 
 	return alive;
 };
-
+     
 
 /*2016-08-03
 DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
@@ -901,11 +892,11 @@ bool RealToComplex::runBlock(void) {
 
 
 
-System::System(vector<Block *> &Blocks)
+System::System(vector<Block *> &Blocks) 
 {
 	SystemBlocks = Blocks;
 
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++)
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) 
 	{
 		SystemBlocks[i]->initializeBlock();
 	}
@@ -928,19 +919,18 @@ void System::run() {
 	*/
 	int l = 0;
 	bool Alive;
-
 	do {
 		Alive = false;
-		for (unsigned int i = 0; i < SystemBlocks.size(); i++)
-		{
+		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
+
 			bool aux = SystemBlocks[i]->runBlock();
+
 			Alive = (Alive || aux);
 		}
-		l++;	// this int not used 
+		l++;
 	} while (Alive);
 
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++)
-	{		
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {		
 		SystemBlocks[i]->terminateBlock();
 	}
 }
@@ -1016,8 +1006,7 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 
 
 		// Removing the samples symetrically and assign to the output
-		if (k == Nblocks - 1) 
-		{
+		if (k == Nblocks - 1) {
 			copy(real_temp_copy.begin() + (NFFT / 4), real_temp_copy.begin() + (NFFT / 2), v_out.end() - (NFFT / 4));
 			copy(real_temp_copy.begin() + (NFFT / 2), real_temp_copy.begin() + 3 * NFFT / 4, v_out.begin());
 		}
@@ -1030,8 +1019,6 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 
 // Private function prototypes
 static size_t reverseBits(size_t x, unsigned int n);
-
-
 
 vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
 {
@@ -1087,6 +1074,7 @@ void Fft::directTransform(vector<double> &real, vector<double> &imag)
 		transformBluestein(real, imag);
 }
 
+
 void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
 {
 	directTransform(imag, real);					// Inverse function
@@ -1096,6 +1084,7 @@ void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
 		imag[x] = imag[x] / real.size();
 	}
 }
+
 
 void Fft::transformRadix2(vector<double> &real, vector<double> &imag) 
 {
@@ -1162,6 +1151,14 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag)
 	}
 }
 
+
+
+
+
+
+
+
+
 void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 {
 	// Compute levels = floor(log2(n))
@@ -1227,6 +1224,7 @@ void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
 	}
 }
 
+
 void Fft::transformBluestein(vector<double> &real, vector<double> &imag) 
 {
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
@@ -1279,6 +1277,9 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag)
 		imag[i] = -creal[i] * sinTable[i] + cimag[i] * cosTable[i];
 	}
 }
+
+
+
 
 void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 {
@@ -1335,6 +1336,18 @@ void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 static size_t reverseBits(size_t x, unsigned int n)
 {
 	size_t result = 0;
@@ -1345,8 +1358,7 @@ static size_t reverseBits(size_t x, unsigned int n)
 }
 
 
-void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<double> &out) 
-{
+void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<double> &out) {
 	if (x.size() != y.size() || x.size() != out.size())
 		throw "Mismatched lengths";
 	size_t n = x.size();
@@ -1354,8 +1366,8 @@ void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<doub
 	convolve(x, ximag, y, yimag, out, zimag);
 }
 
-void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) 
-{
+
+void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) {
 	if (xreal.size() != ximag.size() || xreal.size() != yreal.size() || yreal.size() != yimag.size() || xreal.size() != outreal.size() || outreal.size() != outimag.size())
 		throw "Mismatched lengths";
 
@@ -1367,8 +1379,7 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 
 	directTransform(xr, xi);
 	directTransform(yr, yi);
-	for (size_t i = 0; i < n; i++) 
-	{
+	for (size_t i = 0; i < n; i++) {
 		double temp = xr[i] * yr[i] - xi[i] * yi[i];
 		xi[i] = xi[i] * yr[i] + xr[i] * yi[i];
 		xr[i] = temp;
@@ -1379,7 +1390,6 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 		outimag[i] = xi[i] / n;
 	}
 }
-
 
 void ComplexMult::CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag) {
 
@@ -1459,6 +1469,7 @@ void ComplexMult::ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &
 
 }
 
+
 vector<complex<double>> ComplexMult::ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
 {
 	vector<complex<double>> v_out(v1_real.size());
@@ -1486,18 +1497,18 @@ vector<complex <double>> ComplexMult::complexVectorMultiplication(vector<complex
 
 
 ////////////  Fast FourierTransform  /////////////// 
-/*
+
 vector <complex<double>> FourierTransform::transform(vector<complex<double>>IN, int m)
 {
-	Fft F;									// Various function for FT
+	Fft F;										// Various function for FT
 	ComplexMult C;					        // Complex data functionality like split, addition, multiplication etc.
-	size_t n = IN.size();					// Size of the vector
+	size_t n = IN.size();						// Size of the vector
 
 	vector <complex<double>> OUT(n);
 	vector<double> re(n, 0);
 	vector<double> im(n, 0);
 
-	C.ComplexVect2ReImVect(IN, re, im);			// Here we have splitted real and imag data from IN.
+	C.ComplexVect2ReImVect(IN, re, im);    // Here we have splitted real and imag data from IN.
 
 	if (n == 0)
 		return OUT;
@@ -1505,8 +1516,8 @@ vector <complex<double>> FourierTransform::transform(vector<complex<double>>IN, 
 		F.Radix2(re, im, m);
 	else										// More complicated algorithm for arbitrary sizes : Bluestein Algorithim
 		F.Bluestein(re, im, m);
-	
-	for (unsigned int i = 0; i<re.size(); i++)	// Devide by the square root of "N"
+
+	for (unsigned int i = 0; i<re.size(); i++)		    // Devide by the square root of "N"
 	{
 		re[i] = re[i] / sqrt(re.size());
 		im[i] = im[i] / sqrt(re.size());
@@ -1517,248 +1528,3 @@ vector <complex<double>> FourierTransform::transform(vector<complex<double>>IN, 
 	return OUT;
 };
 
-*/
-
-vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
-{
-	size_t n = vec.size();
-
-	if (n == 0)
-		return vec;
-	else if ((n & (n - 1)) == 0)  // Is power of 2
-		transformRadix2(vec);
-	else  // More complicated algorithm for arbitrary sizes
-		transformBluestein(vec);
-
-	return vec;
-}
-
-
-vector<complex<double>> FourierTransform::ifft(vector<complex<double> > &vec)
-{
-	vector<complex<double>> OUT(vec.size());
-
-	std::transform(vec.cbegin(), vec.cend(), vec.begin(),
-		static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
-	fft(vec);
-	std::transform(vec.cbegin(), vec.cend(), vec.begin(),
-		static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
-
-	OUT = vec;
-	
-	return OUT;
-}
-
-
-void FourierTransform::transformRadix2(vector<complex<double> > &vec)
-{
-	// Length variables
-	size_t n = vec.size();
-	int levels = 0;  // Compute levels = floor(log2(n))
-	for (size_t temp = n; temp > 1U; temp >>= 1)
-		levels++;
-	if (static_cast<size_t>(1U) << levels != n)
-		throw "Length is not a power of 2";
-
-	// Trignometric table
-	vector<complex<double> > expTable(n / 2);
-	for (size_t i = 0; i < n / 2; i++)
-		expTable[i] = std::exp(complex<double>(0, -2 * M_PI * i / n));
-
-	// Bit-reversed addressing permutation
-	for (size_t i = 0; i < n; i++)
-	{
-		size_t j = reverseBits(i, levels);
-		if (j > i)
-			std::swap(vec[i], vec[j]);
-	}
-
-	// Cooley-Tukey decimation-in-time radix-2 FFT
-	for (size_t size = 2; size <= n; size *= 2)
-	{
-		size_t halfsize = size / 2;
-		size_t tablestep = n / size;
-		for (size_t i = 0; i < n; i += size)
-		{
-			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep)
-			{
-				complex<double> temp = vec[j + halfsize] * expTable[k];
-				vec[j + halfsize] = vec[j] - temp;
-				vec[j] += temp;
-			}
-		}
-		if (size == n)  // Prevent overflow in 'size *= 2'
-			break;
-	}
-}
-
-
-void FourierTransform::transformBluestein(vector<complex<double> > &vec) {
-	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
-	size_t n = vec.size();
-	size_t m = 1;
-	while (m / 2 <= n) {
-		if (m > SIZE_MAX / 2)
-			throw "Vector too large";
-		m *= 2;
-	}
-
-	// Trignometric table
-	vector<complex<double> > expTable(n);
-	for (size_t i = 0; i < n; i++)
-	{
-		unsigned long long temp = static_cast<unsigned long long>(i) * i;
-		temp %= static_cast<unsigned long long>(n) * 2;
-		double angle = M_PI * temp / n;
-		// Less accurate alternative if long long is unavailable: double angle = M_PI * i * i / n;
-		expTable[i] = std::exp(complex<double>(0, -angle));
-	}
-
-	// Temporary vectors and preprocessing
-	vector<complex<double> > av(m);
-	for (size_t i = 0; i < n; i++)
-		av[i] = vec[i] * expTable[i];
-	vector<complex<double> > bv(m);
-	bv[0] = expTable[0];
-	for (size_t i = 1; i < n; i++)
-		bv[i] = bv[m - i] = std::conj(expTable[i]);
-
-	// Convolution
-	vector<complex<double> > cv(m);
-	convolve(av, bv, cv);
-
-	// Postprocessing
-	for (size_t i = 0; i < n; i++)
-		vec[i] = cv[i] * expTable[i];
-}
-
-
-void FourierTransform::convolve(
-	const vector<complex<double> > &xvec,
-	const vector<complex<double> > &yvec,
-	vector<complex<double> > &outvec)
-{
-	size_t n = xvec.size();
-	if (n != yvec.size() || n != outvec.size())
-		throw "Mismatched lengths";
-	vector<complex<double> > xv = xvec;
-	vector<complex<double> > yv = yvec;
-	fft(xv);
-	fft(yv);
-	for (size_t i = 0; i < n; i++)
-		xv[i] *= yv[i];
-	ifft(xv);
-	for (size_t i = 0; i < n; i++)  // Scaling (because this FFT implementation omits it)
-		outvec[i] = xv[i] / static_cast<double>(n);
-}
-
-
-static size_t reverseBits(size_t x, int n)
-{
-	size_t result = 0;
-	for (int i = 0; i < n; i++, x >>= 1)
-		result = (result << 1) | (x & 1U);
-	return result;
-}
-
-
-
-ComplexMult C;
-
-vector<complex<double>> FourierTransform::transform(vector<complex<double> > &vec, int sign)
-{
-	vector<complex<double>> OUT(vec.size());
-	vector<double> temp_real(vec.size());
-	vector<double> temp_imag(vec.size());
-
-	if (sign == -1)
-	{
-		fft(vec);
-		OUT = vec;
-	}
-
-	else
-
-	{
-		ifft(vec);
-
-		for (int i = 0; i != vec.size(); ++i)
-		{
-			temp_real[i] = vec[i].real() / vec.size();
-			temp_imag[i] = vec[i].imag() / vec.size();
-		}
-
-		OUT = C.ReImVect2ComplexVector(temp_real, temp_imag);
-
-	}
-
-	return OUT;
-}
-
-
-
-
-
-/*vector<complex<double>> ovelapAndSaveMethod :: overlapSave(vector<complex<double>> &input, vector<complex<double>> &filter, int NFFT)
-{
-/*int M = Filter.size();
-int L = IN.size();
-int N = L + M - 1;
-vector<complex<double>> OUT(N);
-
-std::vector<complex<double>> hn(N);	// Filter after padding zeros(initialization)
-std::vector<complex<double>> h(Filter);
-std::vector<complex<double>> zeroPad(L - 1, 0);
-hn.reserve(h.size() + zeroPad.size());				 // preallocate memory
-hn.insert(hn.end(), h.begin(), h.end());
-hn.insert(hn.end(), zeroPad.begin(), zeroPad.end()); // zero padded hn vector h[n] = {filterData of length M....,L-1 zeros}
-
-std::vector<complex<double>> dn(N); // Data block aftrer adding zeros
-std::vector<complex<double>> d(IN);
-std::vector<complex<double>> zeroBegin(M - 1, 0);
-
-dn.reserve(d.size() + zeroBegin.size());				 // preallocate memory
-dn.insert(dn.end(), d.begin(), d.end());
-dn.insert(dn.end(), zeroBegin.begin(), zeroBegin.end()); // Data added at the beginning of th
-
-return OUT;*/
-
-/*int N = NFFT;
-int M = filter.size();
-int L = N - M + 1;
-
-
-vector<complex<double>> hn;							  // Filter after padding zeros(initialization)
-vector<complex<double>> h(filter);
-vector<complex<double>> zeroPad(L - 1, 0);
-hn.reserve(h.size() + zeroPad.size());				 // preallocate memory
-hn.insert(hn.begin(), h.begin(), h.end());
-hn.insert(hn.end(), zeroPad.begin(), zeroPad.end()); // zero padded hn vector h[n] = {filterData of length M....,L-1 zeros}
-
-
-int r = input.size()%L;
-vector<complex<double>> dataBlock;
-
-if (r==0)
-{
-dataBlock = input;
-}
-else
-{
-vector<complex<double>> zeroAdd(L - r, 0);
-dataBlock.reserve(dataBlock.size() + zeroAdd.size());
-dataBlock.insert(dataBlock.begin(), input.begin(), input.end());
-dataBlock.insert(dataBlock.end(), zeroAdd.begin(), zeroAdd.end());			// here, data block is integer multiple of L
-}
-
-int d = dataBlock.size() / L;	// divisor for loop ineration to cover full block
-
-vector<complex<double>> presentDataBlock;
-for (unsigned int i = 0; i < d; i++)
-{
-presentDataBlock.at(i);
-}
-
-
-return input;
-}*/
