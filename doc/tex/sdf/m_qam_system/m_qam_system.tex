@@ -4,7 +4,7 @@
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Student Name}  & & Ana Luisa Carvalho (2017/04/01 - 2017/12/31) \\
-                               &:& Andoni Santos (2018/01/03 - )\\
+                               & & Andoni Santos (2018/01/03 - )\\
 		\textbf{Goal}          &:& M-QAM system implementation with BER measurement and comparison with theoretical and experimental values.\\
 		\textbf{Directory} &:& sdf/m\_qam\_system
 	\end{tabular}
@@ -30,7 +30,7 @@ For $M=4$ the M-QAM system reduces to a Quadrature Phase Shift Keying system (QP
 
 \subsection{Theoretical Analysis}
 
-M-QAM is a modulation scheme that takes advantage of two carriers (usually sinusoidal waves) with a phase difference of $\frac{\pi}{2}$. The resultant output consists of a signal with both amplitude and phase variations. The two carriers, referred to as I (In-phase) and Q (Quadrature), can be represented as
+M-QAM is a modulation scheme that takes advantage of two carriers (usually sinusoidal waves) with a phase difference of $\pi/2$. The resultant output consists of a signal with both amplitude and phase variations. The two carriers, referred to as I (In-phase) and Q (Quadrature), can be represented as
 
 \begin{align}
 	I=A\cos(\phi) \\
@@ -88,7 +88,7 @@ where we have used the expression for the cosine of a sum and the definitions of
 %\end{equation}
 
 For the particular case of $M=4$, considering there is no crosstalk or interference between the Q and I components, the signal can be treated as a pair of independent BPSK systems.
-Using Gray coding, adjacent symbols differ by only one bit. 
+Using Gray coding, adjacent symbols differ by only one bit. As such, an error in a single component leads to a single bit error.
 This means that the probability of an error in bit detection is independent among components, as there is no crosstalk or interference. That being the case, the bit error rate can be exactly described by the same equation as in BPSK
 
 %\begin{equation}
@@ -112,7 +112,7 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&n_0 &= \sqrt{\frac{1}{2} N_0}
+&n_0 &= \sqrt{\frac{1}{2} n_0}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
@@ -390,19 +390,17 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=\textwidth]{./sdf/m_qam_system/figures/eye_diagram_S1_120.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eye120db09ro.pdf}
 	\end{subfigure}%
 	\begin{subfigure}{.5\textwidth}
 		\centering
-		\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=\textwidth]{./sdf/m_qam_system/figures/eye_diagram_S1_60.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eye60db09ro.pdf}
 	\end{subfigure}
 	\caption{Eye diagrams for the S1 bandpass signal with an output optical power of $-120$dBm (left) and $-60$dBm (right). Note different scales on y axis.}
 	\label{fig:test}
 \end{figure}
 
-\pagebreak
-
-\subsection*{Experimental results}
+\subsection*{Experimental Analysis}
 
 \subsection{Comparative Analysis}
 
