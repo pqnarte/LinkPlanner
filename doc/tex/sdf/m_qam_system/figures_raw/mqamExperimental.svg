@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="175.37575mm"
-   height="38.602974mm"
-   viewBox="0 0 175.37575 38.602974"
+   width="170.34062mm"
+   height="38.620564mm"
+   viewBox="0 0 170.34062 38.620564"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
-   sodipodi:docname="mqam_experimental.svg">
+   sodipodi:docname="mqamExperimental.svg">
   <defs
      id="defs2">
     <marker
@@ -192,8 +192,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="184.73437"
-     inkscape:cy="117.55406"
+     inkscape:cx="123.06905"
+     inkscape:cy="122.29218"
      inkscape:document-units="mm"
      inkscape:current-layer="g4911-1-65"
      showgrid="false"
@@ -217,317 +217,322 @@
     <inkscape:grid
        type="xygrid"
        id="grid15063"
-       originx="-5.0722651"
-       originy="-2.4774834" />
+       originx="-10.107391"
+       originy="-2.4598932" />
     <sodipodi:guide
-       position="8.9128542,37.522517"
+       position="3.8777283,37.540107"
        orientation="0,1"
        id="guide141"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-5.0722651,29.698156"
+       position="-10.107391,29.715746"
        orientation="1,0"
        id="guide143"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="14.929712,27.787836"
+       position="9.894586,27.805426"
        orientation="1,0"
        id="guide147"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,27.787836"
+       position="-0.10738876,27.805426"
        orientation="1,0"
        id="guide149"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="79.898548,34.382733"
+       position="74.863421,34.400323"
        orientation="0,1"
        id="guide151"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,19.777766"
+       position="-0.10738876,19.795356"
        orientation="0,1"
        id="guide180"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="40.473867,10.184719"
+       position="35.438741,10.202309"
        orientation="0,1"
        id="guide182"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-5.0742372,14.909434"
+       position="-10.109363,14.927024"
        orientation="1,0"
        id="guide184"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="44.85751,24.646069"
+       position="39.822384,24.663659"
        orientation="1,0"
        id="guide186"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="45.954521,-16.273615"
+       position="40.919395,-16.256024"
        orientation="0,1"
        id="guide188"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="24.031902,-26.66796"
+       position="18.996776,-26.650369"
        orientation="0,1"
        id="guide314"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-8.5704701"
+       position="-0.10738876,-8.5528797"
        orientation="0,1"
        id="guide316"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-21.988592"
+       position="-0.10738876,-21.971001"
        orientation="0,1"
        id="guide318"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-34.272832"
+       position="-0.10738876,-34.255241"
        orientation="0,1"
        id="guide320"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-31.725268"
+       position="-0.10738876,-31.707677"
        orientation="0,1"
        id="guide322"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-44.009509"
+       position="-0.10738876,-43.991918"
        orientation="0,1"
        id="guide324"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="-5.1523622,-39.141164"
+       position="-10.187488,-39.123573"
        orientation="1,0"
        id="guide326"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="14.851587,-39.141164"
+       position="9.816461,-39.123573"
        orientation="1,0"
        id="guide328"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,-39.613643"
+       position="-0.10738876,-39.596052"
        orientation="0,1"
        id="guide330"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="34.855533,49.950358"
+       position="29.820407,49.967948"
        orientation="1,0"
        id="guide413"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="94.713451,15.09841"
+       position="89.678324,15.116"
        orientation="0,1"
        id="guide442"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="38.961962,24.547814"
-       orientation="0,1"
-       id="guide444"
-       inkscape:locked="false" />
-    <sodipodi:guide
-       position="107.00581,0.44803976"
+       position="101.97068,0.46563004"
        orientation="0,1"
        id="guide446"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="97.003827,5.3163717"
+       position="91.9687,5.3339619"
        orientation="0,1"
        id="guide448"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="169.91632,15.053035"
+       position="164.88119,15.070625"
        orientation="1,0"
        id="guide450"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="149.91237,15.053035"
+       position="144.87724,15.070625"
        orientation="1,0"
        id="guide452"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="129.90842,15.053035"
+       position="124.87329,15.070625"
        orientation="1,0"
        id="guide454"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="109.90447,24.789699"
+       position="104.86934,24.807289"
        orientation="1,0"
        id="guide456"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="89.900527,15.09841"
+       position="84.8654,15.116"
        orientation="1,0"
        id="guide458"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="69.896582,15.09841"
+       position="64.861455,15.116"
        orientation="1,0"
        id="guide460"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="49.892636,24.646068"
+       position="44.857509,24.663658"
        orientation="1,0"
        id="guide462"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="59.894608,29.514415"
+       position="54.859481,29.532005"
        orientation="1,0"
        id="guide464"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="79.898554,29.514415"
+       position="74.863427,29.532005"
        orientation="1,0"
        id="guide466"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="99.816127,-16.273615"
+       position="94.781,-16.256024"
        orientation="1,0"
        id="guide468"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="119.90644,29.658031"
+       position="114.87131,29.675621"
        orientation="1,0"
        id="guide470"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="139.91039,15.09841"
+       position="134.87526,15.116"
        orientation="1,0"
        id="guide472"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="159.91435,19.921367"
+       position="154.87922,19.938957"
        orientation="1,0"
        id="guide474"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="124.95155,10.184719"
+       position="119.91642,10.202309"
        orientation="1,0"
        id="guide503"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="144.98429,15.09841"
+       position="139.94916,15.116"
        orientation="1,0"
        id="guide505"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="155.00066,15.09841"
+       position="149.96553,15.116"
        orientation="1,0"
        id="guide507"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="135.15691,15.09841"
+       position="130.12178,15.116"
        orientation="1,0"
        id="guide509"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="114.7462,15.09841"
+       position="109.71107,15.116"
        orientation="1,0"
        id="guide511"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="95.091427,24.547813"
+       position="90.0563,24.565403"
        orientation="1,0"
        id="guide513"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="85.07506,24.547813"
+       position="80.039933,24.565403"
        orientation="1,0"
        id="guide515"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="75.058691,24.547813"
+       position="70.023564,24.565403"
        orientation="1,0"
        id="guide519"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="65.042321,19.777765"
+       position="60.007194,19.795355"
        orientation="1,0"
        id="guide529"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="55.21494,24.547813"
+       position="50.179813,24.565403"
        orientation="1,0"
        id="guide531"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="4.9277371,30.530303"
+       position="-0.10738876,30.547893"
        orientation="0,1"
        id="guide533"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="59.894606,32.656172"
+       position="54.859479,32.673762"
        orientation="0,1"
        id="guide535"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="59.894605,26.646027"
+       position="54.859478,26.663617"
        orientation="0,1"
        id="guide537"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="69.896567,12.229065"
+       position="64.86144,12.246655"
        orientation="0,1"
        id="guide539"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="69.896567,17.967752"
+       position="64.86144,17.985342"
        orientation="0,1"
        id="guide541"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="34.426249,7.5388858"
+       position="29.391123,7.556476"
        orientation="0,1"
        id="guide593"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="34.615237,3.0031713"
+       position="29.580111,3.0207615"
        orientation="0,1"
        id="guide595"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="94.902442,16.610314"
+       position="89.867315,16.627904"
        orientation="0,1"
        id="guide603"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="94.902442,13.586505"
+       position="89.867315,13.604095"
        orientation="0,1"
        id="guide605"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="92.445596,7.3498974"
+       position="87.410469,7.3674876"
        orientation="1,0"
        id="guide607"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="97.359287,7.7278738"
+       position="92.32416,7.745464"
        orientation="1,0"
        id="guide609"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="95.469407,21.90198"
+       position="90.43428,21.91957"
        orientation="0,1"
        id="guide615"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="92.445596,28.327575"
+       position="87.410469,28.345165"
        orientation="0,1"
        id="guide617"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="30.207314,24.547813"
+       position="25.172188,24.565403"
        orientation="1,0"
        id="guide625"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="20.451975,24.547813"
+       position="15.416849,24.565403"
        orientation="1,0"
        id="guide627"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="57.433345,29.532009"
+       orientation="1,0"
+       inkscape:locked="false"
+       id="guide203" />
+    <sodipodi:guide
+       position="34.652375,21.91957"
+       orientation="1,0"
+       id="guide215"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -538,7 +543,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -546,7 +551,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-5.072265,-255.91954)">
+     transform="translate(-10.107391,-255.91954)">
     <g
        id="g4823"
        transform="translate(-5,5.0000001)">
@@ -572,14 +577,14 @@
            transform="translate(-36.123488,-35.052589)">
           <rect
              y="294.65372"
-             x="44.562351"
+             x="49.597477"
              height="9.7366772"
              width="20.003946"
              id="rect5441-84-2-8-1"
              style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.29605302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
              rx="2.0003946" />
           <flowRoot
-             transform="matrix(0.26463556,0,0,0.25761625,27.043195,267.56072)"
+             transform="matrix(0.26463556,0,0,0.25761625,32.078322,267.56072)"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              id="flowRoot5471-8-1-3"
              xml:space="preserve"><flowRegion
@@ -594,14 +599,14 @@
                id="flowPara5067-8-5-1"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Laser Source</flowPara></flowRoot>          <rect
              y="277.64481"
-             x="84.00499"
+             x="86.57885"
              height="9.7366772"
              width="20.003946"
              id="rect5441-84-2-8-1-9"
              style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.29605302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
              rx="2.0003946" />
           <flowRoot
-             transform="matrix(0.26463556,0,0,0.25761625,66.485841,250.55185)"
+             transform="matrix(0.26463556,0,0,0.25761625,69.059702,250.55184)"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              id="flowRoot5471-8-1-3-3"
              xml:space="preserve"><flowRegion
@@ -615,28 +620,6 @@
                  id="rect5475-4-96-3-2" /></flowRegion><flowPara
                id="flowPara5067-8-5-1-6"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">IQ Modulator</flowPara></flowRoot>          <rect
-             y="301.74457"
-             x="144.01682"
-             height="9.7366772"
-             width="20.003946"
-             id="rect5441-84-2-8-1-9-5"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.29605302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-             rx="2.0003946" />
-          <flowRoot
-             transform="matrix(0.26463556,0,0,0.25761625,126.49769,274.65159)"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             id="flowRoot5471-8-1-3-3-3"
-             xml:space="preserve"><flowRegion
-               style="line-height:11.33858299px;word-spacing:20px"
-               id="flowRegion5473-7-2-8-4-7"><rect
-                 style="line-height:11.33858299px;word-spacing:20px"
-                 y="108.41292"
-                 x="70.710678"
-                 height="32.783058"
-                 width="66.136345"
-                 id="rect5475-4-96-3-2-1" /></flowRegion><flowPara
-               id="flowPara5067-8-5-1-6-9"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Balanced Photodiode</flowPara></flowRoot>          <rect
              y="291.96252"
              x="114.01089"
              height="9.7366772"
@@ -714,15 +697,15 @@
                  id="rect5475-4-96-3-2-1-5-5-3" /></flowRegion><flowPara
                id="flowPara5067-8-5-1-6-9-8-3-3"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">PC</flowPara></flowRoot>          <rect
-             y="282.41486"
-             x="144.01682"
+             y="282.41483"
+             x="141.49428"
              height="9.7366772"
-             width="20.003946"
+             width="25.049049"
              id="rect5441-84-2-8-1-9-5-7"
-             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.29605302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
-             rx="2.0003946" />
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.3312892;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             rx="2.504905" />
           <flowRoot
-             transform="matrix(0.26463556,0,0,0.25761625,126.49764,255.32189)"
+             transform="matrix(0.26463556,0,0,0.25761625,123.9751,255.32187)"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              id="flowRoot5471-8-1-3-3-3-42"
              xml:space="preserve"><flowRegion
@@ -731,11 +714,11 @@
                  style="line-height:11.33858299px;word-spacing:20px"
                  y="108.41292"
                  x="70.710678"
-                 height="32.783058"
-                 width="66.136345"
+                 height="41.576145"
+                 width="90.145378"
                  id="rect5475-4-96-3-2-1-0" /></flowRegion><flowPara
                id="flowPara5067-8-5-1-6-9-1"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Balanced Photodiode</flowPara></flowRoot>          <rect
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Balanced Photodetector</flowPara></flowRoot>          <rect
              y="273.77432"
              x="59.321377"
              height="9.7366772"
@@ -757,26 +740,16 @@
                  width="66.136345"
                  id="rect5475-4-96-3-5-0-0" /></flowRegion><flowPara
                id="flowPara5067-8-5-1-5-3-0"
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">AWG</flowPara></flowRoot>          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.96987,279.37135 h 5.035121"
-             id="path517"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 104.00894,282.41485 h 5.14771 v 11.54666 h 4.85424 v 0"
-             id="path543"
-             inkscape:connector-curvature="0" />
-          <rect
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">AWG</flowPara></flowRoot>          <rect
              y="294.65372"
-             x="68.967888"
+             x="74.003014"
              height="9.7366772"
              width="20.003946"
              id="rect5441-84-2-8-1-2"
              style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.29605302;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
              rx="2.0003946" />
           <flowRoot
-             transform="matrix(0.26463556,0,0,0.25761625,50.88177,269.63959)"
+             transform="matrix(0.26463556,0,0,0.25761625,55.916897,269.63959)"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              id="flowRoot5471-8-1-3-6"
              xml:space="preserve"><flowRegion
@@ -791,16 +764,6 @@
                id="flowPara5067-8-5-1-9"
                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Beamsplitter</flowPara></flowRoot>          <path
              style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="M 88.971834,299.7002 H 114.01089"
-             id="path599"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 78.969857,294.65371 v -9.37047 h 5.035132"
-             id="path601"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 134.01485,298.34276 h 5.1909 v 6.04762 h 4.7247"
              id="path611"
              inkscape:connector-curvature="0" />
@@ -811,23 +774,8 @@
              inkscape:connector-curvature="0" />
           <path
              style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 134.01483,295.31895 h 5.19092 v -5.29166 h 4.7247 0.0864 v 0"
-             id="path619"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 134.01483,293.96151 h 2.54509 v -8.67827 h 7.37053"
-             id="path621"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="M 68.967887,299.7002 H 64.5663"
+             d="M 74.003014,299.7002 H 69.601427"
              id="path629"
-             inkscape:connector-curvature="0" />
-          <path
-             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-             d="m 164.02076,287.38145 h 5.04511 v 6.58006 h 5.2148"
-             id="path631"
              inkscape:connector-curvature="0" />
           <path
              style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -838,6 +786,63 @@
              style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
              d="m 194.02669,296.83086 h 5.01141"
              id="path635"
+             inkscape:connector-curvature="0" />
+          <rect
+             y="301.74454"
+             x="141.49426"
+             height="9.7366772"
+             width="25.049051"
+             id="rect5441-84-2-8-1-9-5-7-3"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.3312892;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             rx="2.504905" />
+          <flowRoot
+             transform="matrix(0.26463556,0,0,0.25761625,123.97508,274.65161)"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:11.33858299px;font-family:Carlito;-inkscape-font-specification:Carlito;text-align:start;letter-spacing:0px;word-spacing:20px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             id="flowRoot5471-8-1-3-3-3-42-4"
+             xml:space="preserve"><flowRegion
+               style="line-height:11.33858299px;word-spacing:20px"
+               id="flowRegion5473-7-2-8-4-7-8-6"><rect
+                 style="line-height:11.33858299px;word-spacing:20px"
+                 y="108.41292"
+                 x="70.710678"
+                 height="41.576145"
+                 width="90.145378"
+                 id="rect5475-4-96-3-2-1-0-9" /></flowRegion><flowPara
+               id="flowPara5067-8-5-1-6-9-1-5"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.33333397px;line-height:15.11811066px;font-family:Carlito;-inkscape-font-specification:'Carlito, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle">Balanced Photodetector</flowPara></flowRoot>          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 134.01483,296.83085 h 5.19092 v -6.80357 h 2.26786"
+             id="path197"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 134.01483,295.31895 h 2.54509 v -10.03571 h 4.93436"
+             id="path199"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 166.54333,287.38145 h 2.52254 v 6.58006 h 4.95687"
+             id="path201"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 106.5828,282.41485 h 2.57384 v 9.73665 1.81001 h 4.85425 v 0 0"
+             id="path205"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 79.325323,279.27309 h 7.287776"
+             id="path213"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="m 86.578849,285.28324 h -2.777024 v 9.37047"
+             id="path217"
+             inkscape:connector-curvature="0" />
+          <path
+             style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="M 114.01089,299.70023 H 94.00696"
+             id="path219"
              inkscape:connector-curvature="0" />
         </g>
       </g>
