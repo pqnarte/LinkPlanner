@@ -1,0 +1,64 @@
+\clearpage
+
+\section{Probability Estimator}
+
+\maketitle
+
+This blocks accepts an input binary signal and it calculates the probability of having a value "1" \space or "0" \space according to the number of samples acquired and according to the z-score value set depending on the confidence interval. It produces an output binary signal equals to the input. Nevertheless, this block has an additional output which is a txt file with information related with probability values, number of samples acquired and margin error values for each probability value.
+
+\subsection*{Input Parameters}
+
+	\begin{itemize}
+		\item probabilityX\linebreak
+		(double)
+		\item probabilityY\linebreak
+		(double)
+		\item zscore \linebreak
+		(double)
+	
+	\end{itemize}
+
+\subsection*{Methods}
+
+ProbabilityEstimator(vector$\langle$Signal *$\rangle$ \&InputSig, vector$\langle$Signal *$\rangle$ \&OutputSig) :Block(InputSig, OutputSig)\{\};
+\bigbreak	
+void initialize(void);
+\bigbreak	
+bool runBlock(void);
+\bigbreak	
+void setProbabilityExpectedX(double probx)
+double getProbabilityExpectedX()
+\bigbreak	
+void setProbabilityExpectedY(double proby)
+double getProbabilityExpectedY()
+\bigbreak
+void setZScore(double z)
+double getZScore()
+
+
+\subsection*{Functional description}
+
+This block receives an input binary signal with values "0" \space or "1" \space and it calculates the probability of having each number according with the number of samples acquired. The error margin is calculated based on the z-score set which specifies the confidence interval.
+
+\subsection*{Input Signals}
+
+
+\subparagraph*{Number:} 1
+
+\subparagraph*{Type:} Binary 
+
+\subsection*{Output Signals}
+
+\subparagraph*{Number:} 2
+
+\subparagraph*{Type:} Binary 
+\subparagraph*{Type:} txt file
+
+\subsection*{Examples}
+
+
+
+\subsection*{Sugestions for future improvement}
+
+
+

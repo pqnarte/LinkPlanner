@@ -17,12 +17,6 @@ void BalancedBeamSplitter::initialize(void) {
 	outputSignals[0]->setCentralWavelength(inputSignals[0]->getCentralWavelength());
 	outputSignals[0]->setCentralFrequency(inputSignals[0]->getCentralFrequency());
 
-	outputSignals[1]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[1]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
-	outputSignals[1]->setCentralWavelength(inputSignals[0]->getCentralWavelength());
-	outputSignals[1]->setCentralFrequency(inputSignals[0]->getCentralFrequency());
-
 }
 
 bool BalancedBeamSplitter::runBlock(void) {
@@ -45,7 +39,7 @@ bool BalancedBeamSplitter::runBlock(void) {
 		if (mode = 0) {
 
 			t_complex inSignal1;
-			//This should implement a 1x2 beam splitter
+			//This should implement a 1x2 beam splitters
 
 				inputSignals[0]->bufferGet(&inSignal1);
 

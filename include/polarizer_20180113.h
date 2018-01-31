@@ -1,7 +1,7 @@
 #ifndef POLARIZE_H_
 #define POLARIZER_H_
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
 
 enum functionalMode {Sender, Receiver};
 
