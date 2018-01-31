@@ -1,3 +1,16 @@
+2017-01-31
+TO BE DONE
+	correções no documento
+	parte teórica - descrever melhor a teoria (formulação analitica)
+
+	parte numérica - explicar bem os intervalos de confiança no bloco, explicar bem o multipath
+
+	continuar com a parte experimental
+
+	avançar também com a parte do BB84
+
+Next meeting: 6/2, 8h30m
+
 2017-01-23
 TO BE DONE
         correções no documento e na simualção
