@@ -4,9 +4,15 @@
 
 void QRNG_DecisionCircuit::initialize(void) {
 
+<<<<<<< HEAD
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->symbolPeriod;;
+	outputSignals[0]->samplesPerSymbol = 1;
+=======
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+>>>>>>> Develop.Mariana_TQ
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }

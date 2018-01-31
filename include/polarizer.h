@@ -3,14 +3,9 @@
 
 #include "netxpto.h"
 
-enum functionalMode {Sender, Receiver};
-
 class Polarizer : public Block{
-	
-	
+
 public:
-	// Input parameters
-	functionalMode mode{ Sender };
 
 	Polarizer (vector <Signal*> &inputSignals, vector <Signal*> &outputSignals) : Block(inputSignals, outputSignals) {};
 
@@ -18,9 +13,6 @@ public:
 
 	bool runBlock(void);
 
-	void setFunctionality(functionalMode s) { mode = s; };
-	functionalMode const getFunctionMode(void) { return mode; };
-	
 };
 #endif // !POLARIZE_H_
 

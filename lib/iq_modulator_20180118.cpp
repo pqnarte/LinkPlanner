@@ -33,8 +33,8 @@ void IqModulator::initialize(void) {
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[0]->centralWavelength = outputOpticalWavelength;
-	outputSignals[0]->centralFrequency = outputOpticalFrequency;
+	outputSignals[0]->setCentralWavelength(outputOpticalWavelength);
+	outputSignals[0]->setCentralFrequency(outputOpticalFrequency);
 
 }
 

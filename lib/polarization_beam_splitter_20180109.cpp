@@ -3,29 +3,62 @@
 # include <algorithm>  // min()
 # include <math.h>     // cos(), sin()
 
+<<<<<<< HEAD
+# include "netxpto.h"
+# include "polarization_beam_splitter.h"
+
+=======
+>>>>>>> Develop.Mariana_TQ
 void PolarizationBeamSplitter::initialize(void) {
 
-	firstTime = false;
-
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
+	outputSignals[1]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[1]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[1]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
+	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
 
 bool PolarizationBeamSplitter::runBlock(void) {
 
 	int ready = inputSignals[0]->ready();
-	int space = outputSignals[0]->space();
+	int space1 = outputSignals[0]->space();
+	int space2 = outputSignals[1]->space();
 
-	int process = min(ready, space);
+	int space = min(space1, space2);
 
-	if (process <= 0) return false;
+	int length = min(ready, space);
 
-	for (auto i = 0; i < process; i++) {
+	if (length <= 0) return false;
 
+<<<<<<< HEAD
+	signal_value_type inSignalType = inputSignals[0]->getValueType();
+
+	if (inSignalType == ComplexValueXY) {
+		t_complex_xy valueXY;
+
+		for (int i = 0; i <= length; i++) {
+			inputSignals[0]->bufferGet(&valueXY);
+
+			t_complex valueXX = valueXY.x;
+			t_complex valueYY = valueXY.y;
+			t_complex valueXY = 0.0;
+			t_complex valueYX = 0.0;
+
+			t_complex_xy ValueXout = { valueXX, valueXY };
+			t_complex_xy ValueYout = { valueYX, valueYY };
+
+			outputSignals[0]->bufferPut((t_complex_xy)ValueXout);
+			outputSignals[1]->bufferPut((t_complex_xy)ValueYout);
+		}
+	}
+	else {
+		
+=======
 		t_complex_xy inSignal1;
 		t_photon_mp_xy outSignal1;
 		//This should implement a 1x2 beam splitters
@@ -44,8 +77,10 @@ bool PolarizationBeamSplitter::runBlock(void) {
 
 
 		outputSignals[0]->bufferPut((t_photon_mp_xy)outSignal1);
+>>>>>>> Develop.Mariana_TQ
 	}
 	
+
 	return true;
 
 };
