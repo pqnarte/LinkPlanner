@@ -104,7 +104,7 @@ This means that the probability of an error in bit detection is independent amon
 %\end{equation}
 
 \begin{equation}\label{eq:berBPSK}
-P_b= Q\left({\frac{m\sqrt{2}}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{n_0}}\right).
+P_b= Q\left({\frac{m\sqrt{2}}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
 \end{equation}
 
 with 
@@ -112,13 +112,13 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&n_0 &= \sqrt{\frac{1}{2} n_0}
+&N_0 &= \sqrt{\frac{1}{2} n_0}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $N_0$ is the noise spectral density.
+where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density.
 
 The symbol error rate however is not the same, as it depends on both bits being correctly detected. The probability of both bits being correctly detected is:
 
@@ -177,6 +177,10 @@ The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{f
 \end{figure}
 
 These equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
+
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved.
+
+% TODO: preencher isto
 
 \pagebreak
 \subsection{Simulation Analysis}
