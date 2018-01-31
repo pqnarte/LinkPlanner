@@ -30,32 +30,10 @@ bool Polarizer::runBlock(void) {
 		t_complex valueX = valueXY.x;
 		t_complex valueY = valueXY.y;
 
-		t_complex valueXout;
-		t_complex ValueYout;
+		t_complex valueXout = cos(-tetha*PI / 180)*valueX + sin(-tetha*PI / 180)*valueY;
+		t_complex ValueYout = -sin(-tetha*PI / 180)*valueX + cos(-tetha*PI / 180)*valueY;
 
-		switch (mode) {
-		case Sender:
-			valueXout = cos(-tetha * PI / 180)*valueX + sin(-tetha * PI / 180)*valueY;
-			ValueYout = -sin(-tetha * PI / 180)*valueX + cos(-tetha * PI / 180)*valueY;
-
-			valueXY = { valueXout, ValueYout };
-			break;
-
-		case Receiver:
-			if(tetha == 0){
-				//do nothing
-			}
-			else {
-				valueXout = cos(-tetha * PI / 180)*valueX;
-				ValueYout = sin(-tetha * PI / 180)*valueY;
-			}
-			valueXY = { valueXout, ValueYout };
-			break;
-
-		default:
-			break;
-		}
-		
+		valueXY = { valueXout, ValueYout };
 
 		outputSignals[0]->bufferPut(valueXY);
 

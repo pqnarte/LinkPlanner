@@ -1,5 +1,20 @@
 2018-01-23
 TO BE DONE
+	- rever o docuemnto (aspeto de edição)
+
+	- na parte teórica incluir o efeito do filtro no recetor
+
+	- simulação: impementação de um filtro eletrico (?)
+
+	- avançar com a parte experimental (guião)
+
+	- corrigir o bloco do ruído (parametro seed)
+
+Next meeting: 7/2, 9h30m
+
+
+2018-01-23
+TO BE DONE
 	- conluir a parte teórica e simulação (adptando ao recetor da Thorlabs)
 	- abrir um secção com a parte experimental, esquema com o diagrama, ientificação do mateiral a usar
 

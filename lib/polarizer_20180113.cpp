@@ -1,5 +1,4 @@
-#include "netxpto.h"
-#include "polarizer.h"
+#include "polarizer_20180113.h"
 
 void Polarizer::initialize(void) {
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
