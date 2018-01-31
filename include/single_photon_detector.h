@@ -7,7 +7,6 @@ class SinglePhotonDetector : public Block {
 	
 	// Input Parameters
 	t_integer path{ 0 };
-	double threshold{ 0.5 };
 
 public:
 
@@ -19,9 +18,6 @@ public:
 
 	void setPath(t_integer p) { path = p; };
 	t_integer getPath() { return path; };
-
-	void setThreshold(double thresh) { threshold = thresh; };
-	double getThreshold() { return threshold; };
 		
 };
 

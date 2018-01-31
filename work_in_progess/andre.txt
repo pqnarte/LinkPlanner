@@ -1,3 +1,16 @@
+2018-01-31
+TO BE DONE
+	concluir a documentação relativa bpsk_system
+
+	incluir na plataforma um simulador the VHDL (ghdl.free.fr), incluir a informação no manual
+
+	correr o teu programa esqueleto
+
+	bloco para a ADC (para pensar)
+
+next meeting: 7/2, 10h30m
+
+
 2018-01-24
 TO BE DONE
 	rever o sistema bpsk_system

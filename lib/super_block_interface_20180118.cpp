@@ -18,9 +18,9 @@ SuperBlockInterface::SuperBlockInterface(vector<Signal *> &inputSignals, vector<
 void SuperBlockInterface::initialize(void) {
 
 	for (int k = 0; k < numberOfOutputSignals; k++) {
-		outputSignals[k]->symbolPeriod = inputSignals[k]->symbolPeriod;
-		outputSignals[k]->samplingPeriod = inputSignals[k]->samplingPeriod;
-		outputSignals[k]->samplesPerSymbol = inputSignals[k]->samplesPerSymbol;
+		outputSignals[k]->setSymbolPeriod(inputSignals[k]->getSymbolPeriod());
+		outputSignals[k]->setSamplingPeriod(inputSignals[k]->getSamplingPeriod());
+		outputSignals[k]->setSamplesPerSymbol(inputSignals[k]->getSamplesPerSymbol());
 		outputSignals[k]->setFirstValueToBeSaved(inputSignals[k]->getFirstValueToBeSaved());
 	}
 	
