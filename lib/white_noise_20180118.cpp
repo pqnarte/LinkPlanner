@@ -12,11 +12,6 @@ void WhiteNoise::initialize(void){
 
 	firsTime = false;
 
-	generator1.seed(rd());
-	generator2.seed(rd());
-	generator3.seed(rd());
-	generator4.seed(rd());
-
 //	outputSignals[0]->setSamplingPeriod(samplingPeriod);
 //	outputSignals[0]->setSymbolPeriod(symbolPeriod);
 

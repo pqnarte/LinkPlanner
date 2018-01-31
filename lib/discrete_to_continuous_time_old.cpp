@@ -1,7 +1,7 @@
 # include <algorithm> // min
 
 # include "netxpto.h"
-# include "discrete_to_continuous_time_old.h"
+# include "discrete_to_continuous_time.h"
 
 void DiscreteToContinuousTime::initialize(void) {
 

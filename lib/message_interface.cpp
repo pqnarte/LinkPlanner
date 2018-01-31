@@ -25,21 +25,9 @@ bool MessageProcessorAlice::runBlock(void) {
 
 	int process = min(ready, spaceIn);
 
-	if (process <= 0) return false;
-
 	for (auto k = 1; k <= process; k++) {
 		t_message message;
 		inputSignals[1]->bufferGet(&message);
-		string m_type = message[0].fieldValue ;
-		char aux_type = (char)m_type.c_str();
-		string aux_size = message[1].fieldValue;
-		messageDataLength = atoi(aux_size.c_str());
-
-		if (aux_type = '0') {
-			messageType = BasisReconciliation;
-		}
-
-	
 	}
 
 	/*Number of bits ready to be read*/
