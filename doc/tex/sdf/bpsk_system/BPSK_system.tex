@@ -83,18 +83,19 @@ binary\_source.h                 &                   & \checkmark \\ \hline
 bit\_decider.h                   &                   & \checkmark \\ \hline
 bit\_error\_rate.h               &                   & \checkmark \\ \hline
 discrete\_to\_continuous\_time.h &                   & \checkmark \\ \hline
-netxpto.h                        &                   & \checkmark \\ \hline
-m\_qam\_mapper.h                 &                   & \checkmark \\ \hline
-m\_qam\_transmitter.h            &                   & \checkmark \\ \hline
-local\_oscillator.h              &                   & \checkmark \\ \hline
 i\_homodyne\_receiver.h          &                   & \checkmark \\ \hline
 ideal\_amplifier.h               &                   & \checkmark \\ \hline
 iq\_modulator.h                  &                   & \checkmark \\ \hline
-photodiode.h                     &                   & \checkmark \\ \hline
+local\_oscillator.h              &                   & \checkmark \\ \hline
+m\_qam\_mapper.h                 &                   & \checkmark \\ \hline
+m\_qam\_transmitter.h            &                   & \checkmark \\ \hline
+netxpto.h                        &                   & \checkmark \\ \hline
+photodiode_old.h                 &                   & \checkmark \\ \hline
 pulse\_shaper.h                  &                   & \checkmark \\ \hline
 sampler.h                        &                   & \checkmark \\ \hline
 sink.h                           &                   & \checkmark \\ \hline
 super\_block\_interface.h        &                   & \checkmark \\ \hline
+ti\_amplifier.h                  &                   & \checkmark \\ \hline
 white\_noise.h                   &                   & \checkmark \\ \hline
 \end{tabulary}
 \end{table}		
@@ -112,18 +113,19 @@ binary\_source.cpp                 &                   & \checkmark \\ \hline
 bit\_decider.cpp                   &                   & \checkmark \\ \hline
 bit\_error\_rate.cpp               &                   & \checkmark \\ \hline
 discrete\_to\_continuous\_time.cpp &                   & \checkmark \\ \hline
-netxpto.cpp                        &                   & \checkmark \\ \hline
-m\_qam\_mapper.cpp                 &                   & \checkmark \\ \hline
-m\_qam\_transmitter.cpp            &                   & \checkmark \\ \hline
-local\_oscillator.cpp              &                   & \checkmark \\ \hline
 i\_homodyne\_receiver.cpp          &                   & \checkmark \\ \hline
 ideal\_amplifier.cpp               &                   & \checkmark \\ \hline
 iq\_modulator.cpp                  &                   & \checkmark \\ \hline
-photodiode.cpp                     &                   & \checkmark \\ \hline
+local\_oscillator.cpp              &                   & \checkmark \\ \hline
+m\_qam\_mapper.cpp                 &                   & \checkmark \\ \hline
+m\_qam\_transmitter.cpp            &                   & \checkmark \\ \hline
+netxpto.cpp                        &                   & \checkmark \\ \hline
+photodiode_old.cpp                 &                   & \checkmark \\ \hline
 pulse\_shaper.cpp                  &                   & \checkmark \\ \hline
 sampler.cpp                        &                   & \checkmark \\ \hline
 sink.cpp                           &                   & \checkmark \\ \hline
 super\_block\_interface.cpp        &                   & \checkmark \\ \hline
+ti\_amplifier.cpp                  &                   & \checkmark \\ \hline
 white\_noise.cpp                   &                   & \checkmark \\ \hline
 \end{tabulary}
 \end{table}		
@@ -139,7 +141,7 @@ This system takes into account the following input parameters:
 \multicolumn{3}{|c|}{ \textbf{System Input Parameters} } \\
 \hline
 \textbf{Parameter}     & \textbf{Default Value}                                     & \textbf{Comments} \\ \hline
-numberOfBitsGenerated  & $40000$	                                                   & \\ \hline
+numberOfBitsGenerated  & $40000$	                                                & \\ \hline
 bitPeriod              & $20\times10^{-12}$                                         & \\ \hline
 samplesPerSymbol       & $16$                                                       & \\ \hline
 pLength                & $5$                                                        & \\ \hline
@@ -213,4 +215,4 @@ The following results show the dependence of the error rate with the signal powe
 %
 
 
-\cleardoublepage
+\cleardoublepage 
