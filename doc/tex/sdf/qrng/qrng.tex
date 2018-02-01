@@ -4,17 +4,18 @@
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 \textbf{Students Name}  &:& Mariana Ramos (12/01/2018 - )\\
-\textbf{Goal}          &:& sdf/quantum\_random\_number\_generator.
+\textbf{Goal}          &:& Simulate and implement an experimental setup of a Quantum Random Number Generator.\\
+\textbf{Directory}          &:& sdf/quantum\_random\_number\_generator.
 \end{tabular}
 \end{tcolorbox}
 
-True random numbers are indispensable in the field of cryptography to guarantee the security of the communication protocols \cite{katsoprinakis2008quantum}. There are two approaches for random number generation: the pseudorandom generation which are based on an algorithm implemented on a computer, and the physical random generators which consist in measuring some physical observable with random behaviour. Since classical physics description is deterministic, all classical processes are in principle predictable. Therefore, a true random number generator must be based on a quantum process.
+True random numbers are indispensable in the field of cryptography\cite{katsoprinakis2008quantum}. There are two approaches for random number generation: the pseudorandom generation which are based on an algorithm implemented on a computer, and the physical random generators which consist in measuring some physical observable with random behaviour. Since classical physics description is deterministic, all classical processes are in principle predictable. Therefore, a true random number generator must be based on a quantum process.\cite{Zeilinger}
 
-In this chapter, it is presented the theoretical analysis and simulation of a quantum random generator by measuring the polarization of single photons with a polarizing beam splitter.
+In this chapter, it is presented the theoretical, the simulation and the experimental analysis of a quantum random generator based on the use of single photons linearly polarized at $45^{\circ}$.
 
 \subsection{Theoretical Analysis}
 
-Nowadays, the only known way to generate truly random numbers is by building a physical source by using quantum mechanical decisions, since the occurrence of each individual result of such a quantum mechanical decision is truly random, ie it is inestimable or unknowable \cite{Zeilinger}. One of the optical processes available as a source of randomness is the splitting of a polarized single photon beam.
+One of the optical processes available as a source of randomness is the splitting of a polarized single photon beam. The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is linearly polarized at $45^\circ$ and has equal probability of be found in the horizontal (H) or in the vertical (V) output of the PBS. Quantum theory estimates for both cases that the individual choices are truly random, independent one from each other , and with a probability of 1/2.
 
 \begin{figure}[H]
     \centering
@@ -22,21 +23,36 @@ Nowadays, the only known way to generate truly random numbers is by building a p
     \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is linearly polarized at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
 \end{figure}
 
-The principle of operation of the random generator is shown in figure \ref{qrng}. Each individual photon coming from the source is linearly polarized at $45^\circ$ and has equal probability of found in the horizontal polarization (H) or in the vertical polarization (V) output of the PBS. Quantum theory estimates for both cases the individual choices are truly random and independent one from each other. This way, the detection of the photons in each output of the polarization beam splitter is done with single photon detectors and combining the detection pulse in a switch, which has two possible states: "0" \space or "1". When the detector \textbf{D1} fires, the switch is flipped to state "0" \space and does not move until a detection event in detector \textbf{B2} occurs and it does not move until a detection occurs in detector \textbf{D1}. In the case of some detections occur in a row in the same detector, only the first detection clicks and the following detections leave the switch unaltered.
+From a classical approach, the information is stored as binary bits that can take the logical value '0' or '1'. From a quantum approach, the information can be stored in quantum bits or qubits for short. As a consequence of the superposition principle of quantum mechanics, qubits can not only represent the pure '0' or '1' states, but they can also represent a superposition of both. This way, qubits are governed by a quantum wave function $\psi$. Lets use the Dirac notation to represent the general state of the qubit:
+\begin{equation}\label{eq:qubit}
+  |\psi\rangle = C_0 |0\rangle + C_1 |1\rangle,
+\end{equation}
+
+and the normalization condition of $|\psi\rangle$ requires that $|C_0|^2+|C_1|^2=1$. This way, the relative proportion of each of the binary states on a qubit is governed by the amplitude coefficients $C_0$ and $C_1$. In the present example, we consider a linear polarization in which the two possible states are orthogonal, such that: $\langle 0|1 \rangle=0$. We define the $|0\rangle$ and $|1\rangle$ states to correspond to the horizontal and vertical polarization states, respectively:
+
+\begin{eqnarray}
+ %\nonumber % Remove numbering (before each equation)
+  |\psi\rangle &=& C_0 |0\rangle+C_1 |1\rangle \\
+             &=& C_0 |0^{\circ}\rangle + C_1 |90^{\circ}\rangle .
+\end{eqnarray}
+
+Amplitude coefficients $C_0$ and $C_1$ store the quantum information. Therefore, if one makes a measurement, the result will be '0' with probability $|C_0|^2$ or '1' with probability $|C_1|^2$.
+Moreover, the state of a single photon can be also described by a wave function as a column vector:
+
+\begin{equation}\label{eq:wavefvector}
+  |\psi\rangle = \binom{C_0}{C_1}.
+\end{equation} 
+
+In a bi-dimensional space, 
 
 \subsection{Simulation Analysis}
+The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. The linear polarizer has an input control signal (S1) which allows to change the rotation angle. Nevertheless, the only purpose is to generate a time and amplitude continuous real signal with the value of the rotation angle in degrees. In addition, the photons are generated by single photon source block at a rate defined by the clock rate. At the end of the simulation there is a circuit decision block which will outputs a binary signal with value "$0$" \space if the detector at the end of the horizontal path clicks or "$1$" \space if the detector at the end of the vertical path clicks.
 
 \begin{figure}[h]
     \centering
         \includegraphics[clip, trim=5cm 5cm 0.5cm 15cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Simulation_qrng.pdf}
     \caption{Block diagram of the simulation of a Quantum Random Generator.}\label{sim_qrng}
 \end{figure}
-
-The simulation diagram of the setup described in the previous section is presented in figure \ref{sim_qrng}. The linear polarizer has an input control signal (S1) which allows to change the rotation angle. Nevertheless, the only purpose is to generate a time and amplitude continuous real signal with the value of the rotation angle in degrees.
-
-In addition, the photons are generated by single photon source block at a rate defined by the clock rate.
-
-At the end of the simulation there is a circuit decision block which will outputs a binary signal with value "$0$" \space if the detector at the end of the horizontal path clicks or "$1$" \space if the detector at the end of the vertical path clicks.
 
 In table \ref{tb:inputparameters2} are presented the input parameters of the system.
 
@@ -84,7 +100,7 @@ Table \ref{tb:signalsh} presents the header files used to implement the simulati
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{File name}                              & \textbf{Description}                                                          & \textbf{Status} \\ \hline
-netxpto.h                                       &                                                                               &    \checkmark   \\ \hline
+netxpto\_20180118.h                             &                                                                               &    \checkmark   \\ \hline
 electrical\_signal\_generator\_20180124.h       &setFunction(), setGain()                                                       &    \checkmark   \\ \hline
 clock\_20171219.h                               &ClockPeriod(1 / RateOfPhotons)                                                 &    \checkmark   \\ \hline
 polarization\_beam\_splitter\_20180109.h        &                                                                               &   \checkmark   \\ \hline
@@ -104,7 +120,7 @@ qrng\_decision\_circuit.h                       &                               
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{File name}                              & \textbf{Description} & \textbf{Status} \\ \hline
-netxpto.cpp                                     &                      &    \checkmark   \\ \hline
+netxpto\_20180118.cpp                           &                      &    \checkmark   \\ \hline
 electrical\_signal\_generator\_20180124.cpp     &                      &    \checkmark   \\ \hline
 clock\_20171219.cpp                             &                      &    \checkmark   \\ \hline
 polarization\_beam\_splitter\_20180109.cpp      &                      &   \checkmark   \\ \hline
