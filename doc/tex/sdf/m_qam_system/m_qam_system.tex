@@ -246,63 +246,63 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
 %
 
 \begin{table}[H]
-\centering
-\begin{tabulary}{1.0\textwidth}{|p{6cm}|p{3.5cm}|p{1cm}||p{1.5cm}||p{1cm}|}
-\hline
-\multicolumn{5}{|c|}{ \textbf{Source Files} } \\
-\hline
-\textbf{File}                      & \textbf{Comments} &  \textbf{Help} & \textbf{timetag} & \textbf{Status} \\ \hline
-add.cpp                            &                   & \checkmark & 20171116 & \checkmark \\ \hline
-binary\_source.cpp                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-bit\_error\_rate.cpp               &                   & \checkmark & 20171810 & \checkmark \\ \hline
-decoder.cpp                        &                   & \checkmark & 20180118 & \checkmark \\ \hline
-discrete\_to\_continuous\_time.cpp &                   & \checkmark & 20180118 & \checkmark \\ \hline
-homodyne\_receiver.cpp             & Has been changed to remove pulse shaper & $^1$ & 20180118 & \checkmark \\ \hline
-ideal\_amplififer.cpp              &                   & & 20180118 & \checkmark \\ \hline
-iq\_modulator.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-local\_oscillator.cpp              &                   & \checkmark & 20180118 & \checkmark \\ \hline
-m\_qam\_mapper.cpp                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-m\_qam\_system.cpp                 &                   & &          & \checkmark \\ \hline
-m\_qam\_transmitter.cpp            &                   & \checkmark & 20180118 & \checkmark \\ \hline
-netxpto.cpp                        &                   & & 20180118 & \checkmark \\ \hline
-optical\_hybrid.cpp                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-photodiode\_old.cpp                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-%pulse\_shaper.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-sampler.cpp                        &                   & \checkmark & 20171119 & \checkmark \\ \hline
-sink.cpp                           &                   & \checkmark & 20180118 & \checkmark \\ \hline
-super\_block\_interface.cpp        &                   & & 20180118 & \checkmark \\ \hline
-white\_noise.cpp                   &                   & & 20180118 & \checkmark \\ \hline
-\end{tabulary}
-\label{tab:sources}
-\caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}}
+    \centering
+    \begin{tabulary}{1.0\textwidth}{|p{7cm}|p{6cm}|p{1cm}|}
+        \hline
+        \multicolumn{3}{|c|}{ \textbf{Source Files} } \\
+        \hline
+        \textbf{File}                      			 & \textbf{Comments} & \textbf{Status} \\ \hline
+        add\_20171116.cpp                            &                   & \checkmark \\ \hline
+        binary\_source\_20180118.cpp                 &                   & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.cpp               &                   & \checkmark \\ \hline
+        decoder\_20180118.cpp                        &                   & \checkmark \\ \hline
+        discrete\_to\_continuous\_time\_20180118.cpp &                   & \checkmark \\ \hline
+        homodyne\_receiver\_20180118.cpp             & Has been changed to remove pulse shaper & \checkmark \\ \hline
+        ideal\_amplififer\_20180118.cpp              &                   & \checkmark \\ \hline
+        iq\_modulator\_20180118.cpp                  &                   & \checkmark \\ \hline
+        local\_oscillator\_20180118.cpp              &                   & \checkmark \\ \hline
+        m\_qam\_mapper\_20180118.cpp                 &                   & \checkmark \\ \hline
+        m\_qam\_system.cpp                 			 & No help in manual.& \checkmark \\ \hline
+        m\_qam\_transmitter\_20180118.cpp            &                   & \checkmark \\ \hline
+        netxpto\_20180118.cpp                        & No help in manual.& \checkmark \\ \hline
+        optical\_hybrid\_20180118.cpp                &                   & \checkmark \\ \hline
+        photodiode\_old\_20180118.cpp                &                   & \checkmark \\ \hline
+        pulse\_shaper\_20180118.cpp                  &                   & \checkmark \\ \hline
+        sampler\_20171119.cpp                        &                   & \checkmark \\ \hline
+        sink\_20180118.cpp                           &                   & \checkmark \\ \hline
+        super\_block\_interface\_20180118.cpp        & No help in manual.& \checkmark \\ \hline
+        white\_noise\_20180118.cpp                   & No help in manual.& \checkmark \\ \hline
+    \end{tabulary}
+    \label{tab:sources}
+    \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}}
 \end{table}
 
 \begin{table}[H]
     \centering
-    \begin{tabulary}{1.0\textwidth}{|p{6cm}|p{3.5cm}|p{1cm}||p{1.5cm}||p{1cm}|}
+    \begin{tabulary}{1.0\textwidth}{|p{7cm}|p{6cm}|p{1cm}|}
         \hline
-        \multicolumn{5}{|c|}{ \textbf{Header Files} } \\
+        \multicolumn{3}{|c|}{ \textbf{Header Files} } \\
         \hline
-        \textbf{File}                      & \textbf{Comments} &  \textbf{Help} & \textbf{timetag} & \textbf{Status} \\ \hline
-        add.h                            &                   & \checkmark & 20180118 ($^1$) & \checkmark \\ \hline
-        binary\_source.h                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        bit\_error\_rate.h               &                   & \checkmark & 20171810 & \checkmark \\ \hline
-        decoder.h                        &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        discrete\_to\_continuous\_time.h &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        homodyne\_receiver.h             & Has been changed to remove pulse shaper & $^2$ & 20171203 ($^1$) & \checkmark \\ \hline
-        ideal\_amplififer.h              &                   & & 20180118 & \checkmark \\ \hline
-        iq\_modulator.h                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        local\_oscillator.h              &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        m\_qam\_mapper.h                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        m\_qam\_transmitter.h            &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        netxpto.h                        &                   & & 20180118 & \checkmark \\ \hline
-        optical\_hybrid.h                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        photodiode\_old.h                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        %pulse\_shaper.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        sampler.h                        &                   & \checkmark & 20171119 & \checkmark \\ \hline
-        sink.h                           &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        super\_block\_interface.h        &                   & & 20180118 & \checkmark \\ \hline
-        white\_noise.h                   &                   & & 20180118 & \checkmark \\ \hline
+        \textbf{File}                      & \textbf{Comments} & \textbf{Status} \\ \hline
+        add\_20180118.h                            & Time tag different on cpp file.& \checkmark \\ \hline
+        binary\_source\_20180118 .h                &                   & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.h               &                   & \checkmark \\ \hline
+        decoder\_20180118.h                        &                   & \checkmark \\ \hline
+        discrete\_to\_continuous\_time\_20180118.h &                   & \checkmark \\ \hline
+        homodyne\_receiver\_20171203.h             & Has been changed to remove pulse shaper. On help under "MQAM\_receiver". Different time-tag on cpp.  & \checkmark \\ \hline
+        ideal\_amplifier\_20180118.h               & No help on manual.& \checkmark \\ \hline
+        iq\_modulator\_20180118.h                  &                   & \checkmark \\ \hline
+        local\_oscillator\_20180118.h              &                   & \checkmark \\ \hline
+        m\_qam\_mapper\_20180118.h                 &                   & \checkmark \\ \hline
+        m\_qam\_transmitter\_20180118.h            &                   & \checkmark \\ \hline
+        netxpto\_20180118.h                        & No help on manual.& \checkmark \\ \hline
+        optical\_hybrid\_20180118.h                &                   & \checkmark \\ \hline
+        photodiode\_old\_20180118.h                &                   & \checkmark \\ \hline
+        pulse\_shaper\_20180118.h                  &                   & \checkmark \\ \hline
+        sampler\_20171119.h                        &                   & \checkmark \\ \hline
+        sink\_20180118.h                           &                   & \checkmark \\ \hline
+        super\_block\_interface\_20180118.h        & No help on manual.& \checkmark \\ \hline
+        white\_noise\_20180118.h                   & No help on manual.& \checkmark \\ \hline
     \end{tabulary}
     \label{tab:headers}
     \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The help entry is under a different name, \textit{m\_qam\_receiver}}
