@@ -89,13 +89,19 @@ void rootRaisedCosine(vector<t_real> &impulseResponse, int impulseResponseLength
 		}
 
 		gain = gain + impulseResponse[i];
+	}
 
-		if (passiveFilterMode)
+	for (int i = 0; i < impulseResponseLength; i++)
+	{
+//		impulseResponse[i] = impulseResponse[i] / ((1 / symbolPeriod)*(1 + rollOffFactor * ((4 / PI) - 1)));
+		impulseResponse[i] = impulseResponse[i] * symbolPeriod;
+	}
+
+	if (passiveFilterMode)
+	{
+		for (int i = 0; i < impulseResponseLength; i++)
 		{
-			for (int i = 0; i < impulseResponseLength; i++)
-			{
-				impulseResponse[i] = impulseResponse[i] / gain;
-			}
+			impulseResponse[i] = impulseResponse[i] / gain;
 		}
 	}
 };
