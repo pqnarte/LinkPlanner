@@ -16,6 +16,9 @@ void WhiteNoise::initialize(void){
 
 		case RandomDevice:
 		{
+			// Resorts to 624 32-bit random ints from a random device to
+			// initialize each generator.
+
 			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
 			seed_seq seq1(begin(seed_data), end(seed_data));
 			generator1.seed(seq1);
@@ -36,9 +39,10 @@ void WhiteNoise::initialize(void){
 		}
 		case DeterministicDefault:
 		{
-			// temporary default seed values
-			// the generator needs to be seeded even by default
-			// otherwise noise may end up being correlated
+			// Initial default seed values, decided by human randomness.
+			// The generator needs to be seeded even by default,
+			// otherwise generators from this block may end up being correlated.
+			// Not recommended when using several noise blocks.
 
 			seed_seq seq1{ 17171717 };
 			generator1.seed(seq1);
@@ -56,7 +60,11 @@ void WhiteNoise::initialize(void){
 		}
 		case DeterministicSelected:
 		{
-			// temporary implementation for user determined seeding
+			// Initial implementation for user determined seeding,
+			// using sequential values to avoid the need to input 4 seeds.
+			// The sequences should not be correlated, although quality
+			// of the noise may not be great due to lack of entropy in
+			// initializing the generators.
 
 			seed_seq seq1{seed};
 			generator1.seed(seq1); 
