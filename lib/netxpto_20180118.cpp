@@ -209,15 +209,6 @@ void Signal::bufferGet(t_photon_mp *valueAddr) {
 	return;
 };
 
-void Signal::bufferGet(t_photon_mp_xy *valueAddr) {
-	*valueAddr = static_cast<t_photon_mp_xy *>(buffer)[outPosition];
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
 void Signal::bufferGet(t_message *valueAddr) {
 	*valueAddr = static_cast<t_message *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
@@ -228,18 +219,18 @@ void Signal::bufferGet(t_message *valueAddr) {
 };
 
 void Messages::bufferPut(t_message value) {
-	(static_cast<t_message*>(buffer))[getInPosition()] = value;
-	if (getBufferEmpty()) setBufferEmpty(false);
-	setInPosition(getInPosition()+1);
-	if (getInPosition() == getBufferLength()) {
-		setInPosition(0);
+	(static_cast<t_message*>(buffer))[inPosition] = value;
+	if (bufferEmpty) bufferEmpty = false;
+	inPosition++;
+	if (inPosition == bufferLength) {
+		inPosition = 0;
 		if (getSaveSignal()) {
 			int fValueToBeSaved = getFirstValueToBeSaved();
 			int bLength = getBufferLength();
-			if (fValueToBeSaved <= getBufferLength()) {
+			if (fValueToBeSaved <= bufferLength) {
 				t_message *ptr = (t_message *)buffer;
 				ptr = ptr + (fValueToBeSaved - 1);
-				ofstream fileHandler("./" + getFolderName() + "/" + getFileName(), ios::out | ios::app);
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 				for (int msg = fValueToBeSaved; msg <= bLength; msg++) {
 						for (unsigned int fld = 0; fld < value.size(); fld++) {
 							fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
@@ -255,7 +246,7 @@ void Messages::bufferPut(t_message value) {
 			}
 		}
 	}
-	if (getInPosition() == getOutPosition()) setBufferFull(true);
+	if (inPosition == outPosition) bufferFull = true;
 };
 
 //########################################################################################################################################################
@@ -410,9 +401,9 @@ void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
 
 void FIR_Filter::initializeFIR_Filter(void) {
 
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
 	if (!getSeeBeginningOfImpulseResponse()) {
 		int aux = (int)(((double)impulseResponseLength) / 2) + 1;
@@ -426,7 +417,7 @@ void FIR_Filter::initializeFIR_Filter(void) {
 		fileHandler << "// ### HEADER TERMINATOR ###\n";
 
 		t_real t;
-		double samplingPeriod = inputSignals[0]->getSamplingPeriod();
+		double samplingPeriod = inputSignals[0]->samplingPeriod;
 		for (int i = 0; i < impulseResponseLength; i++) {
 			t = -impulseResponseLength / 2 * samplingPeriod + i * samplingPeriod;
 			fileHandler << t << " " << impulseResponse[i] << "\n";
@@ -465,9 +456,9 @@ bool FIR_Filter::runBlock(void) {
 
 void FD_Filter::initializeFD_Filter(void) {
 
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
 /*	if (!getSeeBeginningOfImpulseResponse()) {
 		int aux = (int)(((double)impulseResponseLength) / 2) + 1;
@@ -489,7 +480,7 @@ void FD_Filter::initializeFD_Filter(void) {
 		ofstream fileHandler("./signals/" + transferFunctionFilename, ios::out);
 		fileHandler << "// ### HEADER TERMINATOR ###\n";
 
-		double samplingPeriod = inputSignals[0]->getSamplingPeriod();
+		double samplingPeriod = inputSignals[0]->samplingPeriod;
 		t_real fWindow = 1/samplingPeriod;
 		t_real df = fWindow / transferFunctionLength;
 
@@ -682,8 +673,8 @@ RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &Out
   inputSignals = InputSig;
   outputSignals = OutputSig;
 
-  outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-  outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+  outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+  outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
 }
 
 bool RealToComplex::runBlock(void) {
