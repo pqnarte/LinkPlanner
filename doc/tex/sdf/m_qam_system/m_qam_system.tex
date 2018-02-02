@@ -215,39 +215,9 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
 
 \subsection*{Required files}\label{Required files}
 
-%\begin{table}[H]
-%\centering
-%\begin{tabulary}{1.0\textwidth}{|p{6cm}|p{8cm}|p{1cm}|}
-%\hline
-%\multicolumn{3}{|c|}{ \textbf{Header Files} } \\
-%\hline
-%\textbf{File}                    & \textbf{Comments} & \textbf{Status} \\ \hline
-%add.h                            &                   & \checkmark \\ \hline
-%balanced\_beam\_splitter.h       &                   & \checkmark \\ \hline
-%binary\_source.h                 &                   & \checkmark \\ \hline
-%bit\_decider.h                   &                   & \checkmark \\ \hline
-%bit\_error\_rate.h               &                   & \checkmark \\ \hline
-%discrete\_to\_continuous\_time.h &                   & \checkmark \\ \hline
-%netxpto.h                        &                   & \checkmark \\ \hline
-%m\_qam\_mapper.h                 &                   & \checkmark \\ \hline
-%m\_qam\_transmitter.h            &                   & \checkmark \\ \hline
-%local\_oscillator.h              &                   & \checkmark \\ \hline
-%i\_homodyne\_reciever.h          &                   & \checkmark \\ \hline
-%ideal\_amplififer.h              &                   & \checkmark \\ \hline
-%iq\_modulator.h                  &                   & \checkmark \\ \hline
-%photodiode.h                     &                   & \checkmark \\ \hline
-%pulse\_shaper.h                  &                   & \checkmark \\ \hline
-%sampler.h                        &                   & \checkmark \\ \hline
-%sink.h                           &                   & \checkmark \\ \hline
-%super\_block\_interface.h        &                   & \checkmark \\ \hline
-%white\_noise.h                   &                   & \checkmark \\ \hline
-%\end{tabulary}
-%\end{table}		
-%
-
 \begin{table}[H]
     \centering
-    \begin{tabulary}{1.0\textwidth}{|p{7cm}|p{6cm}|p{1cm}|}
+    \begin{tabulary}{1.0\textwidth}{|p{7.5cm}|p{5.5cm}|p{1cm}|}
         \hline
         \multicolumn{3}{|c|}{ \textbf{Source Files} } \\
         \hline
@@ -257,7 +227,7 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         bit\_error\_rate\_20171810.cpp               &                   & \checkmark \\ \hline
         decoder\_20180118.cpp                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.cpp &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20180118.cpp             & Has been changed to remove pulse shaper & \checkmark \\ \hline
+        homodyne\_receiver\_20180118.cpp             & $^{1,2}$			 & \checkmark \\ \hline
         ideal\_amplififer\_20180118.cpp              &                   & \checkmark \\ \hline
         iq\_modulator\_20180118.cpp                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.cpp              &                   & \checkmark \\ \hline
@@ -273,8 +243,7 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         super\_block\_interface\_20180118.cpp        & No help in manual.& \checkmark \\ \hline
         white\_noise\_20180118.cpp                   & No help in manual.& \checkmark \\ \hline
     \end{tabulary}
-    \label{tab:sources}
-    \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}}
+    \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver};\\$^2$ Has been changed to remove pulse shaper for now.\label{tab:sources}}
 \end{table}
 
 \begin{table}[H]
@@ -286,10 +255,10 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         \textbf{File}                      & \textbf{Comments} & \textbf{Status} \\ \hline
         add\_20180118.h                            & Time tag different on cpp file.& \checkmark \\ \hline
         binary\_source\_20180118 .h                &                   & \checkmark \\ \hline
-        bit\_error\_rate\_20171810.h               &                   & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.h               & $^{3}$            & \checkmark \\ \hline
         decoder\_20180118.h                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.h &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20171203.h             & Has been changed to remove pulse shaper. On help under "MQAM\_receiver". Different time-tag on cpp.  & \checkmark \\ \hline
+        homodyne\_receiver\_20171203.h             & $^{1,2,3}$        & \checkmark \\ \hline
         ideal\_amplifier\_20180118.h               & No help on manual.& \checkmark \\ \hline
         iq\_modulator\_20180118.h                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.h              &                   & \checkmark \\ \hline
@@ -299,13 +268,12 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         optical\_hybrid\_20180118.h                &                   & \checkmark \\ \hline
         photodiode\_old\_20180118.h                &                   & \checkmark \\ \hline
         pulse\_shaper\_20180118.h                  &                   & \checkmark \\ \hline
-        sampler\_20171119.h                        &                   & \checkmark \\ \hline
+        sampler\_20171119.h                        & $^3$              & \checkmark \\ \hline
         sink\_20180118.h                           &                   & \checkmark \\ \hline
         super\_block\_interface\_20180118.h        & No help on manual.& \checkmark \\ \hline
         white\_noise\_20180118.h                   & No help on manual.& \checkmark \\ \hline
     \end{tabulary}
-    \label{tab:headers}
-    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The help entry is under a different name, \textit{m\_qam\_receiver}}
+    \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver};\\$^2$ Has been changed to remove pulse shaper for now;\\$^3$ This file does not share the same time-tag as the corresponding ".cpp" file.\label{tab:headers}}
 \end{table}
 
 %\begin{table}[]
