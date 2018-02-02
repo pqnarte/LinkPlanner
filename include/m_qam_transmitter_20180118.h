@@ -120,6 +120,8 @@ public:
 	t_real const getOutputOpticalPower_dBm(void) { return 10*log10(B7.outputOpticalPower/1e-3); }
 
 	void setPulseShaperFilter(PulseShaperFilter fType){ B5.setFilterType(fType); B6.setFilterType(fType); };
+	void usePassiveFilterMode(bool pFilterMode) { B5.usePassiveFilterMode(pFilterMode); B6.usePassiveFilterMode(pFilterMode); }
+	void setImpulseResponseFilename(string fName) { B5.setImpulseResponseFilename(fName); B6.setImpulseResponseFilename(fName); }
 //	PulseShaperFilter const getPulseShaperFilter(void) { return B5.getFilterType; B6.getFilterType; };
 };
 

@@ -11,14 +11,15 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-	t_integer numberOfBitsGenerated(1000);
+	t_integer numberOfBitsGenerated(5000);
 	t_integer samplesPerSymbol(16);
 	t_integer pLength = 5;
 	t_real bitPeriod = 1.0 / 50e9;
 //	t_real bitPeriod = 20e-12;
 	t_real rollOffFactor = 0.3;
+	t_real rollOffFactor_rcv = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower = -57;
+	t_real signalOutputPower = -70;
 
 
 	// #####################################################################################################
@@ -50,8 +51,8 @@ int main(){
 
 //	INITIAL SAMPLES TO IGNORE IN THE SAMPLER
 //	Required to set this value due to the Pulse Shaper influence
-//	t_integer samplesToSkip = 2 * 8 * samplesPerSymbol; //+ floor(samplesPerSymbol / 2);
-	t_integer samplesToSkip = 8*samplesPerSymbol;	//+ floor(samplesPerSymbol / 2);
+	t_integer samplesToSkip = 2 * 8 * samplesPerSymbol; //+ floor(samplesPerSymbol / 2);
+//	t_integer samplesToSkip = 8*samplesPerSymbol;	//+ floor(samplesPerSymbol / 2);
 //	8 is the number of samples used by the filter
 
 
@@ -100,6 +101,9 @@ int main(){
 	B1.setRollOffFactor(rollOffFactor);
 	B1.setSaveInternalSignals(true);
 	B1.setSeeBeginningOfImpulseResponse(false);
+	B1.setPulseShaperFilter(RootRaisedCosine);
+//	B1.usePassiveFilterMode(true);
+	B1.setImpulseResponseFilename("pulse_shaper.imp");
 
 	HomodyneReceiver B2{ vector<Signal*> {&S1}, vector<Signal*> {&S2} };
 	B2.setIqAmplitudes(iqAmplitudeValues);
@@ -119,7 +123,12 @@ int main(){
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
 //	B2.setClockPeriod(symbolPeriod);
-//	B2.setRollOffFactor(rollOffFactor);
+	B2.setRollOffFactor(rollOffFactor_rcv);
+	B2.setFilterType(RootRaisedCosine);
+//	B2.usePassiveFilterMode(true);
+	B2.setImpulseResponseFilename("out_filter.imp");
+
+
 
 
 	//With BER measurement
