@@ -10,13 +10,77 @@
 
 void WhiteNoise::initialize(void){
 
-	firsTime = false;
+	firstTime = false;
+	
+	switch (getSeedType()) {
 
-	generator1.seed(rd());
-	generator2.seed(rd());
-	generator3.seed(rd());
-	generator4.seed(rd());
+		case RandomDevice:
+		{
+			// Resorts to 624 32-bit random ints from a random device to
+			// initialize each generator.
 
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
+			seed_seq seq1(begin(seed_data), end(seed_data));
+			generator1.seed(seq1);
+
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
+			seed_seq seq2(begin(seed_data), end(seed_data));
+			generator2.seed(seq2);
+
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
+			seed_seq seq3(begin(seed_data), end(seed_data));
+			generator3.seed(seq3);
+
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
+			seed_seq seq4(begin(seed_data), end(seed_data));
+			generator4.seed(seq4);
+
+			break;
+		}
+		case DefaultDeterministic:
+		{
+			// Initial default seed values, decided by human randomness.
+			// The generator needs to be seeded even by default,
+			// otherwise generators from this block may end up being correlated.
+			// Not recommended when using several noise blocks.
+
+			seed_seq seq1{ 17171717 };
+			generator1.seed(seq1);
+
+			seed_seq seq2{ 27315883 };
+			generator2.seed(seq2);
+
+			seed_seq seq3{ 4387621 };
+			generator3.seed(seq3);
+
+			seed_seq seq4{ 91827631 };
+			generator4.seed(seq4);
+
+			break;
+		}
+		case Selected:
+		{
+			// Initial implementation for user determined seeding,
+			// using sequential values to avoid the need to input 4 seeds.
+			// The sequences should not be correlated, although quality
+			// of the noise may not be great due to lack of entropy in
+			// initializing the generators.
+
+			seed_seq seq1{seed};
+			generator1.seed(seq1); 
+
+			seed_seq seq2{seed+1};
+			generator2.seed(seq2);
+
+			seed_seq seq3{seed+2};
+			generator3.seed(seq3);
+
+			seed_seq seq4{seed+3};
+			generator4.seed(seq4);
+			break;
+		}
+};
+	
 //	outputSignals[0]->setSamplingPeriod(samplingPeriod);
 //	outputSignals[0]->setSymbolPeriod(symbolPeriod);
 
