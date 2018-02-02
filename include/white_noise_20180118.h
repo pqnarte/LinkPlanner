@@ -6,7 +6,7 @@
 # include <random>
 # include <array>
 
-enum SeedType { RandomDevice, DeterministicDefault, DeterministicSelected};
+enum SeedType { RandomDevice, DefaultDeterministic, Selected};
 
 class WhiteNoise : public Block {
 
@@ -26,7 +26,7 @@ private:
 
 	array<int, std::mt19937::state_size> seed_data;
 
-	int seed;
+	int seed = 1;
 
 public:
 	WhiteNoise() {};
