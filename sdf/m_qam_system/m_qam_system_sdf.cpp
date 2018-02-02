@@ -17,7 +17,7 @@ int main(){
 	t_real bitPeriod = 1.0 / 50e9;
 //	t_real bitPeriod = 20e-12;
 	t_real rollOffFactor = 0.3;
-	t_real rollOffFactor_rcv = 5;
+	t_real rollOffFactor_rcv = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
 	t_real signalOutputPower = -70;
 
@@ -45,7 +45,7 @@ int main(){
 	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
-	t_real noiseAmplitude = 0.5*1e-6;
+	t_real noiseAmplitude = 1*1e-6;
 
 //	INITIAL SAMPLES TO IGNORE IN THE SAMPLER
 //	Required to set this value due to the Pulse Shaper influence
@@ -99,6 +99,9 @@ int main(){
 	B1.setRollOffFactor(rollOffFactor);
 	B1.setSaveInternalSignals(true);
 	B1.setSeeBeginningOfImpulseResponse(false);
+	B1.setPulseShaperFilter(RootRaisedCosine);
+//	B1.usePassiveFilterMode(true);
+	B1.setImpulseResponseFilename("pulse_shaper.imp");
 
 	HomodyneReceiver B2{ vector<Signal*> {&S1}, vector<Signal*> {&S2} };
 	B2.setIqAmplitudes(iqAmplitudeValues);
@@ -117,6 +120,9 @@ int main(){
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
 //	B2.setClockPeriod(symbolPeriod);
 	B2.setRollOffFactor(rollOffFactor_rcv);
+	B2.setFilterType(RootRaisedCosine);
+//	B2.usePassiveFilterMode(true);
+	B2.setImpulseResponseFilename("out_filter.imp");
 
 
 	//With BER measurement
