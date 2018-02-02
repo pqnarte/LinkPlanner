@@ -141,7 +141,10 @@ public:
 	void  setResponsivity(t_real Responsivity) { B3.setResponsivity(Responsivity); B4.setResponsivity(Responsivity); };
 
 	void setAmplification(t_real Amplification) { B5.setGain(Amplification); B6.setGain(Amplification); };
+	
 	void setNoiseAmplitude(t_real NoiseAmplitude) { B7.setNoiseSpectralDensity(NoiseAmplitude); B8.setNoiseSpectralDensity(NoiseAmplitude);};
+	void setSeeds(array<int,2> noiseSeeds) { B7.setSeed(noiseSeeds[0]); B8.setSeed(noiseSeeds[1]); };
+	void setSeedType(SeedType seedType) { B7.setSeedType(seedType); B8.setSeedType(seedType); };
 
 //	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
 //	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };

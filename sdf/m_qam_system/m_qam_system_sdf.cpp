@@ -45,6 +45,8 @@ int main(){
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
 	t_real noiseAmplitude = 0.5*1e-6;
+	SeedType seedType = RandomDevice;
+	array<int, 2> seedArray = { 1, 2 };
 
 //	INITIAL SAMPLES TO IGNORE IN THE SAMPLER
 //	Required to set this value due to the Pulse Shaper influence
@@ -108,6 +110,8 @@ int main(){
 	B2.setResponsivity(responsivity);
 	B2.setAmplification(amplification);
 	B2.setNoiseAmplitude(noiseAmplitude);
+	B2.setSeedType(seedType);
+	B2.setSeeds(seedArray);
 	B2.setSamplesToSkip(samplesToSkip);
 	//B2.setPosReferenceValue(0);
 	//B2.setNegReferenceValue(0);
