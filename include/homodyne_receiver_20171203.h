@@ -146,6 +146,8 @@ public:
 	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
 	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
 	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
+	void usePassiveFilterMode(bool pFilterMode) { B11.usePassiveFilterMode(pFilterMode); B12.usePassiveFilterMode(pFilterMode); }
+	void setImpulseResponseFilename(string fName) { B11.setImpulseResponseFilename(fName); B12.setImpulseResponseFilename(fName); }
 
 	//void setClockPeriod(double per) { B13A.setClockPeriod(per); B13B.setClockPeriod(per); };
 
