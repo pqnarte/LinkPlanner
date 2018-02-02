@@ -11,24 +11,24 @@
 void WhiteNoise::initialize(void){
 
 	firstTime = false;
-	/*
+	
 	switch (getSeedType()) {
 
 		case RandomDevice:
 		{
-			generate_n(seed_data.data(), seed_data.size(), randomDevice());
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
 			seed_seq seq1(begin(seed_data), end(seed_data));
 			generator1.seed(seq1);
 
-			generate_n(seed_data.data(), seed_data.size(), randomDevice());
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
 			seed_seq seq2(begin(seed_data), end(seed_data));
 			generator2.seed(seq2);
 
-			generate_n(seed_data.data(), seed_data.size(), randomDevice());
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
 			seed_seq seq3(begin(seed_data), end(seed_data));
 			generator3.seed(seq3);
 
-			generate_n(seed_data.data(), seed_data.size(), randomDevice());
+			generate_n(seed_data.data(), seed_data.size(), std::ref(randomDevice));
 			seed_seq seq4(begin(seed_data), end(seed_data));
 			generator4.seed(seq4);
 
@@ -72,7 +72,7 @@ void WhiteNoise::initialize(void){
 			break;
 		}
 };
-	*/
+	
 //	outputSignals[0]->setSamplingPeriod(samplingPeriod);
 //	outputSignals[0]->setSymbolPeriod(symbolPeriod);
 

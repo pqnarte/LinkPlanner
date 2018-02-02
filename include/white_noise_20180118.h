@@ -4,7 +4,7 @@
 # include "netxpto_20180118.h"
 # include <vector>
 # include <random>
-//# include <array>
+# include <array>
 
 enum SeedType { RandomDevice, DeterministicDefault, DeterministicSelected};
 
@@ -41,7 +41,7 @@ public:
 	void setSeedType(SeedType sType){ seedType = sType; };
 	SeedType const getSeedType(void){ return seedType; };
 
-	void setSeed(double newSeed) { seed = newSeed; }
+	void setSeed(int newSeed) { seed = newSeed; }
 	int getSeed(void){ return seed; }
 
 };
