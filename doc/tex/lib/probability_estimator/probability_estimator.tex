@@ -6,6 +6,46 @@
 
 This blocks accepts an input binary signal and it calculates the probability of having a value "1" \space or "0" \space according to the number of samples acquired and according to the z-score value set depending on the confidence interval. It produces an output binary signal equals to the input. Nevertheless, this block has an additional output which is a txt file with information related with probability values, number of samples acquired and margin error values for each probability value.
 
+In statistics theory, considering the results space $\Omega$ associated with a random experience and $A$ an event such that $P(A)=p\in]0,1[$. Lets $X:\Omega\longrightarrow\mathbb{R}$ such that
+
+\begin{eqnarray}
+		X(\omega) = 1&\textrm{ ,if } \omega \in A \nonumber \\
+		X(\omega) = 0&\textrm{ ,if } \omega \in \bar{A} \nonumber\\
+\end{eqnarray}
+
+This way, there only are two possible results: success when the outcome is $1$ or failure when the outcome is $0$. The probability of success is $P(X=1)$ and the probability of failure is $P(X=0)$,
+\begin{eqnarray}
+		P(X=1) =& P(A) & = p \nonumber\\
+		P(X=0) =&P(\bar{A})&=1-p  \nonumber\\
+\end{eqnarray}
+
+$X$ follows the Bernoulli law with parameter \textbf{p}, $X \sim \mathbf{B}(p)$, being the expected value of the Bernoulli random value $\textrm{E(X)}=p$ and the variance $\textrm{VAR(X)}=p(1-p)$ \cite{probabilitySheldon}.
+
+Assuming that \textit{N} independent trials are performed, in which a success occurs with probability \textit{p} and a failure occurs with probability \textit{1-p}. If \textit{X} is the number of successes that occur in the \textit{N} trials, \textit{X} is a binomial random variable with parameters \textit{(n,p)}. Since \textit{N} is large enough, \textit{X} can be approximately normally distributed with mean $np$ and variance $np(1-p)$. 
+\begin{equation}\label{eq:binomialtonormal}
+  \frac{X-np}{\sqrt{np(1-p)}}\backsim \emph{N}(0,1).
+\end{equation}
+In order to obtain a confidence interval for \textit{p}, lets assume the estimator $\hat{p}=\frac{X}{N}$ the fraction of samples equals to $1$ with regard to the total number of samples acquires. Since \hat{p} is the estimator of \textit{p}, it should be approximately equal to \textit{p}. As a result, for any $\alpha \in {0,1}$ we have that:
+
+\begin{eqnarray}
+% \nonumber % Remove numbering (before each equation)
+  \frac{X-np}{\sqrt{n\hat{p}(1-\hat{p})}} &\backsim& \emph{N}(0,1) \\
+  P \{-z_{\alpha/2}\} &=&  \\
+   &=&  \\
+   &=& 
+\end{eqnarray}
+
+Lets calculate the margin error for N of samples in order to obtain $X$ inside a specific confidence interval, which in this case we assume $99\%$.
+
+We will use \textit{z-score }(in this case $2.576$, since a confidence interval of $99\%$was chosen) to calculate the expected error margin,
+
+\begin{equation}\label{eq:marginerror}
+  E = z_{\alpha/2}\frac{\sigma}{\sqrt{N}},
+  \nonumber
+\end{equation}
+
+where, $E$ is the error margin, $z_{\alpha/2}$ is the \textit{z-score} for a specific confidence interval, $\sigma = \sqrt{\textrm{VAR(X})} = \sqrt{\hat{p}(1-\hat{p})}$ is the standard deviation and $N$ the number of samples.
+
 \subsection*{Input Parameters}
 
 	\begin{itemize}
