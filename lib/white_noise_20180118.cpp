@@ -37,7 +37,7 @@ void WhiteNoise::initialize(void){
 
 			break;
 		}
-		case DeterministicDefault:
+		case DefaultDeterministic:
 		{
 			// Initial default seed values, decided by human randomness.
 			// The generator needs to be seeded even by default,
@@ -58,7 +58,7 @@ void WhiteNoise::initialize(void){
 
 			break;
 		}
-		case DeterministicSelected:
+		case Selected:
 		{
 			// Initial implementation for user determined seeding,
 			// using sequential values to avoid the need to input 4 seeds.
