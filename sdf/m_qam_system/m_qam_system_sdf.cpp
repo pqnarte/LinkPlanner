@@ -45,7 +45,7 @@ int main(){
 	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
-	t_real noiseAmplitude = 0.5*1e-6;
+	t_real noiseAmplitude = 1*1e-6;
 	SeedType seedType = RandomDevice;
 	array<int, 2> seedArray = { 1, 2 };
 
