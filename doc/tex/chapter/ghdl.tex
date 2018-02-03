@@ -1,0 +1,33 @@
+\chapter{Simulating VHDL programs with GHDL}
+
+This guide will help you simulate VHDL programs with the open-source simulator GHDL.
+All the necessary files will be available in the \textbackslash{}ghdl\textbackslash{} folder on this repository.
+
+\section{Adding Path To System Variables}
+Please follow this step-by-step tutorial carefully.
+  \begin{enumerate}
+    \item Open the \textbf{Control Panel}.
+    \item Select the option \textbf{System and Security}.
+    \item Select the option \textbf{System}.
+    \item Select \textbf{Advanced System Settings} on the menu on the left side of the window.
+    \item This should have opened another window. Click on \textbf{Environment variables}.
+    \item Check if there is a variable called \textbf{Path} in the \textbf{System Variables} (bottom list).
+    \item \textbf{If it doesn't exist}, create a new variable by pressing \textbf{New} in \textbf{System Variables} (bottom list). Insert the name \textbf{Path} as the name of the variable and enter your absolute path to the folder \textbf{\textbackslash{}LinkPlanner\textbackslash{}ghdl\textbackslash{}bin}.\\ Example: 
+        \textbf{C:\textbackslash{}repos\textbackslash{}LinkPlanner\textbackslash{}ghdl\textbackslash{}bin}.\\
+          Jump to step 10.
+    \item \textbf{If it exists}, click on the variable \textbf{Path} and press \textbf{Edit}. This should open another window;
+    \item Click on \textbf{New} to add another value to this variable. Enter your absolute path to the folder \textbf{\textbackslash{}LinkPlanner\textbackslash{}ghdl\textbackslash{}bin}.\\ Example: 
+        \textbf{C:\textbackslash{}repos\textbackslash{}LinkPlanner\textbackslash{}ghdl\textbackslash{}bin}.\\
+    \item Press \textbf{Ok} and you're done.
+  \end{enumerate}
+\pagebreak
+\section{Using GHDL To Simulate VHDL Programs}
+To simulate VHDL programs, please follow the instructions below:
+\begin{enumerate}
+\item Open the \textbf{Command Line} and navigate to your project folder (where the .vhd file is located).
+\item Execute the command:\\  \textbf{ghdl -a - -std=08 <filename>.vhd}, where <filename> is the name of your .vhd file.
+\item Execute the command:\\  \textbf{ghdl -e --std=08 <entity>}, where <entity> is the name of your top level entity.
+\item Execute the command:\\  \textbf{ghdl -r --std=08 <entity>}
+\end{enumerate}
+\textbf{Note}: The first two commands are used to compile the program and will generate a *.cf file. Do not remove this file.\\
+The third command is used to run the simulation. If you want to simulate the same program again, you will just need to execute this command. 
