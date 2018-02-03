@@ -26,8 +26,8 @@ To simulate VHDL programs, please follow the instructions below:
 \begin{enumerate}
 \item Open the \textbf{Command Line} and navigate to your project folder (where the .vhd file is located).
 \item Execute the command:\\  \textbf{ghdl -a - -std=08 <filename>.vhd}, where <filename> is the name of your .vhd file.
-\item Execute the command:\\  \textbf{ghdl -e --std=08 <entity>}, where <entity> is the name of your top level entity.
-\item Execute the command:\\  \textbf{ghdl -r --std=08 <entity>}
+\item Execute the command:\\  \textbf{ghdl -e - -std=08 <entity>}, where <entity> is the name of your top level entity.
+\item Execute the command:\\  \textbf{ghdl -r - -std=08 <entity>}
 \end{enumerate}
 \textbf{Note}: The first two commands are used to compile the program and will generate a *.cf file. Do not remove this file.\\
 The third command is used to run the simulation. If you want to simulate the same program again, you will just need to execute this command. 
