@@ -13,7 +13,7 @@ class WhiteNoise : public Block {
 public:
 
 	double spectralDensity = 1e-4;
-	
+	random_device rd;
 	default_random_engine generator1;
 	default_random_engine generator2;
 	default_random_engine generator3;

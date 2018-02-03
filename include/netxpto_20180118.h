@@ -633,7 +633,7 @@ class System {
 //########################################################################################################################################################
 
 
-class OverlapMethod
+/*class OverlapMethod
 {
 
 public:
@@ -666,7 +666,7 @@ public:
 	
 	void Radix2(vector<double> &real, vector<double> &imag, int m);
 	void Bluestein(vector<double> &real, vector<double> &imag, int m);
-};
+};*/
 
 
 class ComplexMult
@@ -686,10 +686,21 @@ public:
 
 ///////////////////// Fast Fourier Transform ////////////////////////
 
-class FourierTransform
-{
+class FourierTransform {
+
 public:
-	vector <complex<double>> transform(vector<complex<double>>IN, int m);
+
+	vector<complex<double>> fft(vector<complex<double> > &vec, int sign);
+	vector<complex<double>> fft(std::vector<std::complex<double> > &vec);
+	vector<complex<double>> ifft(std::vector<std::complex<double> > &vec);
+	void transformRadix2(std::vector<std::complex<double> > &vec);
+	void transformBluestein(std::vector<std::complex<double> > &vec);
+	void convolve(
+		const std::vector<std::complex<double> > &vecx,
+		const std::vector<std::complex<double> > &vecy,
+		std::vector<std::complex<double> > &vecout);
 };
+
+
 
 # endif // PROGRAM_INCLUDE_netxpto_H_

@@ -1,13 +1,13 @@
 # include <algorithm> // min
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include "discrete_to_continuous_time.h"
 
 void DiscreteToContinuousTime::initialize(void) {
 
-	outputSignals[0]->symbolPeriod = (inputSignals[0]->symbolPeriod);
-	outputSignals[0]->samplingPeriod = (inputSignals[0]->samplingPeriod) / numberOfSamplesPerSymbol;
-	outputSignals[0]->samplesPerSymbol = numberOfSamplesPerSymbol;
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod((inputSignals[0]->getSamplingPeriod()) / numberOfSamplesPerSymbol);
+	outputSignals[0]->setSamplesPerSymbol(numberOfSamplesPerSymbol);
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
