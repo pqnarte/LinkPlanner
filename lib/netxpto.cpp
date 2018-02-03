@@ -1513,7 +1513,7 @@ vector <complex<double>> FourierTransform::transform(vector<complex<double>>IN, 
 };
 
 */
-
+/*
 vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
 {
 	size_t n = vec.size();
@@ -1529,7 +1529,7 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
 	for (unsigned int i = 0; i < n; i++)
 	{
 		vec[i] = vec[i] / sqrtN;
-	}*/
+	}
 
 	return vec;
 }
