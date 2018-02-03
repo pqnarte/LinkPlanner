@@ -1,6 +1,7 @@
 # ifndef SINGLE_PHOTON_SOURCE_H_
 # define SINGLE_PHOTON_SOURCE_H_
 
+#include "netxpto_20180118.h"
 
 class SinglePhotonSource : public Block {
 

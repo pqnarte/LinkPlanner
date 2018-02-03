@@ -1,4 +1,4 @@
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include "pulse_shaper.h"
 
 using namespace std;
@@ -10,8 +10,8 @@ void square(vector<t_real> &impulseResponse, int impulseResponseLength, double s
 
 void PulseShaper::initialize(void) {
 
-	double samplingPeriod = inputSignals[0]->samplingPeriod;
-	double symbolPeriod = inputSignals[0]->symbolPeriod;
+	double samplingPeriod = inputSignals[0]->getSamplingPeriod();
+	double symbolPeriod = inputSignals[0]->getSymbolPeriod();
 
 	impulseResponseLength = (int)floor(impulseResponseTimeLength * symbolPeriod / samplingPeriod);
 	impulseResponse.resize(impulseResponseLength);
