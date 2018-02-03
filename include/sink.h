@@ -1,7 +1,6 @@
 # ifndef SINK_H_
 # define SINK_H_
 
-# include "netxpto_20180118.h"
 # include "netxpto.h"
 
 class Sink : public Block {
