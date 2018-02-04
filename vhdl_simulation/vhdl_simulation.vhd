@@ -13,7 +13,7 @@ architecture Behavioral of vhdl_simulation is
 	--------------------------------------------------------
 	-- TestBench Internal Signals	--
 	--------------------------------------------------------
-	subtype myType is bit; -- reads 1 byte
+	subtype myType is character; -- reads 1 byte
 	type FileType is file of myType;
 	file file_input_signal : FileType; -- Pointer to the input .sgn file
 	file file_output_signal : FileType; -- Pointer to the output .sgn file
