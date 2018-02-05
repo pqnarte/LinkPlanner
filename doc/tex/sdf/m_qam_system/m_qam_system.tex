@@ -112,7 +112,7 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&N_0 &= \sqrt{\frac{1}{2} n_0}
+&N_0 &= \sqrt{n_0}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
@@ -187,7 +187,7 @@ It is possible to further decrease the error rate by using a matched filter befo
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/MQAM_system_block_diagram}
+	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/simulation_mqam}
 	\caption{Schematic representation of the MQAM system.}\label{MQAM_system_block_diagram}
 \end{figure}
 
@@ -195,7 +195,7 @@ The M-QAM transmission system is a complex block of code that simulates the modu
 demodulation of an optical signal using M-QAM modulation.
 It is composed of four blocks: a transmitter, a receiver, a sink and a block that performs a Bit Error Rate (BER) measurement. The schematic representation of the
 system is presented in figure \ref{MQAM_system_block_diagram}.
-
+	
 \paragraph{Current state:} The system currently being implement is a QPSK system (M=4).
 
 \paragraph{Future work:} Extend this block to include other values of M.
@@ -271,7 +271,7 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         sampler\_20171119.cpp                        &                   & \checkmark \\ \hline
         sink\_20180118.cpp                           &                   & \checkmark \\ \hline
         super\_block\_interface\_20180118.cpp        & No help in manual.& \checkmark \\ \hline
-        white\_noise\_20180118.cpp                   & No help in manual.& \checkmark \\ \hline
+        white\_noise\_20180118.cpp                   & 					 & \checkmark \\ \hline
     \end{tabulary}
     \label{tab:sources}
     \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}}
