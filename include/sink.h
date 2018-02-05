@@ -1,8 +1,10 @@
 # ifndef SINK_H_
 # define SINK_H_
 
+# include <algorithm>   // std::min
+# include <string>		// compare
+
 # include "netxpto_20180118.h"
-# include "netxpto.h"
 
 class Sink : public Block {
 

@@ -1,7 +1,6 @@
 # include "polarization_beam_splitter_20180109.h"
 
-# include <algorithm>  // min()
-# include <math.h>     // cos(), sin()
+
 
 void PolarizationBeamSplitter::initialize(void) {
 

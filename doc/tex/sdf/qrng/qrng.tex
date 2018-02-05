@@ -41,7 +41,7 @@ Moreover, the state of a single photon can be also described by a wave function 
 
 \begin{equation}\label{eq:wavefvector}
   |\psi\rangle = \binom{C_0}{C_1},
-\end{equation} 
+\end{equation}
 which will be used in simulation analysis.
 
 \begin{figure}[h]
@@ -160,20 +160,87 @@ For a quantum random number generator with equal probability of obtain a "0" \sp
 
 \begin{figure}[H]
     \centering
-        \includegraphics[clip, trim=4cm 9cm 4cm 9cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/prob0.pdf}
+        \includegraphics[width=15cm,height=10cm]{./sdf/qrng/figures_raw/prob0.eps}
     \caption{Probability of outputs a number "0" \space depending on the polarization angle.}\label{probx}
 \end{figure}
 
-Figure \ref{probx} shows the probability of a single photons reaches the detector placed on Horizontal axis depending on the polarization angle of the photon, and this way the output number is "0". On the other hand, figure \ref{proby} shows the probability of a single photon reaches the detector placed on Vertical component of the polarization beam splitter, and this way the output number is "1". As we can see in the figures the two detectors have complementary probabilities, i.e the summation of both values must be equals to $1$.
+Figure \ref{probx} shows the probability of a single photons reaches the detector placed on Horizontal axis depending on the polarization angle of the photon, and this way the output number is "0". The following table shows the goodness of the fit:
+\begin{table}[H]
+\centering
+\label{tab:goodnessfitprob0}
+    \begin{tabular}{c|c}
+      SSE:                  & 0.0004785\\
+      R-square:             &0.9998\\
+      Adjusted R-square:    &0.9995\\
+      RMSE:                 &0.007734
+  \end{tabular}
+\end{table}
 
-One can see that "Probability of $1$" \space behaves almost like a sine function and "Probability of 0" \space behaves almost like a cosine function with a variable angle.
-
+On the other hand, figure \ref{proby} shows the probability of a single photon reaches the detector placed on Vertical component of the polarization beam splitter, and this way the output number is "1". As we can see in the figures the two detectors have complementary probabilities, i.e the summation of both values must be equals to $1$. One can see that "Probability of $1$" \space behaves almost like a sine function and "Probability of 0" \space behaves almost like a cosine function with a variable angle.
 
 \begin{figure}[H]
     \centering
-        \includegraphics[clip, trim=4cm 9cm 4cm 9cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/prob1.pdf}
+        \includegraphics[width=15cm,height=10cm]{./sdf/qrng/figures_raw/prob1.eps}
     \caption{Probability of outputs a number "1" \space depending on the polarization angle.}\label{proby}
 \end{figure}
+
+The goodness of the fit presented in figure \ref{proby} is shown in the following table:
+\begin{table}[H]
+\centering
+\label{tab:goodnessfitprob0}
+    \begin{tabular}{c|c}
+        SSE:                &0.0004785\\
+        R-square:           &0.9998\\
+        Adjusted R-square:  &0.9995\\
+        RMSE:               &0.007734
+  \end{tabular}
+\end{table}
+
+The goodness of the fit is evaluated based on four parameters:
+\begin{enumerate}
+  \item The sum of squares due to error (SSE), which measures the total deviation between the fit values and the values that the simulation outputs. This value is calculated from the expression 
+      \begin{equation}\label{}
+        \textrm{SSE} = \sum_{i=1}^{n} w_i(y_{i}-\hat{y_{i}})^2.
+        \nonumber
+      \end{equation}
+      A value of SSE closer to 0 means that the model has a small random error component.
+      
+  \item The R-square measures how good the fit in explaining the data. 
+    \begin{equation}\label{}
+    \textrm{R-square} = 1-\frac{\textrm{SSE}}{\textrm{SST}},
+    \nonumber
+    \end{equation}
+    where,
+    \begin{equation}\label{}
+    \textrm{SST} = \sum_{i=1}^{n} w_i (y_i - \bar{y_i})^2.
+      \nonumber
+    \end{equation} 
+    R-square can take a value between 0 and 1. If the value is closer to 1, it means that the fit better explains the total variation in the data around the average.
+  
+  \item Degrees of freedom adjusted R-square uses the R-square and adjusts it based on the number of degrees of freedom. 
+    \begin{equation}\label{}
+      \textrm{adjusted R-square} = 1 - \frac{\textrm{SSE}(n-1)}{\textrm{SST}(v)},
+      \nonumber
+    \end{equation} 
+    where,
+    \begin{equation}\label{}
+      v = n - m,
+      \nonumber
+    \end{equation}
+    where n is the number of values in test and m is the number of fitted coefficients estimated from the values in test. A value of adjusted R-square close to 1 is a indicative factor of a good fit.
+    
+  \item The root mean square error (RMSE) is also a fit standard error and it can be calculated from:
+    \begin{equation}\label{}
+      \textrm{RMSE} = \sqrt{\textrm{MSE}},
+      \nonumber
+    \end{equation}
+    where,
+    \begin{equation}\label{}
+      \textrm{MSE} = \frac{\textrm{SSE}}{v}.
+      \nonumber
+    \end{equation}
+
+\end{enumerate} 
 
 \subsection{Experimental Analysis}
 
@@ -187,6 +254,36 @@ In order to have a real experimental quantum random number generator, a setup sh
     \caption{Experimental setup to implement a quantum random number generator.}\label{experimental_qrng}
 \end{figure}
 
+Since we do not have a single photon source, we must use the Poisson Statistics in order to calculate the best value for a mean of photons per pulse. A weak laser pulse follows a Poissonian Statistics\cite{markfox}:
+\begin{equation}\label{eq:poisson}
+  S_n = e^{-\mu}\frac{\mu^{n}}{n!},
+\end{equation}
+where $\mu$ is the average photon number. In addition, the probability of an optical pulse carries one photon at least is:
+\begin{equation}\label{eq:prob1photon}
+  P = 1 - S_0 = 1 - e^{-\mu}.
+\end{equation}
+
+On the other hand, the probability of a detector clicks is:
+
+\begin{equation}\label{eq:detectorclickprob}
+  P_{click} = P_{det}+P_{dc} + P_{det}P_{dc},
+\end{equation}
+
+where $P_{det}$ is the probability of the detector clicks due a photon which cross its window and $P_{dc}$ is the probability of dark counts. Considering the detector efficiency $\eta_{D}$, the probability of the detector clicks due to a photon is:
+
+\begin{equation}\label{eq:probclickefficiency}
+  P_{det} = 1 - e^{- \eta_{D}\mu}.
+\end{equation}
+
+The probability of dark counts is calculated as a ratio between the frequency counts and the trigger frequency when no laser is connected to the detector. Nevertheless, the detector click frequency is
+\begin{equation}\label{eq:frequencyclick}
+  f_{click} = f_{trigger}P_{click} \longrightarrow P_{click}=\frac{f_{click}}{f_{trigger}}.
+\end{equation}
+
+This way the mean average photon number can be calculate using the following equation:
+\begin{equation}\label{eq:meanphotonnumber}
+  \mu = - \frac{1}{\eta_{D}}\ln\left [1-\frac{1}{1-P_{dc}}\left (\frac{f_{click}}{f_{trigger}}-P_{dc} \right)\right]
+\end{equation}
 
 \subsection{Open Issues}
 

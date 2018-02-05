@@ -1,9 +1,12 @@
 # ifndef POLARIZATION_BEAM_SPLITTER_H_
 # define POLARIZATION_BEAM_SPLITTER_H_
 
+# include <algorithm>  // min()
+# include <math.h>     // cos(), sin()
+#include <array>
+
 #include "netxpto_20180118.h"
 
-#include <array>
 
 class PolarizationBeamSplitter : public Block {
 	/* State variables */

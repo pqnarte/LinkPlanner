@@ -1,11 +1,11 @@
 #ifndef BOB_QKD_H_
 #define BOB_QKD_H
 
-#include "netxpto.h"
-#include "binary_mapper.h"
-#include "discrete_to_continuous_time.h"
+#include "netxpto_20180118.h"
+#include "binary_mapper_20180205.h"
+#include "discrete_to_continuous_time_20180118.h"
 #include "pulse_shaper_20180111.h"
-#include "super_block_interface.h"
+#include "super_block_interface_20180118.h"
 #include "fork_20180112.h"
 
 class BobQKD : public SuperBlock {

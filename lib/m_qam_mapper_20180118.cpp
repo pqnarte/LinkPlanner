@@ -1,14 +1,5 @@
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <math.h>
-# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm>
 
-# include "netxpto_20180118.h"
+
 # include "m_qam_mapper_20180118.h"
 
 
@@ -39,14 +30,14 @@ MQamMapper::MQamMapper(vector<Signal *> &InputSig, vector<Signal *> &OutputSig):
 
 void MQamMapper::initialize(void){
 
-	outputSignals[0]->symbolPeriod = log2(m) * inputSignals[0]->symbolPeriod;
-	outputSignals[0]->samplingPeriod = log2(m) * inputSignals[0]->samplingPeriod;
-	outputSignals[0]->samplesPerSymbol = 1;
+	outputSignals[0]->setSymbolPeriod (log2(m) * inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod (log2(m) * inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(1);
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[1]->symbolPeriod = log2(m) * inputSignals[0]->symbolPeriod;
-	outputSignals[1]->samplingPeriod = log2(m) * inputSignals[0]->samplingPeriod;
-	outputSignals[1]->samplesPerSymbol = 1;
+	outputSignals[1]->setSymbolPeriod (log2(m) * inputSignals[0]->getSymbolPeriod());
+	outputSignals[1]->setSamplingPeriod (log2(m) * inputSignals[0]->getSamplingPeriod());
+	outputSignals[1]->setSamplesPerSymbol (1);
 	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 	//setM(m);

@@ -3,6 +3,15 @@
 
 # include <vector>	     // vector container
 # include <math.h>       // log2 
+# include <complex>
+# include <fstream>
+# include <iostream>
+# include <math.h>
+# include <stdio.h>
+# include <string>
+# include <strstream>
+# include <vector>
+# include <algorithm>
 
 # include "netxpto_20180118.h"
 
