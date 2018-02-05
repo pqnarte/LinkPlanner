@@ -11,7 +11,11 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
+<<<<<<< HEAD
 	t_integer numberOfBitsGenerated(5000);
+=======
+	t_integer numberOfBitsGenerated(10000);
+>>>>>>> andoni.stable
 	t_integer samplesPerSymbol(16);
 	t_integer pLength = 5;
 	t_real bitPeriod = 1.0 / 50e9;
@@ -19,7 +23,11 @@ int main(){
 	t_real rollOffFactor = 0.3;
 	t_real rollOffFactor_rcv = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
+<<<<<<< HEAD
 	t_real signalOutputPower = -70;
+=======
+	t_real signalOutputPower = -60;
+>>>>>>> andoni.stable
 
 
 	// #####################################################################################################

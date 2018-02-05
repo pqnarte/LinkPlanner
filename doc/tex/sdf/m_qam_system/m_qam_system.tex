@@ -104,7 +104,7 @@ This means that the probability of an error in bit detection is independent amon
 %\end{equation}
 
 \begin{equation}\label{eq:berBPSK}
-P_b= Q\left({\frac{m\sqrt{2}}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
+P_b= Q\left({\frac{m}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
 \end{equation}
 
 with
@@ -112,7 +112,7 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&N_0 &= \sqrt{n_0}
+&N_0 &= \sqrt{2 n_0}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
@@ -178,9 +178,25 @@ The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{f
 
 These equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
-% TODO: preencher isto
+
+The optimal BER that can be obtained by using matched filtering is described by:
+
+\begin{equation}\label{eq:berBPSK}
+P_b= \frac{1}{2} \text{erfc}\left({\frac{m_{mf}}{N_{mf}}}\right)
+\end{equation}
+
+with
+
+\begin{eqnarray}
+&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
+&N_{mf} &= \sqrt{\frac{T n_0}{4}}
+\end{eqnarray}
+
+Here, $T$ is the symbol period. 
+
+% TODO: preencher isto depois de requisitar o livro
 
 \pagebreak
 \subsection{Simulation Analysis}
@@ -451,6 +467,14 @@ The blue line represents the theoretical curve, while the orange points represen
 	\caption{Simulation result for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
 	\label{fig:ber_pseudorandom}
 \end{figure}% 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.8\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_mf_20180205.pdf}
+	\caption{Simulation result using root-raised cosine matched filtering for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
+	\label{fig:ber_pseudorandom_mf}
+\end{figure}% 
+
 
 \subsection{Open Issues}
 
