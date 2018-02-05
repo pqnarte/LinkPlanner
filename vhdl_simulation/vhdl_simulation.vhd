@@ -30,8 +30,8 @@ io_proc: process
 				-- The simulation must be executed in the directory \vhdl_simulation\
 				constant file_input_path : string := ".\input_files\" & FILENAME;
 				constant file_output_path : string := ".\output_files\" & FILENAME;
-				variable input_char  : myType; -- bits received
-				variable output_char : myType; -- output bits after computation
+				variable char_buffer  : myType; -- bits received
+				variable vector_buffer : std_logic_vector(7 downto 0);
 				variable new_line_count : integer := 0; -- Counts the 4 newLine characters to ignore the HEADER
 				
 			begin
@@ -44,29 +44,30 @@ io_proc: process
 					-- Character Read
 					-------------------------------------------
 					-- Reads the input bits from the input file
-					read(file_input_signal, input_char);
+					read(file_input_signal, char_buffer);
 					-------------------------------------------
 					-- HEADER Remover
 					-------------------------------------------
 					-- If /= 4 it's still reading the HEADER
 					if(new_line_count /= 4) then
 						-- If the current char is a new line character
-						if(character'pos(input_char) = 10) then
-							new_line_count :=  new_line_count + 1; -- if new_line_count = 4, means HEADER is over
+						if(character'pos(char_buffer) = 10) then
+						-- if new_line_count = 4, means HEADER is over
+							new_line_count :=  new_line_count + 1;
 						end if;
 						next;
 					end if;
 					-------------------------------------------
 					-- Computation
 					-------------------------------------------
-					-- computation(input_char,output_char);
-					output_char := input_char; -- to be removed later
-					
+					vector_buffer := std_logic_vector(to_unsigned(character'pos(char_buffer),8));
+					-- computation(vector_buffer); -- Signal Processing
+					char_buffer := character'val(to_integer(unsigned(vector_buffer)));
 					-------------------------------------------
 					-- Write back
 					-------------------------------------------
 					-- Writes the output bits to the output file
-					write(file_output_signal, output_char);
+					write(file_output_signal, char_buffer);
 				end loop;
 				
 				file_close(file_input_signal);
