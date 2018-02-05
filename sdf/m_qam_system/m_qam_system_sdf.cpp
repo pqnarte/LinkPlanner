@@ -11,14 +11,14 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-	t_integer numberOfBitsGenerated(1000);
+	t_integer numberOfBitsGenerated(10000);
 	t_integer samplesPerSymbol(16);
 	t_integer pLength = 5;
 	t_real bitPeriod = 1.0 / 50e9;
 //	t_real bitPeriod = 20e-12;
 	t_real rollOffFactor = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower = -57;
+	t_real signalOutputPower = -60;
 
 
 	// #####################################################################################################
@@ -44,7 +44,7 @@ int main(){
 	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
-	t_real noiseAmplitude = 0.5*1e-6;
+	t_real noiseAmplitude = 1*1e-6;
 	SeedType seedType = RandomDevice;
 	array<int, 2> seedArray = { 1, 2 };
 
