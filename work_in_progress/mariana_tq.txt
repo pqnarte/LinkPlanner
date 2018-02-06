@@ -1,6 +1,16 @@
+2017-02-06
+TO BE DONE
+	
+	QRNG - ANP rever parte teórica e simulação (a parte experimental fica em suspense até cheagr o detector da IDQuantique a funcionar)
+
+	avançar também com a parte do BB84
+
+Next meeting: 6/2, 8h30m
+
+
 2017-01-31
 TO BE DONE
-	correções no documento
+	
 	parte teórica - descrever melhor a teoria (formulação analitica)
 
 	parte numérica - explicar bem os intervalos de confiança no bloco, explicar bem o multipath

@@ -1,0 +1,93 @@
+\clearpage
+\section{Quantum Noise}
+
+\begin{tcolorbox}	
+\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}}
+\textbf{Contributors}  &:& Nelson Muga, (2017-12-21 - ...)\\
+                       &:& Diamantino Silva, (2017-08-18 - ...)\\
+                       &:& Armando Pinto (2017-08-15 - ...)\\
+\textbf{Goal}          &:& Analise of various optical detection schemes.\\
+\end{tabular}
+\end{tcolorbox}
+%
+\vspace{2em}
+%
+The detection of light is a fundamental stage in every optical communication system, bridging the optical domain into the electrical domain. This section will review various theoretical and practical aspects of light detection, as well as a series of implementations and schemes.
+The objective of this work is to develop numerical models for the various optical detections schemes and to validate such numerical models with experimental results.\\
+
+\subsection{Theoretical Analysis}
+\subsection{Numerical Analysis}
+\subsection{Experimental Analysis}
+
+
+In this section, we focus on the noise characterization of the detection systems.
+The security of the KQD protocols relies on the error estimation (OF WHAT?) which in turn is based on the estimation of various parameters of the transmission channel.
+Using a formal perspective, we can approximate a quantum channel by the normal linear model
+\cite{wang2018practical},
+establishing the relation between the two parties Alice and Bob as
+% #wang2018pratical
+\begin{equation}
+	y = tx + z
+\end{equation}
+where $t=\sqrt{\eta T}$, $x$ is the transmitted signal, $y$ is the received signal, and $z$ is the total noise.
+The parameter $\eta$ accounts for the detector efficiency and $T$ accounts for the transmittance of the channel, i.e. the channel gain (or loss?).
+We are going to assume that the random variable $z$ is normal distributed with mean $0$ and variance $\sigma^2 = \eta T \varepsilon N_0 + N_0 + V_{el}$ which is in fact the superposition of all noise sources assumed to be independent from the signal.
+These sources are the shot noise ($N_0$), the detector's electronic noise ($V_{el}$) and the excess noise in shot noise units ($\varepsilon$).\\
+The expected values for these variables are:
+\begin{equation}
+	\braket{x} = \braket{y} = \braket{z} = 0
+\end{equation}
+and variances:
+\begin{equation}
+	\begin{aligned}
+		\braket{x^2} &= V_A\\
+		\braket{xy}  &= \sqrt{\eta T} V_A\\
+		\braket{y^2} &= \eta T V_A + N_0 + \eta T \varepsilon + v_{el}\\
+	\end{aligned}
+\end{equation}
+% equacoes tiradas do #jouguet2013preventing
+\\
+All of these noise sources can be minimized, almost eliminated, by using almost perfect transmission and detection systems, but the noise floor will be always defined by quantum noise. This is because our transmission system uses coherent states.(????)\\
+% Procurar no Londoun ou no Mark Fox
+% FALAR NO RUIDO DAS QUADRATURAS????
+%Since the secret key rate is very sensitive to the value of shot-noise variance, realt-time monitoring of it greatly reduces the error introduced by the fluctuation of the LO intensity.\\
+% #wang2018pratical, p.2
+\\
+In practice, two approaches to the measurement of quantum noise can be used, offline or on real-time.\\
+In the offline approach, before the QKD run and in a secure laboratory, it is established the linear relationship between the shot noise and the local oscillator power.
+% #jouguet2013preceventing, p.2
+After the QKD run, a series of samples are selected and the excess noise is calculated, using the established quantum noise relation with LO power to estimate quantum noise.
+% Estou a inventar ^
+This approach, however has two shortcomings. First, it not possible to trust the power of the signal entering Bob's device, since an eavesdropper can easily add another signal....\\
+% #jouguet2013preceventing, p.2
+\\
+The other approach is real time shot noise measurement (RTSNM)
+\cite{wang2018practical, kunz2015robust}.
+%Since the secret key rate is very sensitive to the value of shot-noise variance, realt-time monitoring of it greatly reduces the error introduced by the fluctuation of the LO intensity.\\
+% #wang2018pratical, p.2
+This method proposes a continuous monitorization of the system parameters, besides the standard noise estimation. The implementation proposed in
+\cite{wang2018practical}
+introduces a modulator in the signal path, which blocks or let's the signal go through to the homodyne detector. By randomly blocking the signal, the measured samples will generate samples with a variance equal to the shot noise variance. The samples are then used to estimate the shot and excess noise.\\
+Nevertheless there are some downsides in this approach. First off all, to obtain this extra information about the current shot noise, we are sacrificing samples and therefore bitrate. Another problem is related to the number of samples used in the estimation. Given the limited number of samples, the estimators will have a error margin. A last problem addressed in the paper is the problem of the imperfect signal amplitude modulation which also introduces extra noise.\\
+%
+%
+%
+% Sera que devia falar da dificuldade de medir o ruido vs LO power (como está no Hans)
+%
+%
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\bibname}{References}
+%
+\bibliographystyle{myIEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+\bibliography{./sdf/quantum_noise/quantum_noise}
+%
+%
+
+
+\cleardoublepage

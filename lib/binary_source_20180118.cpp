@@ -1,36 +1,14 @@
-
 # include "binary_source_20180118.h"
 
 using namespace std;
-
-
-/*2016-08-03
-BinarySource::BinarySource(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
-
-  numberOfInputSignals = InputSig.size();
-  numberOfOutputSignals = OutputSig.size();
-
-  inputSignals = InputSig;
-  outputSignals = OutputSig;
-
-  outputSignals[0]->symbolPeriod = bitPeriod;
-  outputSignals[0]->samplingPeriod = outputSignals[0]->symbolPeriod;
-  
-}*/
 
 void BinarySource::initialize(void){
 	numberOfOutputSignals = outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
-<<<<<<< HEAD
 		outputSignals[i]->setSymbolPeriod(bitPeriod);
 		outputSignals[i]->setSamplingPeriod(outputSignals[i]->getSymbolPeriod());
 		outputSignals[i]->setSamplesPerSymbol(1.0);
-=======
-		outputSignals[i]->setSymbolPeriod (bitPeriod);
-		outputSignals[i]->setSamplingPeriod (outputSignals[i]->getSymbolPeriod());
-		outputSignals[i]->setSamplesPerSymbol (1);
->>>>>>> marianaferreiraramos-Mariana_TQ
 		outputSignals[i]->setFirstValueToBeSaved(1);
 	}
 }
@@ -239,11 +217,6 @@ bool BinarySource::runBlock(void) {
 
 void BinarySource :: setBitPeriod(double bPeriod){
 	bitPeriod = bPeriod;
-<<<<<<< HEAD
 	outputSignals[0]->setSymbolPeriod(bitPeriod);
 	outputSignals[0]->setSamplingPeriod(outputSignals[0]->getSymbolPeriod());
-=======
-	outputSignals[0]->setSymbolPeriod (bitPeriod);
-	outputSignals[0]->setSamplingPeriod (outputSignals[0]->getSymbolPeriod());
->>>>>>> marianaferreiraramos-Mariana_TQ
 };

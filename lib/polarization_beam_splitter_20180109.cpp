@@ -9,7 +9,6 @@ void PolarizationBeamSplitter::initialize(void) {
 	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-
 }
 
 bool PolarizationBeamSplitter::runBlock(void) {
