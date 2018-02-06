@@ -19,6 +19,30 @@
   <defs
      id="defs4843">
     <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4526"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4497"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
        inkscape:stockid="Arrow2Mstart"
        orient="auto"
        refY="0"
@@ -186,9 +210,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="16"
-     inkscape:cx="107.45056"
-     inkscape:cy="37.373429"
+     inkscape:zoom="8"
+     inkscape:cx="131.51649"
+     inkscape:cy="54.744213"
      inkscape:document-units="mm"
      inkscape:current-layer="g5687-3"
      showgrid="true"
@@ -268,9 +292,9 @@
        id="guide7044"
        inkscape:locked="false" />
     <sodipodi:guide
-       position="26.106534,5.4844232"
+       position="31.290958,5.4844233"
        orientation="0,1"
-       id="guide7048"
+       id="guide4493"
        inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
@@ -281,7 +305,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -398,11 +422,13 @@
        transform="rotate(90,60.957759,110.88753)"
        id="g5687-3">
       <path
-         d="m 67.933469,111.13502 10.300143,0 0,-19.642367"
-         style="fill:none;stroke:#000000;stroke-width:0.19050001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#endMarker3-4)"
-         id="path583-7"
+         style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+         d="m 67.936947,111.13502 c 3.431957,0 6.864178,0 8.364352,0 1.500173,0 1.068365,0 1.068232,0 -1.32e-4,0 0.431974,0 0.648027,-0.24514 0.216053,-0.24514 0.216053,-0.73457 0.216053,-4.12911 0,-3.39453 0,-9.700689 0,-16.003182"
+         id="path4495"
          inkscape:connector-curvature="0"
-         sodipodi:nodetypes="ccc" />
+         inkscape:path-effect="#path-effect4497"
+         inkscape:original-d="m 67.936947,111.13502 c 3.431957,-2.6e-4 6.864178,-2.6e-4 10.296664,0 -0.432139,-2.6e-4 -0.863947,-2.6e-4 -1.295524,0 0.431312,-2.6e-4 0.863418,-2.6e-4 1.295524,0 -2.64e-4,-0.49028 -2.64e-4,-0.97971 0,-1.46916 -2.65e-4,-6.29962 -2.65e-4,-12.605779 0,-18.908272"
+         sodipodi:nodetypes="cccccc" />
     </g>
     <g
        transform="translate(-3.0883494,4.3882e-4)"
