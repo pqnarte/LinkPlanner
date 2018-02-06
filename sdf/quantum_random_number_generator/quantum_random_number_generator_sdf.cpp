@@ -15,7 +15,7 @@ int main(){
 	/*Input Parameters*/
 
 	double RateOfPhotons{ 1e6 };
-	double PolarizerAngle{ 45.0 };
+	double PolarizerAngle{ 360.0 };
 	int NumberOfSamplesPerSymbol{ 16 };
 
 	// #####################################################################################################
@@ -79,6 +79,7 @@ int main(){
 	QRNG_DecisionCircuit B8{ vector<Signal*>{&S6,&S7}, vector<Signal*>{&S8} };
 
 	ProbabilityEstimator B9{ vector<Signal*>{&S8}, vector<Signal*>{&S9} };
+	B9.setFileName("360degrees.txt");
 
 	Sink B10{ vector<Signal*>{&S9}, vector<Signal*>{} };
 	B10.setNumberOfSamples((long)1e6);

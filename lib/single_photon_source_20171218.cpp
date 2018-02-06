@@ -1,6 +1,6 @@
 # include "single_photon_source_20171218.h"
 
-# include <algorithm>  // min
+
 
 
 void SinglePhotonSource::initialize(void) {

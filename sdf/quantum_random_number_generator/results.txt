@@ -1,5 +1,0 @@
-Number of received Bits: 1.00051e+06
-Error Margin of Prob0: 0.0447424 % 
-Error Margin of Prob1: 0.0447424 % 
-Probability Of 0: 3.1154 % 
-Probability Of 1: 96.8846 % 

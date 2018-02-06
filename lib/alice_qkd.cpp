@@ -1,4 +1,3 @@
-#include "netxpto.h"
 #include "alice_qkd.h"
 
 AliceQKD::AliceQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal) : SuperBlock(inputSignal, outputSignal) {

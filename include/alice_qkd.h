@@ -1,15 +1,15 @@
 #ifndef ALICE_QKD_H_
 #define ALICE_QKD_H
 
-#include "netxpto.h"
-#include "binary_source.h"
-#include "m_qam_mapper.h"
-#include "discrete_to_continuous_time.h"
-#include "pulse_shaper.h"
+#include "netxpto_20180118.h"
+#include "binary_source_20180118.h"
+#include "m_qam_mapper_20180118.h"
+#include "discrete_to_continuous_time_20180118.h"
+#include "pulse_shaper_20180111.h"
 #include "clock_20171219.h"
-#include "sink.h"
-#include "super_block_interface.h"
-#include "demux_1_2.h"
+#include "sink_20180118.h"
+#include "super_block_interface_20180118.h"
+#include "demux_1_2_20180205.h"
 
 class AliceQKD : public SuperBlock {
 	/* State Variables */
@@ -26,17 +26,21 @@ class AliceQKD : public SuperBlock {
 
 	TimeContinuousAmplitudeDiscreteReal S3{ "Alice_3.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S4{ "Alice_4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S4{  };
+
+	TimeContinuousAmplitudeDiscreteReal Sout1{ "Alice_4.sgn" };
 
 	TimeContinuousAmplitudeContinuousReal CLK_A{ "Alice_5.sgn" };
 
-	Binary S5{ "Alice_6.sgn" };
+	Binary S5{  };
+	Binary Sout2{ "Alice_6.sgn" };
 
 	Binary S6{ "Alice_7.sgn" };
 
 	Binary S7{ "Alice_8.sgn" };
 
-	Binary S8{ "Alice_9.sgn" };
+	Binary S8{  };
+	Binary Sout3{ "Alice_9.sgn" };
 
 	Binary S9{ "Alice_10.sgn" };
 

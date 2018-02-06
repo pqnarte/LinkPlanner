@@ -1,7 +1,7 @@
 #ifndef OPTICAL_SWITCH_H_
 #define OPTICAL_SWITCH_H_
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
 
 class OpticalSwitch : public Block {
 

@@ -1,4 +1,3 @@
-#include "netxpto.h"
 #include "bob_qkd.h"
 
 BobQKD::BobQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal) : SuperBlock(inputSignal, outputSignal) {

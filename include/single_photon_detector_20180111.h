@@ -1,8 +1,12 @@
 # ifndef SINGLE_PHOTON_DETECTOR_H_
 # define SINGLE_PHOTON_DETECTOR_H_
 
-# include "netxpto_20180118.h"
 # include <random>
+# include <algorithm>  // min()
+# include <math.h>	   // remainder(), pow()
+# include <chrono>
+
+# include "netxpto_20180118.h"
 
 class SinglePhotonDetector : public Block {
 	
