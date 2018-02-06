@@ -21,6 +21,7 @@ class AliceQKD : public SuperBlock {
 	//Binary S1{ "NUM_A.sgn" };
 
 	TimeDiscreteAmplitudeDiscreteReal S1{ "Alice_1.sgn" };
+	
 
 	TimeDiscreteAmplitudeDiscreteReal S2{ "Alice_2.sgn" };
 
