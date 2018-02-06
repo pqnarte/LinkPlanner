@@ -58,7 +58,7 @@ void WhiteNoise::initialize(void){
 
 			break;
 		}
-		case Selected:
+		case SingleSelected:
 		{
 			// Initial implementation for user determined seeding,
 			// using sequential values to avoid the need to input 4 seeds.

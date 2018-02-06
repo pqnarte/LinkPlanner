@@ -6,7 +6,7 @@
 # include <random>
 # include <array>
 
-enum SeedType { RandomDevice, DefaultDeterministic, Selected};
+enum SeedType { RandomDevice, DefaultDeterministic, SingleSelected};
 
 class WhiteNoise : public Block {
 
