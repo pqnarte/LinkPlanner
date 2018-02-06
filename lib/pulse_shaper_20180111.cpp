@@ -1,4 +1,3 @@
-
 # include "pulse_shaper_20180111.h"
 
 using namespace std;

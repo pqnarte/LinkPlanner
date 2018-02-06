@@ -24,9 +24,6 @@
     <ClCompile Include="..\..\lib\eve_qkd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bb84_with_discrete_variables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\single_photon_source_20171218.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,6 +70,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\binary_mapper_20180205.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bb84_with_discrete_variables_sdf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

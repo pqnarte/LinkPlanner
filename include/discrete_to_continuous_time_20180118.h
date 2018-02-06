@@ -2,6 +2,7 @@
 # define DISCRETE_TO_CONTINUOUS_TIME_H_
 
 # include <algorithm> // min
+
 # include "netxpto_20180118.h"
 
 class DiscreteToContinuousTime : public Block {

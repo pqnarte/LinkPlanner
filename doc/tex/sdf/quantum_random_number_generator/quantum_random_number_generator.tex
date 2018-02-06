@@ -19,7 +19,7 @@ One of the optical processes available as a source of randomness is the splittin
 
 \begin{figure}[H]
     \centering
-        \includegraphics[clip, trim=3cm 20cm 5cm 5cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Random_Number_Generator.pdf}
+        \includegraphics[clip, trim=3cm 20cm 5cm 5cm, width=1.00\textwidth]{./sdf/quantum_random_number_generator/figures/Random_Number_Generator.pdf}
     \caption{Source of randomness with a polarization beam splitter PBS where the incoming light is linearly polarized at $45^{\circ}$ with respect to the PBS. Figure adapted from \cite{Zeilinger}.}\label{qrng}
 \end{figure}
 
@@ -46,7 +46,7 @@ which will be used in simulation analysis.
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=3cm 20cm 12cm 3cm, height=6cm]{./sdf/qrng/figures_raw/axis_states.pdf}
+        \includegraphics[clip, trim=3cm 20cm 12cm 3cm, height=6cm]{./sdf/quantum_random_number_generator/figures/axis_states.pdf}
     \caption{Representation of polarization states of a qubit in a bi-dimensional space.}\label{fig:stateaxis}
 \end{figure}
 
@@ -64,7 +64,7 @@ The simulation diagram of the setup described in the previous section is present
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=5cm 5cm 0.5cm 15cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/Simulation_qrng.pdf}
+        \includegraphics[clip, trim=5cm 5cm 0.5cm 15cm, width=1.00\textwidth]{./sdf/quantum_random_number_generator/figures/Simulation_qrng.pdf}
     \caption{Block diagram of the simulation of a Quantum Random Generator.}\label{sim_qrng}
 \end{figure}
 
@@ -152,7 +152,7 @@ qrng\_sdf.cpp                                   &                      &    \che
 
 \begin{figure}[H]
     \centering
-        \includegraphics[clip, trim=0.5cm 15.5cm 2.5cm 1cm, height = 10cm]{./sdf/qrng/figures_raw/sphere.pdf}
+        \includegraphics[clip, trim=0.5cm 15.5cm 2.5cm 1cm, height = 10cm]{./sdf/quantum_random_number_generator/figures/sphere.pdf}
     \caption{Angles used to perform the qrng simulation for $N=1 \times 10^{6}$ samples. }\label{sphere}
 \end{figure}
 
@@ -160,7 +160,7 @@ For a quantum random number generator with equal probability of obtain a "0" \sp
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=15cm,height=10cm]{./sdf/qrng/figures_raw/prob0.eps}
+        \includegraphics[width=15cm,height=10cm]{./sdf/quantum_random_number_generator/figures/prob0.eps}
     \caption{Probability of outputs a number "0" \space depending on the polarization angle.}\label{probx}
 \end{figure}
 
@@ -180,7 +180,7 @@ On the other hand, figure \ref{proby} shows the probability of a single photon r
 
 \begin{figure}[H]
     \centering
-        \includegraphics[width=15cm,height=10cm]{./sdf/qrng/figures_raw/prob1.eps}
+        \includegraphics[width=15cm,height=10cm]{./sdf/quantum_random_number_generator/figures/prob1.eps}
     \caption{Probability of outputs a number "1" \space depending on the polarization angle.}\label{proby}
 \end{figure}
 
@@ -198,14 +198,14 @@ The goodness of the fit presented in figure \ref{proby} is shown in the followin
 
 The goodness of the fit is evaluated based on four parameters:
 \begin{enumerate}
-  \item The sum of squares due to error (SSE), which measures the total deviation between the fit values and the values that the simulation outputs. This value is calculated from the expression 
+  \item The sum of squares due to error (SSE), which measures the total deviation between the fit values and the values that the simulation outputs. This value is calculated from the expression
       \begin{equation}\label{}
         \textrm{SSE} = \sum_{i=1}^{n} w_i(y_{i}-\hat{y_{i}})^2.
         \nonumber
       \end{equation}
       A value of SSE closer to 0 means that the model has a small random error component.
-      
-  \item The R-square measures how good the fit in explaining the data. 
+
+  \item The R-square measures how good the fit in explaining the data.
     \begin{equation}\label{}
     \textrm{R-square} = 1-\frac{\textrm{SSE}}{\textrm{SST}},
     \nonumber
@@ -214,21 +214,21 @@ The goodness of the fit is evaluated based on four parameters:
     \begin{equation}\label{}
     \textrm{SST} = \sum_{i=1}^{n} w_i (y_i - \bar{y_i})^2.
       \nonumber
-    \end{equation} 
+    \end{equation}
     R-square can take a value between 0 and 1. If the value is closer to 1, it means that the fit better explains the total variation in the data around the average.
-  
-  \item Degrees of freedom adjusted R-square uses the R-square and adjusts it based on the number of degrees of freedom. 
+
+  \item Degrees of freedom adjusted R-square uses the R-square and adjusts it based on the number of degrees of freedom.
     \begin{equation}\label{}
       \textrm{adjusted R-square} = 1 - \frac{\textrm{SSE}(n-1)}{\textrm{SST}(v)},
       \nonumber
-    \end{equation} 
+    \end{equation}
     where,
     \begin{equation}\label{}
       v = n - m,
       \nonumber
     \end{equation}
     where n is the number of values in test and m is the number of fitted coefficients estimated from the values in test. A value of adjusted R-square close to 1 is a indicative factor of a good fit.
-    
+
   \item The root mean square error (RMSE) is also a fit standard error and it can be calculated from:
     \begin{equation}\label{}
       \textrm{RMSE} = \sqrt{\textrm{MSE}},
@@ -240,7 +240,7 @@ The goodness of the fit is evaluated based on four parameters:
       \nonumber
     \end{equation}
 
-\end{enumerate} 
+\end{enumerate}
 
 \subsection{Experimental Analysis}
 
@@ -250,9 +250,14 @@ In order to have a real experimental quantum random number generator, a setup sh
 
 \begin{figure}[H]
     \centering
-        \includegraphics[clip, trim=0.5cm 7cm 0.5cm 17cm, width=1.00\textwidth]{./sdf/qrng/figures_raw/experimental_qrng.pdf}
+        \includegraphics[clip, trim=0.5cm 7cm 0.5cm 17cm, width=1.00\textwidth]{./sdf/quantum_random_number_generator/figures/experimental_qrng.pdf}
     \caption{Experimental setup to implement a quantum random number generator.}\label{experimental_qrng}
 \end{figure}
+
+\subsubsection{IDQuantique detector}
+%
+The detector used in the laboratory is the Thorlabs PDB 450C. This detector consists of two well-matched photodiodes and a transimpedance amplifier that generates an output voltage (RF OUTPUT) proportional to the difference between the photocurrents of the photodiodes.\\
+Additionally, the unit has two monitor outputs (MONITOR+ and MONITOR-) to observe the optical input power level on each photodiode separately.
 
 Since we do not have a single photon source, we must use the Poisson Statistics in order to calculate the best value for a mean of photons per pulse. A weak laser pulse follows a Poissonian Statistics\cite{markfox}:
 \begin{equation}\label{eq:poisson}
@@ -298,7 +303,7 @@ This way the mean average photon number can be calculate using the following equ
 %
 \bibliographystyle{myIEEEtran}
 % argument is your BibTeX string definitions and bibliography database(s)
-\bibliography{./sdf/qrng/qrng}
+\bibliography{./sdf/quantum_random_number_generator/quantum_random_number_generator}
 %
 %
 

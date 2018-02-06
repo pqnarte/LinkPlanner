@@ -9,19 +9,15 @@
 
 
 class PolarizationBeamSplitter : public Block {
-	/* State variables */
-	bool firstTime{ true };
 
 	/* input parameters */
 
-	t_real F = 1;
-	t_complex unit = 1;
-	array <t_complex, 4> matrixH = { { F*unit, 0, 0, 0 } };
-	array <t_complex, 4> matrixV = { { 0, 0, 0, F*unit } };
+	array <t_complex, 4> matrixH = { { 1, 0, 0, 0 } };
+	array <t_complex, 4> matrixV = { { 0, 0, 0, 1 } };
 	/*
 	Jones Matrix for PBS:
-	1	0
-	0	1
+	1 0
+	0 1
 	*/
 
 public:
