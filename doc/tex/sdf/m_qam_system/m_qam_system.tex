@@ -251,24 +251,25 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         bit\_error\_rate\_20171810.cpp               &                   & \checkmark \\ \hline
         decoder\_20180118.cpp                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.cpp &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20180118.cpp             & $^{1,2}$			 & \checkmark \\ \hline
+        homodyne\_receiver\_20180118.cpp             & $^{1}$			 & \checkmark \\ \hline
         ideal\_amplififer\_20180118.cpp              &                   & \checkmark \\ \hline
         iq\_modulator\_20180118.cpp                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.cpp              &                   & \checkmark \\ \hline
         m\_qam\_mapper\_20180118.cpp                 &                   & \checkmark \\ \hline
-        m\_qam\_system.cpp                 			 & No help in manual.& \checkmark \\ \hline
+        m\_qam\_system.cpp                 			 & $^{2}$   		 & \checkmark \\ \hline
         m\_qam\_transmitter\_20180118.cpp            &                   & \checkmark \\ \hline
-        netxpto\_20180118.cpp                        & No help in manual.& \checkmark \\ \hline
+        netxpto\_20180118.cpp                        & $^{2}$ 			 & \checkmark \\ \hline
         optical\_hybrid\_20180118.cpp                &                   & \checkmark \\ \hline
         photodiode\_old\_20180118.cpp                &                   & \checkmark \\ \hline
         pulse\_shaper\_20180118.cpp                  &                   & \checkmark \\ \hline
         sampler\_20171119.cpp                        &                   & \checkmark \\ \hline
         sink\_20180118.cpp                           &                   & \checkmark \\ \hline
-        super\_block\_interface\_20180118.cpp        & No help in manual.& \checkmark \\ \hline
+        super\_block\_interface\_20180118.cpp        & $^{2}$ 			 & \checkmark \\ \hline
         white\_noise\_20180118.cpp                   & 					 & \checkmark \\ \hline
     \end{tabulary}
 
-    \caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}. \label{tab:sources}}
+    \caption{$^1$ The library entry is under a different name, \textit{m\_qam\_receiver};\\
+    $^2$ No library entry as it is a main or general purpose file, not a specific block. 	 \label{tab:sources}}
 \end{table}
 
 \begin{table}[H]
@@ -278,27 +279,28 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         \multicolumn{3}{|c|}{ \textbf{Header Files} } \\
         \hline
         \textbf{File}                      & \textbf{Comments} & \textbf{Status} \\ \hline
-        add\_20180118.h                            & Time tag different on cpp file.& \checkmark \\ \hline
+        add\_20180118.h                            & $^{1}$			   & \checkmark \\ \hline
         binary\_source\_20180118 .h                &                   & \checkmark \\ \hline
-        bit\_error\_rate\_20171810.h               & $^{3}$            & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.h               & $^{1}$            & \checkmark \\ \hline
         decoder\_20180118.h                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.h &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20171203.h             & $^{1,2,3}$        & \checkmark \\ \hline
+        homodyne\_receiver\_20171203.h             & $^{1,2}$          & \checkmark \\ \hline
         ideal\_amplifier\_20180118.h               &                   & \checkmark \\ \hline
         iq\_modulator\_20180118.h                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.h              &                   & \checkmark \\ \hline
         m\_qam\_mapper\_20180118.h                 &                   & \checkmark \\ \hline
         m\_qam\_transmitter\_20180118.h            &                   & \checkmark \\ \hline
-        netxpto\_20180118.h                        & No help on manual.& \checkmark \\ \hline
+        netxpto\_20180118.h                        & $^3$ 			   & \checkmark \\ \hline
         optical\_hybrid\_20180118.h                &                   & \checkmark \\ \hline
         photodiode\_old\_20180118.h                &                   & \checkmark \\ \hline
         pulse\_shaper\_20180118.h                  &                   & \checkmark \\ \hline
-        sampler\_20171119.h                        & $^3$              & \checkmark \\ \hline
+        sampler\_20171119.h                        & $^1$              & \checkmark \\ \hline
         sink\_20180118.h                           &                   & \checkmark \\ \hline
-        super\_block\_interface\_20180118.h        & No help on manual.& \checkmark \\ \hline
+        super\_block\_interface\_20180118.h        & $^3$			   & \checkmark \\ \hline
         white\_noise\_20180118.h                   &                   & \checkmark \\ \hline
     \end{tabulary}
-    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The help entry is under a different name, \textit{m\_qam\_receiver}\label{tab:headers}}
+    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The library entry is under a different name, \textit{m\_qam\_receiver}\\
+    $^3$ No library entry as it is a main or general purpose file, not a specific block. \label{tab:headers}}
 \end{table}
 
 %\begin{table}[]
@@ -405,7 +407,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 \subsection*{Experimental Analysis}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180206.pdf}
+	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180206.pdf}
 	\caption{Experimental setup}
 	\label{fig:experimental_mqam_setup}
 \end{figure}
