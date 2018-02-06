@@ -167,21 +167,21 @@ From this, the probability of symbol error is:
 %
 %The exact probability bit error for $M=4$ are
 
-The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{fig:QPSK_th_curve} as a function of the optical signal power for $N_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+%The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{fig:QPSK_th_curve} as a function of the optical signal power for $N_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
 
-\begin{figure}[h]
-		\centering
-		\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_theory_20180119.pdf}
-		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.}
-		\label{fig:QPSK_th_curve}
-\end{figure}
+%\begin{figure}[h]
+%		\centering
+%		\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_theory_20180119.pdf}
+%		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.}
+%		\label{fig:QPSK_th_curve}
+%\end{figure}
 
-These equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
+It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 
 It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
 
-The optimal BER that can be obtained by using matched filtering is described by:
+The optimal BER that can be obtained by using matched filtering is described by~\cite{mischasch}:
 
 \begin{equation}\label{eq:berBPSK}
 P_b= \frac{1}{2} \text{erfc}\left({\frac{m_{mf}}{N_{mf}}}\right)
@@ -194,7 +194,15 @@ with
 &N_{mf} &= \sqrt{\frac{T n_0}{4}}
 \end{eqnarray}
 
-Here, $T$ is the symbol period. 
+
+Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+%Here, $T$ is the symbol period. 
+
+\begin{figure}[h]
+		\centering
+		\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_BER_curves.pdf}
+		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.\label{fig:QPSK_th_curves}}	
+\end{figure}
 
 % TODO: preencher isto depois de requisitar o livro
 
@@ -436,17 +444,17 @@ The blue line represents the theoretical curve, while the orange points represen
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_20180124.pdf}
-	\caption{Simulation result for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
+	\caption{Simulation results for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$. The simulated values which used a matched filter were obtained by shaping the pulse with a root-raised-cosine FIR filter and filtering the signal before the sample with the same filter.}
 	\label{fig:ber_pseudorandom}
 \end{figure}% 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.8\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_mf_20180205.pdf}
-	\caption{Simulation result using root-raised cosine matched filtering for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
-	\label{fig:ber_pseudorandom_mf}
-\end{figure}% 
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_mf_20180205.pdf}
+%	\caption{Simulation result using root-raised cosine matched filtering for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
+%	\label{fig:ber_pseudorandom_mf}
+%\end{figure}% 
 
 
 \subsection{Open Issues}
