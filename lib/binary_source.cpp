@@ -29,7 +29,7 @@ BinarySource::BinarySource(vector<Signal*> &InputSig, vector<Signal*> &OutputSig
 }*/
 
 void BinarySource::initialize(void){
-	numberOfOutputSignals = (int) outputSignals.size();
+	numberOfOutputSignals = outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
 		outputSignals[i]->symbolPeriod = bitPeriod;

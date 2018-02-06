@@ -5,12 +5,11 @@
 
 #include "netxpto_20180118.h"
 
-enum message_value_type { BasisReconciliation };
+enum message_value_type{ BasisReconciliation };
 enum state_machine_type{ EnableToWrite, enableToRead, BitToProcess, IdleState};
 
 class MessageProcessorAlice : public Block {
 
-	
 	/*Input Parameters*/
 	int bufferLengthIn{ 512 };
 	int bufferLengthOut{ 512 };

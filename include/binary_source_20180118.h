@@ -12,6 +12,7 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
+
 # include "netxpto_20180118.h"
 
 enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };

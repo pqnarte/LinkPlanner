@@ -164,7 +164,7 @@
     <ClCompile Include="..\..\lib\single_photon_source_20171218.cpp" />
     <ClCompile Include="..\..\lib\sink_20180118.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
-    <ClCompile Include="bb84_with_discrete_variables.cpp" />
+    <ClCompile Include="bb84_with_discrete_variables_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\alice_qkd.h" />
