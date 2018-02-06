@@ -11,23 +11,17 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-<<<<<<< HEAD
-	t_integer numberOfBitsGenerated(5000);
-=======
 	t_integer numberOfBitsGenerated(10000);
->>>>>>> andoni.stable
 	t_integer samplesPerSymbol(16);
 	t_integer pLength = 5;
 	t_real bitPeriod = 1.0 / 50e9;
 //	t_real bitPeriod = 20e-12;
-	t_real rollOffFactor = 0.3;
-	t_real rollOffFactor_rcv = 0.3;
+	t_real rollOffFactor_shp = 0.3;
+	t_real rollOffFactor_out = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-<<<<<<< HEAD
-	t_real signalOutputPower = -70;
-=======
 	t_real signalOutputPower = -60;
->>>>>>> andoni.stable
+	PulseShaperFilter shaperFilter = RootRaisedCosine;
+	PulseShaperFilter outputFilter = RootRaisedCosine;
 
 
 	// #####################################################################################################
@@ -106,10 +100,10 @@ int main(){
 	B1.setPatternLength(prbsPatternLength);
 	B1.setIqAmplitudes(iqAmplitudeValues);
 	B1.setNumberOfSamplesPerSymbol(samplesPerSymbol);
-	B1.setRollOffFactor(rollOffFactor);
+	B1.setRollOffFactor(rollOffFactor_shp);
 	B1.setSaveInternalSignals(true);
 	B1.setSeeBeginningOfImpulseResponse(false);
-	B1.setPulseShaperFilter(RootRaisedCosine);
+	B1.setPulseShaperFilter(shaperFilter);
 //	B1.usePassiveFilterMode(true);
 	B1.setImpulseResponseFilename("pulse_shaper.imp");
 
@@ -131,8 +125,8 @@ int main(){
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
 //	B2.setClockPeriod(symbolPeriod);
-	B2.setRollOffFactor(rollOffFactor_rcv);
-	B2.setFilterType(RootRaisedCosine);
+	B2.setRollOffFactor(rollOffFactor_out);
+	B2.setFilterType(outputFilter);
 //	B2.usePassiveFilterMode(true);
 	B2.setImpulseResponseFilename("out_filter.imp");
 

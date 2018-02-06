@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-BER= 0.103865
+BER= 0
 Upper and lower confidence bounds for 95% confidence level 
-Upper Bound= 0.112422
-Lower Bound= 0.0952536
-Number of received bits =4968
-=======
-BER= 0.154547
-Upper and lower confidence bounds for 95% confidence level 
-Upper Bound= 0.16166
-Lower Bound= 0.147379
-Number of received bits =9984
->>>>>>> andoni.stable
+Upper Bound= 6.68807e-05
+Lower Bound= 1e-10
+Number of received bits =9968
