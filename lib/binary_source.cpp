@@ -8,7 +8,7 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 # include "binary_source.h"
 
 using namespace std;
@@ -32,9 +32,9 @@ void BinarySource::initialize(void){
 	numberOfOutputSignals = outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
-		outputSignals[i]->symbolPeriod = bitPeriod;
-		outputSignals[i]->samplingPeriod = outputSignals[i]->symbolPeriod;
-		outputSignals[i]->samplesPerSymbol = 1;
+		outputSignals[i]->setSymbolPeriod(bitPeriod);
+		outputSignals[i]->setSamplingPeriod(outputSignals[i]->getSymbolPeriod());
+		outputSignals[i]->setSamplesPerSymbol(1);
 		outputSignals[i]->setFirstValueToBeSaved(1);
 	}
 }
@@ -243,6 +243,6 @@ bool BinarySource::runBlock(void) {
 
 void BinarySource :: setBitPeriod(double bPeriod){
 	bitPeriod = bPeriod;
-	outputSignals[0]->symbolPeriod = bitPeriod;
-	outputSignals[0]->samplingPeriod = outputSignals[0]->symbolPeriod;
+	outputSignals[0]->setSymbolPeriod(bitPeriod);
+	outputSignals[0]->setSamplingPeriod(outputSignals[0]->getSymbolPeriod());
 };

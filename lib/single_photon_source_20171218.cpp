@@ -1,8 +1,5 @@
 # include "single_photon_source_20171218.h"
 
-
-
-
 void SinglePhotonSource::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());

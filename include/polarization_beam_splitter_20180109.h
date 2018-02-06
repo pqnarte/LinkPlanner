@@ -14,11 +14,6 @@ class PolarizationBeamSplitter : public Block {
 
 	array <t_complex, 4> matrixH = { { 1, 0, 0, 0 } };
 	array <t_complex, 4> matrixV = { { 0, 0, 0, 1 } };
-	/*
-	Jones Matrix for PBS:
-	1 0
-	0 1
-	*/
 
 public:
 
