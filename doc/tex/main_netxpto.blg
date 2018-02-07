@@ -39,11 +39,12 @@ A level-1 auxiliary file: chapter/algorithms.aux
 A level-1 auxiliary file: chapter/code_development_guidelines.aux
 A level-1 auxiliary file: chapter/msbuild.aux
 A level-1 auxiliary file: chapter/git_helper.aux
-Illegal, another \bibstyle command---line 40 of file main_netxpto.aux
+A level-1 auxiliary file: chapter/ghdl.aux
+Illegal, another \bibstyle command---line 41 of file main_netxpto.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
-Database file #1: bibliography.bib
+Database file #1: ./sdf/bpsk_system/bpsk_system.bib
 Warning--I didn't find a database entry for "katsoprinakis2008quantum"
 Warning--I didn't find a database entry for "Zeilinger"
 Warning--I didn't find a database entry for "probabilitySheldon"
