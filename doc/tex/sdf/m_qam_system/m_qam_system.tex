@@ -104,7 +104,7 @@ This means that the probability of an error in bit detection is independent amon
 %\end{equation}
 
 \begin{equation}\label{eq:berBPSK}
-P_b= Q\left({\frac{m\sqrt{2}}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{n_0}}\right).
+P_b= Q\left({\frac{m}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
 \end{equation}
 
 with
@@ -112,13 +112,13 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&n_0 &= \sqrt{\frac{1}{2} n_0}
+&N_0 &= \sqrt{2 n_0}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $N_0$ is the noise spectral density.
+where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density.
 
 The symbol error rate however is not the same, as it depends on both bits being correctly detected. The probability of both bits being correctly detected is:
 
@@ -167,23 +167,51 @@ From this, the probability of symbol error is:
 %
 %The exact probability bit error for $M=4$ are
 
-The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{fig:QPSK_th_curve} as a function of the optical signal power for $N_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+%The Bit Error Rate curve given by~\eqref{eq:berBPSK} is plotted in figure \ref{fig:QPSK_th_curve} as a function of the optical signal power for $N_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+
+%\begin{figure}[h]
+%		\centering
+%		\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_theory_20180119.pdf}
+%		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.}
+%		\label{fig:QPSK_th_curve}
+%\end{figure}
+
+It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
+
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+
+
+The optimal BER that can be obtained by using matched filtering is described by~\cite{mischasch}:
+
+\begin{equation}\label{eq:berBPSK}
+P_b= \frac{1}{2} \text{erfc}\left({\frac{m_{mf}}{N_{mf}}}\right)
+\end{equation}
+
+with
+
+\begin{eqnarray}
+&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
+&N_{mf} &= \sqrt{\frac{T n_0}{4}}
+\end{eqnarray}
+
+
+Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+%Here, $T$ is the symbol period. 
 
 \begin{figure}[h]
 		\centering
-		\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_theory_20180119.pdf}
-		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.}
-		\label{fig:QPSK_th_curve}
+		\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_BER_curves.pdf}
+		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.\label{fig:QPSK_th_curves}}	
 \end{figure}
 
-These equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
+% TODO: preencher isto depois de requisitar o livro
 
-\pagebreak
+
 \subsection{Simulation Analysis}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/MQAM_system_block_diagram}
+	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/simulation_mqam}
 	\caption{Schematic representation of the MQAM system.}\label{MQAM_system_block_diagram}
 \end{figure}
 
@@ -191,7 +219,7 @@ The M-QAM transmission system is a complex block of code that simulates the modu
 demodulation of an optical signal using M-QAM modulation.
 It is composed of four blocks: a transmitter, a receiver, a sink and a block that performs a Bit Error Rate (BER) measurement. The schematic representation of the
 system is presented in figure \ref{MQAM_system_block_diagram}.
-
+	
 \paragraph{Current state:} The system currently being implement is a QPSK system (M=4).
 
 \paragraph{Future work:} Extend this block to include other values of M.
@@ -211,97 +239,68 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
 
 \subsection*{Required files}\label{Required files}
 
-%\begin{table}[H]
-%\centering
-%\begin{tabulary}{1.0\textwidth}{|p{6cm}|p{8cm}|p{1cm}|}
-%\hline
-%\multicolumn{3}{|c|}{ \textbf{Header Files} } \\
-%\hline
-%\textbf{File}                    & \textbf{Comments} & \textbf{Status} \\ \hline
-%add.h                            &                   & \checkmark \\ \hline
-%balanced\_beam\_splitter.h       &                   & \checkmark \\ \hline
-%binary\_source.h                 &                   & \checkmark \\ \hline
-%bit\_decider.h                   &                   & \checkmark \\ \hline
-%bit\_error\_rate.h               &                   & \checkmark \\ \hline
-%discrete\_to\_continuous\_time.h &                   & \checkmark \\ \hline
-%netxpto.h                        &                   & \checkmark \\ \hline
-%m\_qam\_mapper.h                 &                   & \checkmark \\ \hline
-%m\_qam\_transmitter.h            &                   & \checkmark \\ \hline
-%local\_oscillator.h              &                   & \checkmark \\ \hline
-%i\_homodyne\_reciever.h          &                   & \checkmark \\ \hline
-%ideal\_amplififer.h              &                   & \checkmark \\ \hline
-%iq\_modulator.h                  &                   & \checkmark \\ \hline
-%photodiode.h                     &                   & \checkmark \\ \hline
-%pulse\_shaper.h                  &                   & \checkmark \\ \hline
-%sampler.h                        &                   & \checkmark \\ \hline
-%sink.h                           &                   & \checkmark \\ \hline
-%super\_block\_interface.h        &                   & \checkmark \\ \hline
-%white\_noise.h                   &                   & \checkmark \\ \hline
-%\end{tabulary}
-%\end{table}		
-%
-
 \begin{table}[H]
-\centering
-\begin{tabulary}{1.0\textwidth}{|p{6cm}|p{3.5cm}|p{1cm}||p{1.5cm}||p{1cm}|}
-\hline
-\multicolumn{5}{|c|}{ \textbf{Source Files} } \\
-\hline
-\textbf{File}                      & \textbf{Comments} &  \textbf{Help} & \textbf{timetag} & \textbf{Status} \\ \hline
-add.cpp                            &                   & \checkmark & 20171116 & \checkmark \\ \hline
-binary\_source.cpp                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-bit\_error\_rate.cpp               &                   & \checkmark & 20171810 & \checkmark \\ \hline
-decoder.cpp                        &                   & \checkmark & 20180118 & \checkmark \\ \hline
-discrete\_to\_continuous\_time.cpp &                   & \checkmark & 20180118 & \checkmark \\ \hline
-homodyne\_receiver.cpp             & Has been changed to remove pulse shaper & $^1$ & 20180118 & \checkmark \\ \hline
-ideal\_amplififer.cpp              &                   & & 20180118 & \checkmark \\ \hline
-iq\_modulator.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-local\_oscillator.cpp              &                   & \checkmark & 20180118 & \checkmark \\ \hline
-m\_qam\_mapper.cpp                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-m\_qam\_system.cpp                 &                   & &          & \checkmark \\ \hline
-m\_qam\_transmitter.cpp            &                   & \checkmark & 20180118 & \checkmark \\ \hline
-netxpto.cpp                        &                   & & 20180118 & \checkmark \\ \hline
-optical\_hybrid.cpp                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-photodiode\_old.cpp                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-%pulse\_shaper.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-sampler.cpp                        &                   & \checkmark & 20171119 & \checkmark \\ \hline
-sink.cpp                           &                   & \checkmark & 20180118 & \checkmark \\ \hline
-super\_block\_interface.cpp        &                   & & 20180118 & \checkmark \\ \hline
-white\_noise.cpp                   &                   & & 20180118 & \checkmark \\ \hline
-\end{tabulary}
-\label{tab:sources}
-\caption{$^1$ The help entry is under a different name, \textit{m\_qam\_receiver}}
+    \centering
+    \begin{tabulary}{1.0\textwidth}{|p{7.5cm}|p{5.5cm}|p{1cm}|}
+        \hline
+        \multicolumn{3}{|c|}{ \textbf{Source Files} } \\
+        \hline
+        \textbf{File}                      			 & \textbf{Comments} & \textbf{Status} \\ \hline
+        add\_20171116.cpp                            &                   & \checkmark \\ \hline
+        binary\_source\_20180118.cpp                 &                   & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.cpp               &                   & \checkmark \\ \hline
+        decoder\_20180118.cpp                        &                   & \checkmark \\ \hline
+        discrete\_to\_continuous\_time\_20180118.cpp &                   & \checkmark \\ \hline
+        homodyne\_receiver\_20180118.cpp             & $^{1}$			 & \checkmark \\ \hline
+        ideal\_amplififer\_20180118.cpp              &                   & \checkmark \\ \hline
+        iq\_modulator\_20180118.cpp                  &                   & \checkmark \\ \hline
+        local\_oscillator\_20180118.cpp              &                   & \checkmark \\ \hline
+        m\_qam\_mapper\_20180118.cpp                 &                   & \checkmark \\ \hline
+        m\_qam\_system.cpp                 			 & $^{2}$   		 & \checkmark \\ \hline
+        m\_qam\_transmitter\_20180118.cpp            &                   & \checkmark \\ \hline
+        netxpto\_20180118.cpp                        & $^{2}$ 			 & \checkmark \\ \hline
+        optical\_hybrid\_20180118.cpp                &                   & \checkmark \\ \hline
+        photodiode\_old\_20180118.cpp                &                   & \checkmark \\ \hline
+        pulse\_shaper\_20180118.cpp                  &                   & \checkmark \\ \hline
+        sampler\_20171119.cpp                        &                   & \checkmark \\ \hline
+        sink\_20180118.cpp                           &                   & \checkmark \\ \hline
+        super\_block\_interface\_20180118.cpp        & $^{2}$ 			 & \checkmark \\ \hline
+        white\_noise\_20180118.cpp                   & 					 & \checkmark \\ \hline
+    \end{tabulary}
+
+    \caption{$^1$ The library entry is under a different name, \textit{m\_qam\_receiver};\\
+    $^2$ No library entry as it is a main or general purpose file, not a specific block. 	 \label{tab:sources}}
 \end{table}
 
 \begin{table}[H]
     \centering
-    \begin{tabulary}{1.0\textwidth}{|p{6cm}|p{3.5cm}|p{1cm}||p{1.5cm}||p{1cm}|}
+    \begin{tabulary}{1.0\textwidth}{|p{7cm}|p{6cm}|p{1cm}|}
         \hline
-        \multicolumn{5}{|c|}{ \textbf{Header Files} } \\
+        \multicolumn{3}{|c|}{ \textbf{Header Files} } \\
         \hline
-        \textbf{File}                      & \textbf{Comments} &  \textbf{Help} & \textbf{timetag} & \textbf{Status} \\ \hline
-        add.h                            &                   & \checkmark & 20180118 ($^1$) & \checkmark \\ \hline
-        binary\_source.h                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        bit\_error\_rate.h               &                   & \checkmark & 20171810 & \checkmark \\ \hline
-        decoder.h                        &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        discrete\_to\_continuous\_time.h &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        homodyne\_receiver.h             & Has been changed to remove pulse shaper & $^2$ & 20171203 ($^1$) & \checkmark \\ \hline
-        ideal\_amplififer.h              &                   & & 20180118 & \checkmark \\ \hline
-        iq\_modulator.h                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        local\_oscillator.h              &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        m\_qam\_mapper.h                 &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        m\_qam\_transmitter.h            &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        netxpto.h                        &                   & & 20180118 & \checkmark \\ \hline
-        optical\_hybrid.h                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        photodiode\_old.h                &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        %pulse\_shaper.cpp                  &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        sampler.h                        &                   & \checkmark & 20171119 & \checkmark \\ \hline
-        sink.h                           &                   & \checkmark & 20180118 & \checkmark \\ \hline
-        super\_block\_interface.h        &                   & & 20180118 & \checkmark \\ \hline
-        white\_noise.h                   &                   & & 20180118 & \checkmark \\ \hline
+        \textbf{File}                      & \textbf{Comments} & \textbf{Status} \\ \hline
+        add\_20180118.h                            & $^{1}$			   & \checkmark \\ \hline
+        binary\_source\_20180118 .h                &                   & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.h               & $^{1}$            & \checkmark \\ \hline
+        decoder\_20180118.h                        &                   & \checkmark \\ \hline
+        discrete\_to\_continuous\_time\_20180118.h &                   & \checkmark \\ \hline
+        homodyne\_receiver\_20171203.h             & $^{1,2}$          & \checkmark \\ \hline
+        ideal\_amplifier\_20180118.h               &                   & \checkmark \\ \hline
+        iq\_modulator\_20180118.h                  &                   & \checkmark \\ \hline
+        local\_oscillator\_20180118.h              &                   & \checkmark \\ \hline
+        m\_qam\_mapper\_20180118.h                 &                   & \checkmark \\ \hline
+        m\_qam\_transmitter\_20180118.h            &                   & \checkmark \\ \hline
+        netxpto\_20180118.h                        & $^3$ 			   & \checkmark \\ \hline
+        optical\_hybrid\_20180118.h                &                   & \checkmark \\ \hline
+        photodiode\_old\_20180118.h                &                   & \checkmark \\ \hline
+        pulse\_shaper\_20180118.h                  &                   & \checkmark \\ \hline
+        sampler\_20171119.h                        & $^1$              & \checkmark \\ \hline
+        sink\_20180118.h                           &                   & \checkmark \\ \hline
+        super\_block\_interface\_20180118.h        & $^3$			   & \checkmark \\ \hline
+        white\_noise\_20180118.h                   &                   & \checkmark \\ \hline
     \end{tabulary}
-    \label{tab:headers}
-    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The help entry is under a different name, \textit{m\_qam\_receiver}}
+    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The library entry is under a different name, \textit{m\_qam\_receiver}\\
+    $^3$ No library entry as it is a main or general purpose file, not a specific block. \label{tab:headers}}
 \end{table}
 
 %\begin{table}[]
@@ -365,7 +364,12 @@ The system accepts several input parameters that can be defined by the user. The
 		samplesPerSymbol & t\_integer & Number of samples per symbol &    \\ \cline{1-3}
 		prbsPatternLength & int & Determines the length of the pseudorandom sequence pattern (used only when the binary source is operated in \textit{PseudoRandom} mode) &    \\ \cline{1-3}
 		bitPeriod & t\_real & Temporal interval occupied by one bit &    \\ \cline{1-3}
-		rollOffFactor & t\_real & Parameter of the raised cosine filter &    \\ \cline{1-3}
+		rollOffFactor\_shp & t\_real & Parameter of the pulse shaper filter &    \\ \cline{1-3}
+		rollOffFactor\_out & t\_real & Parameter of the output filter &    \\ \cline{1-3}
+		shaperFilter & enum & Type of filter used in Pulse Shaper &    \\ \cline{1-3}
+		outputFilter & enum & Type of filter used in output filter &    \\ \cline{1-3}
+		seedType & enum & Method of seeding noise generators &    \\ \cline{1-3}
+		seedArray & array<int,2> & Seeds to initialize noise generators &    \\ \cline{1-3}
 		signalOutputPower\_dBm & t\_real & Determines the power of the output optical signal in dBm &  \\ \cline{1-3}
 		numberOfBitsReceived & int &   Determines when the simulation should stop. If $-1$ then it only stops when there is no more bits to be sent&   \\ \cline{1-3}
 		iqAmplitudeValues & vector<t\_iqValues> & Determines the constellation used to encode the signal in IQ space &    \\ \cline{1-3}
@@ -403,35 +407,34 @@ In this section we show the eye diagrams for the S1 signals for two different va
 \subsection*{Experimental Analysis}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./sdf/m_qam_system/figures/mqamExperimental.pdf}
+	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180206.pdf}
 	\caption{Experimental setup}
 	\label{fig:experimental_mqam_setup}
 \end{figure}
 %
 %
-Material list
 \begin{table}[H]
 	\centering
 	\begin{tabulary}{1.0\textwidth}{|L|L|l|}
-		\hline
-		\textbf{Device}		& \textbf{Description}\\
-		\hline
-		Balanced Photodetector	& Thorlabs PDB 450C\\
-		\hline
-%		BS					& Beam Splitter\\
-		\hline
-%		Pulse Generator		& HP 8116A Pulse Generator\\
-		\hline
-%		Amplitude Modulator	& Mach Zehnder SDL OC 48\\
-		\hline
-%		VOA					& Eigenlicht Power Meter 420\\
-		\hline
-%		VOA					& Thorlabs VOA 45-APC\\
 %		\hline
-%		PIN					& Thorlabs PDB 450C\\
-		\hline
-%		ADC					& Picoscope 6403D\\
-		\hline
+%		\textbf{Device}		& \textbf{Description}\\
+%		\hline
+%		Balanced Photodetector	& Thorlabs PDB 450C\\
+%		\hline
+%%		BS					& Beam Splitter\\
+%		\hline
+%%		Pulse Generator		& HP 8116A Pulse Generator\\
+%		\hline
+%%		Amplitude Modulator	& Mach Zehnder SDL OC 48\\
+%		\hline
+%%		VOA					& Eigenlicht Power Meter 420\\
+%		\hline
+%%		VOA					& Thorlabs VOA 45-APC\\
+%%		\hline
+%%		PIN					& Thorlabs PDB 450C\\
+%		\hline
+%%		ADC					& Picoscope 6403D\\
+%		\hline
 	\end{tabulary}
 \end{table}
 
@@ -443,10 +446,18 @@ The blue line represents the theoretical curve, while the orange points represen
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[clip, trim=2cm 6cm 2cm 6cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_20180124.pdf}
-	\caption{Simulation result for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
+	\caption{Simulation results for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$. The simulated values which used a matched filter were obtained by shaping the pulse with a root-raised-cosine FIR filter and filtering the signal before the sample with the same filter.}
 	\label{fig:ber_pseudorandom}
 \end{figure}% 
+
+%\begin{figure}[h]
+%	\centering
+%	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/BER_QPSK_sim_mf_20180205.pdf}
+%	\caption{Simulation result using root-raised cosine matched filtering for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$.}
+%	\label{fig:ber_pseudorandom_mf}
+%\end{figure}% 
+
 
 \subsection{Open Issues}
 
