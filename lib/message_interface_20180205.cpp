@@ -17,6 +17,8 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
+	string messageFieldName;
+
 	/*Number of message ready to be read*/
 	int readyIn = inputSignals[1]->ready();
 
@@ -32,24 +34,27 @@ bool MessageProcessorAlice::runBlock(void) {
 		bufferEmptyIn = true;
 	}
 
-	if (!bufferFullIn) {
+	if ((!bufferFullIn) && (process > 0)) {
 		for (auto k = 0; k < process; k++) {
 			t_message message;
 			inputSignals[1]->bufferGet(&message);
 			t_message_field messageField = message.at(k);
 
-			string messageFieldName = messageField.fieldName;
+			messageFieldName = messageField.fieldName;
 			string messageFieldValue = messageField.fieldValue;
 
 			for (unsigned l = 0; l < messageFieldValue.length(); l++) {
-				pBufferIn[inPositionBufferIn] = (int)messageFieldValue.at(l);
+				pBufferIn[inPositionBufferIn] = (int) messageFieldValue.at(l);
+
 				inPositionBufferIn++;
+				inPositionBufferIn = inPositionBufferIn % bufferLengthIn;
 			}
 		}
 		bufferEmptyIn = false;
 	}
 
 	/*Message available to be processed*/
+	
 	int readyIn2 = inputSignals[0]->ready();
 
 	int spaceOut = spaceBufferOut();
@@ -59,18 +64,45 @@ bool MessageProcessorAlice::runBlock(void) {
 	if (spaceOut <= 0) {
 		bufferFullOut = true;
 	}
-
-	if (outPositionBufferOut == 0) {
+	if (inPositionBufferOut == 0) {
 		bufferEmptyOut = true;
 	}
 
 	if ((processOut > 0) && (!bufferFullOut)) {
 		for (auto m = 0; m < messageDataLength; m++) {
-			pBufferOut[outPositionBufferOut] = pBufferIn[inPositionBufferOut];
-			outPositionBufferOut++;
-			inPositionBufferIn--;
+			pBufferOut[inPositionBufferOut] = pBufferIn[outPositionBufferIn];
+
+			inPositionBufferOut++;
+			inPositionBufferOut = inPositionBufferOut % bufferLengthOut;
+
+			outPositionBufferIn++;
 		}
 		bufferEmptyOut = false;
+	}
+
+	if (!bufferEmptyOut) {
+		int ready = inputSignals[0]->ready();
+		int spaceBasis = outputSignals[0]->space();
+		int spaceMessageOut = outputSignals[1]->space();
+		
+		string valueMessageToSend;
+		for (auto n = 0; n < messageDataLength; n++) {
+			t_binary BasisA;
+			inputSignals[0]->bufferGet(&BasisA);
+
+			if (BasisA == pBufferOut[outPositionBufferOut]) {
+				outputSignals[0]->bufferPut((t_binary)0);
+				valueMessageToSend.append("0");
+			}
+			else {
+				outputSignals[0]->bufferPut((t_binary)1);
+				valueMessageToSend.append("1");
+			}
+
+			outPositionBufferOut++;
+			outPositionBufferOut = outPositionBufferOut % bufferLengthOut;
+		}
+		t_message_field messageToSend = {messageFieldName,valueMessageToSend};
 	}
 
 	return true;
