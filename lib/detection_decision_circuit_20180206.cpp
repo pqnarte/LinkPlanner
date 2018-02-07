@@ -41,4 +41,4 @@ bool DetectionDecisionCircuit::runBlock(void) {
 	}
 
 	return true;
-}
+};

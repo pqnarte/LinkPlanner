@@ -152,6 +152,7 @@
     <ClCompile Include="..\..\lib\bob_qkd.cpp" />
     <ClCompile Include="..\..\lib\clock_20171219.cpp" />
     <ClCompile Include="..\..\lib\demux_1_2_20180205.cpp" />
+    <ClCompile Include="..\..\lib\detection_decision_circuit_20180206.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
     <ClCompile Include="..\..\lib\eve_qkd.cpp" />
     <ClCompile Include="..\..\lib\fork_20180112.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="..\..\include\bob_qkd.h" />
     <ClInclude Include="..\..\include\clock_20171219.h" />
     <ClInclude Include="..\..\include\demux_1_2_20180205.h" />
+    <ClInclude Include="..\..\include\detection_decision_circuit_20180206.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time_20180118.h" />
     <ClInclude Include="..\..\include\eve_qkd.h" />
     <ClInclude Include="..\..\include\fork_20180112.h" />

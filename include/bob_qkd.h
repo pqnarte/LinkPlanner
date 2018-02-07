@@ -8,6 +8,7 @@
 #include "super_block_interface_20180118.h"
 #include "fork_20180112.h"
 #include "detection_decision_circuit_20180206.h"
+#include "sink.h"
 
 
 class BobQKD : public SuperBlock {
@@ -41,6 +42,7 @@ class BobQKD : public SuperBlock {
 	SuperBlockInterface BB9;
 
 	DetectionDecisionCircuit BB10;
+	Sink BBSink;
 
 public:
 	/* input parameters*/
