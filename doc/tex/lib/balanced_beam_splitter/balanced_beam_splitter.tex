@@ -17,7 +17,7 @@
 \begin{tabular}{|l|l|l|}
 \hline
 Name           & Type    & Default Value     \\ \hline
-Matrix         & array <double, 4> & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$                             \\ \hline
+Matrix         & array <t\_complex, 4> & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$                             \\ \hline
 Mode           & double  & 0                 \\ \hline
 \end{tabular}
 \end{table}
@@ -33,7 +33,28 @@ Mode           & double  & 0                 \\ \hline
 \textbf{Type}: Complex
 
 \subsection*{Functional Description}
-The structure of the beam splitter can be controlled with the parameter mode. When Mode = 0 the beam splitter will have one input port and two output ports - \textbf{1x2 Beam Splitter}. If Mode has a value different than 0 the splitter will have two input ports and two output ports 
+The structure of the beam splitter can be controlled with the parameter mode.\\
+When \textbf{Mode = 0} the beam splitter will have one input port and two output ports - \textbf{1x2 Beam Splitter}. If Mode has a value different than 0, the splitter will have two input ports and two output ports - \textbf{2x2 Beam Splitter}.\\
+Considering the first case, the matrix representing a 2x2 Beam Splitter can be summarized in the following way,
+
+\begin{equation}
+M_{BS}=~\frac{\sqrt{2}}{2}\begin{bmatrix}
+              					1  & 1 \\
+            					1 & -1
+            			  \end{bmatrix}
+\end{equation}
+The relation between the values of the input ports and the values of the output ports can be established in the following way
+
+\begin{equation}
+\begin{bmatrix}
+A' \\
+B'
+\end{bmatrix}=M_{BS} \dot{}{\begin{bmatrix}
+			  				     A \\
+			  	                 B
+			  	                 \end{bmatrix}}
+\end{equation}
+Where, A and B represent the inputs and A' and B' represent the outputs of the Beam Splitter.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
