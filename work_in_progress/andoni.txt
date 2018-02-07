@@ -1,3 +1,16 @@
+2018-02-07
+TO BE DONE
+	- concluir a parte teórica e simulação 
+		- melhorar e completar o texto
+		- incluir mais resultados (diagramas de olho nos vários pontos do circuito) na parte da simulação
+			- caso sem ruído, e com ruído
+		
+	- avançar com a parte experimental (guião e obter resultados experimentais)
+
+Next meeting: 16/2, 14h
+
+
+
 2018-01-23
 TO BE DONE
 	- rever o docuemnto (aspeto de edição)
