@@ -16,9 +16,12 @@ int main(){
 	t_integer pLength = 5;
 	t_real bitPeriod = 1.0 / 50e9;
 //	t_real bitPeriod = 20e-12;
-	t_real rollOffFactor = 0.3;
+	t_real rollOffFactor_shp = 0.3;
+	t_real rollOffFactor_out = 0.3;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower = -57;
+	t_real signalOutputPower = -60;
+	PulseShaperFilter shaperFilter = RootRaisedCosine;
+	PulseShaperFilter outputFilter = RootRaisedCosine;
 
 
 	// #####################################################################################################
@@ -44,12 +47,14 @@ int main(){
 	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
-	t_real noiseAmplitude = 0.5*1e-6;
+	t_real noiseAmplitude = 1*1e-6;
+	SeedType seedType = RandomDevice;
+	array<int, 2> seedArray = { 1, 2 };
 
 //	INITIAL SAMPLES TO IGNORE IN THE SAMPLER
 //	Required to set this value due to the Pulse Shaper influence
-//	t_integer samplesToSkip = 2 * 8 * samplesPerSymbol; //+ floor(samplesPerSymbol / 2);
-	t_integer samplesToSkip = 8*samplesPerSymbol;	//+ floor(samplesPerSymbol / 2);
+	t_integer samplesToSkip = 2 * 8 * samplesPerSymbol; //+ floor(samplesPerSymbol / 2);
+//	t_integer samplesToSkip = 8*samplesPerSymbol;	//+ floor(samplesPerSymbol / 2);
 //	8 is the number of samples used by the filter
 
 
@@ -95,9 +100,12 @@ int main(){
 	B1.setPatternLength(prbsPatternLength);
 	B1.setIqAmplitudes(iqAmplitudeValues);
 	B1.setNumberOfSamplesPerSymbol(samplesPerSymbol);
-	B1.setRollOffFactor(rollOffFactor);
+	B1.setRollOffFactor(rollOffFactor_shp);
 	B1.setSaveInternalSignals(true);
 	B1.setSeeBeginningOfImpulseResponse(false);
+	B1.setPulseShaperFilter(shaperFilter);
+//	B1.usePassiveFilterMode(true);
+	B1.setImpulseResponseFilename("pulse_shaper.imp");
 
 	HomodyneReceiver B2{ vector<Signal*> {&S1}, vector<Signal*> {&S2} };
 	B2.setIqAmplitudes(iqAmplitudeValues);
@@ -108,6 +116,8 @@ int main(){
 	B2.setResponsivity(responsivity);
 	B2.setAmplification(amplification);
 	B2.setNoiseAmplitude(noiseAmplitude);
+	B2.setSeedType(seedType);
+	B2.setSeeds(seedArray);
 	B2.setSamplesToSkip(samplesToSkip);
 	//B2.setPosReferenceValue(0);
 	//B2.setNegReferenceValue(0);
@@ -115,7 +125,12 @@ int main(){
 	//B2.setCutoffFrequency(cutoffFrequency);
 	B2.setSamplingPeriod(symbolPeriod/samplesPerSymbol);
 //	B2.setClockPeriod(symbolPeriod);
-//	B2.setRollOffFactor(rollOffFactor);
+	B2.setRollOffFactor(rollOffFactor_out);
+	B2.setFilterType(outputFilter);
+//	B2.usePassiveFilterMode(true);
+	B2.setImpulseResponseFilename("out_filter.imp");
+
+
 
 
 	//With BER measurement
