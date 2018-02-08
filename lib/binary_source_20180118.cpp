@@ -3,7 +3,7 @@
 using namespace std;
 
 void BinarySource::initialize(void){
-	numberOfOutputSignals = outputSignals.size();
+	numberOfOutputSignals = (int) outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
 		outputSignals[i]->setSymbolPeriod(bitPeriod);

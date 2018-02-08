@@ -2,11 +2,11 @@
 #define MESSAGE_INTERFACE_H
 
 #include <math.h>
+#include <string.h>
 
 #include "netxpto_20180118.h"
 
 enum message_value_type{ BasisReconciliation };
-enum state_machine_type{ EnableToWrite, enableToRead, BitToProcess, IdleState};
 
 class MessageProcessorAlice : public Block {
 
@@ -23,15 +23,14 @@ class MessageProcessorAlice : public Block {
 	int inPositionBufferIn{ 0 };
 	int outPositionBufferIn{ 0 };
 	bool bufferEmptyIn{ true };
-	bool bufferFullIn{ true };
+	bool bufferFullIn{ false };
 
 	int* pBufferOut = new int[bufferLengthOut];
 	int inPositionBufferOut{ 0 };
 	int outPositionBufferOut{ 0 };
 	bool bufferEmptyOut{ true };
-	bool bufferFullOut{ true };
+	bool bufferFullOut{ false };
 
-	state_machine_type StateMachine;
 
 public:
 
@@ -48,6 +47,8 @@ public:
 
 	int spaceBufferIn(void);
 	int spaceBufferOut(void);
+
+	message_value_type MessageTypeConvert(const string& str);
 
 	void initialize(void);
 	bool runBlock(void);

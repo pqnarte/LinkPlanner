@@ -7,21 +7,27 @@
 #include "pulse_shaper_20180111.h"
 #include "super_block_interface_20180118.h"
 #include "fork_20180112.h"
+#include "detection_decision_circuit_20180206.h"
+#include "sink.h"
+
 
 class BobQKD : public SuperBlock {
 
 	// #####################################################################################################
 	// ################## Internal Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
-	TimeDiscreteAmplitudeDiscreteReal S1{ "Bob_1.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S2{ "Bob_2.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S3{ "SB4.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S5{ "Bob_3.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S6{ "CLKB_1.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S7{ "CLKB_2.sgn" };
-	TimeContinuousAmplitudeDiscreteReal S8{ };
-	TimeContinuousAmplitudeDiscreteReal S9{ };
+	TimeDiscreteAmplitudeDiscreteReal Bob_1{ };
+	TimeContinuousAmplitudeDiscreteReal Bob_2{ };
+	TimeContinuousAmplitudeDiscreteReal S4_B{ };
+	TimeContinuousAmplitudeDiscreteReal S4{ };
+	TimeContinuousAmplitudeDiscreteReal Bob_3{ };
+	TimeContinuousAmplitudeDiscreteReal CLKB_1{ };
+	TimeContinuousAmplitudeDiscreteReal CLKB_2{ };
+	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ };
+	TimeContinuousAmplitudeDiscreteReal CLKB_out2{ };
+
+	Binary Bob_7{"Bob_7.sgn"};
+	
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -35,6 +41,8 @@ class BobQKD : public SuperBlock {
 
 	SuperBlockInterface BB9;
 
+	DetectionDecisionCircuit BB10;
+	Sink BBSink;
 
 public:
 	/* input parameters*/

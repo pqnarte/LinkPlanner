@@ -33,9 +33,6 @@
     <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\single_photon_detector_20180111.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\pulse_shaper_20180111.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,6 +72,15 @@
     <ClCompile Include="bb84_with_discrete_variables_sdf.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\single_photon_detector_20180206.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\bobBB84_20180206.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\detection_decision_circuit_20180206.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\alice_qkd.h">
@@ -93,9 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\single_photon_detector_20180111.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\pulse_shaper_20180111.h">
@@ -132,6 +135,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\binary_mapper_20180205.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\single_photon_detector_20180206.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\bobBB84_20180206.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\detection_decision_circuit_20180206.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
