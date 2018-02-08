@@ -21,16 +21,25 @@ Already encountered file bu.aux
  :               }
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/library.aux
-Illegal, another \bibstyle command---line 10 of file chapter/library.aux
+Illegal, another \bibdata command---line 7 of file chapter/library.aux
+ : \bibdata
+ :         {./lib/balanced_beam_splitter/balanced_beam_splitter}
+I'm skipping whatever remains of this command
+Illegal, another \bibstyle command---line 19 of file chapter/library.aux
  : \bibstyle
  :          {unsrt}
 I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 11 of file chapter/library.aux
+Illegal, another \bibdata command---line 20 of file chapter/library.aux
  : \bibdata
  :         {bibliography}
 I'm skipping whatever remains of this command
 Already encountered file bu.aux
 ---line 34 of file main_netxpto.aux
+ : \@input{bu.aux
+ :               }
+I'm skipping whatever remains of this command
+Already encountered file bu.aux
+---line 35 of file main_netxpto.aux
  : \@input{bu.aux
  :               }
 I'm skipping whatever remains of this command
@@ -40,7 +49,7 @@ A level-1 auxiliary file: chapter/code_development_guidelines.aux
 A level-1 auxiliary file: chapter/msbuild.aux
 A level-1 auxiliary file: chapter/git_helper.aux
 A level-1 auxiliary file: chapter/ghdl.aux
-Illegal, another \bibstyle command---line 41 of file main_netxpto.aux
+Illegal, another \bibstyle command---line 42 of file main_netxpto.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
@@ -51,4 +60,4 @@ Warning--I didn't find a database entry for "probabilitySheldon"
 Warning--I didn't find a database entry for "BB84"
 Warning--I didn't find a database entry for "iqo"
 Warning--I didn't find a database entry for "SURV"
-(There were 7 error messages)
+(There were 9 error messages)

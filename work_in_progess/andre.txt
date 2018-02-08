@@ -1,3 +1,13 @@
+2018-02-07
+TO BE DONE
+	- para concluir o BPSK é necessário colocar o projeto a funcionar com os ficheiros com o time tag.
+
+	- incluir a diretoria ghdl dentro do diretório vhdl_simulation, alterar SignalProcessing.vhd -> signal_processing.vhd
+
+	- voltar a escrever o cabeçalho no ficheiro de saída
+
+
+
 2018-01-31
 TO BE DONE
 	concluir a documentação relativa bpsk_system
