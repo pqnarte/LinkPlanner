@@ -30,17 +30,18 @@ bool MessageProcessorAlice::runBlock(void) {
 	if (spaceIn <= 0) {
 		bufferFullIn = true;
 	}
-	if (inPositionBufferIn == 0) {
+	if (spaceIn == (bufferLengthIn/messageDataLength)) {
 		bufferEmptyIn = true;
 	}
 
-	if ((!bufferFullIn) && (process > 0)) {
+	if ((bufferFullIn == false) && (process > 0)) {
 		for (auto k = 0; k < process; k++) {
 			t_message message;
 			inputSignals[1]->bufferGet(&message);
 			t_message_field messageField = message.at(k);
 
 			messageFieldName = messageField.fieldName;
+			messageType = MessageTypeConvert(messageFieldName);
 			string messageFieldValue = messageField.fieldValue;
 
 			for (unsigned l = 0; l < messageFieldValue.length(); l++) {
@@ -55,56 +56,76 @@ bool MessageProcessorAlice::runBlock(void) {
 
 	/*Message available to be processed*/
 	
-	int readyIn2 = inputSignals[0]->ready();
+	if (bufferEmptyIn == false) {
+		int readyBits = inputSignals[0]->ready();
+		int spaceBits = outputSignals[0]->space();
+		int spaceOut = spaceBufferOut();
+		spaceOut = (int) floor(spaceOut / messageDataLength);
 
-	int spaceOut = spaceBufferOut();
-	spaceOut = (int)floor(spaceOut / messageDataLength);
-	int processOut = min(readyIn2, spaceOut);
-
-	if (spaceOut <= 0) {
-		bufferFullOut = true;
-	}
-	if (inPositionBufferOut == 0) {
-		bufferEmptyOut = true;
-	}
-
-	if ((processOut > 0) && (!bufferFullOut)) {
-		for (auto m = 0; m < messageDataLength; m++) {
-			pBufferOut[inPositionBufferOut] = pBufferIn[outPositionBufferIn];
-
-			inPositionBufferOut++;
-			inPositionBufferOut = inPositionBufferOut % bufferLengthOut;
-
-			outPositionBufferIn++;
+		if (spaceOut <= 0) {
+			bufferFullOut = true;
 		}
-		bufferEmptyOut = false;
+		if (spaceOut == (bufferLengthOut * messageDataLength)) {
+			bufferEmptyOut = true;
+		}
+
+		int space = min(spaceBits, spaceOut);
+
+		int process2 = min(space, readyBits);
+
+		if (process2 > 0) {
+			switch (messageType)
+			{
+			case BasisReconciliation:
+				for (auto m = 0; m < messageDataLength; m++) {
+					t_binary basis;
+					inputSignals[0]->bufferGet(&basis);
+
+					if (basis == pBufferIn[outPositionBufferIn]) {
+						outputSignals[0]->bufferPut((t_binary)1);
+						pBufferOut[inPositionBufferOut] = 1;
+					}
+					else {
+						outputSignals[0]->bufferPut((t_binary)0);
+						pBufferOut[inPositionBufferOut] = 0;
+					}
+
+					outPositionBufferIn++;
+					outPositionBufferIn = outPositionBufferIn % bufferLengthIn;
+
+					inPositionBufferOut++;
+					inPositionBufferOut = inPositionBufferOut % bufferLengthOut;
+				}
+				bufferEmptyOut = false;
+				break;
+
+			default:
+				break;
+			}
+			
+		}
 	}
 
-	if (!bufferEmptyOut) {
-		int ready = inputSignals[0]->ready();
-		int spaceBasis = outputSignals[0]->space();
-		int spaceMessageOut = outputSignals[1]->space();
-		
-		string valueMessageToSend;
-		for (auto n = 0; n < messageDataLength; n++) {
-			t_binary BasisA;
-			inputSignals[0]->bufferGet(&BasisA);
+	/*MessageToSend*/
+	if (bufferEmptyOut == false) {
+		string messageOut;
 
-			if (BasisA == pBufferOut[outPositionBufferOut]) {
-				outputSignals[0]->bufferPut((t_binary)0);
-				valueMessageToSend.append("0");
-			}
-			else {
-				outputSignals[0]->bufferPut((t_binary)1);
-				valueMessageToSend.append("1");
-			}
+		for (auto n = 0; n < messageDataLength; n++) {
+			messageOut.append(to_string(pBufferOut[outPositionBufferOut]));
 
 			outPositionBufferOut++;
 			outPositionBufferOut = outPositionBufferOut % bufferLengthOut;
 		}
-		t_message_field messageToSend = {messageFieldName,valueMessageToSend};
-	}
 
+		t_message_field m;
+		m.fieldName = messageFieldName;
+		m.fieldValue = messageOut;
+		
+		t_message mOut{ m };
+
+		outputSignals[1]->bufferPut((t_message)mOut);
+
+	}
 	return true;
 }
 
@@ -129,3 +150,9 @@ int MessageProcessorAlice::spaceBufferOut() {
 	return -1;
 
 };
+
+message_value_type MessageProcessorAlice::MessageTypeConvert(const string& str) {
+
+	if (str == "BasisReconcilitation") return BasisReconciliation;
+
+}

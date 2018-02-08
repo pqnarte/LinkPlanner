@@ -48,6 +48,8 @@ public:
 	int spaceBufferIn(void);
 	int spaceBufferOut(void);
 
+	message_value_type MessageTypeConvert(const string& str);
+
 	void initialize(void);
 	bool runBlock(void);
 };
