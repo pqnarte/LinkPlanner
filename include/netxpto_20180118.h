@@ -53,16 +53,17 @@ class Signal {
 	long int numberOfSavedValues{ 0 };				// Number of saved values
 	long int count;									// Number of values that have already entered in the buffer
 
-	/* Parameters */
+	/* Input Parameters */
 
 	long int firstValueToBeSaved{ 1 };				// First value (>= 1) to be saved
 	bool saveSignal{ true };
 
-	string type;									// Signal type
+	string type;							// Signal type
 	signal_value_type valueType;					// Signal samples type
 
-	string fileName{ "" };							// Name of the file where data values are going to be saved
+	string fileName{ "" };						// Name of the file where data values are going to be saved
 	string folderName{ "signals" };					// folder where signals are going to be saved by default
+
 
 	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 
@@ -100,10 +101,10 @@ public:
 	template<typename T>							// Puts a value in the buffer
 	void bufferPut(T value) {
 		(static_cast<T *>(buffer))[inPosition] = value;
-		if (bufferEmpty) bufferEmpty=false;
+		if (bufferEmpty) bufferEmpty = false;
 		inPosition++;
 		if (inPosition == bufferLength) { 
-			inPosition=0; 
+			inPosition = 0; 
 			if (saveSignal) {
 				if (firstValueToBeSaved <= bufferLength) {
 					char *ptr = (char *) buffer;
@@ -132,7 +133,6 @@ public:
 	void virtual bufferGet(t_photon_mp *valueAddr);
 	void virtual bufferGet(t_photon_mp_xy *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
-
 	
 	void setSaveSignal(bool sSignal){ saveSignal = sSignal; };
 	bool const getSaveSignal(){ return saveSignal; };
@@ -633,7 +633,7 @@ class System {
 //########################################################################################################################################################
 
 
-class OverlapMethod
+/*class OverlapMethod
 {
 
 public:
@@ -666,7 +666,7 @@ public:
 	
 	void Radix2(vector<double> &real, vector<double> &imag, int m);
 	void Bluestein(vector<double> &real, vector<double> &imag, int m);
-};
+};*/
 
 
 class ComplexMult
@@ -686,10 +686,21 @@ public:
 
 ///////////////////// Fast Fourier Transform ////////////////////////
 
-class FourierTransform
-{
+class FourierTransform {
+
 public:
-	vector <complex<double>> transform(vector<complex<double>>IN, int m);
+
+	vector<complex<double>> fft(vector<complex<double> > &vec, int sign);
+	vector<complex<double>> fft(std::vector<std::complex<double> > &vec);
+	vector<complex<double>> ifft(std::vector<std::complex<double> > &vec);
+	void transformRadix2(std::vector<std::complex<double> > &vec);
+	void transformBluestein(std::vector<std::complex<double> > &vec);
+	void convolve(
+		const std::vector<std::complex<double> > &vecx,
+		const std::vector<std::complex<double> > &vecy,
+		std::vector<std::complex<double> > &vecout);
 };
+
+
 
 # endif // PROGRAM_INCLUDE_netxpto_H_

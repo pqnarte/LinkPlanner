@@ -10,9 +10,9 @@ void DetectionDecisionCircuit::initialize(void) {
 
 bool DetectionDecisionCircuit::runBlock(void) {
 
-	int ready1 = inputSignals[0]->ready();
-	int ready2 = inputSignals[0]->ready();
-	int ready = min(ready1, ready2);
+	int ready0 = inputSignals[0]->ready();
+	int ready1 = inputSignals[1]->ready();
+	int ready = min(ready0, ready1);
 
 	int space = outputSignals[0]->space();
 	

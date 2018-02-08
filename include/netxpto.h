@@ -33,6 +33,7 @@ typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
+
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
 
 
@@ -131,6 +132,7 @@ public:
 	void virtual bufferGet(t_photon_mp *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
 	
+
 	void setSaveSignal(bool sSignal){ saveSignal = sSignal; };
 	bool const getSaveSignal(){ return saveSignal; };
 

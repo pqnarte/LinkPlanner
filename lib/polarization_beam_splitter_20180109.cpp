@@ -1,7 +1,5 @@
 # include "polarization_beam_splitter_20180109.h"
 
-
-
 void PolarizationBeamSplitter::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());

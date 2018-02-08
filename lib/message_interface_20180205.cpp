@@ -17,15 +17,13 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
-	string messageFieldName;
-
 	/*Number of message ready to be read*/
-	int readyIn = inputSignals[1]->ready();
+	int readyMessageIn = inputSignals[1]->ready();
 
-	int spaceIn = spaceBufferIn();					//in units of bits
+	int spaceMesassageIn = spaceBufferIn();							//in units of bits
 	spaceIn = (int) floor(spaceIn / messageDataLength);		//in units of messages
 
-	int process = min(readyIn, spaceIn);
+	int process = min(readyMessageIn, spaceIn);
 
 	if (spaceIn <= 0) {
 		bufferFullIn = true;
@@ -40,7 +38,7 @@ bool MessageProcessorAlice::runBlock(void) {
 			inputSignals[1]->bufferGet(&message);
 			t_message_field messageField = message.at(k);
 
-			messageFieldName = messageField.fieldName;
+			string messageFieldName = messageField.fieldName;
 			messageType = MessageTypeConvert(messageFieldName);
 			string messageFieldValue = messageField.fieldValue;
 
