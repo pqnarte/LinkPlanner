@@ -47,7 +47,7 @@ int main(){
 	//array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2)} };
 	t_real responsivity = 1;
 	t_real amplification = 1e3;
-	t_real noiseAmplitude = 1*1e-6;
+	t_real noiseAmplitude = 1e-6;
 	SeedType seedType = RandomDevice;
 	array<int, 2> seedArray = { 1, 2 };
 
@@ -129,6 +129,7 @@ int main(){
 	B2.setFilterType(outputFilter);
 //	B2.usePassiveFilterMode(true);
 	B2.setImpulseResponseFilename("out_filter.imp");
+	B2.setFirstFilteredValueToBeSaved(samplesToSkip);
 
 
 
