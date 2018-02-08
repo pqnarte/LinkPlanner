@@ -1,8 +1,8 @@
 #include <algorithm>
 #include <complex>
 
-#include "netxpto_20180118.h"
-#include "bit_error_rate.h"
+#include "netxpto.h"
+#include "bit_error_rate_20171810.h"
 
 void BitErrorRate::initialize(void){
 	firstTime = false;

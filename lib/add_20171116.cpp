@@ -2,8 +2,8 @@
 #include <complex>
 #include <fstream>
 
-#include "netxpto_20180118.h"
-#include "add.h"
+#include "netxpto.h"
+#include "add_20180118.h"
 
 
 void Add::initialize(void){

@@ -2,7 +2,7 @@
 # define PROGRAM_INCLUDE_IQ_MODULATOR_H_
 
 # include <math.h>       /* pow */
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 
 
 // Implements a IQ modulator.

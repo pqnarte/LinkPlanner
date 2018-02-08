@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_WHITE_NOISE_H_
 # define PROGRAM_INCLUDE_WHITE_NOISE_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 # include <vector>
 #include <random>
 

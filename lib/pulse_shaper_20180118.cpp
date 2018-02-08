@@ -1,4 +1,4 @@
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 # include "pulse_shaper_20180118.h"
 
 using namespace std;

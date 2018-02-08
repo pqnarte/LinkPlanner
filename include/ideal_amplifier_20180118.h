@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_IDEAL_AMPLIFIER_H_
 # define PROGRAM_INCLUDE_IDEAL_AMPLIFIER_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 # include <vector>
 #include <random>
 
