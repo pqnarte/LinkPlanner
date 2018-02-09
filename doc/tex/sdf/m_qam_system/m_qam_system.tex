@@ -17,11 +17,11 @@ M-QAM systems can encode $\log_2 M$ bits per symbol which means they can transmi
 
 The Bit Error Rate (BER) is a measurement of how a bit stream is altered by a transmission system due to noise (among other factors). To study this effect we introduced Additive White Gaussian Noise (AWGN) to model thermal noise at the receiver.
 
-For $M=4$ the M-QAM system reduces to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}). Both these systems are also equivalent to the sum of two independent Binary Phase Shift Keying (BPSK) signals impressed on quadrature carriers.
+For $M=4$ the M-QAM system can be reduced to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}). Both these systems are also equivalent two independent Binary Phase Shift Keying (BPSK) signals impressed on quadrature carriers.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[clip, trim=1cm 3cm 1cm 3cm, width=\textwidth]{./sdf/m_qam_system/figures/MQAM_constellation.pdf}
+	\includegraphics[width=0.5\textwidth]{./sdf/m_qam_system/figures/constellation.pdf}
 	\caption{4-QAM constellation points.}
 	\label{fig:const}
 \end{figure}
@@ -103,7 +103,7 @@ This means that the probability of an error in bit detection is independent amon
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-\begin{equation}\label{eq:berBPSK}
+\begin{equation}\label{eq:berMQAM}
 P_b= Q\left({\frac{m}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
 \end{equation}
 
@@ -112,13 +112,20 @@ with
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&N_0 &= \sqrt{2 n_0}
+&N_0 &= \sqrt{\frac{n_0}{2}}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density.
+where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $m$. $N_0$ will be the standard deviation of the sampled values.
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./sdf/m_qam_system/figures/constellation_d.pdf}
+	\caption{4-QAM constellation points.\label{fig:const_2m}}
+\end{figure}
 
 The symbol error rate however is not the same, as it depends on both bits being correctly detected. The probability of both bits being correctly detected is:
 
@@ -178,8 +185,9 @@ From this, the probability of symbol error is:
 
 It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
+As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter.
 
 The optimal BER that can be obtained by using matched filtering is described by~\cite{mischasch}:
 
@@ -390,7 +398,7 @@ The system accepts several input parameters that can be defined by the user. The
 
 In this section we show the eye diagrams for the S1 signals for two different values of the output optical power.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -404,7 +412,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	\label{fig:test}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
@@ -419,7 +427,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	\label{fig:test}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 		\begin{subfigure}{.45\textwidth}
 		\centering
@@ -434,7 +442,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	\label{fig:test}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
@@ -450,7 +458,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 \end{figure}
 
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\begin{subfigure}{.45\textwidth}
 			\centering
@@ -464,7 +472,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 		\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.3.}
 		\label{fig:test}
 	\end{figure}
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\begin{subfigure}{.45\textwidth}
 				\centering
@@ -480,7 +488,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
 	\caption{Simulation results for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$. The simulated values which used a matched filter were obtained by shaping the pulse with a root-raised-cosine FIR filter and filtering the signal before the sample with the same filter.}
@@ -488,7 +496,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 \end{figure}% 
 
 \subsection*{Experimental Analysis}
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180206.pdf}
 	\caption{Experimental setup}
