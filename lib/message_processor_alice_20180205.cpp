@@ -25,16 +25,16 @@ bool MessageProcessorAlice::runBlock(void) {
 	int ready = min(readyMessageIn, readyBasisIn);
 	int space = min(spaceBasisOut, spaceMessageOut);
 
-	int process = min(ready, space);
+	int state = min(ready, space);
 
-	if (process <= 0) return false;
+	if (state <= 0) return false;
 
-	processStoredMessages();
-	processInMessages(readyBasisIn);
-	processStoredMessages();
+	bool process = processStoredMessages();
+	process = processInMessages(readyBasisIn);
+	process = processStoredMessages();
 	
 
-	return true;
+	return process;
 }
 
 bool MessageProcessorAlice::processStoredMessages() {
