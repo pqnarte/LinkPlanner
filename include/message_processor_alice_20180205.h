@@ -29,7 +29,6 @@ private:
 
 	/*Input Parameters*/
 
-
 	/*State Variables*/
 	state_block stateProcessor{ ProcessMessageIn };
 	int messageDataLength{ 64 };
@@ -40,15 +39,14 @@ private:
 
 	/*Private Methods*/
 	t_message_type getMessageType(const t_message& msg);
-	void setMessageType(t_message msg, t_message_type mType) {};
+	void setMessageType(t_message msg, t_message_type mType) { msg.messageType = mType; };
 	t_message_data_length getMessageDataLength(const t_message& msg);
-	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) {};
-	t_message_data getMessageData(const t_message& msg);
-	void setMessageData(t_message msg, t_message_dat mData) {};
+	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) { msg.messageDataLenght = mDataLength; };
+	t_message_data getMessageData(const t_message& msg, t_message_data_length dataLength);
+	void setMessageData(t_message msg, string mData) { msg.messageData = mData; };
 
 	bool processStoredMessages();
-	bool processInMessages();
-	bool processStoredMessages();
+	bool processInMessages(int readyInBits);
 };
 
 
