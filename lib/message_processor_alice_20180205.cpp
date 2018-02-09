@@ -1,7 +1,4 @@
-
 #include "message_processor_alice_20180205.h"
-
-
 
 void MessageProcessorAlice::initialize(void) {
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
@@ -15,7 +12,15 @@ void MessageProcessorAlice::initialize(void) {
 	outputSignals[1]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
 }
 
+
+
 bool MessageProcessorAlice::runBlock(void) {
+
+	
+	processStoredMessages();
+	processInMessages();
+	processStoredMessages();
+
 
 	int readyMessageIn = inputSignals[1]->ready();
 	int readyBasisIn = inputSignals[0]->ready();
@@ -48,7 +53,7 @@ bool MessageProcessorAlice::runBlock(void) {
 			mDataIn = mToProcess.fieldValue;
 		
 			messageDataLength = stoi(mToProcess.fieldName);
-			messageType = MessageTypeConvert(mToProcess.fieldName);
+			messageType = messageTypeConvert(mToProcess.fieldName);
 
 			stateProcessor = ProcessData;
 			break;
@@ -98,11 +103,21 @@ bool MessageProcessorAlice::runBlock(void) {
 	return true;
 }
 
+bool MessageProcessorAlice::processStoredMessages() {
 
+	if (!storedMessageEmpty) {
+		t_message_type mType = getMessageType(storedMessages[nextMessage]);
+		t_message_data_length mDataLength = getMessageDataLength(storedMessages[nextMessage]);
+		t_message_data mData = getMessageData(storedMessages[nextMessage]);
+	}
+}
 
-message_value_type MessageProcessorAlice::MessageTypeConvert(const string& str) {
+t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
 
-	if (str == "BasisReconcilitation") return BasisReconciliation;
-	else
-		return Empty;
+	if ((msg.messageType).compare("BasisReconcilitation")==0) return BasisReconciliation;
+}
+
+t_message_data_length MessageProcessorAlice::getMessageDataLength(const t_message& msg) {
+
+	return (msg.messageDataLength).compare("BasisReconcilitation") == 0) return BasisReconciliation;
 }
