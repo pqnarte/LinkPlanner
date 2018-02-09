@@ -46,7 +46,7 @@ private:
 	void setMessageData(t_message msg, string mData) { msg.messageData = mData; };
 
 	bool processStoredMessages();
-	bool processInMessages(int readyInBits);
+	bool processInMessages();
 };
 
 

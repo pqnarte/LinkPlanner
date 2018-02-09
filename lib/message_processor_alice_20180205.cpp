@@ -16,21 +16,8 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
-	int readyMessageIn = inputSignals[1]->ready();
-	int readyBasisIn = inputSignals[0]->ready();
-
-	int spaceBasisOut = outputSignals[0]->space();
-	int spaceMessageOut = outputSignals[1]->space();
-
-	int ready = min(readyMessageIn, readyBasisIn);
-	int space = min(spaceBasisOut, spaceMessageOut);
-
-	int state = min(ready, space);
-
-	if (state <= 0) return false;
-
 	bool process = processStoredMessages();
-	process = processInMessages(readyBasisIn);
+	process = processInMessages();
 	process = processStoredMessages();
 	
 
@@ -43,8 +30,9 @@ bool MessageProcessorAlice::processStoredMessages() {
 	else
 		storedMessageEmpty = false;
 
+	int spaceMessageOut = outputSignals[1]->space();
 
-	if (!storedMessageEmpty) {
+	if ((!storedMessageEmpty) && (spaceMessageOut > 0)) {
 		t_message_type mType = getMessageType(storedMessages[0]);
 		t_message_data_length mDataLength = getMessageDataLength(storedMessages[0]);
 		t_message_data mData = getMessageData(storedMessages[0], mDataLength);
@@ -88,15 +76,17 @@ bool MessageProcessorAlice::processStoredMessages() {
 		return false;
 }
 
-bool MessageProcessorAlice::processInMessages(int readyInBits) {
+bool MessageProcessorAlice::processInMessages() {
 	t_message mReceived;
 	inputSignals[1]->bufferGet(&mReceived);
 	t_message_type mType = getMessageType(mReceived);
 	t_message_data_length mDataLength = getMessageDataLength(mReceived);
 	t_message_data mData = getMessageData(mReceived, mDataLength);
 
+	int readyInBits = inputSignals[0]->ready();
+	int spaceMessageOut = outputSignals[1]->space();
 
-	if (readyInBits >= mDataLength) {
+	if ((readyInBits >= mDataLength) && (spaceMessageOut > 0)) {
 		string mDataOut;
 		switch (mType)
 		{
@@ -131,8 +121,9 @@ bool MessageProcessorAlice::processInMessages(int readyInBits) {
 		storedMessages[nextMessage] = mReceived;
 		nextMessage++;
 		nextMessage = nextMessage % storedMessages.size();
+		return false;
 	}
-	return false;
+	
 }
 
 t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
