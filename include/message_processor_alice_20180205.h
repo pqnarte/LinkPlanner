@@ -10,7 +10,6 @@ typedef enum { BasisReconciliation } t_message_type;
 typedef int t_message_data_length;
 typedef vector<int> t_message_data;
 
-enum state_block { ProcessMessageIn, ProcessData, MessageToSend, StandBy};
 
 class MessageProcessorAlice : public Block {
 
@@ -33,11 +32,12 @@ private:
 	t_message_data_length maxMessageDataLength{ 64 };
 
 	/*State Variables*/
-	state_block stateProcessor{ ProcessMessageIn };
+	bool sendMessage{ false };
 
 	vector<t_message> storedMessages;
 	bool storedMessageEmpty{ true };
 	int nextMessage{ 0 };
+	int nextMessageIn{ 0 };
 
 	/*Private Methods*/
 	t_message_type getMessageType(const t_message& msg);
