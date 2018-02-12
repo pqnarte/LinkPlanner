@@ -16,100 +16,114 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
+	bool process = processStoredMessages();
+	process = processInMessages();
+	process = processStoredMessages();
 	
-	processStoredMessages();
-	processInMessages();
-	processStoredMessages();
 
+	return process;
+}
 
-	int readyMessageIn = inputSignals[1]->ready();
-	int readyBasisIn = inputSignals[0]->ready();
+bool MessageProcessorAlice::processStoredMessages() {
+	if (storedMessages.size() == 0) 
+		storedMessageEmpty = true;
+	else
+		storedMessageEmpty = false;
 
-	int spaceBasisOut = outputSignals[0]->space();
 	int spaceMessageOut = outputSignals[1]->space();
 
-	int ready = min(readyMessageIn, readyBasisIn);
-	int space = min(spaceBasisOut, spaceMessageOut);
+	if ((!storedMessageEmpty) && (spaceMessageOut > 0)) {
+		t_message_type mType = getMessageType(storedMessages[0]);
+		t_message_data_length mDataLength = getMessageDataLength(storedMessages[0]);
+		t_message_data mData = getMessageData(storedMessages[0], mDataLength);
 
-	int process = min(ready, space);
-
-	if (process <= 0) return false;
-
-	for (auto k = 0; k < process; k++) {
-		t_message messageIn;
-		inputSignals[1]->bufferGet(&messageIn);
-		stateProcessor = ProcessMessageIn;
-
-		t_message_field mToProcess;
-		t_message_field mOut;
-		t_message mToSend;
-		string mDataIn;
 		string mDataOut;
-
-		switch (stateProcessor)
+		switch (mType)
 		{
-		case ProcessMessageIn:
-			mToProcess = messageIn.at(k);
-			mDataIn = mToProcess.fieldValue;
-		
-			messageDataLength = stoi(mToProcess.fieldName);
-			messageType = messageTypeConvert(mToProcess.fieldName);
+		case BasisReconciliation:
+			for (auto k = 0; k < mDataLength; k++) {
+				t_binary inBit;
+				inputSignals[0]->bufferGet(&inBit);
 
-			stateProcessor = ProcessData;
-			break;
-
-		case ProcessData:
-			if (messageType = BasisReconciliation) {
-				t_binary BasisIn;
-				for (auto m = 0; m < messageDataLength; m++) {
-					inputSignals[0]->bufferGet(&BasisIn);
-
-					if (BasisIn == (int)mDataIn.at(m)) {
-						outputSignals[0]->bufferPut((t_binary)1);
-						mDataOut.append(to_string(1));
-					}
-					else {
-						outputSignals[0]->bufferPut((t_binary)0);
-						mDataOut.append(to_string(0));
-					}
+				if (inBit == mData[k]) {
+					outputSignals[0]->bufferPut((t_binary)1);
+					mDataOut.append("1");
 				}
-
-				stateProcessor = MessageToSend;
+				else {
+					outputSignals[0]->bufferPut((t_binary)0);
+					mDataOut.append("0");
+				}
 			}
 			break;
-
-		case MessageToSend:
-			
-			mOut.fieldDataLenght = to_string(mDataOut.size());
-			mOut.fieldName = messageType;
-			mOut.fieldValue = mDataOut;
-			
-			mToSend = {mOut};
-
-			outputSignals[1]->bufferPut((t_message) mToSend);
-
-			stateProcessor = StandBy;
-			break;
-
-		case StandBy:
-			break;
-
 		default:
 			break;
 		}
 		
+
+		storedMessages.erase(storedMessages.begin() + nextMessage); // Removes from the vector the message processed 
+
+		t_message mToSend;
+		mToSend.messageData = mDataOut;
+		mToSend.messageDataLenght = to_string(mDataOut.size());
+		mToSend.messageType = mType;
+
+		outputSignals[1]->bufferPut((t_message)mToSend);
+
+		return true;
 	}
 
-	return true;
+	else
+		return false;
 }
 
-bool MessageProcessorAlice::processStoredMessages() {
+bool MessageProcessorAlice::processInMessages() {
+	t_message mReceived;
+	inputSignals[1]->bufferGet(&mReceived);
+	t_message_type mType = getMessageType(mReceived);
+	t_message_data_length mDataLength = getMessageDataLength(mReceived);
+	t_message_data mData = getMessageData(mReceived, mDataLength);
 
-	if (!storedMessageEmpty) {
-		t_message_type mType = getMessageType(storedMessages[nextMessage]);
-		t_message_data_length mDataLength = getMessageDataLength(storedMessages[nextMessage]);
-		t_message_data mData = getMessageData(storedMessages[nextMessage]);
+	int readyInBits = inputSignals[0]->ready();
+	int spaceMessageOut = outputSignals[1]->space();
+
+	if ((readyInBits >= mDataLength) && (spaceMessageOut > 0)) {
+		string mDataOut;
+		switch (mType)
+		{
+		case BasisReconciliation:
+			for (auto k = 0; k < mDataLength; k++) {
+				t_binary inBits;
+				inputSignals[0]->bufferGet(&inBits);
+				if (inBits == mData[k]) {
+					outputSignals[0]->bufferPut((t_binary)1);
+					mDataOut.append("1");
+				}
+				else {
+					outputSignals[0]->bufferPut((t_binary)0);
+					mDataOut.append("0");
+				}
+			}
+			break;
+		default:
+			break;
+		}
+		
+		t_message mToSend;
+		mToSend.messageType = mType;
+		mToSend.messageDataLenght = to_string(mDataOut.size());
+		mToSend.messageData = mDataOut;
+
+		outputSignals[1]->bufferPut((t_message)mToSend);
+
+		return true;
 	}
+	else {
+		storedMessages[nextMessage] = mReceived;
+		nextMessage++;
+		nextMessage = nextMessage % storedMessages.size();
+		return false;
+	}
+	
 }
 
 t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
@@ -119,5 +133,20 @@ t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
 
 t_message_data_length MessageProcessorAlice::getMessageDataLength(const t_message& msg) {
 
-	return (msg.messageDataLength).compare("BasisReconcilitation") == 0) return BasisReconciliation;
+	return stoi(msg.messageDataLenght);
 }
+
+
+t_message_data MessageProcessorAlice::getMessageData(const t_message& msg, t_message_data_length dataLength) {
+
+	string mDataString = msg.messageData;
+
+	vector <int> mDataVector;
+
+	for (auto k = 0; k < dataLength; k++) {
+		mDataVector[0] = (int)mDataString.at(k);
+	}
+
+	return mDataVector;
+}
+
