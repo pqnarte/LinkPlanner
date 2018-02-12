@@ -31,7 +31,12 @@ typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
 typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_photon_mp_xy;
 typedef complex<t_real> t_iqValues;
-typedef struct { string messageType; string messageDataLenght; string messageData; } t_message;
+typedef struct {
+	string messageType;
+	string messageDataLength; 
+	string messageData; 
+	int size() { return 3; }
+} t_message;
 
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
