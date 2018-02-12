@@ -57,10 +57,9 @@ void Signal::close() {
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 				for (int msg = fValueToBeSaved; msg < (inPosition+1); msg++) {
-					for (unsigned int fld = 0; fld < (*ptr).size(); fld++) {
-						fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+					for (auto fld = 0; fld < (*ptr).size(); fld++) {
+						fileHandler << ptr->messageType + "\t" + ptr->messageDataLength + "\t" + ptr->messageData + "\n";
 					}
-					fileHandler << "\n";
 					ptr++;
 				}
 				fileHandler.close();
@@ -241,10 +240,9 @@ void Messages::bufferPut(t_message value) {
 				ptr = ptr + (fValueToBeSaved - 1);
 				ofstream fileHandler("./" + getFolderName() + "/" + getFileName(), ios::out | ios::app);
 				for (int msg = fValueToBeSaved; msg <= bLength; msg++) {
-						for (unsigned int fld = 0; fld < value.size(); fld++) {
-							fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+						for (auto fld = 0; fld < value.size(); fld++) {
+							fileHandler << ptr->messageType + "\t" + ptr->messageDataLength + "\t" + ptr->messageData + "\n";
 						}
-						fileHandler << "\n";
 						ptr++;
 				}
 				fileHandler.close();

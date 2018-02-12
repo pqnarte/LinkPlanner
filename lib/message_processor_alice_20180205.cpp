@@ -1,6 +1,7 @@
 #include "message_processor_alice_20180205.h"
 
 void MessageProcessorAlice::initialize(void) {
+
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
@@ -16,32 +17,32 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
-	bool process = processStoredMessages();
-	process = processInMessages();
-	process = processStoredMessages();
+	bool alive = processStoredMessages();
+	alive = alive || processInMessages();
+	alive = alive || processStoredMessages();
 	
 
-	return process;
+	return alive;
 }
 
 bool MessageProcessorAlice::processStoredMessages() {
-	if (storedMessages.size() == 0) 
-		storedMessageEmpty = true;
-	else
-		storedMessageEmpty = false;
 
-	int spaceMessageOut = outputSignals[1]->space();
-
-	if ((!storedMessageEmpty) && (spaceMessageOut > 0)) {
+	if (storedMessageEmpty || (outputSignals[1]->space() == 0))
+		return false;
+	else {
+		
 		t_message_type mType = getMessageType(storedMessages[0]);
 		t_message_data_length mDataLength = getMessageDataLength(storedMessages[0]);
 		t_message_data mData = getMessageData(storedMessages[0], mDataLength);
 
-		string mDataOut;
-		switch (mType)
-		{
+		string mDataOut{""};
+		switch (mType) {
 		case BasisReconciliation:
-			for (auto k = 0; k < mDataLength; k++) {
+
+			int ready = min(inputSignals[0]->ready(), mDataLength);
+			int process = min(ready, getMaxMessageDataLength());
+
+			for (auto k = 0; k < process; k++) {
 				t_binary inBit;
 				inputSignals[0]->bufferGet(&inBit);
 
@@ -54,9 +55,12 @@ bool MessageProcessorAlice::processStoredMessages() {
 					mDataOut.append("0");
 				}
 			}
-			break;
-		default:
-			break;
+			setMessageDataLength(storedMessages[0], mDataLength - process);
+			setMessageData(storedMessages[0], mData[process:end]);
+
+				break;
+			default:
+				break;
 		}
 		
 
@@ -64,7 +68,7 @@ bool MessageProcessorAlice::processStoredMessages() {
 
 		t_message mToSend;
 		mToSend.messageData = mDataOut;
-		mToSend.messageDataLenght = to_string(mDataOut.size());
+		mToSend.messageDataLength = to_string(mDataOut.size());
 		mToSend.messageType = mType;
 
 		outputSignals[1]->bufferPut((t_message)mToSend);
@@ -110,7 +114,7 @@ bool MessageProcessorAlice::processInMessages() {
 		
 		t_message mToSend;
 		mToSend.messageType = mType;
-		mToSend.messageDataLenght = to_string(mDataOut.size());
+		mToSend.messageDataLength = to_string(mDataOut.size());
 		mToSend.messageData = mDataOut;
 
 		outputSignals[1]->bufferPut((t_message)mToSend);
@@ -129,11 +133,13 @@ bool MessageProcessorAlice::processInMessages() {
 t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
 
 	if ((msg.messageType).compare("BasisReconcilitation")==0) return BasisReconciliation;
+
+	return (t_message_type) 0;
 }
 
 t_message_data_length MessageProcessorAlice::getMessageDataLength(const t_message& msg) {
 
-	return stoi(msg.messageDataLenght);
+	return stoi(msg.messageDataLength);
 }
 
 
