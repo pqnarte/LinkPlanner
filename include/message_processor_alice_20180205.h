@@ -30,12 +30,13 @@ private:
 
 	/*Input Parameters*/
 	t_message_data_length maxMessageDataLength{ 64 };
+	int maxNumberOfStoredMessages{ 1 };
 
 	/*State Variables*/
 	bool sendMessage{ false };
 
 	vector<t_message> storedMessages;
-	bool storedMessageEmpty{ true };
+	int numberOfStoredMessages{ 0 };
 	int nextMessage{ 0 };
 	int nextMessageIn{ 0 };
 

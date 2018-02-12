@@ -17,33 +17,42 @@ void MessageProcessorAlice::initialize(void) {
 
 bool MessageProcessorAlice::runBlock(void) {
 
-	bool alive = processStoredMessages();
-	alive = alive || processInMessages();
-	alive = alive || processStoredMessages();
-	
+	bool alive{ false };
+
+	do {
+		alive = processStoredMessages();
+		alive = alive || processInMessages();
+	} while (alive);
 
 	return alive;
 }
 
 bool MessageProcessorAlice::processStoredMessages() {
 
-	if (storedMessageEmpty || (outputSignals[1]->space() == 0))
-		return false;
-	else {
-		
-		t_message_type mType = getMessageType(storedMessages[nextMessage]);
-		t_message_data_length mDataLength = getMessageDataLength(storedMessages[nextMessage]);
-		t_message_data mData = getMessageData(storedMessages[nextMessage], mDataLength);
+	bool alive{ false };
+
+	int n{ 0 };
+
+	do {
+	
+		t_message_type mType = getMessageType(storedMessages[n]);
+		t_message_data_length mDataLength = getMessageDataLength(storedMessages[n]);
+		t_message_data mData = getMessageData(storedMessages[n], mDataLength);
 
 		string mDataOut{""};
-		string mDataUpdated{ "" };
+		int process{ 0 };
 		switch (mType) {
+
 			case BasisReconciliation:
 
 				int ready = min(inputSignals[0]->ready(), mDataLength);
-				int process = min(ready, getMaxMessageDataLength());
+				ready = min(ready, outputSignals[0]->space());
+				process = min(ready, getMaxMessageDataLength());
 
 				for (auto k = 0; k < process; k++) {
+
+					alive = true;
+
 					t_binary inBit;
 					inputSignals[0]->bufferGet(&inBit);
 
@@ -56,89 +65,52 @@ bool MessageProcessorAlice::processStoredMessages() {
 						mDataOut.append("0");
 					}
 				}
-				setMessageDataLength(storedMessages[nextMessage], mDataLength - process);
-				mData.erase(mData.begin(), mData.begin() + process);
-				
-				for (unsigned int m = 0; m < mData.size(); m++) {
-					mDataUpdated.append(to_string(mData[m]));
-				}
-				setMessageData(storedMessages[nextMessage],mDataUpdated);
-
-				if (stoi(storedMessages[nextMessage].messageDataLength) == 0) {
-					nextMessage++;
-					nextMessage = nextMessage % storedMessages.capacity();
-					sendMessage = true;
-				}
-
-				break;
-		
+				break;	
 		}
-		
-		if (sendMessage) {
-			t_message mToSend;
-			mToSend.messageData = mDataOut;
-			mToSend.messageDataLength = to_string(mDataOut.size());
-			mToSend.messageType = mType;
 
-			outputSignals[1]->bufferPut((t_message)mToSend);
-			sendMessage = false;
+		int dLength = mDataLength - process;
+		if (dLength == 0) {
+			storedMessages.erase(storedMessages.begin()+n);
+			numberOfStoredMessages= storedMessages.size();
+			n--;
 		}
-		
-	}
+		setMessageDataLength(storedMessages[n], dLength);
 
-	return true;
+		mData.erase(mData.begin(), mData.begin() + process);
+		string mDataUpdated{ "" };
+		for (unsigned int m = 0; m < mData.size(); m++) {
+			mDataUpdated.append(to_string(mData[m]));
+		}
+		setMessageData(storedMessages[n], mDataUpdated);
+
+		t_message messageOut;
+		setMessageType(messageOut, mType);
+		setMessageDataLength(messageOut, mDataOut.size());
+		setMessageData(messageOut, mDataOut);
+		outputSignals[1]->bufferPut((t_message) messageOut);
+	    
+		n++;
+
+	} while (n <= numberOfStoredMessages);
+
+	return alive;
 }
+
 
 bool MessageProcessorAlice::processInMessages() {
-	t_message mReceived;
-	inputSignals[1]->bufferGet(&mReceived);
-	t_message_type mType = getMessageType(mReceived);
-	t_message_data_length mDataLength = getMessageDataLength(mReceived);
-	t_message_data mData = getMessageData(mReceived, mDataLength);
 
-	int readyInBits = inputSignals[0]->ready();
-	int spaceMessageOut = outputSignals[1]->space();
+	bool alive{ false };
 
-	if ((readyInBits >= mDataLength) && (spaceMessageOut > 0)) {
-		string mDataOut;
-		switch (mType)
-		{
-		case BasisReconciliation:
-			for (auto k = 0; k < mDataLength; k++) {
-				t_binary inBits;
-				inputSignals[0]->bufferGet(&inBits);
-				if (inBits == mData[k]) {
-					outputSignals[0]->bufferPut((t_binary)1);
-					mDataOut.append("1");
-				}
-				else {
-					outputSignals[0]->bufferPut((t_binary)0);
-					mDataOut.append("0");
-				}
-			}
-			break;
-		default:
-			break;
-		}
-		
-		t_message mToSend;
-		mToSend.messageType = mType;
-		mToSend.messageDataLength = to_string(mDataOut.size());
-		mToSend.messageData = mDataOut;
-
-		outputSignals[1]->bufferPut((t_message)mToSend);
-
-		return true;
+	if (numberOfStoredMessages < maxNumberOfStoredMessages) {
+		inputSignals[1]->bufferGet(&storedMessages[numberOfStoredMessages]);
+		numberOfStoredMessages++;
+		alive = true;
 	}
-	else {
-		storedMessages[nextMessageIn] = mReceived;
-		nextMessageIn++;
-		nextMessageIn = nextMessageIn % storedMessages.capacity();
-		
-		return false;
-	}
-	
+
+	return alive;
+
 }
+
 
 t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
 
