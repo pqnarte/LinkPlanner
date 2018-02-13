@@ -188,7 +188,7 @@ From this, the probability of symbol error is:
 
 It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
 As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter.
 
@@ -202,7 +202,7 @@ with
 
 \begin{eqnarray}
 &m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
-&N_{mf} &= \sqrt{\frac{T n_0}{4}}
+&N_{mf} &= \sqrt{\frac{n_0 T}{4}}
 \end{eqnarray}
 
 where T is the symbol period.
