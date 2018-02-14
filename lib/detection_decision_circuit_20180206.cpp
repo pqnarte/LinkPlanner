@@ -1,11 +1,13 @@
 #include "detection_decision_circuit_20180206.h"
 
 void DetectionDecisionCircuit::initialize(void) {
+	numberOfOutputSignals = outputSignals.size();
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setSamplesPerSymbol(1);
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	
 }
 
 bool DetectionDecisionCircuit::runBlock(void) {
@@ -15,7 +17,7 @@ bool DetectionDecisionCircuit::runBlock(void) {
 	int ready = min(ready0, ready1);
 
 	int space = outputSignals[0]->space();
-	
+
 	int process = min(ready, space);
 
 	if (process <= 0) return false;
@@ -33,10 +35,13 @@ bool DetectionDecisionCircuit::runBlock(void) {
 		else if ((value0 == 0.0) && (value1 == 1.0)) {
 			outputSignals[0]->bufferPut((t_real)1.0);
 		}
-		else if((value0 == 1.0) && (value1 == 1.0))
+		else if ((value0 == 1.0) && (value1 == 1.0)) {
 			outputSignals[0]->bufferPut((t_real)-2.0);
-		else 
+		}
+		else {
 			outputSignals[0]->bufferPut((t_real)-1.0);
+		}
+			
 	}
 
 	return true;

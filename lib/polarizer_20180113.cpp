@@ -31,9 +31,9 @@ bool Polarizer::runBlock(void) {
 
 		t_complex valueXout = cos(-tetha * PI / 180)*valueX + sin(-tetha * PI / 180)*valueY;
 		t_complex ValueYout = -sin(-tetha * PI / 180)*valueX + cos(-tetha * PI / 180)*valueY;
-		valueXY = { valueXout, ValueYout };
+		t_complex_xy valueXYout = { valueXout, ValueYout };
 		
-		outputSignals[0]->bufferPut(valueXY);
+		outputSignals[0]->bufferPut((t_complex_xy)valueXYout);
 
 	}
 

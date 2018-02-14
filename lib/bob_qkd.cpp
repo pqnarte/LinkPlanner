@@ -15,6 +15,7 @@ BobQKD::BobQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal) : S
 	BB10.initializeBlock(vector<Signal*>{inputSignals[2], inputSignals[3]}, vector<Signal*>{&Bob_7});
 	BBSink.initializeBlock(vector<Signal*>{&Bob_7}, vector<Signal*>{});
 	BBSink.setNumberOfSamples(1000);
+	BBSink.setDisplayNumberOfSamples(true);
 	BB9.initializeBlock(vector<Signal*>{&Bob_8, &CLKB_1, &CLKB_2}, vector<Signal*>{&S4, &CLKB_out1, &CLKB_out2});
 
 
