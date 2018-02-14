@@ -25,9 +25,6 @@ class BobQKD : public SuperBlock {
 	TimeDiscreteAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_8{ "Bob_8.sgn" };
 	TimeContinuousAmplitudeDiscreteReal S4{ "Bob_8_out.sgn" };
-
-	TimeContinuousAmplitudeContinuous Bob_9{ "Bob_9.sgn" };
-	TimeContinuousAmplitudeContinuous Bob_10{ "Bob_10.sgn" };
 	
 	TimeContinuousAmplitudeDiscreteReal CLKB_1{ "CLKB_1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_2{ "CLKB_2.sgn" };
@@ -48,8 +45,6 @@ class BobQKD : public SuperBlock {
 	Fork BB4;
 
 	SuperBlockInterface BB9;
-
-	SuperBlockInterface BBteste;
 
 	DetectionDecisionCircuit BB10;
 	Sink BBSink;
