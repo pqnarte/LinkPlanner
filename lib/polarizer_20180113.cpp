@@ -38,7 +38,5 @@ bool Polarizer::runBlock(void) {
 	}
 
 	return true;
-
-	return true;
 }
 

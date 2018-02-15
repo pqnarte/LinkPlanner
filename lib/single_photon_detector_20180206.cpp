@@ -5,12 +5,10 @@ void SinglePhotonDetector::initialize(void) {
 	numberOfInputSignals = (int)inputSignals.size();
 	numberOfOutputSignals = (int)outputSignals.size();
 
-	for (auto k = 0; k < numberOfOutputSignals; k++) {
-		outputSignals[k]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-		outputSignals[k]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-		outputSignals[k]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-		outputSignals[k]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
-	}
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 	
 }
 
@@ -44,7 +42,48 @@ bool SinglePhotonDetector::runBlock(void) {
 
 		signal_value_type inSignalType = inputSignals[0]->getValueType();
 
-		for (auto k = 0; k < process; k++) {
+		switch (inSignalType) {
+		case PhotonValue:
+			for (auto k = 0; k < process; k++) {
+				t_photon inValue;
+				inputSignals[0]->bufferGet(&inValue);
+				if (inValue.probabilityAmplitude == 1) {
+					outputSignals[0]->bufferPut((t_real) 1.0);
+				}
+				else {
+					outputSignals[0]->bufferPut((t_real) 0.0);
+				}
+			}
+			break;
+		case PhotonValueMP:
+			for (auto k = 0; k < process; k++) {
+				t_photon_mp inValueMP;
+				inputSignals[0]->bufferGet(&inValueMP);
+				if (inValueMP.path[path].probabilityAmplitude > 0.0) {	// Process Photon Path
+					double number = distribution(generator);
+					if (number < pow(inValueMP.path[path].probabilityAmplitude, 2)) {
+						outputSignals[0]->bufferPut((t_real) 1.0);
+						inValueMP.path[(path + 1) % 2].probabilityAmplitude = 0.0;
+						inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
+					}
+					else {
+						outputSignals[0]->bufferPut((t_real) 0.0);
+						inValueMP.path[(path + 1) % 2].probabilityAmplitude = 1.0;
+						inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
+					}
+				};
+				if (inValueMP.path[path].probabilityAmplitude == 0.0) {
+					outputSignals[0]->bufferPut((t_real) 0.0);
+					inValueMP.path[path].probabilityAmplitude = -1.0; // Photon Path Processed
+				}
+				if (inValueMP.path[(path + 1) % 2].probabilityAmplitude >= 0.0) {
+					inputSignals[0]->bufferPut((t_photon_mp)inValueMP);
+				}
+			}
+			break;
+
+		case PhotonValueMPXY:
+			for (auto k = 0; k < process; k++) {
 			t_real clk;
 			if (numberOfOutputSignals > 1) 
 				inputSignals[1]->bufferGet(&clk);
@@ -102,6 +141,14 @@ bool SinglePhotonDetector::runBlock(void) {
 				inputSignals[0]->bufferPut((t_photon_mp_xy)inValueMP);
 			}
 		}
+
+			break;
+		default:
+			cout << "ERRO: single_photon_detector.cpp" << "\n";
+			return false;
+		};
+
+		
 
 	}
 

@@ -1,12 +1,11 @@
 #include "detection_decision_circuit_20180206.h"
 
 void DetectionDecisionCircuit::initialize(void) {
-	numberOfOutputSignals = outputSignals.size();
 
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(1);
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	outputSignals[0]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
 	
 }
 
@@ -17,7 +16,7 @@ bool DetectionDecisionCircuit::runBlock(void) {
 	int ready = min(ready0, ready1);
 
 	int space = outputSignals[0]->space();
-
+	
 	int process = min(ready, space);
 
 	if (process <= 0) return false;
