@@ -9,6 +9,7 @@
 #include "fork_20180112.h"
 #include "detection_decision_circuit_20180206.h"
 #include "sink.h"
+#include "bobBB84_20180206.h"
 
 
 class BobQKD : public SuperBlock {
@@ -19,16 +20,19 @@ class BobQKD : public SuperBlock {
 	TimeDiscreteAmplitudeDiscreteReal Bob_1{ "Bob_1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_2{ "Bob_2.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_3{ "Bob_3.sgn" };
-	Binary Bob_4{ "Bob_4.sgn" };
-	Binary Bob_5{ "Bob_5.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_4{ "Bob_4.sgn" };
+	TimeDiscreteAmplitudeDiscreteReal Bob_5{ "Bob_5.sgn" };
 	Binary Bob_6{ "Bob_6.sgn" };
-	TimeDiscreteAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
+	Binary Bin_6{ "Bin_6.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_10{ "Bob_10.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_11{ "Bob_11.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_8{ "Bob_8.sgn" };
 	TimeContinuousAmplitudeDiscreteReal S4{ "Bob_8_out.sgn" };
 
-	TimeContinuousAmplitudeContinuous Bob_9{ "Bob_9.sgn" };
-	TimeContinuousAmplitudeContinuous Bob_10{ "Bob_10.sgn" };
-	
+	TimeContinuousAmplitudeDiscreteReal Bob_12{ "Bob_12.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_9{ "Bob_9.sgn" };
+
 	TimeContinuousAmplitudeDiscreteReal CLKB_1{ "CLKB_1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_2{ "CLKB_2.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ "CLKB_out1.sgn" };
@@ -49,11 +53,15 @@ class BobQKD : public SuperBlock {
 
 	SuperBlockInterface BB9;
 
-	SuperBlockInterface BBteste;
-
 	DetectionDecisionCircuit BB10;
-	Sink BBSink;
 
+	bobBB84 BB5;
+
+	Sink BBSink;
+	Sink BBSink1;
+	Sink BBSink2;
+
+	
 public:
 	/* input parameters*/
 
