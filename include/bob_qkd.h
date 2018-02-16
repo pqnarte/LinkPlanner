@@ -63,9 +63,7 @@ class BobQKD : public SuperBlock {
 
 	
 public:
-	/* input parameters*/
-
-
+	
 	BobQKD(vector <Signal*> &inputSignals, vector <Signal*> &outputSignals);
 
 	void setNumberOfSamplesPerSymbol(int n) { BB1.setNumberOfSamplesPerSymbol(n); };
