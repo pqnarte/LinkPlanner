@@ -17,11 +17,11 @@ M-QAM systems can encode $\log_2 M$ bits per symbol which means they can transmi
 
 The Bit Error Rate (BER) is a measurement of how a bit stream is altered by a transmission system due to noise (among other factors). To study this effect we introduced Additive White Gaussian Noise (AWGN) to model thermal noise at the receiver.
 
-For $M=4$ the M-QAM system reduces to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}). Both these systems are also equivalent to the sum of two independent Binary Phase Shift Keying (BPSK) signals impressed on quadrature carriers.
+For $M=4$ the M-QAM system can be reduced to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}). Both these systems are also equivalent two independent Binary Phase Shift Keying (BPSK) signals impressed on quadrature carriers.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[clip, trim=1cm 3cm 1cm 3cm, width=\textwidth]{./sdf/m_qam_system/figures/MQAM_constellation.pdf}
+	\includegraphics[width=0.5\textwidth]{./sdf/m_qam_system/figures/constellation.pdf}
 	\caption{4-QAM constellation points.}
 	\label{fig:const}
 \end{figure}
@@ -44,52 +44,62 @@ which means that any sinusoidal wave can be decomposed in its I and Q components
 \end{align}
 where we have used the expression for the cosine of a sum and the definitions of I and Q.
 
-%When demodulating a signal it is necessary to associate the received signal to the corresponding signal. The existence of noise in the channel means that we can only compute the probability that a given signal corresponds to a certain carrier and that's why we need to define the BER. Using
-%
-%\begin{equation}
-%P_i f(s|c_i)>P_j f(s|c_j), \qquad i\neq j
-%\end{equation}
-%where $f(s|c_i)$ stands for the probability of detecting the signal $s$ given that $c_i$ was emmited. This inequallity can be rewritten in the following way
-%
-%\begin{equation}
-%P(c_i|s)>P(c_j|s)
-%\end{equation}
-%where $P(c_i|s)$ and $P(c_j|s)$ are called \textit{a posteriori} probabilities and represent the probability that $c_i$ or $c_j$ were transmitted given that $s$ was received. In terms of the systems this simply means that we should select the signal most likely to have been transmitted.
-%
-%In the case of additive white gaussian noise the $f$ function is simply given by
-%
-%\begin{equation}
-%f(s|c_i)=\frac{e^{-x^2/n_0}}{(\pi n_0)^{N/2}}
-%\end{equation}
-%where $x$ is the Euclidean distance in the I-Q plane between the signal received and carrier i and $N$ is the number of noise samples.
-%
-%When using 4-QAM modulation all points are at an equal distance from the origin (in the I-Q plane) so they all have the same energy given by
-%
-%\begin{equation}
-%E=\frac{d^2}{2}
-%\end{equation}
-%where $d$ is the side of the square formed bye the constellation points.
-%
-%The probability that a given signal is identified correctly is given by
-%
-%\begin{equation}
-%P_c=r^2
-%\end{equation}
-%where $n_0/2$ is the noise variance for AWGN and
-%
-%\begin{equation}
-%r=\int_{-d/2}^{\infty}\frac{e^{-x^2/n_0}}{\sqrt{\pi n_0}} dx.
-%\end{equation}
-%
-%The error probability, $P_e$, given by $1-P_c$ is given by
-%
-%\begin{equation}
-%P_e=\erfc \sqrt{\frac{E}{2 n_0}}.
-%\end{equation}
 
-For the particular case of $M=4$, considering there is no crosstalk or interference between the Q and I components, the signal can be treated as a pair of independent BPSK systems.
+
+For the particular case of $M=4$, considering there is no crosstalk or interference between the Q and I components, the signal can be treated as a pair of independent BPSK systems, one for the in-phase component and another for the quadrature component.
 Using Gray coding, adjacent symbols differ by only one bit. As such, an error in a single component leads to a single bit error.
-This means that the probability of an error in bit detection is independent among components, as there is no crosstalk or interference. That being the case, the bit error rate can be exactly described by the same equation as in BPSK
+This means that the probability of an error in bit detection is independent among components, as there is no crosstalk or interference. That being the case, the bit error rate can be calculated for the BPSK case.
+
+%Considering a signal with amplitude $A$ sampled at the signal peak with no inter-symbol interference, and affected by noise with variance $n_0/2$, the sampled value will be a Gaussian random variable with mean $\pm A$ and variance $n_0/2$. Thus, the probability of error is given by the probability that the value is affected by a deviation greater than $m$.
+
+Let the $s(t)$ be the signal sampled at a given instant $t$ for either the in-phase or quadrature component, $m(t)$ be the component corresponding to the transmitted signal with value equal to $\pm m$, depending on whether the transmitted signal was 1 or 0, and $n(t)$ the component associated with the Gaussian white noise with variance $n_0/2$, such that
+
+\begin{equation}
+s(t) = m(t) + n(t)
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./sdf/m_qam_system/figures/constellation_d.pdf}
+	\caption{The relation between $m$ and the distance between constellation points.\label{fig:const_2m}}
+\end{figure}
+
+In this case, assuming the absence of inter-symbol interference, $s(t)$ will be a Gaussian random variable with average value of $\pm m$, depending on what signal was transmitted, and variance equal to $n_0/2$. In this case, using the constellation from Figure~\ref{fig:const_2m}, with a decision boundary halfway between $m$ and $-m$, an error occurs in two situations: when the a 0 is transmitted but a 1 is identified, or a 1 is transmitted and a 0 is identified. These mistakes happen when the perturbation in the signal due to noise is enough to push the value beyond the decision boundary. These situations are shown in Figures~\ref{fig:gauss} and~\ref{fig:gausserr}, by the colored area under the curve.
+
+\begin{figure}[H]
+	\centering
+	\centering
+	\includegraphics[ width=0.8\textwidth]{./sdf/m_qam_system/figures/gaussians.pdf}
+	\caption{Probability density functions for $s(t) = m(t) + n(t)$, with $m(t)=\pm m$ and $n(t)$ as a Gaussian variable.}
+	\label{fig:gauss}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[clip, trim=1cm 0cm 1cm 0cm,width=\textwidth]{./sdf/m_qam_system/figures/gaussian_error_2.pdf}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[clip, trim=1cm 0cm 1cm 0cm,width=\textwidth]{./sdf/m_qam_system/figures/gaussian_error.pdf}
+	\end{subfigure}
+	\caption{The area below the curves is the probability of error for each transmitted bit.}
+	\label{fig:gausserr}
+\end{figure}
+
+The probability of bit error can be expressed as:
+
+\begin{equation}
+P_{be} = P_0 P_{e0} + P_1 P_{e1}
+\end{equation}
+
+With equal probability for both bits, and considering the constellation's symmetry
+
+\begin{equation}\label{eq:berMQAM}
+P_{be} =  Q\left({\frac{m}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right)
+\end{equation}
+
 
 %\begin{equation}
 %P_b= Q\left(\sqrt{\frac{E_b}{n_0}}\right) = \frac{1}{2} erfc\left(\sqrt{\frac{E_b}{2 n_0}}\right).
@@ -103,35 +113,35 @@ This means that the probability of an error in bit detection is independent amon
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-\begin{equation}\label{eq:berBPSK}
-P_b= Q\left({\frac{m}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{m}{N_0}}\right).
-\end{equation}
-
 with
 
 
 \begin{eqnarray}
 &m &= G_{ele} \sqrt{P_L P_S} \\
-&N_0 &= \sqrt{2 n_0}
+&N_0 &= \sqrt{\frac{n_0}{2}}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density.
+where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $m$. $N_0$ will be the standard deviation of the sampled values.
+
+
+
+
 
 The symbol error rate however is not the same, as it depends on both bits being correctly detected. The probability of both bits being correctly detected is:
 
 \begin{equation}
-P_C = (1 - P_b)^2
+P_C = (1 - P_{be})^2
 \end{equation}
 
 From this, the probability of symbol error is:
 
 \begin{eqnarray}
 &P_s &= 1-P_C =\nonumber \\
-&	   &= 1 - \left(1 - Q \left({\frac{m \sqrt{2}}{n_0}}\right)\right)^2 = \nonumber \\
-&	   &= 2 Q\left({\frac{m \sqrt{2}}{n_0}}\right)\left[1-\frac{1}{2} Q \left({\frac{\sqrt{2} m}{n_0}}\right)\right]
+&	   &= 1 - \left(1 - Q \left({\frac{m}{n_0}}\right)\right)^2 = \nonumber \\
+&	   &= 2 Q\left({\frac{m}{n_0}}\right)\left[1-\frac{1}{2} Q \left({\frac{m}{n_0}}\right)\right]
 \end{eqnarray}
 
 %The bit error rate is then equal to the probability of the phase falling outside the correct detection range in a given component due to noise,
@@ -176,27 +186,30 @@ From this, the probability of symbol error is:
 %		\label{fig:QPSK_th_curve}
 %\end{figure}
 
-It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. In this case, the resulting signal will still have gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
-
+As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter.
 
 The optimal BER that can be obtained by using matched filtering is described by~\cite{mischasch}:
 
-\begin{equation}\label{eq:berBPSK}
-P_b= \frac{1}{2} \text{erfc}\left({\frac{m_{mf}}{N_{mf}}}\right)
-\end{equation}
+\begin{eqnarray}\label{eq:berBPSK}
+&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{mT/2}{\sqrt{2} N_{mf}}}\right) =\\
+&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{m^2T}{2 n_0}}}\right) =\\
+&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E}{n_0}}}\right)
+\end{eqnarray}
 
 with
 
 \begin{eqnarray}
-&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
-&N_{mf} &= \sqrt{\frac{T n_0}{4}}
+%&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
+&E &= \frac{m^2 T}{2} \\
+&N_{mf} &= \sqrt{\frac{n_0 T}{4}}
 \end{eqnarray}
 
-
+where T is the symbol period.
 Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
 %Here, $T$ is the symbol period. 
+
 
 \begin{figure}[h]
 		\centering
@@ -204,6 +217,8 @@ Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the
 		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.\label{fig:QPSK_th_curves}}	
 \end{figure}
 
+
+It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 % TODO: preencher isto depois de requisitar o livro
 
 
@@ -390,7 +405,7 @@ The system accepts several input parameters that can be defined by the user. The
 
 In this section we show the eye diagrams for the S1 signals for two different values of the output optical power.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -403,6 +418,89 @@ In this section we show the eye diagrams for the S1 signals for two different va
 	\caption{Eye diagrams for the S1 bandpass signal with an output optical power of $-120$dBm (left) and $-60$dBm (right). Note different scales on y axis.}
 	\label{fig:test}
 \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_nn_p_60_09.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_nn_p_60_09.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points, without AWGN: the optical output signal S1 on the top; the amplified signal at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, and a rolloff factor of 0.9.}
+	\label{fig:test}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_03.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_03.pdf}
+	\end{subfigure}
+
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.3.}
+	\label{fig:test}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_09.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_09.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.9.}
+	\label{fig:test}
+\end{figure}
+
+
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}{.45\textwidth}
+			\centering
+			\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_03.pdf}
+		\end{subfigure}
+		\begin{subfigure}{.45\textwidth}
+			\centering
+			\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_03.pdf}
+		\end{subfigure}
+		
+		\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.3.}
+		\label{fig:test}
+	\end{figure}
+		\begin{figure}[H]
+			\centering
+			\begin{subfigure}{.45\textwidth}
+				\centering
+				\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_09.pdf}
+			\end{subfigure}
+			\begin{subfigure}{.45\textwidth}
+				\centering
+				\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_09.pdf}
+			\end{subfigure}
+			
+			\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.9.}
+			\label{fig:test}
+	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
+	\caption{Simulation results for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$. The simulated values which used a matched filter were obtained by shaping the pulse with a root-raised-cosine FIR filter and filtering the signal before the sample with the same filter.}
+	\label{fig:ber_pseudorandom}
+\end{figure}% 
 
 \subsection*{Experimental Analysis}
 \begin{figure}[H]
@@ -444,12 +542,7 @@ In this section we show the eye diagrams for the S1 signals for two different va
 In this section we show the simulation results and compared them with the theoretical predictions for an M-QAM system with $M=4$. Figure \ref{fig:ber_pseudorandom} shows the variation of the BER with the optical power of the signal, using $40000$ bits produced by a random number generator. The noise power was set at $10^{-6}$, the local oscillator at $0~dBm$ and the amplification at the transimpedance amplifier was set at $10^3$.
 The blue line represents the theoretical curve, while the orange points represent the simulated values with the respective confidence margins. The simulation agrees closely with the theoretical values.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
-	\caption{Simulation results for a random binary sequence with $40000$ bits, a noise power of $10^{-6}$ and an amplification of $10^3$. The simulated values which used a matched filter were obtained by shaping the pulse with a root-raised-cosine FIR filter and filtering the signal before the sample with the same filter.}
-	\label{fig:ber_pseudorandom}
-\end{figure}% 
+
 
 %\begin{figure}[h]
 %	\centering
