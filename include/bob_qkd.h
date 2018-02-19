@@ -10,6 +10,7 @@
 #include "detection_decision_circuit_20180206.h"
 #include "sink.h"
 #include "bobBB84_20180206.h"
+#include "clock_20171219.h"
 
 
 class BobQKD : public SuperBlock {
@@ -58,10 +59,10 @@ class BobQKD : public SuperBlock {
 	bobBB84 BB5;
 
 	Sink BBSink;
+	Sink BBSink0;
 	Sink BBSink1;
 	Sink BBSink2;
 
-	
 public:
 	
 	BobQKD(vector <Signal*> &inputSignals, vector <Signal*> &outputSignals);

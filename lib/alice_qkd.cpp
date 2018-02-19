@@ -33,7 +33,6 @@ void AliceQKD::set(int opt) {
 	if (opt == 0) {
 		setNumberOfSamplesPerSymbol(16);
 		setIqAmplitudes({ { -45.0,0.0 },{ 0.0,0.0 },{ 45.0,0.0 },{ 90.0,0.0 } });
-		setSaveInternalSignals(true);
 		setNumberOfSamples(1000);
 	}
 
