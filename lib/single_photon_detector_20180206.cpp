@@ -97,7 +97,7 @@ bool SinglePhotonDetector::runBlock(void) {
 			t_complex_xy inValue = (t_complex_xy)inValueMP.path[path];
 			t_complex xValue = inValue.x;
 			t_complex yValue = inValue.y;
-
+			bool write{ false };
 			switch (path) {
 			case 0:
 				if ((abs(xValue) >= 0.0) && (abs(xValue) <= 1.0) && (clk > 0.0)) {
@@ -106,11 +106,17 @@ bool SinglePhotonDetector::runBlock(void) {
 						outputSignals[0]->bufferPut((t_real)1.0);
 						inValueMP.path[1].x = (t_complex) 0.0;
 						inValueMP.path[1].y = (t_complex) 0.0;
+						inValueMP.path[0].x = (t_complex) 1.0;
+						inValueMP.path[0].y = (t_complex) 0.0;
+						write = true;
 					}
 					else {
 						outputSignals[0]->bufferPut((t_real)0.0);
 						inValueMP.path[1].x = (t_complex) 0.0;
 						inValueMP.path[1].y = (t_complex) 1.0;
+						inValueMP.path[0].x = (t_complex) 0.0;
+						inValueMP.path[0].y = (t_complex) 0.0;
+						write = true;
 					}
 				}
 
@@ -137,9 +143,8 @@ bool SinglePhotonDetector::runBlock(void) {
 
 			}
 
-			if ((abs(inValueMP.path[1].y) == 0.0) || (abs(inValueMP.path[1].y) == 1.0) && (clk > 0.0)) {
-				inputSignals[0]->bufferPut((t_photon_mp_xy)inValueMP);
-			}
+			if(write) inputSignals[0]->bufferPut((t_photon_mp_xy)inValueMP);
+			
 		}
 
 			break;

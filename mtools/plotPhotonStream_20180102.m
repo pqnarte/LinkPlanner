@@ -55,4 +55,6 @@ else
     axis([0 inf -1 1])
     title ('Amplitude X and Y');
     legend('X', 'Y')
+    
+  
 end
