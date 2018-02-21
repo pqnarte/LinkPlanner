@@ -33,12 +33,9 @@ private:
 	int maxNumberOfStoredMessages{ 1 };
 
 	/*State Variables*/
-	bool sendMessage{ false };
 
 	vector<t_message> storedMessages;
 	int numberOfStoredMessages{ 0 };
-	int nextMessage{ 0 };
-	int nextMessageIn{ 0 };
 
 	/*Private Methods*/
 	t_message_type getMessageType(const t_message& msg);

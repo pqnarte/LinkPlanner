@@ -19,9 +19,11 @@ public:
 
 private:
 	/*Input Parameters*/
-	t_message_data_length maxMessageDataLength{ 64 };
+	t_message_data_length messageDataLength{ 64 };
 
 	/*State Variables*/
+	vector<t_message> storedMessages;
+	int numberOfStoredMessages{ 0 };
 
 	/*Private Methods*/
 	t_message_data_length getMessageDataLength(const t_message& msg);

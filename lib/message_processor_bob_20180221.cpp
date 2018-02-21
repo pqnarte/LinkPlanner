@@ -27,14 +27,32 @@ bool MessageProcessorBob::runBlock(void) {
 
 bool MessageProcessorBob::ProcessMessageToSend() {
 
+	int ready = min(inputSignals[0]->ready(), messageDataLength);
+	int space = outputSignals[1]->space();
+	int process = min(ready, space);
 
+	if (process <= 0) return false;
+
+	string mDataToSend{ "" };
+	for (auto k = 0; k < messageDataLength; k++) {
+		t_real data;
+		inputSignals[0]->bufferGet(&data);
+		mDataToSend.append(to_string(data));
+	}
+
+	t_message messageOut;
+	setMessageDataLength(messageOut, messageDataLength);
+	setMessageData(messageOut, mDataToSend);
+	setMessageType(messageOut, BasisReconciliation);
+
+	outputSignals[1]->bufferPut((t_message)messageOut);
 
 	return true;
 }
 
 bool MessageProcessorBob::ProcessReceivedMessage() {
 
-	return true;
+	
 }
 
 t_message_data MessageProcessorBob::getMessageData(const t_message& msg, t_message_data_length dataLength) {
