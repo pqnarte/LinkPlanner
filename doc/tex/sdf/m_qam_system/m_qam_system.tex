@@ -403,7 +403,7 @@ The system accepts several input parameters that can be defined by the user. The
 
 \subsection*{Simulation results}
 
-In this section we show the eye diagrams for the S1 signals for two different values of the output optical power.
+In this section we show different results obtained on the simulations. Figure~\ref{fig:eyespower} shows the eye diagrams for the S1 signals for two different values of the output optical power. These were obtained using a raised-cosine filter as a pulse shaper, with a roll-off factor of 0.9.
 
 \begin{figure}[H]
 	\centering
@@ -415,9 +415,11 @@ In this section we show the eye diagrams for the S1 signals for two different va
 		\centering
 		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eye60db09ro.pdf}
 	\end{subfigure}
-	\caption{Eye diagrams for the S1 bandpass signal with an output optical power of $-120$dBm (left) and $-60$dBm (right). Note different scales on y axis.}
-	\label{fig:test}
+	\caption{Eye diagrams for the S1 bandpass signal with an output optical power of $-120$dBm (left) and $-60$dBm (right)}
+	\label{fig:eyespower}
 \end{figure}
+
+Figures \ref{fig:eyes1}-\ref{fig:eyes5} show the eye diagrams of three different signals in the system: the optical signal S1, the signals after adding the Gaussian white noise HMD12 and HMD13, and the signal after the filter in the receiver. These are shown for different optical powers, spectral noise densities, roll-off factors and filter types.
 
 \begin{figure}[H]
 	\centering
@@ -430,8 +432,23 @@ In this section we show the eye diagrams for the S1 signals for two different va
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_nn_p_60_09.pdf}
 	\end{subfigure}
 	
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points, without AWGN: the optical output signal S1 on the top; the amplified signal at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, and a rolloff factor of 0.9.}
-	\label{fig:test}
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points, without AWGN: the optical output signal S1 on the top; the amplified signal at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, and a rolloff factor of 0.9.\label{fig:eyes1}}
+	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_nn_p_60_03.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_nn_p_60_03.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points, without AWGN: the optical output signal S1 on the top; the amplified signal at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, and a rolloff factor of 0.9.\label{fig:eyes6}}
+	
 \end{figure}
 
 \begin{figure}[H]
@@ -445,8 +462,8 @@ In this section we show the eye diagrams for the S1 signals for two different va
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_03.pdf}
 	\end{subfigure}
 
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.3.}
-	\label{fig:test}
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes2}}
+	
 \end{figure}
 
 \begin{figure}[H]
@@ -460,8 +477,8 @@ In this section we show the eye diagrams for the S1 signals for two different va
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_09.pdf}
 	\end{subfigure}
 	
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.9.}
-	\label{fig:test}
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes3}}
+	
 \end{figure}
 
 
@@ -476,8 +493,8 @@ In this section we show the eye diagrams for the S1 signals for two different va
 			\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_03.pdf}
 		\end{subfigure}
 		
-		\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.3.}
-		\label{fig:test}
+		\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes4}}
+		
 	\end{figure}
 		\begin{figure}[H]
 			\centering
@@ -490,8 +507,8 @@ In this section we show the eye diagrams for the S1 signals for two different va
 				\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_09.pdf}
 			\end{subfigure}
 			
-			\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^6$ and a rolloff factor of 0.9.}
-			\label{fig:test}
+			\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes5}}
+			
 	
 \end{figure}
 
