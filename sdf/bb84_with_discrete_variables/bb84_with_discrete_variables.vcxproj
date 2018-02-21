@@ -148,7 +148,7 @@
     <ClCompile Include="..\..\lib\alice_qkd.cpp" />
     <ClCompile Include="..\..\lib\binary_mapper_20180205.cpp" />
     <ClCompile Include="..\..\lib\binary_source_20180118.cpp" />
-    <ClCompile Include="..\..\lib\bobBB84_20180206.cpp" />
+    <ClCompile Include="..\..\lib\bobBB84_20180221.cpp" />
     <ClCompile Include="..\..\lib\bob_qkd.cpp" />
     <ClCompile Include="..\..\lib\clock_20171219.cpp" />
     <ClCompile Include="..\..\lib\demux_1_2_20180205.cpp" />
@@ -157,6 +157,7 @@
     <ClCompile Include="..\..\lib\eve_qkd.cpp" />
     <ClCompile Include="..\..\lib\fork_20180112.cpp" />
     <ClCompile Include="..\..\lib\message_processor_alice_20180205.cpp" />
+    <ClCompile Include="..\..\lib\message_processor_bob_20180221.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
     <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
     <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp" />
@@ -172,7 +173,7 @@
     <ClInclude Include="..\..\include\alice_qkd.h" />
     <ClInclude Include="..\..\include\binary_mapper_20180205.h" />
     <ClInclude Include="..\..\include\binary_source_20180118.h" />
-    <ClInclude Include="..\..\include\bobBB84_20180206.h" />
+    <ClInclude Include="..\..\include\bobBB84_20180221.h" />
     <ClInclude Include="..\..\include\bob_qkd.h" />
     <ClInclude Include="..\..\include\clock_20171219.h" />
     <ClInclude Include="..\..\include\demux_1_2_20180205.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="..\..\include\eve_qkd.h" />
     <ClInclude Include="..\..\include\fork_20180112.h" />
     <ClInclude Include="..\..\include\message_processor_alice_20180205.h" />
+    <ClInclude Include="..\..\include\message_processor_bob_20180221.h" />
     <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
     <ClInclude Include="..\..\include\netxpto_20180118.h" />
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
