@@ -1,15 +1,15 @@
 #include "bobBB84_20180221.h"
 
 void bobBB84::initialize(void) {
-	outputSignals[0]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
-	outputSignals[0]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[1]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
-	outputSignals[1]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
-	outputSignals[1]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
-	outputSignals[1]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
+	outputSignals[1]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[1]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+	outputSignals[1]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 }
 
 bool bobBB84::runBlock(void) {
@@ -28,9 +28,9 @@ bool bobBB84::runBlock(void) {
 	for (int i = 0; i < process; i++)
 	{
 		t_binary inBasis;
-		inputSignals[0]->bufferGet(&inBasis);
+		inputSignals[1]->bufferGet(&inBasis);
 		t_real measurement;
-		inputSignals[1]->bufferGet(&measurement);
+		inputSignals[0]->bufferGet(&measurement);
 
 		if ((measurement == 0.0) || (measurement == 1.0)) {
 			outputSignals[0]->bufferPut((t_real)(inBasis));
