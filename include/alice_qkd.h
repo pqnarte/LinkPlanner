@@ -20,38 +20,33 @@ class AliceQKD : public SuperBlock {
 
 	//Binary S1{ "NUM_A.sgn" };
 
-	TimeDiscreteAmplitudeDiscreteReal alice_1{  };
+	TimeDiscreteAmplitudeDiscreteReal alice_1{"alice_1.sgn"};
 	
 
-	TimeDiscreteAmplitudeDiscreteReal alice_2{ };
+	TimeDiscreteAmplitudeDiscreteReal alice_2{"alice_2.sgn"};
 
-	TimeContinuousAmplitudeDiscreteReal alice_3{ };
+	TimeContinuousAmplitudeDiscreteReal alice_3{"alice_3.sgn"};
 
-	TimeContinuousAmplitudeDiscreteReal S4{  };
+	TimeContinuousAmplitudeDiscreteReal alice_4{"alice_4.sgn"};
+	TimeContinuousAmplitudeDiscreteReal alice_4_out{ "alice_4_out.sgn" };
 
-	Binary S5{  };
-	Binary Sout2{ "Alice_6.sgn" };
+	TimeContinuousAmplitudeContinuousReal clkA_out{ "clkA_out.sgn" };
 
-	Binary alice_7{  };
+	Binary alice_9_out{"alice_9_out.sgn"};
 
-	Binary alice_8{ };
+	Binary alice_6{ "alice_6.sgn" };
+	Binary alice_6_out{ "alice_6_out.sgn" };
 
-	Binary S8{  };
-	Binary Sout3{ "Alice_9.sgn" };
+	Binary alice_7{ "alice_7.sgn" };
 
-	Binary alice_10{ };
+	Binary alice_8{"alice_8.sgn"};
 
-	Binary alice_11{  };
+	Binary alice_9{"alice_9.sgn"  };
 
-	Binary S11{ "Alice_12.sgn" };
+	Binary alice_10{ "alice_10.sgn" };
 
-	Binary S12{ "Alice_13.sgn" };
+	Binary alice_11{"alice_11.sgn"  };
 
-	Binary S13{ "MI_A.sgn" };
-
-	Messages S14{ "C_C_6.sgn" };
-
-	Messages S15{ "C_C_1.sgn" };
 
 	
 
