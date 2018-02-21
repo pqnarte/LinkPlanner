@@ -10,7 +10,8 @@
 #include "detection_decision_circuit_20180206.h"
 #include "sink.h"
 #include "clock_20171219.h"
-#include "bobBB84_20180206.h"
+#include "fork.h"
+#include "bobBB84_20180221.h"
 
 
 class BobQKD : public SuperBlock {
@@ -25,11 +26,13 @@ class BobQKD : public SuperBlock {
 	TimeContinuousAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_4{ "Bob_4.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_10{ "Bob_10.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_11{ "Bob_11.sgn" };
 
 	TimeContinuousAmplitudeDiscreteReal Bob_8{ "Bob_8.sgn" };
 
 	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ "CLKB_out1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_out2{ "CLKB_out2.sgn" };
+
 
 	
 	
@@ -37,6 +40,7 @@ class BobQKD : public SuperBlock {
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
+
 	BinaryMapper BB0;
 	DiscreteToContinuousTime BB1;
 	PulseShaper BB2;
@@ -53,7 +57,7 @@ class BobQKD : public SuperBlock {
 	Sink BBSink;
 	Sink BBSink0;
 	Sink BBSink1;
-	Sink BBSink2;
+
 
 public:
 	
