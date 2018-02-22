@@ -20,6 +20,7 @@ bool MessageProcessorBob::runBlock(void) {
 	do {
 		alive = ProcessMessageToSend();
 		alive = alive || ProcessReceivedMessage();
+		alive = alive || ProcessStoredMessage();
 	} while (alive);
 
 	return alive;
@@ -37,13 +38,15 @@ bool MessageProcessorBob::ProcessMessageToSend() {
 	for (auto k = 0; k < messageDataLength; k++) {
 		t_real data;
 		inputSignals[0]->bufferGet(&data);
-		mDataToSend.append(to_string(data));
+		mDataToSend = mDataToSend.append(to_string((int)data));
 	}
 
 	t_message messageOut;
-	setMessageDataLength(messageOut, messageDataLength);
-	setMessageData(messageOut, mDataToSend);
-	setMessageType(messageOut, BasisReconciliation);
+	messageOut.messageDataLength = to_string(messageDataLength);
+	messageOut.messageData = mDataToSend;
+//	setMessageDataLength(messageOut,messageDataLength);
+//	setMessageData(messageOut, mDataToSend);
+//	setMessageType(messageOut, BasisReconciliation);
 
 	outputSignals[1]->bufferPut((t_message)messageOut);
 
@@ -52,7 +55,70 @@ bool MessageProcessorBob::ProcessMessageToSend() {
 
 bool MessageProcessorBob::ProcessReceivedMessage() {
 
+	bool alive{ false };
+
+	int ready = inputSignals[1]->ready();
+	if (ready <= 0);
+	else {
+		if (numberOfStoredMessages < maxNumberOfStoredMessages) {
+			inputSignals[1]->bufferGet(&storedMessages[numberOfStoredMessages]);
+			numberOfStoredMessages++;
+			alive = true;
+		}
+	}
+	return alive;
+}
+
+bool MessageProcessorBob::ProcessStoredMessage() {
+
+	bool alive{ false };
+
+	int n{ 0 };
+	if (storedMessages.size() > 0) {
+		do {
+
+			t_message_type mType = getMessageType(storedMessages[n]);
+			t_message_data_length mDataLength = getMessageDataLength(storedMessages[n]);
+			t_message_data mData = getMessageData(storedMessages[n], mDataLength);
+
+			string mDataOut{ "" };
+			int process{ 0 };
+			switch (mType) {
+
+			case BasisReconciliation:
+				process = min(outputSignals[0]->space(), mDataLength);
+
+				for (auto k = 0; k < process; k++) {
+
+					alive = true;
+					outputSignals[0]->bufferPut((t_real)mData[k]);
+
+				}
+				break;
+			}
+
+			int dLength = mDataLength - process;
+			if (dLength == 0) {
+				storedMessages.erase(storedMessages.begin() + n);
+				numberOfStoredMessages = storedMessages.size();
+				n--;
+			}
+			setMessageDataLength(storedMessages[n], dLength);
+
+			mData.erase(mData.begin(), mData.begin() + process);
+			string mDataUpdated{ "" };
+			for (unsigned int m = 0; m < mData.size(); m++) {
+				mDataUpdated.append(to_string(mData[m]));
+			}
+			setMessageData(storedMessages[n], mDataUpdated);
+
+			n++;
+
+		} while (n <= numberOfStoredMessages);
+	}
 	
+
+	return alive;
 }
 
 t_message_data MessageProcessorBob::getMessageData(const t_message& msg, t_message_data_length dataLength) {

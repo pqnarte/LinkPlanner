@@ -4,12 +4,7 @@
 #include <math.h>
 #include <string.h>
 
-#include "netxpto_20180118.h"
-
-typedef enum { BasisReconciliation } t_message_type;
-typedef int t_message_data_length;
-typedef vector<int> t_message_data;
-
+#include "bb84_with_discrete_variables_sdf.h"
 
 class MessageProcessorAlice : public Block {
 
@@ -41,7 +36,7 @@ private:
 	t_message_type getMessageType(const t_message& msg);
 	void setMessageType(t_message msg, t_message_type mType) { msg.messageType = mType; };
 	t_message_data_length getMessageDataLength(const t_message& msg);
-	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) { msg.messageDataLength = mDataLength; };
+	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) { msg.messageDataLength = to_string(mDataLength); };
 	t_message_data getMessageData(const t_message& msg, t_message_data_length dataLength);
 	void setMessageData(t_message msg, string mData) { msg.messageData = mData; };
 

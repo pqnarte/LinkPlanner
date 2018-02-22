@@ -368,6 +368,14 @@ bool SuperBlock::runBlock() {
 						outputSignals[i]->bufferPut(signalValueXY);
 					}
 					break;
+
+				case Message:
+					for (int j = 0; j < length; j++) {
+						t_message signalValue;
+						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+						outputSignals[i]->bufferPut(signalValue);
+					}
+					break;
 				default:
 					cout << "ERRO: netxpto.cpp (SuperBlock)" << "\n";
 					return false;

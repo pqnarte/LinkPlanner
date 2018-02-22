@@ -1,11 +1,12 @@
 #ifndef MESSAGE_PROCESSOR_BOB_H
 #define MESSAGE_PROCESSOR_BOB_H
 
-#include "netxpto_20180118.h"
+#include <sstream>
+#include <iostream>
 
-typedef enum { BasisReconciliation } t_message_type;
-typedef int t_message_data_length;
-typedef vector<int> t_message_data;
+#include "bb84_with_discrete_variables_sdf.h"
+
+using namespace std;
 
 class MessageProcessorBob : public Block {
 	
@@ -20,6 +21,7 @@ public:
 private:
 	/*Input Parameters*/
 	t_message_data_length messageDataLength{ 64 };
+	int maxNumberOfStoredMessages{ 1 };
 
 	/*State Variables*/
 	vector<t_message> storedMessages;
@@ -27,7 +29,7 @@ private:
 
 	/*Private Methods*/
 	t_message_data_length getMessageDataLength(const t_message& msg);
-	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) { msg.messageDataLength = mDataLength; };
+	void setMessageDataLength(t_message msg, t_message_data_length mDataLength) {msg.messageDataLength = mDataLength;};
 	t_message_type getMessageType(const t_message& msg);
 	void setMessageType(t_message msg, t_message_type mType) { msg.messageType = mType; };
 	t_message_data getMessageData(const t_message& msg, t_message_data_length dataLength);
@@ -35,6 +37,7 @@ private:
 
 	bool ProcessMessageToSend();
 	bool ProcessReceivedMessage();
+	bool ProcessStoredMessage();
 
 };
 	

@@ -12,7 +12,7 @@
 #include "clock_20171219.h"
 #include "fork.h"
 #include "bobBB84_20180221.h"
-
+#include "message_processor_bob_20180221.h"
 
 class BobQKD : public SuperBlock {
 
@@ -25,6 +25,7 @@ class BobQKD : public SuperBlock {
 
 	TimeContinuousAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_4{ "Bob_4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal Bob_5{ "Bob_5.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_10{ "Bob_10.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_11{ "Bob_11.sgn" };
 
@@ -32,6 +33,9 @@ class BobQKD : public SuperBlock {
 
 	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ "CLKB_out1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_out2{ "CLKB_out2.sgn" };
+
+	Messages C_C_2{ "C_C_2.sgn" };
+	Messages C_C_1{ "C_C_1.sgn" };
 
 
 	
@@ -53,6 +57,8 @@ class BobQKD : public SuperBlock {
 	DetectionDecisionCircuit BB10;
 
 	bobBB84 BB5;
+
+	MessageProcessorBob BB7;
 
 	Sink BBSink;
 	Sink BBSink0;

@@ -10,6 +10,7 @@
 #include "sink_20180118.h"
 #include "super_block_interface_20180118.h"
 #include "demux_1_2_20180205.h"
+#include "message_processor_alice_20180205.h"
 
 class AliceQKD : public SuperBlock {
 	/* State Variables */
@@ -30,9 +31,11 @@ class AliceQKD : public SuperBlock {
 	TimeContinuousAmplitudeDiscreteReal alice_4{"alice_4.sgn"};
 	TimeContinuousAmplitudeDiscreteReal alice_4_out{ "alice_4_out.sgn" };
 
+	Binary alice_5{ "alice_5.sgn" };
+
 	TimeContinuousAmplitudeContinuousReal clkA_out{ "clkA_out.sgn" };
 
-	Binary alice_9_out{"alice_9_out.sgn"};
+	Binary alice_12_out{"alice_12_out.sgn"};
 
 	Binary alice_6{ "alice_6.sgn" };
 	Binary alice_6_out{ "alice_6_out.sgn" };
@@ -47,6 +50,12 @@ class AliceQKD : public SuperBlock {
 
 	Binary alice_11{"alice_11.sgn"  };
 
+	Binary alice_12{ "alice_12.sgn" };
+
+	Binary alice_13{ "alice_13.sgn" };
+
+	Messages C_C_1{ "C_C_1.sgn" };
+	Messages C_C_1_out{ "C_C_1_out.sgn" };
 
 	
 
@@ -74,6 +83,8 @@ class AliceQKD : public SuperBlock {
 	BinarySource BA11;
 
 	Sink BA12;
+
+	MessageProcessorAlice BA7;
 
 	BinarySource BA13;
 
