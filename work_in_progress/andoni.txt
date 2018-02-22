@@ -1,3 +1,19 @@
+2018-02-22
+TO BE DONE
+
+	- rever a parte teórica & simulação: 
+			Noise: o desempenho com o mathced filter é melhor do que sem filtro
+			ISI: raised-cosine (tx-rx) => ISI -> root-raised-cosine (tx-rx) => ISI = 0
+			Noise + ISI
+
+	- iniciar a parte de desenvolvimento dos blocos sobre o SNR
+
+	- parte experimental
+		- colocar o guião com o trabalho de RO no diretoria doc/tex/sdf/m_qam_system
+
+Next meeting: 1/3, 9h
+
+
 2018-02-16
 TO BE DONE
 	- escrever melhor a parte teórica (mais detalhe, nomeadamente o cáculo da nédia e variância com matched-filter), parte de simulação (mais resultados para as duas situações, sem e com matched filter)
