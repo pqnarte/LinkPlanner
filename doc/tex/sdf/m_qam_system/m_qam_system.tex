@@ -3,21 +3,20 @@
 
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-		\textbf{Student Name}  & & Ana Luisa Carvalho (2017/04/01 - 2017/12/31) \\
-                               & & Andoni Santos (2018/01/03 - )\\
+		\textbf{Student Name}  & & Andoni Santos (2018/01/03 - )\\
+							   & & Ana Luisa Carvalho (2017/04/01 - 2017/12/31) \\
 		\textbf{Goal}          &:& M-QAM system implementation with BER measurement and comparison with theoretical and experimental values.\\
 		\textbf{Directory} &:& sdf/m\_qam\_system
 	\end{tabular}
 \end{tcolorbox}
 
-The goal of this project is to simulate a Quadrature Amplitude Modulation transmission system with M points in the constellation diagram (M-QAM) and to perform a Bit Error Rate (BER) measurement that can be compared with theoretical values.
+The goal of this project is to simulate a Quadrature Amplitude Modulation transmission system with M points in the constellation diagram (M-QAM) and to perform a Bit Error Rate (BER) measurement that can be compared with theoretical and experimental values.
 
 %TODO: Verify
-M-QAM systems can encode $\log_2 M$ bits per symbol which means they can transmit higher data rates keeping the same bandwidth when compared, for example, to PSK systems. However, because the states are closer together, these systems can be more susceptible to noise.
-
+M-QAM systems can encode $\log_2 M$ bits per symbol which means they can transmit higher data rates keeping the same bandwidth when compared, for example, to PSK systems. However, because the states are closer together, these systems require a higher singal-to-noise ratio.
 The Bit Error Rate (BER) is a measurement of how a bit stream is altered by a transmission system due to noise (among other factors). To study this effect we introduced Additive White Gaussian Noise (AWGN) to model thermal noise at the receiver.
 
-For $M=4$ the M-QAM system can be reduced to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}). Both these systems are also equivalent two independent Binary Phase Shift Keying (BPSK) signals impressed on quadrature carriers.
+For $M=4$ the M-QAM system can be reduced to a Quadrature Phase Shift Keying system (QPSK) system that uses four equispaced points in the constellation diagram (see figure \ref{fig:const}).
 
 \begin{figure}[h]
 	\centering
@@ -30,11 +29,11 @@ For $M=4$ the M-QAM system can be reduced to a Quadrature Phase Shift Keying sys
 
 \subsection{Theoretical Analysis}
 
-M-QAM is a modulation scheme that takes advantage of two carriers (usually sinusoidal waves) with a phase difference of $\pi/2$. The resultant output consists of a signal with both amplitude and phase variations. The two carriers, referred to as I (In-phase) and Q (Quadrature), can be represented as
+M-QAM is a modulation scheme that takes advantage of two sinusoidal carriers with a phase difference of $\pi/2$. The resultant output consists of a signal with both amplitude and phase variations. The two carriers, referred to as I (In-phase) and Q (Quadrature), can be represented as
 
 \begin{align}
-	I=A\cos(\phi) \\
-	Q=A\sin(\phi)
+	I(t)=A(t)\cos(\phi t) \\
+	Q(t)=A(t)\sin(\phi t)
 \end{align}
 which means that any sinusoidal wave can be decomposed in its I and Q components:
 
@@ -124,7 +123,7 @@ with
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $m$. $N_0$ will be the standard deviation of the sampled values.
+\noindent where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $m$. $N_0$ will be the standard deviation of the sampled values.
 
 
 
@@ -186,15 +185,17 @@ From this, the probability of symbol error is:
 %		\label{fig:QPSK_th_curve}
 %\end{figure}
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be minimal as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
-As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter.
+As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter, which can be calculated as:
 
-The optimal BER that can be obtained by using matched filtering is described by~\cite{mischasch}:
+% TODO: ADD noise and signal calculation for mf
+
+The optimal BER that can be obtained by using matched filtering is given by~\cite{mischasch}:
 
 \begin{eqnarray}\label{eq:berBPSK}
-&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{mT/2}{\sqrt{2} N_{mf}}}\right) =\\
-&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{m^2T}{2 n_0}}}\right) =\\
+&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{mT/2}{\sqrt{2} N_{mf}}}\right)\\
+&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{m^2T}{2 n_0}}}\right)\\
 &	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E}{n_0}}}\right)
 \end{eqnarray}
 
@@ -206,7 +207,7 @@ with
 &N_{mf} &= \sqrt{\frac{n_0 T}{4}}
 \end{eqnarray}
 
-where T is the symbol period.
+\noindent where T is the symbol period.
 Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
 %Here, $T$ is the symbol period. 
 
@@ -266,7 +267,7 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         bit\_error\_rate\_20171810.cpp               &                   & \checkmark \\ \hline
         decoder\_20180118.cpp                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.cpp &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20180118.cpp             & $^{1}$			 & \checkmark \\ \hline
+        homodyne_receiver_20171203.cpp             & $^{1}$			 & \checkmark \\ \hline
         ideal\_amplififer\_20180118.cpp              &                   & \checkmark \\ \hline
         iq\_modulator\_20180118.cpp                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.cpp              &                   & \checkmark \\ \hline
@@ -294,28 +295,28 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
         \multicolumn{3}{|c|}{ \textbf{Header Files} } \\
         \hline
         \textbf{File}                      & \textbf{Comments} & \textbf{Status} \\ \hline
-        add\_20180118.h                            & $^{1}$			   & \checkmark \\ \hline
+        add\_20171116.h                            & 			   & \checkmark \\ \hline
         binary\_source\_20180118 .h                &                   & \checkmark \\ \hline
-        bit\_error\_rate\_20171810.h               & $^{1}$            & \checkmark \\ \hline
+        bit\_error\_rate\_20171810.h               &             & \checkmark \\ \hline
         decoder\_20180118.h                        &                   & \checkmark \\ \hline
         discrete\_to\_continuous\_time\_20180118.h &                   & \checkmark \\ \hline
-        homodyne\_receiver\_20171203.h             & $^{1,2}$          & \checkmark \\ \hline
+        homodyne\_receiver\_20171203.h             & $^{1}$          & \checkmark \\ \hline
         ideal\_amplifier\_20180118.h               &                   & \checkmark \\ \hline
         iq\_modulator\_20180118.h                  &                   & \checkmark \\ \hline
         local\_oscillator\_20180118.h              &                   & \checkmark \\ \hline
         m\_qam\_mapper\_20180118.h                 &                   & \checkmark \\ \hline
         m\_qam\_transmitter\_20180118.h            &                   & \checkmark \\ \hline
-        netxpto\_20180118.h                        & $^3$ 			   & \checkmark \\ \hline
+        netxpto\_20180118.h                        & $^2$ 			   & \checkmark \\ \hline
         optical\_hybrid\_20180118.h                &                   & \checkmark \\ \hline
         photodiode\_old\_20180118.h                &                   & \checkmark \\ \hline
         pulse\_shaper\_20180118.h                  &                   & \checkmark \\ \hline
-        sampler\_20171119.h                        & $^1$              & \checkmark \\ \hline
+        sampler\_20171119.h                        &               & \checkmark \\ \hline
         sink\_20180118.h                           &                   & \checkmark \\ \hline
-        super\_block\_interface\_20180118.h        & $^3$			   & \checkmark \\ \hline
+        super\_block\_interface\_20180118.h        & $^2$			   & \checkmark \\ \hline
         white\_noise\_20180118.h                   &                   & \checkmark \\ \hline
     \end{tabulary}
-    \caption{$^1$ This file does not share the same time-tag as the corresponding ".cpp" file.\\$^2$ The library entry is under a different name, \textit{m\_qam\_receiver}\\
-    $^3$ No library entry as it is a main or general purpose file, not a specific block. \label{tab:headers}}
+    \caption{$^1$ The library entry is under a different name, \textit{m\_qam\_receiver}\\
+    $^2$ No library entry as it is a main or general purpose file, not a specific block. \label{tab:headers}}
 \end{table}
 
 %\begin{table}[]
@@ -367,7 +368,7 @@ The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}.
 \pagebreak
 \subsection*{Input Parameters}
 
-The system accepts several input parameters that can be defined by the user. These are described in table \ref{table:in_par}.
+%The system accepts several input parameters that can be defined by the user. These are described in table \ref{table:in_par}.
 
 \begin{table}[H]
 	\centering
