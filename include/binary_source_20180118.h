@@ -2,6 +2,18 @@
 # define BINARY_SOURCE_H_
 
 # include <vector>
+# include <complex>
+# include <fstream>
+# include <iostream>
+# include <math.h>
+# include <stdio.h>
+# include <string>
+# include <strstream>
+# include <vector>
+# include <algorithm> 
+# include <random>
+
+# include "netxpto_20180118.h"
 
 enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 
