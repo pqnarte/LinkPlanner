@@ -12,7 +12,7 @@
 # include "super_block_interface_20180118.h"
 # include "pulse_shaper_20180118.h"
 # include "white_noise_20180118.h"
-# include "add_20180118.h"
+# include "add_20171116.h"
 
 
 // this is a test block for the purpose of beta testing new code

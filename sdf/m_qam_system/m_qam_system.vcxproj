@@ -78,7 +78,7 @@
     <ClCompile Include="..\..\lib\bit_error_rate_20171810.cpp" />
     <ClCompile Include="..\..\lib\decoder_20180118.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
-    <ClCompile Include="..\..\lib\homodyne_receiver_20180118.cpp" />
+    <ClCompile Include="..\..\lib\homodyne_receiver_20171203.cpp" />
     <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp" />
     <ClCompile Include="..\..\lib\iq_modulator_20180118.cpp" />
     <ClCompile Include="..\..\lib\local_oscillator_20180118.cpp" />
