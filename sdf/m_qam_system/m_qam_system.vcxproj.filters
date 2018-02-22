@@ -33,9 +33,6 @@
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\homodyne_receiver_20180118.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -73,6 +70,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\white_noise_20180118.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\homodyne_receiver_20171203.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

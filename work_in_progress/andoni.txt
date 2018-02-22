@@ -1,3 +1,14 @@
+2018-02-16
+TO BE DONE
+	- escrever melhor a parte teórica (mais detalhe, nomeadamente o cáculo da nédia e variância com matched-filter), parte de simulação (mais resultados para as duas situações, sem e com matched filter)
+
+	- parte experimental
+		preparar o guião, trazer alguns resultados
+
+Next meeting: 22/2, 11h
+	
+
+
 2018-02-07
 TO BE DONE
 	- concluir a parte teórica e simulação 
