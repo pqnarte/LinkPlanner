@@ -18,39 +18,61 @@ bool MessageProcessorBob::runBlock(void) {
 	bool alive{ false };
 
 	do {
-		alive = ProcessMessageToSend();
-		alive = alive || ProcessReceivedMessage();
-		alive = alive || ProcessStoredMessage();
+		alive = ProcessBasisToStore();
+		alive = alive || ProcessMessageToSend();
+//		alive = alive || ProcessReceivedMessage();
+//		alive = alive || ProcessStoredMessage();
 	} while (alive);
 
 	return alive;
 }
 
-bool MessageProcessorBob::ProcessMessageToSend() {
+bool MessageProcessorBob::ProcessBasisToStore() {
+	bool alive{ false };
+	int ready = inputSignals[0]->ready();
 
-	int ready = min(inputSignals[0]->ready(), messageDataLength);
-	int space = outputSignals[1]->space();
-	int process = min(ready, space);
-
-	if (process <= 0) return false;
-
-	string mDataToSend{ "" };
-	for (auto k = 0; k < messageDataLength; k++) {
-		t_real data;
-		inputSignals[0]->bufferGet(&data);
-		mDataToSend = mDataToSend.append(to_string((int)data));
+	if (ready <= 0);
+	else {
+		if (numberOfStoredBasis < maxOfStoredBasis) {
+			t_real basisIn;
+			inputSignals[0]->bufferGet(&basisIn);
+			storedBasis.push_back((int)basisIn);
+			numberOfStoredBasis++;
+			alive = true;
+		}
 	}
 
-	t_message messageOut;
-	messageOut.messageDataLength = to_string(messageDataLength);
-	messageOut.messageData = mDataToSend;
-//	setMessageDataLength(messageOut,messageDataLength);
-//	setMessageData(messageOut, mDataToSend);
-//	setMessageType(messageOut, BasisReconciliation);
+	return alive;
+}
 
-	outputSignals[1]->bufferPut((t_message)messageOut);
+bool MessageProcessorBob::ProcessMessageToSend() {
+	bool alive{ false };
 
-	return true;
+	int space = outputSignals[1]->space();
+	if (space <= 0) return alive;
+
+	if (numberOfStoredBasis >= messageDataLength) {
+		int process = min(outputSignals[0]->space(), messageDataLength);
+
+		string mDataToSend{ "" };
+		for (auto k = 0; k < process; k++) {
+			mDataToSend.append(to_string(storedBasis[k]));
+			outputSignals[0]->bufferPut((t_real)storedBasis[k]);
+		}
+
+		storedBasis.erase(storedBasis.begin(),storedBasis.begin() + process);
+		numberOfStoredBasis = (int)storedBasis.size();
+
+		t_message messageToSend;
+		
+		messageToSend.messageData = mDataToSend;
+		messageToSend.messageDataLength =to_string((t_message_data_length)mDataToSend.size());
+		messageToSend.messageType = BasisReconciliation;
+
+		alive = true;
+	}
+
+	return alive;
 }
 
 bool MessageProcessorBob::ProcessReceivedMessage() {
@@ -61,7 +83,9 @@ bool MessageProcessorBob::ProcessReceivedMessage() {
 	if (ready <= 0);
 	else {
 		if (numberOfStoredMessages < maxNumberOfStoredMessages) {
-			inputSignals[1]->bufferGet(&storedMessages[numberOfStoredMessages]);
+			t_message mIn;
+			inputSignals[1]->bufferGet(&mIn);
+			storedMessages.push_back(mIn);
 			numberOfStoredMessages++;
 			alive = true;
 		}
@@ -100,7 +124,7 @@ bool MessageProcessorBob::ProcessStoredMessage() {
 			int dLength = mDataLength - process;
 			if (dLength == 0) {
 				storedMessages.erase(storedMessages.begin() + n);
-				numberOfStoredMessages = storedMessages.size();
+				numberOfStoredMessages = (int)storedMessages.size();
 				n--;
 			}
 			setMessageDataLength(storedMessages[n], dLength);
@@ -122,6 +146,7 @@ bool MessageProcessorBob::ProcessStoredMessage() {
 }
 
 t_message_data MessageProcessorBob::getMessageData(const t_message& msg, t_message_data_length dataLength) {
+
 	string mDataString = msg.messageData;
 
 	vector <int> mDataVector;
@@ -134,7 +159,11 @@ t_message_data MessageProcessorBob::getMessageData(const t_message& msg, t_messa
 }
 
 t_message_data_length MessageProcessorBob::getMessageDataLength(const t_message& msg) {
-	return stoi(msg.messageDataLength);
+
+	if ((msg.messageDataLength).size() >= 0)
+		return stoi(msg.messageDataLength);
+	else
+		return 0;
 }
 
 t_message_type MessageProcessorBob::getMessageType(const t_message& msg) {

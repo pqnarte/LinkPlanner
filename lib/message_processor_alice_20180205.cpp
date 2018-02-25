@@ -71,7 +71,7 @@ bool MessageProcessorAlice::processStoredMessages() {
 			int dLength = mDataLength - process;
 			if (dLength == 0) {
 				storedMessages.erase(storedMessages.begin() + n);
-				numberOfStoredMessages = storedMessages.size();
+				numberOfStoredMessages = (int)storedMessages.size();
 				n--;
 			}
 			setMessageDataLength(storedMessages[n], dLength);
@@ -85,7 +85,7 @@ bool MessageProcessorAlice::processStoredMessages() {
 
 			t_message messageOut;
 			setMessageType(messageOut, mType);
-			setMessageDataLength(messageOut, mDataOut.size());
+			setMessageDataLength(messageOut, (t_message_data_length)mDataOut.size());
 			setMessageData(messageOut, mDataOut);
 			outputSignals[1]->bufferPut((t_message)messageOut);
 
@@ -127,8 +127,10 @@ t_message_type MessageProcessorAlice::getMessageType(const t_message& msg) {
 }
 
 t_message_data_length MessageProcessorAlice::getMessageDataLength(const t_message& msg) {
-
-	return stoi(msg.messageDataLength);
+	if ((msg.messageDataLength).size() != 0)
+		return stoi(msg.messageDataLength);
+	else
+		return 0;
 }
 
 

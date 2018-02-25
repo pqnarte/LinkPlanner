@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\include;C:\Users\maria\Documents\Repositorio\LinkPlanner\sdf\bb84_with_discrete_variables;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\maria\Documents\Repositorio\LinkPlanner\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

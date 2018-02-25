@@ -92,7 +92,7 @@ class AliceQKD : public SuperBlock {
 
 	Sink BA15;
 
-
+	
 
 public:
 	/* input parameters*/
