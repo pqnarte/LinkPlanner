@@ -1,5 +1,5 @@
 #ifndef DEMUX_1_2_H
-#define DEMUX_1_2_h
+#define DEMUX_1_2_H
 
 #include "netxpto_20180118.h"
 

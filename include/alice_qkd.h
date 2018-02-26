@@ -12,6 +12,8 @@
 #include "demux_1_2_20180205.h"
 #include "message_processor_alice_20180205.h"
 
+
+
 class AliceQKD : public SuperBlock {
 	/* State Variables */
 
@@ -92,6 +94,7 @@ class AliceQKD : public SuperBlock {
 
 	Sink BA15;
 
+	Sink BA16;
 	
 
 public:

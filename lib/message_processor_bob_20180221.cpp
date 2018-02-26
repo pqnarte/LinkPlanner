@@ -17,12 +17,12 @@ void MessageProcessorBob::initialize(void) {
 bool MessageProcessorBob::runBlock(void) {
 	bool alive{ false };
 
-	do {
+	
 		alive = ProcessBasisToStore();
 		alive = alive || ProcessMessageToSend();
-//		alive = alive || ProcessReceivedMessage();
-//		alive = alive || ProcessStoredMessage();
-	} while (alive);
+		alive = alive || ProcessReceivedMessage();
+		alive = alive || ProcessStoredMessage();
+	
 
 	return alive;
 }
@@ -69,6 +69,7 @@ bool MessageProcessorBob::ProcessMessageToSend() {
 		messageToSend.messageDataLength =to_string((t_message_data_length)mDataToSend.size());
 		messageToSend.messageType = BasisReconciliation;
 
+		outputSignals[1]->bufferPut((t_message)messageToSend);
 		alive = true;
 	}
 
@@ -80,7 +81,7 @@ bool MessageProcessorBob::ProcessReceivedMessage() {
 	bool alive{ false };
 
 	int ready = inputSignals[1]->ready();
-	if (ready <= 0);
+	if (ready <= 0) return alive;
 	else {
 		if (numberOfStoredMessages < maxNumberOfStoredMessages) {
 			t_message mIn;
@@ -97,9 +98,7 @@ bool MessageProcessorBob::ProcessStoredMessage() {
 
 	bool alive{ false };
 
-	int n{ 0 };
-	if (storedMessages.size() > 0) {
-		do {
+	for(auto n = 0; n < numberOfStoredMessages; n++) {
 
 			t_message_type mType = getMessageType(storedMessages[n]);
 			t_message_data_length mDataLength = getMessageDataLength(storedMessages[n]);
@@ -122,26 +121,22 @@ bool MessageProcessorBob::ProcessStoredMessage() {
 			}
 
 			int dLength = mDataLength - process;
+			mData.erase(mData.begin(), mData.begin() + process);
 			if (dLength == 0) {
 				storedMessages.erase(storedMessages.begin() + n);
 				numberOfStoredMessages = (int)storedMessages.size();
-				n--;
 			}
-			setMessageDataLength(storedMessages[n], dLength);
-
-			mData.erase(mData.begin(), mData.begin() + process);
-			string mDataUpdated{ "" };
-			for (unsigned int m = 0; m < mData.size(); m++) {
-				mDataUpdated.append(to_string(mData[m]));
+			else {
+				storedMessages[n].messageDataLength = to_string(dLength);
+				string mDataUpdated{ "" };
+				for (unsigned int m = 0; m < mData.size(); m++) {
+					mDataUpdated.append(to_string(mData[m]));
+				}
+				storedMessages[n].messageData = mDataUpdated;
 			}
-			setMessageData(storedMessages[n], mDataUpdated);
 
-			n++;
-
-		} while (n <= numberOfStoredMessages);
 	}
 	
-
 	return alive;
 }
 
@@ -151,8 +146,13 @@ t_message_data MessageProcessorBob::getMessageData(const t_message& msg, t_messa
 
 	vector <int> mDataVector;
 
-	for (auto k = 0; k < dataLength; k++) {
-		mDataVector[0] = (int)mDataString.at(k);
+	for (int k = 0; k < dataLength; k++) {
+		char data = mDataString.at(k);
+
+		if (data == '1')
+			mDataVector.push_back(1);
+		else if (data == '0')
+			mDataVector.push_back(0);
 	}
 
 	return mDataVector;

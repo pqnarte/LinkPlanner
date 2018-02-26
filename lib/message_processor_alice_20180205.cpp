@@ -19,10 +19,10 @@ bool MessageProcessorAlice::runBlock(void) {
 
 	bool alive{ false };
 
-	do {
+
 		alive = processInMessages();
 		alive = alive || processStoredMessages();
-	} while (alive);
+
 
 	return alive;
 }
@@ -31,67 +31,69 @@ bool MessageProcessorAlice::processStoredMessages() {
 
 	bool alive{ false };
 
-	int n{ 0 };
-	if (storedMessages.size() > 0) {
-		do {
+	for(auto n = 0; n < numberOfStoredMessages; n++) {
 
-			t_message_type mType = getMessageType(storedMessages[n]);
-			t_message_data_length mDataLength = getMessageDataLength(storedMessages[n]);
-			t_message_data mData = getMessageData(storedMessages[n], mDataLength);
+		t_message_type mType = getMessageType(storedMessages[n]);
+		t_message_data_length mDataLength = getMessageDataLength(storedMessages[n]);
+		t_message_data mData = getMessageData(storedMessages[n], mDataLength);
 
-			string mDataOut{ "" };
-			int process{ 0 };
-			switch (mType) {
+		string mDataOut{ "" };
+		int process{ 0 };
+		switch (mType) {
 
-			case BasisReconciliation:
+		case BasisReconciliation:
 
-				int ready = min(inputSignals[0]->ready(), mDataLength);
-//				ready = min(ready, outputSignals[0]->space());
-				process = min(ready, outputSignals[0]->space());
+			int ready = min(inputSignals[0]->ready(), mDataLength);
+			//				ready = min(ready, outputSignals[0]->space());
+			process = min(ready, outputSignals[0]->space());
 
-				for (auto k = 0; k < process; k++) {
+			if (process <= 0) return alive;
 
-					alive = true;
+			for (auto k = 0; k < process; k++) {
 
-					t_binary inBit;
-					inputSignals[0]->bufferGet(&inBit);
+				alive = true;
 
-					if (inBit == mData[k]) {
-						outputSignals[0]->bufferPut((t_binary)1);
-						mDataOut.append("1");
-					}
-					else {
-						outputSignals[0]->bufferPut((t_binary)0);
-						mDataOut.append("0");
-					}
+				t_binary inBit;
+				inputSignals[0]->bufferGet(&inBit);
+
+				if (inBit == mData[k]) {
+					outputSignals[0]->bufferPut((t_binary)1);
+					mDataOut.append("1");
 				}
-				break;
+				else {
+					outputSignals[0]->bufferPut((t_binary)0);
+					mDataOut.append("0");
+				}
 			}
+			break;
+		}
 
-			int dLength = mDataLength - process;
-			if (dLength == 0) {
-				storedMessages.erase(storedMessages.begin() + n);
-				numberOfStoredMessages = (int)storedMessages.size();
-				n--;
-			}
-			setMessageDataLength(storedMessages[n], dLength);
-
-			mData.erase(mData.begin(), mData.begin() + process);
+		int dLength = mDataLength - process;
+		mData.erase(mData.begin(), mData.begin() + process);
+		if (dLength == 0) {
+			storedMessages.erase(storedMessages.begin() + n);
+			numberOfStoredMessages = (int)storedMessages.size();
+		}
+		else {
+			storedMessages[n].messageDataLength = to_string(dLength);
 			string mDataUpdated{ "" };
 			for (unsigned int m = 0; m < mData.size(); m++) {
 				mDataUpdated.append(to_string(mData[m]));
 			}
-			setMessageData(storedMessages[n], mDataUpdated);
+			storedMessages[n].messageData = mDataUpdated;
+		}
 
-			t_message messageOut;
-			setMessageType(messageOut, mType);
-			setMessageDataLength(messageOut, (t_message_data_length)mDataOut.size());
-			setMessageData(messageOut, mDataOut);
+		t_message messageOut;
+		messageOut.messageType = mType;
+		messageOut.messageDataLength = to_string((int)mDataOut.size());
+		messageOut.messageData = mDataOut;
+
+		if (mDataOut.size() != 0)
+		{
 			outputSignals[1]->bufferPut((t_message)messageOut);
+		}
+		else;
 
-			n++;
-
-		} while (n <= numberOfStoredMessages);
 	}
 	
 	return alive;
@@ -108,7 +110,7 @@ bool MessageProcessorAlice::processInMessages() {
 		if (numberOfStoredMessages < maxNumberOfStoredMessages) {
 			t_message msgIn;
 			inputSignals[1]->bufferGet(&msgIn);
-			storedMessages.insert(storedMessages.begin() + storedMessages.size(), msgIn);
+			storedMessages.push_back(msgIn);
 			numberOfStoredMessages++;
 			alive = true;
 		}
@@ -140,8 +142,24 @@ t_message_data MessageProcessorAlice::getMessageData(const t_message& msg, t_mes
 
 	vector <int> mDataVector;
 
-	for (auto k = 0; k < dataLength; k++) {
-		mDataVector[k] = (int)mDataString.at(k);
+	for (int k = 0; k < dataLength; k++) {
+		char data = mDataString.at(k);
+		
+		if(data == '1')
+			mDataVector.push_back(1);
+		else if (data == '0')
+			mDataVector.push_back(0);
+		else if (data == '-') {
+			char aux_data = mDataString.at(k + 1);
+			if (aux_data == '2') {
+				mDataVector.push_back(-2);
+				k++;
+			}
+			else if (aux_data == '1') {
+				mDataVector.push_back(-1);
+				k++;
+			}
+		}
 	}
 
 	return mDataVector;
