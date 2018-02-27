@@ -53,7 +53,7 @@ This means that the probability of an error in bit detection is independent amon
 
 Let the $s(t)$ be the signal sampled at a given instant $t$ for either the in-phase or quadrature component, $A(t)$ be the component corresponding to the transmitted signal with value equal to $\pm A$, depending on whether the transmitted signal was 1 or 0, and $n(t)$ the component associated with the Gaussian white noise with variance $n_0/2$, such that
 
-\begin{equation}
+\begin{equation}\label{eq:sigAmpNoise}
 s(t) = A(t) + n(t)
 \end{equation}
 
@@ -187,24 +187,36 @@ From this, the probability of symbol error is:
 
 It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
-As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter, which can be calculated as:
+%As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter, which can be calculated as:
+Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNoise}], the output of the matched filter receiver will be~\cite{mischasch}:
+
+\begin{eqnarray}
+&s_{mf} (t) &= \int_{0}^{T} s(t)\cos(\omega_0 t ) dt\nonumber\\ 
+&	       &= \int_{0}^{T} m(t) \cos(\omega_0 t ) dt + \int_{0}^{T} n(t) \cos(\omega_{0} t ) dt
+\end{eqnarray}
+
+In the case of QPSK with m=4, both the quadrature and in-phase components have $m(t) = \pm A$. The values that replace $m$ and $N_0$ in Equation~\ref{eq:berMQAM} become:
+
+\begin{eqnarray}
+&m_{mf} &= \frac{A T}{2}\\
+&N_{mf} &= \sqrt{\sigma_o^2} = E(n_o^2) = \sqrt{\frac{n_0 T}{4}}
+\end{eqnarray}
 
 % TODO: ADD noise and signal calculation for mf
 
-The optimal BER that can be obtained by using matched filtering is given by~\cite{mischasch}:
+The optimal BER that can be obtained by using matched filtering is then given by:
 
 \begin{eqnarray}\label{eq:berBPSK}
-&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{AT/2}{\sqrt{2} N_{mf}}}\right)\\
+&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{AT/2}{\sqrt{2} N_{mf}}}\right)\nonumber\\
 &	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{A^2T}{2 n_0}}}\right)\\
-&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E}{n_0}}}\right)
+&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
 \end{eqnarray}
 
 with
 
 \begin{eqnarray}
 %&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
-&E &= \frac{A^2 T}{2} \\
-&N_{mf} &= \sqrt{\frac{n_0 T}{4}}
+&E_b &= \frac{A^2 T}{2} \\
 \end{eqnarray}
 
 \noindent where T is the symbol period.
