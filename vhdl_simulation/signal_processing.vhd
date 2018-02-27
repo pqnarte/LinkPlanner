@@ -6,23 +6,23 @@ use IEEE.NUMERIC_STD.all;
 ------------------------------------------
 ---------- PACKAGE DECLARATIONS ----------
 ------------------------------------------
-package SignalProcessing is
+package signal_processing is
 	
 	procedure computation (signalIn:in std_logic_vector; signalOut:out std_logic_vector);
 	
-end SignalProcessing;
+end signal_processing;
 
 ------------------------------------------
 ------------- PACKAGE BODY ---------------
 ------------------------------------------
-package body SignalProcessing is
+package body signal_processing is
 	
 	-- Processes each byte of the signal
 	procedure computation (signalIn:in std_logic_vector; signalOut:out std_logic_vector) is
 	begin
 		-- Implementation
-		signalOut := std_logic_vector(unsigned(signalIn) + 1); --remove later
+		signalOut := signalIn; --remove later
 		
 	end computation;
 	
-end SignalProcessing;
+end signal_processing;

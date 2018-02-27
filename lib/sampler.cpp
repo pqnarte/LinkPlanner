@@ -5,7 +5,7 @@
 #include <string>
 
 #include "netxpto.h"
-#include "sampler.h"
+#include "sampler_20171116.h"
 
 
 void Sampler::initialize(void){

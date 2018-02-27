@@ -3,7 +3,7 @@
 #include <chrono>
 #include <fstream>
 
-#include "netxpto_20180118.h"
+#include "netxpto.h"
 #include "photodiode_old_20180118.h"
 #include <random>
 

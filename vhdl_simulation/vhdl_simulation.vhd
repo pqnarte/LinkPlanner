@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_TEXTIO.all;
 use IEEE.NUMERIC_STD.all;
 use STD.TEXTIO.all;
 
-use work.SignalProcessing.all;
+use work.signal_processing.all;
 
 entity vhdl_simulation is
 	generic(FILENAME : string := "SIGNAL.sgn");
@@ -56,6 +56,7 @@ io_proc: process
 						-- if new_line_count = 4, means HEADER is over
 							new_line_count :=  new_line_count + 1;
 						end if;
+						write(file_output_signal, char_buffer_in); -- writes the header in the output file
 						next;
 					end if;
 					-------------------------------------------

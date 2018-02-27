@@ -8,7 +8,7 @@
 # include <vector>
 # include <algorithm>
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 # include "m_qam_mapper_20180118.h"
 
 

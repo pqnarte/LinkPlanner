@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
 # define PROGRAM_INCLUDE_PHOTODIODE_OLD_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 #include <random>
 
 // Simulates a photodiode

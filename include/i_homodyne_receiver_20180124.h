@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_I_HOMODYNE_RECEIVER_H_
 # define PROGRAM_INCLUDE_I_HOMODYNE_RECEIVER_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 
 # include "photodiode_old_20180118.h"
 # include "ideal_amplifier_20180118.h"
