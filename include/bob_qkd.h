@@ -6,12 +6,13 @@
 #include "discrete_to_continuous_time_20180118.h"
 #include "pulse_shaper_20180111.h"
 #include "super_block_interface_20180118.h"
-#include "fork_20180112.h"
 #include "detection_decision_circuit_20180206.h"
 #include "sink.h"
 #include "clock_20171219.h"
 #include "fork.h"
 #include "bobBB84_20180221.h"
+#include "demux_1_2_20180205.h"
+#include "message_processor_bob_20180221.h"
 
 
 class BobQKD : public SuperBlock {
@@ -25,13 +26,21 @@ class BobQKD : public SuperBlock {
 
 	TimeContinuousAmplitudeDiscreteReal Bob_7{ "Bob_7.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_4{ "Bob_4.sgn" };
+	Binary Bob_5{ "Bob_5.sgn" };
 	TimeContinuousAmplitudeDiscreteReal Bob_10{ "Bob_10.sgn" };
-	TimeContinuousAmplitudeDiscreteReal Bob_11{ "Bob_11.sgn" };
+	Binary Bob_11{ "Bob_11.sgn" };
 
 	TimeContinuousAmplitudeDiscreteReal Bob_8{ "Bob_8.sgn" };
 
+	Binary Bob_9{ "Bob_9.sgn" };
+	Binary Bob_6{ "Bob_6.sgn" };
+	Binary Bob_6_out{ "Bob_6_out.sgn" };
+
 	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ "CLKB_out1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_out2{ "CLKB_out2.sgn" };
+
+	Messages C_C_2{ "C_C_2.sgn" };
+	Messages C_C_1{ "C_C_1.sgn" };
 
 
 	
@@ -53,6 +62,12 @@ class BobQKD : public SuperBlock {
 	DetectionDecisionCircuit BB10;
 
 	bobBB84 BB5;
+
+	MessageProcessorBob BB7;
+
+	Demux_1_2 BB6;
+
+	Sink BB11;
 
 	Sink BBSink;
 	Sink BBSink0;

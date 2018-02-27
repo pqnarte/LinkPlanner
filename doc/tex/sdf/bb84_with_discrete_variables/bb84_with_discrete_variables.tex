@@ -162,14 +162,14 @@ Figure \ref{toplevelsimulation} presents the top level diagram of our simulation
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=0.5cm 6cm 0.5cm 10cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Alice_bb84.pdf}
+        \includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Alice_bb84.pdf}
     \caption{Simulation diagram at Alice's side}\label{alicesimulation}
 \end{figure}
 
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=0.5cm 16cm 0.5cm 2cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Bob_bb84.pdf}
+        \includegraphics[clip, trim=0cm 0cm 0cm 0cm, width=1.00\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_Bob_bb84.pdf}
     \caption{Simulation diagram at Bob's side}\label{bobsimulation}
 \end{figure}
 
@@ -296,11 +296,32 @@ message\_processor\_bob.cpp                         &                      &    
 \end{tabular}
 \end{table}
 
-\subsection{Open Issues}
+\subsection{Simulation Results}
 
-There still are some open issues in simulation code.
+Figure \ref{toplevelalicebob} represents the block diagram of the first simulation performed between Alice and Bob. This simulation intends to simulate the communication protocol between Alice and Bob until they do the Basis Reconciliation. At this time, it is not taken into account any attack from an eavesdropper. However, as one can learn from theoretical protocol analysis, the attenuation due the fiber losses and the dark counts probabilities from single photon detectors are both taken into account.
 
-One of them was detected in block \textbf{single\_photon\_source\_20171218.cpp}. This block should assume each sample with 4 real values, since it writes two complex values each time the block runs, i.e each \textit{bufferput()} should write an array of two complex values in outputSignal, outputSignals[0]->bufferPut(valueXY), where \textit{t\_complex\_xy valueXY = \{valueX, valueY\}} and \textit{t\_complex valueX = (realValue\_1,realValue\_2)}. This way, independently of the number of samples these four values should always be written. However, if we chose a number of samples which is not divisible by 4, the four numbers are not written in the last "sample" and the array data for X's values and Y's values have different sizes which is wrong. For example, if we chose 10 samples to acquire, the last values correspond to X's values instead of Y's values and the first array data is longer than the other.
+\begin{figure}[h]
+    \centering
+        \includegraphics[clip=true, trim=0.5cm 5.0cm 0cm 2.5cm, width=1.10\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/Simulation_toplevel_bb84.pdf}
+    \caption{Diagram block of simulation performed between Alice and Bob until Basis Reconciliation. }\label{toplevelalicebob}
+\end{figure}
+
+Alice starts by sending a stream of photons to Bob, and then he measures the photons according to random basis generated randomly by a binary source. After that, he follows the protocol described above until Alice sends to him a string of '0' and '1' where '0' means that both used different basis and '1' means that they used the same basis. Therefore, Alice and Bob outputs a binary signal "MI\_A" and "MI\_B", respectively. These signals should be equal in order to both have the same sequence of bits. This way, Alice can encode messages using these keys and Bob will be capable of decrypt the message using these symmetric keys.
+
+\begin{figure}[H]
+    \centering
+        \includegraphics[clip, trim=3cm 9.0cm 2cm 7cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/mia.pdf}
+    \caption{MI\_A signal. }\label{mia}
+\end{figure}
+
+Figure \ref{mia} and figure \ref{mib} represent the sequence of bits which will be used by Alice to encode the messages and the sequence of bits used by Bob to decode the message, respectively. As one can see the two signals are equal which meets the expected result. In this way, the first step of the protocol has been achieved.
+
+\begin{figure}[h]
+    \centering
+        \includegraphics[clip, trim=3cm 9.0cm 2cm 7cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures_raw/mib.pdf}
+    \caption{MI\_B signal. }\label{mib}
+\end{figure}
+
 
 \begin{thebibliography}{2}
 	\bibitem{BB84}

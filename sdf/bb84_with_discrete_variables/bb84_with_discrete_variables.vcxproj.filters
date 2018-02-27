@@ -152,6 +152,9 @@
     <ClInclude Include="..\..\include\message_processor_bob_20180221.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="bb84_with_discrete_variables_sdf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
