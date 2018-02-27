@@ -1,3 +1,4 @@
+
 function [mag_x, mag_y, phase_dif, h] = plotPhotonStream_20180102(fname, opt, h)
 % If opt equals 0, or no opt, we plot the absolute value of X and Y and the phase
 % difference.
@@ -54,4 +55,6 @@ else
     axis([0 inf -1 1])
     title ('Amplitude X and Y');
     legend('X', 'Y')
+    
+  
 end
