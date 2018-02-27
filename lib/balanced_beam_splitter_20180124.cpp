@@ -3,7 +3,6 @@
 #include <iostream>
 #include <fstream>
 
-#include "netxpto.h"
 #include "balanced_beam_splitter_20180124.h"
 
 

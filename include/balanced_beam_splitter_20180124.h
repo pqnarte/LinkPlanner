@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_BEAM_SPLITTER_H_
 # define PROGRAM_INCLUDE_BEAM_SPLITTER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include <iostream>
 # include <complex>
 # include <fstream>

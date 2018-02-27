@@ -2,7 +2,7 @@
 # define PROGRAM_INCLUDE_LOCAL_OSCILLATOR_H_
 
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
 # include <complex>
 # include <random>

@@ -8,7 +8,7 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include "binary_source_20180118.h"
 
 using namespace std;

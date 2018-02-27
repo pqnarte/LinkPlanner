@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "netxpto.h"
+#include "netxpto_20180118.h"
 #include "white_noise_20180118.h"
 
 
