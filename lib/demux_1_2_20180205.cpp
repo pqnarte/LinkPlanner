@@ -60,9 +60,11 @@ bool Demux_1_2::runBlock(void) {
 			inputSignals[1]->bufferGet(&logicalValue);
 
 			if (logicalValue == 1.0) {
+				inValue = (int)inValue * 1;
 				outputSignals[0]->bufferPut((t_binary)inValue);
 			}
 			else
+				inValue = (int)inValue * 1;
 				outputSignals[1]->bufferPut((t_binary)inValue);
 		}
 	}

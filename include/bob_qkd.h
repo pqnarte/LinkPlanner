@@ -34,6 +34,7 @@ class BobQKD : public SuperBlock {
 
 	Binary Bob_9{ "Bob_9.sgn" };
 	Binary Bob_6{ "Bob_6.sgn" };
+	Binary Bob_6_out{ "Bob_6_out.sgn" };
 
 	TimeContinuousAmplitudeDiscreteReal CLKB_out1{ "CLKB_out1.sgn" };
 	TimeContinuousAmplitudeDiscreteReal CLKB_out2{ "CLKB_out2.sgn" };
