@@ -3,9 +3,11 @@
 
 #include "netxpto_20180118.h"
 
+
 class bobBB84 : public Block {
 
 	/*Input Parameters*/
+	
 
 public:
 
@@ -15,6 +17,7 @@ public:
 	void initialize(void);
 
 	bool runBlock(void);
+
 
 };
 
