@@ -16,7 +16,7 @@ BobQKD::BobQKD(vector<Signal*> &inputSignal, vector <Signal*> &outputSignal) : S
 
 	BB7.initializeBlock(vector<Signal*>{&Bob_10, inputSignals[5]}, vector<Signal*>{&Bob_5, &C_C_2});
 
-	BB6.initializeBlock(vector<Signal*>{&Bob_11, &Bob_5}, vector<Signal*>{&Bob_9, &Bob_6});
+	BB6.initializeBlock(vector<Signal*>{&Bob_11, &Bob_5}, vector<Signal*>{&Bob_6, &Bob_9});
 	Bob_6.setBufferLength(512);
 	Bob_6.setSamplingPeriod(0.001);
 	Bob_6.setSymbolPeriod(0.001);

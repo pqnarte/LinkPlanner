@@ -1,15 +1,15 @@
 #include "demux_1_2_20180205.h"
 
 void Demux_1_2::initialize(void) {
-	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
-	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
+	outputSignals[0]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
+	outputSignals[0]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
 
-	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
-	outputSignals[1]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-	outputSignals[1]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-	outputSignals[1]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[1]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
+	outputSignals[1]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
+	outputSignals[1]->setSamplesPerSymbol(inputSignals[1]->getSamplesPerSymbol());
+	outputSignals[1]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
 }
 
 bool Demux_1_2::runBlock(void) {
@@ -50,23 +50,8 @@ bool Demux_1_2::runBlock(void) {
 				outputSignals[1]->bufferPut((t_binary)binValue);
 		}
 	}
-	
-	if ((inSignalType1 == RealValue) && (inSignalType2 == RealValue)) {
-		t_real inValue;
-		t_real logicalValue;
-
-		for (int i = 0; i <= length; i++) {
-			inputSignals[0]->bufferGet(&inValue);
-			inputSignals[1]->bufferGet(&logicalValue);
-
-			if (logicalValue == 1.0) {
-				inValue = (int)inValue * 1;
-				outputSignals[0]->bufferPut((t_binary)inValue);
-			}
-			else
-				inValue = (int)inValue * 1;
-				outputSignals[1]->bufferPut((t_binary)inValue);
-		}
+	else {
+		cout << "ERRO: demux_1_2.cpp: invalid type! \n";
 	}
 
 	return true;

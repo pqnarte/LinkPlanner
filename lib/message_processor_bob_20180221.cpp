@@ -52,12 +52,12 @@ bool MessageProcessorBob::ProcessMessageToSend() {
 	if (space <= 0) return alive;
 
 	if (numberOfStoredBasis >= messageDataLength) {
-		int process = min(outputSignals[0]->space(), messageDataLength);
+		int process = min(space, messageDataLength);
 
 		string mDataToSend{ "" };
 		for (auto k = 0; k < process; k++) {
 			mDataToSend.append(to_string(storedBasis[k]));
-			outputSignals[0]->bufferPut((t_real)storedBasis[k]);
+			//outputSignals[0]->bufferPut((t_real)storedBasis[k]);
 		}
 
 		storedBasis.erase(storedBasis.begin(),storedBasis.begin() + process);
@@ -114,7 +114,7 @@ bool MessageProcessorBob::ProcessStoredMessage() {
 				for (auto k = 0; k < process; k++) {
 
 					alive = true;
-					outputSignals[0]->bufferPut((t_real)mData[k]);
+					outputSignals[0]->bufferPut((t_binary)mData[k]);
 
 				}
 				break;
