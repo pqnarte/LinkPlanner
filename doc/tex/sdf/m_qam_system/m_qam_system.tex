@@ -83,7 +83,7 @@ In this case, assuming the absence of inter-symbol interference, $s(t)$ will be 
 		\centering
 		\includegraphics[clip, trim=1cm 0cm 1cm 0cm,width=\textwidth]{./sdf/m_qam_system/figures/gaussian_error.pdf}
 	\end{subfigure}
-	\caption{The area below the curves is the probability of error for each transmitted bit.}
+	\caption{The area below the curves represents the probability of error for each transmitted bit.}
 	\label{fig:gausserr}
 \end{figure}
 
@@ -185,10 +185,10 @@ From this, the probability of symbol error is:
 %		\label{fig:QPSK_th_curve}
 %\end{figure}
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the SNR will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Intersymbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the signal-to-noise ratio will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Inter-symbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
 %As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter, which can be calculated as:
-Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNoise}], the output of the matched filter receiver will be~\cite{mischasch}:
+Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNoise}, the output of the matched filter receiver will be~\cite{mischasch}:
 
 \begin{eqnarray}
 &s_{mf} (t) &= \int_{0}^{T} s(t)\cos(\omega_0 t ) dt\nonumber\\ 
@@ -224,18 +224,16 @@ Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the
 %Here, $T$ is the symbol period. 
 
 
-\begin{figure}[h]
+\begin{figure}[H]
 		\centering
 		\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_BER_curves.pdf}
 		\caption{QPSK theoretical BER values as a function of the output optical power in dBm.\label{fig:QPSK_th_curves}}	
 \end{figure}
 
+Figure~\ref{fig:QPSK_th_curves} shows the two theoretical curves for QPSK. The blue one is for QPSK without matched filtering and the red one is using root-raised-cosine for matched filtering, which provides optimum transmission. As the use of root-raised-cosine for matched filtering maximizes the signal-to-noise ratio to its optimal value, it allows achieving the same BER with much lower optical power. On the blue curve, on the other hand, the sampling is affected by the full effect of the random noise, as there is no filtering at the receiver. Because of this, a higher optical power is required to achieve a similar BER.
+
 
 It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
-\\
-begin
-\\
-% TODO: preencher isto depois de requisitar o livro
 
 
 \subsection{Simulation Analysis}
@@ -437,11 +435,13 @@ Figure~\ref{fig:eyespower} shows the eye diagrams for the S1 signals for two dif
 	\label{fig:eyespower}
 \end{figure}
 
-Figures \ref{fig:eyes_nn_rrc_09}-\ref{fig:eyes5} show, for a variety of system configurations, the eye diagrams of three different signals in the system: the optical signal S1, the signals after adding the Gaussian white noise HMD12 and HMD13, and the signal after the filter in the receiver. These are shown for different optical powers, spectral noise densities, roll-off factors and filter types.
+Figures \ref{fig:eyes_nn_rrc_09}-\ref{fig:eyes_n_rc_60_09} show, for a variety of system configurations, the eye diagrams of three different signals in the system: the optical signal S1, the signals after adding the Gaussian white noise HMD12 and HMD13, and the signal after the filter in the receiver. These are shown for different optical powers, spectral noise densities, roll-off factors and filter types.
 
-\subsubsection*{Matched filters without AWGN}
+\subsubsection*{Matched Filters without AWGN}
 
 Figures \ref{fig:eyes_nn_rrc_09}-\ref{fig:eyes_nn_rc_03} show the eye diagrams at the mentioned points for a system without white noise, as to evaluate the performance of different pulse shaping and filtering conditions. Figures~\ref{fig:eyes_nn_rrc_09} and~\ref{fig:eyes_nn_rrc_03} show the diagrams obtained when using a root-raised-cosine filter for pulse shaping and filtering, with a rolloff factor of 0.9 and 0.3, respectively. Figures~\ref{fig:eyes_nn_rc_09} and~\ref{fig:eyes_nn_rc_03} use a raised-cosine for the same purpose, in the same conditions. It can be seen that the bottom diagrams in the root-raised-cosine figures are similar to the eye diagrams of the optical signals in the raised-cosine figures. Thus, knowing that inter-symbol interference caused by a raised-cosine filter is null, the same is true for the overall result of the root-raised-cosine filters.
+
+Its worth noting that the eye diagram at HMD12 and HMD13 shows what the final signal would be without matched filtering, using only a pulse shaper. It can be seen that the noise in at HMD14 and HMD15, after the filter at the receiver, is always affected by a smaller amount of noise.
 
 \begin{figure}[H]
 	\centering
@@ -513,21 +513,6 @@ It can be seen that the filtered signal eye diagrams (bottom row) when using roo
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_03.pdf}
-	\end{subfigure}
-	\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_03.pdf}
-	\end{subfigure}
-	
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rrc_45_03}}
-	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.45\textwidth}
-		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_09.pdf}
 	\end{subfigure}
 	\begin{subfigure}{.45\textwidth}
@@ -536,6 +521,38 @@ It can be seen that the filtered signal eye diagrams (bottom row) when using roo
 	\end{subfigure}
 	
 	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes_n_rrc_45_09}}
+	
+\end{figure}
+
+
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_p_45_09_rc.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_p_45_09_rc.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes_n_rc_45_09}}
+	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_03.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_45_03.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rrc_45_03}}
 	
 \end{figure}
 
@@ -554,39 +571,13 @@ It can be seen that the filtered signal eye diagrams (bottom row) when using roo
 	
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_p_45_09_rc.pdf}
-	\end{subfigure}
-	\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_p_45_09_rc.pdf}
-	\end{subfigure}
-	
-	\caption{Eye diagrams using matched filtering with raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -45 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes_n_rc_45_09}}
-	
-\end{figure}
+
 
 \subsubsection*{Matched filters with AWGN and SNR=1}
 Figures \ref{fig:eyes_n_rrc_60_03}-\ref{fig:eyes_n_rc_60_09} show the eye diagrams at the mentioned points for a system with additive Gaussian white noise of spectral density ($10^{-6}$)comparable to the power of the optical signal (-60 dBm). Figures~\ref{fig:eyes_n_rrc_60_03} and~\ref{fig:eyes_n_rrc_60_09} show the diagrams obtained when using a root-raised-cosine filter for pulse shaping and filtering, with a rolloff factor of 0.3 and 0.9, respectively. Figures~\ref{fig:eyes_n_rc_60_03} and~\ref{fig:eyes_n_rc_60_09} use a raised-cosine for the same purpose, in the same conditions.
 
 
-\begin{figure}[H]
-	\centering
-		\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_03.pdf}
-	\end{subfigure}
-	\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_03.pdf}
-	\end{subfigure}
 
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rrc_60_03}}
-	
-\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -607,21 +598,6 @@ Figures \ref{fig:eyes_n_rrc_60_03}-\ref{fig:eyes_n_rc_60_09} show the eye diagra
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_p_60_03_rc.pdf}
-	\end{subfigure}
-	\begin{subfigure}{.45\textwidth}
-		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_p_60_03_rc.pdf}
-	\end{subfigure}
-	
-	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rc_60_03}}
-	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}{.45\textwidth}
-		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_p_60_09_rc.pdf}
 	\end{subfigure}
 	\begin{subfigure}{.45\textwidth}
@@ -633,7 +609,41 @@ Figures \ref{fig:eyes_n_rrc_60_03}-\ref{fig:eyes_n_rc_60_09} show the eye diagra
 	
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_03.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_p_60_03.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rrc_60_03}}
+	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_p_60_03_rc.pdf}
+	\end{subfigure}
+	\begin{subfigure}{.45\textwidth}
+		\centering
+		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_p_60_03_rc.pdf}
+	\end{subfigure}
+	
+	\caption{Eye diagrams using matched filtering with root-raised-cosine at three different points: the optical output signal S1 on the top; the amplified signal with added noise at the middle, HMD12 and HMD13 for both components; and after passing through the last root-raised-cosine filter, HMD14 and HMD15, for both components. Obtained through simulation with an optical power output of -60 dBm, 0 dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rc_60_03}}
+	
+\end{figure}
+
+
+
 \subsection{BER Curves}
+
+The simulated results show agreement with the theoretical curves, as can be seen in Figure~\ref{fig:ber_pseudorandom}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/teor_vs_simul.pdf}
