@@ -75,6 +75,9 @@
     <ClCompile Include="..\..\lib\homodyne_receiver_20171203.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\snr_estimator_20180227.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\add_20180118.h">
@@ -132,6 +135,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\white_noise_20180118.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\snr_estimator_20180227.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

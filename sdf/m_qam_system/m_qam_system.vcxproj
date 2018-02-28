@@ -90,6 +90,7 @@
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
     <ClCompile Include="..\..\lib\sampler_20171119.cpp" />
     <ClCompile Include="..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="..\..\lib\snr_estimator_20180227.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
     <ClCompile Include="..\..\lib\white_noise_20180118.cpp" />
     <ClCompile Include="m_qam_system_sdf.cpp" />
@@ -112,6 +113,7 @@
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171119.h" />
     <ClInclude Include="..\..\include\sink_20180118.h" />
+    <ClInclude Include="..\..\include\snr_estimator_20180227.h" />
     <ClInclude Include="..\..\include\super_block_interface_20180118.h" />
     <ClInclude Include="..\..\include\white_noise_20180118.h" />
   </ItemGroup>
