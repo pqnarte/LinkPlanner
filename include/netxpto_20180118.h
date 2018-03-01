@@ -533,9 +533,6 @@ public:
 	void setImpulseResponseLength(int iResponseLength) { impulseResponseLength = iResponseLength; };
 	int const getImpulseResponseLength(){ return impulseResponseLength; }
 
-	void setImpulseResponseFilename(string fName) { impulseResponseFilename = fName; };
-	string getImpulseResponseFilename() { return impulseResponseFilename; };
-
 	void setSeeBeginningOfImpulseResponse(bool sBeginning){ seeBeginningOfImpulseResponse = sBeginning; };
 	bool const getSeeBeginningOfImpulseResponse(){ return seeBeginningOfImpulseResponse; };
 

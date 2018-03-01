@@ -6,16 +6,9 @@
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 \textbf{Header File}   &:& fork\_20171119.h \\
 \textbf{Source File}   &:& fork\_20171119.cpp \\
-\textbf{Version}       &:& 20171119 (Romil Patel)
+\textbf{Version}       &:& 20171119 (\textbf{Student Name}: Romil Patel)
 \end{tabular}
 \end{tcolorbox}
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth, height=4.5cm]{./lib/fork/figures/fork.pdf}
-	\caption{Fork}\label{}
-\end{figure}
 
 \subsection*{Input Parameters}
 
@@ -23,17 +16,23 @@
 
 \subsection*{Input Signals}
 
-\textbf{S1}\\
-\textbf{Type}: BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message.
+\textbf{Number}: 1\\
+\textbf{Type}: Any type (BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message)
 
 \subsection*{Output Signals}
 
-\textbf{S2}\\
+\textbf{Number}: 2\\
 \textbf{Type}: Same as applied to the input.\\
 \\
-\textbf{S3}\\
+\textbf{Number}: 3\\
 \textbf{Type}: Same as applied to the input.
 
 \subsection*{Functional Description}
 
 This block accepts any type signal and outputs two replicas of the input signal.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\textwidth, height=4.5cm]{./lib/fork/figures/fork.pdf}
+	\caption{Fork}\label{}
+\end{figure}

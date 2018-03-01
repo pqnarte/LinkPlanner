@@ -1,3 +1,28 @@
+2018-03-01
+TO BE DONE
+	- rever a parte teórica: 
+		esclarecer a questão da potência Ps na expressão para a P_erro s/ matched filter
+		esclarecer o que é que é o A na expressão com matched filter
+		obter a expressão para a probabilidade de erro c/ matched filter usando os mesmos parâmetros que uso na expressão s/ matched filter
+		adicionar conclusões
+
+	- rever a parte da simulação
+		verificar se todos os blocos usados estão corretamente definidis na Library (doc)
+		especificar as condições em que foram obtidos todos os resultados
+		começar por tratar apenas a ISI 
+			1) raised-cosine no TX
+			2) raised-cosine no TX & RX
+			3) root-raised consine no TX & RX (ISI=0, e usas um matched filter) 
+			4) analisar para diferentes roll-offs
+		tratar a situação com ISI e ruído
+			1) só com o raised-cosine no TX (sem mathced filter)
+			2) com o root-raised cosine no TX e RX (com matched filter)
+		adicionar conclusões
+
+	- Parte experimental
+		colocar o diagrama correto da parte experimental
+		trabalhar no guião
+
 2018-02-22
 TO BE DONE
 

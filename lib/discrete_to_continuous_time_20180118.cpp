@@ -30,7 +30,7 @@ bool DiscreteToContinuousTime::runBlock(void) {
 				}
 				index = index % numberOfSamplesPerSymbol;
 				break;
-			default: cout << "ERRO: discrete_to_continuous_time.cpp - invalide signal type" << "\n";
+			default: cout << "ERRO: discrete_to_continuous_time.cpp - invalide signal type AQUI" << "\n";
 		}
 		
 	};
@@ -56,7 +56,7 @@ bool DiscreteToContinuousTime::runBlock(void) {
 				index = index % numberOfSamplesPerSymbol;
 			}
 			break;
-		default: cout << "ERRO: discrete_to_continuous_time.cpp - invalide signal type" << "\n";
+		default: cout << "ERRO: discrete_to_continuous_time.cpp - invalide signal type AQUI2" << "\n";
 	};
 	return alive;
 };

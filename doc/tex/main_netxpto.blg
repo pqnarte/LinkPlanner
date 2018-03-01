@@ -5,19 +5,19 @@ A level-1 auxiliary file: chapter/development_cycle.aux
 A level-1 auxiliary file: chapter/visualizer.aux
 A level-1 auxiliary file: chapter/case_studies.aux
 The style file: unsrt.bst
-Illegal, another \bibstyle command---line 90 of file chapter/case_studies.aux
+Illegal, another \bibstyle command---line 91 of file chapter/case_studies.aux
  : \bibstyle
  :          {myIEEEtran}
 I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 91 of file chapter/case_studies.aux
+Illegal, another \bibdata command---line 92 of file chapter/case_studies.aux
  : \bibdata
  :         {./sdf/m_qam_system/m_qam_system}
 I'm skipping whatever remains of this command
-Illegal, another \bibstyle command---line 204 of file chapter/case_studies.aux
+Illegal, another \bibstyle command---line 205 of file chapter/case_studies.aux
  : \bibstyle
  :          {myIEEEtran}
 I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 205 of file chapter/case_studies.aux
+Illegal, another \bibdata command---line 206 of file chapter/case_studies.aux
  : \bibdata
  :         {./sdf/qrng/qrng}
 I'm skipping whatever remains of this command
@@ -33,11 +33,15 @@ Already encountered file bu.aux
  :               }
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/library.aux
-Illegal, another \bibstyle command---line 10 of file chapter/library.aux
+Illegal, another \bibdata command---line 7 of file chapter/library.aux
+ : \bibdata
+ :         {./lib/balanced_beam_splitter/balanced_beam_splitter}
+I'm skipping whatever remains of this command
+Illegal, another \bibstyle command---line 12 of file chapter/library.aux
  : \bibstyle
  :          {unsrt}
 I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 11 of file chapter/library.aux
+Illegal, another \bibdata command---line 13 of file chapter/library.aux
  : \bibdata
  :         {bibliography}
 I'm skipping whatever remains of this command
@@ -46,10 +50,15 @@ Already encountered file bu.aux
  : \@input{bu.aux
  :               }
 I'm skipping whatever remains of this command
+Already encountered file bu.aux
+---line 35 of file main_netxpto.aux
+ : \@input{bu.aux
+ :               }
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/mtools.aux
 A level-1 auxiliary file: chapter/algorithms.aux
 A level-1 auxiliary file: chapter/msbuild.aux
-Illegal, another \bibstyle command---line 38 of file main_netxpto.aux
+Illegal, another \bibstyle command---line 39 of file main_netxpto.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
@@ -62,4 +71,4 @@ Warning--I didn't find a database entry for "probabilitySheldon"
 Warning--I didn't find a database entry for "BB84"
 Warning--I didn't find a database entry for "iqo"
 Warning--I didn't find a database entry for "SURV"
-(There were 10 error messages)
+(There were 12 error messages)
