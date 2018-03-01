@@ -22,6 +22,13 @@ TO BE DONE
 	- Parte experimental
 		colocar o diagrama correto da parte experimental
 		trabalhar no guião
+		usar na experiência sinais iguais aos usadas na simulação (rever a parte do AWG)
+
+
+	Objetivo a médio prazo: colocar o sistema clássico a funcionar -> sistema quântico
+
+Next meeting: 8/3, 9h
+
 
 2018-02-22
 TO BE DONE
