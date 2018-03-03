@@ -80,7 +80,7 @@
     <ClCompile Include="..\..\lib\local_oscillator_20180130.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
     <ClCompile Include="..\..\lib\m_qam_transmitter_20180118.cpp" />
-    <ClCompile Include="..\..\lib\netxpto.cpp" />
+    <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
     <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
     <ClCompile Include="..\..\lib\sampler.cpp" />
@@ -91,7 +91,7 @@
     <ClCompile Include="bpsk_system_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\add_20180118.h" />
+    <ClInclude Include="..\..\include\add_20171116.h" />
     <ClInclude Include="..\..\include\balanced_beam_splitter_20180124.h" />
     <ClInclude Include="..\..\include\binary_source_20180118.h" />
     <ClInclude Include="..\..\include\bit_decider_20170818.h" />
@@ -103,7 +103,7 @@
     <ClInclude Include="..\..\include\local_oscillator_20180130.h" />
     <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
     <ClInclude Include="..\..\include\m_qam_transmitter_20180118.h" />
-    <ClInclude Include="..\..\include\netxpto.h" />
+    <ClInclude Include="..\..\include\netxpto_20180118.h" />
     <ClInclude Include="..\..\include\photodiode_old_20180118.h" />
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171116.h" />

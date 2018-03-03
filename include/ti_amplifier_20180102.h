@@ -1,9 +1,9 @@
 # ifndef PROGRAM_INCLUDE_TIAMPLIFIER_H_
 # define PROGRAM_INCLUDE_TIAMPLIFIER_H_
 
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
-# include "add_20180118.h"
+# include "add_20171116.h"
 # include "ideal_amplifier_20180118.h"
 # include "white_noise_20180118.h"
 # include "pulse_shaper_20180118.h"

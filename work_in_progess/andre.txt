@@ -1,3 +1,14 @@
+2018-02-27
+TO BE DONE
+	- fazer as ultimas alterações no BPSK
+
+	- iniciar o estudo do multiparty computation
+		- apresentação em latex e em inglês
+		- pesquisa bibliográfica
+
+Next meeting:
+
+
 2018-02-07
 TO BE DONE
 	- para concluir o BPSK é necessário colocar o projeto a funcionar com os ficheiros com o time tag.

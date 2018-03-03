@@ -28,9 +28,6 @@
     <ClCompile Include="..\..\lib\ti_amplifier_20180102.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\add_20171116.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\binary_source_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,10 +55,13 @@
     <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\netxpto.cpp">
+    <ClCompile Include="..\..\lib\sampler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\sampler.cpp">
+    <ClCompile Include="..\..\lib\netxpto_20180118.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\add_20171116.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,9 +93,6 @@
     <ClInclude Include="..\..\include\local_oscillator_20180130.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\add_20180118.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\binary_source_20180118.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -120,10 +117,13 @@
     <ClInclude Include="..\..\include\iq_modulator_20180130.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\netxpto.h">
+    <ClInclude Include="..\..\include\sampler_20171116.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\sampler_20171116.h">
+    <ClInclude Include="..\..\include\netxpto_20180118.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\add_20171116.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

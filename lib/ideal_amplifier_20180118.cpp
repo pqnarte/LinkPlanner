@@ -1,4 +1,4 @@
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 # include "ideal_amplifier_20180118.h"
 # include <algorithm> // min
 
