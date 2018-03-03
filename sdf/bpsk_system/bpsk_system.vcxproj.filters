@@ -55,13 +55,13 @@
     <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\sampler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\netxpto_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\add_20171116.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\sampler_20171116.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
