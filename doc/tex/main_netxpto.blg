@@ -45,11 +45,21 @@ Already encountered file bu.aux
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/mtools.aux
 A level-1 auxiliary file: chapter/algorithms.aux
+A level-1 auxiliary file: chapter/mpcomputation.aux
+Illegal, another \bibdata command---line 3 of file chapter/mpcomputation.aux
+ : \bibdata
+ :         {./chapter/mpcomputation}
+I'm skipping whatever remains of this command
+Already encountered file bu.aux
+---line 39 of file main_netxpto.aux
+ : \@input{bu.aux
+ :               }
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/code_development_guidelines.aux
 A level-1 auxiliary file: chapter/msbuild.aux
 A level-1 auxiliary file: chapter/git_helper.aux
 A level-1 auxiliary file: chapter/ghdl.aux
-Illegal, another \bibstyle command---line 42 of file main_netxpto.aux
+Illegal, another \bibstyle command---line 44 of file main_netxpto.aux
  : \bibstyle
  :          {ieeetr}
 I'm skipping whatever remains of this command
@@ -61,4 +71,4 @@ Warning--I didn't find a database entry for "BB84"
 Warning--I didn't find a database entry for "iqo"
 Warning--I didn't find a database entry for "SURV"
 Warning--I didn't find a database entry for "almeida2016continuous"
-(There were 9 error messages)
+(There were 11 error messages)
