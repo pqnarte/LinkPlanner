@@ -15,8 +15,8 @@ z = f(a_1,a_2,\dots,a_n)
 \renewcommand{\figurename}{Figure}
 \begin{figure}[H]
 \centering
-\includegraphics[width=.45\linewidth]{./figures/mpc_scheme}
-\caption{Multi-Party Computation Scheme}
+\includegraphics[width=.45\linewidth]{./figures/mpc/mpc_scheme}
+\caption{Multi-Party Computation Diagram}
 \label{fig:mpcscheme}
 \end{figure}
 \pagebreak
@@ -30,18 +30,47 @@ The output of \textit{f} is given by the following expression,
 c = f(a,b)
 \end{equation}
 
+An example of a 2PC problem, is \textbf{Yao's Millionaires' Problem}, in which 2 millionaires, Alice and Bob, are
+interested in knowing which one of them is richer without revealing their wealth. The goal of this problem is to solve
+the inequality $a\geq b$, where $a$ is Alice's input and $b$ is Bob's input, without revealing the values
+of $a$ and $b$.
+
 \renewcommand{\figurename}{Figure}
 \begin{figure}[H]
 \centering
-\includegraphics[width=.35\linewidth]{./figures/two_party_computation_scheme}
-\caption{Two-Party Computation Scheme}
+\includegraphics[width=.4\linewidth]{./figures/mpc/two_party_computation_scheme}
+\caption{Two-Party Computation Diagram}
 \label{fig:tpcscheme}
 \end{figure}
 
-\section{Garbled Circuit}
-In 1986, Andrew Yao proposed the Garbled Circuit protocol (GC), that addresses the specific case
-of Two-Party Computation (2PC), without the presence of a trusted third party.\\
-GC allows a secure evaluation of a function given
-as a Boolean circuit that is represented as a series of logic gates.\\
+\section{Oblivious Transfer}
+Oblivious Transfer (OT) is a protocol that allows the sender to transfer one piece of information
+to a receiver, but remains oblivious as to what piece has been transferred.\\
+For example, considering two parties, Alice and Bob, where Alice has a set $M = \{m_0,m_1\}$ of messages
+and Bob wants to obtain one of those messages, but won't reveal which one. By using OT, Bob is able to
+receive the message he wanted from Alice without Alice knowing which one she sent to Bob.
 
-\bibliography{./chapter/mpcomputation}
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.4\linewidth]{./figures/mpc/OT}
+\caption{Oblivious Transfer Diagram}
+\label{fig:otscheme}
+\end{figure}
+
+\section{Garbled Circuit Protocol}
+Introduced in 1986 by Andrew Yao, the Garbled Circuit protocol (GC) addresses the case
+of Two-Party Computation (2PC), without the presence of a trusted third party.\\
+GC allows a secure evaluation of a function given as a Boolean circuit that is represented as a series of logic gates.
+The circuit is known to both parties\\
+
+\section{Hardware Description Languages}
+Contrary to Programming Languages such as C or C++ which are used to specify a set of instructions to a computer, Hardware Description Languages (HDL) are computer languages used to describe the structure and behavior of digital logic circuits. They allow for the synthesis of HDL description code into a netlist, which consist in the specification of physical eletronic components, such as AND gates or NOT gates, and how they are connected together.
+
+\section{TinyGarble}
+
+
+\section{ARM2GC}
+
+
+\bibliography{./chapter/mpcomputation} 

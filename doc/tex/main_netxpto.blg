@@ -46,7 +46,7 @@ I'm skipping whatever remains of this command
 A level-1 auxiliary file: chapter/mtools.aux
 A level-1 auxiliary file: chapter/algorithms.aux
 A level-1 auxiliary file: chapter/mpcomputation.aux
-Illegal, another \bibdata command---line 10 of file chapter/mpcomputation.aux
+Illegal, another \bibdata command---line 18 of file chapter/mpcomputation.aux
  : \bibdata
  :         {./chapter/mpcomputation}
 I'm skipping whatever remains of this command
