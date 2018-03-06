@@ -83,7 +83,7 @@
     <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
     <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
-    <ClCompile Include="..\..\lib\sampler.cpp" />
+    <ClCompile Include="..\..\lib\sampler_20171116.cpp" />
     <ClCompile Include="..\..\lib\sink_20180118.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
     <ClCompile Include="..\..\lib\ti_amplifier_20180102.cpp" />
