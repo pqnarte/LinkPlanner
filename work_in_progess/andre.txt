@@ -1,3 +1,12 @@
+2018-03-26
+TO BE DONE
+	escrever MPC considerando a Alice & o Bob em sitios diferentes, e ilustar com o exemplo das duas mensagens
+
+	log file do simulador (apresentar uma solução sem codificar)
+
+Next Meeting: 20/3, 16h
+
+
 2018-02-27
 TO BE DONE
 	- fazer as ultimas alterações no BPSK
