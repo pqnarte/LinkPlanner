@@ -46,8 +46,8 @@ of $a$ and $b$.
 \section{Oblivious Transfer}
 Oblivious Transfer (OT) is a protocol that allows the sender to transfer one piece of information
 to a receiver, but remains oblivious as to what piece has been transferred.\\
-For example, considering two parties, Alice and Bob, where Alice has a set $M = \{m_0,m_1\}$ of messages
-and Bob wants to obtain one of those messages, but won't reveal which one. By using OT, Bob is able to
+For example, consider two parties, Alice and Bob, where Alice has a set $M = \{m_0,m_1\}$ of messages
+and Bob wants to obtain one of those messages, but won't reveal which one. By OT, Bob is able to
 receive the message he wanted from Alice without Alice knowing which one she sent to Bob.
 
 \renewcommand{\figurename}{Figure}
@@ -62,15 +62,31 @@ receive the message he wanted from Alice without Alice knowing which one she sen
 Introduced in 1986 by Andrew Yao, the Garbled Circuit protocol (GC) addresses the case
 of Two-Party Computation (2PC), without the presence of a trusted third party.\\
 GC allows a secure evaluation of a function given as a Boolean circuit that is represented as a series of logic gates.
-The circuit is known to both parties\\
+The circuit is known to both parties.\\
 
 \section{Hardware Description Languages}
-Contrary to Programming Languages such as C or C++ which are used to specify a set of instructions to a computer, Hardware Description Languages (HDL) are computer languages used to describe the structure and behavior of digital logic circuits. They allow for the synthesis of HDL description code into a netlist, which consist in the specification of physical eletronic components, such as AND gates or NOT gates, and how they are connected together.
+Contrary to Programming Languages such as C or C++, which are used to specify a set of instructions to a computer, Hardware Description Languages (HDL) are computer languages used to describe the structure and behavior of digital logic circuits. They allow for the synthesis of HDL description code into a netlist (specification of physical eletronic components, such as AND gates or NOT gates, and how they are connected together).
 
 \section{TinyGarble}
+TinyGarble is a GC framework that takes advantage of powerful logic synthesis techniques, provided by both HDL synthesis tools
+and TinyGarble's custom libraries, in order improve the overall efficiency of the GC protocol.\\
+It it possible to describe the circuit using High-Level Programming Languages (HLPL) such as C, although High-Level Synthesis (HLS) is required. HLS is performed by High-Level Synthesis tools, such as SPARK for the C language.
 
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\linewidth]{./figures/mpc/tinygarble_flow_diagram}
+\caption{TinyGarble Flow Diagram}
+\label{fig:tgdiagram}
+\end{figure}
 
 \section{ARM2GC}
-
+Although circuit description in HLPL is possible, it is not very efficient when compared to HDL circuit description. ARM2GC addresses this problem, significantly improving the performance of garbled circuits described in HLPL.\\
+In the case of 2PC, ARM2GC's approach to GC is based on the ARM processor architecture and consists in providing a public parameter to function \textit{f}, so that its output would be given by the following expression,
+\begin{equation}\label{eq:arm2gc}
+z = f(a,b,p)
+\end{equation}
+, where $p$ represents a public parameter, known to both parties.
+In ARM2GC the Boolean circuit required to perform GC is that of a processor to which the compiled binary of the function is given as a public input ($p = compiled-binary-of-the-function$). This optimization is performed by the SkipGate algorithm.
 
 \bibliography{./chapter/mpcomputation} 
