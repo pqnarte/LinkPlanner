@@ -96,7 +96,7 @@ P_{be} = P_0 P_{e0} + P_1 P_{e1}
 With equal probability for both bits, and considering the constellation's symmetry
 
 \begin{equation}\label{eq:berMQAM}
-P_{be} =  Q\left({\frac{A}{n_0}}\right) = \frac{1}{2} \text{erfc}\left({\frac{A}{N_0}}\right)
+P_{be} =  Q\left({\frac{A}{N}}\right) = \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{2} N}}\right) = \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{n_0}}}\right)
 \end{equation}
 
 
@@ -116,14 +116,14 @@ with
 
 
 \begin{eqnarray}
-&A &= G_{ele} \sqrt{P_L P_S} \\
-&N_0 &= \sqrt{\frac{n_0}{2}}
+&A &= G_{ele} \sqrt{P_L P_S}\label{eq:bpskamplitude}\\
+&N &= \sqrt{\frac{n_0}{2}}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-\noindent where $P_L$ is the local oscillator power, $P_S$ is the optical signal power, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $A$. $N_0$ will be the standard deviation of the sampled values.
+\noindent where $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $A$. $N_0$ will be the standard deviation of the sampled values.
 
 
 
@@ -138,8 +138,8 @@ P_C = (1 - P_{be})^2
 From this, the probability of symbol error is:
 
 \begin{eqnarray}
-&P_s &= 1-P_C =\nonumber \\
-&	   &= 1 - \left(1 - Q \left({\frac{A}{n_0}}\right)\right)^2 = \nonumber \\
+&P_s &= 1-P_C \nonumber\\
+&	   &= 1 - \left(1 - Q \left({\frac{A}{n_0}}\right)\right)^2 \nonumber \\
 &	   &= 2 Q\left({\frac{A}{n_0}}\right)\left[1-\frac{1}{2} Q \left({\frac{A}{n_0}}\right)\right]
 \end{eqnarray}
 
@@ -185,7 +185,7 @@ From this, the probability of symbol error is:
 %		\label{fig:QPSK_th_curve}
 %\end{figure}
 
-It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the signal-to-noise ratio will be greatly improved. This can be achieved, for instance by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Inter-symbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
+It is possible to further decrease the error rate by using a matched filter before sampling the signal. The resulting signal will still have Gaussian noise, but the signal-to-noise ratio will be greatly improved. This can be achieved by using a root-raised cosine filter at the pulse shaper and another one before the sampler. Inter-symbol interference will still be null as it is equivalent to a raised cosine filter, where half the filtering is done on the transmitter side (while pulse-shaping) and the other half is done on the receiver side, before sampling.
 
 %As the constellation remains the same, the expression to calculate the BER is similar, but replacing the values of $m$ and $N_0$ of Equation~\eqref{eq:berMQAM} by those corresponding to the signal at the output of the filter, which can be calculated as:
 Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNoise}, the output of the matched filter receiver will be~\cite{mischasch}:
@@ -198,28 +198,34 @@ Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNois
 In the case of QPSK with m=4, both the quadrature and in-phase components have $m(t) = \pm A$. The values that replace $m$ and $N_0$ in Equation~\ref{eq:berMQAM} become:
 
 \begin{eqnarray}
-&m_{mf} &= \frac{A T}{2}\\
+&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} \sqrt{P_L P_S} T}{2}\\
 &N_{mf} &= \sqrt{\sigma_o^2} = E(n_o^2) = \sqrt{\frac{n_0 T}{4}}
 \end{eqnarray}
 
-% TODO: ADD noise and signal calculation for mf
+Here, $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier, T is the symbol period, $A_mf$ is the average amplitude at the sampling points of the signal after amplification without noise, $\sigma_o^2$ is the variance of the noise component of the matched filter output, the and $n_0$ is the noise spectral density.
+
 
 The optimal BER that can be obtained by using matched filtering is then given by:
 
 \begin{eqnarray}\label{eq:berBPSK}
-&P_{be} &= \frac{1}{2} \text{erfc}\left({\frac{AT/2}{\sqrt{2} N_{mf}}}\right)\nonumber\\
+&P_{be} &= \frac{1}{2} Q\left({\frac{A_{mf}}{\sqrt{2} N_{mf}}}\right)\nonumber\\
+&		&= \frac{1}{2} \text{erfc}\left({\frac{A_{mf}}{\sqrt{2} N_{mf}}}\right)\nonumber\\
 &	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{A^2T}{2 n_0}}}\right)\\
-&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
+%&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
 \end{eqnarray}
 
 with
 
 \begin{eqnarray}
+&A &= G_{ele} \sqrt{P_L P_S}
 %&m_{mf} &= \frac{1}{2} T G_{ele} \sqrt{P_L P_S} \\
-&E_b &= \frac{A^2 T}{2} \\
+%&E_b &= \frac{A^2 T}{2} \\
 \end{eqnarray}
 
-\noindent where T is the symbol period.
+
+\noindent where T is the symbol period, A is as defined in Equation~\ref{eq:bpskamplitude}, the average peak amplitude of the signal without noise prior to filtering.
+%and $B_e$ is the energy of a single received bit.
+
 Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
 %Here, $T$ is the symbol period. 
 
@@ -235,6 +241,7 @@ Figure~\ref{fig:QPSK_th_curves} shows the two theoretical curves for QPSK. The b
 
 It's worth noting that these equations are only valid for M=4, as in that case the system is similar to QPSK with a 4 point constellation. For $M > 4$ a different approach is required.
 
+The use of matched filtering should allow transmission with a lower SNR to achieve the same results as a similar system, even when using a shape with no inter-symbol interference. This is due to the second filter reducing the noise impact before detection, while not causing inter-symbol interference or degradation of the signal data.
 
 \subsection{Simulation Analysis}
 
@@ -804,11 +811,13 @@ The simulated results show agreement with the theoretical curves, as can be seen
 	\label{fig:ber_pseudorandom}
 \end{figure}% 
 
+\subsubsection*{Conclusions}
+The use of a root-raised-cosine filters for shaping and filtering the signal provides the best results, due to reducing noise while creating no inter-symbol interference. The experimental BER curves agree with the theoretical values and show the advantages of matched filtering.
 
 \subsection*{Experimental Analysis}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180206.pdf}
+	\includegraphics[width=\textwidth]{./sdf/m_qam_system/figures/mqamExperimental20180307.pdf}
 	\caption{Experimental setup}
 	\label{fig:experimental_mqam_setup}
 \end{figure}
