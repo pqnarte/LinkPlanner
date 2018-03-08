@@ -70,13 +70,6 @@ bool SuperBlockInterface::runBlock(void) {
 					outputSignals[k]->bufferPut((t_complex_xy) value);
 				}
 				break;
-			case Message:
-				for (int l = 0; l < length; l++) {
-					t_message value;
-					inputSignals[k]->bufferGet(&value);
-					outputSignals[k]->bufferPut((t_message)value);
-				}
-				break;
 		default:
 			cout << "ERRO: super_block_interface.cpp (2)" << "\n";
 			return false;

@@ -28,7 +28,7 @@ public:
 # ifndef PROGRAM_INCLUDE_MIXER_H_
 # define PROGRAM_INCLUDE_MIXER_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto.h"
 
 // Simulates a simple difference block 
 class Mixer : public Block {

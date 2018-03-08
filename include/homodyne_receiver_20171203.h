@@ -90,9 +90,9 @@ class HomodyneReceiver : public SuperBlock {
 
 	Add B10;
 
-//	PulseShaper B11;
+	PulseShaper B11;
 
-//	PulseShaper B12;
+	PulseShaper B12;
 
 	//Clock B13A;
 
@@ -140,18 +140,25 @@ public:
 	void  setResponsivity(t_real Responsivity) { B3.setResponsivity(Responsivity); B4.setResponsivity(Responsivity); };
 
 	void setAmplification(t_real Amplification) { B5.setGain(Amplification); B6.setGain(Amplification); };
+	
 	void setNoiseAmplitude(t_real NoiseAmplitude) { B7.setNoiseSpectralDensity(NoiseAmplitude); B8.setNoiseSpectralDensity(NoiseAmplitude);};
+	void setSeeds(array<int,2> noiseSeeds) { B7.setSeed(noiseSeeds[0]); B8.setSeed(noiseSeeds[1]); };
+	void setSeedType(SeedType seedType) { B7.setSeedType(seedType); B8.setSeedType(seedType); };
 
-//	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
-//	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
-//	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
+	void setImpulseResponseTimeLength(int impResponseTimeLength) { B11.setImpulseResponseTimeLength(impResponseTimeLength); B12.setImpulseResponseTimeLength(impResponseTimeLength); };
+	void setFilterType(PulseShaperFilter fType) { B11.setFilterType(fType); B12.setFilterType(fType); };
+	void setRollOffFactor(double rOffFactor) { B11.setRollOffFactor(rOffFactor); B12.setRollOffFactor(rOffFactor); };
+	void usePassiveFilterMode(bool pFilterMode) { B11.usePassiveFilterMode(pFilterMode); B12.usePassiveFilterMode(pFilterMode); }
+	void setImpulseResponseFilename(string fName) { B11.setImpulseResponseFilename(fName); B12.setImpulseResponseFilename(fName); }
+	void setFirstFilteredValueToBeSaved(int value) { HMD14.setFirstValueToBeSaved(value); HMD15.setFirstValueToBeSaved(value);}; // SeeBeginningOfImpulseResponse does not remove
+	int getFirstFilteredValueToBeSaved() { HMD14.getFirstValueToBeSaved(); };													 // all unwanted values from the signal.
 
 	//void setClockPeriod(double per) { B13A.setClockPeriod(per); B13B.setClockPeriod(per); };
 
 	void setSamplesToSkip(int sToSkip) { B13.setSamplesToSkip(sToSkip); B14.setSamplesToSkip(sToSkip); };
 
 	void setSamplerOpticalPower_dBm(double optPower_dBm) { B13.setOutputOpticalPower_dBm(optPower_dBm); B14.setOutputOpticalPower_dBm(optPower_dBm); };
-
+	
 };
 
 #endif
