@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{thorlabs}
+Thorlabs.
+\newblock {\em Thorlabs Balance Amplified Photodetectors: PDB4xx Series
+  Operation Manual}, 2014.
+
+\bibitem{fox2006}
+Mark Fox.
+\newblock {\em Quantum Optics: An Introduction}.
+\newblock Oxford University Press, 2006.
+
+\bibitem{loudon2000}
+Rodney Loudon.
+\newblock {\em The Quantum Theory of Light}.
+\newblock Oxford University Press, 2000.
+
+\bibitem{hans2004}
+Hans-A. Bachor and Timothy~C. Ralph.
+\newblock {\em A Guide to Experiments in Quantum Optics}.
+\newblock Wiley-VCH, 2004.
+
+\bibitem{chi2011balanced}
+Yue-Meng Chi, Bing Qi, Wen Zhu, Li~Qian, Hoi-Kwong Lo, Sun-Hyun Youn,
+  AI~Lvovsky, and Liang Tian.
+\newblock A balanced homodyne detector for high-rate gaussian-modulated
+  coherent-state quantum key distribution.
+\newblock {\em New Journal of Physics}, 13(1):013003, 2011.
+
+\bibitem{almeida2016continuous}
+{\'A}lvaro~J Almeida, Nelson~J Muga, Nuno~A Silva, Jo{\~a}o~M Prata, Paulo~S
+  Andr{\'e}, and Armando~N Pinto.
+\newblock Continuous control of random polarization rotations for quantum
+  communications.
+\newblock {\em Journal of Lightwave Technology}, 34(16):3914--3922, 2016.
+
+\end{thebibliography}
