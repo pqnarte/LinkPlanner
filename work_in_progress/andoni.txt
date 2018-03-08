@@ -1,3 +1,24 @@
+Medium term goal: um sistema quântico com variavies continuas (QPSK) em que os resultados experimentais batam certo com a simulação e descrição teórica.
+
+2018-03-08
+TO BE DONE
+	- rever parte teórica
+		expressão sem matched filter vs com matched fielter (lado a lado e escrita de forma análoga)
+		esclarecer bem o papel do matched filter
+
+	- simulação 
+		documentar melhor (escrever de forma que se perceba melhor)
+
+
+	- experimental
+		incluir os resultados obtidos no laboratório
+
+
+	- bloco para calcular a SNR (documentação)
+			- para alémd e obter um valor, quero obter um intervalo de confiança
+
+Next meeting: 22/3, 9h
+
 2018-03-01
 TO BE DONE
 	- rever a parte teórica: 
