@@ -47,6 +47,13 @@
 }
 \clearpage
 \section{Fast Fourier Transform}
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Header File}   &:& fft\_*.h \\
+		\textbf{Source File}   &:& fft\_*.cpp \\
+		\textbf{Version}       &:& 20180201 (Romil Patel)
+	\end{tabular}
+\end{tcolorbox}
 %\subsubsection{Definitions of DFT and IDFT}
 %The discrete Fourier transform of a sequence of N complex number $x_0, x_1, x_2,...,x_{N-1}$ into another sequance of complex number $X_0, X_1, X_2,...,X_{N-1}$ defined by,
 %\begin{equation}
@@ -148,7 +155,7 @@ The figure \ref{FFT_flowchart} displays top level architecture of the FFT algori
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=6cm]{./algorithms/fft/figures/convolution.pdf}
-	\caption{convolution algorithm}\label{convolution}
+	\caption{Circular convolution algorithm}\label{convolution}
 \end{figure}
 
 
@@ -232,9 +239,8 @@ The following section will display the comparative analysis of MATLAB and C++ FF
 	\caption{MATLAB and C++ comparison}\label{mixed_signal_fft}
 \end{figure}
 
-\subsection{Known Problems}
+\subsection{Remarks}
 To write the data from the MATLAB in the form of text file, \textbf{fprintf} MATLAB function was used with the accuracy of the 15 digits. Similarly; to write the fft calculated data from the C++ in the form of text file, C++ \textbf{double} data type with precision of 15 digits applied to the object of \textbf{ofstream} class.\\
-\textbf{Possible Improvement} : Find a new way which can import/export the data from the MATLAB and C++ without losing resolution (probably in the form of binary data).
 
 
 

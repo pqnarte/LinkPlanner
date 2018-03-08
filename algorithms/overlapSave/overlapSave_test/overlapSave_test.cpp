@@ -75,7 +75,7 @@ int main()
 		im[i] = 0;
 	}
 	// Next, Real and Imaginary vector to complex vector conversion
-	inTimeDomainComplex = ReImVect2ComplexVector(re, im);
+	inTimeDomainComplex = reImVect2ComplexVector(re, im);
 	
 	////////////// For filter data  //////////////
 	vector <complex<double>> inTimeDomainFilterComplex(inTimeDomainFilter.size());
@@ -88,7 +88,7 @@ int main()
 		imFilter[i] = 0;
 	}
 
-	inTimeDomainFilterComplex = ReImVect2ComplexVector(reFilter, imFilter);
+	inTimeDomainFilterComplex = reImVect2ComplexVector(reFilter, imFilter);
 
 	//////////////////////////////// Section 3 /////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////

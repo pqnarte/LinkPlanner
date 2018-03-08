@@ -1,5 +1,3 @@
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% SECTION 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -9,7 +7,7 @@ close all
 
 Fs = 1e5;              % Sampling frequency                    
 T = 1/Fs;              % Sampling period       
-L = 2^10;            % Length of signal
+L = 2^3;               % Length of signal
 t = (0:L-1)*(5*T);     % Time vector
 f = linspace(-Fs/2,Fs/2,L);
 
@@ -41,7 +39,6 @@ switch sig
         X = 2*sin(2*pi*100*t).*exp(-t)+2.5*sin(2*pi*+250*t)+sin(2*pi*+50*t).*cos(2*pi*+20*t)+1.5*sin(2*pi*+50*t).*sin(2*pi*+150*t);
 end
 
-
 plot(t(1:end),X(1:end))
 title(signal_title)
 axis([min(t) max(t) 1.1*min(X) 1.1*max(X)]);
@@ -49,11 +46,10 @@ xlabel('t (Seconds)')
 ylabel('X(t)')
 
 % dlmwrite will generate text file which represents the time domain signal.
-%dlmwrite('time_function.txt', X, 'delimiter','\t');
+% dlmwrite('time_function.txt', X, 'delimiter','\t');
 fid=fopen('time_function.txt','w');
 b=fprintf(fid,'%0.15f\n',X); % 15-Digit accuracy
 fclose(fid);
-
 
 tic
 fy =fft(X);

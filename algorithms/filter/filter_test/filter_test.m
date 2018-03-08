@@ -49,11 +49,11 @@ fprintf(fid,'%.15f\n',X);
 fclose(fid);
 
 % Choose for filt a value between [1, 3]
-filt = 4;
+filt = 3;
 switch filt
     case 1
         filter_type = 'Impulse response of rcos filter';
-        h = rcosdesign(0.25,11,6);
+        h = rcosdesign(1,11,6);
         
     case 2
         filter_type = 'Impulse response of rrcos filter';

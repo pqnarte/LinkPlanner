@@ -5,6 +5,8 @@
 # include "sink.h"
 # include "filter.h"
 # include "fork.h"
+# include "overlapSave_20180208.h"
+
 
 int main() {
 
@@ -14,12 +16,13 @@ int main() {
 
 	BinarySourceMode sourceMode{ PseudoRandom };
 	int patternLength{ 5 };
-	double bitPeriod{ 1.0 / 1.25e9 };
+	double bitPeriod{ 1.0 / 2.5e9 };
 	vector<t_iqValues> iqAmplitudes{ { { 0,0 },{ 1,0 },{ 2,0 },{ 3,0 } } };
 	int numberOfBits{ 1000 };		  // -1 will generate long bit sequence.
-	int numberOfSamplesPerSymbol{ 8 };
+	int numberOfSamplesPerSymbol{ 16 };
 	double rollOffFactor{ 0.3 };
-	int impulseResponseTimeLength{ 32 };
+	int impulseResponseTimeLength{ 16 };
+	int transferFunctionFrequencyLength{ 16 };
 	
 	// ########################################################################
 	// ################ Signals Declaration and Inicialization ################
@@ -61,12 +64,14 @@ int main() {
 	B6.setFilterDomainType("time");
 	B6.setFilterType(RaisedCosine);
 
+
 	PulseShaper B7{ vector<Signal*> { &S5 }, vector<Signal*> { &S7 } };
 	B7.setRollOffFactor(rollOffFactor);
-	B7.setImpulseResponseTimeLength(impulseResponseTimeLength);
-	B7.setSeeBeginningOfImpulseResponse(false);
+	B7.setTransferFunctionFrequencyLength(transferFunctionFrequencyLength);
+	B7.setSeeBeginningOfTransferFunction(false);
 	B7.setFilterDomainType("frequency");
 	B7.setFilterType(RaisedCosine);
+
 
 	Sink B8{ vector<Signal*> { &S6 }, vector<Signal*> {} };
 	Sink B9{ vector<Signal*> { &S7 }, vector<Signal*> {} };
@@ -77,7 +82,7 @@ int main() {
 	// ################ System Declaration and Inicialization #####################
 	// ############################################################################
 
-	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9	\} };
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9} };
 
 	// ############################################################################
 	// ############################# System Run ###################################

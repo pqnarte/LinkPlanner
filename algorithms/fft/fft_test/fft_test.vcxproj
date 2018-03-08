@@ -73,7 +73,7 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\romilpatel\Documents\GitHub\LinkPlanner.Romil\include;D:\netxpto\LinkPlanner\include;..\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\fft;$(IncludePath)</IncludePath>
+    <IncludePath>D:\netxpto\LinkPlanner\include;..\;$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\fft;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

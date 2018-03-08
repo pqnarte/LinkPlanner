@@ -18,7 +18,7 @@ static size_t reverseBits(size_t x, unsigned int n)
 	return result;
 }
 
-vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
+vector<complex<double>> reImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
 {
 	vector<complex<double>> v_out(v1_real.size());
 
@@ -30,6 +30,64 @@ vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<d
 
 	return v_out;
 }
+
+vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in)
+{
+	vector<complex <double>> v_out(v1_in.size(), 0);
+	for (unsigned int k = 0; k < v1_in.size(); ++k)
+	{
+		v_out.at(k) = v1_in.at(k)*v2_in.at(k);
+	}
+	return v_out;
+}
+
+vector<double> hilbertFilter(std::vector<std::complex<double>> &inTimeDomainComplex)
+{
+	auto n = inTimeDomainComplex.size();
+	vector<double> filterReal;
+	for (unsigned int i = 0; i < n; i++)
+	{
+		if (i == 0 || i == n / 2)
+		{
+			filterReal.push_back(1);
+		}
+		else if (i > 1 && i <= (n / 2)-1)
+		{
+			filterReal.push_back(2);
+		}
+		else
+		{
+			filterReal.push_back(0);
+		}
+	}
+	vector<double> filterImag(filterReal.size());
+	vector<std::complex<double>> filter;
+	filter = reImVect2ComplexVector(filterReal, filterImag);
+
+	vector<std::complex<double>> inFrequencyDomainComplex;
+	inFrequencyDomainComplex = fft(inTimeDomainComplex);
+
+	vector<std::complex<double>> multiplicationFrequencyDomainComplex(n);
+
+	for (unsigned int i = 0; i < n; i++)
+	{
+		multiplicationFrequencyDomainComplex[i] = inFrequencyDomainComplex[i] * filter[i];
+	}
+
+	vector<std::complex<double>> analyticalSignal(n);
+	analyticalSignal = ifft(multiplicationFrequencyDomainComplex);
+
+	vector<double> hilbertTransformed(n);
+
+	for (unsigned int i = 0; i < n; i++)
+	{
+		hilbertTransformed[i] = analyticalSignal[i].imag();
+	}
+
+	return hilbertTransformed;
+}
+
+
 
 vector<complex<double>> fft(vector<complex<double> > &vec, int sign)
 {
@@ -205,21 +263,91 @@ void convolve(const vector<complex<double> > &xvec, const vector<complex<double>
 		outvec[i] = xv[i] / static_cast<double>(m);
 }
 
+vector<complex<double>> fftshift(vector<complex<double>> &vec)
+{
+	unsigned long long N = vec.size();
+	vector<complex<double>> output;
 
+	if (N % 2 == 0)
+	{
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+	}
+	else
+	{
+		N = N + 1;
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+	}
+
+	return output;
+
+}
+
+vector<std::complex<double>> ifftshift(std::vector<std::complex<double>> &vec)
+{
+	unsigned long long N = vec.size();
+	vector<std::complex<double>> output;
+
+	if (N % 2 == 0)
+	{
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+	}
+	else
+	{
+		N = N + 1;
+		for (unsigned long long i = (N / 2) - 1; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < (N / 2) - 1; i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+	}
+
+
+	return output;
+}
 
 std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> > &inTimeDomainComplex, std::vector<std::complex<double> > &inTimeDomainFilterComplex)
 {
-	size_t M = inTimeDomainFilterComplex.size();  // Initial size of filter
+	size_t impulseResponseLength = inTimeDomainFilterComplex.size();  // Initial size of filter
 	size_t N;									  // FFT size
 
-	if ((M & (M - 1)) == 0)						  // Is power of 2
+	if ((impulseResponseLength & (impulseResponseLength - 1)) == 0)						  // Is power of 2
 	{
-		N = M*2;
+		N = impulseResponseLength*2;
 	}
 	else
 	{
 		size_t m = 1;
-		while (m <= M)					// This calculates next value of power of 2
+		while (m <= impulseResponseLength)					// This calculates next value of power of 2
 		{
 			m *= 2;
 		}
@@ -227,17 +355,17 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 		N = m;
 	}
 
-	// Now, check if the value of (N-M) is less than or equal to the 25% of N,
+	// Now, check if the value of (N-impulseResponseLength) is less than or equal to the 25% of N,
 	// then double the size of the N.
 	
-	/*if (int(N - M) <= 0.25*N) 
+	/*if (int(N - impulseResponseLength) <= 0.25*N) 
 	{
 		N = N * 2;
 	}*/
 
 
 
-	auto L = N-M+1;			// Size of data block (Here, we used fix 50% overlap)
+	size_t L = N-impulseResponseLength+1;			// Size of data block (Here, we used fix 50% overlap)
 	size_t overlap = N - L;		// size of overlap
 
 	size_t Dl = inTimeDomainComplex.size();
@@ -285,7 +413,7 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 	vector <complex<double>> tempVectorA(N); // With overlap
 
 
-	unsigned long long position{ 0 };
+	size_t position = 0;
 
 	for (unsigned int i = 0; i < nr; i++)
 	{
@@ -318,9 +446,8 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 
 
 		matrix.push_back(tempVectorA);
-		position += L;
+		position = position + L;
 	}
-
 
 
 	//////////////////////////////// Section 4 /////////////////////////////////////
@@ -347,7 +474,7 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 
 	// Next, create vector from a matrix by disarding the overlap 
 	vector <complex<double>> y_aux(inTimeDomainComplex.size());
-	unsigned long long startPosition{ 0 };
+	size_t startPosition = 0;
 
 	for (unsigned int r = 0; r < matrix.size(); r++)
 	{
@@ -359,7 +486,7 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 			y_aux[startPosition + s] = tempVectorB[overlap + s];
 		}
 
-		startPosition += L;
+		startPosition = startPosition + L;
 	}
 
 	// Next, discard last "extrazero" samples. 
@@ -386,6 +513,122 @@ std::vector<std::complex<double>> overlapSave(std::vector<std::complex<double> >
 	cout << "length of data block size,  L = " << L << endl;
 	cout << "length of FFT size,         N = " << N << endl;
 	cout << "Length of overlap,    overlap = " << overlap << endl;*/
+
+	return y;
+
+}
+
+std::vector<std::complex<double>> overlapSaveRealTime(std::vector<std::complex<double> > &inTimeDomainComplex1, std::vector<std::complex<double> > &inTimeDomainComplex2, std::vector<std::complex<double> > &inTimeDomainFilterComplex)
+{
+	vector<complex<double>> currentCopy = inTimeDomainComplex1;
+	vector<complex<double>> previousCopy = inTimeDomainComplex2;
+	vector<complex<double>> dataBlock = inTimeDomainComplex2;
+	vector<complex<double>> filter = inTimeDomainFilterComplex;
+	size_t overlap = previousCopy.size();
+
+	for (unsigned int i = 0; i < currentCopy.size(); i++)
+	{
+		dataBlock.push_back(currentCopy[i]);
+	}
+
+	size_t N = dataBlock.size();
+
+	if ((N & (N - 1)) == 0)
+	{
+		N = N;
+	}
+	else
+	{
+		size_t m = 1;
+		while (m <= N)					// This calculates next value of power of 2
+		{
+			m *= 2;
+		}
+
+		N = m;
+	}
+
+	vector<complex<double>> dataBlockModified(N);
+	for (unsigned int i = 0; i < dataBlock.size(); i++)
+	{
+		dataBlockModified[i] = dataBlock[i];
+	}
+
+
+	vector<complex<double>> filterkModified(N);
+	for (unsigned int i = 0; i < filter.size(); i++)
+	{
+		filterkModified[i] = filter[i];
+	}
+
+	vector<complex<double>> y(N);
+
+	y = overlapSave(dataBlock,filter);
+
+	
+
+	return y;
+}
+
+
+
+std::vector<std::complex<double>> conv(std::vector<std::complex<double>> &inTimeDomainComplex1, std::vector<std::complex<double>> &inTimeDomainComplex2)
+{
+	// Here we will calculate the length of the linear convolution L = M+N-1
+	size_t M = inTimeDomainComplex1.size();
+	size_t N = inTimeDomainComplex2.size();
+
+	size_t L = M + N - 1;
+	
+	vector<std::complex<double>> xn(L);
+	vector<std::complex<double>> hn(L);
+
+	// Change length of both vectr by zero padding
+	for (unsigned int i = 0; i < L; i++)
+	{
+		xn[i] = inTimeDomainComplex1[i];
+		hn[i] = inTimeDomainComplex2[i];
+	}
+
+	// Calculate linear convolution using Circular convolution conversion
+	vector<std::complex<double>> XN(L);
+	vector<std::complex<double>> HN(L);
+	vector<std::complex<double>> y(L);
+		
+	XN = fft(xn);
+	HN = fft(hn);
+	y = complexVectorMultiplication(XN, HN);
+	y = ifft(y);
+	
+	return y;
+}
+std::vector<std::complex<double>> circularConv(std::vector<std::complex<double>> &inTimeDomainComplex1, std::vector<std::complex<double>> &inTimeDomainComplex2)
+{
+	// Here we will calculate the length of the linear convolution L = min(impulseResponseLength,N)
+	size_t M = inTimeDomainComplex1.size();
+	size_t N = inTimeDomainComplex2.size();
+
+	size_t L =min(M,N);
+
+	vector<std::complex<double>> xn(L);
+	vector<std::complex<double>> hn(L);
+
+	// Change length of both vectr by zero padding
+	for (unsigned int i = 0; i < L; i++)
+	{
+		xn[i] = inTimeDomainComplex1[i];
+		hn[i] = inTimeDomainComplex2[i];
+	}
+
+	// Calculate linear convolution using Circular convolution conversion
+	vector<std::complex<double>> XN(L);
+	vector<std::complex<double>> HN(L);
+	vector<std::complex<double>> y(L);
+
+	XN = fft(xn);
+	HN = fft(hn);
+	y = complexVectorMultiplication(XN, HN);
+	y = ifft(y);
 
 	return y;
 

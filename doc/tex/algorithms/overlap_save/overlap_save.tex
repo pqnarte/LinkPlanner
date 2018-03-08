@@ -15,6 +15,13 @@
 %\maketitle
 \clearpage
 \section{Overlap-Save Method}
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Header File}   &:& overlapSave\_*.h \\
+		\textbf{Source File}   &:& overlapSave\_*.cpp \\
+		\textbf{Version}       &:& 20180201 (Romil Patel)
+	\end{tabular}
+\end{tcolorbox}
 Overlap-save is an efficient way to evaluate the discrete convolution between a very long signal and a finite impulse response (FIR) filter. The overlap-save procedure cuts the signal into equal length segments with some overlap and then it performs convolution of each segment with the FIR filter.
 %Linear filtering can be easily implemented in time-domain resorting to the use of finite impulse response (FIR) digital filters and convolution property as,
 %\begin{equation}
@@ -28,9 +35,9 @@ Overlap-save is an efficient way to evaluate the discrete convolution between a 
 %Hence, the filtering in frequency-domain is implemented by sectioning or block the input signal, such that the practical implementation  of FFT and IFFT is feasible. In order to implement the non-cyclic convolution with the finite-length of cyclic convolution that the FFT provides, overlap-save and overlap-add method are use, enabling that the complexity evolves in log scale $\mathcal{O}(N\log_2N)$. The general method is to split the input signal into manageable blocks, then apply the FFT to to perform the linear convolution and at the end recombine the output blocks such that it is avoided the wrap-around errors due to the circular convolution imposed by FFT.
 The overlap-save method can be computed in the following steps:\\
 \textbf{ Step 1 :} Determine the length $M$ of impulse response, $h(n)$.\\ \\ 
-\textbf{ Step 2 :} Define the size of FFT and IFFT operation, $N$.\\ \\
-\textbf{ Step 3 :} Determine the length of block $L$ to section the input sequence $x(n)$, considering that $N=L+M-1$.\\ \\   
-\textbf{ Step 4 :} Pad $L-1$ zeros to the impulse response $h(n)$ to obtain the length $N$.\\ \\
+\textbf{ Step 2 :} Define the size of FFT and IFFT operation, $N$. The value of $N$ must greater than $M$ and it should in the form $N = 2^k$ for the efficient implementation.\\ \\
+\textbf{ Step 3 :} Determine the length $L$ to section the input sequence $x(n)$, considering that $N=L+M-1$.\\ \\   
+\textbf{ Step 4 :} Pad $L-1$ zeros at the end of the impulse response $h(n)$ to obtain the length $N$.\\ \\
 \textbf{ Step 5 :} Make the segments of the input sequences of length $L$, $x_i(n)$, where index $i$ correspond to the $i^{th}$ block. Overlap $M-1$ samples of the previous block at the beginning of the segmented block to obtain a block of length $N$. In the first block, it is added $M-1$ null samples.\\ \\
 \textbf{ Step 6 :} Compute the circular convolution of segmented input sequence $x_i(n)$ and $h(n)$ described as,
 \begin{equation}
@@ -116,11 +123,14 @@ minimum height=3em]
 
 \newpage
 \subsection*{Function description}
-To perform convolution between the time domain signal $x(n)$ with the filter $h(n)$, include the header file overlapSave\_20180208.h and then supply input argument to the function as follows,
+To perform convolution between the time domain signal $x(n)$ with the filter $h(n)$, include the header file overlapSave\_*.h and then supply input argument to the function as follows,
  \begin{equation*}
  y(n) = overlapSave(x(n),h(n))
  \end{equation*}
 Where, $x(n)$, $h(n)$ and $y(n)$ are of the C++ type vector< complex<double> > and the length of the signal $x(n)$ and filter  $h(n)$ could be arbitrary.
+\subsection*{Linear and circular convolution}
+In the circular convolution, if we determine the length of the singal $x(n)$ is $N_{1} = 8$ and length of the filter is  $h(n)$ is $N_{2} = 5$; then the length of the output signal is determined by $N = max(N_{1} , N_{2} )=8$. Next, the circular convolution can be performed after padding $0$ in the filter $h(n)$ to make it's length equals $N$. \\ \\
+In the linear convolution, if we determine the length of the singal $x(n)$ is $N_{1} = 8$ and length of the filter is  $h(n)$ is $N_{2} = 5$; then the length of the output signal is determined by $N = N_{1}+N_{2}-1 = 12$. Next, the linear convolution using circular convolution can be performed after padding $0$ in the signal $x(n)$ filter $h(n)$ to make it's length equals $N$.
 
 \newpage
 \subsection*{Flowchart of overlap-save method}
@@ -158,9 +168,9 @@ This sections explains the steps of comparing our C++ overlap-save program with 
 \textbf{Step 1} : Open the folder namely \textbf{overlapSave\_test} by following the path  "/algorithms/overlapSave/overlapSave\_test".\\ \\
 \textbf{Step 2} : Find the \textbf{overlapSave\_test.m} file and open it.\\
 This overlapSave\_test.m consists of five sections:\\
-\textbf{section 1 :} It generates the time domain signal and filter data  and save them in the form of the text file with the name of \textit{time\_domain\_data.txt} and \textit{time\_domain\_filter.txt} respectively in the same folder.\\
+\textbf{section 1 :} It generates the time domain signal and filter impulse response  and save them in the form of the text file with the name of \textit{time\_domain\_data.txt} and \textit{time\_domain\_filter.txt} respectively in the same folder.\\
 \textbf{Section 2 :} It calculates the length of FFT, data blocks and filter to perform convolution using overlap-save method.\\
-\textbf{Section 3 :} It consists of overlap-save code which first converts the data into the form of matrix with 50\% overlap and then perform convolution.\\
+\textbf{Section 3 :} It consists of overlap-save code which first converts the data into the form of matrix with 50\% overlap and then performs circular convolution with filter.\\
 \textbf{Section 4 :} It read \textit{overlap\_save\_data.txt} data file generated by C++ program and compare with MATLAB implementation. \\
 \textbf{Section 5 :} It compares our MATLAB and C++ implementation with the built-in MATLAB function conv(). \\ 
 \lstinputlisting[language=Matlab, caption=overlapSave\_test.m code]{../../algorithms/overlapSave/overlapSave_test/overlapSave_test.m}

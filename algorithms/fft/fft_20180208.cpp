@@ -18,7 +18,7 @@ static size_t reverseBits(size_t x, unsigned int n)
 	return result;
 }
 
-vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
+vector<complex<double>> reImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
 {
 	vector<complex<double>> v_out(v1_real.size());
 
@@ -31,7 +31,15 @@ vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<d
 	return v_out;
 }
 
-
+vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in)
+{
+	vector<complex <double>> v_out(v1_in.size(), 0);
+	for (unsigned int k = 0; k < v1_in.size(); ++k)
+	{
+		v_out.at(k) = v1_in.at(k)*v2_in.at(k);
+	}
+	return v_out;
+}
 
 vector<complex<double>> fft(vector<complex<double> > &vec, int sign)
 {
@@ -205,4 +213,76 @@ void convolve(const vector<complex<double> > &xvec, const vector<complex<double>
 
 	for (size_t i = 0; i < m; i++)  // Scaling (because this FFT implementation omits it)
 		outvec[i] = xv[i] / static_cast<double>(m);
+}
+
+vector<complex<double>> fftshift(vector<complex<double>> &vec)
+{
+	unsigned long long N = vec.size();
+	vector<complex<double>> output;
+
+	if (N % 2 == 0)
+	{
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+	}
+	else
+	{
+		N = N + 1;
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+	}
+
+	return output;
+	
+}
+
+vector<std::complex<double>> ifftshift(std::vector<std::complex<double>> &vec)
+{
+	unsigned long long N = vec.size();
+	vector<std::complex<double>> output;
+
+	if (N % 2 == 0)
+	{
+		for (unsigned long long i = N / 2; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < N / 2; i++)
+		{
+			output.push_back(vec[i]);
+		}
+	}
+	else
+	{
+		N = N + 1;
+		for (unsigned long long i = (N / 2)-1; i < vec.size(); i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+		for (unsigned long long i = 0; i < (N / 2)-1; i++)
+		{
+			output.push_back(vec[i]);
+		}
+
+	}
+
+
+	return output;
 }

@@ -65,13 +65,11 @@ int main()
 	} 
 
 	// Next, Real and Imaginary vector to complex vector conversion
-	inTimeDomainComplex = ReImVect2ComplexVector(re, im);
+	inTimeDomainComplex = reImVect2ComplexVector(re, im);
 
 	// calculate FFT
 	fourierTransformed = fft(inTimeDomainComplex);
 	fourierTransformed = ifft(inTimeDomainComplex);
-
-
 
 	//////////////////////////////// Section 3 ///////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
