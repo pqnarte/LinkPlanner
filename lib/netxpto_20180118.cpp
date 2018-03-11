@@ -926,14 +926,37 @@ void System::run() {
 		SystemBlocks[i]->initializeBlock();
 	}
 	*/
+	//Opens debug file
+	ofstream logFile;
+	string separator = "|";
+	if (logValue)
+		logFile.open("./" + signalsFolder + "/" + logFileName);
+	
+
 	int l = 0;
 	bool Alive;
 	do {
 		Alive = false;
 		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
+			// Writes debug information
+			if (logValue) {
+				// Prints line for each input signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->inputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+							<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+							<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+				}
+				// Prints line for each output signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->outputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+				}
+			}
 
 			bool aux = SystemBlocks[i]->runBlock();
-
 			Alive = (Alive || aux);
 		}
 		l++;
@@ -942,6 +965,9 @@ void System::run() {
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {		
 		SystemBlocks[i]->terminateBlock();
 	}
+	//Closes debug file
+	if(logValue)
+		logFile.close();
 }
 
 void System::run(string signalPath) {
