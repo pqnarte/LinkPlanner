@@ -1,0 +1,3913 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="62.730289mm"
+   height="26.321766mm"
+   viewBox="0 0 62.730289 26.321766"
+   version="1.1"
+   id="svg4849"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="simulation_mqam_extended.svg">
+  <defs
+     id="defs4843">
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Mend"
+       style="overflow:visible;"
+       inkscape:isstock="true">
+      <path
+         id="path4526"
+         style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round;stroke:#000000;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(0.6) rotate(180) translate(0,0)" />
+    </marker>
+    <inkscape:path-effect
+       effect="bspline"
+       id="path-effect4497"
+       is_visible="true"
+       weight="33.333333"
+       steps="2"
+       helper_size="0"
+       apply_no_weight="true"
+       apply_with_weight="true"
+       only_selected="false" />
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6416"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6414"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6052"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6070"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(0.6)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       id="endMarker3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578" />
+    </marker>
+    <marker
+       id="marker4538"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline4536" />
+    </marker>
+    <defs
+       id="defs581">
+      <marker
+         refY="5"
+         refX="1"
+         viewBox="0 0 10 10"
+         markerHeight="6"
+         markerWidth="8"
+         orient="auto"
+         markerUnits="strokeWidth"
+         id="marker4884">
+        <polyline
+           id="polyline4882"
+           fill="solid"
+           points="0,0 10,5 0,10 1,5" />
+      </marker>
+    </defs>
+    <marker
+       id="endMarker3-3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-4" />
+    </marker>
+    <marker
+       id="endMarker3-4"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-6" />
+    </marker>
+    <marker
+       id="endMarker3-4-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-6-0" />
+    </marker>
+    <marker
+       id="endMarker3-5"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-64" />
+    </marker>
+    <marker
+       id="endMarker3-46"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-5" />
+    </marker>
+    <marker
+       id="endMarker3-56"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63" />
+    </marker>
+    <marker
+       id="endMarker3-56-9"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-5"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-7" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-5-7"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-7-9" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-6"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-5" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1-1"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1-7" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-4"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-1" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-18"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-3" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-4" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-34"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-7"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-6" />
+    </marker>
+    <marker
+       id="endMarker3-5-4"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-64-0" />
+    </marker>
+    <marker
+       id="endMarker3-5-4-1"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-64-0-7" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-5-3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-7-4" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-3"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-9" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1-8"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1-4" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-7"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-8" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-9"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-32"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-9" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-20"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-2" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-2" />
+    </marker>
+    <marker
+       id="endMarker3-56-4"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-8" />
+    </marker>
+    <marker
+       id="endMarker3-56-4-9"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-8-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1-8-9"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1-4-5" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1-8-0"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1-4-1" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-9-8"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-0-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-32-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-9-0" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-20-8"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-2-1" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-2-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-2-4" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-5-2"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-3-8" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-0-7-1-9"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-3-1-1-9" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-3-1-6"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-35-2-13" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-2-4"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-2-5" />
+    </marker>
+    <marker
+       id="endMarker3-56-9-2-8"
+       markerUnits="strokeWidth"
+       orient="auto"
+       markerWidth="8"
+       markerHeight="6"
+       viewBox="0 0 10 10"
+       refX="1"
+       refY="5">
+      <polyline
+         points="0,0 10,5 0,10 1,5"
+         fill="solid"
+         id="polyline578-63-0-2-6" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2"
+     inkscape:cx="404.50242"
+     inkscape:cy="-404.84876"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:snap-path-clip="true"
+     inkscape:snap-perpendicular="true"
+     inkscape:snap-tangential="true"
+     gridtolerance="10"
+     inkscape:snap-path-mask="true"
+     objecttolerance="20"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:snap-text-baseline="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:snap-grids="false"
+     fit-margin-top="0.2"
+     fit-margin-bottom="0.3"
+     fit-margin-right="0.3"
+     fit-margin-left="0.3"
+     inkscape:snap-to-guides="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:object-paths="true"
+     inkscape:snap-bbox="true"
+     inkscape:snap-global="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0">
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid5486"
+       units="mm"
+       empspacing="5"
+       enabled="false"
+       originx="-55.225851"
+       originy="-163.3522" />
+    <sodipodi:guide
+       position="-20.584831,2.6910217"
+       orientation="1,0"
+       id="guide5577"
+       inkscape:locked="false" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid5631"
+       originx="-55.225851"
+       originy="-163.3522" />
+    <sodipodi:guide
+       position="5.4844221,26.093594"
+       orientation="0,1"
+       id="guide7003"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="5.4099016,-38.872663"
+       orientation="1,0"
+       id="guide7005"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="5.4844203,15.781088"
+       orientation="0,1"
+       id="guide7007"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="26.134704,20.937336"
+       orientation="0,1"
+       id="guide7044"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="31.290958,5.4844233"
+       orientation="0,1"
+       id="guide4493"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-15.400408,-33.688242"
+       orientation="0,1"
+       id="guide1143"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-15.400408,-44.057088"
+       orientation="0,1"
+       id="guide1145"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="31.199954,-30.728687"
+       orientation="1,0"
+       id="guide1649"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="10.554501,-25.527254"
+       orientation="0,1"
+       id="guide2153"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="10.554501,-52.21807"
+       orientation="0,1"
+       id="guide2155"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="23.386084,-21.328108"
+       orientation="1,0"
+       id="guide2239"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="49.344792,-28.326859"
+       orientation="1,0"
+       id="guide2277"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="75.490278,-19.64431"
+       orientation="1,0"
+       id="guide2279"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="62.355823,-41.832235"
+       orientation="0,1"
+       id="guide2517"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="93.388563,-38.872674"
+       orientation="0,1"
+       id="guide2702"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="101.25388,-38.837228"
+       orientation="1,0"
+       id="guide2709"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="116.83994,-36.793908"
+       orientation="1,0"
+       id="guide2870"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-3.7120269,-37.137823"
+       orientation="1,0"
+       id="guide3541"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-15.349486,-47.147955"
+       orientation="1,0"
+       id="guide3762"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-18.89401,-48.483022"
+       orientation="0,1"
+       id="guide3764"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="-18.882288,-44.057088"
+       orientation="1,0"
+       id="guide3766"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="83.0381,-86.620051"
+       orientation="1,0"
+       id="guide5469"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.177355,-86.620042"
+       orientation="0,1"
+       id="guide6174"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.232151,-117.69257"
+       orientation="0,1"
+       id="guide6176"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="178.97056,-100.84168"
+       orientation="1,0"
+       id="guide7452"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.177354,-99.92029"
+       orientation="0,1"
+       id="guide7702"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.232151,-104.34717"
+       orientation="0,1"
+       id="guide7704"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.177355,-73.274643"
+       orientation="0,1"
+       id="guide7706"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="88.232151,-131.03799"
+       orientation="0,1"
+       id="guide7708"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="10.568726,-74.806106"
+       orientation="1,0"
+       id="guide7710"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="5.4452968,-102.73789"
+       orientation="0,1"
+       id="guide7712"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="82.992932,-78.682614"
+       orientation="0,1"
+       id="guide7714"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="83.047728,-125.26356"
+       orientation="0,1"
+       id="guide7716"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="186.53572,-102.90803"
+       orientation="0,1"
+       id="guide8549"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata4846">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-55.225849,-107.32604)">
+    <g
+       id="g5687">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3)"
+         id="path583"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558"
+       y="126.65242"
+       x="65.122032">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556"
+         font-size="6.0000"
+         font-weight="bold">OpticalSignal</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1"
+       y="111.36127"
+       x="70.132744">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2"
+         font-size="6.0000"
+         font-weight="bold">Binary</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-8"
+       y="111.37272"
+       x="97.32811">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-7"
+         font-size="6.0000"
+         font-weight="bold">Binary</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-0"
+       y="121.29984"
+       x="87.883469">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-1"
+         font-size="6.0000"
+         font-weight="bold">Binary</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="111.79167"
+       x="98.656555"
+       height="1.8520935"
+       width="1.6754059"
+       id="rect5879"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.19621697;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <rect
+       ry="0.79374999"
+       y="111.81564"
+       x="71.575302"
+       height="1.8520935"
+       width="1.774588"
+       id="rect5879-9"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.20194139;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <g
+       id="g5629-1-4"
+       transform="translate(27.778252,-13.996543)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect4741-8-2-3-8"
+         width="10.312506"
+         height="10.312506"
+         x="79.537209"
+         y="121.55076"
+         ry="1.6426992" />
+      <text
+         x="80.181976"
+         y="130.79437"
+         id="text600-5-3-5-8"
+         style="font-size:3.17499995px;stroke-width:0.26458332">
+        <tspan
+           font-weight="bold"
+           font-size="6.0000"
+           id="tspan598-8-5-8-9"
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">B3</tspan>
+      </text>
+      <text
+         x="84.682785"
+         y="127.18037"
+         id="text576-1-0-2-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">
+        <tspan
+           style="stroke-width:0.26458332"
+           sodipodi:role="line"
+           x="84.682785"
+           y="127.18037"
+           id="tspan5581-0-6">Sink</tspan>
+      </text>
+    </g>
+    <g
+       transform="rotate(90,60.957759,110.88753)"
+       id="g5687-3">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Mend)"
+         d="m 67.936947,111.13502 c 3.431957,0 6.864178,0 8.364352,0 1.500173,0 1.068365,0 1.068232,0 -1.32e-4,0 0.431974,0 0.648027,-0.24514 0.216053,-0.24514 0.216053,-0.73457 0.216053,-4.12911 0,-3.39453 0,-9.700689 0,-16.003182"
+         id="path4495"
+         inkscape:connector-curvature="0"
+         inkscape:path-effect="#path-effect4497"
+         inkscape:original-d="m 67.936947,111.13502 c 3.431957,-2.6e-4 6.864178,-2.6e-4 10.296664,0 -0.432139,-2.6e-4 -0.863947,-2.6e-4 -1.295524,0 0.431312,-2.6e-4 0.863418,-2.6e-4 1.295524,0 -2.64e-4,-0.49028 -2.64e-4,-0.97971 0,-1.46916 -2.65e-4,-6.29962 -2.65e-4,-12.605779 0,-18.908272"
+         sodipodi:nodetypes="cccccc" />
+    </g>
+    <g
+       transform="translate(-3.0883494,4.3882e-4)"
+       id="g6948">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598"
+           font-size="6.0000"
+           font-weight="bold">B1</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           id="tspan5480"
+           sodipodi:role="line">MQAM</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           id="tspan5482"
+           sodipodi:role="line">Transmitter</tspan>
+      </text>
+    </g>
+    <g
+       id="g5629-1"
+       transform="translate(1.8233445,-13.996543)">
+      <rect
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect4741-8-2-3"
+         width="10.312506"
+         height="10.312506"
+         x="79.537209"
+         y="121.55076"
+         ry="1.6426992" />
+      <text
+         x="80.181976"
+         y="130.79437"
+         id="text600-5-3-5"
+         style="font-size:3.17499995px;stroke-width:0.26458332">
+        <tspan
+           font-weight="bold"
+           font-size="6.0000"
+           id="tspan598-8-5-8"
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">B3</tspan>
+      </text>
+      <text
+         x="84.64695"
+         y="126.26431"
+         id="text576-1-0-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">
+        <tspan
+           style="stroke-width:0.26458332"
+           sodipodi:role="line"
+           id="tspan5482-0-8-4"
+           x="84.64695"
+           y="126.26431">BER</tspan>
+        <tspan
+           style="stroke-width:0.26458332"
+           sodipodi:role="line"
+           x="84.64695"
+           y="128.0282"
+           id="tspan5581-0">Estimator</tspan>
+      </text>
+    </g>
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.16680001;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect5879-9-0"
+       width="1.6536453"
+       height="1.3559997"
+       x="68.577888"
+       y="127.48539"
+       ry="0.58113956" />
+    <text
+       style="font-size:3.17499995px;fill-rule:evenodd;stroke-width:0.191;stroke-miterlimit:4;stroke-dasharray:none"
+       x="68.653595"
+       y="128.6649"
+       id="text587">
+      <tspan
+         font-size="6.0000"
+         id="tspan585"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:0.191;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">S1</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="71.672585"
+       y="113.21199"
+       id="text587-6">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S0</tspan>
+    </text>
+    <g
+       transform="rotate(-90,79.810021,114.35056)"
+       id="g5687-2">
+      <path
+         d="m 71.153451,121.05735 4.139074,-0.0214"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-5)"
+         id="path583-4"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="g5621"
+       transform="translate(1.8233445,15.456379)">
+      <rect
+         ry="1.6426992"
+         y="107.55075"
+         x="79.537209"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-8"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-5"
+         y="116.79437"
+         x="80.181976">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-8"
+           font-size="6.0000"
+           font-weight="bold">B2</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-1"
+         y="112.27085"
+         x="84.701042">
+        <tspan
+           y="112.27085"
+           x="84.701042"
+           id="tspan5480-6"
+           sodipodi:role="line"
+           style="stroke-width:0.26458332">Homodyne</tspan>
+        <tspan
+           y="114.03474"
+           x="84.701042"
+           id="tspan5482-0"
+           sodipodi:role="line"
+           style="stroke-width:0.26458332">Receiver</tspan>
+      </text>
+    </g>
+    <rect
+       ry="0.79374999"
+       y="120.01154"
+       x="85.61882"
+       height="1.8520935"
+       width="1.774588"
+       id="rect5879-9-8-8"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.20194139;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="85.739494"
+       y="121.43911"
+       id="text587-6-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-5"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S2</tspan>
+    </text>
+    <g
+       transform="translate(25.906296,-1.6978955e-6)"
+       id="g5687-6">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-46)"
+         id="path583-1"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="111.79167"
+       x="98.606964"
+       height="1.8520935"
+       width="1.774588"
+       id="rect5879-9-8"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.20194139;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       id="text587-7"
+       y="113.21201"
+       x="98.748184"
+       style="font-size:3.17499995px;stroke-width:0.26458332;paint-order:markers stroke fill">
+      <tspan
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1;paint-order:markers stroke fill"
+         id="tspan585-5"
+         font-size="6.0000">S3</tspan>
+    </text>
+    <g
+       transform="translate(-23.97318,59.810446)"
+       id="g6948-8">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-2"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-4"
+           font-size="6.0000"
+           font-weight="bold">B1</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-12"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           id="tspan5482-02"
+           sodipodi:role="line">Binary</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan2159">Source</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(27.811604,51.666468)"
+       id="g6948-2">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-6"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-6"
+           font-size="6.0000"
+           font-weight="bold">B3</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-18"
+         y="110.51481"
+         x="63.793453">
+        <tspan
+           y="110.51481"
+           x="63.793453"
+           id="tspan5482-7"
+           sodipodi:role="line">Discrete</tspan>
+        <tspan
+           y="112.27869"
+           x="63.793453"
+           sodipodi:role="line"
+           id="tspan2163">To</tspan>
+        <tspan
+           y="114.04259"
+           x="63.793453"
+           sodipodi:role="line"
+           id="tspan2165">Continuous</tspan>
+        <tspan
+           y="115.80647"
+           x="63.793453"
+           sodipodi:role="line"
+           id="tspan2167">Time</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(27.87775,67.954439)"
+       id="g6948-86">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-68"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-3"
+           font-size="6.0000"
+           font-weight="bold">B4</tspan>
+      </text>
+    </g>
+    <g
+       id="g2097"
+       transform="translate(1.9817283,54.626021)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43"
+           font-size="6.0000"
+           font-weight="bold">B2</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5"
+         y="117.92262"
+         x="63.798622">
+        <tspan
+           y="117.92262"
+           x="63.798622"
+           id="tspan5480-06"
+           sodipodi:role="line">MQAM</tspan>
+        <tspan
+           y="119.68651"
+           x="63.798622"
+           id="tspan5482-8"
+           sodipodi:role="line">Mapper</tspan>
+      </text>
+    </g>
+    <g
+       id="g2097-3"
+       transform="translate(79.631366,54.626033)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-0">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-8"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-1"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-1"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-0"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-4"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-5"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-5"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0-2"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43-1"
+           font-size="6.0000"
+           font-weight="bold">B7</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5-7"
+         y="116.60391"
+         x="63.752113">
+        <tspan
+           y="116.60391"
+           x="63.752113"
+           id="tspan5482-8-5"
+           sodipodi:role="line">Optical</tspan>
+        <tspan
+           id="tspan2206"
+           y="118.3678"
+           x="63.752113"
+           sodipodi:role="line">IQ</tspan>
+        <tspan
+           id="tspan2208"
+           y="120.13169"
+           x="63.752113"
+           sodipodi:role="line">Modulator</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(-20.785069,59.810001)"
+       id="g5687-37">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56)"
+         id="path583-8"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1"
+       y="171.17126"
+       x="49.347675">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6"
+         font-size="6.0000"
+         font-weight="bold">Binary</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="171.59444"
+       x="48.235043"
+       height="1.8520935"
+       width="6.5575581"
+       id="rect5879-9-7"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38819295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="48.736084"
+       y="172.95532"
+       id="text587-6-7">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM1</tspan>
+    </text>
+    <g
+       transform="translate(5.0448074,51.666023)"
+       id="g5687-37-4">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9)"
+         id="path583-8-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(5.1109532,67.953994)"
+       id="g5687-37-4-5">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0)"
+         id="path583-8-7-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="179.73842"
+       x="75.462273"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="76.041519"
+       y="181.13478"
+       id="text587-6-7-5-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM3</tspan>
+    </text>
+    <g
+       transform="translate(53.716904,51.666468)"
+       id="g6948-2-2">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-0-4"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-6-9"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-6-5"
+           font-size="6.0000"
+           font-weight="bold">B5</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-18-2"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           id="tspan5482-7-9"
+           sodipodi:role="line">Pulse</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan2198">Shaper</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(53.783049,67.95444)"
+       id="g6948-86-9">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-1-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-68-6"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-3-7"
+           font-size="6.0000"
+           font-weight="bold">B6</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-0-0"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           id="tspan5482-01-5"
+           sodipodi:role="line">Pulse</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan2202">Shaper</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(30.950106,51.666023)"
+       id="g5687-37-4-3">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3)"
+         id="path583-8-7-8"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(31.016251,67.953996)"
+       id="g5687-37-4-5-8">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7)"
+         id="path583-8-7-9-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(56.852396,51.666023)"
+       id="g5687-37-4-3-8">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-1)"
+         id="path583-8-7-8-7"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(56.918539,67.953996)"
+       id="g5687-37-4-5-8-8">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-1)"
+         id="path583-8-7-9-6-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+       id="text576-18-27"
+       y="178.46925"
+       x="91.671204">
+      <tspan
+         style="stroke-width:0.26458332"
+         y="178.46925"
+         x="91.671204"
+         id="tspan5482-7-4"
+         sodipodi:role="line">Discrete</tspan>
+      <tspan
+         style="stroke-width:0.26458332"
+         y="180.23314"
+         x="91.671204"
+         sodipodi:role="line"
+         id="tspan2163-7">To</tspan>
+      <tspan
+         style="stroke-width:0.26458332"
+         y="181.99702"
+         x="91.671204"
+         sodipodi:role="line"
+         id="tspan2165-5">Continuous</tspan>
+      <tspan
+         style="stroke-width:0.26458332"
+         y="183.76093"
+         x="91.671204"
+         sodipodi:role="line"
+         id="tspan2167-2">Time</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="163.41499"
+       x="75.259987"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-4"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="75.839233"
+       y="164.81134"
+       id="text587-6-7-5-9-1">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-0"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM2</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="163.45044"
+       x="101.30142"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-1"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="101.88068"
+       y="164.84679"
+       id="text587-6-7-5-9-0">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-7"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM4</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="179.70296"
+       x="101.18612"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-6"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="101.76537"
+       y="181.09932"
+       id="text587-6-7-5-9-4">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-8"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM5</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="163.37953"
+       x="127.23763"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-2"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.81688"
+       y="164.77589"
+       id="text587-6-7-5-9-44">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM6</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="179.70297"
+       x="127.35294"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-9"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.93218"
+       y="181.09932"
+       id="text587-6-7-5-9-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-95"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM7</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="71.696159"
+       y="143.76811"
+       id="text2369"><tspan
+         sodipodi:role="line"
+         id="tspan2367"
+         x="71.696159"
+         y="145.15718"
+         style="stroke-width:0.26458332" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="78.611931"
+       y="159.17506"
+       id="text2377"><tspan
+         sodipodi:role="line"
+         id="tspan2375"
+         x="78.611931"
+         y="159.17506"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Time Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="78.611931"
+         y="161.15944"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379">Amplitude Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="78.611931"
+         y="163.14381"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="78.611931"
+       y="175.50821"
+       id="text2377-9"><tspan
+         sodipodi:role="line"
+         id="tspan2375-7"
+         x="78.611931"
+         y="175.50821"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Time Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="78.611931"
+         y="177.49258"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-7">Amplitude Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="78.611931"
+         y="179.47696"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-7">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="104.57064"
+       y="159.17506"
+       id="text2377-5"><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="159.17506"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="161.15944"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467">Amplitude Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="163.14381"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="104.57064"
+       y="175.50821"
+       id="text2377-5-1"><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="175.50821"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-5">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="177.49258"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-9">Amplitude Discrete</tspan><tspan
+         sodipodi:role="line"
+         x="104.57064"
+         y="179.47696"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-4">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.71613"
+       y="159.17506"
+       id="text2377-5-8"><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="159.17506"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="161.15944"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="163.14381"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.71613"
+       y="175.48004"
+       id="text2377-5-8-1"><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="175.48004"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1-8">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="177.46442"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2-2">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.71613"
+         y="179.44879"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-3">Real</tspan></text>
+    <g
+       transform="translate(82.727058,59.81002)"
+       id="g5687-37-4-3-8-2">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-1-5)"
+         id="path583-8-7-8-7-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="171.52353"
+       x="153.11229"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-2-4"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="153.69153"
+       y="172.91989"
+       id="text587-6-7-5-9-44-7">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9-4"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM8</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="156.49756"
+       y="170.83975"
+       id="text2377-5-8-4"><tspan
+         sodipodi:role="line"
+         x="156.49756"
+         y="170.83975"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-8">Optical Signal</tspan></text>
+    <rect
+       ry="0.79374999"
+       y="171.59444"
+       x="166.15202"
+       height="1.8520935"
+       width="2.1702483"
+       id="rect5879-9-7-7-0-2-4-7"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.22332186;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="166.48602"
+       y="173.022"
+       id="text587-6-7-5-9-44-7-8">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9-4-9"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S1</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="167.22862"
+       y="170.81146"
+       id="text2377-5-8-4-2"><tspan
+         sodipodi:role="line"
+         x="167.22862"
+         y="170.81146"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-8-1">Output</tspan></text>
+    <g
+       transform="matrix(0,1,1,0,-81.210812,110.54306)"
+       id="g5687-2-7">
+      <path
+         d="m 67.211924,121.05735 8.080601,-0.0214"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-5-4)"
+         id="path583-4-3"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="1.6478401"
+       y="180.34007"
+       x="38.92775"
+       height="3.8449814"
+       width="1.7953831"
+       id="rect5879-9-8-8-4"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.292665;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-0-6"
+       y="181.89955"
+       x="37.680389">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-1-3"
+         font-size="6.0000"
+         font-weight="bold">Binary</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="37.052235"
+       y="183.42065"
+       id="text587-6-9-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-5-3"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">MQAM9</tspan>
+    </text>
+    <g
+       transform="translate(-23.97005,131.81969)"
+       id="g6948-8-1">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-7-4"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-2-1"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-4-5"
+           font-size="6.0000"
+           font-weight="bold">B1</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-12-5"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan2159-6">Local</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan4823">Oscillator</tspan>
+      </text>
+    </g>
+    <g
+       id="g2097-9"
+       transform="matrix(0.99692057,0,0,2.0929883,2.1924165,-10.366003)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-6">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-3"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-3"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-8"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-7"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-2"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-4"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="0.9209522"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+         rx="1.4928813" />
+    </g>
+    <g
+       id="g2097-3-5"
+       transform="translate(79.604581,102.37341)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-0-2">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-8-3"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-1-9"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-1-0"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-0-4"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-4-5"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-5-0"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-5-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0-2-9"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43-1-9"
+           font-size="6.0000"
+           font-weight="bold">B7</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5-7-3"
+         y="118.36642"
+         x="63.838928">
+        <tspan
+           id="tspan2208-0"
+           y="118.36642"
+           x="63.838928"
+           sodipodi:role="line">Add</tspan>
+      </text>
+      <g
+         transform="translate(25.872227,13.328412)"
+         id="g6948-2-1-3" />
+      <g
+         transform="translate(3.1054291,13.327962)"
+         id="g5687-37-4-8-8">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-2-2)"
+           id="path583-8-7-81-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <g
+         transform="translate(3.1715751,29.615956)"
+         id="g5687-37-4-5-6-4">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-20-8)"
+           id="path583-8-7-9-0-5"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         ry="0.79374999"
+         y="141.40038"
+         x="73.522903"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-49-1"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="74.10215"
+         y="142.79674"
+         id="text587-6-7-5-9-2-7">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-2-7"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD13</tspan>
+      </text>
+      <g
+         transform="translate(51.777524,13.328412)"
+         id="g6948-2-2-9-6">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-4-7-4"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-9-0-6"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-5-1-5"
+             font-size="6.0000"
+             font-weight="bold">B5</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-2-1-8"
+           y="113.06452"
+           x="63.786907">
+          <tspan
+             y="113.06452"
+             x="63.786907"
+             sodipodi:role="line"
+             id="tspan6162-2">Sampler</tspan>
+        </text>
+      </g>
+      <g
+         transform="translate(51.843669,29.616395)"
+         id="g6948-86-9-6-8">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-1-7-8-78"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-68-6-2-5"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-3-7-7-9"
+             font-size="6.0000"
+             font-weight="bold">B6</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-0-0-7-79"
+           y="113.06452"
+           x="63.786907">
+          <tspan
+             y="113.06452"
+             x="63.786907"
+             sodipodi:role="line"
+             id="tspan6160-5">Sampler</tspan>
+        </text>
+      </g>
+      <g
+         transform="translate(29.010727,13.327962)"
+         id="g5687-37-4-3-7-0">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-32-2)"
+           id="path583-8-7-8-3-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <g
+         transform="translate(29.076873,29.615956)"
+         id="g5687-37-4-5-8-5-2">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-9-8)"
+           id="path583-8-7-9-6-4-2"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         ry="0.79374999"
+         y="125.07697"
+         x="73.320618"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-4-0-5"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="73.899864"
+         y="126.47331"
+         id="text587-6-7-5-9-1-3-7">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-0-5-3"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD12</tspan>
+      </text>
+      <rect
+         ry="0.79374999"
+         y="125.11241"
+         x="99.362053"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-1-0-6"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="99.941307"
+         y="126.50876"
+         id="text587-6-7-5-9-0-3-1">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-7-3-5"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD14</tspan>
+      </text>
+      <rect
+         ry="0.79374999"
+         y="141.36491"
+         x="99.246765"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-6-9-9"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="99.825989"
+         y="142.76128"
+         id="text587-6-7-5-9-4-1-6">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-8-2-6"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD15</tspan>
+      </text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="76.672562"
+         y="120.83703"
+         id="text2377-4-1"><tspan
+           sodipodi:role="line"
+           id="tspan2375-2-1"
+           x="76.672562"
+           y="120.83703"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Time Discrete</tspan><tspan
+           sodipodi:role="line"
+           x="76.672562"
+           y="122.8214"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2379-0-0">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="76.672562"
+           y="124.80578"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-4-9">Real</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="76.672562"
+         y="137.17017"
+         id="text2377-9-4-2"><tspan
+           sodipodi:role="line"
+           id="tspan2375-7-9-0"
+           x="76.672562"
+           y="137.17017"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332">Time Discrete</tspan><tspan
+           sodipodi:role="line"
+           x="76.672562"
+           y="139.15454"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2379-7-4-6">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="76.672562"
+           y="141.13892"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-7-7-0">Real</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="102.63127"
+         y="120.83703"
+         id="text2377-5-6-4"><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="120.83703"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2379-9-53-5">Time Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="122.8214"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2467-94-7">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="124.80578"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-2-1-1">Real</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="102.63127"
+         y="137.17017"
+         id="text2377-5-1-2-1"><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="137.17017"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2379-9-5-7-4">Time Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="139.15454"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2467-9-3-2">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="102.63127"
+           y="141.13892"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-2-4-8-9">Real</tspan></text>
+      <g
+         transform="translate(25.872225,13.328407)"
+         id="g6948-2-2-9-6-3">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-4-7-4-0"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-9-0-6-8"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-5-1-5-1"
+             font-size="6.0000"
+             font-weight="bold">B5</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-2-1-8-6"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             sodipodi:role="line"
+             id="tspan6884">Receiver</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             sodipodi:role="line"
+             id="tspan6888">Filter</tspan>
+        </text>
+      </g>
+      <g
+         transform="translate(25.938371,29.616401)"
+         id="g6948-2-2-9-6-5">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-4-7-4-7"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-9-0-6-3"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-5-1-5-14"
+             font-size="6.0000"
+             font-weight="bold">B5</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-2-1-8-3"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             sodipodi:role="line"
+             id="tspan6162-2-3">Receiver</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             sodipodi:role="line"
+             id="tspan6892">Filter</tspan>
+        </text>
+      </g>
+      <g
+         id="g2097-3-2"
+         transform="translate(77.680291,16.287974)">
+        <g
+           transform="translate(0,13.328407)"
+           id="g6948-2-4-0-6">
+          <rect
+             ry="1.6426992"
+             y="107.55377"
+             x="58.642368"
+             height="10.312506"
+             width="10.312506"
+             id="rect4741-0-5-8-7"
+             style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+          <text
+             style="font-size:3.17499995px;stroke-width:0.26458332"
+             id="text600-6-8-1-5"
+             y="116.79738"
+             x="59.287136">
+            <tspan
+               style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+               id="tspan598-6-7-1-6"
+               font-size="6.0000"
+               font-weight="bold">B1</tspan>
+          </text>
+          <text
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+             id="text576-18-1-0-42"
+             y="112.27387"
+             x="63.806202">
+            <tspan
+               y="112.27387"
+               x="63.806202"
+               id="tspan5480-5-4-4-2"
+               sodipodi:role="line">MQAM</tspan>
+            <tspan
+               y="114.03776"
+               x="63.806202"
+               id="tspan5482-7-6-5-6"
+               sodipodi:role="line">Transmitter</tspan>
+          </text>
+        </g>
+        <rect
+           ry="1.4044482"
+           y="104.59421"
+           x="58.659367"
+           height="26.600479"
+           width="10.278509"
+           id="rect4741-61-5-9"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-0-2-8"
+           y="130.12578"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-43-1-8"
+             font-size="6.0000"
+             font-weight="bold">B7</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-5-7-7"
+           y="118.36642"
+           x="63.75211">
+          <tspan
+             id="tspan2208-4"
+             y="118.36642"
+             x="63.75211"
+             sodipodi:role="line">Decoder</tspan>
+        </text>
+      </g>
+      <g
+         transform="translate(54.901323,13.327967)"
+         id="g5687-37-4-3-8-77">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-1-6)"
+           id="path583-8-7-8-7-07"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <g
+         transform="translate(54.967463,29.615937)"
+         id="g5687-37-4-5-8-8-6">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-1-9)"
+           id="path583-8-7-9-6-9-6"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         ry="0.79374999"
+         y="125.04147"
+         x="125.28658"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-2-46"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="125.86582"
+         y="126.43784"
+         id="text587-6-7-5-9-44-3">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-9-0"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD16</tspan>
+      </text>
+      <rect
+         ry="0.79374999"
+         y="141.36491"
+         x="125.40188"
+         height="1.8520935"
+         width="6.4732876"
+         id="rect5879-9-7-7-0-9-3"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="125.98112"
+         y="142.76126"
+         id="text587-6-7-5-9-9-2">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-95-0"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD17</tspan>
+      </text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="128.76505"
+         y="120.83701"
+         id="text2377-5-8-82"><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="120.83701"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2467-2-7">Time Discrete</tspan><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="122.82139"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan8455">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="124.80576"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-2-5-2">Real</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="128.76505"
+         y="137.14198"
+         id="text2377-5-8-1-3"><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="137.14198"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2379-9-1-8-5">Time Discrete</tspan><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="139.12636"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2467-2-2-22">Amplitude Continuous</tspan><tspan
+           sodipodi:role="line"
+           x="128.76505"
+           y="141.11073"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-2-5-3-7">Real</tspan></text>
+      <g
+         transform="translate(80.775985,21.471961)"
+         id="g5687-37-4-3-8-2-4">
+        <path
+           d="m 65.891793,112.71046 14.457801,1e-5"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-1-5-2)"
+           id="path583-8-7-8-7-0-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cc" />
+      </g>
+      <rect
+         ry="0.79374999"
+         y="133.25638"
+         x="151.5882"
+         height="1.8520935"
+         width="5.69526"
+         id="rect5879-9-7-7-0-2-4-3"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.3617706;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         x="151.93442"
+         y="134.65274"
+         id="text587-6-7-5-9-44-7-6">
+        <tspan
+           font-size="6.0000"
+           id="tspan585-3-2-6-2-9-4-3"
+           style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD18</tspan>
+      </text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         x="154.54648"
+         y="132.50171"
+         id="text2377-5-8-4-6"><tspan
+           sodipodi:role="line"
+           x="154.54648"
+           y="132.50171"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="tspan2381-2-5-8-0">Binary</tspan></text>
+    </g>
+    <g
+       transform="translate(-20.78194,131.81924)"
+       id="g5687-37-6">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-4)"
+         id="path583-8-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6"
+       y="243.18051"
+       x="47.014606">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="243.60368"
+       x="48.238167"
+       height="1.8520935"
+       width="6.5575581"
+       id="rect5879-9-7-5"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38819295;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="48.739212"
+       y="244.96457"
+       id="text587-6-7-7">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-1"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD01</tspan>
+    </text>
+    <g
+       transform="translate(5.059032,115.53125)"
+       id="g5687-37-4-8">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-2)"
+         id="path583-8-7-81"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(5.125178,131.81924)"
+       id="g5687-37-4-5-6">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-20)"
+         id="path583-8-7-9-0"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="243.60367"
+       x="75.476501"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-49"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="76.055748"
+       y="245.00003"
+       id="text587-6-7-5-9-2">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-2"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD04</tspan>
+    </text>
+    <g
+       transform="translate(53.731128,115.5317)"
+       id="g6948-2-2-9">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-0-4-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-6-9-0"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-6-5-1"
+           font-size="6.0000"
+           font-weight="bold">B5</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-18-2-1"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan4876">Ideal</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan6162">Amplifier</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(53.797273,131.81968)"
+       id="g6948-86-9-6">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-1-7-8"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-68-6-2"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-3-7-7"
+           font-size="6.0000"
+           font-weight="bold">B6</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-0-0-7"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan4880">Ideal</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan6158">Amplifier</tspan>
+        <tspan
+           y="115.80165"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan6160" />
+      </text>
+    </g>
+    <g
+       transform="translate(30.964331,115.53125)"
+       id="g5687-37-4-3-7">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-32)"
+         id="path583-8-7-8-3"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(31.030476,131.81924)"
+       id="g5687-37-4-5-8-5">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-9)"
+         id="path583-8-7-9-6-4"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(56.866621,115.53125)"
+       id="g5687-37-4-3-8-7">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-3-1-7)"
+         id="path583-8-7-8-7-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       transform="translate(56.932764,131.81924)"
+       id="g5687-37-4-5-8-8-5">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-1-8)"
+         id="path583-8-7-9-6-9-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="227.28024"
+       x="75.274216"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-4-0"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="75.853462"
+       y="228.67659"
+       id="text587-6-7-5-9-1-3">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-0-5"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD03</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="227.31569"
+       x="101.31565"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-1-0"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="101.89491"
+       y="228.71204"
+       id="text587-6-7-5-9-0-3">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-7-3"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD06</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="243.56821"
+       x="101.20036"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-6-9"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="101.77959"
+       y="244.96457"
+       id="text587-6-7-5-9-4-1">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-8-2"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD07</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="227.24478"
+       x="127.25187"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-2-0"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.83109"
+       y="228.64114"
+       id="text587-6-7-5-9-44-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9-3"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD08</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="243.56822"
+       x="127.36717"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-9-2"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.94643"
+       y="244.96457"
+       id="text587-6-7-5-9-9-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-95-7"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD09</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="104.58487"
+       y="223.04031"
+       id="text2377-5-6"><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="223.04031"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-53">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="225.02469"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-1">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="227.00906"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan8451">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="104.58487"
+       y="239.37346"
+       id="text2377-5-1-2"><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="239.37346"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-5-7">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="241.35783"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-9-3">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="104.58487"
+         y="243.34221"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-4-8">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.73035"
+       y="223.04031"
+       id="text2377-5-8-8"><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="223.04031"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1-7">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="225.02469"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2-1">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="227.00906"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-9">Real</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.73035"
+       y="239.34529"
+       id="text2377-5-8-1-8"><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="239.34529"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1-8-8">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="241.32967"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2-2-2">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.73035"
+         y="243.31404"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-3-6">Real</tspan></text>
+    <g
+       transform="translate(-20.78194,115.53125)"
+       id="g5687-37-6-1">
+      <path
+         d="m 73.656729,112.71049 6.692865,-2e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-4-9)"
+         id="path583-8-2-1"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6-8"
+       y="226.89253"
+       x="47.014606">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9-0"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="227.31569"
+       x="50.1591"
+       height="1.8520935"
+       width="2.7156894"
+       id="rect5879-9-7-5-9"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.24981387;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="50.726009"
+       y="228.67659"
+       id="text587-6-7-7-3">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-1-9"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S1</tspan>
+    </text>
+    <g
+       id="g2097-3-5-1"
+       transform="translate(79.659377,133.44594)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-0-2-1">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-8-3-0"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-1-9-2"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-1-0-3"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-0-4-1"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-4-5-2"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-5-0-7"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-5-0-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0-2-9-0"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43-1-9-6"
+           font-size="6.0000"
+           font-weight="bold">B7</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5-7-3-9"
+         y="118.36642"
+         x="63.838928">
+        <tspan
+           id="tspan2208-0-6"
+           y="118.36642"
+           x="63.838928"
+           sodipodi:role="line">Add</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(53.757089,146.20134)"
+       id="g6948-86-9-6-0">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-1-7-8-7"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-68-6-2-0"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-3-7-7-4"
+           font-size="6.0000"
+           font-weight="bold">B6</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-0-0-7-7"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan4880-3">White</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan6154">Noise</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(56.892581,146.2009)"
+       id="g5687-37-4-5-8-8-5-9">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-1-8-9)"
+         id="path583-8-7-9-6-9-9-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="257.94989"
+       x="127.32699"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-9-2-2"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.90624"
+       y="259.34625"
+       id="text587-6-7-5-9-9-9-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-95-7-4"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD11</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.69016"
+       y="253.72694"
+       id="text2377-5-8-1-8-7"><tspan
+         sodipodi:role="line"
+         x="130.69016"
+         y="253.72694"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1-8-8-3">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.69016"
+         y="255.71132"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2-2-2-3">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.69016"
+         y="257.69571"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-3-6-8">Real</tspan></text>
+    <g
+       transform="translate(53.702293,99.62039)"
+       id="g6948-86-9-6-2">
+      <rect
+         ry="1.6426992"
+         y="107.55377"
+         x="58.642368"
+         height="10.312506"
+         width="10.312506"
+         id="rect4741-1-7-8-1"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-68-6-2-05"
+         y="116.79738"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-3-7-7-0"
+           font-size="6.0000"
+           font-weight="bold">B6</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-0-0-7-3"
+         y="112.27387"
+         x="63.806202">
+        <tspan
+           y="112.27387"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan4880-9">White</tspan>
+        <tspan
+           y="114.03776"
+           x="63.806202"
+           sodipodi:role="line"
+           id="tspan6150">Noise</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(56.837785,99.619951)"
+       id="g5687-37-4-5-8-8-5-8">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-0-7-1-8-0)"
+         id="path583-8-7-9-6-9-9-2"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="211.36894"
+       x="127.27219"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-9-2-7"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="127.85144"
+       y="212.76529"
+       id="text587-6-7-5-9-9-9-3">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-95-7-1"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD10</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="130.63538"
+       y="207.14601"
+       id="text2377-5-8-1-8-6"><tspan
+         sodipodi:role="line"
+         x="130.63538"
+         y="207.14601"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2379-9-1-8-8-8">Time Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.63538"
+         y="209.13039"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2467-2-2-2-4">Amplitude Continuous</tspan><tspan
+         sodipodi:role="line"
+         x="130.63538"
+         y="211.11476"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-3-6-3">Real</tspan></text>
+    <text
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+       id="text576-18-9-9-9"
+       y="236.85905"
+       x="65.769424">
+      <tspan
+         style="stroke-width:0.26458332"
+         y="236.85905"
+         x="65.769424"
+         sodipodi:role="line"
+         id="tspan2167-28-5-1">Photodiode</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text600-68-9-0"
+       y="262.48727"
+       x="61.251682">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan598-3-4-8"
+         font-size="6.0000"
+         font-weight="bold">B4</tspan>
+    </text>
+    <g
+       id="g2097-3-5-1-5"
+       transform="translate(27.811605,133.44593)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-0-2-1-1">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-8-3-0-2"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-1-9-2-1"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-1-0-3-1"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-0-4-1-0"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-4-5-2-9"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-5-0-7-0"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-5-0-1-0"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0-2-9-0-2"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43-1-9-6-7"
+           font-size="6.0000"
+           font-weight="bold">B7</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5-7-3-9-7"
+         y="118.36642"
+         x="63.838928">
+        <tspan
+           id="tspan2208-0-6-1"
+           y="118.36642"
+           x="63.838928"
+           sodipodi:role="line">Photodiode</tspan>
+      </text>
+    </g>
+    <g
+       id="g2097-3-5-1-3"
+       transform="translate(27.766436,102.3734)">
+      <g
+         transform="translate(0,13.328407)"
+         id="g6948-2-4-0-2-1-7">
+        <rect
+           ry="1.6426992"
+           y="107.55377"
+           x="58.642368"
+           height="10.312506"
+           width="10.312506"
+           id="rect4741-0-5-8-3-0-1"
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.05634046;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+        <text
+           style="font-size:3.17499995px;stroke-width:0.26458332"
+           id="text600-6-8-1-9-2-2"
+           y="116.79738"
+           x="59.287136">
+          <tspan
+             style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+             id="tspan598-6-7-1-0-3-5"
+             font-size="6.0000"
+             font-weight="bold">B1</tspan>
+        </text>
+        <text
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+           id="text576-18-1-0-4-1-8"
+           y="112.27387"
+           x="63.806202">
+          <tspan
+             y="112.27387"
+             x="63.806202"
+             id="tspan5480-5-4-4-5-2-1"
+             sodipodi:role="line">MQAM</tspan>
+          <tspan
+             y="114.03776"
+             x="63.806202"
+             id="tspan5482-7-6-5-0-7-5"
+             sodipodi:role="line">Transmitter</tspan>
+        </text>
+      </g>
+      <rect
+         ry="1.4044482"
+         y="104.59421"
+         x="58.659367"
+         height="26.600479"
+         width="10.278509"
+         id="rect4741-61-5-0-1-4"
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.09033708;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+      <text
+         style="font-size:3.17499995px;stroke-width:0.26458332"
+         id="text600-0-2-9-0-5"
+         y="130.12578"
+         x="59.287136">
+        <tspan
+           style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+           id="tspan598-43-1-9-6-3"
+           font-size="6.0000"
+           font-weight="bold">B7</tspan>
+      </text>
+      <text
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:1.41111112px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="text576-5-7-3-9-2"
+         y="118.36642"
+         x="63.838928">
+        <tspan
+           id="tspan2208-0-6-9"
+           y="118.36642"
+           x="63.838928"
+           sodipodi:role="line">Photodiode</tspan>
+      </text>
+    </g>
+    <g
+       transform="translate(5.0667822,99.616595)"
+       id="g5687-37-4-8-5">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-2-4)"
+         id="path583-8-7-81-3"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="211.3656"
+       x="75.28196"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-4-0-8"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="75.861206"
+       y="212.76195"
+       id="text587-6-7-5-9-1-3-73">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-0-5-39"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD02</tspan>
+    </text>
+    <g
+       transform="translate(5.0844969,146.20091)"
+       id="g5687-37-4-8-6">
+      <path
+         d="m 65.891793,112.71046 14.457801,1e-5"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.191;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#endMarker3-56-9-2-8)"
+         id="path583-8-7-81-34"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       ry="0.79374999"
+       y="257.94989"
+       x="75.299683"
+       height="1.8520935"
+       width="6.4732876"
+       id="rect5879-9-7-7-0-4-0-1"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.38569054;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="75.878929"
+       y="259.34625"
+       id="text587-6-7-5-9-1-3-9">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-0-5-0"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">HMD05</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6-8-5"
+       y="210.65866"
+       x="74.149414">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9-0-5"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6-8-6"
+       y="226.46765"
+       x="74.149414">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9-0-6"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6-8-7"
+       y="243.02499"
+       x="74.149414">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9-0-1"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       id="text558-1-1-6-8-77"
+       y="257.43082"
+       x="74.149414">
+      <tspan
+         style="font-weight:bold;font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1"
+         id="tspan556-2-6-9-0-4"
+         font-size="6.0000"
+         font-weight="bold">Optical Signal</tspan>
+    </text>
+    <rect
+       ry="0.79374999"
+       y="189.32933"
+       x="38.791237"
+       height="1.8520935"
+       width="2.1702485"
+       id="rect5879-9-7-7-0-2-4-7-3"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.22332186;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="39.125237"
+       y="190.7569"
+       id="text587-6-7-5-9-44-7-8-1">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9-4-9-6"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S0</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="39.867836"
+       y="188.54636"
+       id="text2377-5-8-4-2-3"><tspan
+         sodipodi:role="line"
+         x="39.867836"
+         y="188.54636"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-8-1-8">Output</tspan></text>
+    <rect
+       ry="0.79374999"
+       y="223.6601"
+       x="50.398949"
+       height="1.8520935"
+       width="2.1702485"
+       id="rect5879-9-7-7-0-2-4-7-8"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.22332186;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="51.451904"
+       y="224.9493"
+       id="text2377-5-8-4-2-9"><tspan
+         sodipodi:role="line"
+         x="51.451904"
+         y="224.9493"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-8-1-5">Input</tspan></text>
+    <rect
+       ry="0.79374999"
+       y="235.62979"
+       x="242.53024"
+       height="1.8520935"
+       width="2.1702485"
+       id="rect5879-9-7-7-0-2-4-7-7"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.22332186;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <text
+       style="font-size:3.17499995px;stroke-width:0.26458332"
+       x="242.86424"
+       y="237.05736"
+       id="text587-6-7-5-9-44-7-8-6">
+      <tspan
+         font-size="6.0000"
+         id="tspan585-3-2-6-2-9-4-9-0"
+         style="font-size:1.58749998px;font-family:Calibri;fill:#000000;fill-opacity:1;stroke-width:0.26458332;stroke-opacity:1">S2</tspan>
+    </text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="243.60684"
+       y="234.84682"
+       id="text2377-5-8-4-2-5"><tspan
+         sodipodi:role="line"
+         x="243.60684"
+         y="234.84682"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.58749998px;font-family:Calibri;-inkscape-font-specification:'Calibri, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.26458332"
+         id="tspan2381-2-5-8-1-2">Output</tspan></text>
+  </g>
+</svg>
