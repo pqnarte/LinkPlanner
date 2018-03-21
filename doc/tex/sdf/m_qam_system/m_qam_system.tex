@@ -198,7 +198,7 @@ Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNois
 In the case of QPSK with m=4, both the quadrature and in-phase components have $m(t) = \pm A$. The values that replace $m$ and $N_0$ in Equation~\ref{eq:berMQAM} become:
 
 \begin{eqnarray}
-&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} \sqrt{P_L P_S} T}{2}\\
+&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T \sqrt{P_L P_S}}{2}\\
 &N_{mf} &= \sqrt{\sigma_o^2} = E(n_o^2) = \sqrt{\frac{n_0 T}{4}}
 \end{eqnarray}
 
@@ -208,7 +208,7 @@ Here, $P_L$ is the local oscillator power, $P_S$ is the average optical power of
 The optimal BER that can be obtained by using matched filtering is then given by:
 
 \begin{eqnarray}\label{eq:berBPSK}
-&P_{be} &= \frac{1}{2} Q\left({\frac{A_{mf}}{\sqrt{2} N_{mf}}}\right)\nonumber\\
+&P_{be} &= Q\left({\frac{A_{mf}}{N_{mf}}}\right)\nonumber\\
 &		&= \frac{1}{2} \text{erfc}\left({\frac{A_{mf}}{\sqrt{2} N_{mf}}}\right)\nonumber\\
 &	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{A^2T}{2 n_0}}}\right)\\
 %&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
@@ -225,6 +225,19 @@ with
 
 \noindent where T is the symbol period, A is as defined in Equation~\ref{eq:bpskamplitude}, the average peak amplitude of the signal without noise prior to filtering.
 %and $B_e$ is the energy of a single received bit.
+
+The expressions for the Bit-Error-Rate in the cases with and without matched filtering is then:
+
+\begin{table}[H]
+	\centering
+	\begin{tabulary}{1.0\textwidth}{|c|c|}
+		\hline
+		\textbf{Without matched filter} 								& \textbf{With Matched Filter} \\ \hline
+		$ \frac{1}{2} \text{erfc} \left( \frac{A}{\sqrt{n_0}} \right) $	& $ \frac{1}{2} \text{erfc} \left( \frac{A}{\sqrt{n_0}} \sqrt{\frac{T}{2}} \right) $ \\ \hline
+	\end{tabulary}
+	
+	\caption{Comparison between the BER equations for the cases with and without matched filtering.\label{tab:ber_qpsk}}
+\end{table}
 
 Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
 %Here, $T$ is the symbol period. 
