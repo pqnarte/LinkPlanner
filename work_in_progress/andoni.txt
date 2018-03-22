@@ -1,4 +1,18 @@
-Medium term goal: um sistema quântico com variavies continuas (QPSK) em que os resultados experimentais batam certo com a simulação e descrição teórica.
+Medium term goal: um sistema quântico com variavies continuas em real-time em que os resultados experimentais batam certo com a simulação e descrição teórica.
+
+2018-03-22
+TO BE DONE
+	- rever a parte teórica
+		colocando as unidades em todas as grandezas
+		retirar qualquer referência à simulação
+
+	- rever a parte da simulação
+		calculcar a SNR teórica e numérica para cada caso
+
+
+	- avançar no módulo do SNR
+
+Next meeting: 28/3, 9h
 
 2018-03-08
 TO BE DONE
