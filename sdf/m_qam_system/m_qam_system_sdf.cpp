@@ -11,13 +11,26 @@ int main(){
 	// #################################### System Input Parameters ########################################
 	// #####################################################################################################
 
-	t_integer numberOfBitsGenerated(1000);
-	t_integer samplesPerSymbol(16);
+
+	// Sampling rate is samplesPerSymbol * symbolRate = samplesPerSymbol/symbolPeriod
+	// Symbol rate is 0.5*bitRate = 1/(2*bitPeriod)
+
+	/* t_integer samplesPerSymbol(64);
+	//	t_real bitPeriod = 1.0 / 50e9;
+	t_real bitPeriod = 1.0 / 32e9; // sampling rate = 2*1/bitPeriod
+	//	t_real bitPeriod = 20e-12;
+	double symbolPeriod = bitPeriod / samplesPerSymbol;
+	*/
+	double samplingRate = 64e9;
+	double symbolRate = 2e9;
+	t_integer samplesPerSymbol(samplingRate / symbolRate);
+	t_real bitPeriod = 1 / (2 * symbolRate);
+	double symbolPeriod = 1 / symbolRate;
+
+	t_integer numberOfBitsGenerated(4000);
 	t_integer pLength = 5;
-	t_real bitPeriod = 1.0 / 50e9;
-//	t_real bitPeriod = 20e-12;
-	t_real rollOffFactor_shp = 0.3;
-	t_real rollOffFactor_out = 0.3;
+	t_real rollOffFactor_shp = 0.05;
+	t_real rollOffFactor_out = 0.05;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
 	t_real signalOutputPower = -60;
 	PulseShaperFilter shaperFilter = RootRaisedCosine;
@@ -39,7 +52,7 @@ int main(){
 	//double rollOffFactor = 0.3;
 
 	//int samplesPerSymbol = 16;
-	double symbolPeriod = bitPeriod / samplesPerSymbol;
+	
 
 	//t_real signalOutputPower_dBm = -20; 
 	t_real localOscillatorPower_dBm = 0; 
@@ -92,10 +105,10 @@ int main(){
 	MQamTransmitter B1{ vector<Signal*> { }, vector<Signal*> { &S1, &S0 } };
 	B1.setNumberOfBits(numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(signalOutputPower);
-	B1.setMode(Random);
+	//B1.setMode(Random);
 	//B1.setMode(PseudoRandom);
-	//B1.setMode(DeterministicAppendZeros);
-	B1.setBitStream("01001011");
+	B1.setMode(DeterministicAppendZeros);
+	B1.setBitStream("11010110");
 	B1.setBitPeriod(bitPeriod);
 	B1.setPatternLength(prbsPatternLength);
 	B1.setIqAmplitudes(iqAmplitudeValues);
