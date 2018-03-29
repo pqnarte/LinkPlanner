@@ -6,6 +6,7 @@
 # include <string>
 # include <strstream>
 # include <algorithm>
+# include <ctime>
 
 
 # include "netxpto_20180118.h"
@@ -926,8 +927,9 @@ void System::run() {
 		SystemBlocks[i]->initializeBlock();
 	}
 	*/
-	//Opens debug file
+	//Debug information
 	ofstream logFile;
+	clock_t start;
 	string separator = "|";
 	if (logValue)
 		logFile.open("./" + signalsFolder + "/" + logFileName);
@@ -940,6 +942,12 @@ void System::run() {
 		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
 			// Writes debug information
 			if (logValue) {
+				time_t t_now = time(0);
+				struct tm now;
+				localtime_s(&now, &t_now);
+				char buffer[20];
+				snprintf(buffer,20,"%04d-%02d-%02d %02d:%02d:%02d", 1900+now.tm_year, now.tm_mon+1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
+				logFile << buffer << endl;
 				// Prints line for each input signal in the current block being executed
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
@@ -954,9 +962,11 @@ void System::run() {
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
 				}
+				start = clock(); //Counts the time taken to run the currentBlock
 			}
-
 			bool aux = SystemBlocks[i]->runBlock();
+			if (logValue)
+				logFile << (float)(clock()-start)/1000 << endl << endl;
 			Alive = (Alive || aux);
 		}
 		l++;
