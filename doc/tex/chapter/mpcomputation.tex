@@ -38,7 +38,77 @@ c = f(a,b)
 \label{fig:tpcscheme}
 \end{figure}
 
-\section{MPC Example}
+\section{Known Problems}
+\subsection{Message Access}
+Consider 2 parties, Alice and Bob. Alice has a set of messages $A=\{m_0,m_1,m_2,\ldots,m_{n-1}\}$
+and Bob has an index $b$. The output of this function should be $m_b$, i.e., the message from Alice's set of index $b$. Bob should not gain
+any more information other than $m_b$ and Alice should not know the value of $b$.
+\begin{equation}\label{eq:messageaccess}
+f(A,b) = A[b]
+\end{equation}
+
+\subsection{The Millionaire' Problem}
+Consider 2 parties, Alice and Bob, with inputs $a$ and $b$ respectively. The output of this function is $1$ when $a < b$ 
+and $0$ when $a $\geq b$. In other terms,
+\begin{equation}\label{eq:tpc}
+f(a,b) = max(a,b)
+\end{equation}
+
+\subsection{Average Value}
+Consider 2 parties, Alice and Bob, with inputs $a$ and $b$ respectively. The output of this function should be the average value of $a$ and $b$
+. In other terms,
+\begin{equation}\label{eq:tpc}
+f(a,b) = \frac{a+b}{2}
+\end{equation}
+
+\section{Solutions}
+In this section we will be presenting the classic solutions to the 3 previous problems. We will later present our approach.
+\subsection{With a Third Trusted Party}
+For this case we assume that the computation of the function is done by a Trusted Third Party (TTP). 
+We will also assume an ideal scenario, where the TTP is not corrupted.
+Alice and Bob do not have access to the computation of the function.
+
+
+\subsubsection{Message Access}
+For this example, we will assume that $A = \{1101,0011\}$ and $b = 1$.
+\begin{enumerate}
+\item Alice and Bob send their inputs, $A$ and $b$ respectively, to the TTP
+\item The TTP computes the function and determines $A[1]$
+\item The TTP sends $0011$ to Alice and Bob
+\end{enumerate}
+
+\subsubsection{The Millionaire' Problem}
+For this example, we will assume that $a = 1101$ and $b = 1100$.
+\begin{enumerate}
+\item Alice and Bob send their inputs, $a$ and $b$ respectively, to the TTP
+\item The TTP computes the function and determines $a < b$
+\item The TTP sends $0$ to Alice and Bob
+\end{enumerate}
+
+\subsubsection{Average Value}
+For this example, we will assume that $a = 0100$ and $b = 0010$.
+\begin{enumerate}
+\item Alice and Bob send their inputs, $a$ and $b$ respectively, to the TTP
+\item The TTP computes the function and determines $\frac{a+b}{2}$
+\item The TTP sends $0011$ to Alice and Bob
+\end{enumerate}
+
+\subsection{One Party Computes the Function}
+For this case we consider only 2 parties (a TTP is not necessary) and we assume that the computation is done by one party.
+The other party does not have access to the computation.
+
+\subsubsection{Message Access}
+%Complete this section
+\subsubsection{The Millionaire' Problem}
+%Complete this section
+\subsubsection{Average Value}
+%Complete this section
+
+\subsection{Both Parties Compute the Function}
+For this example we consider 2 parties, Alice and Bob. These parties will perform a joint computation of the function, without revealing
+their inputs. They have access to their part of the computation.
+
+\subsubsection{Message Access}
 Let's consider 2 parties, Alice and Bob. Alice has a set $M = \{m_0,m_1\}$ of messages and Bob has the index, $i$, of the message he wants to receive from Alice, $m_i$.\\
 For this example we will be assuming that $i=1$ and $M = \{11,10\}$. Both messages are 2-bit binary numbers.
 \begin{enumerate}
@@ -84,6 +154,11 @@ The first two bits of the decrypted information do not represent $m_0$.
 \label{fig:mpcdecryption}
 \end{figure}
 \end{enumerate}
+
+\subsubsection{The Millionaire' Problem}
+%Complete this section
+\subsubsection{Average Value}
+%Complete this section
 
 \section{Oblivious Transfer}
 Oblivious Transfer (OT) is a protocol that allows the sender to transfer one piece of information
