@@ -303,11 +303,17 @@ The use of matched filtering should allow transmission with a lower SNR to achie
 	\caption{Schematic representation of the MQAM Transmitter block.}\label{fig:simulation_tx}
 \end{figure}
 
-\begin{sidewaysfigure}[h]
+%\begin{sidewaysfigure}[h]
+%	\centering
+%	\includegraphics{./sdf/m_qam_system/figures/simulation_rx}
+%	\caption{Schematic representation of the Homodyne Receiver block.}\label{fig:simulation_rx}
+%\end{sidewaysfigure}
+
+\begin{figure}[h]
 	\centering
 	\includegraphics{./sdf/m_qam_system/figures/simulation_rx}
 	\caption{Schematic representation of the Homodyne Receiver block.}\label{fig:simulation_rx}
-\end{sidewaysfigure}
+\end{figure}
 
 The M-QAM transmission system is a complex block of code that simulates the modulation, transmission and
 demodulation of an optical signal using M-QAM modulation.
@@ -487,7 +493,7 @@ be shown for a variety of system configurations, with varying noise and
 filters, displaying the advantages of using matched filtering with an optimal
 filter.
 
-\subsubsection{Inter-symbol Interference}
+\subsubsection{Without Noise}
 
 These section presents the mentioned eye diagrams in configurations without any
 noise added to the signal. This allows studying the effects of inter-symbol
@@ -500,8 +506,36 @@ a
 raised-cosine filter as a pulse shaper, with a roll-off factor of 0.9. It can
 be seen that no inter-symbol interference is present.
 
+\begin{table}[H]
+			\centering
+			\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+
 \begin{figure}[H]
 	\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) At the Transmitter Output}
 	\begin{subfigure}{.5\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 7cm 5cm 7cm,
@@ -527,9 +561,37 @@ a roll-off factor of 0.9. Although this is the ideal filter to use for pulse
 shaping, as it does not cause inter-symbol-interference, it can be seen that
 when used twice its results are less than ideal, as shown in the eye diagram
 captured after the second filter.
-
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
 \begin{figure}[H]
 	\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm,
@@ -547,6 +609,7 @@ captured after the second filter.
 		after the receiver filter. Simulation done with an optical power output of
 		-60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, and
 		a rolloff factor of 0.9.\label{fig:eyes_nn_rc_09}}
+	\end{minipage}
 \end{figure}
 
 The optimum solution to achieving no inter-symbol interference while using
@@ -561,9 +624,38 @@ receiver's filter. The roll-off factor used in both was 0.9. It can be seen
 that the shape of the eye diagram is equal to that of
 Figure~\ref{fig:eyespower}, which uses a single raised cosine filter at the
 pulse-shaper. Thus, it shows no sign of inter-symbol interference.
-
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
 \begin{figure}[H]
 	\centering
+
+	\textbf{A Root-Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm,
@@ -580,6 +672,7 @@ pulse-shaper. Thus, it shows no sign of inter-symbol interference.
 		after the receiver filter. Simulation done with an optical power output
 		of -60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier,
 		and a rolloff factor of 0.9.\label{fig:eyes_nn_rrc_09}}
+	\end{minipage}
 	
 \end{figure}
 
@@ -589,9 +682,38 @@ filters, but with a roll-off factor of 0.3. Again, it can be seen that the
 final shape of the eye diagram when using the root-raised-cosine for matched
 filtering is the same as the shape of the optical signal S1 when using a
 raised-cosine-filter.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+	
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.3) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm,
@@ -609,12 +731,40 @@ raised-cosine-filter.
 		after the receiver filter. Simulation done with an optical power output of
 		-60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, and
 		a rolloff factor of 0.3.\label{fig:eyes_nn_rc_03}}
-	
+	\end{minipage}
 \end{figure}
 
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Root-Raised-Cosine Signal (roll-off=0.3) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm,
@@ -633,6 +783,7 @@ raised-cosine-filter.
 		after the receiver filter. Simulation done with an optical power output
 		of -60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier,
 		and a rolloff factor of 0.3.\label{fig:eyes_nn_rrc_03}}
+	\end{minipage}
 	
 \end{figure}
 
@@ -641,7 +792,7 @@ the filters used should be raised-cosine or root-raised-cosine, if not using a
 filter at the receiver or if using matched filtering, respectively. As such,
 from now on only these configurations will be used.
 
-\subsubsection*{Signals with AWGN and high SNR}
+\subsubsection*{With Noise (High SNR)}
 
 In this section and the following one, a comparison will be presented between
 not using a filter on the receiver and using matched filtering. This comparison
@@ -662,9 +813,37 @@ filtering. However, it can be seen that the output signal in the case with
 matched filtering is much less affected by noise, as the root-raised-cosine at
 the receiver is rather effective at filtering the noise.
 
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{Without filter at the receptor, SNR = }
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_45_60_rc_09.pdf}
@@ -681,9 +860,38 @@ the receiver is rather effective at filtering the noise.
 		-45~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, a
 		noise spectral density of $10^{-6}$ and a rolloff factor of
 		0.9.\label{fig:eyes_n_rc_45_09}}
+	\end{minipage}
 \end{figure}
-
+\begin{table}[H]
+	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
 \begin{figure}[H]
+	\centering
+\textbf{Root-Raised-Cosine Filter at the Receptor (roll-off=0.9) with Matched Filtering}
+\begin{minipage}{\linewidth}
 	\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
@@ -701,16 +909,45 @@ the receiver is rather effective at filtering the noise.
 		power output of -45~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the
 		amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of
 		0.9.\label{fig:eyes_n_rrc_45_09}}
+	\end{minipage}
 \end{figure}
 
 
-Figures~\label{fig:eyes_n_rc_45_03} and~\label{fig:eyes_n_rrc_45_03} show the
+Figures~\ref{fig:eyes_n_rc_45_03} and~\ref{fig:eyes_n_rrc_45_03} show the
 cases described above, but with a roll-off factor of 0.3. It can be seen that
 the case is in all aspects similar to the one presented above.
 
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_45_60_rc.pdf}
@@ -726,10 +963,39 @@ the case is in all aspects similar to the one presented above.
 		-45~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, a
 		noise spectral density of $10^{-6}$ and a rolloff factor of
 		0.3.\label{fig:eyes_n_rc_45_03}}
+	\end{minipage}
 \end{figure}
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_45_03.pdf}
@@ -746,7 +1012,7 @@ the case is in all aspects similar to the one presented above.
 		power output of -45~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the
 		amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of
 		0.3.\label{fig:eyes_n_rrc_45_03}}
-	
+	\end{minipage}
 \end{figure}
 
 
@@ -764,9 +1030,37 @@ respectively, both using a roll-off factor of 0.9.
 
 In this example the effects of matched filtering is even more obvious, as
 without it the signal visually appears to be random noise.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_09.pdf}
@@ -782,11 +1076,40 @@ without it the signal visually appears to be random noise.
 		0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise
 		spectral density of $10^{-6}$ and a rolloff factor of
 		0.9.\label{fig:eyes_n_rc_60_09}}
+	\end{minipage}]
 \end{figure}
 
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_09.pdf}
@@ -799,15 +1122,43 @@ without it the signal visually appears to be random noise.
 	\caption{Eye diagrams using matched filtering with root-raised-cosine. Obtained at three different points in the system: optical output of transmitter on the top;
 		the amplified signal at the middle; and
 		after the receiver filter. Simulation done with an optical power output of -60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of 0.9.\label{fig:eyes_n_rrc_60_09}}
-	
+	\end{minipage}
 \end{figure}
 
 
 Figures~\ref{fig:eyes_n_rc_60_03} and~\ref{fig:eyes_n_rrc_60_09} show the same
 case but using a roll-off factor of 0.3.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_03.pdf}
@@ -822,11 +1173,39 @@ case but using a roll-off factor of 0.3.
 		the noisy signal at the bottom. Simulation done with an optical power output of -60~dBm, 0~dBm at
 		the local oscillator, a gain of $10^3$ at the amplifier, a noise spectral
 		density of $10^{-6}$ and a rolloff factor of 0.3.\label{fig:eyes_n_rrc_60_03}}
-	
+	\end{minipage}
 \end{figure}
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
+	\footnotesize
+	\begin{tabular}{|l|l|}
+		\hline
+		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\hline
+		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
+		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
+		bandwidth              & 															\\\hline
+		symbolRate		       &                                                     		\\\hline
+		%		samplesPerSymbol       & $16$                                                       \\\hline
+		%		symbolRate		       &                                                     		\\\hline
+		%		pLength                & $5$                                                        \\\hline
+		%		iqAmplitudesValues     & $\lbrace~\lbrace-1,~0\rbrace~,~\lbrace1,~0\rbrace~\rbrace$ \\\hline
+		outputOpticalPower     & Variable                                                   \\ \hline
+		localOscillatorPower   & $0$~dBm                                                    \\ \hline
+		%		localOscillatorPhase   & $0$                                                        \\ \hline
+		%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+		responsivity           & $1$                                                        \\ \hline
+		amplification          & $10^3$                                                     \\ \hline
+		noiseSpectralDensity   & $10^6$~V$^2$                             					\\ \hline
+		confidence             & $0.95$                                                     \\ \hline
+		%		midReportSize          & $0$                                                        \\ \hline
+	\end{tabular}
+\end{table}
+\begin{figure}[H]
+		\centering
+	\textbf{A Raised-Cosine Signal (roll-off=0.9) with Matched Filtering}
+	\begin{minipage}{\linewidth}
+		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
 		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_p_60_03.pdf}
@@ -841,7 +1220,8 @@ case but using a roll-off factor of 0.3.
 		after the receiver filter. Simulation done with an optical
 		power output of -60~dBm, 0~dBm at the local oscillator, a gain of $10^3$ at the
 		amplifier, a noise spectral density of $10^{-6}$ and a rolloff factor of
-		0.3.\label{fig:eyes_n_rc_60_03}} 
+		0.3.\label{fig:eyes_n_rc_60_03}}
+	\end{minipage}
 \end{figure}
 
 
@@ -913,7 +1293,7 @@ The setup shown in Figure~\ref{fig:experimental_mqam_setup} was used to obtain e
 	\centering
 	\begin{tabulary}{1.0\textwidth}{|L|L|l|}
 		\hline
-		\textbf{Device}		& \textbf{Description}\\
+		\textbf{Device}		& \textbf{Model}	& \textbf{Description}\\
 		\hline
 %		Balanced Photodetector	& Thorlabs PDB 450C\\
 		\hline
