@@ -45,8 +45,8 @@
      inkscape:snap-center="true"
      inkscape:snap-text-baseline="true"
      inkscape:zoom="2.0428572"
-     inkscape:cx="163.33842"
-     inkscape:cy="244.97403"
+     inkscape:cx="81.834926"
+     inkscape:cy="166.65235"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -445,7 +445,7 @@
          xml:space="preserve"
          y="14"
          style="stroke:none"
-         id="text1143">-m</text>
+         id="text1143">-A</text>
     </g>
     <g
        transform="translate(341.90234,379.3333)"
@@ -456,7 +456,7 @@
          xml:space="preserve"
          y="14"
          style="stroke:none"
-         id="text1151">+m</text>
+         id="text1151">+A</text>
     </g>
     <g
        style="fill:rgb(38,38,38); text-rendering:geometricPrecision; color-rendering:optimizeQuality; image-rendering:optimizeQuality; stroke-linejoin:round; color-interpolation:linearRGB; stroke:rgb(38,38,38); stroke-width:0.6667;"
@@ -717,7 +717,7 @@
        xml:space="preserve"
        y="202.95831"
        style="font-style:normal;font-weight:normal;font-size:13px;font-family:SansSerif;color-interpolation:linearRGB;fill:#262626;fill-opacity:1;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;color-rendering:optimizeQuality;image-rendering:optimizeQuality;shape-rendering:auto;text-rendering:geometricPrecision"
-       id="text1151-7-6-0"> </text>
+       id="text1151-7-6-0" />
     <text
        x="341.82706"
        xml:space="preserve"
