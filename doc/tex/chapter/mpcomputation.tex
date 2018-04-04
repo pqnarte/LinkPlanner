@@ -50,9 +50,14 @@ f(A,b) = A_b
 \subsection{The Millionaire' Problem}
 Consider 2 parties, Alice and Bob, with inputs $a$ and $b$ respectively. The output of this function is $1$ when $a < b$
 and $0$ when $a \geq b$. In other terms,
-\begin{equation}\label{eq:tpc}
-f(a,b) = max(a,b)
-\end{equation}
+\[
+f(a,b) = \left \{
+          \begin{tabular}{ccc}
+          0, if $a \geq b$ \\
+          1, if $a < b$
+          \end{tabular}
+        \right.
+\]
 
 \subsection{Average Value}
 Consider 2 parties, Alice and Bob, with inputs $a$ and $b$ respectively. The output of this function should be the average value of $a$ and $b$
@@ -139,7 +144,7 @@ Z_u = \begin{bmatrix}
       \end{bmatrix}
 \]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Alice sends the prime $p$ and the following 10 numbers to Bob: $Z_1,Z_2,\ldots,Z_a$ 
+\item Alice sends the prime $p$ and the following 10 numbers to Bob: $Z_1,Z_2,\ldots,Z_a$
 followed by $Z_{a+1}+1,\ldots,Z_{10}+1$
 \[
 M = \begin{bmatrix}
