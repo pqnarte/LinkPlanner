@@ -58,10 +58,9 @@ void Signal::close() {
 				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
 
 				for (int msg = fValueToBeSaved; msg < (inPosition+1); msg++) {
-					for (unsigned int fld = 0; fld < (*ptr).size(); fld++) {
-						fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+					for (auto fld = 0; fld < (*ptr).size(); fld++) {
+						fileHandler << ptr->messageType + "\t" + ptr->messageDataLength + "\t" + ptr->messageData + "\n";
 					}
-					fileHandler << "\n";
 					ptr++;
 				}
 				fileHandler.close();
@@ -242,10 +241,9 @@ void Messages::bufferPut(t_message value) {
 				ptr = ptr + (fValueToBeSaved - 1);
 				ofstream fileHandler("./" + getFolderName() + "/" + getFileName(), ios::out | ios::app);
 				for (int msg = fValueToBeSaved; msg <= bLength; msg++) {
-						for (unsigned int fld = 0; fld < value.size(); fld++) {
-							fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+						for (auto fld = 0; fld < value.size(); fld++) {
+							fileHandler << ptr->messageType + "\t" + ptr->messageDataLength + "\t" + ptr->messageData + "\n";
 						}
-						fileHandler << "\n";
 						ptr++;
 				}
 				fileHandler.close();
@@ -343,41 +341,49 @@ bool SuperBlock::runBlock() {
 
 			signal_value_type sType = moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->getValueType();
 			switch (sType) {
-				case BinaryValue:
-					for (int j = 0; j < length; j++) {
-						t_binary signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case RealValue:
-					for (int j = 0; j < length; j++) {
-						t_real signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case ComplexValue:
-					for (int j = 0; j < length; j++) {
-						t_complex signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case ComplexValueXY:
-					for (int j = 0; j < length; j++) {
-						t_complex_xy signalValueXY;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValueXY);
-						outputSignals[i]->bufferPut(signalValueXY);
-					}
-					break;
-				default:
-					cout << "ERRO: netxpto.cpp (SuperBlock)" << "\n";
-					return false;
+			case BinaryValue:
+				for (int j = 0; j < length; j++) {
+					t_binary signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case RealValue:
+				for (int j = 0; j < length; j++) {
+					t_real signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case ComplexValue:
+				for (int j = 0; j < length; j++) {
+					t_complex signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case ComplexValueXY:
+				for (int j = 0; j < length; j++) {
+					t_complex_xy signalValueXY;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValueXY);
+					outputSignals[i]->bufferPut(signalValueXY);
+				}
+				break;
+
+			case Message:
+				for (int j = 0; j < length; j++) {
+					t_message signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			default:
+				cout << "ERRO: netxpto_20180118.cpp (SuperBlock)" << "\n";
+				return false;
 
 			}
 
-			
+
 		}
 
 	} while (proceed);
@@ -407,6 +413,7 @@ void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
 			moduleBlocks[i]->outputSignals[j]->setSaveSignal(sInternalSignals);
 	}
 }
+
 
 
 void FIR_Filter::initializeFIR_Filter(void) {

@@ -13,19 +13,19 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F3D17ED7-6A4A-4DFC-8F1B-33FF541EB52D}</ProjectGuid>
     <RootNamespace>m_qam_system</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -40,7 +40,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\include;$(IncludePath);C:\Users\Ana Luisa\Documents\GitHub\AnaLuisa\include</IncludePath>
+    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86; C:\Users\Ana Luisa\Documents\GitHub\AnaLuisa\lib</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -78,7 +78,7 @@
     <ClCompile Include="..\..\lib\bit_error_rate_20171810.cpp" />
     <ClCompile Include="..\..\lib\decoder_20180118.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
-    <ClCompile Include="..\..\lib\homodyne_receiver_20180118.cpp" />
+    <ClCompile Include="..\..\lib\homodyne_receiver_20171203.cpp" />
     <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp" />
     <ClCompile Include="..\..\lib\iq_modulator_20180118.cpp" />
     <ClCompile Include="..\..\lib\local_oscillator_20180118.cpp" />
@@ -90,12 +90,13 @@
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
     <ClCompile Include="..\..\lib\sampler_20171119.cpp" />
     <ClCompile Include="..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="..\..\lib\snr_estimator_20180227.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
     <ClCompile Include="..\..\lib\white_noise_20180118.cpp" />
     <ClCompile Include="m_qam_system_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\add_20180118.h" />
+    <ClInclude Include="..\..\include\add_20171116.h" />
     <ClInclude Include="..\..\include\binary_source_20180118.h" />
     <ClInclude Include="..\..\include\bit_error_rate_20171810.h" />
     <ClInclude Include="..\..\include\decoder_20180118.h" />
@@ -112,6 +113,7 @@
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171119.h" />
     <ClInclude Include="..\..\include\sink_20180118.h" />
+    <ClInclude Include="..\..\include\snr_estimator_20180227.h" />
     <ClInclude Include="..\..\include\super_block_interface_20180118.h" />
     <ClInclude Include="..\..\include\white_noise_20180118.h" />
   </ItemGroup>

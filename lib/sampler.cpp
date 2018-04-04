@@ -4,8 +4,8 @@
 #include <fstream>
 #include <string>
 
-#include "netxpto_20180118.h"
-#include "sampler_20171116.h"
+#include "netxpto.h"
+#include "sampler.h"
 
 
 void Sampler::initialize(void){

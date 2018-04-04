@@ -1,35 +1,9 @@
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <math.h>
-# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm> 
-# include <random>
-# include "netxpto_20180118.h"
 # include "binary_source_20180118.h"
 
 using namespace std;
 
-
-/*2016-08-03
-BinarySource::BinarySource(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
-
-  numberOfInputSignals = InputSig.size();
-  numberOfOutputSignals = OutputSig.size();
-
-  inputSignals = InputSig;
-  outputSignals = OutputSig;
-
-  outputSignals[0]->symbolPeriod = bitPeriod;
-  outputSignals[0]->samplingPeriod = outputSignals[0]->symbolPeriod;
-  
-}*/
-
 void BinarySource::initialize(void){
-	numberOfOutputSignals = outputSignals.size();
+	numberOfOutputSignals = (int) outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
 		outputSignals[i]->setSymbolPeriod(bitPeriod);
@@ -188,7 +162,7 @@ bool BinarySource::runBlock(void) {
 			}
 		}
 	}
-
+	
 	if (mode == Random){
 
 		std::random_device rd;
@@ -204,7 +178,7 @@ bool BinarySource::runBlock(void) {
 			numberOfBits--;
 		}
 	}
-
+	
 	if (mode == DeterministicCyclic){
 		std::vector<char> values(bitStream.begin(), bitStream.end());
 		int valuesSize = (int) values.size();

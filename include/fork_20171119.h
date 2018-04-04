@@ -2,7 +2,7 @@
 # define PROGRAM_FOR_FORK_H_
 
 # include <vector>
-# include "netxpto.h"
+# include "netxpto_20180118.h"
 
 using namespace std;
 

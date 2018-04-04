@@ -1,6 +1,4 @@
-# include <algorithm> // min
 
-# include "netxpto_20180118.h"
 # include "super_block_interface_20180118.h"
 
 using namespace std;
@@ -18,9 +16,9 @@ SuperBlockInterface::SuperBlockInterface(vector<Signal *> &inputSignals, vector<
 void SuperBlockInterface::initialize(void) {
 
 	for (int k = 0; k < numberOfOutputSignals; k++) {
-		outputSignals[k]->setSymbolPeriod(inputSignals[k]->getSymbolPeriod());
-		outputSignals[k]->setSamplingPeriod(inputSignals[k]->getSamplingPeriod());
-		outputSignals[k]->setSamplesPerSymbol(inputSignals[k]->getSamplesPerSymbol());
+		outputSignals[k]-> setSymbolPeriod(inputSignals[k]->getSymbolPeriod());
+		outputSignals[k]-> setSamplingPeriod(inputSignals[k]->getSamplingPeriod());
+		outputSignals[k]-> setSamplesPerSymbol(inputSignals[k]->getSamplesPerSymbol());
 		outputSignals[k]->setFirstValueToBeSaved(inputSignals[k]->getFirstValueToBeSaved());
 	}
 	
@@ -70,6 +68,13 @@ bool SuperBlockInterface::runBlock(void) {
 					t_complex_xy value;
 					inputSignals[k]->bufferGet(&value);
 					outputSignals[k]->bufferPut((t_complex_xy) value);
+				}
+				break;
+			case Message:
+				for (int l = 0; l < length; l++) {
+					t_message value;
+					inputSignals[k]->bufferGet(&value);
+					outputSignals[k]->bufferPut((t_message)value);
 				}
 				break;
 		default:
