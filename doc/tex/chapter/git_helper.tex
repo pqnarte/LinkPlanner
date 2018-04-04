@@ -1,41 +1,43 @@
 % ------------------------------------------------------------------------
 \chapter{Git Helper}
 
-Git creates and maintains a database that store all saved versions of a repository, i.e. all committed states of a folder.
-To create this database for a specific folder the Git application must be installed in the computer.
-After Git installation, open the Git console and go to the specific folder and execute the following command:\\
-
-\emph{git init}\\
-\\
-This command creates a Git database in the folder \emph{.git} in the root of your repository.
+Git creates and maintains a database that store versions of a repository, i.e. versions of a folder.
+To create this database for a specific folder the Git application must be installed on the computer. Open the Git console program and go to the specific folder and execute the following command:
+\\[0mm]
+\par\textbf{git init}
+\\[5mm]
+The Git database is created and stored in the folder \emph{.git} in the root of your repository. The Git commands allow you to manipulate this database.
 
 \section{Data Model}
 
-To understand Git is fundamental to understand the Git data model. Git stores objects.
+To understand Git is fundamental to understand the Git data model.
+\\[5mm]
 Git stores the following objects:
 
 \begin{itemize}
     \item[\textbullet] {commits - text files that store a description of the repository;}
     \item[\textbullet] {trees - text files that store a description of a folder;}
-    \item[\textbullet] {blobs - the files that exist in your repository added with a header;}
-    \item[\textbullet] {tags - is a friendly named pointer to a commit;}
+    \item[\textbullet] {blobs - the files that exist in your repository;}
 \end{itemize}
 
-The objects are stored in the folder \emph{.git/objects}. Each store object is identified by its SHA1 hash message, i.e. 20 bytes which identifies unequivocally the object. Note that 20 bytes can be represented by a 40 characters hexadecimal string. The ID of each object is the 40 characters hexadecimal string. Note that Git creates a new object every time a file or a folder is changed. In that was the Git store all committed versions of a file.
+\noindent The objects are stored in the folder \emph{.git/objects}. Each store object is identified by its SHA1 hash message, i.e. 20 bytes which identifies unequivocally the object. Note that 20 bytes can be represented by a 40 characters hexadecimal string. The ID of each object is the 40 characters hexadecimal string. Note that Git is creating a new object every time a file or a folder is changed. The Git database store all committed versions of a file.
 
-A commit object like any other object is identified by a SHA1 hash message, and has the following information: a pointer for the root tree of your repository, a pointer for the previous commit, the identification of the author of the commit with a time stamp, the committer with a time stamp and a commit message.
-See below an example of a commit file contend:\\
+A commit object is identified by a SHA1 message, and has the following information: a pointer for tree (the root of your repository), a pointer for the previous commit, the author of the commit, the committer and a commit message.\\
+%
+Example of a commit file contend:\\
 \\
-\emph{tree 2c04e4bad1e2bcc0223239e65c0e6e822bba4f16\\
+tree 2c04e4bad1e2bcc0223239e65c0e6e822bba4f16\\
 parent bd3c8f6fed39a601c29c5d101789aaa1dab0f3cd\\
 author NetXPTO <netxpto@gmail.com> 1514997058 +0000\\
 committer NetXPTO <netxpto@gmail.com> 1514997058 +0000\\
 \\
-2018-01-03, after meeting Daniel\\}
+2018-01-03, after meeting Daniel\\
+
+A tree object is identified by a SHA1 message, and has a list of blobs and trees that are inside that tree.\\
 \\
-A tree object is identified by a SHA1 hash message, and has a list of blobs and trees that are inside that tree. See below an example of a tree file contend:\\
+Example of a tree file contend:\\
 \\
-\emph{\begin{tabular}{l l l l}
+\begin{tabular}{l l l l}
 100644 & blob & bdb0cabc87cf50106df6e15097dff816c8c3eb34 &   .gitattributes\\
 100644 & blob & 50492188dc6e12112a42de3e691246dafdad645b &   .gitignore\\
 100644 & blob & 8f564c4b3e95add1a43e839de8adbfd1ceccf811 &   bfg-1.12.16.jar\\
@@ -50,12 +52,9 @@ A tree object is identified by a SHA1 hash message, and has a list of blobs and 
 040000 & tree & 13bfce10b78764b24c1e3dfbd0b10bc6c35f2f7b &   things\_to\_do\\
 040000 & tree & 232612b8a5338ea71ab6a583d477d41f17ebae32 &  visualizerXPTO\\
 040000 & tree & 1e5ee96669358032a4a960513d5f5635c7a23a90 &   work\_in\_progress\\
-\end{tabular}}
+\end{tabular}
 \\
-\\
-A blob is identified by a SHA1 hash message, and has a header plus the compressed contend of a file.
-The header is very simple is as only information of the type of the object, a blob in this case, and the object contend size.
-The Git objects are compressed using the zlib library.
+A blob is identified by a SHA1 message, and has the file contend compressed.\\
 
 \section{Database Folders and Files}
 
@@ -67,121 +66,43 @@ The folder \emph{.git/objects} stores information about all objects (commits, tr
 The objects are stored in files inside folders.
 The name of the folders are the 2 first characters of the SHA1 40 characters hexadecimal string.
 The name of the files are the other 38 hexadecimal characters of the SHA1.
-The information is compressed to save same space but it can be access using low-level Git commands, also named in Git terminology plumbing commands as opposed to porcelain commands, i.e. high-level Git commands.
+The information is compressed to save same space but it can be access using some applications.
 
 \subsection{Refs Folder}
 
-The \emph{refs} folder has the following folders \emph{refs/heads}, \emph{refs/remotes}, and \emph{refs/tags}.
+The \emph{refs} folder has the following folders \emph{refs/heads},.
 
 \subsubsection{Heads Folder}
 The \emph{refs/heads} folder has information about all branches.
 Each branch is associated with a text file, the name of the file is the name of the branch.
 The file has inside the hash of the commit pointed by that branch.
 
-\subsubsection{Remotes Folder}
-The \emph{refs/remotes} folder has information about all remotes and theirs branches.
-Each remote has a subfolder inside \emph{refs/remotes} with the name of the remote.
-Inside each folder are files associated with each branches in that remote.
-Each branch is associated with a text file, the name of the file is the name of the branch.
-The file has inside the hash of the commit pointed by that branch.
-
-\subsection{HEAD File}
-
-The HEAD file has information about the current branch.
-HEAD is a ponter to a branch.
-
-\subsubsection{Detached HEAD State}
-
-When your HEAD doesn't point to branch, points to a commit you are in a detached HEAD state.
-
-\subsection{Index File}
-
-The index is also known in Git as the stage or the cache area.
-The stage is what is your next commit. It is almost everything that is in your repository, with the exception of new files or folders that were not add to the index yet.
-To see the files that are in the index at a given time use \emph{git ls-files --stage}.
-Use \emph{git add <file\_name>} to add files to the index, and \emph{git rm --cached <file\_name>} to remove files from the index.
-
-
-\section{Merging}
-
-Merging his about creating a new commit joining the work of two branches that have diverged.
-The normal merging strategy is a three-way-merging.
-First a common state is identified.
-Second are identified files that are not changed in both branches, that files are incorporated in the merged-commit.
-Files that change in just one branch are also directly incorporated in the merge-commit.
-The only problem are files that change in both commits.
-For this files Git try to incorporate both changes comparing line by line.
-If a line is not changed in both files that line goes for the new merged-file.
-If it find different lines Git has to decide if that lines are new added lines or if are lines that were changed in both files.
-To do that Git has to compare one line with the below lines fromthe other file, if it finds a match it is going to say that the above lines are new added lines in that case the new added lines are incorporated in the merged-file.
-If it doesn't find a match it is going to say that both lines were changed and a conflict is generated.
-
-\subsection{Solving Conflicts}
-
-Conflits are originated by merges that Git cannot handle.
-In this case Git leave both versions in the merged-file and signaled it so that the user can go their and solve it.
-The simplest way conflits are signaled in the following way:\\
-\\
-\emph{
-<<<<<<< HEAD\\
-This is changed in my branch.\\
-=======\\
-This is changed in their branch.\\
->>>>>>> theirs\\
-}
-
-\subsection{Fast-Forwards}
-
-Happens when there exist a linear hisory between my branch and the branch that I am going to merge.
-Git only has to update by pointer (HEAD) to theirs pointer.
 
 \section{Commands}
 
-\subsection{git add}
+\textbf{git branch}
+git branch --set-upstream-to=<remote>/<branch> Develop.Nelson
 
-\emph{git add <file\_name>}\\
-\\
-Computes the SHA1 hash message for the file and add it to the index.
+\textbf{git cat-file}
+git cat-file -t <hash>
 
-\subsection{git branch}
-git branch --set-upstream-to=<remote>/<branch> Develop.Nelson\\
-git checkout -b <branch\_name> SHA1
+shows the type of the objects
 
-\subsection{git cat-file}
+git cat-file -p <hash>
 
-\hspace{\parindent}\emph{git cat-file -t <hash>}\\
-\\
-Shows the type of the object stored in the Git database associated with the <hash>.\\
+shows the contend of the object
 
-\emph{git cat-file -p <hash>}\\
-\\
-Shows the contend of the object stored in the Git database associated with the <hash>.
+\textbf{git clone}
 
-\subsection{git clone}
-
-\subsection{git checkout}
-
-\subsection{git commit}
-
-\subsection{git diff}
+\textbf{git diff}
 
 show the changes with relation to the previous commit.
 
-\subsection{git fecth -all}
+\textbf{git fecth -all}
 
-\subsection{git hash-object}
+\textbf{git init}
 
-\hspace{\parindent}\emph{git hash-object <file>}\\
-\\
-Calculates the SHA1 hash message of the blob objected associated the <file>.\\
-
-\emph{git hash-object -w <file>}\\
-\\
-Calculates the SHA1 hash message of the blob objected associated the <file> and stores the object in the Git database of the repository.
-
-\subsection{git init}
-
-\subsection{git log}
+\textbf{git log}
 
 shows a list of commits from reverse time order (goes back on time), i.e. shows the history of your repository. The history of a repository can be represented by a directed acyclic graph (dag for short), pointing in the forward direction in time.
 
@@ -191,45 +112,11 @@ options
 
  shows a graphical representation of the repository commits history.
 
-\subsection{git merge}
-
-\emph{git merge --abort}
-
-\subsection{git rebase}
-
-\emph{git rebase --abort}
-
-\subsection{git reflog}
-
-Show the list of past commits. Can be used to recover a previous commit by doing the following:\\
-
-\emph{git reflog}\\
-\\
-%
-After finding the commit create a branch in that commit with:\\
-
-\emph{git checkout -b <branch\_name> <commit>}\\
-
-\subsection{git reset}
-
 \textbf{git show}
 
 Shows what is new in the last commit.
 
-\subsection{git rm}
-
-\emph{git rm --cached <file\_name>}\\
-\\
-Removes the file from the index but leaves the files in the disk as untracked file.
-
-\emph{git rm -f <file\_name>}\\
-\\
-Removes the file from the stage area and from the disk.
-
-
 \textbf{git status}
-
-\subsection{git --version}
 
 \section{The Configuration Files}
 
@@ -240,8 +127,6 @@ There is a config file for each user that is stored in the \emph{c:/users/<user 
 To open the \emph{c:/users/<user name>/.gitconfig} file type:\\
 \\
 \textbf{git config --global -e}
-
-\section{Alias}
 
 \section{Applications}
 

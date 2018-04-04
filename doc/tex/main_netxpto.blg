@@ -1,74 +1,28 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main_netxpto.aux
-A level-1 auxiliary file: chapter/preface.aux
-A level-1 auxiliary file: chapter/introduction.aux
-A level-1 auxiliary file: chapter/simulator_structure.aux
-A level-1 auxiliary file: chapter/development_cycle.aux
-A level-1 auxiliary file: chapter/visualizer.aux
-A level-1 auxiliary file: chapter/case_studies.aux
-The style file: unsrt.bst
-Illegal, another \bibstyle command---line 85 of file chapter/case_studies.aux
- : \bibstyle
- :          {myIEEEtran}
-I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 86 of file chapter/case_studies.aux
- : \bibdata
- :         {./sdf/qrng/qrng}
-I'm skipping whatever remains of this command
-A level-1 auxiliary file: bu.aux
-Already encountered file bu.aux
----line 32 of file main_netxpto.aux
- : \@input{bu.aux
- :               }
-I'm skipping whatever remains of this command
-A level-1 auxiliary file: chapter/library.aux
-Illegal, another \bibdata command---line 7 of file chapter/library.aux
- : \bibdata
- :         {./lib/balanced_beam_splitter/balanced_beam_splitter}
-I'm skipping whatever remains of this command
-Illegal, another \bibstyle command---line 19 of file chapter/library.aux
- : \bibstyle
- :          {unsrt}
-I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 20 of file chapter/library.aux
- : \bibdata
- :         {bibliography}
-I'm skipping whatever remains of this command
-Already encountered file bu.aux
----line 34 of file main_netxpto.aux
- : \@input{bu.aux
- :               }
-I'm skipping whatever remains of this command
-Already encountered file bu.aux
----line 35 of file main_netxpto.aux
- : \@input{bu.aux
- :               }
-I'm skipping whatever remains of this command
-A level-1 auxiliary file: chapter/mtools.aux
-A level-1 auxiliary file: chapter/algorithms.aux
-A level-1 auxiliary file: chapter/mpcomputation.aux
-Illegal, another \bibdata command---line 52 of file chapter/mpcomputation.aux
- : \bibdata
- :         {./chapter/mpcomputation}
-I'm skipping whatever remains of this command
-Already encountered file bu.aux
----line 39 of file main_netxpto.aux
- : \@input{bu.aux
- :               }
-I'm skipping whatever remains of this command
-A level-1 auxiliary file: chapter/code_development_guidelines.aux
-A level-1 auxiliary file: chapter/msbuild.aux
-A level-1 auxiliary file: chapter/git_helper.aux
-A level-1 auxiliary file: chapter/ghdl.aux
-Illegal, another \bibstyle command---line 44 of file main_netxpto.aux
- : \bibstyle
- :          {ieeetr}
-I'm skipping whatever remains of this command
-Database file #1: ./sdf/bpsk_system/bpsk_system.bib
-Warning--I didn't find a database entry for "katsoprinakis2008quantum"
-Warning--I didn't find a database entry for "Zeilinger"
-Warning--I didn't find a database entry for "probabilitySheldon"
-Warning--I didn't find a database entry for "BB84"
-Warning--I didn't find a database entry for "iqo"
-Warning--I didn't find a database entry for "SURV"
-Warning--I didn't find a database entry for "almeida2016continuous"
-(There were 11 error messages)
+[0] Config.pm:302> INFO - This is Biber 2.11
+[1] Config.pm:305> INFO - Logfile is 'main_netxpto.blg'
+[50] biber-MSWIN64:313> INFO - === 
+[84] Biber.pm:371> INFO - Reading 'main_netxpto.bcf'
+[197] Biber.pm:857> INFO - Found 3 citekeys in bib section 0
+[197] Biber.pm:857> INFO - Found 3 citekeys in bib section 1
+[197] Biber.pm:857> INFO - Found 2 citekeys in bib section 0
+[214] Biber.pm:3976> INFO - Processing section 0
+[227] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 0
+[230] bibtex.pm:1500> INFO - LaTeX decoding ...
+[241] bibtex.pm:1316> INFO - Found BibTeX data source './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib'
+[253] Utils.pm:193> WARN - I didn't find a database entry for 'almeida2016continuous' (section 0)
+[253] Utils.pm:193> WARN - I didn't find a database entry for 'probabilitySheldon' (section 0)
+[253] Utils.pm:193> WARN - I didn't find a database entry for 'Rao2010a' (section 0)
+[253] Utils.pm:193> WARN - I didn't find a database entry for 'Chu2000' (section 0)
+[260] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[260] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[260] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[260] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[261] Biber.pm:3976> INFO - Processing section 1
+[261] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 1
+[282] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[282] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[282] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[283] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[285] bbl.pm:617> INFO - Writing 'main_netxpto.bbl' with encoding 'ansinew'
+[287] bbl.pm:720> INFO - Output to main_netxpto.bbl
+[288] Biber.pm:110> INFO - WARNINGS: 4
