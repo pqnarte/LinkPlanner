@@ -1,0 +1,11 @@
+2018-04-04
+TO BE DONE
+	
+	- documentar bem a parte da solução do problema do milionário e do 1 out of 2 OT
+	- solução com chaves oblivias (não é generalizavel ainda, é seguro contra um computador quântico)
+	- defender bem a tese de que a criptografia simétrica (hash functions) é segura mesmo contra um computador quântico 
+	- o passo seguinte é encontrar soluções que se possam generalizar e como?
+	- implementar ou pelos menos quantificar segurança e complexidade
+
+next meeting: 11/4, 16h
+
