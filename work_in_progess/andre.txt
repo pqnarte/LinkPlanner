@@ -1,3 +1,7 @@
+2018-04-04
+TO BE DONE
+	- documentar a parte relativa ao log file, usando o sistema BPSK para ilustrar
+
 2018-03-26
 TO BE DONE
 	escrever MPC considerando a Alice & o Bob em sitios diferentes, e ilustar com o exemplo das duas mensagens

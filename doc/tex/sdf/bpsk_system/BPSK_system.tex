@@ -1,6 +1,8 @@
 \clearpage
 \section{BPSK Transmission System}
 
+\begin{refsection}
+
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 \textbf{Student Name}  &:&  Andr\'e Mourato (2018/01/28 - 2018/02/27)\\
@@ -206,20 +208,11 @@ The following results show the dependence of the error rate with the signal powe
 \label{fig:berevolution}
 \end{figure}
 
-\newpage
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\renewcommand{\bibname}{References}
-%
-\bibliographystyle{unsrt}
-% argument is your BibTeX string definitions and bibliography database(s)
-\bibliography{./sdf/bpsk_system/bpsk_system}
-%
-%
-
-
-\cleardoublepage 
+% bibliographic references for the section ----------------------------
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
+\cleardoublepage
+% --------------------------------------------------------------------- 
