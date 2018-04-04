@@ -321,14 +321,10 @@ system is presented in Figures~\ref{fig:MQAM_system_block_diagram} to~\ref{fig:s
 \subsection*{Functional description}
 
 A complete description of the M-QAM transmitter and M-QAM homodyne receiver blocks can be found in the \textit{Library} chapter of this document as well as a detailed description of the independent blocks that compose these blocks.
-
 The M-QAM transmitter generates one or two optical signals by encoding a binary string using M-QAM modulation. It also outputs a binary signal that is used to perform the BER measurement.
-
 The M-QAM homodyne receiver accepts one input optical signal and outputs
 a binary signal. It performs the M-QAM demodulation of the input signal by combining the optical signal with a local oscillator.
-
 The demodulated optical signal is compared to the binary one produced by the transmitter in order to estimate the Bit Error Rate (BER).
-
 The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}. These include all blocks and sub-blocks used and allow for the full operation of the M-QAM system.
 
 \subsection*{Required files}\label{Required files}
