@@ -1,7 +1,6 @@
 # include "sink.h"
 
-# include <algorithm>   // std::min
-# include <string>		// compare
+
 
 using namespace std;
 

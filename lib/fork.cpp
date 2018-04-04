@@ -118,7 +118,7 @@ bool Fork::runBlock(void)
 			break;
 		}
 
-		case Message:
+		/*case Message:
 		{
 			for (int i = 0; i < process; i++)
 			{
@@ -128,7 +128,7 @@ bool Fork::runBlock(void)
 				outputSignals[1]->bufferPut((t_message)(inSignal));
 			}
 			break;
-		}
+		}*/
 		default: std::cout << "Fork: Invalid Input Signal\n";
 	}
 	return true;

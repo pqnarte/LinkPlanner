@@ -33,6 +33,7 @@ typedef complex<t_real> t_iqValues;
 typedef struct { string fieldName; string fieldValue; } t_message_field;
 typedef vector<t_message_field> t_message;
 
+
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, Message};
 
 
@@ -87,7 +88,7 @@ public:
 
 	// Signal constructor
 
-	~Signal() { if (!(valueType == Message)) { delete buffer; }; };					// Signal destructor
+	~Signal(){ delete buffer; };					// Signal destructor
 
 	void close();									// Empty the signal buffer and close the signal file
 	int space();									// Returns the signal buffer space
@@ -96,7 +97,7 @@ public:
 	void writeHeader(string signalPath);			// Opens the signal file in the signalPath directory, and writes the signal header
 
 
-	template<typename T>							// Puts a value in the buffer
+		template<typename T>							// Puts a value in the buffer
 	void bufferPut(T value) {
 		(static_cast<T *>(buffer))[inPosition] = value;
 		if (bufferEmpty) bufferEmpty = false;
@@ -129,7 +130,6 @@ public:
 	void virtual bufferGet(t_complex_xy *valueAddr);
 	void virtual bufferGet(t_photon *valueAddr);
 	void virtual bufferGet(t_photon_mp *valueAddr);
-	void virtual bufferGet(t_message *valueAdr);
 	
 	void setSaveSignal(bool sSignal){ saveSignal = sSignal; };
 	bool const getSaveSignal(){ return saveSignal; };
@@ -137,12 +137,6 @@ public:
 	void setType(string sType, signal_value_type vType) { type = sType; valueType = vType; };
 	void setType(string sType) { type = sType; };
 	string getType(){ return type; };
-
-	void setInPosition(int iPosition) { inPosition = iPosition; };
-	int getInPosition() { return inPosition; };
-
-	void setOutPosition(int oPosition) { outPosition = oPosition; };
-	int getOutPosition() { return outPosition; };
 
 	void setValueType(signal_value_type vType) { valueType = vType; };
 	signal_value_type getValueType(){ return valueType; };
@@ -259,6 +253,26 @@ public:
 	TimeContinuous(){}
 };
 
+class PhotonStream : public Signal {
+
+public:
+	PhotonStream(int bLength) { setType("PhotonStream", PhotonValue); setBufferLength(bLength); }
+	PhotonStream() { setType("PhotonStream", PhotonValue); if (buffer == nullptr) buffer = new t_photon[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon[bLength]; };
+};
+
+class PhotonStreamMP : public Signal {
+
+public:
+	PhotonStreamMP(int bLength) { setType("PhotonStreamMP", PhotonValueMP); setBufferLength(bLength); }
+	PhotonStreamMP() { setType("PhotonStreamMP", PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[bufferLength]; }
+
+	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon_mp[bLength]; };
+
+};
+
+
 class TimeContinuousAmplitudeDiscrete : public Signal {
 public:
 	TimeContinuousAmplitudeDiscrete(){}
@@ -267,12 +281,7 @@ public:
 
 class TimeContinuousAmplitudeContinuous : public Signal {
 public:
-	TimeContinuousAmplitudeContinuous(string fName) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[bufferLength]; }
-	TimeContinuousAmplitudeContinuous(string fName, int bLength) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setFileName(fName); setBufferLength(bLength); }
-	TimeContinuousAmplitudeContinuous(int bLength) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setBufferLength(bLength); }
-	TimeContinuousAmplitudeContinuous() { setType("TimeContinuousAmplitudeContinuous", RealValue); if (buffer == nullptr) buffer = new t_real[bufferLength]; }
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_real[bLength]; };
+	TimeContinuousAmplitudeContinuous(){}
 };
 
 
@@ -367,50 +376,6 @@ private:
 	vector<double> centralFrequencies;
 };*/
 
-class PhotonStream : public Signal {
-
-public:
-	PhotonStream(int bLength) { setType("PhotonStream", PhotonValue); setBufferLength(bLength); }
-	PhotonStream() { setType("PhotonStream", PhotonValue); if (buffer == nullptr) buffer = new t_photon[bufferLength]; }
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon[bLength]; };
-};
-
-class PhotonStreamXY : public Signal {
-
-public:
-	PhotonStreamXY(string fName) { setType("PhotonStreamXY", ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[bufferLength]; }
-	PhotonStreamXY(string fName, int bLength) { setType("PhotonStreamXY", ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
-	PhotonStreamXY(int bLength) { setType("PhotonStreamXY", ComplexValueXY); setBufferLength(bLength); }
-	PhotonStreamXY() { setType("PhotonStreamXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[bufferLength]; }
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_complex_xy[bLength]; };
-};
-
-class PhotonStreamMP : public Signal {
-
-public:
-	PhotonStreamMP(int bLength) { setType("PhotonStreamMP", PhotonValueMP); setBufferLength(bLength); }
-	PhotonStreamMP() { setType("PhotonStreamMP", PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[bufferLength]; }
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_photon_mp[bLength]; };
-
-};
-
-
-
-class Messages : public Signal {
-public:
-	Messages(string fName) { setType("Message", Message); setFileName(fName); if (buffer == nullptr) buffer = new t_message[bufferLength]; }
-	Messages(string fName, int bLength) { setType("Message", Message); setFileName(fName); setBufferLength(bLength); }
-	Messages(int bLength) { setType("Message", Message); setBufferLength(bLength); }
-	Messages() { setType("Message", Message); if (buffer == nullptr) buffer = new t_message[bufferLength]; }
-
-	void setBufferLength(int bLength) { bufferLength = bLength; delete[] buffer; if (bLength != 0) buffer = new t_message[bLength]; };
-	
-	void bufferPut(t_message);
-};
-
 //########################################################################################################################################################
 //########################################################## GENERIC BLOCK DECLARATIONS AND DEFINITIONS ##################################################
 //########################################################################################################################################################
@@ -474,120 +439,6 @@ public:
 
 };
 
-class FIR_Filter : public Block {
-
-	/* State Variable */
-	vector<t_real> delayLine;
-
-	bool saveImpulseResponse{ true };
-	string impulseResponseFilename{ "impulse_response.imp" };
-
-	/* Input Parameters */
-	bool seeBeginningOfImpulseResponse{ true };
-
-public:
-
-	/* State Variable */
-	vector<t_real> impulseResponse;
-
-	/* Input Parameters */
-	int impulseResponseLength;							// filter order + 1 (filter order = number of delays)
-
-
-	/* Methods */
-	FIR_Filter() {};
-	FIR_Filter(vector<Signal *> &InputSig, vector<Signal *> OutputSig) :Block(InputSig, OutputSig){};
-
-	void initializeFIR_Filter(void);
-
-	bool runBlock(void);
-
-	void terminate(void){};
-
-	void setSaveImpulseResponse(bool sImpulseResponse) { saveImpulseResponse = sImpulseResponse; };
-	bool getSaveImpulseResponse(void){ return saveImpulseResponse; };
-
-	void setImpulseResponseLength(int iResponseLength) { impulseResponseLength = iResponseLength; };
-	int const getImpulseResponseLength(){ return impulseResponseLength; }
-
-	void setSeeBeginningOfImpulseResponse(bool sBeginning){ seeBeginningOfImpulseResponse = sBeginning; };
-	bool const getSeeBeginningOfImpulseResponse(){ return seeBeginningOfImpulseResponse; };
-
-};
-
-
-class FD_Filter : public Block {
-	
-	/* State Variable */
-	
-	vector<t_real> inputBufferTimeDomain;
-	vector<t_real> outputBufferTimeDomain;
-
-	int inputBufferPointer{ 0 };
-	int outputBufferPointer{ 0 };
-	
-	/* Input Parameters */
-	bool saveTransferFunction{ true };
-	string transferFunctionFilename{ "transfer_function.tfn" };
-	int transferFunctionLength{ 128 };
-
-	int inputBufferTimeDomainLength{ transferFunctionLength };
-	int outputBufferTimeDomainLength{ transferFunctionLength };
-
-public:
-	/* State Variable */
-	vector<t_complex> transferFunction;
-
-	/* Methods */
-	FD_Filter() {};
-	FD_Filter(vector<Signal *> &InputSig, vector<Signal *> OutputSig) :Block(InputSig, OutputSig) {};
-
-	void initializeFD_Filter(void);
-
-	bool runBlock(void);
-
-	void terminate(void) {};
-
-	void setInputBufferTimeDomainLength(int iBufferTimeDomainLength) { inputBufferTimeDomainLength = iBufferTimeDomainLength; };
-	int const getInputBufferTimeDomainLength() { return inputBufferTimeDomainLength; }
-
-	void setOutputBufferTimeDomainLength(int oBufferTimeDomainLength) { outputBufferTimeDomainLength = oBufferTimeDomainLength; };
-	int const getOutputBufferTimeDomainLength() { return outputBufferTimeDomainLength; }
-
-	void setInputBufferPointer(int iBufferPointer) { inputBufferPointer = iBufferPointer; };
-	int const getInputBufferPointer() { return inputBufferPointer; }
-
-	void setOutputBufferPointer(int oBufferPointer) { outputBufferPointer = oBufferPointer; };
-	int const getOutputBufferPointer() { return outputBufferPointer; }
-
-	void setSaveTransferFunction(bool sTransferFunction) { saveTransferFunction = sTransferFunction; };
-	bool getSaveTransferFunction(void) { return saveTransferFunction; };
-
-	void setTransferFunctionLength(int iTransferFunctionLength) { transferFunctionLength = iTransferFunctionLength; };
-	int const getTransferFunctionLength() { return transferFunctionLength; };
-
-};
-
-
-// Generates a complex signal knowing the real part and the complex part.
-class RealToComplex : public Block {
- public:
-	 RealToComplex(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
-	 bool runBlock(void);
- //private:
-};
-
-// Separates the complex signal into two parts: real and imaginary.
-/*class ComplexToReal : public Block {
- public:
-	 ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
-	 bool runBlock(void);
- //private:
-};*/
-
-
-
-
 //########################################################################################################################################################
 //########################################################## GENERIC SYSTEM DECLARATIONS AND DEFINITIONS #################################################
 //########################################################################################################################################################
@@ -614,63 +465,6 @@ class System {
 //########################################################################################################################################################
 
 
-class OverlapMethod
-{
-
-public:
-
-	void overlapSaveSymComplexIn(vector<complex <double>> &v_in, vector<complex <double>> &v_out, vector<complex <double>> Hf, int NFFT);
-	void overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT);
-	void overlapSaveAsym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int M, int L, int N);
-	void overlapSaveSym(vector<double> &real_in, vector<double> &imag_in, vector<double> &real_out, vector<double> &imag_out, vector<double> h_real, vector<double> h_imag, int NFFT);
-	void checkSize(vector<double> &real_in, vector<double> &imag_in, int L);
-
-};
 
 
-
-
-class Fft
-{
-
-public:
-	vector<complex <double>> directTransformInReal(vector<double> real);
-
-	vector<double> inverseTransformInCP(vector<complex <double>> &In);
-	
-	void directTransform(vector<double> &real, vector<double> &imag);
-	void inverseTransform(vector<double> &real, vector<double> &imag);
-	void transformRadix2(vector<double> &real, vector<double> &imag);
-	void transformBluestein(vector<double> &real, vector<double> &imag);
-	void convolve(const vector<double> &x, const vector<double> &y, vector<double> &out);
-	void convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag);
-	
-	void Radix2(vector<double> &real, vector<double> &imag, int m);
-	void Bluestein(vector<double> &real, vector<double> &imag, int m);
-};
-
-
-class ComplexMult
-{
-public:
-	void CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
-	void CMultVector_Loop(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag);
-	vector<complex <double>> CMultVectorInCP(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-	void ComplexVect2ReImVect(vector<complex <double>> &v_in, vector<double> &v1_real, vector<double> &v1_imag);
-	void CMultVector_InComplex(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-	void ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &v1_imag, vector<complex <double>> &v_out);
-
-	vector<complex<double>> ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag);
-	vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
-};
-
-
-///////////////////// Fast Fourier Transform ////////////////////////
-
-class FourierTransform
-{
-public:
-	vector <complex<double>> transform(vector<complex<double>>IN, int m);
-};
-
-# endif // PROGRAM_INCLUDE_netxpto_H_
+#endif

@@ -1,14 +1,3 @@
-# include <complex>
-# include <fstream>
-# include <iostream>
-# include <math.h>
-# include <stdio.h>
-# include <string>
-# include <strstream>
-# include <vector>
-# include <algorithm>
-
-# include "netxpto_20180118.h"
 # include "m_qam_mapper_20180118.h"
 
 

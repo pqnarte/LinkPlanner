@@ -1,6 +1,3 @@
-# include <algorithm>	// std::min
-
-# include "netxpto_20180118.h"
 # include "iq_modulator_20180130.h"
 
 
@@ -66,9 +63,10 @@ bool IqModulator::runBlock(void) {
 
 	if (numberOfInputSignals == 3) {
 
-		int readyOpticalSignal = inputSignals[0]->ready();
-		int readyI = inputSignals[1]->ready();
-		int readyQ = inputSignals[2]->ready();
+		
+		int readyI = inputSignals[0]->ready();
+		int readyQ = inputSignals[1]->ready();
+		int readyOpticalSignal = inputSignals[2]->ready();
 
 		int ready = min(readyOpticalSignal, readyI);
 		ready = min(ready, readyQ);
@@ -79,14 +77,15 @@ bool IqModulator::runBlock(void) {
 
 		if (process == 0) return false;
 
+		t_complex opticalIn;
+
 		for (int i = 0; i < process; i++) {
 
-			t_complex opticalIn;
-			inputSignals[1]->bufferGet(&opticalIn);
+			inputSignals[2]->bufferGet(&opticalIn);
 
 			t_real re, im;
-			inputSignals[1]->bufferGet(&re);
-			inputSignals[2]->bufferGet(&im);
+			inputSignals[0]->bufferGet(&re);
+			inputSignals[1]->bufferGet(&im);
 
 			t_complex valueX(re, im);
 			valueX = opticalIn*valueX;

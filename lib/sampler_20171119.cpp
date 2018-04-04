@@ -21,7 +21,7 @@ void Sampler::initialize(void){
 bool Sampler::runBlock(void) {
 
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSymbolPeriod());
-	numberOfInputSignals = inputSignals.size();
+	numberOfInputSignals = (int)inputSignals.size();
 
 	bool alive{ false };
 
@@ -90,7 +90,7 @@ bool Sampler::runBlock(void) {
 
 	}
 	//Sampler with external clock
-	/*else {
+	else {
 
 		int ready = inputSignals[0]->ready();
 		int space = outputSignals[0]->space();
@@ -114,7 +114,7 @@ bool Sampler::runBlock(void) {
 		}
 		
 		return true;
-	}*/
+	}
 
 	return alive;
 }

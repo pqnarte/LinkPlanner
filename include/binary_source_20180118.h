@@ -2,6 +2,19 @@
 # define BINARY_SOURCE_H_
 
 # include <vector>
+# include <complex>
+# include <fstream>
+# include <iostream>
+# include <math.h>
+# include <stdio.h>
+# include <string>
+# include <strstream>
+# include <vector>
+# include <algorithm> 
+# include <random>
+#include <chrono>
+
+# include "netxpto_20180118.h"
 
 enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 
@@ -29,7 +42,7 @@ class BinarySource : public Block {
  public:
 
 	 // Input parameters
-
+	 std::default_random_engine generator;
 	 BinarySourceMode mode{ PseudoRandom };
 
 	 double probabilityOfZero{ 0.5 };

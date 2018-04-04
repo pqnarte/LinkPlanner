@@ -15,14 +15,14 @@ class LocalOscillator : public Block {
 
 	/* Input Parameters */
 
-	double opticalPower{ 1e-3 };
+	double opticalPower{ 1 };
 	double outputOpticalWavelength{ 1550e-9 };
 	double outputOpticalFrequency{ SPEED_OF_LIGHT / outputOpticalWavelength };
 	double phase0{ 0 };
 	double samplingPeriod{ 0.0 };
 	double symbolPeriod{ 0.0 };
 	double laserLW{ 0.0 };
-	double RIN{ 0.0 };
+	double laserRIN{ 0.0 };
 
 	default_random_engine generatorRIN;
 	default_random_engine generatorPhaseNoise;
@@ -57,8 +57,8 @@ public:
 	void setLaserLinewidth(double laserLinewidth) { laserLW = laserLinewidth; }
 	double getLaserLinewidth() { return laserLW; }
 
-	void setLaserRIN(double laserRIN) { RIN = laserRIN; }
-	double getLaserRIN() { return RIN; }
+	void setLaserRIN(double lRIN) { laserRIN = lRIN; }
+	double getLaserRIN() { return laserRIN; }
 };
 
 #endif 
