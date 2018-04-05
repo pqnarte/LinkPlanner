@@ -38,7 +38,11 @@
 This block accepts one OpticalSignal or TimeContinuousAmplitudeContinousReal signal, estimates the signal-to-noise ratio for a given signal interval and outputs the estimated value. It also writes a \textit{.txt} file reporting the estimated signal-to-noise ratio, a count of the number of measurements and the corresponding bounds for a given confidence level.
 
 \subsection*{Theoretical Description}\label{snrcalc}
-The SNR is calculated from the power spectral density of the signal over a given time interval.
+The SNR is calculated from the power spectral density of the signal over a given time interval. Using a chosen interval size, a number of sequential samples is collected. Using the power spectrum obtained from this sequence, the frequency interval containing the signal is identified, estimated from the sampling rate, symbol rate and modulation type. The rest of the spectrum is considered to be only noise.
+Assuming the noise is white, the noise superimposed with the signal is considered to be similar to the rest of the spectrum. The noise power is estimated from the integral of the spectrum in noise area. The signal power is obtained by integrating the spectrum within the signal's frequency interval, minus the corresponding superimposed noise. The SNR is the ratio between these two values. 
+
+This value is saved and the process is repeated for every sequence of samples. In the end the confidence interval is calculated based on the obtained values. The SNR value and confidence interval is saved to a text file.
+This block output signal is exactly equal to the input signal, to estimate SNR at any point in a given simulated system without interfering with it.
 
 %The $\widehat{\text{BER}}$ is obtained by counting both the total number received bits, $N_T$, and the number of coincidences, $K$, and calculating their relative ratio:
 %\begin{equation}
