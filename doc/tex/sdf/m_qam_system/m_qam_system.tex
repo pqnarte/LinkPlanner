@@ -118,14 +118,19 @@ with
 
 \begin{eqnarray}
 &A &= G_{ele} \sqrt{P_L P_S}\label{eq:bpskamplitude}\\
-&N &= {n_0 B}
+&N &= \frac{n_0} B
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
 %\end{equation}
 
-\noindent where $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. $A$ is the magnitude of the signal at sampling time and $\sqrt{N}$ is the RMS noise. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $A$. $N_0$ will be the standard deviation of the sampled values.
+\noindent where $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. $A$ is the magnitude of the signal at sampling time and $\sqrt{N}$ is the RMS noise. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $A$.
+%$N_0$ will be the standard deviation of the sampled values.
+The peak SNR, defined as the ration between the peak signal power at the sampling instant to mean noise power, is given by
 
+\begin{equation}
+	\text{SNR} = \frac{A^2}{N}
+\end{equation}
 
 
 
@@ -1333,7 +1338,7 @@ The simulated results show agreement with the theoretical curves, as can be seen
 			outputOpticalPower     & Variable                                                   \\ \hline
 			localOscillatorPower   & $0$~dBm                                                    \\ \hline
 			%		localOscillatorPhase   & $0$                                                        \\ \hline
-			%		transferMatrix         & $\lbrace~\lbrace \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
+			%		transferMatrix         & $\lbrace~\lbrace	 \frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{1}{\sqrt{2}},~\frac{-1}{\sqrt{2}} \rbrace~\rbrace$ & \\ \hline
 			responsivity           & $1$                                                        \\ \hline
 			amplification          & $10^3$                                                     \\ \hline
 			noiseSpectralDensity   & $10^6$~V$^2$                             \\ \hline
