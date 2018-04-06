@@ -78,6 +78,7 @@
     <ClCompile Include="..\..\lib\bit_error_rate_20171810.cpp" />
     <ClCompile Include="..\..\lib\decoder_20180118.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
+    <ClCompile Include="..\..\lib\fft_20180208.cpp" />
     <ClCompile Include="..\..\lib\homodyne_receiver_20171203.cpp" />
     <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp" />
     <ClCompile Include="..\..\lib\iq_modulator_20180118.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="..\..\include\bit_error_rate_20171810.h" />
     <ClInclude Include="..\..\include\decoder_20180118.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time_20180118.h" />
+    <ClInclude Include="..\..\include\fft_20180208.h" />
     <ClInclude Include="..\..\include\homodyne_receiver_20171203.h" />
     <ClInclude Include="..\..\include\ideal_amplifier_20180118.h" />
     <ClInclude Include="..\..\include\iq_modulator_20180118.h" />

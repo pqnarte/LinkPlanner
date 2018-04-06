@@ -5,7 +5,9 @@
 # include "netxpto_20180118.h"
 # include <vector>
 
-// Calculates the BER between two binary signals
+enum WindowType{ Hanning, Hamming };
+
+// Estimates the SNR of a signal
 class SNREstimator : public Block {
 
 	bool firstTime{ true };
@@ -17,12 +19,34 @@ public:
 	void initialize(void);
 	bool runBlock(void);
 
-	void setPeakThreshold(t_real setPeak) { peakThreshold = setPeak; };
-	t_real getPeakThreshold() { return peakThreshold; };
+	void setMeasuredIntervalSize(int misz) { measuredIntervalSize= misz; }
+	int getMeasuredIntervalSize(void) { return measuredIntervalSize; }
+
+	void setSegmentSize(int sz) { segmentSize = sz; }
+	int getSegmentSize(void) { return segmentSize; }
+
+	void setOverlapCount(int olp) { overlapCount = olp; }
+	int getOverlapCount(void) { return overlapCount; }
+
+	void setConfidence(double P) { alpha = 1-P; }
+	double getConfidence(void) { return 1 - alpha; }
+
+	vector<double> getWindow(WindowType windowType, int windowSize);
+	vector<complex<double>> fftshift(vector<complex<double>> &vec);
 
 private:
-
-	t_real peakThreshold;
+	vector <double> measuredInterval;
+	WindowType windowType = Hamming;
+	vector<double> window;
+	vector<double> frequencies;
+	bool firstPass = true;
+	int measuredIntervalSize = 1024;
+	int currentSize = 0;
+	int segmentSize = 512;
+	int overlapCount = 256;
+	double alpha = 0.05;
+	double z;
+	double U;
 
 };
 
