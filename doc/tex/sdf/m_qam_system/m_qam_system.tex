@@ -69,7 +69,7 @@ In this case, assuming the absence of inter-symbol interference, $s(t)$ will be 
 	\centering
 	\centering
 	\includegraphics[ width=0.8\textwidth]{./sdf/m_qam_system/figures/gaussians.pdf}
-	\caption{Probability density functions for $s(t) = m(t) + n(t)$, with $m(t)=\pm A$ and $n(t)$ as a Gaussian variable.}
+	\caption{Probability density functions for $s(t) = A(t) + n(t)$, with $m(t)=\pm A$ and $n(t)$ as a Gaussian variable.}
 	\label{fig:gauss}
 \end{figure}
 
@@ -118,7 +118,7 @@ with
 
 \begin{eqnarray}
 &A &= G_{ele} \sqrt{P_L P_S}\label{eq:bpskamplitude}\\
-&N &= \frac{n_0} B
+&N &= n_0 B~\text{? Ver isto que não deve estar correcto}
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
@@ -205,18 +205,18 @@ In the case of QPSK with m=4, both the quadrature and in-phase components have $
 
 \begin{eqnarray}
 &A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T \sqrt{P_L P_S}}{2}\\
-&N_{mf} &= \sqrt{\sigma_o^2} = E(n_o^2) = \sqrt{\frac{n_0 T}{4}}
+&N_{mf} &= N \frac{T_s B}{2}
 \end{eqnarray}
 
-Here, $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier, T is the number of samples per symbol, $A_mf$ is the average amplitude at the sampling points of the signal after amplification without noise, $\sigma_o^2$ is the variance of the noise component of the matched filter output, the and $n_0$ is the noise spectral density.
+Here, $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier, $T_s$ is the symbol period, $B$ is the bandwidth of the system, $A_mf$ is the average amplitude at the sampling points of the signal after amplification without noise, $\sigma_o^2$ is the variance of the noise component of the matched filter output, the and $n_0$ is the noise spectral density.
 
 
 The optimal BER that can be obtained by using matched filtering is then given by:
 
 \begin{eqnarray}\label{eq:berBPSK}
-&P_{be} &= Q\left({\frac{A_{mf}}{N_{mf}}}\right)\nonumber\\
-&		&= \frac{1}{2} \text{erfc}\left({\frac{A_{mf}}{\sqrt{2} N_{mf}}}\right)\nonumber\\
-&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{A^2T}{2 n_0}}}\right)\\
+&P_{be} &= Q\left({\frac{A_{mf}}{\sqrt{N_{mf}}}}\right)\nonumber\\
+&		&= \frac{1}{2} \text{erfc}\left({\frac{A_{mf}}{\sqrt{2 N_{mf}}}}\right)\nonumber\\
+&	    &= \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{N}}\sqrt{\frac{T_s B}{2}}}\right)\\
 %&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
 \end{eqnarray}
 
@@ -229,7 +229,7 @@ with
 \end{eqnarray}
 
 
-\noindent where T is the ratio between the acquisition bandwidth and the symbol rate, A is as defined in Equation~\ref{eq:bpskamplitude}, the average peak amplitude of the signal without noise prior to filtering.
+\noindent where $T_s$ is the symbol period, $B$ is the bandwidth of the system, $A$ is as defined in Equation~\ref{eq:bpskamplitude}, the average peak amplitude of the signal without noise prior to filtering.
 %and $B_e$ is the energy of a single received bit.
 
 The expressions for the Bit-Error-Rate in the cases with and without matched filtering is then:
@@ -338,7 +338,7 @@ a binary signal. It performs the M-QAM demodulation of the input signal by combi
 The demodulated optical signal is compared to the binary one produced by the transmitter in order to estimate the Bit Error Rate (BER).
 The files used are summarized in tables~\ref{tab:sources} and~\ref{tab:headers}. These include all blocks and sub-blocks used and allow for the full operation of the M-QAM system.
 
-\subsection*{Required files}\label{Required files}
+\subsection*{Required files}\label{RequiredFilesMQAM}
 
 \begin{table}[H]
     \centering
@@ -574,7 +574,7 @@ captured after the second filter.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -644,7 +644,7 @@ pulse-shaper. Thus, it shows no sign of inter-symbol interference.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -709,7 +709,7 @@ raised-cosine-filter.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -768,7 +768,7 @@ raised-cosine-filter.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -853,7 +853,7 @@ the receiver is rather effective at filtering the noise.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -908,7 +908,7 @@ the receiver is rather effective at filtering the noise.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -969,7 +969,7 @@ the case is in all aspects similar to the one presented above.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1024,7 +1024,7 @@ the case is in all aspects similar to the one presented above.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1095,7 +1095,7 @@ without it the signal visually appears to be random noise.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1126,11 +1126,11 @@ without it the signal visually appears to be random noise.
 		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_09.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_09.pdf}
 	\end{subfigure}
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_nmf_60_60_rc_09.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_nmf_60_60_rc_09.pdf}
 	\end{subfigure}
 	
 	\caption{
@@ -1151,7 +1151,7 @@ without it the signal visually appears to be random noise.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 				%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1207,7 +1207,7 @@ case but using a roll-off factor of 0.3.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1238,11 +1238,11 @@ case but using a roll-off factor of 0.3.
 		\centering
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_03.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/if_n_nmf_60_60_rc_03.pdf}
 	\end{subfigure}
 	\begin{subfigure}{.45\textwidth}
 		\centering
-		\includegraphics[clip, trim=5cm 4cm 5cm 4cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_nmf_60_60_rc_03.pdf}
+		\includegraphics[clip, trim=5cm 7cm 5cm 7cm, width=\textwidth]{./sdf/m_qam_system/figures/eyes/q_n_nmf_60_60_rc_03.pdf}
 	\end{subfigure}
 	
 	\caption{
@@ -1261,7 +1261,7 @@ case but using a roll-off factor of 0.3.
 	\footnotesize
 	\begin{tabular}{|l|l|}
 		\hline
-		\multicolumn{2}{|c|}{ \textbf{Curve Parameters} } \\
+		\multicolumn{2}{|c|}{ \textbf{Simulation Parameters} } \\
 		\hline
 		\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 		%		numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1324,7 +1324,7 @@ The simulated results show agreement with the theoretical curves, as can be seen
 		\footnotesize
 		\begin{tabulary}{1.0\textwidth}{|p{3.5cm}|p{3.5cm}|}
 			\hline
-			\multicolumn{2}{|l|}{ \textbf{System Input Parameters} } \\
+			\multicolumn{2}{|l|}{ \textbf{Simulation and Curve Parameters} } \\
 			\hline
 			\textbf{Parameter}     & \textbf{Default Value}                                     \\\hline
 			numberOfBitsGenerated  & $40000$	                                                \\\hline
@@ -1381,24 +1381,21 @@ The setup shown in Figure~\ref{fig:experimental_mqam_setup} was used to obtain e
 	\centering
 	\begin{tabulary}{1.0\textwidth}{|L|L|l|}
 		\hline
-		\textbf{Device}		& \textbf{Model}	& \textbf{Description}\\
-		\hline
-%		Balanced Photodetector	& Thorlabs PDB 450C\\
-		\hline
-%		BS					& Beam Splitter\\
-		\hline
-%		Pulse Generator		& HP 8116A Pulse Generator\\
-		\hline
-%		Amplitude Modulator	& Mach Zehnder SDL OC 48\\
-		\hline
-%		VOA					& Eigenlicht Power Meter 420\\
-		\hline
-%		VOA					& Thorlabs VOA 45-APC\\
-%		\hline
-%		PIN					& Thorlabs PDB 450C\\
-		\hline
-%		ADC					& Picoscope 6403D\\
-		\hline
+		\textbf{Device}		& \textbf{Model}					& \textbf{Description}\\\hline
+		Laser Source		& Yenista OSICS Band C/AG TLS Laser			& Optical laser source for modulate the signal \\\hline
+		IQ Modulator 		& 22.5GHz IQ Modulator with automatic Bias Controller 	& \\\hline
+		AWG 			& Keysight M8195A 					& \\\hline
+		VOA			& 							& USB-Controlled Variable Optical Attenuator \\\hline
+		EDFA			& Constelex Hydra-C-17-17 EDFA				& \\\hline
+		200G DWDM		& 							& \\\hline
+		EDFA			& Constelex Hydra-C-17-17 EDFA				& \\\hline
+		90/10 Coupler		& 							& \\\hline
+		OSA			& Apex Technologies AP-2043B 				& \\\hline
+		100G WDM		& 							& \\\hline
+		VOA			&							& \\\hline
+		Local Oscillator	& Emcore CRTND3U02D ECL Laser				& \\\hline
+		Coherent Receiver	& Picometrix CR-100D 					& \\\hline
+		Oscilloscope		& Tektronix DPO77002SX-R3				& \\\hline
 	\end{tabulary}
 	\caption{Devices in experimental setup.~\label{tab:mqamdevices}}
 \end{table}
