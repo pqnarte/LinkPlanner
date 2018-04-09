@@ -40,7 +40,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\..\..\..\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -68,49 +68,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\lib\add_20171116.cpp" />
-    <ClCompile Include="..\..\lib\balanced_beam_splitter_20180124.cpp" />
-    <ClCompile Include="..\..\lib\binary_source_20180118.cpp" />
-    <ClCompile Include="..\..\lib\bit_decider_20170818.cpp" />
-    <ClCompile Include="..\..\lib\bit_error_rate_20171810.cpp" />
-    <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
-    <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp" />
-    <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp" />
-    <ClCompile Include="..\..\lib\i_homodyne_receiver_20180124.cpp" />
-    <ClCompile Include="..\..\lib\local_oscillator_20180130.cpp" />
-    <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
-    <ClCompile Include="..\..\lib\m_qam_transmitter_20180118.cpp" />
-    <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
-    <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
-    <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
-    <ClCompile Include="..\..\lib\sampler_20171116.cpp" />
-    <ClCompile Include="..\..\lib\sink_20180118.cpp" />
-    <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
-    <ClCompile Include="..\..\lib\ti_amplifier_20180102.cpp" />
-    <ClCompile Include="..\..\lib\white_noise_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\add_20171116.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\balanced_beam_splitter_20180124.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\binary_source_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\bit_decider_20170818.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\bit_error_rate_20171810.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\discrete_to_continuous_time_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ideal_amplifier_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\iq_modulator_20180130.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\i_homodyne_receiver_20180124.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\local_oscillator_20180130.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\m_qam_mapper_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\m_qam_transmitter_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\netxpto_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\photodiode_old_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\pulse_shaper_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\sampler_20171116.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\super_block_interface_20180118.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\ti_amplifier_20180102.cpp" />
+    <ClCompile Include="..\..\..\..\..\..\lib\white_noise_20180118.cpp" />
     <ClCompile Include="bpsk_system_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\add_20171116.h" />
-    <ClInclude Include="..\..\include\balanced_beam_splitter_20180124.h" />
-    <ClInclude Include="..\..\include\binary_source_20180118.h" />
-    <ClInclude Include="..\..\include\bit_decider_20170818.h" />
-    <ClInclude Include="..\..\include\bit_error_rate_20171810.h" />
-    <ClInclude Include="..\..\include\discrete_to_continuous_time_20180118.h" />
-    <ClInclude Include="..\..\include\ideal_amplifier_20180118.h" />
-    <ClInclude Include="..\..\include\iq_modulator_20180130.h" />
-    <ClInclude Include="..\..\include\i_homodyne_receiver_20180124.h" />
-    <ClInclude Include="..\..\include\local_oscillator_20180130.h" />
-    <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
-    <ClInclude Include="..\..\include\m_qam_transmitter_20180118.h" />
-    <ClInclude Include="..\..\include\netxpto_20180118.h" />
-    <ClInclude Include="..\..\include\photodiode_old_20180118.h" />
-    <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
-    <ClInclude Include="..\..\include\sampler_20171116.h" />
-    <ClInclude Include="..\..\include\sink_20180118.h" />
-    <ClInclude Include="..\..\include\super_block_interface_20180118.h" />
-    <ClInclude Include="..\..\include\ti_amplifier_20180102.h" />
-    <ClInclude Include="..\..\include\white_noise_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\add_20171116.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\balanced_beam_splitter_20180124.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\binary_source_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\bit_decider_20170818.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\bit_error_rate_20171810.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\discrete_to_continuous_time_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\ideal_amplifier_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\iq_modulator_20180130.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\i_homodyne_receiver_20180124.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\local_oscillator_20180130.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\m_qam_mapper_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\m_qam_transmitter_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\netxpto_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\photodiode_old_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\pulse_shaper_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\sampler_20171116.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\sink_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\super_block_interface_20180118.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\ti_amplifier_20180102.h" />
+    <ClInclude Include="..\..\..\..\..\..\include\white_noise_20180118.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
