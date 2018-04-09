@@ -958,6 +958,7 @@ void System::run(string signalPath) {
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		SystemBlocks[i]->terminateBlock();
 	}*/
+	/*2018-04-09*/
 	//Debug information
 	ofstream logFile;
 	clock_t start;
@@ -993,7 +994,7 @@ void System::run(string signalPath) {
 						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
 						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
 				}
-				start = clock(); //Counts the time taken to run the currentBlock
+				start = clock(); //Counts the time taken to run the current block
 			}
 			bool aux = SystemBlocks[i]->runBlock();
 			if (logValue)
