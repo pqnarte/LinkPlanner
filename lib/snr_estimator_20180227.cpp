@@ -3,6 +3,11 @@
 #include "fft_20180208.h"
 #include "netxpto_20180118.h"
 #include "snr_estimator_20180227.h"
+//// Currently estimating SNR only for real valued electrical signals.
+//// Does not work for SNR< 10dB. Results also dubious for SNR>35;
+//// Needs improvement.
+
+
 
 void SNREstimator::initialize(void) {
 	firstTime = false;
@@ -21,11 +26,13 @@ bool SNREstimator::runBlock(void) {
 	vector <double> im(segmentSize);
 	vector <complex<double>> segmentComplex(segmentSize);
 	vector <complex<double>> fourierTransformed;
-	vector <double> allSNR;
 	double noisePower = 0;
 	double signalPower = 0;
 	double SNR = 0;
 	double stdSNR = 0;
+	double LowerBound;
+	double UpperBound;
+	
 
 	// If its the first pass, calculate z for finding the confidence interval.
 	// Also, calculate the window to be used and the vector of frequencies.
@@ -43,15 +50,16 @@ bool SNREstimator::runBlock(void) {
 		}
 		z = -x3;
 
-		window = getWindow(windowType, measuredIntervalSize);
+		window = getWindow(windowType, segmentSize);
 		
 		U = 0;	// Window normalization constant
 		for (unsigned int i = 0; i < window.size(); i++) {
 			U += pow(window[i], 2);
 		}
 		U = U / window.size();
+		
 		for (int i = 0; i < segmentSize; i++) {
-			frequencies[i] = (1 + i - segmentSize / 2) * 1 / samplingPeriod;
+			frequencies.insert(frequencies.end(), ((1 + i - segmentSize / 2) * 1 / samplingPeriod)/segmentSize);
 		}
 	}
 
@@ -60,41 +68,10 @@ bool SNREstimator::runBlock(void) {
 	int available = min(ready, space);
 	int process = min(available, measuredIntervalSize - (int)measuredInterval.size());
 	
-	
-	/* Outputting final report */
-
-	if (available == 0)
-	{
-
-		/* Calculating average SNR and bounds */
-		if (!allSNR.empty()) {
-			for (unsigned int i = 0; i < allSNR.size(); i++) {
-				SNR += allSNR[i];
-			}
-			SNR = 10 * log10(SNR/allSNR.size());
-		}
-		else {
-			cout << "ERROR: SNR could not be calculated. It is probably too low." << "\n";
-		}
-
-//		double UpperBound = BER + 1 / sqrt(receivedBits) * z  * sqrt(BER*(1 - BER)) + 1 / (3 * receivedBits)*(2 * z * z * (1 / 2 - BER) + (2 - BER));
-//		double LowerBound = BER - 1 / sqrt(receivedBits) * z  * sqrt(BER*(1 - BER)) + 1 / (3 * receivedBits)*(2 * z * z * (1 / 2 - BER) - (1 + BER));
-
-//		if (LowerBound<lowestMinorant) {
-//			LowerBound = lowestMinorant;
-//		}
-
-		/* Outputting a .txt report*/
-		ofstream myfile;
-		myfile.open("SNR.txt");
-		myfile << "SNR= " << SNR << "\n";
-//		myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
-//		myfile << "Upper Bound= " << UpperBound << "\n";
-//		myfile << "Lower Bound= " << LowerBound << "\n";
-//		myfile << "Number of received bits =" << receivedBits << "\n";
-		myfile.close();
+	if (available == 0) {
 		return false;
 	}
+	
 	
 	// Get values until the vector/array has the desired number of elements
 	for (long int i = 0; i < process; i++) {
@@ -107,10 +84,10 @@ bool SNREstimator::runBlock(void) {
 
 		// Get Welch's PSD estimate
 		int start = 0;
-		int finish = start + segmentSize-1;
+		int finish = start + segmentSize;
 		int summed = 0;
 		vector<double> periodogramSum;
-		vector<double> periodogramTmp;
+		vector<double> periodogramTmp(segmentSize);
 		
 
 		while (finish < (int)measuredInterval.size()) {
@@ -119,7 +96,7 @@ bool SNREstimator::runBlock(void) {
 			
 
 			// Multiply by window (in time domain)
-			for (long int i = 0; i < measuredIntervalSize; i++) {
+			for (long int i = 0; i < segmentSize; i++) {
 				segment[i] *= window[i];
 			}
 
@@ -134,8 +111,10 @@ bool SNREstimator::runBlock(void) {
 			// Get the FFT
 			fourierTransformed = fft(segmentComplex);
 			fourierTransformed = fftshift(fourierTransformed);
+			double absFFTi = 0;
 			for (unsigned int i = 0; i < fourierTransformed.size(); i++) {
-				periodogramTmp[i] = (double)pow(abs(fourierTransformed[i]), 2) / (U*segmentSize);
+				absFFTi = abs(fourierTransformed[i]);
+				periodogramTmp[i] = pow(absFFTi, 2) / (U*segmentSize);
 			}
 
 			// Add to summing vector
@@ -148,10 +127,10 @@ bool SNREstimator::runBlock(void) {
 			}
 			summed += 1;
 			segment.clear();
-			periodogramTmp.clear();
+			//periodogramTmp.clear();
 			fourierTransformed.clear();
 			segmentComplex.clear();
-			start += segmentSize;
+			start += segmentSize - overlapCount;
 			finish += segmentSize - overlapCount;
 		}
 
@@ -185,6 +164,48 @@ bool SNREstimator::runBlock(void) {
 			allSNR.insert(allSNR.end(), signalPower / noisePower);
 			cout << "SNR: " << 10 * log10(signalPower / noisePower) << "\n";
 		}
+
+		/* Calculating average SNR and bounds */
+		if (!allSNR.empty()) {
+			
+
+			for (unsigned int i = 0; i < allSNR.size(); i++) {
+				SNR += allSNR[i];
+			}
+			SNR = SNR/allSNR.size();
+			for (unsigned int i = 0; i < allSNR.size(); i++) {
+				stdSNR += pow((SNR - allSNR[i]), 2);
+			}
+			if (allSNR.size() > 1) {
+				stdSNR = sqrt(stdSNR / (allSNR.size() - 1));
+			}
+			else {
+				stdSNR = 0;
+			}
+			
+			if (allSNR.size() > 1) {
+				LowerBound = 10 * log10(SNR - z * stdSNR / sqrt(allSNR.size()));
+				UpperBound = 10 * log10(SNR + z * stdSNR / sqrt(allSNR.size()));
+			} else {
+				LowerBound = 0;
+				UpperBound = 0;
+			}
+			SNR = 10 * log10(SNR);
+//			if (LowerBound<lowestMinorant) {
+//					LowerBound = lowestMinorant;
+//				}
+
+		/* Outputting a .txt report*/
+			ofstream myfile;
+			myfile.open(filename);
+//			myfile.open("SNR.txt", std::ios_base::app);
+			myfile << "SNR= " << SNR << "\n";
+			myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
+			myfile << "Upper Bound= " << UpperBound << "\n";
+			myfile << "Lower Bound= " << LowerBound << "\n";
+			myfile << "Number of measurements= " << allSNR.size() << "\n";
+			myfile.close();
+		}
 		measuredInterval.clear();
 		noisePower = 0;
 		signalPower = 0;
@@ -209,7 +230,9 @@ vector<double> SNREstimator::getWindow(WindowType windowType, int windowSize) {
 			for (int x = 0; x < windowSize; x++) {
 				wn[x] = 0.5 *(1 - cos(2 * PI*x / (windowSize - 1)));
 			}
+			return wn;
 	}
+	return wn;
 }
 
 

@@ -13,7 +13,7 @@ class SNREstimator : public Block {
 	bool firstTime{ true };
 
 public:
-
+	SNREstimator() {};
 	SNREstimator(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
 
 	void initialize(void);
@@ -31,6 +31,12 @@ public:
 	void setConfidence(double P) { alpha = 1-P; }
 	double getConfidence(void) { return 1 - alpha; }
 
+	void setWindowType(WindowType wd) { windowType = wd; }
+	WindowType getWindowType(void) { return windowType; }
+
+	void setFilename(string fname) { filename = fname; }
+	string getFilename(void) { return filename; }
+
 	vector<double> getWindow(WindowType windowType, int windowSize);
 	vector<complex<double>> fftshift(vector<complex<double>> &vec);
 
@@ -39,15 +45,16 @@ private:
 	WindowType windowType = Hamming;
 	vector<double> window;
 	vector<double> frequencies;
+	vector <double> allSNR;
 	bool firstPass = true;
-	int measuredIntervalSize = 1024;
+	int measuredIntervalSize = 2048;
 	int currentSize = 0;
-	int segmentSize = 512;
+	int segmentSize = 1024;
 	int overlapCount = 256;
 	double alpha = 0.05;
 	double z;
 	double U;
-
+	string filename = "SNR.txt";
 };
 
 
