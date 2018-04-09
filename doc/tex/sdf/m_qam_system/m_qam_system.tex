@@ -118,7 +118,7 @@ with
 
 \begin{eqnarray}
 &A &= G_{ele} \sqrt{P_L P_S}\label{eq:bpskamplitude}\\
-&N &= n_0 B~\text{? Ver isto que não deve estar correcto}
+&N &\propto n_0 B
 \end{eqnarray}
 %\begin{equation}\label{eq:berBPSK}
 %BER= Q\left({G_{ele}\sqrt{\frac{2 P_L P_S}{n_0}}}\right) = \frac{1}{2} \text{erfc}\left({G_{ele}\sqrt{\frac{P_L P_S}{n_0}}}\right).
@@ -126,14 +126,19 @@ with
 
 \noindent where $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier and $n_0$ is the noise spectral density. $A$ is the magnitude of the signal at sampling time and $\sqrt{N}$ is the RMS noise. Figure~\ref{fig:const_2m} shows the relation between the constellation points and $A$.
 %$N_0$ will be the standard deviation of the sampled values.
-The peak SNR, defined as the ration between the peak signal power at the sampling instant to mean noise power, is given by
+The peak power signal-to-noise ratio, defined as the ratio between the instantaneous peak signal power to mean noise power, is given by
 
 \begin{equation}
-	\text{SNR} = \frac{A^2}{N}
+	\text{SNR} = \frac{A^2}{{N}}
 \end{equation}
 
+$N$, the mean noise Power, is the variance of the noise signal. The square root of this value is the peak signal-to-rms-noise ratio, and it is the single parameter on which the probability of errors depends.
 
+\begin{equation}
+\text{SNR}_{RMS} = \frac{A}{\sqrt{N}}
+\end{equation}
 
+Here, A is the peak signal amplitude and $\sqrt{N}$ is the RMS noise in the absence of a signal.
 
 The symbol error rate however is not the same, as it depends on both bits being correctly detected. The probability of both bits being correctly detected is:
 
@@ -204,7 +209,7 @@ Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNois
 In the case of QPSK with m=4, both the quadrature and in-phase components have $m(t) = \pm A$. The values that replace $m$ and $N_0$ in Equation~\ref{eq:berMQAM} become:
 
 \begin{eqnarray}
-&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T \sqrt{P_L P_S}}{2}\\
+&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T_s B \sqrt{P_L P_S}}{2}\\
 &N_{mf} &= N \frac{T_s B}{2}
 \end{eqnarray}
 
@@ -229,7 +234,7 @@ with
 \end{eqnarray}
 
 
-\noindent where $T_s$ is the symbol period, $B$ is the bandwidth of the system, $A$ is as defined in Equation~\ref{eq:bpskamplitude}, the average peak amplitude of the signal without noise prior to filtering.
+\noindent where $T_s$ is the symbol period, $B$ is the bandwidth of the system, $A$ is as defined in Equation~\ref{eq:bpskamplitude}, the peak amplitude of the signal without noise prior to filtering.
 %and $B_e$ is the energy of a single received bit.
 
 The expressions for the Bit-Error-Rate in the cases with and without matched filtering is then:
@@ -245,7 +250,7 @@ The expressions for the Bit-Error-Rate in the cases with and without matched fil
 	\caption{Comparison between the BER equations for the cases with and without matched filtering.\label{tab:ber_qpsk}}
 \end{table}
 
-Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$~$W.Hz^{-1}$, $P_L = 0~dBm$ and $G_{ele} = 10^3$.
+Figure~\ref{fig:QPSK_th_curves} show the curves for both these equations, in the case where  $n_0=10^{-6}$~$V^2.Hz^{-1}$, $P_L = 0$~dBm and $G_{ele} = 10^3$.
 %Here, $T$ is the symbol period.
 
 \begin{figure}
@@ -879,7 +884,7 @@ the receiver is rather effective at filtering the noise.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Raised-Cosine Signal (roll-off=0.9) with Added Noise, SNR = }
+	\textbf{Raised-Cosine Signal (roll-off=0.9) with Added Noise, SNR = 15}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -934,7 +939,7 @@ the receiver is rather effective at filtering the noise.
 \end{table}
 \begin{figure}[H]
 	\centering
-\textbf{Root-Raised-Cosine Signal (roll-off=0.9) with Added Noise and Matched Filtering, SNR = }
+\textbf{Root-Raised-Cosine Signal (roll-off=0.9) with Added Noise and Matched Filtering, SNR = 15}
 \begin{minipage}{\linewidth}
 	\centering
 	\begin{subfigure}{.45\textwidth}
@@ -995,7 +1000,7 @@ the case is in all aspects similar to the one presented above.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Raised-Cosine Signal (roll-off=0.3) with Added Noise, SNR = }
+	\textbf{Raised-Cosine Signal (roll-off=0.3) with Added Noise, SNR = 15}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -1121,7 +1126,7 @@ without it the signal visually appears to be random noise.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Raised-Cosine Signal (roll-off=0.9) with Added Noise, SNR = }
+	\textbf{Raised-Cosine Signal (roll-off=0.9) with Added Noise, SNR = 1}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -1177,7 +1182,7 @@ without it the signal visually appears to be random noise.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Root-Raised-Cosine Signal (roll-off=0.9) with Added  and Matched Filtering, SNR = }
+	\textbf{Root-Raised-Cosine Signal (roll-off=0.9) with Added  and Matched Filtering, SNR = 1}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -1233,7 +1238,7 @@ case but using a roll-off factor of 0.3.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Raised-Cosine Signal (roll-off=0.3) with Added Noise, SNR = }
+	\textbf{Raised-Cosine Signal (roll-off=0.3) with Added Noise, SNR = 1}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -1287,7 +1292,7 @@ case but using a roll-off factor of 0.3.
 \end{table}
 \begin{figure}[H]
 		\centering
-	\textbf{Root-Raised-Cosine Signal (roll-off=0.3) with Added Noise and Matched Filtering, SNR = }
+	\textbf{Root-Raised-Cosine Signal (roll-off=0.3) with Added Noise and Matched Filtering,\\ SNR = 1}
 	\begin{minipage}{\linewidth}
 		\centering
 	\begin{subfigure}{.45\textwidth}
@@ -1400,13 +1405,71 @@ The setup shown in Figure~\ref{fig:experimental_mqam_setup} was used to obtain e
 	\caption{Devices in experimental setup.~\label{tab:mqamdevices}}
 \end{table}
 
-A constellation obtained with the setup can be seen in Figure~\ref{fig:rxConst}.
 
-\begin{figure}[h]
+Figure~\ref{fig:qamTxSig} to~\ref{fig:rxFinal} show the waveforms of the signal and the constellations at different points during the course of processing the received signal. All the waveforms shown correspond to the first 3 nanoseconds of the signal. The constellations assume that the signal has been sampled at the appropriate times unless otherwise noted.
+
+Figure~\ref{fig:qamTxSig} shows the beginning of the signal generated by the AWG that was then sent to the IQ modulator.
+The beginning of the signal received at the oscilloscope is shown in Figure~\ref{fig:qamRxSig}. Its worth noting that they are not synchronized, requiring that to be accomplished while processing after the aquisition. 
+
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{./sdf/m_qam_system/figures/const20180320-1534.pdf}
-	\caption{Received constellation}
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/TX_03.pdf}
+	\caption{Signal sent to the IQ Modulator.}
+	\label{fig:qamTxSig}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/RX_03.pdf}
+\caption{Signal received at the Oscilloscope}
+\label{fig:qamRxSig}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/const-rtx-sps.pdf}
+	\caption{Received constellation without any processing, other than sampling the signal.}
 	\label{fig:rxConst}
+\end{figure}
+
+The transmitted signal keeps running indefinitely, and the oscilloscope acquires the output of the coherent receiver during a chosen amount of time, which contains several sequences of the signal. Therefore, it is necessary to indentify a single sequence of the signal among the data acquired by the oscilloscope and to align it with the transmitted signal. This was done by measuring the correlation between the data from the oscilloscope and the transmitted signal. The signal was also filtered with a root-raised-cosine FIR.
+
+\begin{figure}[H]
+\centering
+\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/MF_03.pdf}
+\caption{Signal after digitally applying the root-raised-cosine filter.}
+\label{fig:qamMfSig}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/const-synMF-sps.pdf}
+	\caption{Constellation after synchronizing with the transmitted signal, applying the matched filter and truncating the received signal to contain only a single sequence of the transmitted signal.}
+	\label{fig:rxMfSync}
+\end{figure}
+
+Frequency offset correction was done resorting to a a MATLAB function in the Communication Systems Toolbox, as well as phase correction. To perform phase correction, the constellation was compared with the original constellation (before pulse shaping) and adjusted in order to minimize the differences. The final constellation shown in Figure~\ref{fig:rxFinal}.
+%As the data is generated with a Pseudo-Random Number Generator, it is very unlikely that a good result would be 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/const-wvCorr.pdf}
+	\caption{Constellation after correcting the frequency offset (without sampling the signal).}
+	\label{fig:rxWvCorr}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/const-wvCorr-sps.pdf}
+	\caption{Constellation after correcting the frequency offset (after sampling the signal).}
+	\label{fig:rxWvCorrSamp}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[clip, trim=4cm 8cm 4cm 8cm, width=0.7\textwidth]{./sdf/m_qam_system/figures/exp/const-final-sps.pdf}
+	\caption{Constellation after correcting the phase offset.}
+	\label{fig:rxFinal}
 \end{figure}
 
 As can be seen, the constellation is not properly aligned. Also, the noise seen is far greater than it should be. These issues need to be dealt with before a proper BER curve can be obtained. However, the process so far is somewhat validated by the error rate measurements, which even though they are not proper, are still far from completely wrong or random. The error rates for the shown constellation is around $2 \times 10^{-3}$ for the in-phase component, and around $6 \times 10^{-3}$ for the quadrature component.
