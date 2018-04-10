@@ -209,8 +209,10 @@ Considering a signal similar to the one described by Equation~\ref{eq:sigAmpNois
 In the case of QPSK with m=4, both the quadrature and in-phase components have $m(t) = \pm A$. The values that replace $m$ and $N_0$ in Equation~\ref{eq:berMQAM} become:
 
 \begin{eqnarray}
-&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T_s B \sqrt{P_L P_S}}{2}\\
-&N_{mf} &= N \frac{T_s B}{2}
+%&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T_s B \sqrt{P_L P_S}}{2}\\
+%&N_{mf} &= N \frac{T_s B}{2}
+&A_{mf} &= \frac{A T}{2} = \frac{G_{ele} T \sqrt{P_L P_S}}{2}\\
+&N_{mf} &= N \frac{T}{2}
 \end{eqnarray}
 
 Here, $P_L$ is the local oscillator power, $P_S$ is the average optical power of the laser source on which the signal is modulated, $G_{ele}$ is the gain in the transimpedance amplifier, $T_s$ is the symbol period, $B$ is the bandwidth of the system, $A_mf$ is the average amplitude at the sampling points of the signal after amplification without noise, $\sigma_o^2$ is the variance of the noise component of the matched filter output, the and $n_0$ is the noise spectral density.
@@ -221,7 +223,8 @@ The optimal BER that can be obtained by using matched filtering is then given by
 \begin{eqnarray}\label{eq:berBPSK}
 &P_{be} &= Q\left({\frac{A_{mf}}{\sqrt{N_{mf}}}}\right)\nonumber\\
 &		&= \frac{1}{2} \text{erfc}\left({\frac{A_{mf}}{\sqrt{2 N_{mf}}}}\right)\nonumber\\
-&	    &= \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{N}}\sqrt{\frac{T_s B}{2}}}\right)\\
+%&	    &= \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{N}}\sqrt{\frac{T_s B}{2}}}\right)\\
+&	    &= \frac{1}{2} \text{erfc}\left({\frac{A}{\sqrt{N}}\sqrt{\frac{T}{2}}}\right)\\
 %&	    &= \frac{1}{2} \text{erfc}\left(\sqrt{{\frac{E_b}{n_0}}}\right)\nonumber
 \end{eqnarray}
 
