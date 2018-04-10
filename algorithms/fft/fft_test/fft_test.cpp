@@ -16,7 +16,6 @@ using namespace std;
 int main()
 {	
 	//////////////////////////////// Section 1 ///////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
 	/////////// Read the input text file (import "time_function.txt" ) ///////////
 	//////////////////////////////////////////////////////////////////////////////
 	ifstream inFile;
@@ -31,8 +30,7 @@ int main()
 	// It'll count the length of the vector to verify with the MATLAB
 	int count=0; 
 
-	while (!inFile.eof())
-	{
+	while (!inFile.eof()){
 		// push data one by one into the vector
 		inTimeDomain.push_back(ch);	
 
@@ -44,9 +42,7 @@ int main()
 
 	inFile.close();	// It is mandatory to close the file at the end. 
 
-
 	//////////////////////////////// Section 2 ///////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////// Calculate FFT ////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
 	
@@ -57,48 +53,39 @@ int main()
 
 	for (unsigned int i = 0; i < inTimeDomain.size(); i++) 
 	{
-		// Real data of the signal
-		re[i] = inTimeDomain[i]; 
-
-		// Imaginary data of the signal
-		im[i] = 0; 
+		re[i] = inTimeDomain[i]; // Real data of the signal
 	} 
 
 	// Next, Real and Imaginary vector to complex vector conversion
 	inTimeDomainComplex = reImVect2ComplexVector(re, im);
 
-	// calculate FFT
-	fourierTransformed = fft(inTimeDomainComplex);
-	fourierTransformed = ifft(inTimeDomainComplex);
+	// calculate FFT 
+	clock_t begin = clock();
+	fourierTransformed = fft(inTimeDomainComplex,-1,1); // Optimized
+	clock_t end = clock();
+	double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 
 	//////////////////////////////// Section 3 ///////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
 	//////// Save FFT calculated data (export "frequency_function.txt" ) /////////
 	//////////////////////////////////////////////////////////////////////////////
 	ofstream outFile;
 	complex<double> outFileData;
 	outFile.open("frequency_function.txt");
 	outFile.precision(15);
-	for (unsigned int i = 0; i <fourierTransformed.size(); i++)
-	{
+	for (unsigned int i = 0; i <fourierTransformed.size(); i++){
 		outFile <<  fourierTransformed[i].real() << endl;
 		outFile << fourierTransformed[i].imag() << endl;
 	}
-
+	outFile.close();
 
 	//////////////////////////////// Section 4 ///////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////// Display Section //////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////
-	for (unsigned int i = 0; i < fourierTransformed.size(); i++)
-	{
-		// Display all FFT calculated data
-		cout << fourierTransformed[i] << endl;	
+	for (unsigned int i = 0; i < fourierTransformed.size(); i++){
+		cout << fourierTransformed[i] << endl;	// Display all FFT calculated data
 	}
-
-	// Display length of data
+	cout << "\n\nTime elapsed to calculate FFT : " << elapsed_secs << " seconds"<< endl;
 	cout <<"\nTotal length of of data :"<< count << endl;
-
 	getchar();
 	return 0;
 }

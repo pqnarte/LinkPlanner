@@ -18,9 +18,6 @@
     <ClCompile Include="filter_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\lib\overlapSave_20180208.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\lib\binary_source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,20 +30,29 @@
     <ClCompile Include="..\..\..\lib\sink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\filter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\lib\netxpto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\lib\fork.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\lib\pulse_shaper_fd_20180306.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\filter_20180306.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\overlapSave\overlap_save_20180208.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\fft\fft_20180208.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\lib\pulse_shaper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\overlapSave_20180208.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\binary_source.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -59,13 +65,25 @@
     <ClInclude Include="..\..\..\include\sink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\filter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\netxpto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\fork.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\pulse_shaper_fd_20180306.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\filter_20180306.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\overlapSave\overlap_save_20180208.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\fft\fft_20180208.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\pulse_shaper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

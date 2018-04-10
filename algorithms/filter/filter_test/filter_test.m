@@ -8,7 +8,7 @@ close all
 
 Fs = 1e5;              % Sampling frequency                    
 T = 1/Fs;              % Sampling period       
-L = 2^12+45;               % Length of signal
+L = 2^12+45;           % Length of signal
 t = (0:L-1)*(5*T);     % Time vector
 f = linspace(-Fs/2,Fs/2,L);
 
@@ -40,14 +40,6 @@ switch sig
         X = 2*sin(2*pi*100*t).*exp(-t)+2.5*sin(2*pi*+250*t)+sin(2*pi*+50*t).*cos(2*pi*+20*t)+1.5*sin(2*pi*+50*t).*sin(2*pi*+150*t);
 end
 
-Xref = X; 
-% dlmwrite will generate text file which represents the time domain signal.
-%dlmwrite('time_domain_data.txt', X, 'delimiter','\t');
-fid=fopen('time_domain_data.txt','w');
-fprintf(fid,'%.15f\n',X);
-%fwrite(fid,X,'double');
-fclose(fid);
-
 % Choose for filt a value between [1, 3]
 filt = 3;
 switch filt
@@ -77,12 +69,6 @@ switch filt
         end
 end
 
-%dlmwrite('time_domain_filter.txt', h, 'delimiter','\t');
-fid=fopen('impulseResponse.txt','w');
-fprintf(fid,'%.15f\n',h);
-%fwrite(fid,h,'double');
-fclose(fid);
-
 figure;
 subplot(211)
 plot(t,X)
@@ -99,6 +85,9 @@ title(filter_type)
 axis([1 length(h) 1.1*min(h) 1.1*max(h)]);
 xlabel('Samples')
 ylabel('h(t)')
+
+%%
+
 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

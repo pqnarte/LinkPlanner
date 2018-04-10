@@ -2,6 +2,34 @@ Medium term goal: um sistema quântico com variavies continuas em real-time em qu
 
 2018-03-22
 TO BE DONE
+        ############################################### (para a próxima semana)
+	- finalizar a parte teórica
+		colocar detalhe e fazer as contas		
+
+	- melhorar a edição (Theoretical Analysis / Simulation Analysis / Experimental Analysis / DSP)
+
+	- finalizar a compração entre a parte teórica e a simualação (fechar isto para apróxima reunião)
+        ###############################################
+
+        ###############################################      
+	- avançar com o bloco do cálculo da SNR, documentar devidamente incluindo referência
+	- rever a parte da simulação calculcar a SNR teórica e numérica para cada caso
+        ###############################################
+
+	############################################### (para a próxima semana)
+	colocar o sistema experimental a funcionar no melhor cenário com o melhor DSP
+	###############################################
+
+	##############################################
+	colocar a funcionar no cenário (clássico) que queremos QPSK com o nosso DSP
+	##############################################
+
+
+Next meeting: 17/4, 9h
+
+
+2018-03-22
+TO BE DONE
 	- rever a parte teórica
 		colocando as unidades em todas as grandezas
 		retirar qualquer referência à simulação

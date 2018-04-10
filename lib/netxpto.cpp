@@ -9,6 +9,7 @@
 
 
 # include "netxpto.h"
+# include "overlap_save_20180208.h"
 
 
 using namespace std;
@@ -208,7 +209,7 @@ void Signal::bufferGet(t_photon_mp *valueAddr) {
 	if (outPosition == inPosition) bufferEmpty = true;
 	return;
 };
-
+/*
 void Signal::bufferGet(t_message *valueAddr) {
 	*valueAddr = static_cast<t_message *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
@@ -248,7 +249,7 @@ void Messages::bufferPut(t_message value) {
 	}
 	if (inPosition == outPosition) bufferFull = true;
 };
-
+*/
 //########################################################################################################################################################
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
 //########################################################################################################################################################
@@ -398,7 +399,7 @@ void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
 	}
 }
 
-
+/*
 void FIR_Filter::initializeFIR_Filter(void) {
 
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
@@ -453,19 +454,116 @@ bool FIR_Filter::runBlock(void) {
 	return true;
 };
 
+void FD_Filter::initializeFD_Filter(void)
+{
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
-void FD_Filter::initializeFD_Filter(void) {
+	if (!getSeeBeginningOfTransferFunction()) {
+		int aux = (int)(((double)transferFunctionLength) / 2) + 1;
+		outputSignals[0]->setFirstValueToBeSaved(aux);
+	}
+
+	if (saveTransferFunction)
+	{
+		ofstream fileHandler("./signals/" + transferFunctionFilename, ios::out);
+		fileHandler << "// ### HEADER TERMINATOR ###\n";
+
+		double samplingPeriod = inputSignals[0]->samplingPeriod;
+		t_real fWindow = 1 / samplingPeriod;
+		t_real df = fWindow / transferFunction.size();
+
+		t_real f;
+		for (int k = 0; k < transferFunction.size(); k++)
+		{
+			f = -fWindow / 2 + k * df;
+			fileHandler << f << " " << transferFunction[k] << "\n";
+		}
+		fileHandler.close();
+	}
+}
+
+bool FD_Filter::runBlock(void)
+{
+	bool alive{ false };
+
+	int ready = inputSignals[0]->ready();
+	int space = outputSignals[0]->space();
+	int process = min(ready, space);
+	if (process == 0) return false;
+
+
+	/////////////////////// previousCopy & currentCopy /////////////////////
+	////////////////////////////////////////////////////////////////////////
+	vector<double> re(process); // Get the Input signal
+	t_real input;
+	for (int i = 0; i < process; i++) {
+		inputSignals[0]->bufferGet(&input);
+		re.at(i) = input;
+	}
+
+	vector<t_real> im(process);
+	vector<t_complex> currentCopyAux = reImVect2ComplexVector(re, im);// currentCopy complex form
+
+	vector<t_complex> pcInitialize(process);		                 // For the first data block only
+	if (K == 0) { previousCopy = pcInitialize; }
+
+	// size modification of currentCopyAux to currentCopy.
+	vector<t_complex> currentCopy(previousCopy.size());
+	for (unsigned int i = 0; i < currentCopyAux.size(); i++) {
+		currentCopy[i] = currentCopyAux[i];
+	}
+
+	/////////////////////////// Filter Data "hn" //////////////////////////
+	///////////////////////////////////////////////////////////////////////
+
+	vector<t_complex> impulseResponse = transferFunctionToImpulseResponse(transferFunction);
+	vector<t_complex> hn = impulseResponse;
+
+	ofstream gaussTransferF("ImpulseResponse.txt");
+	for (size_t i = 0; i < impulseResponse.size(); i++)
+	{
+		gaussTransferF << impulseResponse[i].real() << "\n";
+	}
+	gaussTransferF.close();
+
+
+	////////////////////// OverlapSave in Realtime ///////////////////////
+	//////////////////////////////////////////////////////////////////////
+	vector<t_complex> OUTaux = overlapSave(currentCopy, previousCopy, hn);
+
+	previousCopy = currentCopy;
+	K = K + 1;
+
+	// Remove the size modified data (opppsite to "currentCopyAux to currentCopy" )
+	vector<t_complex> OUT;
+	for (int i = 0; i < process; i++) {
+		OUT.push_back(OUTaux[previousCopy.size() + i]);
+	}
+
+	// Bufferput
+	for (int i = 0; i < process; i++) {
+		t_real val;
+		val = OUT[i].real();
+		outputSignals[0]->bufferPut((t_real)(val));
+	}
+
+	return true;
+}*/
+
+/*void FD_Filter::initializeFD_Filter(void) {
 
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
 	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
 	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
-/*	if (!getSeeBeginningOfImpulseResponse()) {
+	if (!getSeeBeginningOfImpulseResponse()) {
 		int aux = (int)(((double)impulseResponseLength) / 2) + 1;
 		outputSignals[0]->setFirstValueToBeSaved(aux);
-	}*/
+	}
 
-/*	delayLine.resize(impulseResponseLength, 0);*/
+	delayLine.resize(impulseResponseLength, 0);
 
 	
 	inputBufferTimeDomain.resize(inputBufferTimeDomainLength);
@@ -492,7 +590,7 @@ void FD_Filter::initializeFD_Filter(void) {
 		fileHandler.close();
 	}
 
-};
+};*/
 
 /*void FD_Filter::OverlapSaveMethod(void) {
 
@@ -595,7 +693,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 
 	}
 }*/
-
+/*
 bool FD_Filter::runBlock(void) {
 
 	
@@ -645,7 +743,7 @@ bool FD_Filter::runBlock(void) {
 
 	return alive;
 };
-     
+     */
 
 /*2016-08-03
 DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
@@ -663,9 +761,7 @@ DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, v
 }
 */
 
-
-
-RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
+/*RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
 
   numberOfInputSignals = (int) InputSig.size();
   numberOfOutputSignals = (int) OutputSig.size();
@@ -703,7 +799,7 @@ bool RealToComplex::runBlock(void) {
 	}
 
 	return true;
-}
+}*/
 //
 //ComplexToReal::ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
 //
@@ -963,7 +1059,7 @@ void System::run(string signalPath) {
 //############################################################### GENERIC DSP FUNCTIONS ##################################################################
 //########################################################################################################################################################
 
-
+/*
 void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT) {
 
 	int Nblocks = 2 * ((int) v_in.size() / NFFT);
@@ -1453,7 +1549,7 @@ void ComplexMult::ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &
 	}
 
 }
-
+/*
 vector<complex<double>> ComplexMult::ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
 {
 	vector<complex<double>> v_out(v1_real.size());
@@ -1698,7 +1794,7 @@ vector<complex<double>> FourierTransform::transform(vector<complex<double> > &ve
 	return OUT;
 }
 
-
+*/
 
 
 

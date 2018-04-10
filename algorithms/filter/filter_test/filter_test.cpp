@@ -3,10 +3,10 @@
 # include "m_qam_mapper.h"	
 # include "discrete_to_continuous_time.h"
 # include "sink.h"
-# include "filter.h"
 # include "fork.h"
-# include "overlapSave_20180208.h"
-
+# include "overlap_save_20180208.h"
+# include "pulse_shaper.h"
+# include "pulse_shaper_fd_20180306.h"
 
 int main() {
 
@@ -21,6 +21,7 @@ int main() {
 	int numberOfBits{ 1000 };		  // -1 will generate long bit sequence.
 	int numberOfSamplesPerSymbol{ 16 };
 	double rollOffFactor{ 0.3 };
+	double BTs{ 0.25 };
 	int impulseResponseTimeLength{ 16 };
 	int transferFunctionFrequencyLength{ 16 };
 	
@@ -32,10 +33,10 @@ int main() {
 	TimeDiscreteAmplitudeDiscreteReal S2{"S2.sgn"};	 // MPAM Signal
 	TimeDiscreteAmplitudeDiscreteReal S2b{"S2b.sgn"};// Not used (Q signal)
 	TimeContinuousAmplitudeDiscreteReal S3{"S3.sgn"};// Discrete to continious time
-	TimeContinuousAmplitudeContinuousReal S4{"S4.sgn"};// Pulse Shapping filter
-	TimeContinuousAmplitudeContinuousReal S5{"S5.sgn"};// Hilbert filter
-	TimeContinuousAmplitudeContinuousReal S6{"S6.sgn"};
-	TimeContinuousAmplitudeContinuousReal S7{"S7.sgn"};
+	TimeContinuousAmplitudeContinuousReal S4{"S4.sgn"};// Fork
+	TimeContinuousAmplitudeContinuousReal S5{"S5.sgn"};// Fork
+	TimeContinuousAmplitudeContinuousReal S6{"S6.sgn"};// Pulse Shaper TIME
+	TimeContinuousAmplitudeContinuousReal S7{"S7.sgn"};// Pulse Shaper FREQUENCY
 
 	// #########################################################################
 	// ############### Blocks Declaration and Inicialization ###################
@@ -57,26 +58,32 @@ int main() {
 
 	Fork B5{ vector<Signal*> { &S3 }, vector<Signal*> { &S4, &S5 } };
 
-	PulseShaper B6{ vector<Signal*> { &S4 }, vector<Signal*> { &S6 } };
+	/*PulseShaper B6{ vector<Signal*> { &S4 }, vector<Signal*> { &S6 } };
 	B6.setRollOffFactor( rollOffFactor);
 	B6.setImpulseResponseTimeLength(impulseResponseTimeLength);
 	B6.setSeeBeginningOfImpulseResponse(false);
-	B6.setFilterDomainType("time");
-	B6.setFilterType(RaisedCosine);
+	B6.setFilterType(RootRaisedCosine);
 
-
-	PulseShaper B7{ vector<Signal*> { &S5 }, vector<Signal*> { &S7 } };
+	PulseShaperFd B7{ vector<Signal*> { &S5 }, vector<Signal*> { &S7 } };
 	B7.setRollOffFactor(rollOffFactor);
 	B7.setTransferFunctionFrequencyLength(transferFunctionFrequencyLength);
 	B7.setSeeBeginningOfTransferFunction(false);
-	B7.setFilterDomainType("frequency");
-	B7.setFilterType(RaisedCosine);
+	B7.setFilterType(RootRaisedCosineTF);*/
 
+	PulseShaper B6{ vector<Signal*> { &S4 }, vector<Signal*> { &S6 } };
+	B6.setBTs(BTs);
+	B6.setImpulseResponseTimeLength(impulseResponseTimeLength);
+	B6.setSeeBeginningOfImpulseResponse(false);
+	B6.setFilterType(Gaussian);
+
+	PulseShaperFd B7{ vector<Signal*> { &S5 }, vector<Signal*> { &S7 } };
+	B7.setBTs(BTs);
+	B7.setTransferFunctionFrequencyLength(transferFunctionFrequencyLength);
+	B7.setSeeBeginningOfTransferFunction(false);
+	B7.setFilterType(GaussianTF);
 
 	Sink B8{ vector<Signal*> { &S6 }, vector<Signal*> {} };
 	Sink B9{ vector<Signal*> { &S7 }, vector<Signal*> {} };
-
-
 
 	// ############################################################################
 	// ################ System Declaration and Inicialization #####################

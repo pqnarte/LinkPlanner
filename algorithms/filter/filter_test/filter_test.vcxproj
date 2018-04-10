@@ -73,7 +73,7 @@
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../../include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>../../../algorithms/filter;..\filter_test;$(WindowsSDK_IncludePath);../../../include;$(IncludePath)</IncludePath>
+    <IncludePath>../../../algorithms/fft;../../../algorithms/filter;../../../algorithms/overlapSave;..\filter_test;$(WindowsSDK_IncludePath);../../../include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,9 +121,12 @@
     <ClCompile Include="..\..\..\lib\fork.cpp" />
     <ClCompile Include="..\..\..\lib\m_qam_mapper.cpp" />
     <ClCompile Include="..\..\..\lib\netxpto.cpp" />
-    <ClCompile Include="..\..\..\lib\overlapSave_20180208.cpp" />
+    <ClCompile Include="..\..\..\lib\pulse_shaper.cpp" />
+    <ClCompile Include="..\..\..\lib\pulse_shaper_fd_20180306.cpp" />
     <ClCompile Include="..\..\..\lib\sink.cpp" />
-    <ClCompile Include="..\filter.cpp" />
+    <ClCompile Include="..\..\fft\fft_20180208.cpp" />
+    <ClCompile Include="..\..\overlapSave\overlap_save_20180208.cpp" />
+    <ClCompile Include="..\filter_20180306.cpp" />
     <ClCompile Include="filter_test.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -132,9 +135,12 @@
     <ClInclude Include="..\..\..\include\fork.h" />
     <ClInclude Include="..\..\..\include\m_qam_mapper.h" />
     <ClInclude Include="..\..\..\include\netxpto.h" />
-    <ClInclude Include="..\..\..\include\overlapSave_20180208.h" />
+    <ClInclude Include="..\..\..\include\pulse_shaper.h" />
+    <ClInclude Include="..\..\..\include\pulse_shaper_fd_20180306.h" />
     <ClInclude Include="..\..\..\include\sink.h" />
-    <ClInclude Include="..\filter.h" />
+    <ClInclude Include="..\..\fft\fft_20180208.h" />
+    <ClInclude Include="..\..\overlapSave\overlap_save_20180208.h" />
+    <ClInclude Include="..\filter_20180306.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

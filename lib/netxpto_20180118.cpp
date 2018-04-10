@@ -6,6 +6,7 @@
 # include <string>
 # include <strstream>
 # include <algorithm>
+# include <ctime>
 
 
 # include "netxpto_20180118.h"
@@ -340,41 +341,49 @@ bool SuperBlock::runBlock() {
 
 			signal_value_type sType = moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->getValueType();
 			switch (sType) {
-				case BinaryValue:
-					for (int j = 0; j < length; j++) {
-						t_binary signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case RealValue:
-					for (int j = 0; j < length; j++) {
-						t_real signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case ComplexValue:
-					for (int j = 0; j < length; j++) {
-						t_complex signalValue;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
-						outputSignals[i]->bufferPut(signalValue);
-					}
-					break;
-				case ComplexValueXY:
-					for (int j = 0; j < length; j++) {
-						t_complex_xy signalValueXY;
-						moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValueXY);
-						outputSignals[i]->bufferPut(signalValueXY);
-					}
-					break;
-				default:
-					cout << "ERRO: netxpto.cpp (SuperBlock)" << "\n";
-					return false;
+			case BinaryValue:
+				for (int j = 0; j < length; j++) {
+					t_binary signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case RealValue:
+				for (int j = 0; j < length; j++) {
+					t_real signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case ComplexValue:
+				for (int j = 0; j < length; j++) {
+					t_complex signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			case ComplexValueXY:
+				for (int j = 0; j < length; j++) {
+					t_complex_xy signalValueXY;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValueXY);
+					outputSignals[i]->bufferPut(signalValueXY);
+				}
+				break;
+
+			case Message:
+				for (int j = 0; j < length; j++) {
+					t_message signalValue;
+					moduleBlocks[moduleBlocks.size() - 1]->outputSignals[i]->bufferGet(&signalValue);
+					outputSignals[i]->bufferPut(signalValue);
+				}
+				break;
+			default:
+				cout << "ERRO: netxpto_20180118.cpp (SuperBlock)" << "\n";
+				return false;
 
 			}
 
-			
+
 		}
 
 	} while (proceed);
@@ -404,6 +413,7 @@ void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
 			moduleBlocks[i]->outputSignals[j]->setSaveSignal(sInternalSignals);
 	}
 }
+
 
 
 void FIR_Filter::initializeFIR_Filter(void) {
@@ -924,14 +934,46 @@ void System::run() {
 		SystemBlocks[i]->initializeBlock();
 	}
 	*/
+	//Debug information
+	ofstream logFile;
+	clock_t start;
+	string separator = "|";
+	if (logValue)
+		logFile.open("./" + signalsFolder + "/" + logFileName);
+	
+
 	int l = 0;
 	bool Alive;
 	do {
 		Alive = false;
 		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
-
+			// Writes debug information
+			if (logValue) {
+				time_t t_now = time(0);
+				struct tm now;
+				localtime_s(&now, &t_now);
+				char buffer[20];
+				snprintf(buffer,20,"%04d-%02d-%02d %02d:%02d:%02d", 1900+now.tm_year, now.tm_mon+1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
+				logFile << buffer << endl;
+				// Prints line for each input signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->inputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+							<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+							<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+				}
+				// Prints line for each output signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->outputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+				}
+				start = clock(); //Counts the time taken to run the currentBlock
+			}
 			bool aux = SystemBlocks[i]->runBlock();
-
+			if (logValue)
+				logFile << (float)(clock()-start)/1000 << endl << endl;
 			Alive = (Alive || aux);
 		}
 		l++;
@@ -940,6 +982,9 @@ void System::run() {
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {		
 		SystemBlocks[i]->terminateBlock();
 	}
+	//Closes debug file
+	if(logValue)
+		logFile.close();
 }
 
 void System::run(string signalPath) {

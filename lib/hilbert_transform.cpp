@@ -37,8 +37,6 @@ bool HilbertTransform::runBlock(void)
 	vector <complex<double>> complexOutputSignalTimeDomain(process);
 	vector <double> outputSignalTimeDomain(process);
 
-	ComplexMult C;
-	FourierTransform FT;
 	vector<double> c(process);
 	vector<double> d(process);
 	vector<complex<double>> hilbertTransformerFrequencyDomain(process);
@@ -47,62 +45,7 @@ bool HilbertTransform::runBlock(void)
 	vector<double> re(process);
 	vector<double> im(process);
 
-	///////////// Hilbert transformer in frequency domain ///////////////
-	for (int i = 0; i < process; i++)
-	{
-		if ((i>0) && (i<process / 2))
-		{
-			c.at(i) = 0;
-			d.at(i) = -1;
-		}
-
-		if (i >= process / 2)
-		{
-			c.at(i) = 0;
-			d.at(i) = 1;
-		}
-
-		if (i == 0)
-		{
-			c.at(i) = 0;
-			d.at(i) = 0;
-		}
-	}
-
-	hilbertTransformerFrequencyDomain = C.ReImVect2ComplexVector(c, d);	// create complex vector from real and imag data vector of the hilbert transformer
-
-	///////////////////////////////////////////////////////////////////////
-
 	
-	for (int i = 0; i < process; i++)					// Get the Input signal as a vector of size "n"
-	{
-		inputSignals[0]->bufferGet(&input);
-		inputBufferTimeDomain.at(i) = input;
-	}
-						
-
-	for (int i = 0; i < process; i++)
-	{
-		re[i] = inputBufferTimeDomain.at(i);			// Real part of input
-		im[i] = 0;										// Imaginary part which is manipulated as "0"
-	}
-
-	C.ReImVect2ComplexVect(re, im, IN);					// Time domain complex form signal
-
-	inputSignalFreqencyDomain = FT.transform(IN, -1);	// Fast Fourier Transform (FFT) 
-
-	hilbertTransformedFrequencyDomain = C.complexVectorMultiplication(inputSignalFreqencyDomain, hilbertTransformerFrequencyDomain); // Multiplication of two complex vector
-
-	hilbertTransformedTimeDomain = FT.transform(hilbertTransformedFrequencyDomain, 1);	// Inverse Fast Fourier Transform (IFFT)
-
-
-
-	for (int i = 0; i < process; i++)					// Put the data using bufferput
-	{
-		t_real OUT;
-	    OUT = hilbertTransformedTimeDomain[i].real();
-		outputSignals[0]->bufferPut((t_real)(OUT));
-	}
 			
 	return true;
 

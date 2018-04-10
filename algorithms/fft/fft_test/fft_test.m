@@ -7,12 +7,12 @@ close all
 
 Fs = 1e5;              % Sampling frequency                    
 T = 1/Fs;              % Sampling period       
-L = 2^3;               % Length of signal
+L = 2^10;              % Length of signal
 t = (0:L-1)*(5*T);     % Time vector
 f = linspace(-Fs/2,Fs/2,L);
 
 %Choose for sig a value between [1, 7]
-sig = 7;
+sig = 2;
 switch sig
     case 1
         signal_title = 'Signal with one signusoid and random noise';
@@ -30,7 +30,7 @@ switch sig
         X = sin(2*pi*t) + cos(2*pi*t);     
     case 5
         signal_title = 'Single Sinusoids with Exponent';
-        X = sin(2*pi*10*t).*exp(-abs(t));  
+        X = sin(2*pi*200*t).*exp(-abs(70*t));  
     case 6
         signal_title = 'Mixed signal 1';
         X = sin(2*pi*10*t).*exp(-t)+sin(2*pi*t)+7*sin(2*pi*+5*t)+7*cos(2*pi*+20*t)+5*sin(2*pi*+50*t);
@@ -42,8 +42,9 @@ end
 plot(t(1:end),X(1:end))
 title(signal_title)
 axis([min(t) max(t) 1.1*min(X) 1.1*max(X)]);
-xlabel('t (Seconds)')
+xlabel('t (s)')
 ylabel('X(t)')
+grid on
 
 % dlmwrite will generate text file which represents the time domain signal.
 % dlmwrite('time_function.txt', X, 'delimiter','\t');
@@ -62,13 +63,14 @@ axis([-Fs/(2*5) Fs/(2*5) 0 1.1*max(abs(fy))]);
 xlabel('f');
 ylabel('|Y(f)|');
 title('MATLAB program Calculation : Magnitude');
-
+grid on
 subplot(2,1,2)
 plot(f,phase(fy));
 xlim([-Fs/(2*5) Fs/(2*5)]);
 xlabel('f');
 ylabel('phase(Y(f))');
 title('MATLAB program Calculation : Phase');
+grid on
 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,26 +89,29 @@ B = B+2;
 l=l+1;
 end
 
-% Comparsion of the MATLAB and C++ fft calculation.
+% % Comparsion of the MATLAB and C++ fft calculation.
 figure;
 subplot(2,1,1)
 plot(f,abs(fftshift(fft(X))))
 hold on
 %Multiplied by sqrt(n) to verify our C++ code with  MATLAB implemenrtation.
-plot(f,(sqrt(length(Z))*abs(fftshift(Z))), '--o')
+%plot(f,(sqrt(length(Z))*abs(fftshift(Z))), '--o')
+plot(f,abs(fftshift(Z)), '--o') % fftOptimized
 axis([-Fs/(2*5) Fs/(2*5) 0 1.1*max(abs(fy))]);
-xlabel('f');
+xlabel('f (Hz)');
 title('Main reference for Magnitude')
 legend('MATLAB','C++')
-
+grid on
 subplot(2,1,2)
 plot(f,phase(fftshift(fft(X))))
 hold on
 plot(f,phase(fftshift(Z)),'--o')
 xlim([-Fs/(2*5) Fs/(2*5)])
 title('Main reference for Phase')
-xlabel('f');
+xlabel('f (Hz)');
 legend('MATLAB','C++')
+grid on
 
-% IFFT test comparision Plot
+% 
+% % IFFT test comparision Plot
 % figure; plot(X); hold on; plot(real(Z),'--o');

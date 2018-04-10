@@ -2,6 +2,8 @@
 
 \section{SNR Estimator}
 
+\begin{refsection}
+
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Header File}   &:& snr\_estimator\_*.h \\
@@ -44,7 +46,7 @@ This block accepts one OpticalSignal or TimeContinuousAmplitudeContinousReal sig
 The SNR is calculated multiples times through the power spectral density of the signal over a given time interval. The multiple SNR measurements are then averaged and the confidence interval is established based on the observations.
 
 The power spectral density is obtained by getting Welch's periodogram over a given interval size. Using the power spectrum obtained from this sequence, the frequency interval containing the signal is identified, estimated from the sampling rate, symbol rate and modulation type. The rest of the spectrum is considered to be only noise.
-Assuming the noise is white, the noise superimposed with the signal is considered to be similar to the rest of the spectrum. The noise power is estimated from the integral of the spectrum in noise area. The signal power is obtained by integrating the spectrum within the signal's frequency interval, minus the corresponding superimposed noise. The SNR is the ratio between these two values. 
+Assuming the noise is white, the noise superimposed with the signal is considered to be similar to the rest of the spectrum. The noise power is estimated from the integral of the spectrum in noise area. The signal power is obtained by integrating the spectrum within the signal's frequency interval, minus the corresponding superimposed noise. The SNR is the ratio between these two values.
 
 This value is saved and the process is repeated for every sequence of samples. In the end the confidence interval is calculated based on the obtained values. The SNR value and confidence interval is saved to a text file.
 This block output signal is exactly equal to the input signal, to estimate SNR at any point in a given simulated system without interfering with it.
@@ -69,6 +71,15 @@ It also does not work correctly if the noise's power spectral density is high en
 
 
 
-\bibliographystyle{unsrt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\bibliography{bibliography} 
+
+% bibliographic references for the section ----------------------------
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
+\cleardoublepage
+% ---------------------------------------------------------------------
