@@ -78,6 +78,9 @@
     <ClCompile Include="..\..\lib\snr_estimator_20180227.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\lib\fft_20180208.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\binary_source_20180118.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\add_20171116.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\fft_20180208.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

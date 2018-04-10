@@ -22,17 +22,17 @@ int main(){
 	double symbolPeriod = bitPeriod / samplesPerSymbol;
 	*/
 	double samplingRate = 64e9;
-	double symbolRate = 2e9;
+	double symbolRate = 16e9;
 	t_integer samplesPerSymbol(samplingRate / symbolRate);
 	t_real bitPeriod = 1 / (2 * symbolRate);
 	double symbolPeriod = 1 / symbolRate;
 
-	t_integer numberOfBitsGenerated(4000);
+	t_integer numberOfBitsGenerated(20000);
 	t_integer pLength = 5;
 	t_real rollOffFactor_shp = 0.05;
 	t_real rollOffFactor_out = 0.05;
 	//vector<t_iqValues> iqAmplitudeValues = { { -1, 0 },{ 1, 0 } };
-	t_real signalOutputPower = -60;
+	t_real signalOutputPower = -70;
 	PulseShaperFilter shaperFilter = RootRaisedCosine;
 	PulseShaperFilter outputFilter = RootRaisedCosine;
 
@@ -105,10 +105,10 @@ int main(){
 	MQamTransmitter B1{ vector<Signal*> { }, vector<Signal*> { &S1, &S0 } };
 	B1.setNumberOfBits(numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(signalOutputPower);
-	//B1.setMode(Random);
+	B1.setMode(Random);
 	//B1.setMode(PseudoRandom);
-	B1.setMode(DeterministicAppendZeros);
-	B1.setBitStream("11010110");
+	//B1.setMode(DeterministicAppendZeros);
+	//B1.setBitStream("11010110");
 	B1.setBitPeriod(bitPeriod);
 	B1.setPatternLength(prbsPatternLength);
 	B1.setIqAmplitudes(iqAmplitudeValues);
