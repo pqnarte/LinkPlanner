@@ -1,22 +1,19 @@
 # ifndef POLARIZATION_BEAM_SPLITTER_H_
 # define POLARIZATION_BEAM_SPLITTER_H_
 
-#include "netxpto_20180118.h"
+# include <algorithm>  // min()
+# include <math.h>     // cos(), sin()
 #include <array>
+
+#include "netxpto_20180118.h"
+
 
 class PolarizationBeamSplitter : public Block {
 
 	/* input parameters */
-	t_real F = 1;
-	t_complex unit = 1;
-	array <t_complex, 4> matrixH = { { F*unit, 0, 0, 0 } };
-	array <t_complex, 4> matrixV = { { 0, 0, 0, F*unit } };
-	/*
-	Jones Matrix for PBS:
-	1	0
-	0	1
-	*/
 
+	array <t_complex, 4> matrixH = { { 1, 0, 0, 0 } };
+	array <t_complex, 4> matrixV = { { 0, 0, 0, 1 } };
 
 public:
 
@@ -26,12 +23,12 @@ public:
 
 	bool runBlock(void);
 
-
 	void setTransferMatrixH(array<complex<double>, 4> TransferMatrix) { matrixH = TransferMatrix; }
 	array<complex<double>, 4> const getTransferMatrixH(void) { return matrixH; }
 
 	void setTransferMatrixV(array<complex<double>, 4> TransferMatrix) { matrixV = TransferMatrix; }
 	array<complex<double>, 4> const getTransferMatrixV(void) { return matrixV; }
+
 };
 
 #endif

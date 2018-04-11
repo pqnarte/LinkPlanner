@@ -31,8 +31,12 @@ typedef struct { t_real probabilityAmplitude;  t_real polarization; } t_photon;
 typedef struct { t_photon path[MAX_NUMBER_OF_PATHS]; } t_photon_mp;
 typedef struct { t_complex_xy path[MAX_NUMBER_OF_PATHS]; } t_photon_mp_xy;
 typedef complex<t_real> t_iqValues;
-typedef struct { string fieldName; string fieldValue; } t_message_field;
-typedef vector<t_message_field> t_message;
+typedef struct {
+	string messageType;
+	string messageDataLength; 
+	string messageData; 
+	int size() { return 3; }
+} t_message;
 
 enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
@@ -53,16 +57,17 @@ class Signal {
 	long int numberOfSavedValues{ 0 };				// Number of saved values
 	long int count;									// Number of values that have already entered in the buffer
 
-	/* Parameters */
+	/* Input Parameters */
 
 	long int firstValueToBeSaved{ 1 };				// First value (>= 1) to be saved
 	bool saveSignal{ true };
 
-	string type;									// Signal type
+	string type;							// Signal type
 	signal_value_type valueType;					// Signal samples type
 
-	string fileName{ "" };							// Name of the file where data values are going to be saved
+	string fileName{ "" };						// Name of the file where data values are going to be saved
 	string folderName{ "signals" };					// folder where signals are going to be saved by default
+
 
 	long int numberOfValuesToBeSaved{ -1 };			// Number of values to be saved, if -1 all values are going to be saved
 
@@ -100,10 +105,10 @@ public:
 	template<typename T>							// Puts a value in the buffer
 	void bufferPut(T value) {
 		(static_cast<T *>(buffer))[inPosition] = value;
-		if (bufferEmpty) bufferEmpty=false;
+		if (bufferEmpty) bufferEmpty = false;
 		inPosition++;
 		if (inPosition == bufferLength) { 
-			inPosition=0; 
+			inPosition = 0; 
 			if (saveSignal) {
 				if (firstValueToBeSaved <= bufferLength) {
 					char *ptr = (char *) buffer;
@@ -132,7 +137,6 @@ public:
 	void virtual bufferGet(t_photon_mp *valueAddr);
 	void virtual bufferGet(t_photon_mp_xy *valueAddr);
 	void virtual bufferGet(t_message *valueAdr);
-
 	
 	void setSaveSignal(bool sSignal){ saveSignal = sSignal; };
 	bool const getSaveSignal(){ return saveSignal; };
@@ -529,6 +533,9 @@ public:
 	void setImpulseResponseLength(int iResponseLength) { impulseResponseLength = iResponseLength; };
 	int const getImpulseResponseLength(){ return impulseResponseLength; }
 
+	void setImpulseResponseFilename(string fName) { impulseResponseFilename = fName; };
+	string getImpulseResponseFilename() { return impulseResponseFilename; };
+
 	void setSeeBeginningOfImpulseResponse(bool sBeginning){ seeBeginningOfImpulseResponse = sBeginning; };
 	bool const getSeeBeginningOfImpulseResponse(){ return seeBeginningOfImpulseResponse; };
 
@@ -626,6 +633,10 @@ class System {
   int numberOfBlocks;  // Number of system Blocks
   int (*topology)[MAX_TOPOLOGY_SIZE];  // Relationship matrix
   vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
+
+  //Debug inputs
+  string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
+  bool logValue{ true }; // Will write debug info if true
 };
 
 //########################################################################################################################################################

@@ -1,10 +1,5 @@
 # include "single_photon_detector_20180111.h"
 
-# include <algorithm>  // min()
-# include <math.h>	   // remainder(), pow()
-# include <chrono>
-
-
 void SinglePhotonDetector::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());

@@ -1,5 +1,28 @@
-BER= 0.0193089
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+BER= 0.0243902
 Upper and lower confidence bounds for 95% confidence level 
-Upper Bound= 0.0285276
-Lower Bound= 0.0103154
+Upper Bound= 0.0346342
+Lower Bound= 0.0143415
+=======
+BER= 0.0223577
+Upper and lower confidence bounds for 95% confidence level 
+Upper Bound= 0.032207
+Lower Bound= 0.0127157
+>>>>>>> Nuno
 Number of received bits =984
+=======
+BER= 0
+Upper and lower confidence bounds for 95% confidence level 
+Upper Bound= 0.000688705
+Lower Bound= 1e-10
+Number of received bits =968
+>>>>>>> Develop.Daniel
+=======
+BER= 0
+Upper and lower confidence bounds for 95% confidence level 
+Upper Bound= 0.000688705
+Lower Bound= 1e-10
+Number of received bits =968
+>>>>>>> Andoni

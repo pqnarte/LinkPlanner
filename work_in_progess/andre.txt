@@ -1,3 +1,15 @@
+2018-04-04
+TO BE DONE
+	- documentar a parte relativa ao log file, usando o sistema BPSK para ilustrar
+	- documentar bem a parte da solução do problema do milionário
+	- solução com criptografia assimétrica (não é generalizavel, não é segura contra um computador quântico)
+	- o passo seguinte é encontrar soluções que se possam generalizar e como?
+	- os passos seguintes é encontrar soluções que se possam generalizar e que sejam seguras contra um computador quântico
+	- implementar ou pelos menos quantificar segurança e complexidade
+
+next meeting: 11/4, 16h
+
+
 2018-03-26
 TO BE DONE
 	escrever MPC considerando a Alice & o Bob em sitios diferentes, e ilustar com o exemplo das duas mensagens

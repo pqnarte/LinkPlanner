@@ -1,15 +1,16 @@
 #ifndef ALICE_QKD_H_
 #define ALICE_QKD_H
 
-#include "netxpto.h"
-#include "binary_source.h"
-#include "m_qam_mapper.h"
-#include "discrete_to_continuous_time.h"
-#include "pulse_shaper.h"
+#include "netxpto_20180118.h"
+#include "binary_source_20180118.h"
+#include "m_qam_mapper_20180118.h"
+#include "discrete_to_continuous_time_20180118.h"
+#include "pulse_shaper_20180111.h"
 #include "clock_20171219.h"
-#include "sink.h"
-#include "super_block_interface.h"
-#include "demux_1_2.h"
+#include "sink_20180118.h"
+#include "super_block_interface_20180118.h"
+#include "demux_1_2_20180205.h"
+#include "message_processor_alice_20180205.h"
 
 class AliceQKD : public SuperBlock {
 	/* State Variables */
@@ -20,39 +21,43 @@ class AliceQKD : public SuperBlock {
 
 	//Binary S1{ "NUM_A.sgn" };
 
-	TimeDiscreteAmplitudeDiscreteReal S1{ "Alice_1.sgn" };
+	TimeDiscreteAmplitudeDiscreteReal alice_1{ "alice_1.sgn" };
 
-	TimeDiscreteAmplitudeDiscreteReal S2{ "Alice_2.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S3{ "Alice_3.sgn" };
+	TimeDiscreteAmplitudeDiscreteReal alice_2{ "alice_2.sgn" };
 
-	TimeContinuousAmplitudeDiscreteReal S4{ "Alice_4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal alice_3{ "alice_3.sgn" };
 
-	TimeContinuousAmplitudeContinuousReal CLK_A{ "Alice_5.sgn" };
+	TimeContinuousAmplitudeDiscreteReal alice_4{ "alice_4.sgn" };
+	TimeContinuousAmplitudeDiscreteReal alice_4_out{ "alice_4_out.sgn" };
 
-	Binary S5{ "Alice_6.sgn" };
+	Binary alice_5{ "alice_5.sgn" };
 
-	Binary S6{ "Alice_7.sgn" };
+	TimeContinuousAmplitudeContinuousReal clkA_out{ "clkA_out.sgn" };
 
-	Binary S7{ "Alice_8.sgn" };
+	Binary alice_12_out{ "alice_12_out.sgn" };
 
-	Binary S8{ "Alice_9.sgn" };
+	Binary alice_6{ "alice_6.sgn" };
+	Binary alice_6_out{ "alice_6_out.sgn" };
 
-	Binary S9{ "Alice_10.sgn" };
+	Binary alice_7{ "alice_7.sgn" };
 
-	Binary S10{ "Alice_11.sgn" };
+	Binary alice_8{ "alice_8.sgn" };
 
-	Binary S11{ "Alice_12.sgn" };
+	Binary alice_9{ "alice_9.sgn" };
 
-	Binary S12{ "Alice_13.sgn" };
+	Binary alice_10{ "alice_10.sgn" };
 
-	Binary S13{ "MI_A.sgn" };
+	Binary alice_11{ "alice_11.sgn" };
 
-	Messages S14{ "C_C_6.sgn" };
+	Binary alice_12{ "alice_12.sgn" };
 
-	Messages S15{ "C_C_1.sgn" };
+	Binary alice_13{ "alice_13.sgn" };
 
-	
+	Messages C_C_1{ "C_C_1.sgn" };
+	Messages C_C_1_out{ "C_C_1_out.sgn" };
+
+	Binary MI_Alice{ "MI_alice.sgn" };
 
 
 	// #####################################################################################################
@@ -79,6 +84,8 @@ class AliceQKD : public SuperBlock {
 
 	Sink BA12;
 
+	MessageProcessorAlice BA7;
+
 	BinarySource BA13;
 
 	Sink BA14;
@@ -90,11 +97,11 @@ class AliceQKD : public SuperBlock {
 public:
 	/* input parameters*/
 
-	double RateOfPhotons{1e3};
+	double RateOfPhotons{ 1e3 };
 	int StringPhotonsLength{ 12 };
 
 	// Methods
-	AliceQKD (vector <Signal*> &inputSignals, vector <Signal*> &outputSignals);
+	AliceQKD(vector <Signal*> &inputSignals, vector <Signal*> &outputSignals);
 
 	// Set methods
 	void set(int opt);
@@ -102,7 +109,7 @@ public:
 	void setM(int mValue) { BA1.m = mValue; };
 	int const getM(void) { return BA1.m; };
 
-	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { BA1.m = (t_integer) iqAmplitudesValues.size(); BA1.iqAmplitudes.resize(BA1.m); BA1.iqAmplitudes = iqAmplitudesValues; };
+	void setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues) { BA1.m = (t_integer)iqAmplitudesValues.size(); BA1.iqAmplitudes.resize(BA1.m); BA1.iqAmplitudes = iqAmplitudesValues; };
 	vector<t_iqValues> const getIqAmplitudes(void) { return BA1.iqAmplitudes; };
 
 	void setNumberOfSamplesPerSymbol(int n) { BA2.setNumberOfSamplesPerSymbol(n); };
@@ -124,6 +131,7 @@ public:
 
 	void setDisplayNumberOfSamples(bool opt) { BA4.setDisplayNumberOfSamples(opt); };
 
+	void setSymbolPeriodMIA(double sPeriod) { BA9.setSymbolPeriod(sPeriod); };
 
 };
 

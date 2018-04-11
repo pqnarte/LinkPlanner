@@ -1,8 +1,184 @@
-\begin{thebibliography}{1}
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem{thorlabs}
-Thorlabs.
-\newblock {\em Thorlabs Balance Amplified Photodetectors: PDB4xx Series
-  Operation Manual}, 2014.
 
-\end{thebibliography}
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{saleh1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=35e23bf6d97484c886444734973b5e85}{%
+           family={Saleh},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=79373f7210a4d0ce76b0790594755f34}{%
+           family={Teich},
+           familyi={T\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York (NY)}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Wiley series in pure and applied optics}
+      \field{title}{Fundamentals of photonics}
+      \field{year}{1991}
+    \endentry
+  \enddatalist
+  \missing{Chu2000}
+  \missing{Rao2010a}
+  \missing{almeida2016continuous}
+  \missing{probabilitySheldon}
+\endrefsection
+
+\refsection{2}
+  \datalist[entry]{none/global//global/global}
+    \entry{thorlabs}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={Thorlabs},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Thorlabs Balance Amplified Photodetectors: PDB4xx Series Operation Manual}
+      \field{year}{2014}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{saleh1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=35e23bf6d97484c886444734973b5e85}{%
+           family={Saleh},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=79373f7210a4d0ce76b0790594755f34}{%
+           family={Teich},
+           familyi={T\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York (NY)}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Wiley series in pure and applied optics}
+      \field{title}{Fundamentals of photonics}
+      \field{year}{1991}
+    \endentry
+    \entry{smith1997}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=2f646a0526232b60c8f04636028f892f}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={S.\bibnamedelimi W.},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {California Technical Pub. San Diego}%
+      }
+      \strng{namehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{fullhash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{bibnamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authorbibnamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authornamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authorfullhash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The scientist and engineer's guide to digital signal processing}
+      \field{year}{1997}
+    \endentry
+    \entry{george2011}{article}{}
+      \name{author}{2}{}{%
+        {{hash=840f6f0281cb75ff8b09d9f3538974a4}{%
+           family={Florence},
+           familyi={F\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f5e803750d4a73ffd8e27570fa23d320}{%
+           family={Golam},
+           familyi={G\bibinitperiod},
+           given={K.\bibnamedelimi B.},
+           giveni={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Science Publications}%
+      }
+      \strng{namehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{fullhash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{bibnamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authorbibnamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authornamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authorfullhash}{4547c76f44bfe9000ca98c33458f845f}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Biostatistics}
+      \field{number}{2}
+      \field{title}{Confidence intervals for signal to noise ratio of a Poisson distribution}
+      \field{volume}{2}
+      \field{year}{2011}
+      \field{pages}{44}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
