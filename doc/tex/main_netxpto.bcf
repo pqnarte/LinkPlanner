@@ -2011,6 +2011,7 @@
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="3">
+    <bcf:citekey order="1">yao1982</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
