@@ -1,0 +1,101 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{1}
+  \datalist[entry]{none/global//global/global}
+    \entry{knuth1986texbook}{book}{}
+      \name{author}{2}{}{%
+        {{hash=a99ecc5e6a0a5032ac1e949be547a6f3}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={D.E.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0346877f0ca1ecff82ed7d63a2ab857a}{%
+           family={Bibby},
+           familyi={B\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{f5cc18603f320221214b5d30606dd193}
+      \strng{fullhash}{f5cc18603f320221214b5d30606dd193}
+      \strng{bibnamehash}{f5cc18603f320221214b5d30606dd193}
+      \strng{authorbibnamehash}{f5cc18603f320221214b5d30606dd193}
+      \strng{authornamehash}{f5cc18603f320221214b5d30606dd193}
+      \strng{authorfullhash}{f5cc18603f320221214b5d30606dd193}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The texbook}
+      \field{volume}{1993}
+      \field{year}{1986}
+      \keyw{book}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{2}
+  \datalist[entry]{none/global//global/global}
+    \entry{knuth1977fast}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a99ecc5e6a0a5032ac1e949be547a6f3}{%
+           family={Knuth},
+           familyi={K\bibinitperiod},
+           given={D.E.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=c82e516dd8d7c743ecf3e2315f03a40e}{%
+           family={Morris\bibnamedelima Jr},
+           familyi={M\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={J.H.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ee03197de26d05d787a7e4e109ed48e6}{%
+           family={Pratt},
+           familyi={P\bibinitperiod},
+           given={V.R.},
+           giveni={V\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{8429c634478aa23b8f61a05ea526b79a}
+      \strng{fullhash}{8429c634478aa23b8f61a05ea526b79a}
+      \strng{bibnamehash}{8429c634478aa23b8f61a05ea526b79a}
+      \strng{authorbibnamehash}{8429c634478aa23b8f61a05ea526b79a}
+      \strng{authornamehash}{8429c634478aa23b8f61a05ea526b79a}
+      \strng{authorfullhash}{8429c634478aa23b8f61a05ea526b79a}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM journal on computing}
+      \field{number}{2}
+      \field{title}{Fast pattern matching in strings}
+      \field{volume}{6}
+      \field{year}{1977}
+      \field{pages}{323\bibrangedash 350}
+      \range{pages}{28}
+      \keyw{article}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

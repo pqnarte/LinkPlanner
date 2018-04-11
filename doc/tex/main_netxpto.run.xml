@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>main_netxpto.bcf</file>
@@ -60,7 +60,7 @@
       <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
+  <external package="biblatex" priority="5" active="1">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
@@ -81,8 +81,11 @@
     <requires type="editable">
       <file>./chapter/simulator_structure/simulator_structure.bib</file>
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
+      <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
       <file>./sdf/classical_mpc/classical_mpc.bib</file>
+      <file>./sdf/quantum_mpc/quantum_mpc.bib</file>
       <file>./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</file>
+      <file>./algorithms/fft/fft.bib</file>
     </requires>
   </external>
 </requests>
