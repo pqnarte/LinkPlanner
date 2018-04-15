@@ -36,8 +36,14 @@ int main(){
 	bool shotNoise = false;
 	
 
-	BPSKParameters* param;
-	BPSKParameters::readFromFile(param, "data.txt"); //Reads
+	BPSKParameters* param = new BPSKParameters(numberOfBitsReceived, numberOfBitsGenerated,samplesPerSymbol,pLength,bitPeriod,
+											   rollOffFactor,signalOutputPower_dBm,localOscillatorPower_dBm,localOscillatorPhase,
+											   iqAmplitudeValues,transferMatrix,responsivity,amplification,electricalNoiseAmplitude,
+											   samplesToSkip,bufferLength,shotNoise);
+	param->readFromFile(param, "data.txt"); //Reads
+
+	cout << param->pLength << endl;
+	cout << param->signalOutputPower_dBm << endl;
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
