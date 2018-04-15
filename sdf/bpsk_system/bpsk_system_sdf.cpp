@@ -42,9 +42,6 @@ int main(){
 											   samplesToSkip,bufferLength,shotNoise);
 	param->readFromFile(param, "data.txt"); //Reads
 
-	cout << param->pLength << endl;
-	cout << param->signalOutputPower_dBm << endl;
-
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
