@@ -35,6 +35,7 @@ int main(){
 	int bufferLength = 20;
 	bool shotNoise = false;
 	
+
 	BPSKParameters* param = new BPSKParameters(numberOfBitsReceived, numberOfBitsGenerated,samplesPerSymbol,pLength,bitPeriod,
 											   rollOffFactor,signalOutputPower_dBm,localOscillatorPower_dBm,localOscillatorPhase,
 											   iqAmplitudeValues,transferMatrix,responsivity,amplification,electricalNoiseAmplitude,
