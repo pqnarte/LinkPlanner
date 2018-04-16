@@ -1756,6 +1756,11 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 	return OUT;
 }
 
+// #####################################################################################################
+// ###################################        Parameters       #########################################
+// #####################################################################################################
+
+// ############### BPSK SYSTEM PARAMETER ###############
 BPSKParameters::BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerated, int samplesPerSymbol, int pLength,
 	double bitPeriod, double rollOffFactor, double signalOutputPower_dBm, double localOscillatorPower_dBm,
 	double localOscillatorPhase, vector<t_iqValues> &iqAmplitudeValues, array<t_complex, 4> transferMatrix,
@@ -1768,6 +1773,7 @@ BPSKParameters::BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerat
 	this->amplification = amplification; this->electricalNoiseAmplitude = electricalNoiseAmplitude; this->samplesToSkip = samplesToSkip;
 	this->bufferLength = bufferLength; this->shotNoise = shotNoise;
 }
+
 /* Returns 'param' filled with the values found in the file 'filename'.
 	This method also detects comments as lines that start with the characters // */
 void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
@@ -1813,12 +1819,12 @@ void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
 					localOscillatorPhase = parseDouble(splitline.at(1));
 				}
 				else if (splitline.at(0) == "iqAmplitudeValues") {
-					vector<string> amplitudeSplit = split(splitline.at(1), ' ');
+					vector<string> amplitudeSplit = split(splitline.at(1), ',');
 					iqAmplitudeValues = { {parseDouble(amplitudeSplit.at(0)), parseDouble(amplitudeSplit.at(1)) } ,
 										  { parseDouble(amplitudeSplit.at(2)), parseDouble(amplitudeSplit.at(3)) } };
 				}
 				else if (splitline.at(0) == "transferMatrix") {
-					vector<string> transferSplit = split(splitline.at(1), ' ');
+					vector<string> transferSplit = split(splitline.at(1), ',');
 					transferMatrix = { { parseDouble(transferSplit.at(0)), parseDouble(transferSplit.at(1)) ,
 									   parseDouble(transferSplit.at(2)), parseDouble(transferSplit.at(3)) } };
 				}
@@ -1837,7 +1843,51 @@ void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
 				else if (splitline.at(0) == "bufferLength") {
 					bufferLength = parseInt(splitline.at(1));
 				}
-				cout << splitline.at(1) << endl;
+				else if (splitline.at(0) == "shotNoise") {
+					shotNoise = splitline.at(1) == "true" ? true : false;
+				}
+			}
+			errorLine++;
+		}
+		catch (const exception& e) {
+			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
+			exit(1);
+		}
+	}
+	inputFile.close();
+}
+
+// ############### BPSK SYSTEM PARAMETER ###############
+QRNGParameters::QRNGParameters(int rateOfPhotons, int polarizerAngle)
+{
+	this->rateOfPhotons = rateOfPhotons;
+	this->polarizerAngle = polarizerAngle;
+}
+
+void QRNGParameters::readFromFile(QRNGParameters * param, string filename)
+{
+	ifstream inputFile("./" + inputFolderName + "/" + filename);
+	if (!inputFile) {
+		cerr << "ERROR: Could not open " << filename;
+		exit(1);
+	}
+	int errorLine = 1;
+	//Reads each line
+	string line;
+	while (getline(inputFile, line)) {
+		try {
+			//If the line if a comment, it just skips to the next one
+			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+				vector<string> splitline = split(line, ':');
+				if (splitline.at(0) == "rateOfPhotons") {
+					rateOfPhotons = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "polarizerAngle") {
+					polarizerAngle = parseDouble(splitline.at(1));
+				}
+				else {
+					throw exception("Invalid Input Parameter");
+				}
 			}
 			errorLine++;
 		}
