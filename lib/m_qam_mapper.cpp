@@ -39,21 +39,20 @@ MQamMapper::MQamMapper(vector<Signal *> &InputSig, vector<Signal *> &OutputSig):
 
 void MQamMapper::initialize(void){
 
-	outputSignals[0]->symbolPeriod = log2(m) * inputSignals[0]->symbolPeriod;
-	outputSignals[0]->samplingPeriod = log2(m) * inputSignals[0]->samplingPeriod;
-	outputSignals[0]->samplesPerSymbol = 1;
+	outputSignals[0]->setSymbolPeriod (log2(m) * inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod (log2(m) * inputSignals[0]->getSamplingPeriod());
+	outputSignals[0]->setSamplesPerSymbol(1);
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
-	outputSignals[1]->symbolPeriod = log2(m) * inputSignals[0]->symbolPeriod;
-	outputSignals[1]->samplingPeriod = log2(m) * inputSignals[0]->samplingPeriod;
-	outputSignals[1]->samplesPerSymbol = 1;
+	outputSignals[1]->setSymbolPeriod(log2(m) * inputSignals[0]->getSymbolPeriod());
+	outputSignals[1]->setSamplingPeriod(log2(m) * inputSignals[0]->getSamplingPeriod());
+	outputSignals[1]->setSamplesPerSymbol(1);
 	outputSignals[1]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 	//setM(m);
 }
 
 bool MQamMapper::runBlock(void) {
-
 
 	int ready = inputSignals[0]->ready();
 	int space1 = outputSignals[0]->space();
@@ -84,7 +83,7 @@ bool MQamMapper::runBlock(void) {
 }
 
 void MQamMapper::setIqAmplitudes(vector<t_iqValues> iqAmplitudesValues){
-	m = iqAmplitudesValues.size();
+	m = (int) iqAmplitudesValues.size();
 	iqAmplitudes.resize(m);
 	iqAmplitudes = iqAmplitudesValues; 
 };

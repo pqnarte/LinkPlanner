@@ -1,0 +1,74 @@
+\clearpage
+
+\section{Analog-to-digital converter (ADC)}
+
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Header File}   &:& adc.h \\
+		\textbf{Source File}   &:& adc.cpp \\
+	\end{tabular}
+\end{tcolorbox}
+
+This block simulates an analog-to-digital converter, including signal quantization and resample. It receives one input signal and outputs a signal with the sampling rate defined by ADC sampling rate, which is externally configured.
+
+\subsection*{Input Parameters}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|cccc}
+		\cline{1-4}
+		\textbf{Parameter} & \textbf{Type} & \textbf{Values} &   \textbf{Default}& \\ \cline{1-4}
+		nBits & double & any & $inf$ \\ \cline{1-4}
+		ADCsamplingRate & double & any & $0.0$ \\ \cline{1-4}		
+	\end{tabular}
+	\caption{ADC input parameters}
+	\label{table:ADC_in_par}
+\end{table}
+
+
+\subsection*{Methods}
+
+ADC() {};
+\bigbreak
+ADC(vector$<$Signal *$>$ \&InputSig, vector$<$Signal *$>$ \&OutputSig) :Block(InputSig, OutputSig)\{\};
+\bigbreak
+void initialize(void);
+\bigbreak
+bool runBlock(void);
+\bigbreak
+void setSamplingPeriod(double sPeriod) { samplingPeriod = sPeriod; }
+\bigbreak
+void setSymbolPeriod(double sPeriod) { symbolPeriod = sPeriod; }
+\bigbreak
+void setADCSamplingRate(double ADCsRate) { ADCsamplingRate = ADCsRate; }
+\bigbreak
+double getADCSamplingRate() { return ADCsamplingRate; }
+\bigbreak
+void setQuatizationBits(double nbits) { nBits = nbits; }
+\bigbreak
+double getQuatizationBits() { return nBits; }
+
+\subsection*{Functional description}
+
+This block can performs the signal quantization according to the defined input parameter \textit{nBits}. 
+
+Firstly, the parameter \textit{nBits} is checked and if it is equal to the infinity, the output signal correspond to the input signal. Otherwise, the quantization process is applied. Firstly, it normalizes the input signal to its maximum absolute value, which is calculated over the real and imaginary partly. The normalized signal is quantized into $2^{nBits-1}$ levels using the standard \textit{round} function. The output is then scaled using the maximum absolute value to remove the normalization gain introduced in the normalization process.
+
+
+\pagebreak
+\subsection*{Input Signals}
+
+\subparagraph*{Number:} 1
+
+\subsection*{Output Signals}
+
+\subparagraph*{Number:} 1
+
+\subparagraph*{Type:} Electrical complex signal
+
+\subsection*{Examples}
+
+\subsection*{Sugestions for future improvement}
+
+Include the resample functionality to adjust the signal sampling rate to the ADC sampling rate. 
+

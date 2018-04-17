@@ -1,13 +1,12 @@
 # include <algorithm> // min()
 
-# include "netxpto.h"
 # include "qrng_decision_circuit.h"
 
 void QRNG_DecisionCircuit::initialize(void) {
 
-	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
-	outputSignals[0]->samplingPeriod = inputSignals[0]->symbolPeriod;;
-	outputSignals[0]->samplesPerSymbol = 1;
+	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSymbolPeriod());
+	outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
 
 }
