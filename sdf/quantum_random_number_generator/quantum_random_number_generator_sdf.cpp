@@ -19,6 +19,8 @@ int main(){
 	double rateOfPhotons{ 1e6 };
 	double polarizerAngle{ 360.0 };
 
+	QRNGParameters* param = new QRNGParameters(rateOfPhotons, polarizerAngle);
+
 	// #####################################################################################################
 	// ################################### Simulation Parameters ###########################################
 	// #####################################################################################################
@@ -61,14 +63,14 @@ int main(){
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
 	ElectricalSignalGenerator B1{ vector <Signal*>{}, vector<Signal*>{&S1} };
-	B1.setSamplingPeriod((1 / rateOfPhotons) / numberOfSamplesPerSymbol);
-	B1.setSymbolPeriod(numberOfSamplesPerSymbol * (1 / rateOfPhotons));
+	B1.setSamplingPeriod((1 / param->rateOfPhotons) / numberOfSamplesPerSymbol);
+	B1.setSymbolPeriod(numberOfSamplesPerSymbol * (1 / param->rateOfPhotons));
 	B1.setFunction(ContinuousWave);
-	B1.setGain(polarizerAngle);
+	B1.setGain(param->polarizerAngle);
 
 	Clock B2{ vector<Signal*>{}, vector<Signal*>{&S2} };
-	B2.setClockPeriod(1 / rateOfPhotons);
-	B2.setSamplingPeriod((1 / rateOfPhotons) / numberOfSamplesPerSymbol);
+	B2.setClockPeriod(1 / param->rateOfPhotons);
+	B2.setSamplingPeriod((1 / param->rateOfPhotons) / numberOfSamplesPerSymbol);
 	B2.setClockPhase(3 * PI / 2);
 	
 	SinglePhotonSource B3{ vector<Signal*>{&S2},vector<Signal*>{&S3} };
