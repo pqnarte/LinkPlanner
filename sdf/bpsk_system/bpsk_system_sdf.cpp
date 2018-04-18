@@ -11,11 +11,48 @@
 # include "sampler_20171116.h"
 # include "sink_20180118.h"
 
-int main(){	
 
-	// #####################################################################################################
-	// #################################### System Input Parameters ########################################
-	// #####################################################################################################
+// #####################################################################################################
+// #################################### System Input Parameters ########################################
+// #####################################################################################################
+
+
+class BPSKParameters : public SystemParameters {
+public:
+
+	//PARAMETERS
+	int numberOfBitsReceived{ -1 };
+	int numberOfBitsGenerated{ 1000 };
+	int samplesPerSymbol = 16;
+	int pLength = 5;
+	double bitPeriod = 20e-12;
+	double rollOffFactor = 0.3;
+	double signalOutputPower_dBm = -20;
+	double localOscillatorPower_dBm = 0;
+	double localOscillatorPhase = 0;
+	vector<t_iqValues> iqAmplitudeValues = { { -1, 0 } ,{ 1, 0 } };
+	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2) } };
+	double responsivity = 1;
+	double amplification = 1e6;
+	double electricalNoiseAmplitude = 5e-4*sqrt(2);
+	int samplesToSkip = 8 * samplesPerSymbol;
+	int bufferLength = 20;
+	bool shotNoise = false;
+
+	//METHODS
+	/* Returns 'param' filled with the values found in the file 'filename' */
+	void readFromFile(BPSKParameters* param, string filename);
+	/* Empty Constructor in case you want to read BPSK parameters from a file*/
+	BPSKParameters() {}
+	/* This is the full constructor */
+	BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerated, int samplesPerSymbol, int pLength,
+		double bitPeriod, double rollOffFactor, double signalOutputPower_dBm, double localOscillatorPower_dBm,
+		double localOscillatorPhase, vector<t_iqValues> &iqAmplitudeValues, array<t_complex, 4> transferMatrix,
+		double responsivity, double amplification, double electricalNoiseAmplitude, int samplesToSkip, int bufferLength, bool shotNoise);
+};
+
+
+int main(){	
 	
 	int numberOfBitsReceived = -1;
 	int numberOfBitsGenerated = 1000;
@@ -36,7 +73,7 @@ int main(){
 	bool shotNoise = false;
 	
 
-	BPSKParameters* param = new BPSKParameters(numberOfBitsReceived, numberOfBitsGenerated,samplesPerSymbol,pLength,bitPeriod,
+	BPSKParameters param = BPSKParameters(numberOfBitsReceived, numberOfBitsGenerated,samplesPerSymbol,pLength,bitPeriod,
 											   rollOffFactor,signalOutputPower_dBm,localOscillatorPower_dBm,localOscillatorPhase,
 											   iqAmplitudeValues,transferMatrix,responsivity,amplification,electricalNoiseAmplitude,
 											   samplesToSkip,bufferLength,shotNoise);

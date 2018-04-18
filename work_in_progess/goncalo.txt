@@ -1,0 +1,16 @@
+2018-04-18
+TO BE DONE
+
+	- OT permite implementar qualquer MPC	
+	- encontrar uma solução para o problema do milionário usando OT
+	- pull request para o Netxpto/Linkplanner/Goncalo
+
+
+	MEDIO PRAZO
+	- solução com chaves oblivias (não é generalizavel ainda, é seguro contra um computador quântico)
+	- defender bem a tese de que a criptografia simétrica (hash functions) é segura mesmo contra um computador quântico 
+	- o passo seguinte é encontrar soluções que se possam generalizar e como?
+	- implementar ou pelos menos quantificar segurança e complexidade
+
+next meeting: 24/4, 17h
+
