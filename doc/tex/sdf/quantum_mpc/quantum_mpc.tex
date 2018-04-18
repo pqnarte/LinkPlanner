@@ -3,59 +3,40 @@
 \begin{refsection}
 
 \subsection{Our Approach}
-\subsubsection{Message Access}
-Let's consider 2 parties, Alice and Bob. Alice has a set $M = \{m_0,m_1\}$ of messages and Bob has the index, $i$, of the message he wants to receive from Alice, $m_i$.\\
-For this example we will be assuming that $i=1$ and $M = \{11,10\}$. Both messages are 2-bit binary numbers.
-\begin{enumerate}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Bob generates a 4-bit key, $K_b=0111$ where only the bits of indexes $2i$ and $2i+1$ are known ($C$) to him. Since i=1, Bob only knows the last 2 bits of $K_b$. The remaining 2 bits of $K_b$ are random ($R$), thus unknown to Bob.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=.25\linewidth]{./figures/mpc/mpc_bob_key}
-\caption{Known ($C$) and Unknown ($R$) bits from Bob's perspective }
-\label{fig:knownbob}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Bob sends to Alice the set $I = \{2,3\}$ corresponding to the indexes of the bits known to him.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Alice generates a 4-bit key, $K_a=1011$ where the last 2 bits of $K_a$ must be the same as the last 2 of $K_b$. All 4 bits from the key
-are unknown to Alice. She doesn't know which 2 bits from $K_a$ are equal to $K_b$ (only Bob has that information),i.e., from her perspective
-all bits are random.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=.25\linewidth]{./figures/mpc/mpc_alice_key}
-\caption{Known ($C$) and Unknown ($R$) bits from Alice's perspective }
-\label{fig:knownalice}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Alice encrypts the messages with $K_a$ and sends the encrypted information to Bob. In this example, $1101$ will be sent to Bob.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=.4\linewidth]{./figures/mpc/mpc_message_encrypting}
-\caption{Alice encrypts the messages with $K_a$}
-\label{fig:mpcencryption}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\item Bob decrypts the information received from Alice with $K_b$ and retrieves the message $m_1$, which correspond to bits of indexes 2 and 3 (since $i=1$).\\
-The first two bits of the decrypted information do not represent $m_0$.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=.4\linewidth]{./figures/mpc/mpc_message_decrypting}
-\caption{Bob decrypts the information with $K_b$}
-\label{fig:mpcdecryption}
-\end{figure}
-\end{enumerate}
-
-\subsubsection{The Millionaire' Problem}
-%Complete this section
-\subsubsection{Average Value}
-%Complete this section
-
-
+\subsubsection{1 out of 2 Oblivious Transfer}
+This section will provide the description of a 1-2 Oblivious Transfer (OT) based on the appliance of a Quantum Oblivious Key Distribution Protocol (QOKD). The 1-2 OT consists in a two party, Alice and Bob, communication protocol. Supposing that Alice has two messages $\{m_1,m_0\}$ length $s$. Bob wants to know one of those in such a way that:
+\begin{itemize}
+\item Alice doesn't know Bob's choice, i.e. the protocol is oblivious;
+\item Bob doesn't get any information on $m_\bar{b}$, the protocol is concealing.
+\end{itemize}
+Considering the notation of a canonical quantum oblivious transfer protocol, let $U=\{+,\times\}^n\times\{0,1\}^n$, where $+, \times$ stand for the rectilinear and diagonal bases - physically the rectilinear or diagonal polarization of the photon. The general algorithm of the protocol can be described as:
+ \begin{itemize}
+ 	\item Step 1:\\
+ 	Alice picks a random uniformly chosen $\big(a,g\big)\,\in\,U$, and sends Bob photons $i$, $1\leq i \leq n$ with polarizations given by the bases $a\big[i\big]$ and states $g\big[i\big]$.
+ 	\item Step 2:\\
+ 	Bob picks a random uniformly chosen $b\in\{+,\times\}^n$, measures photons $i$ in basis $b\left[i\right]$ and records the results, if a photon is detected, as $h\left[i\right]\in\{0,1\}$. Bob then makes a quantum commit of all $n$ pairs $\left(b\left[i\right],h\left[i\right]\right)$ to Alice.
+ 	\item Step 3:\\
+ 	Alice picks a random uniformly picks a random uniformly chosen subset $R\subset\{1,2,...,n\}$ and tests the commitment made by Bob at positions in $R$. If more $\delta n$ (acceptance threshold) positions $i\in R$ reveal $a\left[i\right]=b\left[i\right]$ and $g\left[i\right]\neq h\left[i\right]$ then Alice stops protocol; otherwise, the test result is accepted.
+ 	\item Step 4:\\
+ 	Alice announces the base $a$. Let $T_0$ be the set of $1\leq i \leq n$ such that $a\left[i\right]=b\left[i\right]$ and let $T_1$ be the set of all $1\leq i \leq n$ such that $a\left[i\right]\ne b\left[i\right]$. Bob chooses $I_0,I_1\subset T_0-R, T_1-R$ and sends $S_i=\{I_\bar{i},I_i\}$, wishing to know $m_i$, $i\in\{0,1\}$.
+ 	\item Step 5:\\
+ 	Alice defines two encryption keys $K_0,K_1$ in such a way that $K_i=g\big[I_i\big]$ for $i=0 \vee i=1$. Alice then cyphers both messages: $m_{\mathtt{coded}}=\{m_0\oplus K_0,m_1\ \oplus K_1\}$ and sends the result $m$ to Bob.
+ 	\item Step 6:\\
+ 	Bob will then decode $m$ using the values of his initially chosen basis:  $b\left[S_i\right]$ with $i\in\{0,1\}$, according to his preference. $m_{\mathtt{decoded}}=m_{\mathtt{coded}}\oplus b\left[S_i\right]$. The output of this process will be $m_{\mathtt{decoded}}$ that will have the correct message in the first or last $s^{th}$ positions if he chose $m_0$ or $m_1$, respectively.
+ \end{itemize}
+To formalize and proof the security of this system one has to think of the proceedings of a hypothetical dishonest Bob and a third party eavesdropper, named Eve.
+\begin{itemize}
+\item Step 1:\\
+Dishonest Bob has no advantage in being dishonest at this point.
+\item Step 2:\\
+Dishonest Eve transfers some information from this pulse into her quantum system and she uses that information to modify the residual state of the pulse which is sent to Bob.
+\item Step 3:\\
+Dishonest Bob executes a coherent measurement on the pulse received in order to determine:
+- whether or not he declares this pulse as detected;\\
+- the bit that he commits to Alice.
+\item Step 4:\\
+Having learnt Alice's string of basis $a\left[i\right]$ Bob chooses this (...)
+\end{itemize}
 
 % bibliographic references for the section ----------------------------
 \clearpage
@@ -63,4 +44,4 @@ The first two bits of the decrypted information do not represent $m_0$.
 \end{refsection}
 \addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
-% ---------------------------------------------------------------------
+% --------------------------------------------------------------------- 
