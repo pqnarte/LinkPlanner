@@ -1857,7 +1857,7 @@ void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
 	inputFile.close();
 }
 
-// ############### BPSK SYSTEM PARAMETER ###############
+// ############### QRNG SYSTEM PARAMETER ###############
 QRNGParameters::QRNGParameters(int rateOfPhotons, int polarizerAngle)
 {
 	this->rateOfPhotons = rateOfPhotons;
