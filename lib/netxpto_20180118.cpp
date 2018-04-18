@@ -934,64 +934,14 @@ void System::run() {
 		SystemBlocks[i]->initializeBlock();
 	}
 	*/
-	//Debug information
-	ofstream logFile;
-	clock_t start;
-	string separator = "|";
-	if (logValue)
-		logFile.open("./" + signalsFolder + "/" + logFileName);
-	
-
-	int l = 0;
-	bool Alive;
-	do {
-		Alive = false;
-		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
-			// Writes debug information
-			if (logValue) {
-				time_t t_now = time(0);
-				struct tm now;
-				localtime_s(&now, &t_now);
-				char buffer[20];
-				snprintf(buffer,20,"%04d-%02d-%02d %02d:%02d:%02d", 1900+now.tm_year, now.tm_mon+1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
-				logFile << buffer << endl;
-				// Prints line for each input signal in the current block being executed
-				for (Signal *b : SystemBlocks[i]->inputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
-							<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-							<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
-				}
-				// Prints line for each output signal in the current block being executed
-				for (Signal *b : SystemBlocks[i]->outputSignals) {
-					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
-					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
-						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
-						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
-				}
-				start = clock(); //Counts the time taken to run the currentBlock
-			}
-			bool aux = SystemBlocks[i]->runBlock();
-			if (logValue)
-				logFile << (float)(clock()-start)/1000 << endl << endl;
-			Alive = (Alive || aux);
-		}
-		l++;
-	} while (Alive);
-
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {		
-		SystemBlocks[i]->terminateBlock();
-	}
-	//Closes debug file
-	if(logValue)
-		logFile.close();
+	run(signalsFolder);
 }
 
 void System::run(string signalPath) {
 
 	
 	// The signalPath sub-folder must already exist
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
+	/*for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		for (int unsigned j = 0; j<(SystemBlocks[i]->inputSignals).size(); j++) {
 			(SystemBlocks[i]->inputSignals[j])->writeHeader(signalPath);
 		}
@@ -1007,7 +957,67 @@ void System::run(string signalPath) {
 
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		SystemBlocks[i]->terminateBlock();
+	}*/
+	/*2018-04-09*/
+	//Debug information
+	ofstream logFile;
+	clock_t start;
+	string separator = "|";
+	if (logValue)
+		logFile.open("./" + signalsFolder + "/" + logFileName);
+
+
+	int l = 0;
+	bool Alive;
+	do {
+		Alive = false;
+		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
+			// Writes debug information
+			if (logValue) {
+				time_t t_now = time(0);
+				struct tm now;
+				localtime_s(&now, &t_now);
+				char buffer[20];
+				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
+				logFile << buffer << endl;
+				// Prints line for each input signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->inputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+						<< "ready=" << (*b).ready() << endl; // Prints the amount of bits ready to be processed 
+				}
+				// Prints line for each output signal in the current block being executed
+				for (Signal *b : SystemBlocks[i]->outputSignals) {
+					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
+					logFile << string(typeid(*SystemBlocks[i]).name()).substr(6) << separator // Prints block name e.g. "Add"
+						<< filename.substr(0, filename.find(".")) << separator // Prints the formated filename e.g. "S8.sgn" becomes "S8"
+						<< "space=" << (*b).space() << endl; // Prints the amount of bits ready to be processed 
+				}
+				start = clock(); //Counts the time taken to run the current block
+			}
+			bool aux = SystemBlocks[i]->runBlock();
+			if (logValue)
+				logFile << (float)(clock() - start) / 1000 << endl << endl;
+			Alive = (Alive || aux);
+		}
+		l++;
+	} while (Alive);
+
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
+		SystemBlocks[i]->terminateBlock();
 	}
+	//Closes debug file
+	if (logValue)
+		logFile.close();
+}
+
+void System::setLogValue(bool value){
+	logValue = value;
+}
+
+void System::setLogFileName(string newName){
+	logFileName = newName;
 }
 
 
@@ -1746,4 +1756,167 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 	return OUT;
 }
 
+// #####################################################################################################
+// ###################################        Parameters       #########################################
+// #####################################################################################################
 
+// ############### BPSK SYSTEM PARAMETER ###############
+BPSKParameters::BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerated, int samplesPerSymbol, int pLength,
+	double bitPeriod, double rollOffFactor, double signalOutputPower_dBm, double localOscillatorPower_dBm,
+	double localOscillatorPhase, vector<t_iqValues> &iqAmplitudeValues, array<t_complex, 4> transferMatrix,
+	double responsivity, double amplification, double electricalNoiseAmplitude, int samplesToSkip, int bufferLength, bool shotNoise)
+{
+	this->numberOfBitsReceived = numberOfBitsReceived; this->numberOfBitsGenerated = numberOfBitsGenerated; this->samplesPerSymbol = samplesPerSymbol;
+	this->pLength = pLength; this->bitPeriod = bitPeriod; this->rollOffFactor = rollOffFactor;
+	this->signalOutputPower_dBm = signalOutputPower_dBm; this->localOscillatorPower_dBm = localOscillatorPower_dBm; this->localOscillatorPhase = localOscillatorPhase;
+	this->iqAmplitudeValues = iqAmplitudeValues; this->transferMatrix = transferMatrix; this->responsivity = responsivity;
+	this->amplification = amplification; this->electricalNoiseAmplitude = electricalNoiseAmplitude; this->samplesToSkip = samplesToSkip;
+	this->bufferLength = bufferLength; this->shotNoise = shotNoise;
+}
+
+/* Returns 'param' filled with the values found in the file 'filename'.
+	This method also detects comments as lines that start with the characters // */
+void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
+{
+	ifstream inputFile("./" + inputFolderName + "/" + filename);
+	if (!inputFile) {
+		cerr << "ERROR: Could not open " << filename;
+		exit(1);
+	}
+	int errorLine = 1;
+	//Reads each line
+	string line;
+	while (getline(inputFile,line)) {
+		try {
+			//If the line if a comment, it just skips to the next one
+			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+				vector<string> splitline = split(line, ':');
+				if (splitline.at(0) == "numberOfBitsReceived") {
+					numberOfBitsReceived = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "numberOfBitsGenerated") {
+					numberOfBitsGenerated = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "samplesPerSymbol") {
+					samplesPerSymbol = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "pLength") {
+					pLength = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "bitPeriod") {
+					bitPeriod = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "rollOffFactor") {
+					rollOffFactor = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "signalOutputPower_dBm") {
+					signalOutputPower_dBm = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "localOscillatorPower_dBm") {
+					localOscillatorPower_dBm = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "localOscillatorPhase") {
+					localOscillatorPhase = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "iqAmplitudeValues") {
+					vector<string> amplitudeSplit = split(splitline.at(1), ',');
+					iqAmplitudeValues = { {parseDouble(amplitudeSplit.at(0)), parseDouble(amplitudeSplit.at(1)) } ,
+										  { parseDouble(amplitudeSplit.at(2)), parseDouble(amplitudeSplit.at(3)) } };
+				}
+				else if (splitline.at(0) == "transferMatrix") {
+					vector<string> transferSplit = split(splitline.at(1), ',');
+					transferMatrix = { { parseDouble(transferSplit.at(0)), parseDouble(transferSplit.at(1)) ,
+									   parseDouble(transferSplit.at(2)), parseDouble(transferSplit.at(3)) } };
+				}
+				else if (splitline.at(0) == "responsivity") {
+					responsivity = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "amplification") {
+					amplification = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "electricalNoiseAmplitude") {
+					electricalNoiseAmplitude = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "samplesToSkip") {
+					samplesToSkip = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "bufferLength") {
+					bufferLength = parseInt(splitline.at(1));
+				}
+				else if (splitline.at(0) == "shotNoise") {
+					shotNoise = splitline.at(1) == "true" ? true : false;
+				}
+			}
+			errorLine++;
+		}
+		catch (const exception& e) {
+			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
+			exit(1);
+		}
+	}
+	inputFile.close();
+}
+
+// ############### QRNG SYSTEM PARAMETER ###############
+QRNGParameters::QRNGParameters(int rateOfPhotons, int polarizerAngle)
+{
+	this->rateOfPhotons = rateOfPhotons;
+	this->polarizerAngle = polarizerAngle;
+}
+
+void QRNGParameters::readFromFile(QRNGParameters * param, string filename)
+{
+	ifstream inputFile("./" + inputFolderName + "/" + filename);
+	if (!inputFile) {
+		cerr << "ERROR: Could not open " << filename;
+		exit(1);
+	}
+	int errorLine = 1;
+	//Reads each line
+	string line;
+	while (getline(inputFile, line)) {
+		try {
+			//If the line if a comment, it just skips to the next one
+			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+				vector<string> splitline = split(line, ':');
+				if (splitline.at(0) == "rateOfPhotons") {
+					rateOfPhotons = parseDouble(splitline.at(1));
+				}
+				else if (splitline.at(0) == "polarizerAngle") {
+					polarizerAngle = parseDouble(splitline.at(1));
+				}
+				else {
+					throw exception("Invalid Input Parameter");
+				}
+			}
+			errorLine++;
+		}
+		catch (const exception& e) {
+			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
+			exit(1);
+		}
+	}
+	inputFile.close();
+}
+
+/* Auxiliary method to split string by a delimiter. Returns a vector of string */
+vector<string> SystemParameters::split(const string &text, char sep) {
+	vector<string> tokens;
+	size_t start = 0, end = 0;
+	while ((end = text.find(sep, start)) != string::npos) {
+		tokens.push_back(text.substr(start, end - start));
+		start = end + 1;
+	}
+	tokens.push_back(text.substr(start));
+	return tokens;
+}
+
+int SystemParameters::parseInt(const string & s)
+{
+	return stoi(s);
+}
+
+double SystemParameters::parseDouble(const string & s)
+{
+	return stof(s);
+}
