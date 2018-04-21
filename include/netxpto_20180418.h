@@ -714,36 +714,16 @@ public:
 		std::vector<std::complex<double> > &vecout);
 };
 
+///////////////////// System Parameters ////////////////////////
+
 class SystemParameters {
 public:
-	setFileName(string fileName);
-
-	virtual readSystemInputParameters();
+	virtual void readSystemInputParameters(string inputFilename);
 
 private:
-	//PARAMETERS
-	string inputFolderName{ "signals" };
-
 	int parseInt(const string &s);
 	double parseDouble(const string &s);
 	vector<string> split(const string & text, char sep);
-};
-
-
-class QRNGParameters : public SystemParameters {
-public:
-
-	//PARAMETERS
-	double rateOfPhotons = 1e6;
-	double polarizerAngle = 360;
-
-	//METHODS
-	/* Returns 'param' filled with the values found in the file 'filename' */
-	void readFromFile(QRNGParameters* param, string filename);
-	/* Empty Constructor in case you want to read QRNG parameters from a file*/
-	QRNGParameters() {}
-	/* This is the full constructor */
-	QRNGParameters(int rateOfPhotons, int polarizerAngle);
 };
 
 # endif // PROGRAM_INCLUDE_netxpto_H_

@@ -55,13 +55,13 @@
     <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\netxpto_20180118.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\add_20171116.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\lib\sampler_20171116.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lib\netxpto_20180418.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -120,10 +120,10 @@
     <ClInclude Include="..\..\include\sampler_20171116.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\netxpto_20180118.h">
+    <ClInclude Include="..\..\include\add_20171116.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\add_20171116.h">
+    <ClInclude Include="..\..\include\netxpto_20180418.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

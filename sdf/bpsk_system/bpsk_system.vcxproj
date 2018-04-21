@@ -80,7 +80,7 @@
     <ClCompile Include="..\..\lib\local_oscillator_20180130.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
     <ClCompile Include="..\..\lib\m_qam_transmitter_20180118.cpp" />
-    <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
+    <ClCompile Include="..\..\lib\netxpto_20180418.cpp" />
     <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
     <ClCompile Include="..\..\lib\sampler_20171116.cpp" />
@@ -103,7 +103,7 @@
     <ClInclude Include="..\..\include\local_oscillator_20180130.h" />
     <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
     <ClInclude Include="..\..\include\m_qam_transmitter_20180118.h" />
-    <ClInclude Include="..\..\include\netxpto_20180118.h" />
+    <ClInclude Include="..\..\include\netxpto_20180418.h" />
     <ClInclude Include="..\..\include\photodiode_old_20180118.h" />
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171116.h" />
