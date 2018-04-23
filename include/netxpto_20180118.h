@@ -8,6 +8,7 @@
 # include <complex>
 # include <algorithm>	// bind1st
 # include <functional>	// bind1st
+# include <array>
 
 
 const int MAX_NAME_SIZE = 256;					// Maximum size of names
@@ -626,6 +627,8 @@ class System {
   void terminate();										
   void run();
   void run(string signalPath);
+  void setLogValue(bool value);
+  void setLogFileName(string newName);
 
   string signalsFolder{ "signals" };
   char fileName[MAX_NAME_SIZE];  // Name of the file with system description (.sdf)
@@ -633,7 +636,6 @@ class System {
   int numberOfBlocks;  // Number of system Blocks
   int (*topology)[MAX_TOPOLOGY_SIZE];  // Relationship matrix
   vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
-
   //Debug inputs
   string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
   bool logValue{ true }; // Will write debug info if true
@@ -712,6 +714,63 @@ public:
 		std::vector<std::complex<double> > &vecout);
 };
 
+class SystemParameters {
+public:
+	//PARAMETERS
+	string inputFolderName{ "signals" };
+	int parseInt(const string &s);
+	double parseDouble(const string &s);
+	vector<string> split(const string & text, char sep);
+};
 
+class BPSKParameters : public SystemParameters {
+public:
+
+	//PARAMETERS
+	int numberOfBitsReceived = -1;
+	int numberOfBitsGenerated = 1000;
+	int samplesPerSymbol = 16;
+	int pLength = 5;
+	double bitPeriod = 20e-12;
+	double rollOffFactor = 0.3;
+	double signalOutputPower_dBm = -20;
+	double localOscillatorPower_dBm = 0;
+	double localOscillatorPhase = 0;
+	vector<t_iqValues> iqAmplitudeValues = { { -1, 0 } ,{ 1, 0 } };
+	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2) } };
+	double responsivity = 1;
+	double amplification = 1e6;
+	double electricalNoiseAmplitude = 5e-4*sqrt(2);
+	int samplesToSkip = 8 * samplesPerSymbol;
+	int bufferLength = 20;
+	bool shotNoise = false;
+
+	//METHODS
+	/* Returns 'param' filled with the values found in the file 'filename' */
+	void readFromFile(BPSKParameters* param, string filename);
+	/* Empty Constructor in case you want to read BPSK parameters from a file*/
+	BPSKParameters(){}
+	/* This is the full constructor */
+	BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerated, int samplesPerSymbol, int pLength,
+		double bitPeriod, double rollOffFactor, double signalOutputPower_dBm, double localOscillatorPower_dBm,
+		double localOscillatorPhase, vector<t_iqValues> &iqAmplitudeValues, array<t_complex, 4> transferMatrix,
+		double responsivity, double amplification, double electricalNoiseAmplitude, int samplesToSkip, int bufferLength, bool shotNoise);
+};
+
+class QRNGParameters : public SystemParameters {
+public:
+
+	//PARAMETERS
+	double rateOfPhotons = 1e6;
+	double polarizerAngle = 360;
+
+	//METHODS
+	/* Returns 'param' filled with the values found in the file 'filename' */
+	void readFromFile(QRNGParameters* param, string filename);
+	/* Empty Constructor in case you want to read QRNG parameters from a file*/
+	QRNGParameters() {}
+	/* This is the full constructor */
+	QRNGParameters(int rateOfPhotons, int polarizerAngle);
+};
 
 # endif // PROGRAM_INCLUDE_netxpto_H_

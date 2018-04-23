@@ -1,0 +1,5 @@
+Number of received Bits: 1.00051e+06
+Error Margin of Prob0: 0 % 
+Error Margin of Prob1: 0 % 
+Probability Of 0: 100 % 
+Probability Of 1: 0 % 
