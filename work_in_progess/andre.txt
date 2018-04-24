@@ -1,4 +1,4 @@
-2018-04-18
+2018-04-24
 TO BE DONE
 	PARA FAZER PARA A SEMANA
 	- resolver os problemas dos parâmetros de entrada
@@ -11,7 +11,7 @@ TO BE DONE
 	- os passos seguintes é encontrar soluções que se possam generalizar e que sejam seguras contra um computador quântico
 	- implementar ou pelos menos quantificar segurança e complexidade
 
-next meeting: 24/4, 17h
+next meeting: 4/5, 10h
 
 
 
