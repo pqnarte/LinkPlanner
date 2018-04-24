@@ -2032,11 +2032,17 @@
   <bcf:bibdata section="4">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="4">
+    <bcf:citekey order="1">Yao1995</bcf:citekey>
+    <bcf:citekey order="2">Mayers</bcf:citekey>
+    <bcf:citekey order="3">Mayers</bcf:citekey>
+    <bcf:citekey order="4">Mayers</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">

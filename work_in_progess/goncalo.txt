@@ -1,6 +1,15 @@
+2018-04-24
+TO BE DONE
+
+	Garble circuits, usar os circuitos de garble para resolver um problema simples (milionário)
+
+Next meeting: 4/5, 11h
+
+
 2018-04-18
 TO BE DONE
 
+	
 	- OT permite implementar qualquer MPC	
 	- encontrar uma solução para o problema do milionário usando OT
 	- pull request para o Netxpto/Linkplanner/Goncalo
