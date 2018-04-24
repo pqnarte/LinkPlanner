@@ -1,13 +1,5 @@
 \section{Quantum Multi-Party Computation}
-
 \begin{refsection}
-
-\subsection{Our Approach}
-\documentclass[a4paper]{article}
-\begin{document}
-	
-	\section{Quantum Multi-Party Computation}
-	
 	\subsection{Our Approach}
 	\subsubsection{1 out of 2 Oblivious Transfer}
 	This section will provide the description of a 1-2 Oblivious Transfer (OT) based on the appliance of a Quantum Oblivious Key Distribution Protocol (QOKD). The 1-2 OT consists in a two party, Alice and Bob, communication protocol. Supposing that Alice has two messages $\{m_1,m_0\}$ length $s$, Bob wants to know one of those in such a way that:
@@ -42,7 +34,18 @@
 		\item Step 5:\\ Using the information obtained in the previous step dishonest Bob makes a second post-test measurement and obtains the outcome $\mathcal{J}_{Bob}$. Eve measures her system and obtains the outcome $\mathcal{J}_{Eve}$ \cite{Mayers}.
 	\end{itemize}
 	From \cite{Mayers} one can concluded that a dishonest Bob following these proceedings learns nothing about $m$, the set of both original messages concatenated, in its full extended, either he passes or fails Alice's original verification. This protocol also compensates the errors in the quantum channel. It is also stated that security against Bob and tolerance against errors implies the security of the protocol against Eve \cite{Mayers}.
-\end{document} 
+	
+	\subsubsection{Comparison Protocol}
+The millionaire problem was originally a two-party secure computation problem, in which two millionaires, Alice and Bob, want to know which of them is richer without revealing their actual wealth.  It is analogous	to a more general problem whose goal is to compare two numbers $a$ and $b$, without revealing any extra information	on their values other than what can be inferred from	the comparison result. Boudot proposed a protocol to solve said. However, Lo pointed out that the equality function cannot be securely evaluated with a two-party scenario. Therefore, some additional assumptions should be considered to reach the goal of private comparison, a quantum comparison protocol (QPC) always needs:
+\begin{itemize}
+	\item An at least semi-honest Third Party (TP) is required to help the two parties (Alice and Bob) accomplish the comparison. A semi-honest TP is a party who
+	always follows the procedure of the protocol recording all of intermediate computations and despite not being corrupted by an outside eavesdropper, TP might try to steal the information from the record. TP will know the positions of different bit value in the compared information, but it will not be able to know the actual bit value of the information.
+	\item All outsiders and the two players should only know the result of the comparison, but not the different positions of the information.
+	\item To guarantee the security of private information, it is better to compare several
+	bits instead of one bit at a time.
+\end{itemize}
+Since Yao's initial proposal, several QKD protocols using Einstein–Podolsky–
+Rosen (EPR) pairs have been proposed in previous work to achieve secret communication for two communicants. These QKD protocols attempt to use the correlation of EPR pairs to distribute a common shared key for two mutually trusted users. However, EPR pairs in the proposed QPC protocol are used to create two individual keys for each of two mutually suspicious users and at the same time allow a semi-honest third party to perform the comparison without knowing the secret content of their information. Therefore, a QKD protocol may not be able to directly solve the QPC problem.
 
 % bibliographic references for the section ----------------------------
 \clearpage
