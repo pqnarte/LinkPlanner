@@ -9,7 +9,7 @@
 # include <ctime>
 
 
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
 
 using namespace std;
@@ -1760,145 +1760,6 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 // ###################################        Parameters       #########################################
 // #####################################################################################################
 
-// ############### BPSK SYSTEM PARAMETER ###############
-BPSKParameters::BPSKParameters(int numberOfBitsReceived, int numberOfBitsGenerated, int samplesPerSymbol, int pLength,
-	double bitPeriod, double rollOffFactor, double signalOutputPower_dBm, double localOscillatorPower_dBm,
-	double localOscillatorPhase, vector<t_iqValues> &iqAmplitudeValues, array<t_complex, 4> transferMatrix,
-	double responsivity, double amplification, double electricalNoiseAmplitude, int samplesToSkip, int bufferLength, bool shotNoise)
-{
-	this->numberOfBitsReceived = numberOfBitsReceived; this->numberOfBitsGenerated = numberOfBitsGenerated; this->samplesPerSymbol = samplesPerSymbol;
-	this->pLength = pLength; this->bitPeriod = bitPeriod; this->rollOffFactor = rollOffFactor;
-	this->signalOutputPower_dBm = signalOutputPower_dBm; this->localOscillatorPower_dBm = localOscillatorPower_dBm; this->localOscillatorPhase = localOscillatorPhase;
-	this->iqAmplitudeValues = iqAmplitudeValues; this->transferMatrix = transferMatrix; this->responsivity = responsivity;
-	this->amplification = amplification; this->electricalNoiseAmplitude = electricalNoiseAmplitude; this->samplesToSkip = samplesToSkip;
-	this->bufferLength = bufferLength; this->shotNoise = shotNoise;
-}
-
-/* Returns 'param' filled with the values found in the file 'filename'.
-	This method also detects comments as lines that start with the characters // */
-void BPSKParameters::readFromFile(BPSKParameters* param, string filename)
-{
-	ifstream inputFile("./" + inputFolderName + "/" + filename);
-	if (!inputFile) {
-		cerr << "ERROR: Could not open " << filename;
-		exit(1);
-	}
-	int errorLine = 1;
-	//Reads each line
-	string line;
-	while (getline(inputFile,line)) {
-		try {
-			//If the line if a comment, it just skips to the next one
-			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, ':');
-				if (splitline.at(0) == "numberOfBitsReceived") {
-					numberOfBitsReceived = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "numberOfBitsGenerated") {
-					numberOfBitsGenerated = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesPerSymbol") {
-					samplesPerSymbol = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "pLength") {
-					pLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bitPeriod") {
-					bitPeriod = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "rollOffFactor") {
-					rollOffFactor = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "signalOutputPower_dBm") {
-					signalOutputPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPower_dBm") {
-					localOscillatorPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPhase") {
-					localOscillatorPhase = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "iqAmplitudeValues") {
-					vector<string> amplitudeSplit = split(splitline.at(1), ',');
-					iqAmplitudeValues = { {parseDouble(amplitudeSplit.at(0)), parseDouble(amplitudeSplit.at(1)) } ,
-										  { parseDouble(amplitudeSplit.at(2)), parseDouble(amplitudeSplit.at(3)) } };
-				}
-				else if (splitline.at(0) == "transferMatrix") {
-					vector<string> transferSplit = split(splitline.at(1), ',');
-					transferMatrix = { { parseDouble(transferSplit.at(0)), parseDouble(transferSplit.at(1)) ,
-									   parseDouble(transferSplit.at(2)), parseDouble(transferSplit.at(3)) } };
-				}
-				else if (splitline.at(0) == "responsivity") {
-					responsivity = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "amplification") {
-					amplification = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "electricalNoiseAmplitude") {
-					electricalNoiseAmplitude = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesToSkip") {
-					samplesToSkip = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bufferLength") {
-					bufferLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "shotNoise") {
-					shotNoise = splitline.at(1) == "true" ? true : false;
-				}
-			}
-			errorLine++;
-		}
-		catch (const exception& e) {
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
-			exit(1);
-		}
-	}
-	inputFile.close();
-}
-
-// ############### QRNG SYSTEM PARAMETER ###############
-QRNGParameters::QRNGParameters(int rateOfPhotons, int polarizerAngle)
-{
-	this->rateOfPhotons = rateOfPhotons;
-	this->polarizerAngle = polarizerAngle;
-}
-
-void QRNGParameters::readFromFile(QRNGParameters * param, string filename)
-{
-	ifstream inputFile("./" + inputFolderName + "/" + filename);
-	if (!inputFile) {
-		cerr << "ERROR: Could not open " << filename;
-		exit(1);
-	}
-	int errorLine = 1;
-	//Reads each line
-	string line;
-	while (getline(inputFile, line)) {
-		try {
-			//If the line if a comment, it just skips to the next one
-			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, ':');
-				if (splitline.at(0) == "rateOfPhotons") {
-					rateOfPhotons = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "polarizerAngle") {
-					polarizerAngle = parseDouble(splitline.at(1));
-				}
-				else {
-					throw exception("Invalid Input Parameter");
-				}
-			}
-			errorLine++;
-		}
-		catch (const exception& e) {
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
-			exit(1);
-		}
-	}
-	inputFile.close();
-}
-
 /* Auxiliary method to split string by a delimiter. Returns a vector of string */
 vector<string> SystemParameters::split(const string &text, char sep) {
 	vector<string> tokens;
@@ -1911,6 +1772,10 @@ vector<string> SystemParameters::split(const string &text, char sep) {
 	return tokens;
 }
 
+void SystemParameters::readSystemInputParameters(string inputFilename)
+{
+}
+
 int SystemParameters::parseInt(const string & s)
 {
 	return stoi(s);
@@ -1919,4 +1784,14 @@ int SystemParameters::parseInt(const string & s)
 double SystemParameters::parseDouble(const string & s)
 {
 	return stof(s);
+}
+
+bool SystemParameters::parseBool(const string & s)
+{
+	if (s == "true")
+		return true;
+	else if (s == "false")
+		return false;
+	else //Incorrect input
+		throw exception();
 }

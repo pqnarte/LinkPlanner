@@ -720,9 +720,10 @@ class SystemParameters {
 public:
 	virtual void readSystemInputParameters(string inputFilename);
 
-private:
+protected:
 	int parseInt(const string &s);
 	double parseDouble(const string &s);
+	bool parseBool(const string &s);
 	vector<string> split(const string & text, char sep);
 };
 
