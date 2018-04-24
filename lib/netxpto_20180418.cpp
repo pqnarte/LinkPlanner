@@ -9,7 +9,7 @@
 # include <ctime>
 
 
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
 
 using namespace std;
@@ -1756,4 +1756,42 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 	return OUT;
 }
 
+// #####################################################################################################
+// ###################################        Parameters       #########################################
+// #####################################################################################################
 
+/* Auxiliary method to split string by a delimiter. Returns a vector of string */
+vector<string> SystemParameters::split(const string &text, char sep) {
+	vector<string> tokens;
+	size_t start = 0, end = 0;
+	while ((end = text.find(sep, start)) != string::npos) {
+		tokens.push_back(text.substr(start, end - start));
+		start = end + 1;
+	}
+	tokens.push_back(text.substr(start));
+	return tokens;
+}
+
+void SystemParameters::readSystemInputParameters(string inputFilename)
+{
+}
+
+int SystemParameters::parseInt(const string & s)
+{
+	return stoi(s);
+}
+
+double SystemParameters::parseDouble(const string & s)
+{
+	return stof(s);
+}
+
+bool SystemParameters::parseBool(const string & s)
+{
+	if (s == "true")
+		return true;
+	else if (s == "false")
+		return false;
+	else //Incorrect input
+		throw exception();
+}
