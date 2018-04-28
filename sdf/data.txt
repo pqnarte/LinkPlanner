@@ -3,8 +3,8 @@
 pLength:5
 //Is able to change the value of different types of parameters
 //Of type int
-numberOfBitsReceived:-1
+numberOfBitsGenerated:1e3
 //Of type double
-electricalNoiseAmplitude:0.000707
+bitPeriod:20e-12
 //Of type bool
 shotNoise:false
