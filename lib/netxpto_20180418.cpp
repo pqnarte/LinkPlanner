@@ -1774,6 +1774,60 @@ vector<string> SystemParameters::split(const string &text, char sep) {
 
 void SystemParameters::readSystemInputParameters(string inputFilename)
 {
+	{
+		ifstream inputFile("./" + inputFilename);
+		if (!inputFile) {
+			cerr << "ERROR: Could not open " << inputFilename;
+			exit(1);
+		}
+		int errorLine = 1;
+		//Reads each line
+		string line;
+		while (getline(inputFile, line)) {
+			try {
+				//If the line if a comment, it just skips to the next one
+				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+					vector<string> splitline = split(line, ':');
+					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
+						if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
+							parameters[splitline[0]]->setValue(parseInt(splitline[1]));
+						else if(parameters[splitline[0]]->getType() == DOUBLE)
+							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
+						else if(parameters[splitline[0]]->getType() == BOOL)
+							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+					}
+				}
+				errorLine++;
+			}
+			catch (const exception& e) {
+				cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputFilename;
+				exit(1);
+			}
+		}
+		inputFile.close();
+	}
+}
+
+void SystemParameters::addParameter(string name, int * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemParameters::addParameter(string name, double * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemParameters::addParameter(string name, bool * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+SystemParameters::~SystemParameters()
+{	
+	for (map<string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
+		delete (itr->second);
+	}
 }
 
 int SystemParameters::parseInt(const string & s)
@@ -1794,4 +1848,45 @@ bool SystemParameters::parseBool(const string & s)
 		return false;
 	else //Incorrect input
 		throw exception();
+}
+
+void Parameter::setValue(int value)
+{
+	if (type != INT) throw invalid_argument("Parameter is not of type INT");
+	*i = value;
+}
+
+void Parameter::setValue(double value)
+{
+	if (type != DOUBLE) throw invalid_argument("Parameter is not of type DOUBLE");
+	*d = value;
+}
+
+void Parameter::setValue(bool value)
+{
+	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
+	*b = value;
+}
+
+ParameterType Parameter::getType()
+{
+	return type;
+}
+
+Parameter::Parameter(int * elem)
+{
+	type = INT;
+	i = elem;
+}
+
+Parameter::Parameter(double * elem)
+{
+	type = DOUBLE;
+	d = elem;
+}
+
+Parameter::Parameter(bool * elem)
+{
+	type = BOOL;
+	b = elem;
 }

@@ -9,7 +9,7 @@
 # include <algorithm>	// bind1st
 # include <functional>	// bind1st
 # include <array>
-
+#include <map>
 
 const int MAX_NAME_SIZE = 256;					// Maximum size of names
 const long int MAX_Sink_LENGTH = 100000;		// Maximum Sink Block number of values
@@ -716,15 +716,52 @@ public:
 
 ///////////////////// System Parameters ////////////////////////
 
+enum ParameterType { INT, DOUBLE, BOOL };
+
+//A parameter can only be of 1 type
+class Parameter {
+private:
+	//Type of the parameter. this type should be hidden from the user
+	ParameterType type;
+	union { //pointers to the parameter
+		int* i;
+		double* d;
+		bool* b;
+	};
+
+public:
+	//Changes the value of the parameter
+	void setValue(int value);
+	void setValue(double value);
+	void setValue(bool value);
+	ParameterType getType();
+	//Constructor for parameter of type int
+	Parameter(int* elem);
+	//Constructor for parameter of type double
+	Parameter(double* elem);
+	//Constructor for parameter of type bool
+	Parameter(bool* elem);
+};
+
 class SystemParameters {
 public:
-	virtual void readSystemInputParameters(string inputFilename);
-
+	void readSystemInputParameters(string inputFilename);
+	//Adds the parameter to the map
+	void addParameter(string name, int* variable);
+	void addParameter(string name, double* variable);
+	void addParameter(string name, bool* variable);
+	/* Default empty constructor. Initializes the map */
+	SystemParameters() { }
+	/* Deletes all heap memory occupied by the parameters */
+	~SystemParameters();
 protected:
 	int parseInt(const string &s);
 	double parseDouble(const string &s);
 	bool parseBool(const string &s);
 	vector<string> split(const string & text, char sep);
+
+private:
+	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 };
 
 # endif // PROGRAM_INCLUDE_netxpto_H_
