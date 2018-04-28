@@ -2,6 +2,7 @@
 # define PROGRAM_INCLUDE_NETXPTO_H_
 
 # include <iostream>
+#include  <sstream>
 # include <fstream>
 # include <vector>
 # include <string>
@@ -9,7 +10,7 @@
 # include <algorithm>	// bind1st
 # include <functional>	// bind1st
 # include <array>
-#include <map>
+#include  <map>
 
 const int MAX_NAME_SIZE = 256;					// Maximum size of names
 const long int MAX_Sink_LENGTH = 100000;		// Maximum Sink Block number of values
@@ -755,9 +756,9 @@ public:
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemParameters();
 protected:
-	int parseInt(const string &s);
-	double parseDouble(const string &s);
-	bool parseBool(const string &s);
+	int parseInt(string str);
+	double parseDouble(string str);
+	bool parseBool(string str);
 	vector<string> split(const string & text, char sep);
 
 private:

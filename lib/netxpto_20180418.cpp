@@ -1830,21 +1830,24 @@ SystemParameters::~SystemParameters()
 	}
 }
 
-int SystemParameters::parseInt(const string & s)
+/* Allows for the recognition of scientific notation. Ex: parseDouble("6.23e+1") will return 62*/
+int SystemParameters::parseInt(string str)
 {
-	return stoi(s);
+	return (int) parseDouble(str);
+}
+/* Allows for the recognition of scientific notation. Ex: parseDouble("1.83e-2") will return 0.0183*/
+double SystemParameters::parseDouble(string str) {
+	istringstream os(str);
+	double d;
+	os >> d;
+	return d;
 }
 
-double SystemParameters::parseDouble(const string & s)
+bool SystemParameters::parseBool(string str)
 {
-	return stof(s);
-}
-
-bool SystemParameters::parseBool(const string & s)
-{
-	if (s == "true")
+	if (str == "true")
 		return true;
-	else if (s == "false")
+	else if (str == "false")
 		return false;
 	else //Incorrect input
 		throw exception();
