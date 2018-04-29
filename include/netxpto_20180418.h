@@ -717,34 +717,34 @@ public:
 
 ///////////////////// System Parameters ////////////////////////
 
-enum ParameterType { INT, DOUBLE, BOOL };
+class SystemParameters {
 
-//A parameter can only be of 1 type
-class Parameter {
-private:
-	//Type of the parameter. this type should be hidden from the user
-	ParameterType type;
-	union { //pointers to the parameter
-		int* i;
-		double* d;
-		bool* b;
+	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
+											  //A parameter can only be of 1 type
+	class Parameter {
+	private:
+		//Type of the parameter. this type should be hidden from the user
+		ParameterType type;
+		union { //pointers to the parameter
+			int* i;
+			double* d;
+			bool* b;
+		};
+
+	public:
+		//Changes the value of the parameter
+		void setValue(int value);
+		void setValue(double value);
+		void setValue(bool value);
+		ParameterType getType();
+		//Constructor for parameter of type int
+		Parameter(int* elem);
+		//Constructor for parameter of type double
+		Parameter(double* elem);
+		//Constructor for parameter of type bool
+		Parameter(bool* elem);
 	};
 
-public:
-	//Changes the value of the parameter
-	void setValue(int value);
-	void setValue(double value);
-	void setValue(bool value);
-	ParameterType getType();
-	//Constructor for parameter of type int
-	Parameter(int* elem);
-	//Constructor for parameter of type double
-	Parameter(double* elem);
-	//Constructor for parameter of type bool
-	Parameter(bool* elem);
-};
-
-class SystemParameters {
 public:
 	void readSystemInputParameters(string inputFilename);
 	//Adds the parameter to the map

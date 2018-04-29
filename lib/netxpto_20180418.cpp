@@ -1853,42 +1853,42 @@ bool SystemParameters::parseBool(string str)
 		throw exception();
 }
 
-void Parameter::setValue(int value)
+void SystemParameters::Parameter::setValue(int value)
 {
 	if (type != INT) throw invalid_argument("Parameter is not of type INT");
 	*i = value;
 }
 
-void Parameter::setValue(double value)
+void SystemParameters::Parameter::setValue(double value)
 {
 	if (type != DOUBLE) throw invalid_argument("Parameter is not of type DOUBLE");
 	*d = value;
 }
 
-void Parameter::setValue(bool value)
+void SystemParameters::Parameter::setValue(bool value)
 {
 	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
 	*b = value;
 }
 
-ParameterType Parameter::getType()
+SystemParameters::ParameterType SystemParameters::Parameter::getType()
 {
 	return type;
 }
 
-Parameter::Parameter(int * elem)
+SystemParameters::Parameter::Parameter(int * elem)
 {
 	type = INT;
 	i = elem;
 }
 
-Parameter::Parameter(double * elem)
+SystemParameters::Parameter::Parameter(double * elem)
 {
 	type = DOUBLE;
 	d = elem;
 }
 
-Parameter::Parameter(bool * elem)
+SystemParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;
