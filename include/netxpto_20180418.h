@@ -718,7 +718,7 @@ public:
 ///////////////////// System Parameters ////////////////////////
 
 class SystemParameters {
-
+private:
 	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
@@ -745,6 +745,12 @@ class SystemParameters {
 		Parameter(bool* elem);
 	};
 
+	int parseInt(string str);
+	double parseDouble(string str);
+	bool parseBool(string str);
+	vector<string> split(const string & text, char sep);
+	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
+
 public:
 	void readSystemInputParameters(string inputFilename);
 	//Adds the parameter to the map
@@ -755,12 +761,6 @@ public:
 	SystemParameters() { }
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemParameters();
-private:
-	int parseInt(string str);
-	double parseDouble(string str);
-	bool parseBool(string str);
-	vector<string> split(const string & text, char sep);
-	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 };
 
 # endif // PROGRAM_INCLUDE_netxpto_H_
