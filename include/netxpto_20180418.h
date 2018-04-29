@@ -755,13 +755,11 @@ public:
 	SystemParameters() { }
 	/* Deletes all heap memory occupied by the parameters */
 	~SystemParameters();
-protected:
+private:
 	int parseInt(string str);
 	double parseDouble(string str);
 	bool parseBool(string str);
 	vector<string> split(const string & text, char sep);
-
-private:
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 };
 
