@@ -9,6 +9,7 @@ class RealToComplex2 : public Block {
 
 	/* State Variables */
 	bool firstTime{ true };
+	double samplingPeriod{ 0.0 };
 
  public:
 
@@ -19,6 +20,7 @@ class RealToComplex2 : public Block {
 
 	void initialize(void);
 	bool runBlock(void);
+	void setSamplingPeriod(double sPeriod) { samplingPeriod = sPeriod; }
 
 };
 

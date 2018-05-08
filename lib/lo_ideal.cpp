@@ -1,5 +1,5 @@
 # include "netxpto.h"
-# include "local_oscillator.h"
+# include "lo_ideal.h"
 
 # include <algorithm>
 # include <complex>
@@ -22,7 +22,7 @@ void LocalOscillator::initialize(void) {
 
 bool LocalOscillator::runBlock(void) {
 
-	int process = outputSignals[0]->space();
+	/*int process = outputSignals[0]->space();
 
 	if (process == 0) return false;
 
@@ -44,6 +44,21 @@ bool LocalOscillator::runBlock(void) {
 			outOpticalPower = opticalPower + opticalPower / signaltoNoiseRatio*noise;
 			out = .5*sqrt(outOpticalPower)*out;
 		}
+		outputSignals[0]->bufferPut((t_complex)out);
+	}*/
+
+	int process = outputSignals[0]->space();
+
+	if (process == 0) return false;
+
+	double dt = outputSignals[0]->getSamplingPeriod();
+
+	for (int i = 0; i < process; i++)
+	{
+		phase = phase + 2 * PI*outputOpticalFrequency * dt;
+		t_real X = .5*sqrt(opticalPower)*cos(phase);
+		t_real Y = .5*sqrt(opticalPower)*sin(phase);
+		t_complex out(X,Y);
 		outputSignals[0]->bufferPut((t_complex)out);
 	}
 

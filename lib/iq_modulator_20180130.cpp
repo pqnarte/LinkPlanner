@@ -20,7 +20,7 @@ void IqModulator::initialize(void) {
 bool IqModulator::runBlock(void) {
 	
 	int numberOfInpuSignals = inputSignals.size();
-
+	double symbolPeriod = outputSignals[0]->getSymbolPeriod();
 	if (numberOfInputSignals == 2) {
 
 		int ready0 = inputSignals[0]->ready();
