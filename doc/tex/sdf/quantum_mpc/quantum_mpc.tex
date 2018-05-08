@@ -34,18 +34,21 @@
 		\item Step 5:\\ Using the information obtained in the previous step dishonest Bob makes a second post-test measurement and obtains the outcome $\mathcal{J}_{Bob}$. Eve measures her system and obtains the outcome $\mathcal{J}_{Eve}$ \cite{Mayers}.
 	\end{itemize}
 	From \cite{Mayers} one can concluded that a dishonest Bob following these proceedings learns nothing about $m$, the set of both original messages concatenated, in its full extended, either he passes or fails Alice's original verification. This protocol also compensates the errors in the quantum channel. It is also stated that security against Bob and tolerance against errors implies the security of the protocol against Eve \cite{Mayers}.
-	
-	\subsubsection{Comparison Protocol}
-The millionaire problem was originally a two-party secure computation problem, in which two millionaires, Alice and Bob, want to know which of them is richer without revealing their actual wealth.  It is analogous	to a more general problem whose goal is to compare two numbers $a$ and $b$, without revealing any extra information	on their values other than what can be inferred from	the comparison result. Boudot proposed a protocol to solve said. However, Lo pointed out that the equality function cannot be securely evaluated with a two-party scenario. Therefore, some additional assumptions should be considered to reach the goal of private comparison, a quantum comparison protocol (QPC) always needs:
-\begin{itemize}
-	\item An at least semi-honest Third Party (TP) is required to help the two parties (Alice and Bob) accomplish the comparison. A semi-honest TP is a party who
-	always follows the procedure of the protocol recording all of intermediate computations and despite not being corrupted by an outside eavesdropper, TP might try to steal the information from the record. TP will know the positions of different bit value in the compared information, but it will not be able to know the actual bit value of the information.
-	\item All outsiders and the two players should only know the result of the comparison, but not the different positions of the information.
-	\item To guarantee the security of private information, it is better to compare several
-	bits instead of one bit at a time.
-\end{itemize}
-Since Yao's initial proposal, several QKD protocols using Einstein–Podolsky–
-Rosen (EPR) pairs have been proposed in previous work to achieve secret communication for two communicants. These QKD protocols attempt to use the correlation of EPR pairs to distribute a common shared key for two mutually trusted users. However, EPR pairs in the proposed QPC protocol are used to create two individual keys for each of two mutually suspicious users and at the same time allow a semi-honest third party to perform the comparison without knowing the secret content of their information. Therefore, a QKD protocol may not be able to directly solve the QPC problem.
+\subsubsection{Garbled Circuits}
+Garbled circuits are a generic mechanism for generic secure computation, meaning that two parties, the \textit{generator}, who produces the circuit, and the \textit{evaluator}, who evaluates that circuit to produce the encrypted result, can compute the output of a function that depends on private data from both parties. A garbled circuit is hence a cryptographic protocol that enables the secure two-party computation of a function.\\
+The modeling of the function in question as a Boolean circuit $C$ proceeds the \textit{garbling} of the said circuit: each wire $W_i$ of the circuit $C$, the \textit{generator} Alice chooses two nonces $w_i^0$, $w_i^1$ to represent signal $0$ and $1$ on wire $W_i$ ($w_i^j$ is the \textit{garbled value} of the value $j$ of the wire $W_i$). Considering, without the loss of generality a binary gate $G$ which has two input wires $W_0$, $W_1$ and one output wire $W_2$, Alice then generates the truth table of four entries, the \textit{garbled table}, encrypting the output values of the gate $G$ using the garbled input values as keys with a symmetric encryption scheme $E$. For example, for a logic AND gate:
+\begin{table}[htp!]
+	\centering
+	\caption{the garbling of an AND gate.}
+	\begin{tabular}{cccc}
+		$W_0$   & $W_1$   & Output & Garbled value                     \\
+		$w_0^0$ & $w_1^0$ & $w^0$  & $E_{w_0^0,w_1^0}\left(w^0\right)$ \\
+		$w_0^0$ & $w_1^1$ & $w^0$  & $E_{w_0^0,w_1^1}\left(w^0\right)$ \\
+		$w_0^1$ & $w_1^0$ & $w^0$  & $E_{w_0^1,w_1^0}\left(w^0\right)$ \\
+		$w_1^1$ & $w_1^1$ & $w^1$  & $E_{w_0^1,w_1^1}\left(w^1\right)$
+	\end{tabular}
+\end{table}
+Next, the garbled table and the wire labels, $w_0^0$ or $w_0^1$, representing the generator’s secret input, are sent to the evaluator. To obtain the appropriate wire label for her own input (without revealing the input), $w_1^1$ or $w_1^0$, the evaluator and generator execute an oblivious transfer protocol. Thus, the evaluator can decrypt one and only one entry that corresponds exactly to their inputs. Following this construction strategy, an arbitrary number of binary gates can be assembled to accomplish general purpose computation using the output wire labels of one gate as the input labels of the next gate.
 
 % bibliographic references for the section ----------------------------
 \clearpage
