@@ -19,7 +19,6 @@
 
 class BPSKParameters : public SystemParameters {
 public:
-
 	//PARAMETERS
 	int numberOfBitsReceived{ -1 };
 	int numberOfBitsGenerated{ 1000 };
@@ -39,38 +38,41 @@ public:
 	int bufferLength = 20;
 	bool shotNoise = false;
 
+	/* Initializes default parameters, calls superclass' constructor*/
+	BPSKParameters() : SystemParameters() {
+		initializeParameterMap(); //Initializes the parameters
+	}
+	/* Initializes parameters from a file, calls superclass' constructor */
+	BPSKParameters(string filename) : SystemParameters() {
+		initializeParameterMap(); //Initializes the parameters
+		readSystemInputParameters(filename); //Reads the parameters from a file
+	}
+
 	//METHODS
-	/* Returns 'param' filled with the values found in the file 'filename' */
-	void readSystemInputParameters(string filename);
-	/* Empty Constructor in case you want to read BPSK parameters from a file*/
-	BPSKParameters() {}
+	//Each parameter must be added to the parameter map by calling addParameter(string,param*)
+	void initializeParameterMap(){
+		addParameter("numberOfBitsReceived", &numberOfBitsReceived); //Cria parametro numberOfBitsReceived
+		addParameter("numberOfBitsGenerated", &numberOfBitsGenerated); //Cria parametro numberOfBitsGenerated
+		addParameter("samplesPerSymbol", &samplesPerSymbol); //Cria parametro samplesPerSymbol
+		addParameter("pLength", &pLength);
+		addParameter("bitPeriod", &bitPeriod);
+		addParameter("rollOffFactor", &rollOffFactor);
+		addParameter("signalOutputPower_dBm", &signalOutputPower_dBm);
+		addParameter("localOscillatorPower_dBm", &localOscillatorPower_dBm);
+		addParameter("localOscillatorPhase", &localOscillatorPhase);
+		addParameter("responsivity", &responsivity);
+		addParameter("amplification", &amplification);
+		addParameter("electricalNoiseAmplitude", &electricalNoiseAmplitude);
+		addParameter("samplesToSkip", &samplesToSkip);
+		addParameter("bufferLength", &bufferLength);
+		addParameter("shotNoise", &shotNoise);
+	}
 };
 
-int main(){	
+int main() {
+
+	BPSKParameters param("../data.txt"); //Reads the input parameters from the file data.txt
 	
-	int numberOfBitsReceived = -1;
-	int numberOfBitsGenerated = 1000;
-	int samplesPerSymbol = 16;
-	int pLength = 5;
-	double bitPeriod = 20e-12;
-	double rollOffFactor = 0.3;
-	double signalOutputPower_dBm = -20;
-	double localOscillatorPower_dBm = 0;
-	double localOscillatorPhase = 0;
-	vector<t_iqValues> iqAmplitudeValues = { { -1, 0 } ,{ 1, 0 } };
-	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2) } };
-	double responsivity = 1;
-	double amplification = 1e6;
-	double electricalNoiseAmplitude = 5e-4*sqrt(2);
-	int samplesToSkip = 8 * samplesPerSymbol;
-	int bufferLength = 20;
-	bool shotNoise = false;
-
-	BPSKParameters param = BPSKParameters();
-	param.readSystemInputParameters("data.txt");
-	cout << param.samplesPerSymbol << endl;
-	cout << param.numberOfBitsReceived << endl;
-
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
@@ -161,76 +163,4 @@ int main(){
 
 	return 0;
 
-}
-
-void BPSKParameters::readSystemInputParameters(string filename)
-{
-	ifstream inputFile("./" + filename);
-	if (!inputFile) {
-		cerr << "ERROR: Could not open " << filename;
-		exit(1);
-		
-	}
-	int errorLine = 1;
-	//Reads each line
-	string line;
-	while (getline(inputFile, line)) {
-		try {
-				//If the line if a comment, it just skips to the next one
-				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, ':');
-				if (splitline.at(0) == "numberOfBitsReceived") {
-					numberOfBitsReceived = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "numberOfBitsGenerated") {
-					numberOfBitsGenerated = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesPerSymbol") {
-					samplesPerSymbol = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "pLength") {
-					pLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bitPeriod") {
-					bitPeriod = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "rollOffFactor") {
-					rollOffFactor = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "signalOutputPower_dBm") {
-					signalOutputPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPower_dBm") {
-					localOscillatorPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPhase") {
-					localOscillatorPhase = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "responsivity") {
-					responsivity = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "amplification") {
-					amplification = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "electricalNoiseAmplitude") {
-					electricalNoiseAmplitude = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesToSkip") {
-					samplesToSkip = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bufferLength") {
-					bufferLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "shotNoise") {
-					shotNoise = parseBool(splitline.at(1));
-				}
-			}
-			errorLine++;
-		}
-		catch (const exception& e) {
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
-			exit(1);
-		}
-	}
-	inputFile.close();
 }

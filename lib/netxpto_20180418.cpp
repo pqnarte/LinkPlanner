@@ -1774,24 +1774,122 @@ vector<string> SystemParameters::split(const string &text, char sep) {
 
 void SystemParameters::readSystemInputParameters(string inputFilename)
 {
+	{
+		ifstream inputFile("./" + inputFilename);
+		if (!inputFile) {
+			cerr << "ERROR: Could not open " << inputFilename;
+			exit(1);
+		}
+		int errorLine = 1;
+		//Reads each line
+		string line;
+		while (getline(inputFile, line)) {
+			try {
+				//If the line if a comment, it just skips to the next one
+				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+					vector<string> splitline = split(line, ':');
+					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
+						if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
+							parameters[splitline[0]]->setValue(parseInt(splitline[1]));
+						else if(parameters[splitline[0]]->getType() == DOUBLE)
+							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
+						else if(parameters[splitline[0]]->getType() == BOOL)
+							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+					}
+				}
+				errorLine++;
+			}
+			catch (const exception& e) {
+				cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputFilename;
+				exit(1);
+			}
+		}
+		inputFile.close();
+	}
 }
 
-int SystemParameters::parseInt(const string & s)
+void SystemParameters::addParameter(string name, int * variable)
 {
-	return stoi(s);
+	parameters[name] = new Parameter(variable);
 }
 
-double SystemParameters::parseDouble(const string & s)
+void SystemParameters::addParameter(string name, double * variable)
 {
-	return stof(s);
+	parameters[name] = new Parameter(variable);
 }
 
-bool SystemParameters::parseBool(const string & s)
+void SystemParameters::addParameter(string name, bool * variable)
 {
-	if (s == "true")
+	parameters[name] = new Parameter(variable);
+}
+
+SystemParameters::~SystemParameters()
+{	
+	for (map<string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
+		delete (itr->second);
+	}
+}
+
+/* Allows for the recognition of scientific notation. Ex: parseDouble("6.23e+1") will return 62*/
+int SystemParameters::parseInt(string str)
+{
+	return (int) parseDouble(str);
+}
+/* Allows for the recognition of scientific notation. Ex: parseDouble("1.83e-2") will return 0.0183*/
+double SystemParameters::parseDouble(string str) {
+	istringstream os(str);
+	double d;
+	os >> d;
+	return d;
+}
+
+bool SystemParameters::parseBool(string str)
+{
+	if (str == "true")
 		return true;
-	else if (s == "false")
+	else if (str == "false")
 		return false;
 	else //Incorrect input
 		throw exception();
+}
+
+void SystemParameters::Parameter::setValue(int value)
+{
+	if (type != INT) throw invalid_argument("Parameter is not of type INT");
+	*i = value;
+}
+
+void SystemParameters::Parameter::setValue(double value)
+{
+	if (type != DOUBLE) throw invalid_argument("Parameter is not of type DOUBLE");
+	*d = value;
+}
+
+void SystemParameters::Parameter::setValue(bool value)
+{
+	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
+	*b = value;
+}
+
+SystemParameters::ParameterType SystemParameters::Parameter::getType()
+{
+	return type;
+}
+
+SystemParameters::Parameter::Parameter(int * elem)
+{
+	type = INT;
+	i = elem;
+}
+
+SystemParameters::Parameter::Parameter(double * elem)
+{
+	type = DOUBLE;
+	d = elem;
+}
+
+SystemParameters::Parameter::Parameter(bool * elem)
+{
+	type = BOOL;
+	b = elem;
 }
