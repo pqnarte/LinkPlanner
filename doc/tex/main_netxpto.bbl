@@ -1,0 +1,363 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global}
+    \entry{saleh1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=35e23bf6d97484c886444734973b5e85}{%
+           family={Saleh},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=79373f7210a4d0ce76b0790594755f34}{%
+           family={Teich},
+           familyi={T\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York (NY)}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Wiley series in pure and applied optics}
+      \field{title}{Fundamentals of photonics}
+      \field{year}{1991}
+    \endentry
+    \entry{Rao2010a}{book}{}
+      \name{author}{3}{}{%
+        {{hash=b9c69864095d3db4630db2d09d60d2f3}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={K.\bibnamedelimi Ramamohan\bibnamedelimb (Kamisetty\bibnamedelima Ramamohan)},
+           giveni={K\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=f54e3c13a9431ab86f723c67ce18ad56}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={D.\bibnamedelimi N.},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=63ca74c6be1e1386f86f8019bec6ae6c}{%
+           family={Hwang},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{fullhash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{bibnamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authorbibnamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authornamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authorfullhash}{d839650ea87ee6dd0d270b0692b669f5}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Fast Fourier Transform - Algorithms and Applications presents an introduction to the principles of the fast Fourier transform (FFT). It covers FFTs, frequency domain filtering, and applications to video and audio signal processing. As fields like communications, speech and image processing, and related areas are rapidly developing, the FFT as one of the essential parts in digital signal processing has been widely used. Thus there is a pressing need from instructors and students for a book dealing with the latest FFT topics. Fast Fourier Transform - Algorithms and Applications provides a thorough and detailed explanation of important or up-to-date FFTs. It also has adopted modern approaches like MATLAB examples and projects for better understanding of diverse FFTs. Fast Fourier Transform - Algorithms and Applications is designed for senior undergraduate and graduate students, faculty, engineers, and scientists in the field, and self-learners to understand FFTs and directly apply them to their fields, efficiently. It is designed to be both a text and a reference. Thus examples, projects and problems all tied with MATLAB, are provided for grasping the concepts concretely. It also includes references to books and review papers and lists of applications, hardware/software, and useful websites. By including many figures, tables, bock diagrams and graphs, this book helps the reader understand the concepts of fast algorithms readily and intuitively. It provides new MATLAB functions and MATLAB source codes. The material in Fast Fourier Transform - Algorithms and Applications is presented without assuming any prior knowledge of FFT. This book is for any professional who wants to have a basic understanding of the latest developments in and applications of FFT. It provides a good reference for any engineer planning to work in this field, either in basic implementation or in research and development.}
+      \field{isbn}{9781402066290}
+      \field{title}{{Fast Fourier transform : algorithms and applications}}
+      \field{year}{2010}
+      \field{pages}{423}
+      \range{pages}{1}
+    \endentry
+    \entry{Chu2000}{book}{}
+      \name{author}{2}{}{%
+        {{hash=cf9f18675ca92161a63d8b0b00d39076}{%
+           family={Chu},
+           familyi={C\bibinitperiod},
+           given={Eleanor\bibnamedelima Chin-hwa},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinithyphendelim h\bibinitperiod}}}%
+        {{hash=1ee225cb3490975a4303696bf7ff9897}{%
+           family={George},
+           familyi={G\bibinitperiod},
+           given={Alan.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{fullhash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{bibnamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authorbibnamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authornamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authorfullhash}{aa38810153646a3f407b8e96d6f9140f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Title from the resource itself.}
+      \field{isbn}{9781420049961}
+      \field{title}{{Inside the FFT black box : serial and parallel fast Fourier transform algorithms}}
+      \field{year}{2000}
+      \field{pages}{312}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://www.crcpress.com/Inside-the-FFT-Black-Box-Serial-and-Parallel-Fast-Fourier-Transform-Algorithms/Chu-George/p/book/9780849302701
+      \endverb
+      \verb{url}
+      \verb https://www.crcpress.com/Inside-the-FFT-Black-Box-Serial-and-Parallel-Fast-Fourier-Transform-Algorithms/Chu-George/p/book/9780849302701
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{almeida2016continuous}
+  \missing{probabilitySheldon}
+\endrefsection
+
+\refsection{2}
+  \datalist[entry]{none/global//global/global}
+    \entry{thorlabs}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={Thorlabs},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Thorlabs Balance Amplified Photodetectors: PDB4xx Series Operation Manual}
+      \field{year}{2014}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{3}
+  \datalist[entry]{none/global//global/global}
+    \entry{yao1982}{article}{}
+      \name{author}{1}{}{%
+        {{hash=731994d78d7bbc25c6e5c3bc5aeafa41}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Andrew\bibnamedelima C.},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \strng{fullhash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \strng{bibnamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \strng{authorbibnamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \strng{authornamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \strng{authorfullhash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{-}
+      \field{title}{Protocols for Secure Computations}
+      \field{year}{1982}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{4}
+  \datalist[entry]{none/global//global/global}
+    \entry{Yao1995}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=65bea3c2b3317bb15349bef2d077c696}{%
+           family={Yao},
+           familyi={Y\bibinitperiod},
+           given={Andrew\bibnamedelima Chi-Chih},
+           giveni={A\bibinitperiod\bibinitdelim C\bibinithyphendelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{ACM} Press}%
+      }
+      \strng{namehash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{fullhash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{bibnamehash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{authorbibnamehash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{authornamehash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{authorfullhash}{65bea3c2b3317bb15349bef2d077c696}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the twenty-seventh annual {ACM} symposium on Theory of computing - {STOC} {'}95}
+      \field{title}{Security of quantum protocols against coherent measurements}
+      \field{year}{1995}
+      \verb{doi}
+      \verb 10.1145/225058.225085
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/225058.225085
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/225058.225085
+      \endverb
+    \endentry
+    \entry{Mayers}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=1e44109b88f1f5306f6a31e7c06d68ee}{%
+           family={Mayers},
+           familyi={M\bibinitperiod},
+           given={Dominic},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {London, UK, UK}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{fullhash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{bibnamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{authorbibnamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{authornamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{authorfullhash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 15th Annual International Cryptology Conference on Advances in Cryptology}
+      \field{isbn}{3-540-60221-6}
+      \field{series}{CRYPTO '95}
+      \field{title}{On the Security of the Quantum Oblivious Transfer and Key Distribution Protocols}
+      \field{year}{1995}
+      \field{pages}{124\bibrangedash 135}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb http://dl.acm.org/citation.cfm?id=646760.705993
+      \endverb
+      \verb{url}
+      \verb http://dl.acm.org/citation.cfm?id=646760.705993
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{saleh1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=35e23bf6d97484c886444734973b5e85}{%
+           family={Saleh},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=79373f7210a4d0ce76b0790594755f34}{%
+           family={Teich},
+           familyi={T\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York (NY)}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Wiley series in pure and applied optics}
+      \field{title}{Fundamentals of photonics}
+      \field{year}{1991}
+    \endentry
+    \entry{smith1997}{book}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=2f646a0526232b60c8f04636028f892f}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={S.\bibnamedelimi W.},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {California Technical Pub. San Diego}%
+      }
+      \strng{namehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{fullhash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{bibnamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authorbibnamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authornamehash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \strng{authorfullhash}{52be94dc63b3484cb9cdf0b72a4a9ae7}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The scientist and engineer's guide to digital signal processing}
+      \field{year}{1997}
+    \endentry
+    \entry{george2011}{article}{}
+      \name{author}{2}{}{%
+        {{hash=840f6f0281cb75ff8b09d9f3538974a4}{%
+           family={Florence},
+           familyi={F\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=f5e803750d4a73ffd8e27570fa23d320}{%
+           family={Golam},
+           familyi={G\bibinitperiod},
+           given={K.\bibnamedelimi B.},
+           giveni={K\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Science Publications}%
+      }
+      \strng{namehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{fullhash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{bibnamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authorbibnamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authornamehash}{4547c76f44bfe9000ca98c33458f845f}
+      \strng{authorfullhash}{4547c76f44bfe9000ca98c33458f845f}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{American Journal of Biostatistics}
+      \field{number}{2}
+      \field{title}{Confidence intervals for signal to noise ratio of a Poisson distribution}
+      \field{volume}{2}
+      \field{year}{2011}
+      \field{pages}{44}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
