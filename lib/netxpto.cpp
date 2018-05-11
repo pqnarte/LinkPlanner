@@ -9,6 +9,7 @@
 
 
 # include "netxpto.h"
+# include "overlap_save_20180208.h"
 
 
 using namespace std;
@@ -24,42 +25,61 @@ using namespace std;
 void Signal::close() {
 
 	if (saveSignal && (inPosition >= firstValueToBeSaved)) {
-		char *ptr = (char *)buffer;
-
-
-		ofstream fileHandler;
-		fileHandler.open("./signals/" + fileName, ios::out | ios::binary | ios::app);
 		
-		if (type == "Binary") {
-			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_binary);
-			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_binary));
+		if (!(type == "Message")) {
+			char *ptr = (char *)buffer;
+
+			ofstream fileHandler;
+			fileHandler.open("./signals/" + fileName, ios::out | ios::binary | ios::app);
+
+			if (type == "Binary") {
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
+				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
+			}
+			else if (type == "TimeContinuousAmplitudeContinuousComplex" || type == "BandpassSignal") {
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_complex);
+				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_complex));
+			}
+			else {
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_real);
+				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_real));
+			}
+			inPosition = 0;
+			fileHandler.close();
 		}
-		else if (type == "TimeContinuousAmplitudeContinuousComplex" || type == "BandpassSignal") {
-			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_complex);
-			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_complex));
+		else if (type == "Message") {
+			int fValueToBeSaved = getFirstValueToBeSaved();
+			int bLength = getBufferLength();
+			
+			if (fValueToBeSaved < (inPosition+1)) {
+				t_message *ptr = (t_message *)buffer;
+				ptr = ptr + (fValueToBeSaved - 1);
+
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+
+				for (int msg = fValueToBeSaved; msg < (inPosition+1); msg++) {
+					for (unsigned int fld = 0; fld < (*ptr).size(); fld++) {
+						fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+					}
+					fileHandler << "\n";
+					ptr++;
+				}
+				fileHandler.close();
+				setFirstValueToBeSaved(1);
+			}
 		}
-		else {
-			ptr = ptr + (firstValueToBeSaved - 1)*sizeof(t_real);
-			fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1))*sizeof(t_real));
-		}
-		inPosition = 0;
-		fileHandler.close();
 	}
 };
 
 int Signal::space() {
 
 	if (bufferFull) return 0;
-
 	if (inPosition == outPosition) return bufferLength;
-
 	if (inPosition < outPosition) return (outPosition - inPosition);
-
 	if (outPosition >= 0) return (bufferLength - inPosition + outPosition);
-
 	if (outPosition == -1) return (bufferLength - inPosition);
-
 	return -1;
+
 };
 
 int Signal::ready() {
@@ -92,13 +112,12 @@ void Signal::writeHeader(){
 		headerFile << "Signal type: " << type << "\n";
 		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
 		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
+		//headerFile << "Samples per Symbol (s): " << samplesPerSymbol << "\n";
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
 
 		headerFile.close();
 	}
-
-
 };
 
 void Signal::writeHeader(string signalPath){
@@ -112,13 +131,12 @@ void Signal::writeHeader(string signalPath){
 		headerFile << "Signal type: " << type << "\n";
 		headerFile << "Symbol Period (s): " << symbolPeriod << "\n";
 		headerFile << "Sampling Period (s): " << samplingPeriod << "\n";
+		//headerFile << "Samples per Symbol (s): " << samplesPerSymbol << "\n";
 
 		headerFile << "// ### HEADER TERMINATOR ###\n";
 
 		headerFile.close();
 	}
-
-
 };
 
 void Signal::bufferGet() {
@@ -191,7 +209,47 @@ void Signal::bufferGet(t_photon_mp *valueAddr) {
 	if (outPosition == inPosition) bufferEmpty = true;
 	return;
 };
+/*
+void Signal::bufferGet(t_message *valueAddr) {
+	*valueAddr = static_cast<t_message *>(buffer)[outPosition];
+	if (bufferFull) bufferFull = false;
+	outPosition++;
+	if (outPosition == bufferLength) outPosition = 0;
+	if (outPosition == inPosition) bufferEmpty = true;
+	return;
+};
 
+void Messages::bufferPut(t_message value) {
+	(static_cast<t_message*>(buffer))[inPosition] = value;
+	if (bufferEmpty) bufferEmpty = false;
+	inPosition++;
+	if (inPosition == bufferLength) {
+		inPosition = 0;
+		if (getSaveSignal()) {
+			int fValueToBeSaved = getFirstValueToBeSaved();
+			int bLength = getBufferLength();
+			if (fValueToBeSaved <= bufferLength) {
+				t_message *ptr = (t_message *)buffer;
+				ptr = ptr + (fValueToBeSaved - 1);
+				ofstream fileHandler("./" + folderName + "/" + fileName, ios::out | ios::app);
+				for (int msg = fValueToBeSaved; msg <= bLength; msg++) {
+						for (unsigned int fld = 0; fld < value.size(); fld++) {
+							fileHandler << ptr->at(fld).fieldName + "\t" + ptr->at(fld).fieldValue + "\t";
+						}
+						fileHandler << "\n";
+						ptr++;
+				}
+				fileHandler.close();
+				setFirstValueToBeSaved(1);
+			}
+			else {
+				setFirstValueToBeSaved(fValueToBeSaved - bLength);
+			}
+		}
+	}
+	if (inPosition == outPosition) bufferFull = true;
+};
+*/
 //########################################################################################################################################################
 //###################################################### GENERAL BLOCKS FUNCTIONS IMPLEMENTATION #########################################################
 //########################################################################################################################################################
@@ -203,7 +261,6 @@ Block::Block(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
 
 	inputSignals = InputSig;
 	outputSignals = OutputSig;
-
 }
 
 void Block::initializeBlock(vector<Signal*> &InputSig, vector<Signal*> &OutputSig) {
@@ -342,7 +399,7 @@ void SuperBlock::setSaveInternalSignals(bool sInternalSignals) {
 	}
 }
 
-
+/*
 void FIR_Filter::initializeFIR_Filter(void) {
 
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
@@ -397,19 +454,116 @@ bool FIR_Filter::runBlock(void) {
 	return true;
 };
 
+void FD_Filter::initializeFD_Filter(void)
+{
+	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
+	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
+	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
-void FD_Filter::initializeFD_Filter(void) {
+	if (!getSeeBeginningOfTransferFunction()) {
+		int aux = (int)(((double)transferFunctionLength) / 2) + 1;
+		outputSignals[0]->setFirstValueToBeSaved(aux);
+	}
+
+	if (saveTransferFunction)
+	{
+		ofstream fileHandler("./signals/" + transferFunctionFilename, ios::out);
+		fileHandler << "// ### HEADER TERMINATOR ###\n";
+
+		double samplingPeriod = inputSignals[0]->samplingPeriod;
+		t_real fWindow = 1 / samplingPeriod;
+		t_real df = fWindow / transferFunction.size();
+
+		t_real f;
+		for (int k = 0; k < transferFunction.size(); k++)
+		{
+			f = -fWindow / 2 + k * df;
+			fileHandler << f << " " << transferFunction[k] << "\n";
+		}
+		fileHandler.close();
+	}
+}
+
+bool FD_Filter::runBlock(void)
+{
+	bool alive{ false };
+
+	int ready = inputSignals[0]->ready();
+	int space = outputSignals[0]->space();
+	int process = min(ready, space);
+	if (process == 0) return false;
+
+
+	/////////////////////// previousCopy & currentCopy /////////////////////
+	////////////////////////////////////////////////////////////////////////
+	vector<double> re(process); // Get the Input signal
+	t_real input;
+	for (int i = 0; i < process; i++) {
+		inputSignals[0]->bufferGet(&input);
+		re.at(i) = input;
+	}
+
+	vector<t_real> im(process);
+	vector<t_complex> currentCopyAux = reImVect2ComplexVector(re, im);// currentCopy complex form
+
+	vector<t_complex> pcInitialize(process);		                 // For the first data block only
+	if (K == 0) { previousCopy = pcInitialize; }
+
+	// size modification of currentCopyAux to currentCopy.
+	vector<t_complex> currentCopy(previousCopy.size());
+	for (unsigned int i = 0; i < currentCopyAux.size(); i++) {
+		currentCopy[i] = currentCopyAux[i];
+	}
+
+	/////////////////////////// Filter Data "hn" //////////////////////////
+	///////////////////////////////////////////////////////////////////////
+
+	vector<t_complex> impulseResponse = transferFunctionToImpulseResponse(transferFunction);
+	vector<t_complex> hn = impulseResponse;
+
+	ofstream gaussTransferF("ImpulseResponse.txt");
+	for (size_t i = 0; i < impulseResponse.size(); i++)
+	{
+		gaussTransferF << impulseResponse[i].real() << "\n";
+	}
+	gaussTransferF.close();
+
+
+	////////////////////// OverlapSave in Realtime ///////////////////////
+	//////////////////////////////////////////////////////////////////////
+	vector<t_complex> OUTaux = overlapSave(currentCopy, previousCopy, hn);
+
+	previousCopy = currentCopy;
+	K = K + 1;
+
+	// Remove the size modified data (opppsite to "currentCopyAux to currentCopy" )
+	vector<t_complex> OUT;
+	for (int i = 0; i < process; i++) {
+		OUT.push_back(OUTaux[previousCopy.size() + i]);
+	}
+
+	// Bufferput
+	for (int i = 0; i < process; i++) {
+		t_real val;
+		val = OUT[i].real();
+		outputSignals[0]->bufferPut((t_real)(val));
+	}
+
+	return true;
+}*/
+
+/*void FD_Filter::initializeFD_Filter(void) {
 
 	outputSignals[0]->symbolPeriod = inputSignals[0]->symbolPeriod;
 	outputSignals[0]->samplingPeriod = inputSignals[0]->samplingPeriod;
 	outputSignals[0]->samplesPerSymbol = inputSignals[0]->samplesPerSymbol;
 
-/*	if (!getSeeBeginningOfImpulseResponse()) {
+	if (!getSeeBeginningOfImpulseResponse()) {
 		int aux = (int)(((double)impulseResponseLength) / 2) + 1;
 		outputSignals[0]->setFirstValueToBeSaved(aux);
-	}*/
+	}
 
-/*	delayLine.resize(impulseResponseLength, 0);*/
+	delayLine.resize(impulseResponseLength, 0);
 
 	
 	inputBufferTimeDomain.resize(inputBufferTimeDomainLength);
@@ -436,7 +590,7 @@ void FD_Filter::initializeFD_Filter(void) {
 		fileHandler.close();
 	}
 
-};
+};*/
 
 /*void FD_Filter::OverlapSaveMethod(void) {
 
@@ -539,7 +693,7 @@ void FD_Filter::overlapSaveZPRealIn(void) {
 
 	}
 }*/
-
+/*
 bool FD_Filter::runBlock(void) {
 
 	
@@ -551,7 +705,7 @@ bool FD_Filter::runBlock(void) {
 	int ready = inputSignals[0]->ready();
 	//inputBufferTimeDomain.resize(ready);
 	//outputBufferTimeDomain.resize(ready);
-	int space = inputBufferTimeDomain.size() - inputBufferPointer;
+	int space = (int) inputBufferTimeDomain.size() - inputBufferPointer;
 
 	int process1 = min(ready, space);
 	//int process1 = ready;
@@ -560,17 +714,18 @@ bool FD_Filter::runBlock(void) {
 	// read incoming samples to the input buffer
 	for (int k = 0; k < process1; k++) {
 		t_real val;
-		(inputSignals[0])->bufferGet(&val);
+		inputSignals[0]->bufferGet(&val);
 		inputBufferTimeDomain[inputBufferPointer] = val;
 		inputBufferPointer++;
 	}
 	//overlapSaveZPRealIn();
 	//OverlapSaveMethod();
-	if ((inputBufferPointer == inputBufferTimeDomain.size()) && (outputBufferPointer == outputBufferTimeDomain.size())) {
+	if ((inputBufferPointer == inputBufferTimeDomain.size()) && (outputBufferPointer == outputBufferTimeDomain.size()))
+	{
 		outputBufferTimeDomain = fft.inverseTransformInCP(CMult.CMultVectorInCP(fft.directTransformInReal(inputBufferTimeDomain), transferFunction));
 		rotate(inputBufferTimeDomain.begin(), inputBufferTimeDomain.begin() + inputBufferTimeDomain.size()/2, inputBufferTimeDomain.end());
-		inputBufferPointer = inputBufferTimeDomain.size()/2;
-		outputBufferPointer = outputBufferTimeDomain.size()/2;
+		inputBufferPointer = (int) inputBufferTimeDomain.size()/2;
+		outputBufferPointer = (int) outputBufferTimeDomain.size()/2;
 	};
 
 	//space = outputSignals[0]->space();
@@ -588,7 +743,7 @@ bool FD_Filter::runBlock(void) {
 
 	return alive;
 };
-     
+     */
 
 /*2016-08-03
 DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
@@ -606,9 +761,7 @@ DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, v
 }
 */
 
-
-
-RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
+/*RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
 
   numberOfInputSignals = (int) InputSig.size();
   numberOfOutputSignals = (int) OutputSig.size();
@@ -646,7 +799,7 @@ bool RealToComplex::runBlock(void) {
 	}
 
 	return true;
-}
+}*/
 //
 //ComplexToReal::ComplexToReal(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
 //
@@ -835,14 +988,14 @@ bool RealToComplex::runBlock(void) {
 
 
 
-System::System(vector<Block *> &Blocks) {
-
+System::System(vector<Block *> &Blocks) 
+{
 	SystemBlocks = Blocks;
 
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
+	for (int unsigned i = 0; i < SystemBlocks.size(); i++) 
+	{
 		SystemBlocks[i]->initializeBlock();
 	}
-
 }
 
 void System::run() {
@@ -906,10 +1059,10 @@ void System::run(string signalPath) {
 //############################################################### GENERIC DSP FUNCTIONS ##################################################################
 //########################################################################################################################################################
 
-
+/*
 void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_out, vector<double> Hf, int NFFT) {
 
-	int Nblocks = 2 * (v_in.size() / NFFT);
+	int Nblocks = 2 * ((int) v_in.size() / NFFT);
 
 	vector<double> var_temp(NFFT, 0);
 	vector<double> real_temp_copy(NFFT, 0);
@@ -925,11 +1078,13 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 
 	for (int k = 0; k < Nblocks; k++) {
 
-		if (k == Nblocks - 1) {
+		if (k == Nblocks - 1) 
+		{
 			copy(v_in.begin(), v_in.begin() + (NFFT / 2), var_temp.begin() + (NFFT / 2));
 			copy(v_in.end() - (NFFT / 2), v_in.end(), var_temp.begin());
 		}
-		else {
+		else
+		{
 			copy(v_in.begin() + k*(NFFT / 2), v_in.begin() + ((k + 1)*NFFT - k*(NFFT / 2)), var_temp.begin());
 		}
 		real_temp_copy = var_temp;
@@ -947,7 +1102,8 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 
 
 		// Removing the samples symetrically and assign to the output
-		if (k == Nblocks - 1) {
+		if (k == Nblocks - 1) 
+		{
 			copy(real_temp_copy.begin() + (NFFT / 4), real_temp_copy.begin() + (NFFT / 2), v_out.end() - (NFFT / 4));
 			copy(real_temp_copy.begin() + (NFFT / 2), real_temp_copy.begin() + 3 * NFFT / 4, v_out.begin());
 		}
@@ -961,35 +1117,39 @@ void OverlapMethod::overlapSaveSyRealIn(vector<double> &v_in, vector<double> &v_
 // Private function prototypes
 static size_t reverseBits(size_t x, unsigned int n);
 
-std::vector<complex <double>> Fft::directTransformInReal(std::vector<double> real) {
+
+
+vector<complex <double>> Fft::directTransformInReal(std::vector<double> real)
+{
 	//if (In.real.size() != imag.size())
 	//throw "Mismatched lengths";
 	ComplexMult CMult;
-	vector<double> imag(real.size(), 0);
+	vector<double> im(real.size(), 0);
 	vector<complex <double>> v_out(real.size(), 0);
 	size_t n = real.size();
 
 	if (n == 0)
 		return v_out;
 	else if ((n & (n - 1)) == 0)  // Is power of 2
-		transformRadix2(real, imag);
+		transformRadix2(real, im);
 	else  // More complicated algorithm for arbitrary sizes
-		transformBluestein(real, imag);
+		transformBluestein(real, im);
 
-	CMult.ReImVect2ComplexVect(real, imag, v_out);
+	CMult.ReImVect2ComplexVect(real, im, v_out);
 	return v_out;
 }
 
-std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In) {
+std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
+{
 	ComplexMult CMult;
 	vector<double> real(In.size(), 0);
-	vector<double> imag(In.size(), 0);
-	CMult.ComplexVect2ReImVect(In, real, imag);
-	directTransform(imag, real);
+	vector<double> im(In.size(), 0);
+	CMult.ComplexVect2ReImVect(In, real, im);
+	directTransform(im, real);
 	for (int x = 0; x != real.size(); ++x)
 	{
 		real[x] = real[x] / real.size();
-		imag[x] = imag[x] / real.size();
+		  im[x] =   im[x] / real.size();
 	}
 
 	vector<double> v_out(real.size(), 0);
@@ -999,31 +1159,34 @@ std::vector<double> Fft::inverseTransformInCP(std::vector<complex <double>> &In)
 	return v_out;
 }
 
-void Fft::directTransform(vector<double> &real, vector<double> &imag) {
+void Fft::directTransform(vector<double> &real, vector<double> &imag)
+{
 	if (real.size() != imag.size())
 		throw "Mismatched lengths";
 
 	size_t n = real.size();
 	if (n == 0)
 		return;
-	else if ((n & (n - 1)) == 0)  // Is power of 2
+	else if ((n & (n - 1)) == 0)			// Is power of 2
 		transformRadix2(real, imag);
-	else  // More complicated algorithm for arbitrary sizes
+	else									// More complicated algorithm for arbitrary sizes
 		transformBluestein(real, imag);
 }
 
 
-void Fft::inverseTransform(vector<double> &real, vector<double> &imag) {
-	directTransform(imag, real);
+void Fft::inverseTransform(vector<double> &real, vector<double> &imag)
+{
+	directTransform(imag, real);					// Inverse function
 	for (int x = 0; x != real.size(); ++x)
 	{
-		real[x] = real[x] / real.size();
+		real[x] = real[x] / real.size();			// Normalize
 		imag[x] = imag[x] / real.size();
 	}
 }
 
 
-void Fft::transformRadix2(vector<double> &real, vector<double> &imag) {
+void Fft::transformRadix2(vector<double> &real, vector<double> &imag) 
+{
 	// Compute levels = floor(log2(n))
 	if (real.size() != imag.size())
 		throw "Mismatched lengths";
@@ -1032,9 +1195,10 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag) {
 	{
 		size_t temp = n;
 		levels = 0;
-		while (temp > 1) {
+		while (temp > 1)
+		{
 			levels++;
-			temp >>= 1;
+			temp >>= 1;			// temp = temp >> 1 (bit wise right shift)
 		}
 		if (1u << levels != n)
 			throw "Length is not a power of 2";
@@ -1043,15 +1207,18 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag) {
 	// Trignometric tables
 	vector<double> cosTable(n / 2);
 	vector<double> sinTable(n / 2);
-	for (size_t i = 0; i < n / 2; i++) {
+	for (size_t i = 0; i < n / 2; i++)
+	{
 		cosTable[i] = cos(2 * M_PI * i / n);
 		sinTable[i] = sin(2 * M_PI * i / n);
 	}
 
 	// Bit-reversed addressing permutation
-	for (size_t i = 0; i < n; i++) {
+	for (size_t i = 0; i < n; i++) 
+	{
 		size_t j = reverseBits(i, levels);
-		if (j > i) {
+		if (j > i) 
+		{
 			double temp = real[i];
 			real[i] = real[j];
 			real[j] = temp;
@@ -1062,11 +1229,14 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag) {
 	}
 
 	// Cooley-Tukey decimation-in-time radix-2 FFT
-	for (size_t size = 2; size <= n; size *= 2) {
+	for (size_t size = 2; size <= n; size *= 2) 
+	{
 		size_t halfsize = size / 2;
 		size_t tablestep = n / size;
-		for (size_t i = 0; i < n; i += size) {
-			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep) {
+		for (size_t i = 0; i < n; i += size) 
+		{
+			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep)
+			{
 				double tpre = real[j + halfsize] * cosTable[k] + imag[j + halfsize] * sinTable[k];
 				double tpim = -real[j + halfsize] * sinTable[k] + imag[j + halfsize] * cosTable[k];
 				real[j + halfsize] = real[j] - tpre;
@@ -1080,8 +1250,73 @@ void Fft::transformRadix2(vector<double> &real, vector<double> &imag) {
 	}
 }
 
+void Fft::Radix2(vector<double> &real, vector<double> &imag, int s)
+{
+	// Compute levels = floor(log2(n))
+	if (real.size() != imag.size())
+		throw "Mismatched lengths";
+	size_t n = real.size();
+	unsigned int levels;
+	{
+		size_t temp = n;
+		levels = 0;
+		while (temp > 1)
+		{
+			levels++;
+			temp >>= 1;			// temp = temp >> 1 (bit wise right shift)
+		}
+		if (1u << levels != n)
+			throw "Length is not a power of 2";
+	}
 
-void Fft::transformBluestein(vector<double> &real, vector<double> &imag) {
+	// Trignometric tables
+	vector<double> cosTable(n / 2);
+	vector<double> sinTable(n / 2);
+	for (size_t i = 0; i < n / 2; i++)
+	{
+		cosTable[i] = cos(-s*2 * M_PI * i / n);
+		sinTable[i] = sin(-s*2 * M_PI * i / n);
+	}
+
+	// Bit-reversed addressing permutation
+	for (size_t i = 0; i < n; i++)
+	{
+		size_t j = reverseBits(i, levels);
+		if (j > i)
+		{
+			double temp = real[i];
+			real[i] = real[j];
+			real[j] = temp;
+			temp = imag[i];
+			imag[i] = imag[j];
+			imag[j] = temp;
+		}
+	}
+
+	// Cooley-Tukey decimation-in-time radix-2 FFT
+	for (size_t size = 2; size <= n; size *= 2)
+	{
+		size_t halfsize = size / 2;
+		size_t tablestep = n / size;
+		for (size_t i = 0; i < n; i += size)
+		{
+			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep)
+			{
+				double tpre = real[j + halfsize] * cosTable[k] + imag[j + halfsize] * sinTable[k];
+				double tpim = -real[j + halfsize] * sinTable[k] + imag[j + halfsize] * cosTable[k];
+				real[j + halfsize] = real[j] - tpre;
+				imag[j + halfsize] = imag[j] - tpim;
+				real[j] += tpre;
+				imag[j] += tpim;
+			}
+		}
+		if (size == n)  // Prevent overflow in 'size *= 2'
+			break;
+	}
+}
+
+void Fft::transformBluestein(vector<double> &real, vector<double> &imag) 
+{
 	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
 	if (real.size() != imag.size())
 		throw "Mismatched lengths";
@@ -1092,7 +1327,8 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag) {
 		if (n > (SIZE_MAX - 1) / 2)
 			throw "Vector too large";
 		target = n * 2 + 1;
-		for (m = 1; m < target; m *= 2) {
+		for (m = 1; m < target; m *= 2) 
+		{
 			if (SIZE_MAX / 2 < m)
 				throw "Vector too large";
 		}
@@ -1133,7 +1369,65 @@ void Fft::transformBluestein(vector<double> &real, vector<double> &imag) {
 }
 
 
-static size_t reverseBits(size_t x, unsigned int n) {
+
+
+void Fft::Bluestein(vector<double> &real, vector<double> &imag, int s)
+{
+	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
+	if (real.size() != imag.size())
+		throw "Mismatched lengths";
+	size_t n = real.size();
+	size_t m;
+	{
+		size_t target;
+		if (n > (SIZE_MAX - 1) / 2)
+			throw "Vector too large";
+		target = n * 2 + 1;
+		for (m = 1; m < target; m *= 2)
+		{
+			if (SIZE_MAX / 2 < m)
+				throw "Vector too large";
+		}
+	}
+
+	// Trignometric tables
+	vector<double> cosTable(n), sinTable(n);
+	for (size_t i = 0; i < n; i++) {
+		double temp = M_PI * (size_t)((unsigned long long)i * i % ((unsigned long long)n * 2)) / n;
+		// Less accurate version if long long is unavailable: double temp = M_PI * i * i / n;
+		cosTable[i] =    cos(-s*temp);
+		sinTable[i] =    sin(-s*temp);
+	}
+
+	// Temporary vectors and preprocessing
+	vector<double> areal(m), aimag(m);
+	for (size_t i = 0; i < n; i++) {
+		areal[i] = real[i] * cosTable[i] + imag[i] * sinTable[i];
+		aimag[i] = -real[i] * sinTable[i] + imag[i] * cosTable[i];
+	}
+	vector<double> breal(m), bimag(m);
+	breal[0] = cosTable[0];
+	bimag[0] = sinTable[0];
+	for (size_t i = 1; i < n; i++) {
+		breal[i] = breal[m - i] = cosTable[i];
+		bimag[i] = bimag[m - i] = sinTable[i];
+	}
+
+	// Convolution
+	vector<double> creal(m), cimag(m);
+	convolve(areal, aimag, breal, bimag, creal, cimag);
+
+	// Postprocessing
+	for (size_t i = 0; i < n; i++) {
+		real[i] = creal[i] * cosTable[i] + cimag[i] * sinTable[i];
+		imag[i] = -creal[i] * sinTable[i] + cimag[i] * cosTable[i];
+	}
+}
+
+
+
+static size_t reverseBits(size_t x, unsigned int n)
+{
 	size_t result = 0;
 	unsigned int i;
 	for (i = 0; i < n; i++, x >>= 1)
@@ -1142,7 +1436,8 @@ static size_t reverseBits(size_t x, unsigned int n) {
 }
 
 
-void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<double> &out) {
+void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<double> &out) 
+{
 	if (x.size() != y.size() || x.size() != out.size())
 		throw "Mismatched lengths";
 	size_t n = x.size();
@@ -1150,8 +1445,8 @@ void Fft::convolve(const vector<double> &x, const vector<double> &y, vector<doub
 	convolve(x, ximag, y, yimag, out, zimag);
 }
 
-
-void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) {
+void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, const vector<double> &yreal, const vector<double> &yimag, vector<double> &outreal, vector<double> &outimag) 
+{
 	if (xreal.size() != ximag.size() || xreal.size() != yreal.size() || yreal.size() != yimag.size() || xreal.size() != outreal.size() || outreal.size() != outimag.size())
 		throw "Mismatched lengths";
 
@@ -1163,7 +1458,8 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 
 	directTransform(xr, xi);
 	directTransform(yr, yi);
-	for (size_t i = 0; i < n; i++) {
+	for (size_t i = 0; i < n; i++) 
+	{
 		double temp = xr[i] * yr[i] - xi[i] * yi[i];
 		xi[i] = xi[i] * yr[i] + xr[i] * yi[i];
 		xr[i] = temp;
@@ -1174,6 +1470,7 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 		outimag[i] = xi[i] / n;
 	}
 }
+
 
 void ComplexMult::CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag) {
 
@@ -1252,3 +1549,315 @@ void ComplexMult::ReImVect2ComplexVect(vector<double> &v1_real, vector<double> &
 	}
 
 }
+/*
+vector<complex<double>> ComplexMult::ReImVect2ComplexVector(vector<double> &v1_real, vector<double> &v1_imag)
+{
+	vector<complex<double>> v_out(v1_real.size());
+
+	for (size_t i = 0; i < v1_real.size(); ++i)
+	{
+		complex<double> iNum(v1_real[i], v1_imag[i]);
+		v_out.at(i) = iNum;
+	}
+
+	return v_out;
+}
+
+vector<complex <double>> ComplexMult::complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in)
+{
+
+	vector<complex <double>> v_out(v1_in.size(), 0);
+	for (unsigned int k = 0; k < v1_in.size(); ++k)
+	{
+		v_out.at(k) = v1_in.at(k)*v2_in.at(k);
+	}
+	return v_out;
+}
+
+
+
+////////////  Fast FourierTransform  /////////////// 
+/*
+vector <complex<double>> FourierTransform::transform(vector<complex<double>>IN, int m)
+{
+	Fft F;									// Various function for FT
+	ComplexMult C;					        // Complex data functionality like split, addition, multiplication etc.
+	size_t n = IN.size();					// Size of the vector
+
+	vector <complex<double>> OUT(n);
+	vector<double> re(n, 0);
+	vector<double> im(n, 0);
+
+	C.ComplexVect2ReImVect(IN, re, im);			// Here we have splitted real and imag data from IN.
+
+	if (n == 0)
+		return OUT;
+	else if ((n & (n - 1)) == 0)				// Is power of 2 : Radix-2 Algorithim
+		F.Radix2(re, im, m);
+	else										// More complicated algorithm for arbitrary sizes : Bluestein Algorithim
+		F.Bluestein(re, im, m);
+	
+	for (unsigned int i = 0; i<re.size(); i++)	// Devide by the square root of "N"
+	{
+		re[i] = re[i] / sqrt(re.size());
+		im[i] = im[i] / sqrt(re.size());
+	}
+
+	C.ReImVect2ComplexVect(re, im, OUT);
+
+	return OUT;
+};
+
+*/
+/*
+vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec)
+{
+	size_t n = vec.size();
+
+	if (n == 0)
+		return vec;
+	else if ((n & (n - 1)) == 0)  // Is power of 2
+		transformRadix2(vec);
+	else  // More complicated algorithm for arbitrary sizes
+		transformBluestein(vec);
+
+	/*t_complex sqrtN = sqrt(n);
+	for (unsigned int i = 0; i < n; i++)
+	{
+		vec[i] = vec[i] / sqrtN;
+	}
+
+	return vec;
+}
+
+
+vector<complex<double>> FourierTransform::ifft(vector<complex<double> > &vec)
+{
+	vector<complex<double>> OUT(vec.size());
+
+	std::transform(vec.cbegin(), vec.cend(), vec.begin(),
+		static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
+	fft(vec);
+	std::transform(vec.cbegin(), vec.cend(), vec.begin(),
+		static_cast<complex<double>(*)(const complex<double> &)>(std::conj));
+
+	OUT = vec;
+	
+	return OUT;
+}
+
+
+void FourierTransform::transformRadix2(vector<complex<double> > &vec)
+{
+	// Length variables
+	size_t n = vec.size();
+	int levels = 0;  // Compute levels = floor(log2(n))
+	for (size_t temp = n; temp > 1U; temp >>= 1)
+		levels++;
+	if (static_cast<size_t>(1U) << levels != n)
+		throw "Length is not a power of 2";
+
+	// Trignometric table
+	vector<complex<double> > expTable(n / 2);
+	for (size_t i = 0; i < n / 2; i++)
+		expTable[i] = std::exp(complex<double>(0, 2 * M_PI * i / n));
+
+	// Bit-reversed addressing permutation
+	for (size_t i = 0; i < n; i++)
+	{
+		size_t j = reverseBits(i, levels);
+		if (j > i)
+			std::swap(vec[i], vec[j]);
+	}
+
+	// Cooley-Tukey decimation-in-time radix-2 FFT
+	for (size_t size = 2; size <= n; size *= 2)
+	{
+		size_t halfsize = size / 2;
+		size_t tablestep = n / size;
+
+		for (size_t i = 0; i < n; i += size)	// Loop for intermediate stage
+		{
+			for (size_t j = i, k = 0; j < i + halfsize; j++, k += tablestep)
+			{
+
+				complex<double> temp = vec[j + halfsize] * expTable[k];
+				vec[j + halfsize] = vec[j] - temp;
+				vec[j] += temp;
+			}
+		}
+		if (size == n)  // Prevent overflow in 'size *= 2'
+			break;
+	}
+}
+
+
+void FourierTransform::transformBluestein(vector<complex<double> > &vec) {
+	// Find a power-of-2 convolution length m such that m >= n * 2 + 1
+	size_t n = vec.size();
+	size_t m = 1;
+	while (m / 2 <= n) {
+		if (m > SIZE_MAX / 2)
+			throw "Vector too large";
+		m *= 2;
+	}
+
+	// Trignometric table
+	vector<complex<double> > expTable(n);
+	for (size_t i = 0; i < n; i++)
+	{
+		unsigned long long temp = static_cast<unsigned long long>(i) * i;
+		temp %= static_cast<unsigned long long>(n) * 2;
+		double angle = M_PI * temp / n;
+		// Less accurate alternative if long long is unavailable: double angle = M_PI * i * i / n;
+		expTable[i] = std::exp(complex<double>(0, angle));
+	}
+
+	// Temporary vectors and preprocessing
+	vector<complex<double> > av(m);
+	for (size_t i = 0; i < n; i++)
+		av[i] = vec[i] * expTable[i];
+	vector<complex<double> > bv(m);
+	bv[0] = expTable[0];
+	for (size_t i = 1; i < n; i++)
+		bv[i] = bv[m - i] = std::conj(expTable[i]);
+
+	// Convolution
+	vector<complex<double> > cv(m);
+	convolve(av, bv, cv);
+
+	// Postprocessing
+	for (size_t i = 0; i < n; i++)
+		vec[i] = cv[i] * expTable[i];
+}
+
+
+void FourierTransform::convolve(
+	const vector<complex<double> > &xvec,
+	const vector<complex<double> > &yvec,
+	vector<complex<double> > &outvec)
+{
+	size_t n = xvec.size();
+	if (n != yvec.size() || n != outvec.size())
+		throw "Mismatched lengths";
+	vector<complex<double> > xv = xvec;
+	vector<complex<double> > yv = yvec;
+	fft(xv);
+	fft(yv);
+	for (size_t i = 0; i < n; i++)
+		xv[i] *= yv[i];
+	ifft(xv);
+	for (size_t i = 0; i < n; i++)  // Scaling (because this FFT implementation omits it)
+		outvec[i] = xv[i] / static_cast<double>(n);
+}
+
+
+static size_t reverseBits(size_t x, int n)
+{
+	size_t result = 0;
+	for (int i = 0; i < n; i++, x >>= 1)
+		result = (result << 1) | (x & 1U);
+	return result;
+}
+
+
+
+ComplexMult C;
+
+vector<complex<double>> FourierTransform::transform(vector<complex<double> > &vec, int sign)
+{
+	vector<complex<double>> OUT(vec.size());
+	vector<double> temp_real(vec.size());
+	vector<double> temp_imag(vec.size());
+
+	if (sign == -1)
+	{
+		fft(vec);
+		OUT = vec;
+	}
+
+	else
+
+	{
+		ifft(vec);
+
+		for (int i = 0; i != vec.size(); ++i)
+		{
+			temp_real[i] = vec[i].real() / vec.size();
+			temp_imag[i] = vec[i].imag() / vec.size();
+		}
+
+		OUT = C.ReImVect2ComplexVector(temp_real, temp_imag);
+
+	}
+
+	return OUT;
+}
+
+*/
+
+
+
+/*vector<complex<double>> ovelapAndSaveMethod :: overlapSave(vector<complex<double>> &input, vector<complex<double>> &filter, int NFFT)
+{
+/*int M = Filter.size();
+int L = IN.size();
+int N = L + M - 1;
+vector<complex<double>> OUT(N);
+
+std::vector<complex<double>> hn(N);	// Filter after padding zeros(initialization)
+std::vector<complex<double>> h(Filter);
+std::vector<complex<double>> zeroPad(L - 1, 0);
+hn.reserve(h.size() + zeroPad.size());				 // preallocate memory
+hn.insert(hn.end(), h.begin(), h.end());
+hn.insert(hn.end(), zeroPad.begin(), zeroPad.end()); // zero padded hn vector h[n] = {filterData of length M....,L-1 zeros}
+
+std::vector<complex<double>> dn(N); // Data block aftrer adding zeros
+std::vector<complex<double>> d(IN);
+std::vector<complex<double>> zeroBegin(M - 1, 0);
+
+dn.reserve(d.size() + zeroBegin.size());				 // preallocate memory
+dn.insert(dn.end(), d.begin(), d.end());
+dn.insert(dn.end(), zeroBegin.begin(), zeroBegin.end()); // Data added at the beginning of th
+
+return OUT;*/
+
+/*int N = NFFT;
+int M = filter.size();
+int L = N - M + 1;
+
+
+vector<complex<double>> hn;							  // Filter after padding zeros(initialization)
+vector<complex<double>> h(filter);
+vector<complex<double>> zeroPad(L - 1, 0);
+hn.reserve(h.size() + zeroPad.size());				 // preallocate memory
+hn.insert(hn.begin(), h.begin(), h.end());
+hn.insert(hn.end(), zeroPad.begin(), zeroPad.end()); // zero padded hn vector h[n] = {filterData of length M....,L-1 zeros}
+
+
+int r = input.size()%L;
+vector<complex<double>> dataBlock;
+
+if (r==0)
+{
+dataBlock = input;
+}
+else
+{
+vector<complex<double>> zeroAdd(L - r, 0);
+dataBlock.reserve(dataBlock.size() + zeroAdd.size());
+dataBlock.insert(dataBlock.begin(), input.begin(), input.end());
+dataBlock.insert(dataBlock.end(), zeroAdd.begin(), zeroAdd.end());			// here, data block is integer multiple of L
+}
+
+int d = dataBlock.size() / L;	// divisor for loop ineration to cover full block
+
+vector<complex<double>> presentDataBlock;
+for (unsigned int i = 0; i < d; i++)
+{
+presentDataBlock.at(i);
+}
+
+
+return input;
+}*/
