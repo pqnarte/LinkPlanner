@@ -1,6 +1,10 @@
 # ifndef SINK_H_
 # define SINK_H_
 
+# include <algorithm>   // std::min
+# include <string>		// compare
+
+# include "netxpto.h"
 
 class Sink : public Block {
 
@@ -15,7 +19,7 @@ public:
 	long int numberOfSamples{ -1 };
 
 	/* Methods */
-
+	Sink() {};
 	Sink(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 
 	bool runBlock(void);
