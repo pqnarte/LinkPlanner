@@ -1,5 +1,22 @@
 #include "coincidence_detector_20180206.h"
+/*Outputing a .txt with information about the bits sent by Alice and the bits received by Bob for each case*/
+/*
+CoincidenceDetector::~CoincidenceDetector() {
 
+	
+
+	ofstream myfile;
+	myfile.open(fileName);
+	myfile << "Number of Bits sent by Alice: " << bitsAlice << "\n";
+	myfile << "Number of Bits received by Bob: " << bitsAlice - bitsAtten -bitsDoubl << "\n";
+	myfile << "Number of Bits double click: " << bitsDoubl << " \n";
+	myfile << "Number of Bits that suffered attenuation: " << bitsAtten << " \n";
+
+	myfile.close();
+
+	return;
+}
+*/
 void CoincidenceDetector::initialize(void) {
 
 	outputSignals[0]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
@@ -27,6 +44,8 @@ bool CoincidenceDetector::runBlock(void) {
 		t_binary value1;
 		inputSignals[1]->bufferGet(&value1);
 
+		bitsAlice++;
+
 		if ((value0 == 1) && (value1 == 0)) {
 			outputSignals[0]->bufferPut((t_real)0.0);
 		}
@@ -35,9 +54,11 @@ bool CoincidenceDetector::runBlock(void) {
 		}
 		else if ((value0 == 1) && (value1 == 1)) {
 			outputSignals[0]->bufferPut((t_real)-2.0);
+			bitsDoubl++;
 		}
 		else {
 			outputSignals[0]->bufferPut((t_real)-1.0);
+			bitsAtten++;
 		}
 		
 	}

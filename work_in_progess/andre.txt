@@ -1,3 +1,15 @@
+2018-05-08
+TO BE DONE
+
+	resolver as coisas que estão assinaldas no ficheiro pdf
+
+	poder chamar o ficheiro da janela de comandos bpsk_system <input_parameters.txt> <output_directory> 
+	setFolderName(string fName)
+
+	colocar a funcionar o bpsk_system e o quantum_random_number_generator
+
+next meeting: 15/5, 16h
+
 2018-04-24
 TO BE DONE
 	PARA FAZER PARA A SEMANA

@@ -1,6 +1,9 @@
 # include "netxpto.h"
 # include "pulse_shaper_fd_20180306.h"
 # include "overlap_save_20180208.h"
+# include "fft_20180208.h"
+
+
 
 using namespace std;
 
@@ -31,6 +34,35 @@ void PulseShaperFd::initialize(void) {
 	};
 
 	initializeFD_Filter();
+
+
+}
+
+
+void PulseShaperFd_New::initialize(void) {
+
+	double samplingPeriod = inputSignals[0]->samplingPeriod;
+	double symbolPeriod = inputSignals[0]->symbolPeriod;
+
+	transferFunctionLength = (int)floor(transferFunctionFrequencyLength * symbolPeriod / samplingPeriod);
+	transferFunction.resize(transferFunctionLength);
+
+	switch (getFilterType()) {
+
+	case RaisedCosineTF:
+		raisedCosineTF(transferFunction, getTransferFunctionLength(), rollOffFactor, samplingPeriod, symbolPeriod);
+		break;
+	case RootRaisedCosineTF:
+		rootRaisedCosineTF(transferFunction, getTransferFunctionLength(), rollOffFactor, samplingPeriod, symbolPeriod);
+		break;
+	case GaussianTF:
+		gaussianTF(transferFunction, getTransferFunctionLength(), BTs, samplingPeriod, symbolPeriod);
+		break;
+	};
+
+	//initializeFD_Filter();
+	initializeFD_Filter_New();
+
 
 }
 

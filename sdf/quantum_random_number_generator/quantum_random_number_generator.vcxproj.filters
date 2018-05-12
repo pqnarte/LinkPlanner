@@ -77,8 +77,5 @@
     <ClInclude Include="..\..\include\netxpto_20180118.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\sink_20180118.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

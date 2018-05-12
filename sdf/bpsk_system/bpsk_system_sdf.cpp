@@ -71,7 +71,7 @@ public:
 
 int main() {
 
-	BPSKParameters param("../data.txt"); //Reads the input parameters from the file data.txt
+	BPSKParameters param("input_parameters_0.txt"); //Reads the input parameters from the file data.txt
 	
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################

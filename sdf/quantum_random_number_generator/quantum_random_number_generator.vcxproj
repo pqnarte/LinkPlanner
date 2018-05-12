@@ -166,7 +166,6 @@
     <ClInclude Include="..\..\include\qrng_decision_circuit.h" />
     <ClInclude Include="..\..\include\single_photon_detector_20180111.h" />
     <ClInclude Include="..\..\include\single_photon_source_20171218.h" />
-    <ClInclude Include="..\..\include\sink_20180118.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

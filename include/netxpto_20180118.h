@@ -695,6 +695,19 @@ public:
 	vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
 };
 
+class UnwrapFunctions
+{
+public:
+	void Unwrap(vector<double> &PhaseIn);
+	
+};
+
+class DecisionCircuitQPSK
+{
+public:
+	complex <double> DecisionCircuit(complex <double> &Signal_in);
+
+};
 
 ///////////////////// Fast Fourier Transform ////////////////////////
 
