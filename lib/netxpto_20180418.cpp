@@ -8,7 +8,6 @@
 # include <algorithm>
 # include <ctime>
 
-
 # include "netxpto_20180418.h"
 
 
@@ -30,7 +29,7 @@ void Signal::close() {
 			char *ptr = (char *)buffer;
 
 			ofstream fileHandler;
-			fileHandler.open("./signals/" + fileName, ios::out | ios::binary | ios::app);
+			fileHandler.open("./" + folderName + "/" + fileName, ios::out | ios::binary | ios::app);
 
 			if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
@@ -964,8 +963,13 @@ void System::run(string signalPath) {
 	clock_t start;
 	string separator = "|";
 	if (logValue)
-		logFile.open("./" + signalsFolder + "/" + logFileName);
-
+		logFile.open("./" + signalPath + "/" + logFileName);
+	//Writes which input parameters have been 
+	logFile << "The following input parameters were loaded from a file:" << endl;
+	for (string p : loadedInputParameters) {
+		logFile << p << endl;
+	}
+	logFile << "-------------------------------------------------------" << endl;
 
 	int l = 0;
 	bool Alive;
@@ -1018,6 +1022,16 @@ void System::setLogValue(bool value){
 
 void System::setLogFileName(string newName){
 	logFileName = newName;
+}
+
+void System::setSignalsFolderName(string newName)
+{
+	signalsFolder = newName;
+}
+
+void System::setLoadedInputParameters(vector<string> loadedInputParams)
+{
+	loadedInputParameters = loadedInputParams;
 }
 
 
@@ -1761,7 +1775,7 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 // #####################################################################################################
 
 /* Auxiliary method to split string by a delimiter. Returns a vector of string */
-vector<string> SystemParameters::split(const string &text, char sep) {
+vector<string> SystemInputParameters::split(const string &text, char sep) {
 	vector<string> tokens;
 	size_t start = 0, end = 0;
 	while ((end = text.find(sep, start)) != string::npos) {
@@ -1772,58 +1786,74 @@ vector<string> SystemParameters::split(const string &text, char sep) {
 	return tokens;
 }
 
-void SystemParameters::readSystemInputParameters(string inputFilename)
+void SystemInputParameters::readSystemInputParameters()
 {
-	{
-		ifstream inputFile("./" + inputFilename);
-		if (!inputFile) {
-			cerr << "ERROR: Could not open " << inputFilename;
+	if (inputParametersFileName == "") return;
+	ifstream inputFile("./" + inputParametersFileName);
+	if (!inputFile) {
+		cerr << "ERROR: Could not open " << inputParametersFileName;
+		exit(1);
+	}
+	int errorLine = 1;
+	//Reads each line
+	string line;
+	while (getline(inputFile, line)) {
+		try {
+			//If the line is a comment, it just skips to the next one
+			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
+				vector<string> splitline = split(line, '=');
+				if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
+					if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
+						parameters[splitline[0]]->setValue(parseInt(splitline[1]));
+					else if(parameters[splitline[0]]->getType() == DOUBLE)
+						parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
+					else if(parameters[splitline[0]]->getType() == BOOL)
+						parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+					//Logs that a given parameter has been loaded from a file
+					loadedInputParameters.push_back(splitline[0]);
+				}
+			}
+			errorLine++;
+		}
+		catch (const exception& e) {
+			(void)e;
+			cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputParametersFileName;
 			exit(1);
 		}
-		int errorLine = 1;
-		//Reads each line
-		string line;
-		while (getline(inputFile, line)) {
-			try {
-				//If the line if a comment, it just skips to the next one
-				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-					vector<string> splitline = split(line, ':');
-					if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
-						if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
-							parameters[splitline[0]]->setValue(parseInt(splitline[1]));
-						else if(parameters[splitline[0]]->getType() == DOUBLE)
-							parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
-						else if(parameters[splitline[0]]->getType() == BOOL)
-							parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-					}
-				}
-				errorLine++;
-			}
-			catch (const exception& e) {
-				cerr << "ERROR: Invalid input in line " << errorLine << " of " << inputFilename;
-				exit(1);
-			}
-		}
-		inputFile.close();
+	}
+	inputFile.close();
+}
+
+void SystemInputParameters::addInputParameter(string name, int * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, double * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, bool * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+SystemInputParameters::SystemInputParameters(int argc, char * argv[])
+{
+	if (argc == 1) {
+		SystemInputParameters();
+	}
+	else if (argc == 2) { //Name of the file from where the input parameters will be read as been passed
+		inputParametersFileName = argv[1];
+	}
+	else if (argc == 3) {//Name of input parameters' file and output directory passed
+		inputParametersFileName = argv[1];
+		outputFolderName = argv[2];
 	}
 }
 
-void SystemParameters::addParameter(string name, int * variable)
-{
-	parameters[name] = new Parameter(variable);
-}
-
-void SystemParameters::addParameter(string name, double * variable)
-{
-	parameters[name] = new Parameter(variable);
-}
-
-void SystemParameters::addParameter(string name, bool * variable)
-{
-	parameters[name] = new Parameter(variable);
-}
-
-SystemParameters::~SystemParameters()
+SystemInputParameters::~SystemInputParameters()
 {	
 	for (map<string, Parameter*>::iterator itr = parameters.begin(); itr != parameters.end();itr++) {
 		delete (itr->second);
@@ -1831,19 +1861,19 @@ SystemParameters::~SystemParameters()
 }
 
 /* Allows for the recognition of scientific notation. Ex: parseDouble("6.23e+1") will return 62*/
-int SystemParameters::parseInt(string str)
+int SystemInputParameters::parseInt(string str)
 {
 	return (int) parseDouble(str);
 }
 /* Allows for the recognition of scientific notation. Ex: parseDouble("1.83e-2") will return 0.0183*/
-double SystemParameters::parseDouble(string str) {
+double SystemInputParameters::parseDouble(string str) {
 	istringstream os(str);
 	double d;
 	os >> d;
 	return d;
 }
 
-bool SystemParameters::parseBool(string str)
+bool SystemInputParameters::parseBool(string str)
 {
 	if (str == "true")
 		return true;
@@ -1853,42 +1883,42 @@ bool SystemParameters::parseBool(string str)
 		throw exception();
 }
 
-void SystemParameters::Parameter::setValue(int value)
+void SystemInputParameters::Parameter::setValue(int value)
 {
 	if (type != INT) throw invalid_argument("Parameter is not of type INT");
 	*i = value;
 }
 
-void SystemParameters::Parameter::setValue(double value)
+void SystemInputParameters::Parameter::setValue(double value)
 {
 	if (type != DOUBLE) throw invalid_argument("Parameter is not of type DOUBLE");
 	*d = value;
 }
 
-void SystemParameters::Parameter::setValue(bool value)
+void SystemInputParameters::Parameter::setValue(bool value)
 {
 	if (type != BOOL) throw invalid_argument("Parameter is not of type BOOL");
 	*b = value;
 }
 
-SystemParameters::ParameterType SystemParameters::Parameter::getType()
+SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
 {
 	return type;
 }
 
-SystemParameters::Parameter::Parameter(int * elem)
+SystemInputParameters::Parameter::Parameter(int * elem)
 {
 	type = INT;
 	i = elem;
 }
 
-SystemParameters::Parameter::Parameter(double * elem)
+SystemInputParameters::Parameter::Parameter(double * elem)
 {
 	type = DOUBLE;
 	d = elem;
 }
 
-SystemParameters::Parameter::Parameter(bool * elem)
+SystemInputParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;

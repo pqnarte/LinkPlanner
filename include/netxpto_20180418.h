@@ -630,7 +630,10 @@ class System {
   void run(string signalPath);
   void setLogValue(bool value);
   void setLogFileName(string newName);
+  void setSignalsFolderName(string newName);
+  void setLoadedInputParameters(vector<string> loadedInputParams);
 
+private:
   string signalsFolder{ "signals" };
   char fileName[MAX_NAME_SIZE];  // Name of the file with system description (.sdf)
   char name[MAX_NAME_SIZE];  // System Name
@@ -640,6 +643,7 @@ class System {
   //Debug inputs
   string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
   bool logValue{ true }; // Will write debug info if true
+  vector<string> loadedInputParameters;
 };
 
 //########################################################################################################################################################
@@ -717,8 +721,11 @@ public:
 
 ///////////////////// System Parameters ////////////////////////
 
-class SystemParameters {
+class SystemInputParameters {
 private:
+	vector<string> loadedInputParameters;
+	string inputParametersFileName{ "" }; //name of the file from where the input parameters will be read
+	string outputFolderName{ "signals" };
 	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
@@ -752,15 +759,19 @@ private:
 	map<string, Parameter*> parameters = map<string, Parameter*>(); //Maps the names of the variables to the addresses of the parameters
 
 public:
-	void readSystemInputParameters(string inputFilename);
+	string getInputParametersFileName() { return inputParametersFileName; }
+	string getOutputFolderName() { return outputFolderName; }
+	vector<string> getLoadedInputParameters() { return loadedInputParameters; }
+	void readSystemInputParameters();
 	//Adds the parameter to the map
-	void addParameter(string name, int* variable);
-	void addParameter(string name, double* variable);
-	void addParameter(string name, bool* variable);
+	void addInputParameter(string name, int* variable);
+	void addInputParameter(string name, double* variable);
+	void addInputParameter(string name, bool* variable);
 	/* Default empty constructor. Initializes the map */
-	SystemParameters() { }
+	SystemInputParameters(){}
+	SystemInputParameters(int argc,char*argv[]);
 	/* Deletes all heap memory occupied by the parameters */
-	~SystemParameters();
+	~SystemInputParameters();
 };
 
 # endif // PROGRAM_INCLUDE_netxpto_H_
