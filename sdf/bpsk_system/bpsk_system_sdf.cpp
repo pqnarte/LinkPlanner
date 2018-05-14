@@ -17,9 +17,9 @@
 // #####################################################################################################
 
 
-class BPSKParameters : public SystemParameters {
+class BPSKInputParameters : public SystemInputParameters {
 public:
-	//PARAMETERS
+	//INPUT PARAMETERS
 	int numberOfBitsReceived{ -1 };
 	int numberOfBitsGenerated{ 1000 };
 	int samplesPerSymbol = 16;
@@ -38,77 +38,89 @@ public:
 	int bufferLength = 20;
 	bool shotNoise = false;
 
-	/* Initializes default parameters, calls superclass' constructor*/
-	BPSKParameters() : SystemParameters() {
-		initializeParameterMap(); //Initializes the parameters
+	/* Initializes default parameters */
+	BPSKInputParameters() : SystemInputParameters() {
+		initializeInputParameterMap(); //Initializes the parameters
 	}
-	/* Initializes parameters from a file, calls superclass' constructor */
-	BPSKParameters(string filename) : SystemParameters() {
-		initializeParameterMap(); //Initializes the parameters
-		readSystemInputParameters(filename); //Reads the parameters from a file
+
+	/* Initializes input parameters from according to the program arguments*/
+	BPSKInputParameters(int argc, char*argv[]) : SystemInputParameters(argc,argv) {
+		initializeInputParameterMap(); //Initializes the parameters
+		readSystemInputParameters();
 	}
 
 	//METHODS
-	//Each parameter must be added to the parameter map by calling addParameter(string,param*)
-	void initializeParameterMap(){
-		addParameter("numberOfBitsReceived", &numberOfBitsReceived); //Cria parametro numberOfBitsReceived
-		addParameter("numberOfBitsGenerated", &numberOfBitsGenerated); //Cria parametro numberOfBitsGenerated
-		addParameter("samplesPerSymbol", &samplesPerSymbol); //Cria parametro samplesPerSymbol
-		addParameter("pLength", &pLength);
-		addParameter("bitPeriod", &bitPeriod);
-		addParameter("rollOffFactor", &rollOffFactor);
-		addParameter("signalOutputPower_dBm", &signalOutputPower_dBm);
-		addParameter("localOscillatorPower_dBm", &localOscillatorPower_dBm);
-		addParameter("localOscillatorPhase", &localOscillatorPhase);
-		addParameter("responsivity", &responsivity);
-		addParameter("amplification", &amplification);
-		addParameter("electricalNoiseAmplitude", &electricalNoiseAmplitude);
-		addParameter("samplesToSkip", &samplesToSkip);
-		addParameter("bufferLength", &bufferLength);
-		addParameter("shotNoise", &shotNoise);
+	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
+	void initializeInputParameterMap(){
+		addInputParameter("numberOfBitsReceived", &numberOfBitsReceived); //Cria parametro numberOfBitsReceived
+		addInputParameter("numberOfBitsGenerated", &numberOfBitsGenerated); //Cria parametro numberOfBitsGenerated
+		addInputParameter("samplesPerSymbol", &samplesPerSymbol); //Cria parametro samplesPerSymbol
+		addInputParameter("pLength", &pLength);
+		addInputParameter("bitPeriod", &bitPeriod);
+		addInputParameter("rollOffFactor", &rollOffFactor);
+		addInputParameter("signalOutputPower_dBm", &signalOutputPower_dBm);
+		addInputParameter("localOscillatorPower_dBm", &localOscillatorPower_dBm);
+		addInputParameter("localOscillatorPhase", &localOscillatorPhase);
+		addInputParameter("responsivity", &responsivity);
+		addInputParameter("amplification", &amplification);
+		addInputParameter("electricalNoiseAmplitude", &electricalNoiseAmplitude);
+		addInputParameter("samplesToSkip", &samplesToSkip);
+		addInputParameter("bufferLength", &bufferLength);
+		addInputParameter("shotNoise", &shotNoise);
 	}
 };
 
-int main() {
+/* Usage: .\bpsk_system.exe <input_parameters.txt> <output_directory> */
+int main(int argc, char *argv[]) {
 
-	BPSKParameters param("input_parameters_0.txt"); //Reads the input parameters from the file data.txt
-	
+	BPSKInputParameters param(argc, argv);
+
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
 
 	Binary S0("S0.sgn");
 	S0.setBufferLength(param.bufferLength);
+	S0.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S1("S1.sgn");
 	S1.setBufferLength(param.bufferLength);
+	S1.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S2("S2.sgn");
 	S2.setBufferLength(param.bufferLength);
+	S2.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S3("S3.sgn");
 	S3.setBufferLength(param.bufferLength);
+	S3.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S4("S4.sgn");
 	S4.setBufferLength(param.bufferLength);
+	S4.setFolderName(param.getOutputFolderName());
 
 	TimeContinuousAmplitudeContinuousReal S5("S5.sgn");
 	S5.setBufferLength(param.bufferLength);
-	
+	S5.setFolderName(param.getOutputFolderName());
+
 	TimeDiscreteAmplitudeContinuousReal S6("S6.sgn");
 	S6.setBufferLength(param.bufferLength);
+	S6.setFolderName(param.getOutputFolderName());
 
 	Binary S7("S7.sgn");
 	S7.setBufferLength(param.bufferLength);
+	S7.setFolderName(param.getOutputFolderName());
 
 	Binary S8("S8.sgn");
 	S8.setBufferLength(param.bufferLength);
+	S8.setFolderName(param.getOutputFolderName());
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
 
 	MQamTransmitter B1{ vector<Signal*> {}, vector<Signal*> {&S1, &S0} };
+
 	B1.setNumberOfBits(param.numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(param.signalOutputPower_dBm);
 	B1.setMode(PseudoRandom);
@@ -154,11 +166,13 @@ int main() {
 	// #####################################################################################################
 
 	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8} };
+	MainSystem.setSignalsFolderName(param.getOutputFolderName());
+	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
 	// #####################################################################################################
-
+	
 	MainSystem.run();
 
 	return 0;
