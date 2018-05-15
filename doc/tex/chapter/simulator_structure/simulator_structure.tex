@@ -1,6 +1,22 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\fontsize{7}{9}\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 % ------------------------------------------------------------------------
 \chapter{Simulator Structure}
@@ -156,26 +172,34 @@ In order to use the IPS in your system some requirements must be met. In this il
 \item The created class must have 2 constructors: one that receives no arguments and calls the method \textbf{initializeInputParameterMap()}; one that receives \textbf{int argc} and \textbf{char*argv[]} as arguments and calls methods \textbf{initializeInputParameterMap()} and \textbf{readSystemInputParameters()}. Note that method \textbf{readSystemInputParameters()} is already implemented and may be called by the user. Only method \textbf{initializeInputParameterMap()} must be implemented.
 \item The created class must contain the method \textbf{initializeInputParameterMap()} that will add all input parameters.
 You must implement this method. To add an input parameter you must call \textbf{addInputParameter(paramName,paramAddress)}, where \textbf{paramName} is a string that represents the name of your input parameter and \textbf{paramAddress} is the address of your input parameter. Only parameters of types \textbf{int}, \textbf{double} and \textbf{bool} are supported by the IPS. Parameters that are not of these types cannot be added in \textbf{initializeInputParameterMap()}.
-\item The output folder of each signal must be changed. Method \textbf{<SIGNAL>.setFolderName(<param>.getOutputFolderName())} must be called in order to change the output directory of the signals. <SIGNAL> is the object of class Signal and <param> is the object of the input parameter class. An example is shown in Figure \ref{fig:ipsmanualparameters}
+\item The output folder of each signal must be changed. Method,
+\begin{lstlisting}
+<SIGNAL>.setFolderName(<param>.getOutputFolderName())
+\end{lstlisting}
+ must be called in order to change the output directory of the signals. <SIGNAL> is the object of class Signal and <param> is the object of the input parameter class. An example is shown in Figure \ref{fig:ipsmanualparameters}
+\item Before running the MainSystem, the signals folder name and the list of loaded input parameters must be set. You only need to include the following lines before calling MainSystem.run().
 \end{enumerate}
 \pagebreak
-The following code represents the class \textbf{BPSKInputParameters} and can be changed according to the system you are working on.
-\lstset{
-  language=C++,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\fontsize{7}{9}\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
+
+
+\begin{lstlisting}
+int main(int argc, char*argv[]){
+    
+    (...)
+
+
+    //System Declaration and Inicialization
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10 } };
+	MainSystem.setSignalsFolderName(param.getOutputFolderName());
+	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
+
+    //System Run
+	MainSystem.run();
+
+	return 0;
 }
+\end{lstlisting}
+The following code represents the class \textbf{BPSKInputParameters} and can be changed according to the system you are working on.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{lstlisting}
 class BPSKInputParameters : public SystemInputParameters {
