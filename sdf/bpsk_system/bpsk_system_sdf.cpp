@@ -43,7 +43,7 @@ public:
 		initializeInputParameterMap(); //Initializes the parameters
 	}
 
-	/* Initializes input parameters from according to the program arguments*/
+	/* Initializes input parameters according to the program arguments*/
 	BPSKInputParameters(int argc, char*argv[]) : SystemInputParameters(argc,argv) {
 		initializeInputParameterMap(); //Initializes the parameters
 		readSystemInputParameters();
