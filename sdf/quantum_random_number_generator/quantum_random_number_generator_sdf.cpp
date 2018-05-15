@@ -1,4 +1,4 @@
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
 # include "electrical_signal_generator_20180124.h"
 # include "clock_20171219.h"
@@ -10,16 +10,36 @@
 # include "qrng_decision_circuit.h"
 # include "sink_20180118.h"
 
-int main(){
+class QRNGInputParameters : public SystemInputParameters {
+public:
+	//INPUT PARAMETERS
+	double rateOfPhotons{ 1e6 };
+	double polarizerAngle{ 360.0 };
+
+	/* Initializes default input parameters */
+	QRNGInputParameters() : SystemInputParameters() {
+		initializeInputParameterMap();
+	}
+	/* Initializes input parameters according to the program arguments */
+	/* Usage: .\bpsk_system.exe <input_parameters.txt> <output_directory> */
+	QRNGInputParameters(int argc, char*argv[]) : SystemInputParameters(argc, argv) {
+		initializeInputParameterMap();
+		readSystemInputParameters();
+	}
+	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
+	void initializeInputParameterMap() {
+		addInputParameter("rateOfPhotons", &rateOfPhotons);
+		addInputParameter("polarizerAngle", &polarizerAngle);
+	}
+};
+
+int main(int argc, char*argv[]){
 
 	// #####################################################################################################
 	// ################################### System Input Parameters #########################################
 	// #####################################################################################################
 
-	double rateOfPhotons{ 1e6 };
-	double polarizerAngle{ 360.0 };
-
-	QRNGParameters* param = new QRNGParameters(rateOfPhotons, polarizerAngle);
+	QRNGInputParameters param(argc,argv);
 
 	// #####################################################################################################
 	// ################################### Simulation Parameters ###########################################
@@ -32,45 +52,53 @@ int main(){
 	// #####################################################################################################
 	
 	TimeContinuousAmplitudeContinuousReal S1{ "S1.sgn" };
-	S1.setSaveSignal(false);
+	S1.setSaveSignal(true);
+	S1.setFolderName(param.getOutputFolderName());
 
 	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
-	S2.setSaveSignal(false);
+	S2.setSaveSignal(true);
+	S2.setFolderName(param.getOutputFolderName());
 
 	PhotonStreamXY S3{ "S3.sgn" };
-	S3.setSaveSignal(false);
+	S3.setSaveSignal(true);
+	S3.setFolderName(param.getOutputFolderName());
 
 	PhotonStreamXY S4{ "S4.sgn" };
-	S4.setSaveSignal(false);
+	S4.setSaveSignal(true);
+	S4.setFolderName(param.getOutputFolderName());
 
 	PhotonStreamMPXY S5{ "S5.sgn" };
-	S5.setSaveSignal(false);
+	S5.setSaveSignal(true);
+	S5.setFolderName(param.getOutputFolderName());
 
 	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };
-	S6.setSaveSignal(false);
+	S6.setSaveSignal(true);
+	S6.setFolderName(param.getOutputFolderName());
 
 	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn" };
-	S7.setSaveSignal(false);
+	S7.setSaveSignal(true);
+	S7.setFolderName(param.getOutputFolderName());
 
 	Binary S8{ "S8.sgn" };
-	S8.setSaveSignal(false);
+	S8.setSaveSignal(true);
+	S8.setFolderName(param.getOutputFolderName());
 
 	Binary S9{ "S9.sgn" };
-	S9.setSaveSignal(false);
-
+	S9.setSaveSignal(true);
+	S9.setFolderName(param.getOutputFolderName());
 	
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
 	ElectricalSignalGenerator B1{ vector <Signal*>{}, vector<Signal*>{&S1} };
-	B1.setSamplingPeriod((1 / param->rateOfPhotons) / numberOfSamplesPerSymbol);
-	B1.setSymbolPeriod(numberOfSamplesPerSymbol * (1 / param->rateOfPhotons));
+	B1.setSamplingPeriod((1 / param.rateOfPhotons) / numberOfSamplesPerSymbol);
+	B1.setSymbolPeriod(numberOfSamplesPerSymbol * (1 / param.rateOfPhotons));
 	B1.setFunction(ContinuousWave);
-	B1.setGain(param->polarizerAngle);
+	B1.setGain(param.polarizerAngle);
 
 	Clock B2{ vector<Signal*>{}, vector<Signal*>{&S2} };
-	B2.setClockPeriod(1 / param->rateOfPhotons);
-	B2.setSamplingPeriod((1 / param->rateOfPhotons) / numberOfSamplesPerSymbol);
+	B2.setClockPeriod(1 / param.rateOfPhotons);
+	B2.setSamplingPeriod((1 / param.rateOfPhotons) / numberOfSamplesPerSymbol);
 	B2.setClockPhase(3 * PI / 2);
 	
 	SinglePhotonSource B3{ vector<Signal*>{&S2},vector<Signal*>{&S3} };
@@ -101,6 +129,8 @@ int main(){
 	// #####################################################################################################
 
 	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10 } };
+	MainSystem.setSignalsFolderName(param.getOutputFolderName());
+	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
