@@ -1,0 +1,3 @@
+//------------ QRNG INPUT PARAMETERS -------------
+rateOfPhotons=1e5
+polarizerAngle=360

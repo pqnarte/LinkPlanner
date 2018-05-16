@@ -42,10 +42,10 @@
     <ClCompile Include="..\..\lib\probability_estimator_20180124.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\netxpto_20180118.cpp">
+    <ClCompile Include="..\..\lib\sink_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\sink_20180118.cpp">
+    <ClCompile Include="..\..\lib\netxpto_20180418.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,7 +74,7 @@
     <ClInclude Include="..\..\include\probability_estimator_20180124.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\netxpto_20180118.h">
+    <ClInclude Include="..\..\include\netxpto_20180418.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

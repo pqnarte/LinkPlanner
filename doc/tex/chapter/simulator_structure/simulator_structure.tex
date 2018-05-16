@@ -1,3 +1,22 @@
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  language=C++,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\fontsize{7}{9}\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 % ------------------------------------------------------------------------
 \chapter{Simulator Structure}
@@ -96,6 +115,15 @@ Figure \ref{fig:homodynesignals} shows a portion of code that consists in the de
 \label{fig:homodynesignals}
 \end{figure}
 
+The list of the input parameters loaded from a file is presented at the top of the output file, as shown in Figure \ref{fig:changedinputparameters}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.50\linewidth]{./chapter/simulator_structure/figures/logfile_input_parameters_changed}
+\caption{Four input parameters where loaded from a file}
+\label{fig:changedinputparameters}
+\end{figure}
+
 \subsection{Testing Log File}
 In directory \textit{doc/tex/chapter/simulator\_structure/test\_log\_file/bpsk\_system/} there is a copy of the BPSK system. You may use it to test the Log File. The main method is located in file \textit{bpsk\_system\_sdf.cpp}
 
@@ -107,114 +135,163 @@ In directory \textit{doc/tex/chapter/simulator\_structure/test\_log\_file/bpsk\_
 % ---------------------------------------------------------------------
 \section{Input Parameters System}
 \subsection{Introduction}
-Each system contains a set of parameters that are used to change its behaviour.
-These parameters are variables whose values may be changed in the code. The Input Parameters System (IPS) allows
-for the parameters to be read from a file, i.e., it is not necessary to change the code in order to change the value
-of the parameters.
-
-\subsection{How To Include The IPS In Your System}
-In order to use the IPS in your system some requirements must be met. For this example we will be using the BPSK system:
-\begin{enumerate}
-\item Your system must include \textbf{netxpto\_20180418.h}. Previous versions of netxpto do not support the IPS.
-\item Create a class that will contain the system parameters. This class must be a derived class of \textbf{SystemParameters}. In this case the created class is called \textbf{BPSKParameters}.
-
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\linewidth]{./chapter/simulator_structure/figures/bpsk_parameter_system}
-\caption{BPSKParameters class is a derived class of SystemParameters}
-\label{fig:ipsderivedclass}
-\end{figure}
-
-\item The created class must have 2 constructors: one that receives no arguments and calls the method \textbf{initializeParameterMap()}; one that receives a string as argument and calls methods \textbf{initializeParameterMap()} and \textbf{readSystemInputParameters(string filename)}. Note that method $\textbf{readSystemInputParameters(string filename)}$ is already implemented and may be called by the user. Only the method \textbf{initializeParameterMap()} must be implemented. An example is shown in Figure \ref{fig:ipsconstructors}.
-
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\linewidth]{./chapter/simulator_structure/figures/bpsk_parameters_constructor}
-\caption{BPSKParameters has 2 constructors}
-\label{fig:ipsconstructors}
-\end{figure}
-
-\item The created class must contain the method \textbf{initializeParameterMap()} that will add all your system's parameters.
-You must implement this method by yourself. To add a parameter you must call \textbf{addParameter(paramName,paramAddress)}, where \textbf{paramName} is a string that represents the name of your parameter and paramAdress is the address of your parameter variable.
-For example, if I want to add the following parameter \textbf{\textit{int} amplitude = 90}, I must call \textbf{addParameter(``amplitude'',\&amplitude)}. Note: Only parameters of types \textbf{int}, \textbf{double} and \textbf{bool} are supported by the IPS. Parameters that are not of these types cannot be added in \textbf{initializeParameterMap()}.
-
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\linewidth]{./chapter/simulator_structure/figures/bpsk_initialize_parameters}
-\caption{All parameters from BPSKParameters are being added}
-\label{fig:ipsparameters}
-\end{figure}
-\end{enumerate}
-
-\begin{table}[H]
-\centering
-\begin{tabulary}{1.0\textwidth}{|p{9cm}|p{1cm}|p{5cm}|}
-\hline
-\multicolumn{3}{|c|}{ \textbf{SystemParameters - Available Methods} } \\
-\hline
-\textbf{Method}                                 & \textbf{Type} & \textbf{Comments} \\ \hline
-addParameter(string name, int* variable)        & void          & Adds a parameter whose value is of type int\\ \hline
-addParameter(string name, double* variable)     & void	        & Adds a parameter whose value is of type double\\ \hline
-addParameter(string name, bool* variable)       & void	        & Adds a parameter whose value is of type bool\\ \hline
-readSystemInputParameters(string inputFilename) & void	        & Reads the parameters from a file.\\ \hline
-\end{tabulary}
-\end{table}	
-
-\subsection{How To Use IPS}
-You may use the IPS in two different ways. You may choose to change the value of the variables in the code itself or
-you may choose to load the values of the variables from a file. There is a constructor for each usage of the IPS.
-We will use the example of the \textbf{BPSKParameters}, that has the following constructors available.
-\begin{table}[H]
-\centering
-\begin{tabulary}{1.0\textwidth}{|p{7cm}|p{8cm}|}
-\hline
-\multicolumn{2}{|c|}{ \textbf{BPSKParameters - Available Constructors} } \\
-\hline
-\textbf{Constructors}               & \textbf{Comments} \\ \hline
-BPSKParameters()                    & Creates an object of BPSKParameters with the default parameter values\\ \hline
-BPSKParameters(string filename)     & Creates an object of BPSKParameters and loads the values from a file\\ \hline
-\end{tabulary}
-\end{table}	
-\subsubsection{Changing Parameters Manually}
-In order to change the values of parameters manually, you need to create an object of your parameter class. You can access and change the values of the parameters directly, since these are public. The following figure shows the example of the BPSKParameters.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\linewidth]{./chapter/simulator_structure/figures/ips_manual_parameters}
-\caption{An object of BPSKParameters is created. Parameter bufferLength is accessed directly}
-\label{fig:ipsmanualparameters}
-\end{figure}
-
-\subsubsection{Loading Parameters From A File}
-It is possible to load the values of the parameters from a file. First you must create an object of your parameter class, passing to the
-constructor a string with the path to the input file. The following figure shows the example of the BPSKParameters.
-\renewcommand{\figurename}{Figure}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\linewidth]{./chapter/simulator_structure/figures/ips_reading_file}
-\caption{An object of BPSKParameters is created. The relative path to the input file is specified to the constructor}
-\label{fig:ipsfileparameters}
-\end{figure}
+With the Input Parameters System (IPS) it is possible to read the input parameters from a file.
 
 \subsubsection{Format Of The Input File}
-In Figure \ref{fig:ipsfilecontent}, it is possible to observe the contents of the file \textbf{data.txt} used previously to load the values
-of some of the BPSK system's parameters. The input file must follow these properties:
+In Figure \ref{fig:ipsfilecontent}, it is possible to observe the contents of the file \textbf{input\_parameters\_0.txt} used to load the values of some of the BPSK system's input parameters. The input file must respect the following properties:
 \begin{enumerate}
-\item Parameter values can be changed by adding a line in the following format: \textbf{paramName:newValue}, where \textbf{paramName} is the name of the parameter and \textbf{newValue} is the value to be assigned. In Figure \ref{fig:ipsfilecontent}, line 3 changes the value of parameter \textbf{pLength} to 99.
-\item IPS supports scientific notation. In lines 6 and 8 of Figure \ref{fig:ipsfilecontent}, parameters \textbf{numberOfBitsGenerated} and \textbf{bitPeriod} are assigned values in scientific notation. This notation works for the lower case character \textbf{e} and the upper case character \textbf{E}.
-\item If a parameters is assigned the wrong type of value, $\textbf{readSystemInputParameters(string filename)}$ will throw an exception. There is no syntax checking, so the user must be careful when assigning values. For example, if the value 76 is assigned to a parameter of type \textbf{bool} an exception will be thrown.
-\item Not all parameters need to be changed. The BPSK system has 15 parameters, and the file is only changing 4 of them.
-\item The IPS supports comment in the form of the characters \textbf{//}. There will be no error message if a comment does not begin with \textbf{//}, although this is unsafe behavior and is not recommended. The IPS will work normally if this happens.
+\item Input parameter values can be changed by adding a line in the following format: \textbf{paramName=newValue}, where \textbf{paramName} is the name of the input parameter and \textbf{newValue} is the value to be assigned. Line 3 of \textbf{input\_parameters\_0.txt} changes the value of input parameter \textbf{pLength} to 5.
+\item IPS supports scientific notation. In lines 6 and 8 of \textbf{input\_parameters\_0.txt}, input parameters \textbf{numberOfBitsGenerated} and \textbf{bitPeriod} are assigned values in scientific notation. This notation works for the lower case character \textbf{e} and the upper case character \textbf{E}.
+\item If an input parameters is assigned the wrong type of value, method $\textbf{readSystemInputParameters()}$ will throw an exception.
+    A list containing all changed input parameters will be available at the top of the log file.
+\item Not all input parameters need to be changed. The BPSK system has 15 input parameters, and \textbf{input\_parameters\_0.txt} is only changing 4 of them.
+\item The IPS supports comments in the form of the characters \textbf{//}. The comments will only be recognized if placed at the beginning of a line.
 \end{enumerate}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\linewidth]{./chapter/simulator_structure/figures/ips_input_file}
-\caption{Content of file data.txt}
+\caption{Content of file input\_parameters\_0.txt}
 \label{fig:ipsfilecontent}
+\end{figure}
+
+\subsubsection{Loading Input Parameters From A File}
+Execute the following command in the Command Line:
+\begin{itemize}
+  \item[] \textbf{.\textbackslash{}some\_system.exe <input\_file\_path> <output\_directory>}
+\end{itemize}
+
+,where \textbf{some\_system.exe} is the name of the executable generated after compiling the project.
+In the case of the BPSK system, the executable is \textbf{bpsk\_system.exe}; \textbf{<input\_file\_path>} is the path to the file containing the new input parameters; \textbf{<output\_directory>} is the directory where the output signals will be written into.
+
+\subsection{How To Include The IPS In Your System}
+In order to use the IPS in your system some requirements must be met. In this illustrative example, we will use the BPSK System:
+\begin{enumerate}
+\item Your system must include \textbf{netxpto\_20180418.h} or later. Previous versions of netxpto do not support the IPS.
+\item Create a class that will contain the system input parameters. This class must be a derived class of \textbf{SystemInputParameters}. In this case the created class is called \textbf{BPSKInputParameters}.
+\item The created class must have 2 constructors: one that receives no arguments and calls the method \textbf{initializeInputParameterMap()}; one that receives \textbf{int argc} and \textbf{char*argv[]} as arguments and calls methods \textbf{initializeInputParameterMap()} and \textbf{readSystemInputParameters()}. Note that method \textbf{readSystemInputParameters()} is already implemented and may be called by the user. Only method \textbf{initializeInputParameterMap()} must be implemented.
+\item The created class must contain the method \textbf{initializeInputParameterMap()} that will add all input parameters.
+You must implement this method. To add an input parameter you must call \textbf{addInputParameter(paramName,paramAddress)}, where \textbf{paramName} is a string that represents the name of your input parameter and \textbf{paramAddress} is the address of your input parameter. Only parameters of types \textbf{int}, \textbf{double} and \textbf{bool} are supported by the IPS. Parameters that are not of these types cannot be added in \textbf{initializeInputParameterMap()}.
+\item The output folder of each signal must be changed. Method,
+\begin{lstlisting}
+<SIGNAL>.setFolderName(<param>.getOutputFolderName())
+\end{lstlisting}
+ must be called in order to change the output directory of the signals. <SIGNAL> is the object of class Signal and <param> is the object of the input parameter class. An example is shown in Figure \ref{fig:ipsmanualparameters}
+\item Before running the MainSystem, the signals folder name and the list of loaded input parameters must be set. You only need to include the following lines before calling MainSystem.run().
+\end{enumerate}
+\pagebreak
+
+
+\begin{lstlisting}
+int main(int argc, char*argv[]){
+    
+    (...)
+
+
+    //System Declaration and Inicialization
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10 } };
+	MainSystem.setSignalsFolderName(param.getOutputFolderName());
+	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
+
+    //System Run
+	MainSystem.run();
+
+	return 0;
+}
+\end{lstlisting}
+The following code represents the class \textbf{BPSKInputParameters} and can be changed according to the system you are working on.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%CODE%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lstlisting}
+class BPSKInputParameters : public SystemInputParameters {
+public:
+	//INPUT PARAMETERS
+	int numberOfBitsReceived{ -1 };
+	int numberOfBitsGenerated{ 1000 };
+	int samplesPerSymbol = 16;
+	int pLength = 5; //The default value of pLength is 5
+	double bitPeriod = 20e-12;
+	double rollOffFactor = 0.3;
+	double signalOutputPower_dBm = -20;
+	double localOscillatorPower_dBm = 0;
+	double localOscillatorPhase = 0;
+	vector<t_iqValues> iqAmplitudeValues = { { -1, 0 } ,{ 1, 0 } };
+	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2) } };
+	double responsivity = 1;
+	double amplification = 1e6;
+	double electricalNoiseAmplitude = 5e-4*sqrt(2);
+	int samplesToSkip = 8 * samplesPerSymbol;
+	int bufferLength = 20;
+	bool shotNoise = false;
+
+	/* Initializes default input parameters */
+	BPSKInputParameters() : SystemInputParameters() {
+		initializeInputParameterMap();
+	}
+
+	/* Initializes input parameters according to the program arguments */
+    /* Usage: .\bpsk_system.exe <input_parameters.txt> <output_directory> */
+	BPSKInputParameters(int argc, char*argv[]) : SystemInputParameters(argc,argv) {
+		initializeInputParameterMap();
+		readSystemInputParameters();
+	}
+
+	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
+	void initializeInputParameterMap(){
+		addInputParameter("numberOfBitsReceived", &numberOfBitsReceived);
+		addInputParameter("numberOfBitsGenerated", &numberOfBitsGenerated);
+		addInputParameter("samplesPerSymbol", &samplesPerSymbol);
+		addInputParameter("pLength", &pLength);
+		addInputParameter("bitPeriod", &bitPeriod);
+		addInputParameter("rollOffFactor", &rollOffFactor);
+		addInputParameter("signalOutputPower_dBm", &signalOutputPower_dBm);
+		addInputParameter("localOscillatorPower_dBm", &localOscillatorPower_dBm);
+		addInputParameter("localOscillatorPhase", &localOscillatorPhase);
+		addInputParameter("responsivity", &responsivity);
+		addInputParameter("amplification", &amplification);
+		addInputParameter("electricalNoiseAmplitude", &electricalNoiseAmplitude);
+		addInputParameter("samplesToSkip", &samplesToSkip);
+		addInputParameter("bufferLength", &bufferLength);
+		addInputParameter("shotNoise", &shotNoise);
+	}
+};
+\end{lstlisting}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{table}[H]
+\centering
+\begin{tabulary}{1.0\textwidth}{|p{9cm}|p{1cm}|p{5cm}|}
+\hline
+\multicolumn{3}{|c|}{ \textbf{SystemInputParameters - Methods} } \\
+\hline
+\textbf{Method}                                      & \textbf{Type} & \textbf{Comments} \\ \hline
+addInputParameter(string name, int* variable)        & void          & Adds an input parameter whose value is of type int\\ \hline
+addInputParameter(string name, double* variable)     & void	         & Adds an input parameter whose value is of type double\\ \hline
+addInputParameter(string name, bool* variable)       & void	         & Adds an input parameter whose value is of type bool\\ \hline
+readSystemInputParameters()                          & void	         & Reads the input parameters from a file.\\ \hline
+\end{tabulary}
+\end{table}	
+
+The input parameter class should have 2 constructors.
+The \textbf{BPSKInputParameters} class, has the following constructors available:
+\begin{table}[H]
+\centering
+\begin{tabulary}{1.0\textwidth}{|p{5cm}|p{10cm}|}
+\hline
+\multicolumn{2}{|c|}{ \textbf{BPSKInputParameters - Constructors} } \\
+\hline
+\textbf{Constructors}                   & \textbf{Comments} \\ \hline
+BPSKInputParameters()                        & Creates an object of BPSKInputParameters with the default input parameters' values\\ \hline
+BPSKInputParameters(int argc, char*argv[])   & Creates an object of BPSKInputParameters and loads the values according to the program arguments passed in the command line\\ \hline
+\end{tabulary}
+\end{table}	
+
+In order to use the values of the input parameters, an object of the input parameter class must be created. The following figure shows the example of the BPSKInputParameters.
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\linewidth]{./chapter/simulator_structure/figures/ips_manual_parameters}
+\caption{An object of BPSKInputParameters is created. Parameter bufferLength is accessed directly}
+\label{fig:ipsmanualparameters}
 \end{figure}
 
 \cleardoublepage 
