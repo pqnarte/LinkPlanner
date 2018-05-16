@@ -52,9 +52,9 @@ public:
 	//METHODS
 	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
 	void initializeInputParameterMap() {
-		addInputParameter("numberOfBitsReceived", &numberOfBitsReceived); //Cria parametro numberOfBitsReceived
-		addInputParameter("numberOfBitsGenerated", &numberOfBitsGenerated); //Cria parametro numberOfBitsGenerated
-		addInputParameter("samplesPerSymbol", &samplesPerSymbol); //Cria parametro samplesPerSymbol
+		addInputParameter("numberOfBitsReceived", &numberOfBitsReceived);
+		addInputParameter("numberOfBitsGenerated", &numberOfBitsGenerated);
+		addInputParameter("samplesPerSymbol", &samplesPerSymbol);
 		addInputParameter("pLength", &pLength);
 		addInputParameter("bitPeriod", &bitPeriod);
 		addInputParameter("rollOffFactor", &rollOffFactor);
