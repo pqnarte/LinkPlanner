@@ -51,41 +51,32 @@ int main(int argc, char*argv[]){
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
 	
-	TimeContinuousAmplitudeContinuousReal S1{ "S1.sgn" };
+	TimeContinuousAmplitudeContinuousReal S1{ "S1.sgn", param.getOutputFolderName() };
 	S1.setSaveSignal(true);
-	S1.setFolderName(param.getOutputFolderName());
 
-	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn" };
+	TimeContinuousAmplitudeContinuousReal S2{ "S2.sgn", param.getOutputFolderName() };
 	S2.setSaveSignal(true);
-	S2.setFolderName(param.getOutputFolderName());
 
-	PhotonStreamXY S3{ "S3.sgn" };
+	PhotonStreamXY S3{ "S3.sgn", param.getOutputFolderName() };
 	S3.setSaveSignal(true);
-	S3.setFolderName(param.getOutputFolderName());
 
-	PhotonStreamXY S4{ "S4.sgn" };
+	PhotonStreamXY S4{ "S4.sgn", param.getOutputFolderName() };
 	S4.setSaveSignal(true);
-	S4.setFolderName(param.getOutputFolderName());
 
-	PhotonStreamMPXY S5{ "S5.sgn" };
+	PhotonStreamMPXY S5{ "S5.sgn", param.getOutputFolderName() };
 	S5.setSaveSignal(true);
-	S5.setFolderName(param.getOutputFolderName());
 
-	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };
+	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn", param.getOutputFolderName() };
 	S6.setSaveSignal(true);
-	S6.setFolderName(param.getOutputFolderName());
 
-	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn" };
+	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn", param.getOutputFolderName() };
 	S7.setSaveSignal(true);
-	S7.setFolderName(param.getOutputFolderName());
 
-	Binary S8{ "S8.sgn" };
+	Binary S8{ "S8.sgn", param.getOutputFolderName() };
 	S8.setSaveSignal(true);
-	S8.setFolderName(param.getOutputFolderName());
 
-	Binary S9{ "S9.sgn" };
+	Binary S9{ "S9.sgn", param.getOutputFolderName() };
 	S9.setSaveSignal(true);
-	S9.setFolderName(param.getOutputFolderName());
 	
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -128,9 +119,9 @@ int main(int argc, char*argv[]){
 	// ########################### System Declaration and Inicialization ###################################
 	// #####################################################################################################
 
-	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10 } };
-	MainSystem.setSignalsFolderName(param.getOutputFolderName());
-	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10 },
+						param.getOutputFolderName(),
+						param.getLoadedInputParameters() };
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
