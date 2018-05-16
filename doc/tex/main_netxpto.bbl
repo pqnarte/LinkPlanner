@@ -160,8 +160,6 @@
 
 \refsection{3}
   \datalist[entry]{none/global//global/global}
-<<<<<<< HEAD
-=======
     \entry{Katsoprinakis08}{article}{}
       \name{author}{5}{}{%
         {{hash=a10f25b56a503df17b216b7a5ae5a5eb}{%
@@ -289,7 +287,6 @@
 
 \refsection{4}
   \datalist[entry]{none/global//global/global}
->>>>>>> Andre
     \entry{yao1982}{article}{}
       \name{author}{1}{}{%
         {{hash=731994d78d7bbc25c6e5c3bc5aeafa41}{%
@@ -315,11 +312,7 @@
   \enddatalist
 \endrefsection
 
-<<<<<<< HEAD
-\refsection{4}
-=======
 \refsection{5}
->>>>>>> Andre
   \datalist[entry]{none/global//global/global}
     \entry{Yao1995}{inproceedings}{}
       \name{author}{1}{}{%
@@ -396,11 +389,7 @@
   \enddatalist
 \endrefsection
 
-<<<<<<< HEAD
-\refsection{5}
-=======
 \refsection{6}
->>>>>>> Andre
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
