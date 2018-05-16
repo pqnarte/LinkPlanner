@@ -2,20 +2,26 @@
 
 void SOPModulator::initialize(void) {
 	int numberOfInputSignals = (int)inputSignals.size();
+	int numberOfOutputSignals = (int)outputSignals.size();
 
 	if (numberOfInputSignals > 0) {
 		tSymbolPeriod = inputSignals[0]->getSymbolPeriod();
 
-		outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
-		outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
-		outputSignals[0]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
-		outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+		for (auto i = 0; i < numberOfOutputSignals; i++) {
+			outputSignals[i]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
+			outputSignals[i]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
+			outputSignals[i]->setSamplesPerSymbol(inputSignals[0]->getSamplesPerSymbol());
+			outputSignals[i]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+		}
 	}
 	else {
-		outputSignals[0]->setSymbolPeriod(1);
-		outputSignals[0]->setSamplingPeriod(1);
-		outputSignals[0]->setSamplesPerSymbol(1);
-		outputSignals[0]->setFirstValueToBeSaved(1);
+
+		for (auto i = 0; i < numberOfOutputSignals; i++) {
+			outputSignals[i]->setSymbolPeriod(1);
+			outputSignals[i]->setSamplingPeriod(1);
+			outputSignals[i]->setSamplesPerSymbol(1);
+			outputSignals[i]->setFirstValueToBeSaved(1);
+		}
 	}
 
 	/* open a .txt report*/
@@ -104,7 +110,7 @@ bool SOPModulator::runBlock(void) {
 				kk[2][2] = 0.0;
 			
 
-				/*First SOP for 0บ*/
+				/*First SOP for 0ยบ*/
 				if (firstSop) {
 					S0[0] = 1 ;
 					S0[1] = 0;
@@ -147,8 +153,8 @@ bool SOPModulator::runBlock(void) {
 				}
 
 				/*Theta and phi to output*/
-				theta = atan2(SS[1], SS[0]) * 180 / PI;
-				phi = atan2(SS[2], sqrt(SS[0] * SS[0] + SS[1] * SS[1])) * 180 / PI;
+				theta = (atan2(SS[0], sqrt(SS[1]*SS[1] + SS[2]*SS[2])) * (180 / PI))*2 ;
+				//phi = atan2(SS[0], sqrt(SS[1] * SS[1] + SS[2] * SS[2])) * 180 / PI ;
 
 				/*write stokes parameters in a file*/
 				if (myfile.is_open()) {

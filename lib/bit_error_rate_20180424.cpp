@@ -128,7 +128,7 @@ bool BitErrorRate::runBlock(void){
 			}
 			else
 			{
-				// cout << "received bits: " << receivedBits << "\n";
+				cout << "Error bits: " << receivedBits << "\n";
 				outputSignals[0]->bufferPut((t_binary)0);
 			}
 	}

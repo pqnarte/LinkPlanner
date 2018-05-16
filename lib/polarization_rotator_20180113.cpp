@@ -39,8 +39,8 @@ bool PolarizationRotator::runBlock(void) {
 		t_complex valueX = valueXY.x;
 		t_complex valueY = valueXY.y;
 
-		t_complex valueXout = cos(tetha * PI / 180)*valueX + sin(tetha * PI / 180)*valueY*exp(-i*phi);
-		t_complex ValueYout = -sin(tetha * PI / 180)*valueX*exp(i*phi) + cos(tetha * PI / 180)*valueY;
+		t_complex valueXout = cos(tetha * PI / 180)*valueX + sin(tetha * PI / 180)*valueY*exp(-i*(phi*PI / 180));
+		t_complex ValueYout = -sin(tetha * PI / 180)*valueX*exp(i* (phi*PI/180)) + cos(tetha * PI / 180)*valueY;
 		t_complex_xy valueXYout = { valueXout, ValueYout };
 		
 		outputSignals[0]->bufferPut((t_complex_xy)valueXYout);
