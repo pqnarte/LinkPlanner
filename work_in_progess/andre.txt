@@ -1,3 +1,17 @@
+2018-05-16
+TO BE DONE
+
+
+	no construtor do sinal eu deveria passar só um parâmetro => usa por defeito o 'signals', deveria ter outro construtor com fName e com o fName
+
+	se o diretório não existir, criar o diretório
+
+	colocar a funcionar o bb84_with_discrete_variables
+
+	documentação melhor
+
+Next meeting: 16/05, 15h30m
+
 2018-05-08
 TO BE DONE
 
