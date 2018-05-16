@@ -38,7 +38,7 @@ bool Photodiode::runBlock(void) {
 
 	double wavelength = inputSignals[0]->getCentralWavelength();
 
-	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+	unsigned seed = (unsigned) chrono::system_clock::now().time_since_epoch().count();
 
 	generatorAmp1.seed(seed);
 	generatorAmp2.seed(seed);

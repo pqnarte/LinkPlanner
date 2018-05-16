@@ -160,6 +160,136 @@
 
 \refsection{3}
   \datalist[entry]{none/global//global/global}
+<<<<<<< HEAD
+=======
+    \entry{Katsoprinakis08}{article}{}
+      \name{author}{5}{}{%
+        {{hash=a10f25b56a503df17b216b7a5ae5a5eb}{%
+           family={Katsoprinakis},
+           familyi={K\bibinitperiod},
+           given={GE},
+           giveni={G\bibinitperiod}}}%
+        {{hash=39cdf3f6b3bf447200872041de9d5a9c}{%
+           family={Polis},
+           familyi={P\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eaa0bb9eb434cc9681cdb71bc283d531}{%
+           family={Tavernarakis},
+           familyi={T\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a2826b9fb86a2fd1dcd58b0c183b4fe6}{%
+           family={Dellis},
+           familyi={D\bibinitperiod},
+           given={AT},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3a61616570e16db2958278ec8244769b}{%
+           family={Kominis},
+           familyi={K\bibinitperiod},
+           given={IK},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{fullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
+      \strng{bibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorbibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authornamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorfullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{5}
+      \field{title}{Quantum random number generator based on spin noise}
+      \field{volume}{77}
+      \field{year}{2008}
+      \field{pages}{054101}
+      \range{pages}{1}
+    \endentry
+    \entry{Jennewein00}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6ecc969fb9b5fa1e1eb5190dbf6ca977}{%
+           family={Jennewein},
+           familyi={J\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=30e70ab7ba2ff4a8d940df361759797d}{%
+           family={Achleitner},
+           familyi={A\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod}}}%
+        {{hash=462a69d04a28da2f00eab1fee8fc5aa6}{%
+           family={Weihs},
+           familyi={W\bibinitperiod},
+           given={Gregor},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ebdf6a8a3edc28cc9c608fabbd805369}{%
+           family={Weinfurter},
+           familyi={W\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a961661d22885d8f3bcba104deec38f0}{%
+           family={Zeilinger},
+           familyi={Z\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{fullhash}{87afd67d4d8276955953941d7b8e1561}
+      \strng{bibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorbibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authornamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorfullhash}{87afd67d4d8276955953941d7b8e1561}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Scientific Instruments}
+      \field{number}{4}
+      \field{title}{A fast and compact quantum random number generator}
+      \field{volume}{71}
+      \field{year}{2000}
+      \field{pages}{1675\bibrangedash 1680}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1063/1.1150518
+      \endverb
+    \endentry
+    \entry{Fox06}{book}{}
+      \name{author}{1}{}{%
+        {{hash=680093a59b4a8752bda6dd5544fc97b4}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford, University Press}%
+      }
+      \strng{namehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{fullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{bibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorbibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authornamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorfullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Optics, an Introdution}
+      \field{year}{2006}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{4}
+  \datalist[entry]{none/global//global/global}
+>>>>>>> Andre
     \entry{yao1982}{article}{}
       \name{author}{1}{}{%
         {{hash=731994d78d7bbc25c6e5c3bc5aeafa41}{%
@@ -185,7 +315,11 @@
   \enddatalist
 \endrefsection
 
+<<<<<<< HEAD
 \refsection{4}
+=======
+\refsection{5}
+>>>>>>> Andre
   \datalist[entry]{none/global//global/global}
     \entry{Yao1995}{inproceedings}{}
       \name{author}{1}{}{%
@@ -262,7 +396,11 @@
   \enddatalist
 \endrefsection
 
+<<<<<<< HEAD
 \refsection{5}
+=======
+\refsection{6}
+>>>>>>> Andre
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%

@@ -2023,7 +2023,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="3">
-    <bcf:citekey order="1">yao1982</bcf:citekey>
+    <bcf:citekey order="1">Katsoprinakis08</bcf:citekey>
+    <bcf:citekey order="2">Jennewein00</bcf:citekey>
+    <bcf:citekey order="3">Jennewein00</bcf:citekey>
+    <bcf:citekey order="4">Jennewein00</bcf:citekey>
+    <bcf:citekey order="5">Fox06</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2039,6 +2043,22 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="4">
+    <bcf:citekey order="1">yao1982</bcf:citekey>
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 5 -->
+  <bcf:bibdata section="5">
+    <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="5">
     <bcf:citekey order="1">Yao1995</bcf:citekey>
     <bcf:citekey order="2">Mayers</bcf:citekey>
     <bcf:citekey order="3">Mayers</bcf:citekey>
@@ -2055,8 +2075,8 @@
     <bcf:citekey order="7">saleh1991</bcf:citekey>
     <bcf:citekey order="8">saleh1991</bcf:citekey>
   </bcf:section>
-  <!-- SECTION 5 -->
-  <bcf:bibdata section="5">
+  <!-- SECTION 6 -->
+  <bcf:bibdata section="6">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
@@ -2065,7 +2085,7 @@
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
-  <bcf:section number="5">
+  <bcf:section number="6">
     <bcf:citekey order="1">saleh1991</bcf:citekey>
     <bcf:citekey order="2">smith1997</bcf:citekey>
     <bcf:citekey order="3">saleh1991</bcf:citekey>
@@ -2120,6 +2140,15 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
   <bcf:datalist section="5"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="6"
                 name="none/global//global/global"
                 type="entry"
                 sortingtemplatename="none"

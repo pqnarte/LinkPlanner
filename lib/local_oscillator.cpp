@@ -33,7 +33,6 @@ bool LocalOscillator::runBlock(void) {
 	double deltaPhase = sqrt(PLANCK_CONSTANT*SPEED_OF_LIGHT / (2 * opticalPower*samplingPeriod*wavelength));
 	double dt = outputSignals[0]->getSamplingPeriod();
 
-
 	normal_distribution<double> distribution(0, 1);
 
 	out = .5*sqrt(opticalPower)*out;

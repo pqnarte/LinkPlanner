@@ -58,13 +58,13 @@ bool RealToComplex2::runBlock(void) {
 	
 	// Buffer processing
 	t_real re, im;
-	t_complex valueX;
+	//t_complex valueX;
 	for (int i = 0; i < process; i++) {
 		
 		inputSignals[0]->bufferGet(&re);
 		inputSignals[1]->bufferGet(&im);
 		
-		valueX = {re, im};
+		t_complex valueX = {re, im};
 		outputSignals[0]->bufferPut(valueX);
 
 	}
