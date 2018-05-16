@@ -1,3 +1,24 @@
+2018-05-16
+TO BE DONE
+
+	criar um capítulo para o qkd_with_cv_without_base_switching, usando a mesma formatação dos
+		bb84_with_discrete_variables
+		quantum_random_number_generator
+		bpsk_system
+
+	subsecções
+		- Theoretical Analysis
+		- Simulation Analysis
+		- Experimental Validation
+		- Comparative Analysis
+		- Bibliography
+
+	
+	Focar na Theoretical Analysis
+
+Next meeting: 24/5, 10h
+
+
 2018-05-08
 TO BE DONE
 

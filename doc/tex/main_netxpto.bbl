@@ -160,109 +160,328 @@
 
 \refsection{3}
   \datalist[entry]{none/global//global/global}
-    \entry{yao1982}{article}{}
-      \name{author}{1}{}{%
-        {{hash=731994d78d7bbc25c6e5c3bc5aeafa41}{%
-           family={Yao},
-           familyi={Y\bibinitperiod},
-           given={Andrew\bibnamedelima C.},
-           giveni={A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+    \entry{Katsoprinakis08}{article}{}
+      \name{author}{5}{}{%
+        {{hash=a10f25b56a503df17b216b7a5ae5a5eb}{%
+           family={Katsoprinakis},
+           familyi={K\bibinitperiod},
+           given={GE},
+           giveni={G\bibinitperiod}}}%
+        {{hash=39cdf3f6b3bf447200872041de9d5a9c}{%
+           family={Polis},
+           familyi={P\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eaa0bb9eb434cc9681cdb71bc283d531}{%
+           family={Tavernarakis},
+           familyi={T\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a2826b9fb86a2fd1dcd58b0c183b4fe6}{%
+           family={Dellis},
+           familyi={D\bibinitperiod},
+           given={AT},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3a61616570e16db2958278ec8244769b}{%
+           family={Kominis},
+           familyi={K\bibinitperiod},
+           given={IK},
+           giveni={I\bibinitperiod}}}%
       }
-      \strng{namehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
-      \strng{fullhash}{731994d78d7bbc25c6e5c3bc5aeafa41}
-      \strng{bibnamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
-      \strng{authorbibnamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
-      \strng{authornamehash}{731994d78d7bbc25c6e5c3bc5aeafa41}
-      \strng{authorfullhash}{731994d78d7bbc25c6e5c3bc5aeafa41}
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{fullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
+      \strng{bibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorbibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authornamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorfullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{-}
-      \field{title}{Protocols for Secure Computations}
-      \field{year}{1982}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{5}
+      \field{title}{Quantum random number generator based on spin noise}
+      \field{volume}{77}
+      \field{year}{2008}
+      \field{pages}{054101}
+      \range{pages}{1}
+    \endentry
+    \entry{Jennewein00}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6ecc969fb9b5fa1e1eb5190dbf6ca977}{%
+           family={Jennewein},
+           familyi={J\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=30e70ab7ba2ff4a8d940df361759797d}{%
+           family={Achleitner},
+           familyi={A\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod}}}%
+        {{hash=462a69d04a28da2f00eab1fee8fc5aa6}{%
+           family={Weihs},
+           familyi={W\bibinitperiod},
+           given={Gregor},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ebdf6a8a3edc28cc9c608fabbd805369}{%
+           family={Weinfurter},
+           familyi={W\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a961661d22885d8f3bcba104deec38f0}{%
+           family={Zeilinger},
+           familyi={Z\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{fullhash}{87afd67d4d8276955953941d7b8e1561}
+      \strng{bibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorbibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authornamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorfullhash}{87afd67d4d8276955953941d7b8e1561}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Scientific Instruments}
+      \field{number}{4}
+      \field{title}{A fast and compact quantum random number generator}
+      \field{volume}{71}
+      \field{year}{2000}
+      \field{pages}{1675\bibrangedash 1680}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1063/1.1150518
+      \endverb
+    \endentry
+    \entry{Fox06}{book}{}
+      \name{author}{1}{}{%
+        {{hash=680093a59b4a8752bda6dd5544fc97b4}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford, University Press}%
+      }
+      \strng{namehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{fullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{bibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorbibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authornamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorfullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Optics, an Introdution}
+      \field{year}{2006}
     \endentry
   \enddatalist
 \endrefsection
 
 \refsection{4}
   \datalist[entry]{none/global//global/global}
-    \entry{Yao1995}{inproceedings}{}
+    \entry{Bennet84}{inproceedings}{}
       \name{author}{1}{}{%
-        {{hash=65bea3c2b3317bb15349bef2d077c696}{%
-           family={Yao},
-           familyi={Y\bibinitperiod},
-           given={Andrew\bibnamedelima Chi-Chih},
-           giveni={A\bibinitperiod\bibinitdelim C\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=f839b7fcbce5edd9d1dad490a01d8afc}{%
+           family={Bennet},
+           familyi={B\bibinitperiod},
+           given={Charles\bibnamedelima H},
+           giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {{ACM} Press}%
-      }
-      \strng{namehash}{65bea3c2b3317bb15349bef2d077c696}
-      \strng{fullhash}{65bea3c2b3317bb15349bef2d077c696}
-      \strng{bibnamehash}{65bea3c2b3317bb15349bef2d077c696}
-      \strng{authorbibnamehash}{65bea3c2b3317bb15349bef2d077c696}
-      \strng{authornamehash}{65bea3c2b3317bb15349bef2d077c696}
-      \strng{authorfullhash}{65bea3c2b3317bb15349bef2d077c696}
+      \strng{namehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{fullhash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{bibnamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authorbibnamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authornamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authorfullhash}{f839b7fcbce5edd9d1dad490a01d8afc}
       \field{sortinit}{1}
       \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the twenty-seventh annual {ACM} symposium on Theory of computing - {STOC} {'}95}
-      \field{title}{Security of quantum protocols against coherent measurements}
-      \field{year}{1995}
-      \verb{doi}
-      \verb 10.1145/225058.225085
-      \endverb
-      \verb{urlraw}
-      \verb https://doi.org/10.1145/225058.225085
-      \endverb
-      \verb{url}
-      \verb https://doi.org/10.1145/225058.225085
-      \endverb
+      \field{booktitle}{Proc. of IEEE Int. Conf. on Comp., Syst. and Signal Proc., Bangalore, India, Dec. 10-12, 1984}
+      \field{title}{Quantum cryptography: Public key distribution and coin tossing}
+      \field{year}{1984}
     \endentry
-    \entry{Mayers}{inproceedings}{}
-      \name{author}{1}{}{%
-        {{hash=1e44109b88f1f5306f6a31e7c06d68ee}{%
-           family={Mayers},
-           familyi={M\bibinitperiod},
-           given={Dominic},
-           giveni={D\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {London, UK, UK}%
+    \entry{Gerry05}{book}{}
+      \name{author}{2}{}{%
+        {{hash=23786b712dd26ddb2f6595241e379d9d}{%
+           family={Gerry},
+           familyi={G\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3c9863d3b3a4eb3d67f64a9ad1145651}{%
+           family={Knight},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer-Verlag}%
+        {Cambridge university press}%
       }
-      \strng{namehash}{1e44109b88f1f5306f6a31e7c06d68ee}
-      \strng{fullhash}{1e44109b88f1f5306f6a31e7c06d68ee}
-      \strng{bibnamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
-      \strng{authorbibnamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
-      \strng{authornamehash}{1e44109b88f1f5306f6a31e7c06d68ee}
-      \strng{authorfullhash}{1e44109b88f1f5306f6a31e7c06d68ee}
+      \strng{namehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{fullhash}{6819c3136cc4236226f5169823410c1e}
+      \strng{bibnamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authorbibnamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authornamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authorfullhash}{6819c3136cc4236226f5169823410c1e}
       \field{sortinit}{2}
       \field{sortinithash}{cbff857e587bcb4635511624d773949e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{booktitle}{Proceedings of the 15th Annual International Cryptology Conference on Advances in Cryptology}
-      \field{isbn}{3-540-60221-6}
-      \field{series}{CRYPTO '95}
-      \field{title}{On the Security of the Quantum Oblivious Transfer and Key Distribution Protocols}
-      \field{year}{1995}
-      \field{pages}{124\bibrangedash 135}
-      \range{pages}{12}
-      \verb{urlraw}
-      \verb http://dl.acm.org/citation.cfm?id=646760.705993
-      \endverb
-      \verb{url}
-      \verb http://dl.acm.org/citation.cfm?id=646760.705993
-      \endverb
+      \field{title}{Introductory quantum optics}
+      \field{year}{2005}
+    \endentry
+    \entry{Muga11}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c93d83ae1fd4df862b7cce8bd4904e2a}{%
+           family={Muga},
+           familyi={M\bibinitperiod},
+           given={Nelson\bibnamedelima J},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=e0a2256659414226397d6db4f710f906}{%
+           family={Ferreira},
+           familyi={F\bibinitperiod},
+           given={M{á}rio\bibnamedelima FS},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=4f1fdbaf260320282c25c027c0d36a0d}{%
+           family={Pinto},
+           familyi={P\bibinitperiod},
+           given={Armando\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{fullhash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{bibnamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authorbibnamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authornamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authorfullhash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Lightwave Technology}
+      \field{number}{3}
+      \field{title}{QBER estimation in QKD systems with polarization encoding}
+      \field{volume}{29}
+      \field{year}{2011}
+      \field{pages}{355\bibrangedash 361}
+      \range{pages}{7}
+    \endentry
+    \entry{Muga15}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c93d83ae1fd4df862b7cce8bd4904e2a}{%
+           family={Muga},
+           familyi={M\bibinitperiod},
+           given={Nelson\bibnamedelima J},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4f1fdbaf260320282c25c027c0d36a0d}{%
+           family={Pinto},
+           familyi={P\bibinitperiod},
+           given={Armando\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{fullhash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{bibnamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authorbibnamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authornamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authorfullhash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Lightwave Technology}
+      \field{number}{23}
+      \field{title}{Extended Kalman filter vs. geometrical approach for stokes space-based polarization demultiplexing}
+      \field{volume}{33}
+      \field{year}{2015}
+      \field{pages}{4826\bibrangedash 4833}
+      \range{pages}{8}
+    \endentry
+    \entry{Czegledi16}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5b75161e4019cd809724b39cd35b696a}{%
+           family={Czegledi},
+           familyi={C\bibinitperiod},
+           given={Cristian\bibnamedelima B},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=7d0f3133c9fc539cb4bedd99282bc004}{%
+           family={Karlsson},
+           familyi={K\bibinitperiod},
+           given={Magnus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=018567428bbcb0c70b6481b041dc2bb8}{%
+           family={Agrell},
+           familyi={A\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=4250d01608b2a505ba740de8ead11e86}{%
+           family={Johannisson},
+           familyi={J\bibinitperiod},
+           given={Pontus},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{fullhash}{7b842dcab6d32146a6e6fb8019449c2d}
+      \strng{bibnamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authorbibnamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authornamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authorfullhash}{7b842dcab6d32146a6e6fb8019449c2d}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific reports}
+      \field{title}{Polarization drift channel model for coherent fibre-optic systems}
+      \field{volume}{6}
+      \field{year}{2016}
+      \field{pages}{21217}
+      \range{pages}{1}
     \endentry
   \enddatalist
 \endrefsection
 
 \refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{thorlabs}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={Thorlabs},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Thorlabs Balance Amplified Photodetectors: PDB4xx Series Operation Manual}
+      \field{year}{2014}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%

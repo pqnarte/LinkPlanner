@@ -82,8 +82,7 @@
       <file>./chapter/simulator_structure/simulator_structure.bib</file>
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
       <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
-      <file>./sdf/classical_mpc/classical_mpc.bib</file>
-      <file>./sdf/quantum_mpc/quantum_mpc.bib</file>
+      <file>./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</file>
       <file>./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</file>
       <file>./algorithms/fft/fft.bib</file>
     </requires>
