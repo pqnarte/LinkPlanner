@@ -650,7 +650,8 @@ class RealToComplex : public Block {
 class System {
 
  public:
-  System(vector<Block *> &MainSystem);	
+  System(vector<Block *> &MainSystem);
+  System(vector<Block *> &MainSystem, string signalsFolderName, vector<string> list);
   void terminate();										
   void run();
   void run(string signalPath);
@@ -666,7 +667,7 @@ private:
   int numberOfBlocks;  // Number of system Blocks
   int (*topology)[MAX_TOPOLOGY_SIZE];  // Relationship matrix
   vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
-  //Debug inputs
+  //Log File Inputs
   string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
   bool logValue{ true }; // Will write debug info if true
   vector<string> loadedInputParameters;
