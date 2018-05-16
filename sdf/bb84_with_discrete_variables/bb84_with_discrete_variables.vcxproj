@@ -161,7 +161,7 @@
     <ClCompile Include="..\..\lib\message_processor_alice_20180205.cpp" />
     <ClCompile Include="..\..\lib\message_processor_bob_20180221.cpp" />
     <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
-    <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
+    <ClCompile Include="..\..\lib\netxpto_20180418.cpp" />
     <ClCompile Include="..\..\lib\optical_attenuator_20180304.cpp" />
     <ClCompile Include="..\..\lib\SOP_modulator_20180319.cpp" />
     <ClCompile Include="..\..\lib\polarization_beam_splitter_20180109.cpp" />
@@ -192,7 +192,7 @@
     <ClInclude Include="..\..\include\message_processor_alice_20180205.h" />
     <ClInclude Include="..\..\include\message_processor_bob_20180221.h" />
     <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
-    <ClInclude Include="..\..\include\netxpto_20180118.h" />
+    <ClInclude Include="..\..\include\netxpto_20180418.h" />
     <ClInclude Include="..\..\include\optical_attenuator_20180304.h" />
     <ClInclude Include="..\..\include\SOP_modulator_20180319.h" />
     <ClInclude Include="..\..\include\polarization_beam_splitter_20180109.h" />
