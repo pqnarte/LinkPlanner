@@ -7,6 +7,7 @@
 # include <strstream>
 # include <algorithm>
 # include <ctime>
+#include <filesystem>
 
 # include "netxpto_20180418.h"
 
@@ -918,46 +919,26 @@ System::System(vector<Block *> &Blocks)
 	}
 }
 
-void System::run() {
-
-	/*2016-08-02
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
-		for (int unsigned j = 0; j<(SystemBlocks[i]->inputSignals).size(); j++) {
-			(SystemBlocks[i]->inputSignals[j])->writeHeader();
-		}
-	}
-	*/
-
-	/*2016-08-02
+System::System(vector<Block *> &Blocks, string signalsFolderName, vector<string> list)
+{
+	SystemBlocks = Blocks;
 	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
 		SystemBlocks[i]->initializeBlock();
 	}
-	*/
+	setSignalsFolderName(signalsFolderName);
+	setLoadedInputParameters(list);
+}
+
+void System::run() {
 	run(signalsFolder);
 }
 
 void System::run(string signalPath) {
-
-	
-	// The signalPath sub-folder must already exist
-	/*for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
-		for (int unsigned j = 0; j<(SystemBlocks[i]->inputSignals).size(); j++) {
-			(SystemBlocks[i]->inputSignals[j])->writeHeader(signalPath);
-		}
+	/*2018-04-18*/
+	//Creates the signals folder if it doesn't exist
+	if (!experimental::filesystem::is_directory(signalPath) || !experimental::filesystem::exists(signalPath)) {
+		experimental::filesystem::create_directory(signalPath);
 	}
-
-	bool alive;
-	do {
-		alive = false;
-		for (unsigned int i = 0; i < SystemBlocks.size(); i++) {
-			alive = alive || SystemBlocks[i]->runBlock();
-		}
-	} while (alive);
-
-	for (int unsigned i = 0; i < SystemBlocks.size(); i++) {
-		SystemBlocks[i]->terminateBlock();
-	}*/
-	/*2018-04-09*/
 	//Debug information
 	ofstream logFile;
 	clock_t start;
