@@ -1,54 +1,61 @@
 \section{Quantum Multi-Party Computation}
+
 \begin{refsection}
-	\subsection{Our Approach}
-	\subsubsection{1 out of 2 Oblivious Transfer}
-	This section will provide the description of a 1-2 Oblivious Transfer (OT) based on the appliance of a Quantum Oblivious Key Distribution Protocol (QOKD). The 1-2 OT consists in a two party, Alice and Bob, communication protocol. Supposing that Alice has two messages $\{m_1,m_0\}$ length $s$, Bob wants to know one of those in such a way that:
-	\begin{itemize}
-		\item Alice doesn't know Bob's choice, i.e. the protocol is oblivious;
-		\item Bob doesn't get any information on the message he didn't choose, i.e. the protocol is concealing.
-	\end{itemize}
-	Considering the notation of a canonical quantum oblivious transfer protocol, let $U=\{+,\times\}^n\times\{0,1\}^n$, where $+, \times$ stand for the rectilinear and diagonal bases, with a correspondence previously agreed by both Bob and Alice. Physically this corresponds   The general algorithm of the protocol can be described as:
-	\begin{itemize}
-		\item Step 1:\\
-		Alice picks a random uniformly chosen $\big(a,g\big)\,\in\,U$, and sends Bob photons $i$, $1\leq i \leq n$ with polarizations given by the bases $a\big[i\big]$ and states $g\big[i\big]$.
-		\item Step 2:\\
-		Bob picks a random uniformly chosen $b\in\{+,\times\}^n$, measures photons $i$ in basis $b\left[i\right]$ and records the results, if a photon is detected, as $h\left[i\right]\in\{0,1\}$. Bob then makes a bit commitment of all $n$ pairs $\left(b\left[i\right],h\left[i\right]\right)$ to Alice.
-		\item Step 3:\\
-		Alice picks a random uniformly picks a random uniformly chosen subset $R\subset\{1,2,...,n\}$ and tests the commitment made by Bob at positions in $R$. If more $\delta n$ (acceptance threshold) positions $i\in R$ reveal $a\left[i\right]=b\left[i\right]$ and $g\left[i\right]\neq h\left[i\right]$ then Alice stops protocol; otherwise, the test result is accepted.
-		\item Step 4:\\
-		Alice announces the base $a$. Let $T_0$ be the set of $1\leq i \leq n$ such that $a\left[i\right]=b\left[i\right]$ and let $T_1$ be the set of all $1\leq i \leq n$ such that $a\left[i\right]\ne b\left[i\right]$. Bob chooses $I_0,I_1\subset T_0-R, T_1-R$ and sends $S_i=\{I_{1-i},I_i\}$, wishing to know $m_i$, $i\in\{0,1\}$.
-		\item Step 5:\\
-		Alice defines two encryption keys $K_0,K_1$ in such a way that $K_i=g\big[I_i\big]$ for $i=0 \vee i=1$. Alice then cyphers both messages: $m_{\mathtt{coded}}=\{m_0\oplus K_0,m_1\ \oplus K_1\}$ and sends the result $m$ to Bob.
-		\item Step 6:\\
-		Bob will then decode $m$ using the values of his initially chosen basis:  $b\left[S_i\right]$ with $i\in\{0,1\}$, according to his preference. $m_{\mathtt{decoded}}=m_{\mathtt{coded}}\oplus b\left[S_i\right]$. The output of this process will be $m_{\mathtt{decoded}}$ that will have the correct message in the first or last $s^{th}$ positions if he chose $m_0$ or $m_1$, respectively.
-	\end{itemize}
-	It is intuitively clear that the above protocol performs correctly if both parties are honest \cite{Yao1995}. The security of protocol depends, though on the honesty of both parties (and a potential eavesdropper) involved. The security of the protocol can be evaluated in terms of the amount of information received by any given participant. In order to formalize and proof the security of such a system for any case though one has to think of the proceedings of a hypothetically dishonest Bob and an eventual eavesdropper Eve.
-	\begin{itemize}
-		\item Step 1:\\
-		Dishonest Bob has no advantage in being dishonest at this point.
-		\item Step 2:\\
-		Dishonest Eve transfers some information from this pulse into her quantum system and she uses that information to modify the residual state of the pulse which is sent to Bob.\\
-		Dishonest Bob executes a coherent measurement on the pulse received in order to determine: whether or not he declares this pulse as detected and the bit that he commits to Alice.
-		\item Step 4:\\
-		Having learnt Alice's string of basis $a$ dishonest Bob executes a first post-measurement of his choice and uses the outcome to compute the ordered pair $S$.
-		\item Step 5:\\ Using the information obtained in the previous step dishonest Bob makes a second post-test measurement and obtains the outcome $\mathcal{J}_{Bob}$. Eve measures her system and obtains the outcome $\mathcal{J}_{Eve}$ \cite{Mayers}.
-	\end{itemize}
-	From \cite{Mayers} one can concluded that a dishonest Bob following these proceedings learns nothing about $m$, the set of both original messages concatenated, in its full extended, either he passes or fails Alice's original verification. This protocol also compensates the errors in the quantum channel. It is also stated that security against Bob and tolerance against errors implies the security of the protocol against Eve \cite{Mayers}.
-\subsubsection{Garbled Circuits}
-Garbled circuits are a generic mechanism for generic secure computation, meaning that two parties, the \textit{generator}, who produces the circuit, and the \textit{evaluator}, who evaluates that circuit to produce the encrypted result, can compute the output of a function that depends on private data from both parties. A garbled circuit is hence a cryptographic protocol that enables the secure two-party computation of a function.\\
-The modeling of the function in question as a Boolean circuit $C$ proceeds the \textit{garbling} of the said circuit: each wire $W_i$ of the circuit $C$, the \textit{generator} Alice chooses two nonces $w_i^0$, $w_i^1$ to represent signal $0$ and $1$ on wire $W_i$ ($w_i^j$ is the \textit{garbled value} of the value $j$ of the wire $W_i$). Considering, without the loss of generality a binary gate $G$ which has two input wires $W_0$, $W_1$ and one output wire $W_2$, Alice then generates the truth table of four entries, the \textit{garbled table}, encrypting the output values of the gate $G$ using the garbled input values as keys with a symmetric encryption scheme $E$. For example, for a logic AND gate:
-\begin{table}[htp!]
-	\centering
-	\caption{the garbling of an AND gate.}
-	\begin{tabular}{cccc}
-		$W_0$   & $W_1$   & Output & Garbled value                     \\
-		$w_0^0$ & $w_1^0$ & $w^0$  & $E_{w_0^0,w_1^0}\left(w^0\right)$ \\
-		$w_0^0$ & $w_1^1$ & $w^0$  & $E_{w_0^0,w_1^1}\left(w^0\right)$ \\
-		$w_0^1$ & $w_1^0$ & $w^0$  & $E_{w_0^1,w_1^0}\left(w^0\right)$ \\
-		$w_1^1$ & $w_1^1$ & $w^1$  & $E_{w_0^1,w_1^1}\left(w^1\right)$
-	\end{tabular}
-\end{table}
-Next, the garbled table and the wire labels, $w_0^0$ or $w_0^1$, representing the generator’s secret input, are sent to the evaluator. To obtain the appropriate wire label for her own input (without revealing the input), $w_1^1$ or $w_1^0$, the evaluator and generator execute an oblivious transfer protocol. Thus, the evaluator can decrypt one and only one entry that corresponds exactly to their inputs. Following this construction strategy, an arbitrary number of binary gates can be assembled to accomplish general purpose computation using the output wire labels of one gate as the input labels of the next gate.
+
+\subsection{Our Approach}
+\subsubsection{Message Access}
+Let's consider 2 parties, Alice and Bob. Alice has a set $M = \{m_0,m_1\}$ of messages and Bob has the index, $i$, of the message he wants to receive from Alice, $m_i$.\\
+For this example we will be assuming that $i=1$ and $M = \{11,10\}$. Both messages are 2-bit binary numbers.
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Bob generates a 4-bit key, $K_b=0111$ where only the bits of indexes $2i$ and $2i+1$ are known ($C$) to him. Since i=1, Bob only knows the last 2 bits of $K_b$. The remaining 2 bits of $K_b$ are random ($R$), thus unknown to Bob.
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.25\linewidth]{./figures/mpc/mpc_bob_key}
+\caption{Known ($C$) and Unknown ($R$) bits from Bob's perspective }
+\label{fig:knownbob}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Bob sends to Alice the set $I = \{2,3\}$ corresponding to the indexes of the bits known to him.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Alice generates a 4-bit key, $K_a=1011$ where the last 2 bits of $K_a$ must be the same as the last 2 of $K_b$. All 4 bits from the key
+are unknown to Alice. She doesn't know which 2 bits from $K_a$ are equal to $K_b$ (only Bob has that information),i.e., from her perspective
+all bits are random.
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.25\linewidth]{./figures/mpc/mpc_alice_key}
+\caption{Known ($C$) and Unknown ($R$) bits from Alice's perspective }
+\label{fig:knownalice}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Alice encrypts the messages with $K_a$ and sends the encrypted information to Bob. In this example, $1101$ will be sent to Bob.
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.4\linewidth]{./figures/mpc/mpc_message_encrypting}
+\caption{Alice encrypts the messages with $K_a$}
+\label{fig:mpcencryption}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item Bob decrypts the information received from Alice with $K_b$ and retrieves the message $m_1$, which correspond to bits of indexes 2 and 3 (since $i=1$).\\
+The first two bits of the decrypted information do not represent $m_0$.
+\renewcommand{\figurename}{Figure}
+\begin{figure}[H]
+\centering
+\includegraphics[width=.4\linewidth]{./figures/mpc/mpc_message_decrypting}
+\caption{Bob decrypts the information with $K_b$}
+\label{fig:mpcdecryption}
+\end{figure}
+\end{enumerate}
+
+\subsubsection{The Millionaire' Problem}
+%Complete this section
+\subsubsection{Average Value}
+%Complete this section
+
+
 
 % bibliographic references for the section ----------------------------
 \clearpage

@@ -17,10 +17,9 @@
 // #####################################################################################################
 
 
-class BPSKParameters : public SystemParameters {
+class BPSKInputParameters : public SystemInputParameters {
 public:
-
-	//PARAMETERS
+	//INPUT PARAMETERS
 	int numberOfBitsReceived{ -1 };
 	int numberOfBitsGenerated{ 1000 };
 	int samplesPerSymbol = 16;
@@ -39,37 +38,42 @@ public:
 	int bufferLength = 20;
 	bool shotNoise = false;
 
+	/* Initializes default parameters */
+	BPSKInputParameters() : SystemInputParameters() {
+		initializeInputParameterMap(); //Initializes the parameters
+	}
+
+	/* Initializes input parameters according to the program arguments*/
+	BPSKInputParameters(int argc, char*argv[]) : SystemInputParameters(argc,argv) {
+		initializeInputParameterMap(); //Initializes the parameters
+		readSystemInputParameters();
+	}
+
 	//METHODS
-	/* Returns 'param' filled with the values found in the file 'filename' */
-	void readSystemInputParameters(string filename);
-	/* Empty Constructor in case you want to read BPSK parameters from a file*/
-	BPSKParameters() {}
+	//Each parameter must be added to the parameter map by calling addInputParameter(string,param*)
+	void initializeInputParameterMap(){
+		addInputParameter("numberOfBitsReceived", &numberOfBitsReceived); //Cria parametro numberOfBitsReceived
+		addInputParameter("numberOfBitsGenerated", &numberOfBitsGenerated); //Cria parametro numberOfBitsGenerated
+		addInputParameter("samplesPerSymbol", &samplesPerSymbol); //Cria parametro samplesPerSymbol
+		addInputParameter("pLength", &pLength);
+		addInputParameter("bitPeriod", &bitPeriod);
+		addInputParameter("rollOffFactor", &rollOffFactor);
+		addInputParameter("signalOutputPower_dBm", &signalOutputPower_dBm);
+		addInputParameter("localOscillatorPower_dBm", &localOscillatorPower_dBm);
+		addInputParameter("localOscillatorPhase", &localOscillatorPhase);
+		addInputParameter("responsivity", &responsivity);
+		addInputParameter("amplification", &amplification);
+		addInputParameter("electricalNoiseAmplitude", &electricalNoiseAmplitude);
+		addInputParameter("samplesToSkip", &samplesToSkip);
+		addInputParameter("bufferLength", &bufferLength);
+		addInputParameter("shotNoise", &shotNoise);
+	}
 };
 
-int main(){	
-	
-	int numberOfBitsReceived = -1;
-	int numberOfBitsGenerated = 1000;
-	int samplesPerSymbol = 16;
-	int pLength = 5;
-	double bitPeriod = 20e-12;
-	double rollOffFactor = 0.3;
-	double signalOutputPower_dBm = -20;
-	double localOscillatorPower_dBm = 0;
-	double localOscillatorPhase = 0;
-	vector<t_iqValues> iqAmplitudeValues = { { -1, 0 } ,{ 1, 0 } };
-	array<t_complex, 4> transferMatrix = { { 1 / sqrt(2), 1 / sqrt(2), 1 / sqrt(2), -1 / sqrt(2) } };
-	double responsivity = 1;
-	double amplification = 1e6;
-	double electricalNoiseAmplitude = 5e-4*sqrt(2);
-	int samplesToSkip = 8 * samplesPerSymbol;
-	int bufferLength = 20;
-	bool shotNoise = false;
+/* Usage: .\bpsk_system.exe <input_parameters.txt> <output_directory> */
+int main(int argc, char *argv[]) {
 
-	BPSKParameters param = BPSKParameters();
-	param.readSystemInputParameters("data.txt");
-	cout << param.samplesPerSymbol << endl;
-	cout << param.numberOfBitsReceived << endl;
+	BPSKInputParameters param(argc, argv);
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
@@ -77,36 +81,46 @@ int main(){
 
 	Binary S0("S0.sgn");
 	S0.setBufferLength(param.bufferLength);
+	S0.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S1("S1.sgn");
 	S1.setBufferLength(param.bufferLength);
+	S1.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S2("S2.sgn");
 	S2.setBufferLength(param.bufferLength);
+	S2.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S3("S3.sgn");
 	S3.setBufferLength(param.bufferLength);
+	S3.setFolderName(param.getOutputFolderName());
 
 	OpticalSignal S4("S4.sgn");
 	S4.setBufferLength(param.bufferLength);
+	S4.setFolderName(param.getOutputFolderName());
 
 	TimeContinuousAmplitudeContinuousReal S5("S5.sgn");
 	S5.setBufferLength(param.bufferLength);
-	
+	S5.setFolderName(param.getOutputFolderName());
+
 	TimeDiscreteAmplitudeContinuousReal S6("S6.sgn");
 	S6.setBufferLength(param.bufferLength);
+	S6.setFolderName(param.getOutputFolderName());
 
 	Binary S7("S7.sgn");
 	S7.setBufferLength(param.bufferLength);
+	S7.setFolderName(param.getOutputFolderName());
 
 	Binary S8("S8.sgn");
 	S8.setBufferLength(param.bufferLength);
+	S8.setFolderName(param.getOutputFolderName());
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
 
 	MQamTransmitter B1{ vector<Signal*> {}, vector<Signal*> {&S1, &S0} };
+
 	B1.setNumberOfBits(param.numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(param.signalOutputPower_dBm);
 	B1.setMode(PseudoRandom);
@@ -152,85 +166,15 @@ int main(){
 	// #####################################################################################################
 
 	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8} };
+	MainSystem.setSignalsFolderName(param.getOutputFolderName());
+	MainSystem.setLoadedInputParameters(param.getLoadedInputParameters());
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
 	// #####################################################################################################
-
+	
 	MainSystem.run();
 
 	return 0;
 
-}
-
-void BPSKParameters::readSystemInputParameters(string filename)
-{
-	ifstream inputFile("./" + filename);
-	if (!inputFile) {
-		cerr << "ERROR: Could not open " << filename;
-		exit(1);
-		
-	}
-	int errorLine = 1;
-	//Reads each line
-	string line;
-	while (getline(inputFile, line)) {
-		try {
-				//If the line if a comment, it just skips to the next one
-				if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
-				vector<string> splitline = split(line, ':');
-				if (splitline.at(0) == "numberOfBitsReceived") {
-					numberOfBitsReceived = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "numberOfBitsGenerated") {
-					numberOfBitsGenerated = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesPerSymbol") {
-					samplesPerSymbol = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "pLength") {
-					pLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bitPeriod") {
-					bitPeriod = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "rollOffFactor") {
-					rollOffFactor = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "signalOutputPower_dBm") {
-					signalOutputPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPower_dBm") {
-					localOscillatorPower_dBm = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "localOscillatorPhase") {
-					localOscillatorPhase = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "responsivity") {
-					responsivity = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "amplification") {
-					amplification = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "electricalNoiseAmplitude") {
-					electricalNoiseAmplitude = parseDouble(splitline.at(1));
-				}
-				else if (splitline.at(0) == "samplesToSkip") {
-					samplesToSkip = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "bufferLength") {
-					bufferLength = parseInt(splitline.at(1));
-				}
-				else if (splitline.at(0) == "shotNoise") {
-					shotNoise = parseBool(splitline.at(1));
-				}
-			}
-			errorLine++;
-		}
-		catch (const exception& e) {
-			cerr << "ERROR: Invalid input in line " << errorLine << " of " << filename;
-			exit(1);
-		}
-	}
-	inputFile.close();
 }

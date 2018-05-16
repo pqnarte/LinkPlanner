@@ -1974,7 +1974,12 @@
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+<<<<<<< HEAD
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
+=======
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
@@ -1985,7 +1990,12 @@
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+<<<<<<< HEAD
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
+=======
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
@@ -1999,7 +2009,12 @@
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+<<<<<<< HEAD
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
+=======
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
@@ -2014,11 +2029,17 @@
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+<<<<<<< HEAD
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
+=======
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="3">
+<<<<<<< HEAD
     <bcf:citekey order="1">Katsoprinakis08</bcf:citekey>
     <bcf:citekey order="2">Jennewein00</bcf:citekey>
     <bcf:citekey order="3">Jennewein00</bcf:citekey>
@@ -2059,6 +2080,9 @@
   </bcf:bibdata>
   <bcf:section number="5">
     <bcf:citekey order="1">thorlabs</bcf:citekey>
+=======
+    <bcf:citekey order="1">yao1982</bcf:citekey>
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2071,6 +2095,7 @@
     <bcf:citekey order="7">saleh1991</bcf:citekey>
     <bcf:citekey order="8">saleh1991</bcf:citekey>
   </bcf:section>
+<<<<<<< HEAD
   <!-- SECTION 6 -->
   <bcf:bibdata section="6">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
@@ -2081,6 +2106,19 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="6">
+=======
+  <!-- SECTION 4 -->
+  <bcf:bibdata section="4">
+    <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="4">
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
     <bcf:citekey order="1">saleh1991</bcf:citekey>
     <bcf:citekey order="2">smith1997</bcf:citekey>
     <bcf:citekey order="3">saleh1991</bcf:citekey>
@@ -2134,6 +2172,7 @@
                 uniquenametemplatename="global"
                 labelalphanametemplatename="global">
   </bcf:datalist>
+<<<<<<< HEAD
   <bcf:datalist section="5"
                 name="none/global//global/global"
                 type="entry"
@@ -2152,4 +2191,6 @@
                 uniquenametemplatename="global"
                 labelalphanametemplatename="global">
   </bcf:datalist>
+=======
+>>>>>>> 380b72af6e8c337784c1344233c41876dcdcbef8
 </bcf:controlfile>
