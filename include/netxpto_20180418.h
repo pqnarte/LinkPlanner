@@ -89,6 +89,7 @@ public:
 	/* Methods */
 
 	Signal() {};
+	Signal(string fileName, string folderName) { setFileName(fileName); setFolderName(folderName); }
 	Signal(string fName) {setFileName(fName); };	// Signal constructor
 	Signal(string fName, bool sSignal) { setFileName(fName); setSaveSignal(sSignal); };
 	Signal(int bLength) { setBufferLength(bLength); };
@@ -199,6 +200,7 @@ public:
 class TimeDiscrete : public Signal {
 public:
 	TimeDiscrete(string fName) { setFileName(fName); }
+	TimeDiscrete(string fileName,string folderName) : Signal(fileName,folderName) { }
 	TimeDiscrete(){}
 };
 
@@ -206,6 +208,7 @@ public:
 class TimeDiscreteAmplitudeDiscrete : public Signal {
 public:
 	TimeDiscreteAmplitudeDiscrete(string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeDiscrete(){}
 };
 
@@ -213,6 +216,7 @@ public:
 class TimeDiscreteAmplitudeContinuous : public Signal {
 public:
 	TimeDiscreteAmplitudeContinuous(string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeContinuous(){}
 };
 
@@ -220,6 +224,7 @@ public:
 class TimeDiscreteAmplitudeDiscreteReal : public Signal {
 public:
 	TimeDiscreteAmplitudeDiscreteReal(string fName) { setType("TimeDiscreteAmplitudeDiscreteReal", RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeDiscreteAmplitudeDiscreteReal(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeDiscreteReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
 	TimeDiscreteAmplitudeDiscreteReal(string fName, int bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(int bLength) { setType("TimeDiscreteAmplitudeDiscreteReal", RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeDiscreteReal(){ setType("TimeDiscreteAmplitudeDiscreteReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -232,6 +237,7 @@ class TimeDiscreteAmplitudeDiscreteComplex : public Signal {
 	
 public:
 	TimeDiscreteAmplitudeDiscreteComplex(string fName) { setFileName(fName); }
+	TimeDiscreteAmplitudeDiscreteComplex(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeDiscreteAmplitudeDiscreteComplex() {}
 };
 
@@ -240,6 +246,7 @@ class Binary : public Signal {
 	
 public:
 	Binary(string fName) { setType("Binary", BinaryValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_binary[getBufferLength()]; }
+	Binary(string fileName, string folderName) : Signal(fileName,folderName){ setType("Binary", BinaryValue); if (buffer == nullptr) buffer = new t_binary[getBufferLength()]; }
 	Binary(string fName, int bLength) { setType("Binary", BinaryValue);  setFileName(fName); setBufferLength(bLength); }
 	Binary(int bLength) { setType("Binary", BinaryValue);  setBufferLength(bLength); }
 	Binary() { setType("Binary", BinaryValue); if (buffer == nullptr) buffer = new t_binary[getBufferLength()]; }
@@ -251,6 +258,7 @@ public:
 class TimeDiscreteAmplitudeContinuousReal : public Signal {
 public:
 	TimeDiscreteAmplitudeContinuousReal(string fName) { setType("TimeDiscreteAmplitudeContinuousReal", RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeDiscreteAmplitudeContinuousReal(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
 	TimeDiscreteAmplitudeContinuousReal(string fName, int bLength) { setType("TimeDiscreteAmplitudeContinuousReal", RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(int bLength) { setType("TimeDiscreteAmplitudeContinuousReal", RealValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousReal(){ setType("TimeDiscreteAmplitudeContinuousReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -262,6 +270,7 @@ public:
 class TimeDiscreteAmplitudeContinuousComplex : public Signal {
 public:
 	TimeDiscreteAmplitudeContinuousComplex(string fName) { setType("TimeDiscreteAmplitudeContinuousComplex", ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeDiscreteAmplitudeContinuousComplex(string fileName, string folderName) : Signal(fileName,folderName){ setType("TimeDiscreteAmplitudeContinuousComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
 	TimeDiscreteAmplitudeContinuousComplex(string fName, int bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(int bLength) { setType("TimeDiscreteAmplitudeContinuousComplex", ComplexValue); setBufferLength(bLength); }
 	TimeDiscreteAmplitudeContinuousComplex(){ setType("TimeDiscreteAmplitudeContinuousComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -272,11 +281,15 @@ public:
 
 class TimeContinuous : public Signal {
 public:
+	TimeContinuous(string fileName) : Signal(fileName) { }
+	TimeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeContinuous(){}
 };
 
 class TimeContinuousAmplitudeDiscrete : public Signal {
 public:
+	TimeContinuousAmplitudeDiscrete(string fileName) : Signal(fileName) { }
+	TimeContinuousAmplitudeDiscrete(string fileName, string folderName) : Signal(fileName, folderName) { }
 	TimeContinuousAmplitudeDiscrete(){}
 };
 
@@ -284,6 +297,7 @@ public:
 class TimeContinuousAmplitudeContinuous : public Signal {
 public:
 	TimeContinuousAmplitudeContinuous(string fName) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuous(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuous", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];	}
 	TimeContinuousAmplitudeContinuous(string fName, int bLength) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous(int bLength) { setType("TimeContinuousAmplitudeContinuous", RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuous() { setType("TimeContinuousAmplitudeContinuous", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -295,6 +309,7 @@ public:
 class TimeContinuousAmplitudeDiscreteReal : public Signal {
 public:
 	TimeContinuousAmplitudeDiscreteReal(string fName) { setType("TimeContinuousAmplitudeDiscreteReal", RealValue);  setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeDiscreteReal(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
 	TimeContinuousAmplitudeDiscreteReal(string fName, int bLength) { setType("TimeContinuousAmplitudeDiscreteReal", RealValue);  setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(int bLength) { setType("TimeContinuousAmplitudeDiscreteReal", RealValue);  setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteReal(){ setType("TimeContinuousAmplitudeDiscreteReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -306,6 +321,7 @@ public:
 class TimeContinuousAmplitudeDiscreteComplex : public Signal {
 public:
 	TimeContinuousAmplitudeDiscreteComplex(string fName) { setType("TimeContinuousAmplitudeDiscreteComplex", ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeContinuousAmplitudeDiscreteComplex(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeDiscreteComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
 	TimeContinuousAmplitudeDiscreteComplex(string fName, int bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(int bLength) { setType("TimeContinuousAmplitudeDiscreteComplex", ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeDiscreteComplex(){ setType("TimeContinuousAmplitudeDiscreteComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -317,6 +333,7 @@ public:
 class TimeContinuousAmplitudeContinuousReal : public Signal {
 public:
 	TimeContinuousAmplitudeContinuousReal(string fName) { setType("TimeContinuousAmplitudeContinuousReal", RealValue); setFileName(fName); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuousReal(string fileName,string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()];}
 	TimeContinuousAmplitudeContinuousReal(string fName, int bLength) { setType("TimeContinuousAmplitudeContinuousReal", RealValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(int bLength) { setType("TimeContinuousAmplitudeContinuousReal", RealValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousReal(){ setType("TimeContinuousAmplitudeContinuousReal", RealValue); if (buffer == nullptr) buffer = new t_real[getBufferLength()]; }
@@ -329,6 +346,7 @@ public:
 class TimeContinuousAmplitudeContinuousComplex : public Signal {
 public:
 	TimeContinuousAmplitudeContinuousComplex(string fName) { setType("TimeContinuousAmplitudeContinuousComplex", ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	TimeContinuousAmplitudeContinuousComplex(string fileName, string folderName) : Signal(fileName, folderName) { setType("TimeContinuousAmplitudeContinuousComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
 	TimeContinuousAmplitudeContinuousComplex(string fName, int bLength) { setType("TimeContinuousAmplitudeContinuousComplex", ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(int bLength) { setType("TimeContinuousAmplitudeContinuousComplex", ComplexValue); setBufferLength(bLength); }
 	TimeContinuousAmplitudeContinuousComplex(){ setType("TimeContinuousAmplitudeContinuousComplex", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -339,6 +357,7 @@ public:
 class BandpassSignal : public Signal {
 public:
 	BandpassSignal(string fName) { setType("BandpassSignal", ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	BandpassSignal(string fileName, string folderName) : Signal(fileName, folderName) { setType("BandpassSignal", ComplexValue); setFileName(fileName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
 	BandpassSignal(string fName, int bLength) { setType("BandpassSignal", ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	BandpassSignal(int bLength) { setType("BandpassSignal", ComplexValue); setBufferLength(bLength); }
 	BandpassSignal(){ setType("BandpassSignal", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -351,6 +370,7 @@ public:
 class OpticalSignal : public Signal {
 public:
 	OpticalSignal(string fName) { setType("BandpassSignal", ComplexValue); setFileName(fName); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
+	OpticalSignal(string fileName, string folderName) : Signal(fileName,folderName) { setType("BandpassSignal", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()];}
 	OpticalSignal(string fName, int bLength) { setType("BandpassSignal", ComplexValue); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignal(int bLength) { setType("BandpassSignal", ComplexValue); setBufferLength(bLength); }
 	OpticalSignal() { setType("BandpassSignal", ComplexValue); if (buffer == nullptr) buffer = new t_complex[getBufferLength()]; }
@@ -363,6 +383,7 @@ public:
 class OpticalSignalXY : public Signal {
 public:
 	OpticalSignalXY(string fName) { setType("OpticalSignalXY", ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
+	OpticalSignalXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("OpticalSignalXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];}
 	OpticalSignalXY(string fName, int bLength) { setType("OpticalSignalXY", ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	OpticalSignalXY(int bLength) { setType("OpticalSignalXY", ComplexValueXY); setBufferLength(bLength); }
 	OpticalSignalXY() { setType("OpticalSignalXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
@@ -386,6 +407,7 @@ private:
 class PhotonStream : public Signal {
 
 public:
+	PhotonStream(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStream", PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()];}
 	PhotonStream(int bLength) { setType("PhotonStream", PhotonValue); setBufferLength(bLength); }
 	PhotonStream() { setType("PhotonStream", PhotonValue); if (buffer == nullptr) buffer = new t_photon[getBufferLength()]; }
 
@@ -396,6 +418,7 @@ class PhotonStreamXY : public Signal {
 
 public:
 	PhotonStreamXY(string fName) { setType("PhotonStreamXY", ComplexValueXY); setFileName(fName); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
+	PhotonStreamXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()];	}
 	PhotonStreamXY(string fName, int bLength) { setType("PhotonStreamXY", ComplexValueXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamXY(int bLength) { setType("PhotonStreamXY", ComplexValueXY); setBufferLength(bLength); }
 	PhotonStreamXY() { setType("PhotonStreamXY", ComplexValueXY); if (buffer == nullptr) buffer = new t_complex_xy[getBufferLength()]; }
@@ -406,6 +429,7 @@ public:
 class PhotonStreamMP : public Signal {
 
 public:
+	PhotonStreamMP(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMP", PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
 	PhotonStreamMP(int bLength) { setType("PhotonStreamMP", PhotonValueMP); setBufferLength(bLength); }
 	PhotonStreamMP() { setType("PhotonStreamMP", PhotonValueMP); if (buffer == nullptr) buffer = new t_photon_mp[getBufferLength()]; }
 
@@ -417,6 +441,7 @@ class PhotonStreamMPXY : public Signal {
 
 public:
 	PhotonStreamMPXY(string fName) { setType("PhotonStreamMPXY", PhotonValueMPXY); setFileName(fName); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
+	PhotonStreamMPXY(string fileName, string folderName) : Signal(fileName, folderName) { setType("PhotonStreamMPXY", PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()];}
 	PhotonStreamMPXY(string fName, int bLength) { setType("PhotonStreamMPXY", PhotonValueMPXY); setFileName(fName); setBufferLength(bLength); }
 	PhotonStreamMPXY(int bLength) { setType("PhotonStreamMPXY", PhotonValueMPXY); setBufferLength(bLength); }
 	PhotonStreamMPXY() { setType("PhotonStreamMPXY", PhotonValueMPXY); if (buffer == nullptr) buffer = new t_photon_mp_xy[getBufferLength()]; }
@@ -427,6 +452,7 @@ public:
 class Messages : public Signal {
 public:
 	Messages(string fName) { setType("Message", Message); setFileName(fName); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
+	Messages(string fileName, string folderName) : Signal(fileName, folderName) { setType("Message", Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()];}
 	Messages(string fName, int bLength) { setType("Message", Message); setFileName(fName); setBufferLength(bLength); }
 	Messages(int bLength) { setType("Message", Message); setBufferLength(bLength); }
 	Messages() { setType("Message", Message); if (buffer == nullptr) buffer = new t_message[getBufferLength()]; }
@@ -624,7 +650,8 @@ class RealToComplex : public Block {
 class System {
 
  public:
-  System(vector<Block *> &MainSystem);	
+  System(vector<Block *> &MainSystem);
+  System(vector<Block *> &MainSystem, string signalsFolderName, vector<string> list);
   void terminate();										
   void run();
   void run(string signalPath);
@@ -640,7 +667,7 @@ private:
   int numberOfBlocks;  // Number of system Blocks
   int (*topology)[MAX_TOPOLOGY_SIZE];  // Relationship matrix
   vector<Block *> SystemBlocks;  // Pointer to an array of pointers to Block objects
-  //Debug inputs
+  //Log File Inputs
   string logFileName{ "log.txt" }; // The name of the file where the debug info will be written
   bool logValue{ true }; // Will write debug info if true
   vector<string> loadedInputParameters;

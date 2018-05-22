@@ -1,0 +1,3 @@
+//---------- BB84 DISCRETE VARIABLES INPUT PARAMETERS ------------
+detectorPhaseDelay=               0.7
+rotationAngle=                    0.5
