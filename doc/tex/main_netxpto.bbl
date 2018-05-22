@@ -19,39 +19,6 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global}
-    \entry{saleh1991}{book}{}
-      \name{author}{2}{}{%
-        {{hash=35e23bf6d97484c886444734973b5e85}{%
-           family={Saleh},
-           familyi={S\bibinitperiod},
-           given={B.\bibnamedelimi E.},
-           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=79373f7210a4d0ce76b0790594755f34}{%
-           family={Teich},
-           familyi={T\bibinitperiod},
-           given={M.\bibnamedelimi C.},
-           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {New York (NY)}%
-      }
-      \list{publisher}{1}{%
-        {John Wiley \& Sons}%
-      }
-      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
-      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
-      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
-      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
-      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
-      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{series}{Wiley series in pure and applied optics}
-      \field{title}{Fundamentals of photonics}
-      \field{year}{1991}
-    \endentry
     \entry{Rao2010a}{book}{}
       \name{author}{3}{}{%
         {{hash=b9c69864095d3db4630db2d09d60d2f3}{%
@@ -79,8 +46,8 @@
       \strng{authorbibnamehash}{d839650ea87ee6dd0d270b0692b669f5}
       \strng{authornamehash}{d839650ea87ee6dd0d270b0692b669f5}
       \strng{authorfullhash}{d839650ea87ee6dd0d270b0692b669f5}
-      \field{sortinit}{9}
-      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Fast Fourier Transform - Algorithms and Applications presents an introduction to the principles of the fast Fourier transform (FFT). It covers FFTs, frequency domain filtering, and applications to video and audio signal processing. As fields like communications, speech and image processing, and related areas are rapidly developing, the FFT as one of the essential parts in digital signal processing has been widely used. Thus there is a pressing need from instructors and students for a book dealing with the latest FFT topics. Fast Fourier Transform - Algorithms and Applications provides a thorough and detailed explanation of important or up-to-date FFTs. It also has adopted modern approaches like MATLAB examples and projects for better understanding of diverse FFTs. Fast Fourier Transform - Algorithms and Applications is designed for senior undergraduate and graduate students, faculty, engineers, and scientists in the field, and self-learners to understand FFTs and directly apply them to their fields, efficiently. It is designed to be both a text and a reference. Thus examples, projects and problems all tied with MATLAB, are provided for grasping the concepts concretely. It also includes references to books and review papers and lists of applications, hardware/software, and useful websites. By including many figures, tables, bock diagrams and graphs, this book helps the reader understand the concepts of fast algorithms readily and intuitively. It provides new MATLAB functions and MATLAB source codes. The material in Fast Fourier Transform - Algorithms and Applications is presented without assuming any prior knowledge of FFT. This book is for any professional who wants to have a basic understanding of the latest developments in and applications of FFT. It provides a good reference for any engineer planning to work in this field, either in basic implementation or in research and development.}
@@ -112,8 +79,8 @@
       \strng{authorbibnamehash}{aa38810153646a3f407b8e96d6f9140f}
       \strng{authornamehash}{aa38810153646a3f407b8e96d6f9140f}
       \strng{authorfullhash}{aa38810153646a3f407b8e96d6f9140f}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{abstract}{Title from the resource itself.}
@@ -390,6 +357,44 @@
 \endrefsection
 
 \refsection{6}
+  \datalist[entry]{none/global//global/global}
+    \entry{saleh1991}{book}{}
+      \name{author}{2}{}{%
+        {{hash=35e23bf6d97484c886444734973b5e85}{%
+           family={Saleh},
+           familyi={S\bibinitperiod},
+           given={B.\bibnamedelimi E.},
+           giveni={B\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=79373f7210a4d0ce76b0790594755f34}{%
+           family={Teich},
+           familyi={T\bibinitperiod},
+           given={M.\bibnamedelimi C.},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York (NY)}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{fullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{bibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorbibnamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authornamehash}{4139c97a5232e554d6af0f01d2d8317e}
+      \strng{authorfullhash}{4139c97a5232e554d6af0f01d2d8317e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Wiley series in pure and applied optics}
+      \field{title}{Fundamentals of photonics}
+      \field{year}{1991}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{7}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%

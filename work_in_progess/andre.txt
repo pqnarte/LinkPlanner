@@ -1,3 +1,10 @@
+2018-05-22
+TO BE DONE
+
+	verificar isto se o diretório não existir, criar o diretório
+
+	alterar o bloco binary_source
+
 2018-05-16
 TO BE DONE
 
