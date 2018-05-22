@@ -2066,8 +2066,6 @@
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
-    <bcf:citekey order="1">almeida2016continuous</bcf:citekey>
-    <bcf:citekey order="2">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 6 -->
   <bcf:bibdata section="6">
@@ -2080,15 +2078,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="6">
-    <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">saleh1991</bcf:citekey>
-    <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">saleh1991</bcf:citekey>
-    <bcf:citekey order="5">saleh1991</bcf:citekey>
-    <bcf:citekey order="6">saleh1991</bcf:citekey>
+    <bcf:citekey order="1">Almeida16</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
+    <bcf:citekey order="1">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 7 -->
   <bcf:bibdata section="7">
@@ -2102,14 +2096,35 @@
   </bcf:bibdata>
   <bcf:section number="7">
     <bcf:citekey order="1">saleh1991</bcf:citekey>
+    <bcf:citekey order="2">saleh1991</bcf:citekey>
+    <bcf:citekey order="3">saleh1991</bcf:citekey>
+    <bcf:citekey order="4">saleh1991</bcf:citekey>
+    <bcf:citekey order="5">saleh1991</bcf:citekey>
+    <bcf:citekey order="6">saleh1991</bcf:citekey>
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 8 -->
+  <bcf:bibdata section="8">
+    <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_mpc/quantum_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="8">
+    <bcf:citekey order="1">saleh1991</bcf:citekey>
     <bcf:citekey order="2">smith1997</bcf:citekey>
     <bcf:citekey order="3">saleh1991</bcf:citekey>
     <bcf:citekey order="4">george2011</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
-    <bcf:citekey order="3">Rao2010a</bcf:citekey>
-    <bcf:citekey order="4">Chu2000</bcf:citekey>
+    <bcf:citekey order="2">Rao2010a</bcf:citekey>
+    <bcf:citekey order="3">Chu2000</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
@@ -2173,6 +2188,15 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
   <bcf:datalist section="7"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="8"
                 name="none/global//global/global"
                 type="entry"
                 sortingtemplatename="none"
