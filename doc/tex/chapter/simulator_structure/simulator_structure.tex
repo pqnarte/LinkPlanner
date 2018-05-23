@@ -137,7 +137,8 @@ In directory \textit{doc/tex/chapter/simulator\_structure/test\_log\_file/bpsk\_
 \subsection{Introduction}
 With the Input Parameters System (IPS) it is possible to read the input parameters from a file.
 
-\subsubsection{Format Of The Input File}
+\subsubsection{Format of the Input File}
+We are going to explain the use of the IPS using as an example the PBSK system.
 In Figure \ref{fig:ipsfilecontent}, it is possible to observe the contents of the file \textbf{input\_parameters\_0.txt} used to load the values of some of the BPSK system's input parameters. The input file must respect the following properties:
 \begin{enumerate}
 \item Input parameter values can be changed by adding a line in the following format: \textbf{paramName=newValue}, where \textbf{paramName} is the name of the input parameter and \textbf{newValue} is the value to be assigned.
@@ -157,9 +158,9 @@ In Figure \ref{fig:ipsfilecontent}, it is possible to observe the contents of th
 \subsubsection{Loading Input Parameters From A File}
 Execute the following command in the Command Line:
 \begin{itemize}
-  \item[] \textbf{.\textbackslash{}some\_system.exe <input\_file\_path> <output\_directory>}
+  \item[] \textbf{some\_system.exe <input\_file\_path> <output\_directory>}
 \end{itemize}
-\
+%
 where \textbf{some\_system.exe} is the name of the executable generated after compiling the project, \textbf{<input\_file\_path>} is the path to the file containing the new input parameters; \textbf{<output\_directory>} is the directory where the output signals will be written into.
 
 \subsection{How To Include The IPS In Your System}
