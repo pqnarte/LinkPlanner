@@ -70,7 +70,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\lib\add_20171116.cpp" />
     <ClCompile Include="..\..\lib\balanced_beam_splitter_20180124.cpp" />
-    <ClCompile Include="..\..\lib\binary_source_20180118.cpp" />
+    <ClCompile Include="..\..\lib\binary_source_20180523.cpp" />
     <ClCompile Include="..\..\lib\bit_decider_20170818.cpp" />
     <ClCompile Include="..\..\lib\bit_error_rate_20171810.cpp" />
     <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
@@ -93,7 +93,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\add_20171116.h" />
     <ClInclude Include="..\..\include\balanced_beam_splitter_20180124.h" />
-    <ClInclude Include="..\..\include\binary_source_20180118.h" />
+    <ClInclude Include="..\..\include\binary_source_20180523.h" />
     <ClInclude Include="..\..\include\bit_decider_20170818.h" />
     <ClInclude Include="..\..\include\bit_error_rate_20171810.h" />
     <ClInclude Include="..\..\include\discrete_to_continuous_time_20180118.h" />
