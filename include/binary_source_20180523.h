@@ -62,6 +62,9 @@ class BinarySource : public Block {
 	
 	bool runBlock(void);
 
+	void setAsciiFileName(string nName) { asciiFileName = nName; }
+	string getAsciiFileName() { return asciiFileName; }
+
 	void setMode(BinarySourceMode m) {mode = m;}
 	BinarySourceMode const getMode(void) { return mode; };
 	
