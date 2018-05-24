@@ -48,7 +48,7 @@ class BinarySource : public Block {
 	 double probabilityOfZero{ 0.5 };
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
-	 string asciiFileName{ "binary_source_ascii_file.txt" };
+	 string asciiFilePath{ "" };
 
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
@@ -62,8 +62,8 @@ class BinarySource : public Block {
 	
 	bool runBlock(void);
 
-	void setAsciiFileName(string nName) { asciiFileName = nName; }
-	string getAsciiFileName() { return asciiFileName; }
+	void setAsciiFileName(string nName) { asciiFilePath = nName; }
+	string getAsciiFileName() { return asciiFilePath; }
 
 	void setMode(BinarySourceMode m) {mode = m;}
 	BinarySourceMode const getMode(void) { return mode; };
