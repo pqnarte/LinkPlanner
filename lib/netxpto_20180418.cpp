@@ -967,7 +967,7 @@ void System::run(string signalPath) {
 				localtime_s(&now, &t_now);
 				char buffer[20];
 				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
-				logFile << buffer << endl;
+				logFile << "Block start time: " << buffer << endl;
 				// Prints line for each input signal in the current block being executed
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
@@ -986,7 +986,7 @@ void System::run(string signalPath) {
 			}
 			bool aux = SystemBlocks[i]->runBlock();
 			if (logValue)
-				logFile << (float)(clock() - start) / 1000 << endl << endl;
+				logFile << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl << endl;
 			Alive = (Alive || aux);
 		}
 		l++;
