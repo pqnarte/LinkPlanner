@@ -35,11 +35,11 @@ double bitPeriod{ 1.0 / 100e9 };
 */ 
 class BinarySource : public Block {
 
+private:
+
 	// State variables
 	std::vector<int> acumul;
 	int posBitStream{ 0 };
-
- public:
 
 	 // Input parameters
 	 std::default_random_engine generator;
@@ -48,12 +48,14 @@ class BinarySource : public Block {
 	 double probabilityOfZero{ 0.5 };
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
-	 string asciiFilePath{ "" };
+
+	 string asciiFilePath{ "ascii_file.txt" };
+	 int nextCharacterIndex{ 0 };
 
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
 
-
+public:
 	// Methods
 	BinarySource() {};
 	BinarySource(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig){};
@@ -62,7 +64,8 @@ class BinarySource : public Block {
 	
 	bool runBlock(void);
 
-	void setAsciiFileName(string nName) { asciiFilePath = nName; }
+	//If the file changes, the pointer must be reset
+	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; }
 	string getAsciiFileName() { return asciiFilePath; }
 
 	void setMode(BinarySourceMode m) {mode = m;}
