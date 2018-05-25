@@ -1,4 +1,4 @@
-# include "binary_source_20180118.h"
+# include "binary_source_20180523.h"
 
 using namespace std;
 
@@ -208,6 +208,18 @@ bool BinarySource::runBlock(void) {
 				outputSignals[k]->bufferPut((t_binary)aux);
 			}
 			numberOfBits--;
+		}
+
+		if (mode == AsciiFileAppendZeros) {
+			ifstream asciiFile(asciiFilePath, ios::binary);
+			if (asciiFile.is_open()) {
+				char aux;
+				while (asciiFile.get(aux)) {
+					//...
+				}
+				asciiFile.close();
+			}
+			else cout << "could not open file" << endl;
 		}
 
 	}

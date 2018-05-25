@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <complex>
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 #include "bit_error_rate_20171810.h"
 
 void BitErrorRate::initialize(void){

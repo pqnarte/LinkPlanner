@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_BIT_ERROR_RATE_H_
 # define PROGRAM_INCLUDE_BIT_ERROR_RATE_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 # include <vector>
 
 // Calculates the BER between two binary signals
