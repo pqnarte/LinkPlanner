@@ -1,6 +1,45 @@
+2018-05-16
+TO BE DONE
+
+	criar um capítulo para o qkd_with_cv_without_base_switching, usando a mesma formatação dos
+		bb84_with_discrete_variables
+		quantum_random_number_generator
+		bpsk_system
+
+	subsecções
+		- Theoretical Analysis
+		- Simulation Analysis
+		- Experimental Validation
+		- Comparative Analysis
+		- Bibliography
+
+	
+	Focar na Theoretical Analysis
+
+Next meeting: 24/5, 10h
+
+
+2018-05-08
+TO BE DONE
+
+	Ler a dissertação e apresentar um diagrama de blocos com o sistema a simular/implemetnar
+
+Next meeting: 16/5, 16h
+
+
+
+2018-04-24
+TO BE DONE
+
+	Garble circuits, usar os circuitos de garble para resolver um problema simples (milionário)
+
+Next meeting: 4/5, 11h
+
+
 2018-04-18
 TO BE DONE
 
+	
 	- OT permite implementar qualquer MPC	
 	- encontrar uma solução para o problema do milionário usando OT
 	- pull request para o Netxpto/Linkplanner/Goncalo

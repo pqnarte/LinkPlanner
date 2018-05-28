@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 % $ biblatex auxiliary file $
 % $ biblatex bbl format version 2.9 $
 % Do not modify the above lines!
@@ -54,9 +52,84 @@
       \field{title}{Fundamentals of photonics}
       \field{year}{1991}
     \endentry
+    \entry{Rao2010a}{book}{}
+      \name{author}{3}{}{%
+        {{hash=b9c69864095d3db4630db2d09d60d2f3}{%
+           family={Rao},
+           familyi={R\bibinitperiod},
+           given={K.\bibnamedelimi Ramamohan\bibnamedelimb (Kamisetty\bibnamedelima Ramamohan)},
+           giveni={K\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim (\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=f54e3c13a9431ab86f723c67ce18ad56}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={D.\bibnamedelimi N.},
+           giveni={D\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=63ca74c6be1e1386f86f8019bec6ae6c}{%
+           family={Hwang},
+           familyi={H\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{fullhash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{bibnamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authorbibnamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authornamehash}{d839650ea87ee6dd0d270b0692b669f5}
+      \strng{authorfullhash}{d839650ea87ee6dd0d270b0692b669f5}
+      \field{sortinit}{9}
+      \field{sortinithash}{1dd72ab054147731c9d824b49aba0534}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Fast Fourier Transform - Algorithms and Applications presents an introduction to the principles of the fast Fourier transform (FFT). It covers FFTs, frequency domain filtering, and applications to video and audio signal processing. As fields like communications, speech and image processing, and related areas are rapidly developing, the FFT as one of the essential parts in digital signal processing has been widely used. Thus there is a pressing need from instructors and students for a book dealing with the latest FFT topics. Fast Fourier Transform - Algorithms and Applications provides a thorough and detailed explanation of important or up-to-date FFTs. It also has adopted modern approaches like MATLAB examples and projects for better understanding of diverse FFTs. Fast Fourier Transform - Algorithms and Applications is designed for senior undergraduate and graduate students, faculty, engineers, and scientists in the field, and self-learners to understand FFTs and directly apply them to their fields, efficiently. It is designed to be both a text and a reference. Thus examples, projects and problems all tied with MATLAB, are provided for grasping the concepts concretely. It also includes references to books and review papers and lists of applications, hardware/software, and useful websites. By including many figures, tables, bock diagrams and graphs, this book helps the reader understand the concepts of fast algorithms readily and intuitively. It provides new MATLAB functions and MATLAB source codes. The material in Fast Fourier Transform - Algorithms and Applications is presented without assuming any prior knowledge of FFT. This book is for any professional who wants to have a basic understanding of the latest developments in and applications of FFT. It provides a good reference for any engineer planning to work in this field, either in basic implementation or in research and development.}
+      \field{isbn}{9781402066290}
+      \field{title}{{Fast Fourier transform : algorithms and applications}}
+      \field{year}{2010}
+      \field{pages}{423}
+      \range{pages}{1}
+    \endentry
+    \entry{Chu2000}{book}{}
+      \name{author}{2}{}{%
+        {{hash=cf9f18675ca92161a63d8b0b00d39076}{%
+           family={Chu},
+           familyi={C\bibinitperiod},
+           given={Eleanor\bibnamedelima Chin-hwa},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinithyphendelim h\bibinitperiod}}}%
+        {{hash=1ee225cb3490975a4303696bf7ff9897}{%
+           family={George},
+           familyi={G\bibinitperiod},
+           given={Alan.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{fullhash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{bibnamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authorbibnamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authornamehash}{aa38810153646a3f407b8e96d6f9140f}
+      \strng{authorfullhash}{aa38810153646a3f407b8e96d6f9140f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Title from the resource itself.}
+      \field{isbn}{9781420049961}
+      \field{title}{{Inside the FFT black box : serial and parallel fast Fourier transform algorithms}}
+      \field{year}{2000}
+      \field{pages}{312}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://www.crcpress.com/Inside-the-FFT-Black-Box-Serial-and-Parallel-Fast-Fourier-Transform-Algorithms/Chu-George/p/book/9780849302701
+      \endverb
+      \verb{url}
+      \verb https://www.crcpress.com/Inside-the-FFT-Black-Box-Serial-and-Parallel-Fast-Fourier-Transform-Algorithms/Chu-George/p/book/9780849302701
+      \endverb
+    \endentry
   \enddatalist
-  \missing{Chu2000}
-  \missing{Rao2010a}
   \missing{almeida2016continuous}
   \missing{probabilitySheldon}
 \endrefsection
@@ -85,7 +158,330 @@
   \enddatalist
 \endrefsection
 
+\refsection{3}
+  \datalist[entry]{none/global//global/global}
+    \entry{Katsoprinakis08}{article}{}
+      \name{author}{5}{}{%
+        {{hash=a10f25b56a503df17b216b7a5ae5a5eb}{%
+           family={Katsoprinakis},
+           familyi={K\bibinitperiod},
+           given={GE},
+           giveni={G\bibinitperiod}}}%
+        {{hash=39cdf3f6b3bf447200872041de9d5a9c}{%
+           family={Polis},
+           familyi={P\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+        {{hash=eaa0bb9eb434cc9681cdb71bc283d531}{%
+           family={Tavernarakis},
+           familyi={T\bibinitperiod},
+           given={A},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a2826b9fb86a2fd1dcd58b0c183b4fe6}{%
+           family={Dellis},
+           familyi={D\bibinitperiod},
+           given={AT},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3a61616570e16db2958278ec8244769b}{%
+           family={Kominis},
+           familyi={K\bibinitperiod},
+           given={IK},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{fullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
+      \strng{bibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorbibnamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authornamehash}{453e0bbb9db7f253c1b9550c85344220}
+      \strng{authorfullhash}{65d3356a51f7a8bcc839540f4ccf9a8f}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{5}
+      \field{title}{Quantum random number generator based on spin noise}
+      \field{volume}{77}
+      \field{year}{2008}
+      \field{pages}{054101}
+      \range{pages}{1}
+    \endentry
+    \entry{Jennewein00}{article}{}
+      \name{author}{5}{}{%
+        {{hash=6ecc969fb9b5fa1e1eb5190dbf6ca977}{%
+           family={Jennewein},
+           familyi={J\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=30e70ab7ba2ff4a8d940df361759797d}{%
+           family={Achleitner},
+           familyi={A\bibinitperiod},
+           given={Ulrich},
+           giveni={U\bibinitperiod}}}%
+        {{hash=462a69d04a28da2f00eab1fee8fc5aa6}{%
+           family={Weihs},
+           familyi={W\bibinitperiod},
+           given={Gregor},
+           giveni={G\bibinitperiod}}}%
+        {{hash=ebdf6a8a3edc28cc9c608fabbd805369}{%
+           family={Weinfurter},
+           familyi={W\bibinitperiod},
+           given={Harald},
+           giveni={H\bibinitperiod}}}%
+        {{hash=a961661d22885d8f3bcba104deec38f0}{%
+           family={Zeilinger},
+           familyi={Z\bibinitperiod},
+           given={Anton},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{fullhash}{87afd67d4d8276955953941d7b8e1561}
+      \strng{bibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorbibnamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authornamehash}{69604acc498442a7469e8cb194fe5b62}
+      \strng{authorfullhash}{87afd67d4d8276955953941d7b8e1561}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Review of Scientific Instruments}
+      \field{number}{4}
+      \field{title}{A fast and compact quantum random number generator}
+      \field{volume}{71}
+      \field{year}{2000}
+      \field{pages}{1675\bibrangedash 1680}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1063/1.1150518
+      \endverb
+    \endentry
+    \entry{Fox06}{book}{}
+      \name{author}{1}{}{%
+        {{hash=680093a59b4a8752bda6dd5544fc97b4}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Mark},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford, University Press}%
+      }
+      \strng{namehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{fullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{bibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorbibnamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authornamehash}{680093a59b4a8752bda6dd5544fc97b4}
+      \strng{authorfullhash}{680093a59b4a8752bda6dd5544fc97b4}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Optics, an Introdution}
+      \field{year}{2006}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{4}
+  \datalist[entry]{none/global//global/global}
+    \entry{Bennet84}{inproceedings}{}
+      \name{author}{1}{}{%
+        {{hash=f839b7fcbce5edd9d1dad490a01d8afc}{%
+           family={Bennet},
+           familyi={B\bibinitperiod},
+           given={Charles\bibnamedelima H},
+           giveni={C\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{fullhash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{bibnamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authorbibnamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authornamehash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \strng{authorfullhash}{f839b7fcbce5edd9d1dad490a01d8afc}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proc. of IEEE Int. Conf. on Comp., Syst. and Signal Proc., Bangalore, India, Dec. 10-12, 1984}
+      \field{title}{Quantum cryptography: Public key distribution and coin tossing}
+      \field{year}{1984}
+    \endentry
+    \entry{Gerry05}{book}{}
+      \name{author}{2}{}{%
+        {{hash=23786b712dd26ddb2f6595241e379d9d}{%
+           family={Gerry},
+           familyi={G\bibinitperiod},
+           given={Christopher},
+           giveni={C\bibinitperiod}}}%
+        {{hash=3c9863d3b3a4eb3d67f64a9ad1145651}{%
+           family={Knight},
+           familyi={K\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{fullhash}{6819c3136cc4236226f5169823410c1e}
+      \strng{bibnamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authorbibnamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authornamehash}{6819c3136cc4236226f5169823410c1e}
+      \strng{authorfullhash}{6819c3136cc4236226f5169823410c1e}
+      \field{sortinit}{2}
+      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introductory quantum optics}
+      \field{year}{2005}
+    \endentry
+    \entry{Muga11}{article}{}
+      \name{author}{3}{}{%
+        {{hash=c93d83ae1fd4df862b7cce8bd4904e2a}{%
+           family={Muga},
+           familyi={M\bibinitperiod},
+           given={Nelson\bibnamedelima J},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=e0a2256659414226397d6db4f710f906}{%
+           family={Ferreira},
+           familyi={F\bibinitperiod},
+           given={M{á}rio\bibnamedelima FS},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=4f1fdbaf260320282c25c027c0d36a0d}{%
+           family={Pinto},
+           familyi={P\bibinitperiod},
+           given={Armando\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{fullhash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{bibnamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authorbibnamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authornamehash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \strng{authorfullhash}{1fbe4a8d6d20d5ac8c3b5255e61027c5}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Lightwave Technology}
+      \field{number}{3}
+      \field{title}{QBER estimation in QKD systems with polarization encoding}
+      \field{volume}{29}
+      \field{year}{2011}
+      \field{pages}{355\bibrangedash 361}
+      \range{pages}{7}
+    \endentry
+    \entry{Muga15}{article}{}
+      \name{author}{2}{}{%
+        {{hash=c93d83ae1fd4df862b7cce8bd4904e2a}{%
+           family={Muga},
+           familyi={M\bibinitperiod},
+           given={Nelson\bibnamedelima J},
+           giveni={N\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4f1fdbaf260320282c25c027c0d36a0d}{%
+           family={Pinto},
+           familyi={P\bibinitperiod},
+           given={Armando\bibnamedelima N},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{fullhash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{bibnamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authorbibnamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authornamehash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \strng{authorfullhash}{45c7545ed525dd5a4dac29361f1e31bf}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Lightwave Technology}
+      \field{number}{23}
+      \field{title}{Extended Kalman filter vs. geometrical approach for stokes space-based polarization demultiplexing}
+      \field{volume}{33}
+      \field{year}{2015}
+      \field{pages}{4826\bibrangedash 4833}
+      \range{pages}{8}
+    \endentry
+    \entry{Czegledi16}{article}{}
+      \name{author}{4}{}{%
+        {{hash=5b75161e4019cd809724b39cd35b696a}{%
+           family={Czegledi},
+           familyi={C\bibinitperiod},
+           given={Cristian\bibnamedelima B},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=7d0f3133c9fc539cb4bedd99282bc004}{%
+           family={Karlsson},
+           familyi={K\bibinitperiod},
+           given={Magnus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=018567428bbcb0c70b6481b041dc2bb8}{%
+           family={Agrell},
+           familyi={A\bibinitperiod},
+           given={Erik},
+           giveni={E\bibinitperiod}}}%
+        {{hash=4250d01608b2a505ba740de8ead11e86}{%
+           family={Johannisson},
+           familyi={J\bibinitperiod},
+           given={Pontus},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Nature Publishing Group}%
+      }
+      \strng{namehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{fullhash}{7b842dcab6d32146a6e6fb8019449c2d}
+      \strng{bibnamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authorbibnamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authornamehash}{b342ed87cd3d5899cee04d82bb8a201b}
+      \strng{authorfullhash}{7b842dcab6d32146a6e6fb8019449c2d}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific reports}
+      \field{title}{Polarization drift channel model for coherent fibre-optic systems}
+      \field{volume}{6}
+      \field{year}{2016}
+      \field{pages}{21217}
+      \range{pages}{1}
+    \endentry
+  \enddatalist
+\endrefsection
+
 \refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{thorlabs}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={Thorlabs},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Thorlabs Balance Amplified Photodetectors: PDB4xx Series Operation Manual}
+      \field{year}{2014}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
@@ -184,4 +580,3 @@
 \endrefsection
 \endinput
 
->>>>>>> Goncalo
