@@ -70,7 +70,7 @@ public:
 	}
 };
 
-/* Usage: .\bpsk_system.exe <input_parameters.txt> <output_directory> */
+/* Usage: bpsk_system.exe <input_parameters.txt> <output_directory> */
 int main(int argc, char *argv[]) {
 
 	BPSKInputParameters param(argc, argv);
