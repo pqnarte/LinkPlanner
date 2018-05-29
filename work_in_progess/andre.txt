@@ -1,6 +1,20 @@
 2018-05-22
 TO BE DONE
 
+	alterar o bloco binary_source
+		quando chega ao final do ficheiro faz appendZeros=1 ou 0 se for 0 não gera mais nada, fazer igual ao caso em que excedeu o número de bits.
+		
+
+	log file, acrescentar o valor dos parametros lidos
+
+	input parameters permitir espaços antes e depois do igual
+
+Next meeting: 12/6, 15h
+
+
+2018-05-22
+TO BE DONE
+
 	verificar isto se o diretório não existir, criar o diretório
 
 	alterar o bloco binary_source
