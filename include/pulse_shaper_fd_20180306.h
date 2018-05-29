@@ -41,42 +41,6 @@ public:
 	void usePassiveFilterMode(bool pFilterMode) { passiveFilterMode = pFilterMode; };
 };
 
-
-
-
-class PulseShaperFd_New : public FD_Filter_New {
-
-	// Input Parameters
-	PulseShaperFilterTF filterType{ RaisedCosineTF };
-	int transferFunctionFrequencyLength{ 16 };
-	double rollOffFactor{ 0.9 };
-	double BTs{ 0.5 };									// Bandwidth-symbol time product of gaussian filter
-	bool passiveFilterMode{ false };
-
-public:
-
-	// Methods 
-	PulseShaperFd_New() : FD_Filter_New() {};
-	PulseShaperFd_New(vector<Signal *> &InputSig, vector<Signal *> OutputSig) :FD_Filter_New(InputSig, OutputSig) {};
-
-	void initialize(void);
-
-	void setTransferFunctionFrequencyLength(int transFunctionLength) { transferFunctionFrequencyLength = transFunctionLength; };
-	int const getTransferFunctionFrequencyLength(void) { return transferFunctionFrequencyLength; };
-
-	void setFilterType(PulseShaperFilterTF fType) { filterType = fType; };
-	PulseShaperFilterTF const getFilterType(void) { return filterType; };
-
-	void setRollOffFactor(double rOffFactor) { rollOffFactor = rOffFactor; };
-	double const getRollOffFactor() { return rollOffFactor; };
-
-	void setBTs(double bandwidthSymbolTimeProduct) { BTs = bandwidthSymbolTimeProduct; }; // This term controls the bandwidth of the gaussian filter
-	double const getBTs() { return BTs; };
-
-	void usePassiveFilterMode(bool pFilterMode) { passiveFilterMode = pFilterMode; };
-};
-
-
 # endif
 
 

@@ -24,6 +24,14 @@ class SOPModulator : public Block {
 	bool firstSop{ true };
 	vector< vector<t_complex> > JJnext = { {0,0},{0,0} };
 	vector< vector<t_complex> > JJ = { { 0,0 },{ 0,0 } };
+<<<<<<< HEAD
+	vector< vector<t_complex> > sigma1 = { { 1.0,0.0 },{ 0.0,1.0 } };
+	vector< vector<t_complex> > sigma2 = { { 0.0, 1.0 },{ 1.0, 0.0 } };
+	vector< vector<t_complex> > sigma3 = { { 0.0, -1i },{ 1i, 0.0 } };
+	vector< vector<double> > I2 = { { 1.0,0.0 },{ 0.0,1.0 } };
+	vector< vector<double> > I3 = { { 1.0,0.0,0.0 },{ 0.0,1.0,0.0 },{0.0,0.0,1.0} };
+=======
+>>>>>>> Andre
 public:
 
 	/*Methods*/

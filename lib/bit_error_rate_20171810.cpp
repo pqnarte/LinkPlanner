@@ -65,7 +65,7 @@ bool BitErrorRate::runBlock(void){
         
 		/* Outputting a .txt report*/
 		ofstream myfile;
-		myfile.open("BER.txt");
+		myfile.open(outputSignals[0]->getFolderName() + "/BER.txt");
 		myfile << "BER= " << BER << "\n";
 		myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
 		myfile << "Upper Bound= " << UpperBound << "\n";

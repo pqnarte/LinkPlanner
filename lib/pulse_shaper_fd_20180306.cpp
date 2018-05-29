@@ -9,7 +9,7 @@ using namespace std;
 
 void raisedCosineTF(vector<t_complex> &transferFunction, int transferFunctionLength, double rollOffFactor, double samplingPeriod, double symbolPeriod);
 void rootRaisedCosineTF(vector<t_complex> &transferFunction, int transferFunctionLength, double rollOffFactor, double samplingPeriod, double symbolPeriod);
-void     gaussianTF(vector<t_complex> &transferFunction, int transferFunctionLength, double BTs,           double samplingPeriod, double symbolPeriod);
+void gaussianTF(vector<t_complex> &transferFunction, int transferFunctionLength, double BTs,           double samplingPeriod, double symbolPeriod);
 
 
 void PulseShaperFd::initialize(void) {
@@ -34,34 +34,6 @@ void PulseShaperFd::initialize(void) {
 	};
 
 	initializeFD_Filter();
-
-
-}
-
-
-void PulseShaperFd_New::initialize(void) {
-
-	double samplingPeriod = inputSignals[0]->samplingPeriod;
-	double symbolPeriod = inputSignals[0]->symbolPeriod;
-
-	transferFunctionLength = (int)floor(transferFunctionFrequencyLength * symbolPeriod / samplingPeriod);
-	transferFunction.resize(transferFunctionLength);
-
-	switch (getFilterType()) {
-
-	case RaisedCosineTF:
-		raisedCosineTF(transferFunction, getTransferFunctionLength(), rollOffFactor, samplingPeriod, symbolPeriod);
-		break;
-	case RootRaisedCosineTF:
-		rootRaisedCosineTF(transferFunction, getTransferFunctionLength(), rollOffFactor, samplingPeriod, symbolPeriod);
-		break;
-	case GaussianTF:
-		gaussianTF(transferFunction, getTransferFunctionLength(), BTs, samplingPeriod, symbolPeriod);
-		break;
-	};
-
-	//initializeFD_Filter();
-	initializeFD_Filter_New();
 
 
 }
