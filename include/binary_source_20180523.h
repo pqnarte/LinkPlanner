@@ -50,10 +50,10 @@ private:
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
 
-	 string asciiFilePath{ "ascii_file.txt" };
+	 string asciiFilePath{ "file_input_data.txt" };
+	 bool appendZeros{ true }; //Appends zeros until it generated the necessary bits, after reading the file
 	 int nextCharacterIndex{ 0 };//Index of the next character
 	 int nextBitIndex{ 0 }; //Index of the next bit to be read from the next character
-	 int appendZeros{ 1 }; //Appends zeros until it generated the necessary bits, after reading the file
 
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
@@ -67,10 +67,10 @@ public:
 	
 	bool runBlock(void);
 
-	void setAppendZeros(int nValue) { appendZeros = nValue; };
-	int getAppendZeros() { return appendZeros; }
+	void setAppendZeros(bool nValue) { appendZeros = nValue; };
+	bool getAppendZeros() { return appendZeros; }
 
-	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; }
+	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; nextBitIndex = 0; }
 	string getAsciiFileName() { return asciiFilePath; }
 
 	void setMode(BinarySourceMode m) {mode = m;}

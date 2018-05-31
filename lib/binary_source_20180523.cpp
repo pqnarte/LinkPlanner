@@ -268,6 +268,7 @@ bool BinarySource::runBlock(void) {
 						numberOfBits--;
 					}
 				}
+				return false;
 			}
 			else {
 				//Generates the remaining number of bits
