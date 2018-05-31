@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
 
 	B1.setNumberOfBits(param.numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(param.signalOutputPower_dBm);
-	B1.setMode(PseudoRandom);
+	B1.setMode(AsciiFileAppendZeros);
 	B1.setBitPeriod(param.bitPeriod);
 	B1.setPatternLength(param.pLength);
 	B1.setIqAmplitudes(param.iqAmplitudeValues);
