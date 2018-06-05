@@ -83,6 +83,7 @@
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
       <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
       <file>./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</file>
+      <file>./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</file>
       <file>./lib/bit_error_rate/bit_error_rate.bib</file>
       <file>./lib/photoelectron_generator/photoelectron_generator.bib</file>
       <file>./lib/snr_estimator/snr_estimator.bib</file>

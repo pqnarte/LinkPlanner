@@ -630,6 +630,54 @@
 
 \refsection{4}
   \datalist[entry]{none/global//global/global}
+    \entry{Naumann16}{article}{}
+      \name{author}{1}{}{%
+        {{hash=04fab3b6d9775399c3561572ed7c3c45}{%
+           family={Naumann},
+           familyi={N\bibinitperiod},
+           given={Frederic},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{04fab3b6d9775399c3561572ed7c3c45}
+      \strng{fullhash}{04fab3b6d9775399c3561572ed7c3c45}
+      \strng{bibnamehash}{04fab3b6d9775399c3561572ed7c3c45}
+      \strng{authorbibnamehash}{04fab3b6d9775399c3561572ed7c3c45}
+      \strng{authornamehash}{04fab3b6d9775399c3561572ed7c3c45}
+      \strng{authorfullhash}{04fab3b6d9775399c3561572ed7c3c45}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Network}
+      \field{title}{Garbled Circuits}
+      \field{volume}{71}
+      \field{year}{2016}
+    \endentry
+    \entry{Yakoubov}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7a3b019f1246e92b2eb85bd3b14c69b6}{%
+           family={Yakoubov},
+           familyi={Y\bibinitperiod},
+           given={Sophia},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \strng{fullhash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \strng{bibnamehash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \strng{authorbibnamehash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \strng{authornamehash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \strng{authorfullhash}{7a3b019f1246e92b2eb85bd3b14c69b6}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Gentle Introduction to Yaos Garbled Circuits}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{5}
+  \datalist[entry]{none/global//global/global}
     \entry{Almeida16}{article}{}
       \name{author}{6}{}{%
         {{hash=e034f1f85780ead02737ecfb617fcc7c}{%
@@ -687,7 +735,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{5}
+\refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
@@ -725,7 +773,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{6}
+\refsection{7}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
