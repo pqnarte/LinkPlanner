@@ -1,0 +1,11 @@
+Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
+
+2018-05-23
+TO BE DONE
+
+	- ler, perceber a secção 1.4
+
+	- pesquisar as ferramenta de síntese, análise comparativa
+
+Next meeting: 12/6, 10h
+
