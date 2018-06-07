@@ -457,30 +457,6 @@
   \enddatalist
 \endrefsection
 
-\refsection{5}
-  \datalist[entry]{none/global//global/global}
-    \entry{thorlabs}{manual}{}
-      \name{author}{1}{}{%
-        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
-           family={Thorlabs},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Thorlabs Balance Amplified Photodetectors: PDB4xx Series Operation Manual}
-      \field{year}{2014}
-    \endentry
-  \enddatalist
-\endrefsection
-
 \refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
