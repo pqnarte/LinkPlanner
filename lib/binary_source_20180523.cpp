@@ -209,21 +209,88 @@ bool BinarySource::runBlock(void) {
 			}
 			numberOfBits--;
 		}
-
-		if (mode == AsciiFileAppendZeros) {
-			ifstream asciiFile(asciiFilePath, ios::binary);
-			if (asciiFile.is_open()) {
-				char aux;
-				while (asciiFile.get(aux)) {
-					//...
-				}
-				asciiFile.close();
-			}
-			else cout << "could not open file" << endl;
-		}
-
 	}
 
+	if (mode == AsciiFileAppendZeros) {
+		ifstream asciiFile(asciiFilePath, ios::binary);
+		if (asciiFile.is_open()) {
+			//Determines the size of the file (in bytes)
+			asciiFile.seekg(0, asciiFile.end);
+			int fileSize = (int)asciiFile.tellg();
+			asciiFile.seekg(nextCharacterIndex); //Reads from where it left off
+			//Reads from file to BUFFER
+			int numCharactersToRead = process / 8; //Number of full characters that are possible to read
+			int numRead = 0; //Number of bytes/characters read
+			unsigned int remaining = process;
+			char aux;
+			//If nextBitIndex != 0, means that the previous character was not fully read
+			//So it finishes reading it
+			if (nextBitIndex != 0) {
+				asciiFile.get(aux);
+				bitset<8> bitArray(aux);
+				for (int i = bitArray.size() - 1 - nextBitIndex; i >= 0; i--) {
+					for (int j = 0; j < numberOfOutputSignals; j++) {
+						outputSignals[j]->bufferPut((t_binary)bitArray[i]);
+					}
+					numberOfBits--;
+					remaining--;
+				}
+				nextCharacterIndex++;
+				numRead++;
+				nextBitIndex = 0;
+			}
+			//While there is available space in the buffer and there are characters to be read in the file
+			while (numRead < numCharactersToRead && asciiFile.get(aux)) {
+				numRead++;
+				bitset<8> bitArray(aux);
+				for (int i = bitArray.size() - 1; i >= 0; i--) {
+					for (int j = 0; j < numberOfOutputSignals; j++) {
+						outputSignals[j]->bufferPut((t_binary)bitArray[i]);
+					}
+				}
+				nextCharacterIndex++;
+				numberOfBits -= 8;
+				remaining -= 8;
+			}
+			//When the program exists the previous loop, two things may happen:
+			//- The file was fully read and we must choose if we are going to append zeros or not
+			//- The number of bits to process is lower than 8 (remaining < 8)
+			//The file was fully read
+			if (nextCharacterIndex == fileSize) {
+				nextCharacterIndex = 0;
+				nextBitIndex = 0;
+				//Appends zeros
+				if (appendZeros) {
+					for (unsigned int i = 0; i < remaining; i++) {
+						for (int j = 0; j < numberOfOutputSignals; j++) {
+							outputSignals[j]->bufferPut((t_binary)0);
+						}
+						numberOfBits--;
+					}
+				}
+				return false;
+			}
+			else {
+				//Generates the remaining number of bits
+				//Does not increment nextCharacterIndex since the next character
+				//to be read is still the current one
+				asciiFile.get(aux);
+ 				bitset<8> bitArray(aux);
+				for (unsigned int i = bitArray.size() - 1; i >= bitArray.size() - remaining; i--) {
+					for (int j = 0; j < numberOfOutputSignals; j++) {
+						outputSignals[j]->bufferPut((t_binary)bitArray[i]);
+					}
+					nextBitIndex++;
+					numberOfBits--;
+				}
+			}
+			asciiFile.close();
+		}
+		else {
+			cerr << "ERROR: Could not open file " << this->asciiFilePath << endl;
+			exit(1);
+		}
+	}
 	return true;
 }
 
