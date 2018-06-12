@@ -81,6 +81,7 @@
     <requires type="editable">
       <file>./chapter/simulator_structure/simulator_structure.bib</file>
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
+      <file>./sdf/m_qam_system/m_qam_system.bib</file>
       <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
       <file>./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</file>
       <file>./sdf/qkd_with_cv_without_base_switching/qkd_with_cv_without_base_switching.bib</file>
