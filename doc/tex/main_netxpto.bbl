@@ -457,6 +457,73 @@
   \enddatalist
 \endrefsection
 
+\refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{Weedbrook2004}{article}{}
+      \name{author}{6}{}{%
+        {{hash=2adaf440c89e3d8a196dc4d6ecfa1f6d}{%
+           family={Weedbrook},
+           familyi={W\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=0278c8dbc89470c5afc38d5c2e42883d}{%
+           family={Lance},
+           familyi={L\bibinitperiod},
+           given={Andrew\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9246ef305122956e0ed2d518897d6c0a}{%
+           family={Bowen},
+           familyi={B\bibinitperiod},
+           given={Warwick\bibnamedelima P.},
+           giveni={W\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=fc9270dd14a65886a62b0d0f2aaad89f}{%
+           family={Symul},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=45eb4313f776e2470d8d0a174c05ce37}{%
+           family={Ralph},
+           familyi={R\bibinitperiod},
+           given={Timothy\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=faa2e44397ab2747a331639278afeb18}{%
+           family={Lam},
+           familyi={L\bibinitperiod},
+           given={Ping\bibnamedelima Koy},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society ({APS})}%
+      }
+      \strng{namehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{fullhash}{b03ff749390ceb837dac86cc56f05b1e}
+      \strng{bibnamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authorbibnamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authornamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authorfullhash}{b03ff749390ceb837dac86cc56f05b1e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{10}
+      \field{number}{17}
+      \field{title}{Quantum Cryptography Without Switching}
+      \field{volume}{93}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1103/physrevlett.93.170504
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1103/physrevlett.93.170504
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1103/physrevlett.93.170504
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
 \refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
