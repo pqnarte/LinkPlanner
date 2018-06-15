@@ -12,8 +12,7 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
-#include <chrono>
-#include <bitset>
+#include  <chrono>
 
 # include "netxpto_20180418.h"
 
@@ -51,10 +50,8 @@ private:
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
 
-	 string asciiFilePath{ "file_input_data.txt" };
-	 bool appendZeros{ true }; //Appends zeros until it generated the necessary bits, after reading the file
-	 int nextCharacterIndex{ 0 };//Index of the next character
-	 int nextBitIndex{ 0 }; //Index of the next bit to be read from the next character
+	 string asciiFilePath{ "ascii_file.txt" };
+	 int nextCharacterIndex{ 0 };
 
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
@@ -68,10 +65,8 @@ public:
 	
 	bool runBlock(void);
 
-	void setAppendZeros(bool nValue) { appendZeros = nValue; };
-	bool getAppendZeros() { return appendZeros; }
-
-	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; nextBitIndex = 0; }
+	//If the file changes, the pointer must be reset
+	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; }
 	string getAsciiFileName() { return asciiFilePath; }
 
 	void setMode(BinarySourceMode m) {mode = m;}

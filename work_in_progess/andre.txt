@@ -1,3 +1,22 @@
+2018-06-15
+TO BE DONE
+
+	alterar o bloco binary_source
+		suportar os modos: AsciiFileAppendZeros e AsciiFileCyclic
+
+	alterar o bloco sink_<mais recente>
+		adicionar os seguintes parametros de entrada:
+		- asciiFileName
+		- numberOfBitsToSkipBeforeSave
+		- numberOfBytesToSaveInFile
+	
+	testar isto no sistema QPSK_Transmitter
+
+	fazer e atualizar a documentação da binary_source e da sink
+
+Next meeting: 21/6, 14h
+
+
 2018-05-22
 TO BE DONE
 

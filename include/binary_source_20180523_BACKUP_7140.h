@@ -12,8 +12,12 @@
 # include <vector>
 # include <algorithm> 
 # include <random>
+<<<<<<< HEAD
+#include  <chrono>
+=======
 #include <chrono>
 #include <bitset>
+>>>>>>> Andre
 
 # include "netxpto_20180418.h"
 

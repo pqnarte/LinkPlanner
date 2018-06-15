@@ -3,6 +3,9 @@
 #include "fft_20180208.h"
 #include "netxpto_20180118.h"
 #include "snr_estimator_20180227.h"
+#include <typeinfo>
+#include <stdexcept>
+
 //// Currently estimating SNR only for real valued electrical signals.
 //// Does not work for SNR< 10dB. Results also dubious for SNR>35;
 //// Needs improvement.
@@ -15,11 +18,17 @@ void SNREstimator::initialize(void) {
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
+	if (numberOfInputSignals == 2 && numberOfOutputSignals == 2) {
+		outputSignals[1]->setSymbolPeriod(inputSignals[1]->getSymbolPeriod());
+		outputSignals[1]->setSamplingPeriod(inputSignals[1]->getSamplingPeriod());
+		outputSignals[1]->setFirstValueToBeSaved(inputSignals[1]->getFirstValueToBeSaved());
+	}
 }
 
 bool SNREstimator::runBlock(void) {
 
-	t_real inValue;
+	double inValueI;
+	double inValueQ;
 	double samplingPeriod = inputSignals[0]->getSamplingPeriod();
 	double symbolPeriod = inputSignals[0]->getSymbolPeriod();
 	int sps = inputSignals[0]->getSamplesPerSymbol();
@@ -33,7 +42,7 @@ bool SNREstimator::runBlock(void) {
 	double stdSNR = 0;
 	double LowerBound;
 	double UpperBound;
-	
+	complex<double> inValue;
 
 	// If its the first pass, calculate z for finding the confidence interval.
 	// Also, calculate the window to be used and the vector of frequencies.
@@ -63,9 +72,18 @@ bool SNREstimator::runBlock(void) {
 			frequencies.insert(frequencies.end(), ((1 + i - segmentSize / 2) * 1 / samplingPeriod)/segmentSize);
 		}
 	}
+	
+	int ready;
+	int space;
 
-	int ready = inputSignals[0]->ready();
-	int space = outputSignals[0]->space();
+	if (numberOfInputSignals == 2 && numberOfOutputSignals == 2) {
+		ready = min(inputSignals[0]->ready(), inputSignals[1]->ready());
+		space = min(outputSignals[0]->space(), outputSignals[1]->space());
+	} else {
+		ready = inputSignals[0]->ready();
+		space = outputSignals[0]->space();
+	}
+
 	int available = min(ready, space);
 	int process = min(available, measuredIntervalSize - (int)measuredInterval.size());
 	
@@ -76,9 +94,19 @@ bool SNREstimator::runBlock(void) {
 	
 	// Get values until the vector/array has the desired number of elements
 	for (long int i = 0; i < process; i++) {
-		inputSignals[0]->bufferGet(&inValue);
-		outputSignals[0]->bufferPut(inValue);
+		inputSignals[0]->bufferGet(&inValueI);
+		outputSignals[0]->bufferPut(inValueI);
+		if (numberOfInputSignals == 2 && numberOfOutputSignals == 2) {
+			inputSignals[1]->bufferGet(&inValueQ);
+			outputSignals[1]->bufferPut(inValueQ);
+			inValue= complex<double>(inValueI, inValueQ);
+		}
+		else {
+			inValue=complex<double>(inValueI,0);
+		}
+
 		measuredInterval.insert(measuredInterval.end(), inValue);
+
 	}
 	
 	if (measuredInterval.size() == measuredIntervalSize) {
@@ -95,22 +123,23 @@ bool SNREstimator::runBlock(void) {
 
 				while (finish < (int)measuredInterval.size()) {
 					// Create segment from full interval
-					segment.assign(measuredInterval.begin() + start, measuredInterval.begin() + finish);
+					segmentComplex.assign(measuredInterval.begin() + start, measuredInterval.begin() + finish);
 			
 
 					// Multiply by window (in time domain)
 					for (long int i = 0; i < segmentSize; i++) {
-						segment[i] *= window[i];
+						segmentComplex[i] *= window[i];
 					}
 
 					// Create imaginary vector and generate complex segment
-					for (unsigned int i = 0; i < segment.size(); i++)
-					{
-						// Imaginary data of the signal
-						im[i] = 0;
-					}
-					segmentComplex = ReImVect2ComplexVector(segment, im);
-			
+					/*if (numberOfInputSignals == 1) {
+						for (unsigned int i = 0; i < segment.size(); i++)
+						{
+							// Imaginary data of the signal
+							im[i] = 0;
+						}
+						segmentComplex = ReImVect2ComplexVector(segment, im);
+					}*/
 					// Get the FFT
 					fourierTransformed = fft(segmentComplex);
 					fourierTransformed = fftshift(fourierTransformed);
@@ -143,7 +172,7 @@ bool SNREstimator::runBlock(void) {
 				// Divide by number of segments used, and separate the signal frequencies from the rest
 				for (unsigned int i = 0; i < periodogramTmp.size(); i++) {
 					periodogramSum[i] = periodogramSum[i] / summed;
-					if ((frequencies[i] < 1 / symbolPeriod) && (frequencies[i] > -1 / symbolPeriod)) {
+					if ((frequencies[i] < 0.5*(1+rollOffComp) / symbolPeriod) && (frequencies[i] > -0.5*(1 + rollOffComp) / symbolPeriod)) {
 						signalPsd.insert(signalPsd.end(), periodogramSum[i]);
 					} else {
 						noisePsd.insert(noisePsd.end(), periodogramSum[i]);
@@ -161,7 +190,7 @@ bool SNREstimator::runBlock(void) {
 				}
 				signalPower = signalPower - noisePower * signalPsd.size() / noisePsd.size();
 				noisePower = noisePower * periodogramSum.size() / noisePsd.size();
-				if (signalPower <= 0) {
+					if (signalPower <= 0) {
 					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
 				} else {
 					allSNR.insert(allSNR.end(), signalPower / noisePower);
@@ -216,6 +245,7 @@ bool SNREstimator::runBlock(void) {
 			}
 			case constantAmplitudeMoments:
 			{
+				
 				// Identify the symbols (points of constant amplitude)
 				
 				// Get the average of the absolute value (square root of signal power)
@@ -228,6 +258,65 @@ bool SNREstimator::runBlock(void) {
 			case m2m4: 
 			{
 				// I think it requires complex signal
+				break;
+			}
+			case qFactor:
+			{
+/*				if (inputSignals[1]->getType != typeid(Binary) && inputSignals[2]->getType != typeid(Binary)) {
+					throw std::invalid_argument("Either the second or third signals should contain the binary signal.");
+					break;
+				} else if (inputSignals[2]->getType == typeid(Binary) && inputSignals[1]->getType != typeid(TimeContinuousAmplitudeContinuousReal)) {
+					throw std::invalid_argument("Wrong signal types for calculating Q-Factor.");
+					break;
+				}
+
+				int samples1 = 0;
+				double mu1 = 0;
+				double sigma1 = 0;
+				int samples0 = 0;
+				double mu0 = 0;
+				double sigma0 = 0;
+				double qFactor = 0;
+				int bitIdx = 0;
+
+				for (long int i = 0; i < segmentSize; i++) {
+					if (i % sps == 0) {								// Identify symbols (assuming sps is integer, currently mandatory)
+						if (bitValue == 1) {
+							samples1 += 1;
+							mu1 += segment[i];
+						}
+						else {
+							samples0 += 1;
+							mu0 += segment[i];
+						}
+					}
+				}
+
+				mu1 = mu1 / samples1;
+				mu0 = mu0 / samples0;
+
+				for (long int i = 0; i < segmentSize; i++) {
+					if (i % sps == 0) {								// Identify symbols (assuming sps is integer, currently mandatory)
+						if (bitValues[bitIdx] == 1) {
+							sigma1 += (segment[i] - mu1) * (segment[i] - mu1);
+							bitIdx += 1;
+						}
+						else {
+							sigma0 += (segment[i] - mu0) * (segment[i] - mu0);
+							bitIdx += 1;
+						}
+					}
+				}
+
+				sigma1 = sqrt(sigma1 / (samples1 - 1));
+				sigma0 = sqrt(sigma0 / (samples0 - 1));
+				
+				// Requires the bit sequence to work, as it would be necessary to identify the symbol values
+				// Read the bit sequence
+
+				qFactor = (mu1 - mu0)/(sigma1 + sigma0);
+				allSNR.insert(allSNR.end(), qFactor);
+*/				
 				break;
 			}
 			}
