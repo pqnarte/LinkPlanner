@@ -1,5 +1,17 @@
 Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
 
+
+2018-05-23
+TO BE DONE
+
+	- Dentro do secure multi-party computation, criar uma sub-secção intitulada Synthesis Tools
+		1) identificar todas as ferramentas disponiveis (tinygarbled)
+		2) fazer uma caraterização delas (tabela)
+
+	- pull request
+
+Next meeting: 12/6, 10h
+
 2018-05-23
 TO BE DONE
 
