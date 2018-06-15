@@ -43,8 +43,7 @@ private:
 	int posBitStream{ 0 };
 
 	 // Input parameters
-	 //std::default_random_engine generator;
-
+	 std::default_random_engine generator;
 	 BinarySourceMode mode{ PseudoRandom };
 
 	 double probabilityOfZero{ 0.5 };

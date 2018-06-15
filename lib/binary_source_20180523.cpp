@@ -165,15 +165,23 @@ bool BinarySource::runBlock(void) {
 	
 	if (mode == Random){
 
-		std::random_device rd;
-		std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
-		std::uniform_int_distribution<> dis(0, 1);
+		//std::random_device rd;
+		//std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
+		//std::uniform_int_distribution<> dis(0, 1);
+		std::default_random_engine rd;
+		std::uniform_real_distribution<> dis(0, 1);
 
-		t_binary aux;
+		
 		for (int k = 0; k < process; k++) {
-			aux = dis(gen);
+			t_binary aux;
+			if (dis(rd) < probabilityOfZero) {
+				aux = 0;
+			}
+			else {
+				aux = 1;
+			};
 			for (auto k = 0; k < numberOfOutputSignals; k++) {
-				outputSignals[k]->bufferPut((t_binary)aux);
+				outputSignals[k]->bufferPut((t_binary) aux);
 			}
 			numberOfBits--;
 		}

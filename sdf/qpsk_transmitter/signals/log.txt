@@ -1,0 +1,371 @@
+The following input parameters were loaded from a file:
+-------------------------------------------------------
+Block start time: 2018-06-15 10:42:35
+BinarySource|S1|space=512
+BinarySource|S9|space=512
+Elapsed time: 10 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+MQamMapper|S1|ready=512
+MQamMapper|S2|space=512
+MQamMapper|S3|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S2|ready=256
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 2 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S3|ready=256
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 2 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 23 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 23 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 2 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+Sink|S8|ready=512
+Elapsed time: 1 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=288
+MQamMapper|S3|space=288
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S2|ready=224
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S3|ready=224
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 27 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 25 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=320
+MQamMapper|S3|space=320
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S2|ready=192
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S3|ready=192
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=352
+MQamMapper|S3|space=352
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S2|ready=160
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+DiscreteToContinuousTime|S3|ready=160
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 27 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=384
+MQamMapper|S3|space=384
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S2|ready=128
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S3|ready=128
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 27 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=416
+MQamMapper|S3|space=416
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S2|ready=96
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S3|ready=96
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 27 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=448
+MQamMapper|S3|space=448
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S2|ready=64
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S3|ready=64
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 26 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 4 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=512
+Elapsed time: 1 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=480
+MQamMapper|S3|space=480
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S2|ready=32
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 6 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S3|ready=32
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 7 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+Elapsed time: 25 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+Elapsed time: 25 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|space=512
+Elapsed time: 5 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+BinarySource|S1|space=512
+BinarySource|S9|space=0
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=512
+MQamMapper|S3|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S2|ready=0
+DiscreteToContinuousTime|S4|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+DiscreteToContinuousTime|S3|ready=0
+DiscreteToContinuousTime|S5|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S4|ready=0
+PulseShaper|S6|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+PulseShaper|S5|ready=0
+PulseShaper|S7|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+IqModulator|S6|ready=0
+IqModulator|S7|ready=0
+IqModulator|S8|space=512
+Elapsed time: 0 milliseconds
+
+Block start time: 2018-06-15 10:42:36
+Sink|S8|ready=0
+Elapsed time: 0 milliseconds
+

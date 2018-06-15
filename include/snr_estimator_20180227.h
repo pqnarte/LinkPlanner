@@ -7,7 +7,7 @@
 
 enum WindowType{ Hanning, Hamming };
 // Currently only powerSpectrum is implemented
-enum EstimatorMethod{ powerSpectrum, m2m4, constantAmplitudeMoments};
+enum EstimatorMethod{ powerSpectrum, m2m4, constantAmplitudeMoments, qFactor};
 
 // Estimates the SNR of a signal
 class SNREstimator : public Block {
@@ -42,8 +42,11 @@ public:
 	vector<double> getWindow(WindowType windowType, int windowSize);
 	vector<complex<double>> fftshift(vector<complex<double>> &vec);
 
+	void setRollOff(double rollOff) { rollOffComp = rollOff; }
+	double getRollOff(void) { return rollOffComp; }
+
 private:
-	vector <double> measuredInterval;
+	vector <complex<double>> measuredInterval;
 	WindowType windowType = Hamming;
 	vector<double> window;
 	vector<double> frequencies;
@@ -56,6 +59,7 @@ private:
 	double alpha = 0.05;
 	double z;
 	double U;
+	double rollOffComp = 0.9;
 	string filename = "SNR.txt";
 	EstimatorMethod method = powerSpectrum;
 };

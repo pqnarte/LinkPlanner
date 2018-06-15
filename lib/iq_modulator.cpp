@@ -1,6 +1,5 @@
 # include <algorithm>	// std::min
 
-# include "netxpto.h"
 # include "iq_modulator.h"
 
 

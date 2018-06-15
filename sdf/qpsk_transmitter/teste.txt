@@ -1,19 +1,4 @@
-# include "netxpto_20180418.h"
-
-# include "binary_source_20180523.h"
-# include "m_qam_mapper_20180118.h"
-# include "discrete_to_continuous_time_20180118.h"
-# include "pulse_shaper_20180118.h"
-# include "iq_modulator_20180130.h"
-# include "sink_20180118.h"
-
-int main(){
-
-	// #####################################################################################################
-	// ################################### System Input Parameters #########################################
-	// #####################################################################################################
-
-	BinarySourceMode sourceMode{ AsciiFileAppendZeros };
+BinarySourceMode sourceMode{ AsciiFileAppendZeros };
 	int patternLength{ 5 };
 	string bitStream{ "0" };
 	double bitPeriod{ 1.0 / 50e9 };
@@ -52,7 +37,7 @@ int main(){
 
 	BinarySource B1{ vector<Signal*> {}, vector<Signal*> { &S1, &S9 } };
 	B1.setMode(sourceMode);
-	B1.setAsciiFileName("teste.txt");
+	B1.setAsciiFileName("teste.txt")
 	B1.setProbabilityOfZero(0.1);
 	B1.setPatternLength(patternLength);
 	B1.setBitStream(bitStream);
