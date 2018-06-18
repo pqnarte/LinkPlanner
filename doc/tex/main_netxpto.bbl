@@ -160,6 +160,209 @@
 
 \refsection{3}
   \datalist[entry]{none/global//global/global}
+    \entry{schwartz90}{book}{}
+      \name{author}{1}{}{%
+        {{hash=aa031ffedeee223486f29cd4cee1339c}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={Mischa},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw-Hill College}%
+      }
+      \strng{namehash}{aa031ffedeee223486f29cd4cee1339c}
+      \strng{fullhash}{aa031ffedeee223486f29cd4cee1339c}
+      \strng{bibnamehash}{aa031ffedeee223486f29cd4cee1339c}
+      \strng{authorbibnamehash}{aa031ffedeee223486f29cd4cee1339c}
+      \strng{authornamehash}{aa031ffedeee223486f29cd4cee1339c}
+      \strng{authorfullhash}{aa031ffedeee223486f29cd4cee1339c}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9780070559097}
+      \field{title}{Information Transmission, Modulation and Noise}
+      \field{year}{1990}
+    \endentry
+    \entry{carlson86}{book}{}
+      \name{author}{1}{}{%
+        {{hash=d4055be908df6154a812268f7e60be90}{%
+           family={Carlson},
+           familyi={C\bibinitperiod},
+           given={A\bibnamedelima Bruce},
+           giveni={A\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {McGraw Hill}%
+      }
+      \strng{namehash}{d4055be908df6154a812268f7e60be90}
+      \strng{fullhash}{d4055be908df6154a812268f7e60be90}
+      \strng{bibnamehash}{d4055be908df6154a812268f7e60be90}
+      \strng{authorbibnamehash}{d4055be908df6154a812268f7e60be90}
+      \strng{authornamehash}{d4055be908df6154a812268f7e60be90}
+      \strng{authorfullhash}{d4055be908df6154a812268f7e60be90}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Communication Systems: An Introducton to Signals and Noise in Electrical Communication}
+      \field{year}{1986}
+    \endentry
+    \entry{matzner93}{article}{}
+      \name{author}{1}{}{%
+        {{hash=cf42fdb633f86f1a8deec510f261368b}{%
+           family={Matzner},
+           familyi={M\bibinitperiod},
+           given={Rolf},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{cf42fdb633f86f1a8deec510f261368b}
+      \strng{fullhash}{cf42fdb633f86f1a8deec510f261368b}
+      \strng{bibnamehash}{cf42fdb633f86f1a8deec510f261368b}
+      \strng{authorbibnamehash}{cf42fdb633f86f1a8deec510f261368b}
+      \strng{authornamehash}{cf42fdb633f86f1a8deec510f261368b}
+      \strng{authorfullhash}{cf42fdb633f86f1a8deec510f261368b}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Facta Universitatis (Nis)}
+      \field{number}{1}
+      \field{title}{An SNR estimation algorithm for complex baseband signals using higher order statistics}
+      \field{volume}{6}
+      \field{year}{1993}
+      \field{pages}{41\bibrangedash 52}
+      \range{pages}{12}
+    \endentry
+    \entry{ituto201}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b045c23d8a63803a6ddcdc989fd245ac}{%
+           family={Recommendation},
+           familyi={R\bibinitperiod},
+           given={ITU-T},
+           giveni={I\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{fullhash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{bibnamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authorbibnamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authornamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authorfullhash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Rec. ITU-T O. 201}
+      \field{title}{Q-factor test equipment to estimate the transmission performance of optical channels}
+      \field{year}{2003}
+    \endentry
+    \entry{xiao10}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=2c4a1fd8edf1000867c4a988b27abcd9}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Haifeng},
+           giveni={H\bibinitperiod}}}%
+        {{hash=6d5bafef9cd8ba48fbd47c90fa143783}{%
+           family={Shi},
+           familyi={S\bibinitperiod},
+           given={Yun\bibnamedelima Q},
+           giveni={Y\bibinitperiod\bibinitdelim Q\bibinitperiod}}}%
+        {{hash=fbfc589333e72108aed789db4b53f54b}{%
+           family={Su},
+           familyi={S\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+        {{hash=2c04180e3810f6af9a40f9f0cbfa29d9}{%
+           family={Kosinski},
+           familyi={K\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{e52e9998dbdbd01493293b340a4ae93a}
+      \strng{fullhash}{2c62cc3ab36450762f2b41d197a03cc2}
+      \strng{bibnamehash}{e52e9998dbdbd01493293b340a4ae93a}
+      \strng{authorbibnamehash}{e52e9998dbdbd01493293b340a4ae93a}
+      \strng{authornamehash}{e52e9998dbdbd01493293b340a4ae93a}
+      \strng{authorfullhash}{2c62cc3ab36450762f2b41d197a03cc2}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Sarnoff Symposium, 2010 IEEE}
+      \field{title}{An investigation of non-data-aided snr estimation techniques for analog modulation signals}
+      \field{year}{2010}
+      \field{pages}{1\bibrangedash 5}
+      \range{pages}{5}
+    \endentry
+    \entry{kashefi12}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=38662d8c75497b80fd2265a97f8f1fc9}{%
+           family={Kashefi},
+           familyi={K\bibinitperiod},
+           given={Hamide},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c48caac26dcf78f2ecaca9279e24a1b1}{%
+           family={Karimkeshteh},
+           familyi={K\bibinitperiod},
+           given={Sahar},
+           giveni={S\bibinitperiod}}}%
+        {{hash=766d814ec8bbc55084cd4eadd6847882}{%
+           family={Ghomash},
+           familyi={G\bibinitperiod},
+           given={H\bibnamedelima Khoshbin},
+           giveni={H\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{2d5612de17f4f9314e001fd80a2fad67}
+      \strng{fullhash}{2d5612de17f4f9314e001fd80a2fad67}
+      \strng{bibnamehash}{2d5612de17f4f9314e001fd80a2fad67}
+      \strng{authorbibnamehash}{2d5612de17f4f9314e001fd80a2fad67}
+      \strng{authornamehash}{2d5612de17f4f9314e001fd80a2fad67}
+      \strng{authorfullhash}{2d5612de17f4f9314e001fd80a2fad67}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Telecommunications (IST), 2012 Sixth International Symposium on}
+      \field{title}{Spectrum-based SNR estimator for analog and digital bandpass signals}
+      \field{year}{2012}
+      \field{pages}{373\bibrangedash 377}
+      \range{pages}{5}
+    \endentry
+    \entry{itutgsup39}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b045c23d8a63803a6ddcdc989fd245ac}{%
+           family={Recommendation},
+           familyi={R\bibinitperiod},
+           given={ITU-T},
+           giveni={I\bibinithyphendelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{fullhash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{bibnamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authorbibnamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authornamehash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \strng{authorfullhash}{b045c23d8a63803a6ddcdc989fd245ac}
+      \field{sortinit}{8}
+      \field{sortinithash}{07edf88d4ea82509b9c4b4d13f41c452}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Rec. ITU-T G. Supplement 39}
+      \field{title}{Optical system design and engineering considerations}
+      \field{year}{2016}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{4}
+  \datalist[entry]{none/global//global/global}
     \entry{Katsoprinakis08}{article}{}
       \name{author}{5}{}{%
         {{hash=a10f25b56a503df17b216b7a5ae5a5eb}{%
@@ -285,7 +488,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{4}
+\refsection{5}
   \datalist[entry]{none/global//global/global}
     \entry{Bennet84}{inproceedings}{}
       \name{author}{1}{}{%
@@ -458,6 +661,73 @@
 \endrefsection
 
 \refsection{6}
+  \datalist[entry]{none/global//global/global}
+    \entry{Weedbrook2004}{article}{}
+      \name{author}{6}{}{%
+        {{hash=2adaf440c89e3d8a196dc4d6ecfa1f6d}{%
+           family={Weedbrook},
+           familyi={W\bibinitperiod},
+           given={Christian},
+           giveni={C\bibinitperiod}}}%
+        {{hash=0278c8dbc89470c5afc38d5c2e42883d}{%
+           family={Lance},
+           familyi={L\bibinitperiod},
+           given={Andrew\bibnamedelima M.},
+           giveni={A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9246ef305122956e0ed2d518897d6c0a}{%
+           family={Bowen},
+           familyi={B\bibinitperiod},
+           given={Warwick\bibnamedelima P.},
+           giveni={W\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=fc9270dd14a65886a62b0d0f2aaad89f}{%
+           family={Symul},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=45eb4313f776e2470d8d0a174c05ce37}{%
+           family={Ralph},
+           familyi={R\bibinitperiod},
+           given={Timothy\bibnamedelima C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=faa2e44397ab2747a331639278afeb18}{%
+           family={Lam},
+           familyi={L\bibinitperiod},
+           given={Ping\bibnamedelima Koy},
+           giveni={P\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society ({APS})}%
+      }
+      \strng{namehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{fullhash}{b03ff749390ceb837dac86cc56f05b1e}
+      \strng{bibnamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authorbibnamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authornamehash}{1a54ac73d113f73505ba41d6785d0b6e}
+      \strng{authorfullhash}{b03ff749390ceb837dac86cc56f05b1e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{10}
+      \field{number}{17}
+      \field{title}{Quantum Cryptography Without Switching}
+      \field{volume}{93}
+      \field{year}{2004}
+      \verb{doi}
+      \verb 10.1103/physrevlett.93.170504
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1103/physrevlett.93.170504
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1103/physrevlett.93.170504
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{7}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
