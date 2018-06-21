@@ -9,7 +9,7 @@
 # include "photodiode_old_20180118.h"
 # include "ti_amplifier_20180102.h"
 # include "sampler_20171116.h"
-# include "sink_20180118.h"
+# include "sink_20180620.h"
 
 
 // #####################################################################################################
@@ -147,9 +147,11 @@ int main(int argc, char *argv[]) {
 
 	BitErrorRate B7{ vector<Signal*> {&S0, &S7}, vector<Signal*> {&S8} };
 
-	Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
+	//Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
+	Sink B8{ vector<Signal*> { &S0 }, vector<Signal*> {  } }; //USED FOR TESTING ONLY
 	B8.setNumberOfSamples(param.numberOfBitsGenerated);
 	B8.setDisplayNumberOfSamples(true);
+	B8.setNumberOfBytesToSaveInFile(1);
 
 
 	// #####################################################################################################
