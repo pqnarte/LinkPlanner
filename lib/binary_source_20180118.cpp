@@ -2,8 +2,8 @@
 
 using namespace std;
 
-void BinarySource::initialize(void){
-	numberOfOutputSignals = (int) outputSignals.size();
+void BinarySource::initialize(void) {
+	numberOfOutputSignals = (int)outputSignals.size();
 
 	for (auto i = 0; i < numberOfOutputSignals; ++i) {
 		outputSignals[i]->setSymbolPeriod(bitPeriod);
@@ -20,10 +20,10 @@ bool BinarySource::runBlock(void) {
 		long int aux = outputSignals[k]->space();
 		space = std::min(space, aux);
 	}
-	
+
 	long int process;
 	if (numberOfBits >= 0) {
-		process = std::min( space, numberOfBits);
+		process = std::min(space, numberOfBits);
 	}
 	else {
 		process = space;
@@ -31,7 +31,7 @@ bool BinarySource::runBlock(void) {
 
 	if (process <= 0) return false;
 
-	if (mode == PseudoRandom){
+	if (mode == PseudoRandom) {
 
 		if (acumul.size() == 0) {
 
@@ -162,14 +162,15 @@ bool BinarySource::runBlock(void) {
 			}
 		}
 	}
-	
-	if (mode == Random){
+
+	if (mode == Random) {
 
 		std::random_device rd;
 		std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
 		std::uniform_int_distribution<> dis(0, 1);
 
-		t_binary aux;
+		int aux;
+
 		for (int k = 0; k < process; k++) {
 			aux = dis(gen);
 			for (auto k = 0; k < numberOfOutputSignals; k++) {
@@ -178,10 +179,10 @@ bool BinarySource::runBlock(void) {
 			numberOfBits--;
 		}
 	}
-	
-	if (mode == DeterministicCyclic){
+
+	if (mode == DeterministicCyclic) {
 		std::vector<char> values(bitStream.begin(), bitStream.end());
-		int valuesSize = (int) values.size();
+		int valuesSize = (int)values.size();
 		for (int k = 0; k < process; k++) {
 			t_binary aux = (t_binary)(values[posBitStream++] - '0');
 			for (auto k = 0; k < numberOfOutputSignals; k++) {
@@ -193,9 +194,9 @@ bool BinarySource::runBlock(void) {
 
 	}
 
-	if (mode == DeterministicAppendZeros){
+	if (mode == DeterministicAppendZeros) {
 		std::vector<char> values(bitStream.begin(), bitStream.end());
-		int valuesSize = (int) values.size();
+		int valuesSize = (int)values.size();
 		t_binary aux;
 		for (int k = 0; k < process; k++) {
 			if (posBitStream == valuesSize) {
@@ -215,7 +216,7 @@ bool BinarySource::runBlock(void) {
 	return true;
 }
 
-void BinarySource :: setBitPeriod(double bPeriod){
+void BinarySource::setBitPeriod(double bPeriod) {
 	bitPeriod = bPeriod;
 	outputSignals[0]->setSymbolPeriod(bitPeriod);
 	outputSignals[0]->setSamplingPeriod(outputSignals[0]->getSymbolPeriod());

@@ -32,17 +32,14 @@ bool Add::runBlock(void){
 	signal_value_type sType2 = inputSignals[1]->getValueType();
 	signal_value_type sTypeOut = outputSignals[0]->getValueType();
 
-	if (sType1!=sType2 || sTypeOut!=sType1)
-	{
+	if (sType1!=sType2 || sTypeOut!=sType1) {
 		cout << "ERRO: add.cpp (signal type mismatch!)" << "\n";
 		return false;
 	}
 
-	switch (sType1)
-	{
+	switch (sType1) {
 
-	case RealValue:
-	{
+	case RealValue: {
 		for (int k = 0; k < process; k++) {
 			t_real inRealValue1;
 			inputSignals[0]->bufferGet(&inRealValue1);
@@ -54,8 +51,7 @@ bool Add::runBlock(void){
 		break;
 	}
 	
-	case ComplexValue:
-	{
+	case ComplexValue: {
 		for (int k = 0; k < process; k++) {
 			t_complex inComplexValue1;
 			inputSignals[0]->bufferGet(&inComplexValue1);
@@ -67,8 +63,7 @@ bool Add::runBlock(void){
 		break;
 	}
 	
-	case ComplexValueXY:
-	{
+	case ComplexValueXY: {
 		for (int k = 0; k < process; k++) {
 			t_complex_xy inComplexValueXY1;
 			inputSignals[0]->bufferGet(&inComplexValueXY1);
@@ -79,6 +74,7 @@ bool Add::runBlock(void){
 		}
 		break;
 	}
+
 	/*case ComplexValueXY:
 	{
 						   for (int k = 0; k < process; k++) {
