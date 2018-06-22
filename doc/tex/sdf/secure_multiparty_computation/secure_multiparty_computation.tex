@@ -197,11 +197,45 @@ Both Alice and Bob must follow the \textit{oblivious transfer protocol} in order
 \end{equation}
 Since Bob knows $X_1 = W_1^i$, $X_2=W_2^i$ and the result of $\textrm{Enc}(H(W_1^i,W_2^i,f_c ))$, he must introduce this information in the Hash Function in order to get $y=f_c(x_1,x_2)$. Thus, he will discover the output value $y=0$ without learning anything about the input parameter introduced by Alice. Nevertheless, since an oblivious transfer protocol was used to send to Bob his garbled version of his input parameter, Alice also knows anything about the input parameter introduced by Bob.
 
-
-
 \newpage
 
+\subsection{Synthesis Tools}
 
+This subsection will cover two of the tools that can be used to implement Yao's Garbled Circuits. Both of them will need a program in C or C++, altough Hardware Design Languages (HDL) description may also be used.
+
+\subsubsection{TinyGarble}
+
+One of the tools is \href{https://github.com/esonghori/TinyGarble}{TinyGarble}. This GC framework allows two parties to safely compute any function with their private inputs through Yao's Garbled Circuit Potocol, and it also includes Oblivious Transfer (OT).
+With TinyGarble it's possible to use both High Level Languages and Hardware Design Languages as input formats. With the former, High Level Synthesis (HLS) will be needed to convert the high level language into HDL, some tools that can be used are SPARK or Xilinx Vivado, for C.
+With HDL inputs, like VHDL or Verilog, a  RTL Synthesis tool like Yosys-ABC, along with TinyGarble's custom libraries, have to be used in order to generate a Netlist file. This file then has to be translated into a simple circuit description file (SCD) with the help of TinyGarble's converter.
+Once the SCD file is generated, it can be provided to and executed by both parties.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=4cm]{./sdf/secure_multiparty_computation/figures/tiny_garble_flow.png}
+    \caption{TinyGarble Global Flow\cite{TinyGarble}}\label{fig:tinygarble_flow}
+\end{figure}
+
+In terms of performance, when using HDL input directly, the end circuit will have considerably less logical gates, depending on the function, than when using high level languages inputs, since these last ones need an extra step of synthesis. The table below shows the comparison between the performance of the circuits generated with
+C input to Verilog using a HLS tool, and a Verilog input.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=5cm]{./sdf/secure_multiparty_computation/figures/tiny_garble_CvsHDL.png}
+    \caption{Performance comparison between C and Verilog input\cite{TinyGarble}}\label{fig:tinygarble_comparison}
+\end{figure}
+
+\subsubsection{ARM2GC}
+
+The second tool, ARM2GC, is a GC framework based on the ARM processor that also allows two-party Secure Function Evaluation (SFE).
+As it was pointed out in the first tool, circuit description in High Level Languages is not the most efficient,  ARM2GC tries to fix that problem.
+It allows users to write a program in C/C++ (or any language that can be compiled to ARM binary code) that is then compiled by an ARM cross-compiler. The compiled ARM binary code and the synthesized ARM processor circuit are fed to the SkipGate algorithm as the public input p and the Boolean circuit, respectively\cite{ARM2GC}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth, height=4cm]{./sdf/secure_multiparty_computation/figures/arm2gc_global_flow.png}
+    \caption{ARM2GC Global Flow\cite{ARM2GC}}\label{fig:arm2gc_flow}
+\end{figure}
 
 % bibliographic references for the section ----------------------------
 \clearpage
@@ -209,4 +243,4 @@ Since Bob knows $X_1 = W_1^i$, $X_2=W_2^i$ and the result of $\textrm{Enc}(H(W_1
 \end{refsection}
 \addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
-% --------------------------------------------------------------------- 
+% -------------------------------------------------------------------- 
