@@ -6,9 +6,10 @@
 
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Header File}   &:& bit\_error\_rate\_*.h \\
-\textbf{Source File}   &:& bit\_error\_rate\_*.cpp \\
-\textbf{Version}       &:& 20171810 (Daniel Pereira)
+\textbf{Header File}    &:& bit\_error\_rate\_*.h \\
+\textbf{Source File}    &:& bit\_error\_rate\_*.cpp \\
+\textbf{Version}        &:& 20171810 (Daniel Pereira)\\
+                        &:& 20181424 (Mariana Ramos)
 \end{tabular}
 \end{tcolorbox}
 
@@ -25,23 +26,6 @@ lMinorant      & double         & $1\times10^{-10}$ \\ \hline
 \end{tabular}
 \end{table}
 
-\begin{tcolorbox}	
-\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Version}       &:& 20181424 (Mariana Ramos)
-\end{tabular}
-\end{tcolorbox}
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|l|l|}
-\hline
-Name           & Type           & Default Value     \\ \hline
-alpha          & double         & 0.05              \\ \hline
-m              & integer        & 0                 \\ \hline
-lMinorant      & double         & $1\times10^{-10}$ \\ \hline
-midRepType     & MidReportType  & Cumulative \\ \hline
-\end{tabular}
-\end{table}
 
 \subsection*{Methods}
 
@@ -54,21 +38,8 @@ midRepType     & MidReportType  & Cumulative \\ \hline
   \item void setLowestMinorant(double lMinorant) \{ lowestMinorant=lMinorant; \}
 \end{itemize}
 
-\begin{tcolorbox}	
-\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Version}       &:& 20181424 (Mariana Ramos)
-\end{tabular}
-\end{tcolorbox}
 
-\begin{itemize}
-  \item BitErrorRate(vector<Signal *> \&InputSig, vector<Signal *> \&OutputSig) :Block(InputSig,OutputSig)\{\};
-  \item void initialize(void);
-  \item bool runBlock(void);
-  \item void setConfidence(double P) \{ alpha = 1-P; \}
-  \item void setMidReportSize(int M) \{ m = M; \}
-  \item void setLowestMinorant(double lMinorant) \{ lowestMinorant=lMinorant; \}
-  \item void setMidReportType(MidReportType mrt) \{ midRepType = mrt; \};
-\end{itemize}
+
 
 \subsection*{Input Signals}
 
@@ -98,6 +69,28 @@ The upper and lower bounds, $\text{BER}_\text{UB}$ and $\text{BER}_\text{LB}$ re
 \text{BER}_\text{LB}&=\widehat{\text{BER}}-\frac{1}{\sqrt{N_T}}z_{\alpha/2}\sqrt{\widehat{\text{BER}}(1-\widehat{\text{BER}})}+\frac{1}{3N_T}\left[2\left(\frac{1}{2}-\widehat{\text{BER}}\right)z_{\alpha/2}^2-(1+\widehat{\text{BER}})\right],
 \end{align}
 where $z_{\alpha/2}$ is the $100\left(1-\frac{\alpha}{2}\right)$th percentile of a standard normal distribution.
+
+\subsection*{Version 20181424}
+
+Version 20181424 allows the user to choose the type of middle reports he wants. So, the input parameter \textrm{mideRepType} can has the value \textit{Cumulative}, where the BER estimation is done by taking into account all samples acquired in a cumulative way, or \textit{Reset}, where the BER estimation is done by taking into account only the number of samples set as \textit{m} in each middle report.
+
+\begin{itemize}
+  \item \textbf{Input Parameters}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    Name           & Type           & Default Value     \\ \hline
+    midRepType     & MidReportType  & Cumulative \\ \hline
+    \end{tabular}
+  \end{table}
+  
+  \item \textbf{Methods}
+  \begin{itemize}
+    \item void setMidReportType(MidReportType mrt) \{ midRepType = mrt; \};
+  \end{itemize}
+\end{itemize}
+
 
 
 
