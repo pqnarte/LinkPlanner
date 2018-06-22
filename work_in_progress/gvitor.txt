@@ -1,6 +1,15 @@
 Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
 
 
+2018-06-22
+TO BE DONE
+
+	1) Estudar a aplicação TinyGarbled (melhorar aquela sub-secção)
+	2) Inserir as refer~encias (JabRef)
+
+Next meeting: 21/6, 10h
+
+
 2018-05-23
 TO BE DONE
 

@@ -674,6 +674,8 @@
       \field{title}{A Gentle Introduction to Yaos Garbled Circuits}
     \endentry
   \enddatalist
+  \missing{ARM2GC}
+  \missing{TinyGarble}
 \endrefsection
 
 \refsection{5}
