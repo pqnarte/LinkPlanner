@@ -44,14 +44,12 @@ private:
 
 	 // Input parameters
 	 //std::default_random_engine generator;
-
 	 BinarySourceMode mode{ PseudoRandom };
-
 	 double probabilityOfZero{ 0.5 };
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
-
 	 string asciiFilePath{ "file_input_data.txt" };
+	 
 	 int nextCharacterIndex{ 0 };//Index of the next character
 	 int nextBitIndex{ 0 }; //Index of the next bit to be read from the next character
 
