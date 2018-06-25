@@ -14,8 +14,10 @@ class Sink : public Block {
 
 private:
 
-	/* Input Parameters */		
+	/* Auxiliary Parameters */
+	ofstream output_file;
 
+	/* Input Parameters */		
 	long int numberOfSamples{ -1 };
 	string asciiFilePath{ "file_output_data.txt" };
 	long int numberOfBitsToSkipBeforeSave{ 0 };
@@ -23,7 +25,7 @@ private:
 
 public:
 	/* Methods */
-	Sink() {};
+	Sink();
 	Sink(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 
 	bool runBlock(void);

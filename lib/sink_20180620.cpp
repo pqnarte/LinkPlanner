@@ -10,6 +10,9 @@ Sink::Sink(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
   numberOfOutputSignals = (int) OutputSig.size();
 
   inputSignals = InputSig;
+  output_file.open(asciiFilePath,ios::binary);
+
+  if (!output_file.is_open()) { cerr << "ERROR: Could not open file " << this->asciiFilePath << endl; exit(1); }
 }
 
 bool Sink::runBlock(void)
@@ -25,54 +28,55 @@ bool Sink::runBlock(void)
 		process = ready;
 	}
 	 
-	if ((process == 0) || (numberOfSamples==0)) return false;
-
-/*	if ((inputSignals[0])->getType().compare("TimeDiscreteAmplitudeDiscreteReal"))
-		for (int i = 0; i<process; i++) static_cast<TimeDiscreteAmplitudeDiscreteReal *>(inputSignals[0])->bufferGet();
-
-	if ((inputSignals[0])->getType().compare("Binary"))
-		for (int i = 0; i<process; i++) static_cast<Binary *>(inputSignals[0])->bufferGet();
-
-	if ((inputSignals[0])->getType().compare("TimeDiscreteAmplitudeContinuousReal"))
-		for (int i = 0; i<process; i++) static_cast<TimeDiscreteAmplitudeContinuousReal *>(inputSignals[0])->bufferGet();
-
-	if ((inputSignals[0])->getType().compare("TimeDiscreteAmplitudeContinuousComplex"))
-	for (int i = 0; i<process; i++) static_cast<TimeDiscreteAmplitudeContinuousComplex *>(inputSignals[0])->bufferGet();
-
-	if ((inputSignals[0])->getType().compare("TimeContinuousAmplitudeDiscreteReal"))
-		for (int i = 0; i<process; i++) static_cast<TimeContinuousAmplitudeDiscreteReal *>(inputSignals[0])->bufferGet();
-
-	if ((inputSignals[0])->getType().compare("TimeContinuousAmplitudeContinuousComplex"))
-		for (int i = 0; i<process; i++) static_cast<TimeContinuousAmplitudeContinuousComplex *>(inputSignals[0])->bufferGet();*/
+	if ((process == 0) || (numberOfSamples == 0) || (numberOfBytesToSaveInFile == 0)) {
+		output_file.close();
+		return false;
+	}
+	if (numberOfBitsToSkipBeforeSave < 0) { cerr << "ERROR: Variable 'numberOfBitsToSkipBeforeSave' cannot have a negative value." << endl; exit(1); }
+	if (numberOfBytesToSaveInFile < 0) { cerr << "ERROR: Variable 'numberOfBytesToSaveInFile' cannot have a negative value." << endl; exit(1); }
 
 	//Sink signal to file
-	ofstream output_file(asciiFilePath,ios::app);
-	if (output_file.is_open()) {
-		for (int i = 1; i <= numberOfBitsToSkipBeforeSave; i++) { inputSignals[0]->bufferGet(); } //Sinks skip bits
-		//Calculates the number of full bytes that are still available in the buffer
-		int numBytesToSave = std::min((process - numberOfBitsToSkipBeforeSave) / 8, numberOfBytesToSaveInFile);
-		//From this point forward we have the guarantee that we have at least 'numBytesToSave' bytes remaining in the buffer
-		for (int numBytes = 0; numBytes < numBytesToSave; numBytes++) {
-			char charToWrite = 0; //0000 0000
-			for (int i = 7; i >= 0; i--) {
-				t_binary tmp1 = 0;
-				t_binary* tmp = &tmp1;
-				inputSignals[0]->bufferGet(tmp);
-				char c = (char)(*tmp);
-				c = c << i;
-				charToWrite = charToWrite | c;
-			}
-			output_file.put(charToWrite);
+	if (numberOfBitsToSkipBeforeSave > 0) {//Sinks skip bits
+		int min = std::min((long int)process,numberOfBitsToSkipBeforeSave);
+		for (int i = 0; i < min; i++) {
+			inputSignals[0]->bufferGet();
+			numberOfBitsToSkipBeforeSave--;
+			numberOfSamples--;
 		}
-		output_file.close();
-	}else {
-		cerr << "ERROR: Could not open file " << this->asciiFilePath << endl;
-		exit(1);
+		return true;
 	}
-	while (!inputSignals[0]->getBufferEmpty()) { inputSignals[0]->bufferGet(); } //Sinks the remaining bits
-	//for (int i = 0; i<process; i++) (inputSignals[0])->bufferGet();
-
-	numberOfSamples = numberOfSamples - process;
+	//Calculates the number of full bytes that are still available in the buffer
+	int numBytesToSave = std::min((long int)(process / 8), numberOfBytesToSaveInFile);
+	//From this point forward we have the guarantee that we have at least 'numBytesToSave' bytes remaining in the buffer
+	for (int numBytes = 0; numBytes < numBytesToSave; numBytes++) {
+		char charToWrite = 0; //0000 0000
+		for (int i = 7; i >= 0; i--) {
+			t_binary tmp1;
+			t_binary* tmp = &tmp1;
+			inputSignals[0]->bufferGet(tmp);
+			char c = (char)(*tmp);
+			c = c << i;
+			charToWrite = charToWrite | c;
+		}
+		output_file.put(charToWrite);
+		numberOfBytesToSaveInFile--;
+	}
+	//for (int i = 0; i < process; i++) inputSignals[0]->bufferGet(); //Sinks the remaining bits
+	int numSavedBits = numBytesToSave * 8;
+	numberOfSamples = numberOfSamples - numSavedBits;
+	if (numSavedBits == 0) { //Remaining bits. Means that process < 8
+		//We are going to append zeros until 8 bits are available and write the char to the file
+		char charToWrite = 0;
+		for (int i = 7; i >= 8-process; i--) {
+			t_binary tmp1;
+			t_binary* tmp = &tmp1;
+			inputSignals[0]->bufferGet(tmp);
+			char c = (char)(*tmp);
+			c = c << i;
+			charToWrite = charToWrite | c;
+		}
+		output_file.put(charToWrite);
+	}
 	if (displayNumberOfSamples) cout << numberOfSamples << "\n";
 
 	return true;
