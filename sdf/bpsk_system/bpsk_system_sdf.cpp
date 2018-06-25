@@ -148,10 +148,11 @@ int main(int argc, char *argv[]) {
 	BitErrorRate B7{ vector<Signal*> {&S0, &S7}, vector<Signal*> {&S8} };
 
 	//Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
-	Sink B8{ vector<Signal*> { &S0 }, vector<Signal*> {  } }; //USED FOR TESTING ONLY
+	Sink B8{ vector<Signal*> { &S0 }, vector<Signal*> {  } };
 	B8.setNumberOfSamples(param.numberOfBitsGenerated);
 	B8.setDisplayNumberOfSamples(true);
-	B8.setNumberOfBytesToSaveInFile(1);
+	B8.setNumberOfBytesToSaveInFile(4);
+	B8.setNumberOfBitsToSkipBeforeSave(0);
 
 
 	// #####################################################################################################
