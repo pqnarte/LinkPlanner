@@ -49,9 +49,6 @@ bool Add::runBlock(void){
 			t_real inRealValue2;
 			inputSignals[1]->bufferGet(&inRealValue2);
 			t_real outRealValue = inRealValue1 + inRealValue2;
-			if (outRealValue > 100){
-				cout << "Something is wrong.";
-			}
 			outputSignals[0]->bufferPut(outRealValue);
 		}
 		break;
