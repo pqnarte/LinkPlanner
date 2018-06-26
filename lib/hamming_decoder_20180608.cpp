@@ -1,9 +1,9 @@
 #include <algorithm>
 #include <iostream>
+#include <Windows.h>
 
 #include "netxpto_20180418.h"
 #include "hamming_decoder_20180608.h"
-
 
 using namespace std;
 
@@ -13,11 +13,19 @@ void HammingDeCoder::initialize(void) {
 }
 
 bool HammingDeCoder::runBlock(void) {
-	/* Determine n and k parameters according to selected parity for Hamming Code */
-	int hamming_n = n_array[getParityBits() - 2];
-	int hamming_k = k_array[getParityBits() - 2];
-
 	bool alive{ false };
+
+	/* Update the parity bits according to the defined nBits and kBits */
+	setParityBits();
+	if (parityBits == 0) {
+		OutputDebugString("ERROR: (Hamming DeCoder) Invalid conmbination of (n, k) Hamming Code. \n");
+
+		return alive;
+	}
+
+	/* Determine n and k parameters according to selected parity for Hamming Code */
+	int hamming_n = nBits;
+	int hamming_k = kBits;
 
 	/* Avaiable bits on input buffer */
 	int ready = inputSignals[0]->ready();
@@ -101,12 +109,39 @@ bool HammingDeCoder::runBlock(void) {
 	return alive;
 }
 
-void HammingDeCoder::setParityBits(int s_n) {
+void HammingDeCoder::setParityBits(void) {
 	/* Save the selected parity bits for the Hamming Code */
-	parityBits = s_n;
+	parityBits = getNBits() - getKBits();
 
-	/* Calculate the G matrix according to the selected parity bits */
-	setHMatrix(parityBits);
+	for (int k = 0; k < (int)size(parity_array); k++) {
+		if (parity_array[k] == parityBits) {
+			if ((k_array[k] == kBits) && (n_array[k] == nBits)) {
+				/* Calculate the G matrix according to the selected parity bits */
+				setHMatrix(parityBits);
+				return;
+			}
+		}
+	}
+
+	parityBits = 0;
+}
+
+int HammingDeCoder::getNBits() {
+	return nBits;
+}
+
+void HammingDeCoder::setNBits(int s_n) {
+	/* Save the selected Code Word length for the Hamming Code */
+	nBits = s_n;
+}
+
+int HammingDeCoder::getKBits() {
+	return kBits;
+}
+
+void HammingDeCoder::setKBits(int s_n) {
+	/* Save the selected Data length for the Hamming Code */
+	kBits = s_n;
 }
 
 int HammingDeCoder::getParityBits() {
