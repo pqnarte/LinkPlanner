@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <Windows.h>
 
 #include "netxpto_20180418.h"
 #include "hamming_coder_20180608.h"
@@ -12,11 +13,19 @@ void HammingCoder::initialize(void) {
 }
 
 bool HammingCoder::runBlock(void) {
-	/* Determine n and k parameters according to selected parity for Hamming Code */
-	int hamming_n = n_array[getParityBits() - 2];
-	int hamming_k = k_array[getParityBits() - 2];
-
 	bool alive{ false };
+
+	/* Update the parity bits according to the defined nBits and kBits */
+	setParityBits();
+	if (parityBits == 0) {
+		OutputDebugString("ERROR: (Hamming Coder) Invalid conmbination of (n, k) Hamming Code. \n");
+
+		return alive;
+	}
+
+	/* Determine n and k parameters according to selected parity for Hamming Code */
+	int hamming_n = nBits;
+	int hamming_k = kBits;
 
 	/* Avaiable bits on input buffer */
 	int ready = inputSignals[0]->ready();
@@ -25,7 +34,7 @@ bool HammingCoder::runBlock(void) {
 	int space = outputSignals[0]->space();
 
 	/* Cycle to process data */
-	while ((ready >= hamming_k ) && (space >= hamming_n)) {
+	while ((ready >= hamming_k) && (space >= hamming_n)) {
 		/* Vectors for input/output data */
 		std::vector<int> inputData(hamming_k);
 		std::vector<int> outputData(hamming_n);
@@ -61,12 +70,39 @@ bool HammingCoder::runBlock(void) {
 	return alive;
 }
 
-void HammingCoder::setParityBits(int s_n) {
+void HammingCoder::setParityBits(void) {
 	/* Save the selected parity bits for the Hamming Code */
-	parityBits = s_n;
+	parityBits = getNBits() - getKBits();
 
-	/* Calculate the G matrix according to the selected parity bits */
-	setGMatrix(parityBits);
+	for (int k = 0; k < (int)size(parity_array); k++) {
+		if (parity_array[k] == parityBits) {
+			if ((k_array[k] == kBits) && (n_array[k] == nBits)) {
+				/* Calculate the G matrix according to the selected parity bits */
+				setGMatrix(parityBits);
+				return;
+			}
+		}
+	}
+
+	parityBits = 0;
+}
+
+int HammingCoder::getNBits() {
+	return nBits;
+}
+
+void HammingCoder::setNBits(int s_n) {
+	/* Save the selected Code Word length for the Hamming Code */
+	nBits = s_n;
+}
+
+int HammingCoder::getKBits() {
+	return kBits;
+}
+
+void HammingCoder::setKBits(int s_n) {
+	/* Save the selected Data length for the Hamming Code */
+	kBits = s_n;
 }
 
 int HammingCoder::getParityBits() {

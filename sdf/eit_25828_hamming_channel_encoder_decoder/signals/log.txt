@@ -1,1480 +1,1480 @@
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S0|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Fork|S0|ready=512
 Fork|S0_1|space=512
 Fork|S0_2|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.003
-
-2018-06-20 15:25:00
-BinarySource|S2|space=512
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.005
+
+2018-06-26 10:14:06
+BinarySource|S2|space=512
+0.001
+
+2018-06-26 10:14:06
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.004
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Sink|S5|ready=292
-0
+0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S0|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
 0
 
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
 0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S2|space=511
-0.001
+0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
-0.001
+0.002
 
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.003
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
-0.001
+0.002
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Sink|S5|ready=292
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S0|space=292
-0.001
+0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
-0
+0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
 0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
-0.01
+0.004
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:06
 BinarySource|S0|space=292
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
-0.001
+0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
-0.004
+0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S2|space=511
+0.005
+
+2018-06-26 10:14:06
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.002
+
+2018-06-26 10:14:06
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
 0.007
 
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
-0.001
+0.002
 
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0.01
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.012
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Sink|S5|ready=292
 0.002
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 BinarySource|S0|space=292
 0.001
 
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0.006
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
+2018-06-26 10:14:06
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:06
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.006
+
+2018-06-26 10:14:06
+BinarySource|S2|space=511
+0.003
+
+2018-06-26 10:14:06
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.002
+
+2018-06-26 10:14:06
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.005
+
+2018-06-26 10:14:06
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:06
+Sink|S5|ready=292
+0.002
+
+2018-06-26 10:14:06
+BinarySource|S0|space=292
+0.006
+
+2018-06-26 10:14:06
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:06
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.009
+
+2018-06-26 10:14:06
+BinarySource|S2|space=511
+0.004
+
+2018-06-26 10:14:06
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:06
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.007
+
+2018-06-26 10:14:06
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.003
+
+2018-06-26 10:14:06
+Sink|S5|ready=292
+0.009
+
+2018-06-26 10:14:06
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:06
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:06
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.006
+
+2018-06-26 10:14:06
+BinarySource|S2|space=511
+0.002
+
+2018-06-26 10:14:06
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.002
+
+2018-06-26 10:14:06
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.005
+
+2018-06-26 10:14:06
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:06
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:06
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:06
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:06
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.017
+
+2018-06-26 10:14:06
+BinarySource|S2|space=511
+0.002
+
+2018-06-26 10:14:06
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.002
+
+2018-06-26 10:14:06
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.01
+
+2018-06-26 10:14:06
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:06
+Sink|S5|ready=292
+0.016
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
 0.007
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BinarySource|S2|space=511
-0.003
+0.014
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
-0.001
+0.002
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Sink|S5|ready=292
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BinarySource|S0|space=292
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.005
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.006
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.011
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.009
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.005
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.005
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.002
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.004
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.004
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.004
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.002
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.004
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.004
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.007
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.005
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.003
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.001
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.007
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.001
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0.002
+
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
 0.008
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.001
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.005
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.003
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.001
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
+0.027
+
+2018-06-26 10:14:07
+BitErrorRate|S0_2|ready=512
+BitErrorRate|S4|ready=292
+BitErrorRate|S5|space=512
+0.004
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
+0.003
+
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.004
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
+0.002
+
+2018-06-26 10:14:07
+Add|S1|ready=511
+Add|S2|ready=512
+Add|S3|space=512
+0.001
+
+2018-06-26 10:14:07
+HammingDeCoder|S3|ready=511
+HammingDeCoder|S4|space=512
 0.006
 
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
-0.001
+0.002
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Sink|S5|ready=292
 0.001
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BinarySource|S0|space=292
-0
+0.003
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Fork|S0|ready=512
 Fork|S0_1|space=292
 Fork|S0_2|space=292
 0
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
 0.006
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.002
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
-0.006
+0.004
 
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
+0
+
+2018-06-26 10:14:07
+Sink|S5|ready=292
 0.001
 
-2018-06-20 15:25:00
-Sink|S5|ready=292
+2018-06-26 10:14:07
+BinarySource|S0|space=292
+0.001
+
+2018-06-26 10:14:07
+Fork|S0|ready=512
+Fork|S0_1|space=292
+Fork|S0_2|space=292
+0
+
+2018-06-26 10:14:07
+HammingCoder|S0_1|ready=512
+HammingCoder|S1|space=512
+0.006
+
+2018-06-26 10:14:07
+BinarySource|S2|space=511
 0.002
 
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.006
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.007
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.002
 
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.006
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.003
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:00
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:00
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:00
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:00
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:00
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:00
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:00
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:00
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.005
 
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.003
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
 0.001
 
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=292
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S0|space=292
 0
 
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.004
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.007
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.002
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.006
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.003
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.003
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.005
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.003
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.005
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0.001
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.004
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.001
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0.001
-
-2018-06-20 15:25:01
-Fork|S0|ready=512
-Fork|S0_1|space=292
-Fork|S0_2|space=292
-0.001
-
-2018-06-20 15:25:01
-HammingCoder|S0_1|ready=512
-HammingCoder|S1|space=512
-0.006
-
-2018-06-20 15:25:01
-BinarySource|S2|space=511
-0.001
-
-2018-06-20 15:25:01
-Add|S1|ready=511
-Add|S2|ready=512
-Add|S3|space=512
-0.002
-
-2018-06-20 15:25:01
-HammingDeCoder|S3|ready=511
-HammingDeCoder|S4|space=512
-0.004
-
-2018-06-20 15:25:01
-BitErrorRate|S0_2|ready=512
-BitErrorRate|S4|ready=292
-BitErrorRate|S5|space=512
-0
-
-2018-06-20 15:25:01
-Sink|S5|ready=292
-0.001
-
-2018-06-20 15:25:01
-BinarySource|S0|space=292
-0
-
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Fork|S0|ready=436
 Fork|S0_1|space=292
 Fork|S0_2|space=292
-0.001
+0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=512
 HammingCoder|S1|space=512
-0.006
+0.004
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
 0.005
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=512
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=292
-0.001
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S0|space=368
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Fork|S0|ready=144
 Fork|S0_1|space=292
 Fork|S0_2|space=292
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=364
 HammingCoder|S1|space=512
-0.005
+0.006
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Add|S1|ready=511
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=511
 HammingDeCoder|S4|space=512
-0.004
+0.007
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=364
 BitErrorRate|S4|ready=292
 BitErrorRate|S5|space=512
-0.001
+0.003
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=292
-0
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S0|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Fork|S0|ready=0
 Fork|S0_1|space=440
 Fork|S0_2|space=440
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=72
 HammingCoder|S1|space=512
-0.001
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S2|space=511
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Add|S1|ready=126
 Add|S2|ready=512
 Add|S3|space=512
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=126
 HammingDeCoder|S4|space=512
-0.001
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=72
 BitErrorRate|S4|ready=72
 BitErrorRate|S5|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=72
-0.001
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S0|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Fork|S0|ready=0
 Fork|S0_1|space=512
 Fork|S0_2|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=0
 HammingCoder|S1|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S2|space=126
 0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Add|S1|ready=0
 Add|S2|ready=512
 Add|S3|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=0
 HammingDeCoder|S4|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=0
 BitErrorRate|S4|ready=0
 BitErrorRate|S5|space=512
-0.005
+0.002
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=0
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S0|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Fork|S0|ready=0
 Fork|S0_1|space=512
 Fork|S0_2|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingCoder|S0_1|ready=0
 HammingCoder|S1|space=512
-0
+0.001
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BinarySource|S2|space=0
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Add|S1|ready=0
 Add|S2|ready=512
 Add|S3|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 HammingDeCoder|S3|ready=0
 HammingDeCoder|S4|space=512
 0
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 BitErrorRate|S0_2|ready=0
 BitErrorRate|S4|ready=0
 BitErrorRate|S5|space=512
-0.006
+0.003
 
-2018-06-20 15:25:01
+2018-06-26 10:14:07
 Sink|S5|ready=0
 0
 

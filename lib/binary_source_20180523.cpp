@@ -168,7 +168,7 @@ bool BinarySource::runBlock(void) {
 		//std::random_device rd;
 		//std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
 		//std::uniform_int_distribution<> dis(0, 1);
-		std::default_random_engine rd;
+		std::default_random_engine rd(time(0));
 		std::uniform_real_distribution<> dis(0, 1);
 
 		
