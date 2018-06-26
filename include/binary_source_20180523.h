@@ -17,7 +17,7 @@
 
 # include "netxpto_20180418.h"
 
-enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros, AsciiFileAppendZeros};
+enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros, AsciiFileAppendZeros, AsciiFileCyclic};
 
 using namespace std;
 
@@ -44,15 +44,12 @@ private:
 
 	 // Input parameters
 	 //std::default_random_engine generator;
-
 	 BinarySourceMode mode{ PseudoRandom };
-
 	 double probabilityOfZero{ 0.5 };
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
-
 	 string asciiFilePath{ "file_input_data.txt" };
-	 bool appendZeros{ true }; //Appends zeros until it generated the necessary bits, after reading the file
+	 
 	 int nextCharacterIndex{ 0 };//Index of the next character
 	 int nextBitIndex{ 0 }; //Index of the next bit to be read from the next character
 
@@ -67,9 +64,6 @@ public:
 	void initialize(void);
 	
 	bool runBlock(void);
-
-	void setAppendZeros(bool nValue) { appendZeros = nValue; };
-	bool getAppendZeros() { return appendZeros; }
 
 	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; nextBitIndex = 0; }
 	string getAsciiFileName() { return asciiFilePath; }

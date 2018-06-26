@@ -85,7 +85,7 @@
     <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
     <ClCompile Include="..\..\lib\netxpto_20180418.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
-    <ClCompile Include="..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="..\..\lib\sink_20180620.cpp" />
     <ClCompile Include="qpsk_transmitter_sdf.cpp">
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../include</AdditionalIncludeDirectories>
     </ClCompile>

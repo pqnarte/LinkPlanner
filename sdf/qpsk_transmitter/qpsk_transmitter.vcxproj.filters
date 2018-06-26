@@ -33,10 +33,10 @@
     <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\sink_20180118.cpp">
+    <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp">
+    <ClCompile Include="..\..\lib\sink_20180620.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -84,7 +84,7 @@
     <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180118.cpp" />
     <ClCompile Include="..\..\lib\sampler_20171116.cpp" />
-    <ClCompile Include="..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="..\..\lib\sink_20180620.cpp" />
     <ClCompile Include="..\..\lib\super_block_interface_20180118.cpp" />
     <ClCompile Include="..\..\lib\ti_amplifier_20180102.cpp" />
     <ClCompile Include="..\..\lib\white_noise_20180118.cpp" />
@@ -107,7 +107,7 @@
     <ClInclude Include="..\..\include\photodiode_old_20180118.h" />
     <ClInclude Include="..\..\include\pulse_shaper_20180118.h" />
     <ClInclude Include="..\..\include\sampler_20171116.h" />
-    <ClInclude Include="..\..\include\sink_20180118.h" />
+    <ClInclude Include="..\..\include\sink_20180620.h" />
     <ClInclude Include="..\..\include\super_block_interface_20180118.h" />
     <ClInclude Include="..\..\include\ti_amplifier_20180102.h" />
     <ClInclude Include="..\..\include\white_noise_20180118.h" />
