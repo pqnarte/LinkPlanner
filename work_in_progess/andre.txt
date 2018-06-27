@@ -3,6 +3,12 @@ TO BE DONE
 
 	atualizar o sistema QPSK_Transmitter código e documentação
 
+	testar a binarySource, Random (gerador de números aleatórios)
+
+	sub-secção geradores de números do C++ (Simulator Structure/ Random Numbers Generators)
+
+Next meeting: 10/7
+
 
 2018-06-15
 TO BE DONE

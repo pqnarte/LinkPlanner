@@ -13,7 +13,7 @@ int main(){
 	// ################################### System Input Parameters #########################################
 	// #####################################################################################################
 
-	BinarySourceMode sourceMode{ AsciiFileAppendZeros };
+	BinarySourceMode sourceMode{ Random };
 	int patternLength{ 5 };
 	string bitStream{ "0" };
 	double bitPeriod{ 1.0 / 50e9 };
@@ -22,28 +22,39 @@ int main(){
 	int numberOfSamplesPerSymbol{ 16 };
 	double rollOffFactor{ 0.3 };
 	int impulseResponseTimeLength{ 16 };
+	int bLength{ 16 };
+	
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
 	// #####################################################################################################
 	
 	Binary S1{ "S1.sgn" };
+	S1.setBufferLength(bLength);
 
 	TimeDiscreteAmplitudeDiscreteReal S2{ "S2.sgn" };
+	S2.setBufferLength(bLength);
 
 	TimeDiscreteAmplitudeDiscreteReal S3{ "S3.sgn" };
-	
+	S3.setBufferLength(bLength);
+
 	TimeContinuousAmplitudeDiscreteReal S4{ "S4.sgn" };
+	S4.setBufferLength(bLength);
 
 	TimeContinuousAmplitudeDiscreteReal S5{ "S5.sgn" };
-	
+	S5.setBufferLength(bLength);
+
 	TimeContinuousAmplitudeContinuousReal S6{ "S6.sgn" };
+	S6.setBufferLength(bLength);
 
 	TimeContinuousAmplitudeContinuousReal S7{ "S7.sgn" };
-	
+	S7.setBufferLength(bLength);
+
 	BandpassSignal S8{ "S8.sgn" };
+	S8.setBufferLength(bLength);
 
 	Binary S9{ "S9.sgn" };
+	S9.setBufferLength(bLength);
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
@@ -81,16 +92,16 @@ int main(){
 	IqModulator B7{ vector<Signal*> { &S6, &S7 }, vector<Signal*> { &S8 } };
 
 	Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
-	//B8.setNumberOfSamples(5000);
-	//B8.setDisplayNumberOfSamples(true);
+	B8.setDisplayNumberOfSamples(true);
 
 	Sink B9{ vector<Signal*> { &S9 }, vector<Signal*> {} };
+	B9.setDisplayNumberOfSamples(true);
 
 	// #####################################################################################################
 	// ########################### System Declaration and Inicialization ###################################
 	// #####################################################################################################
 
-	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8 } };
+	System MainSystem{ vector<Block*> { &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9 } };
 
 	// #####################################################################################################
 	// #################################### System Run #####################################################
