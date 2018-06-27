@@ -47,6 +47,7 @@
 }
 \clearpage
 \section{Hilbert Transform}
+\begin{refsection}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Header File}   &:& hilbert\_filter\_*.h \\
@@ -55,31 +56,31 @@
 	\end{tabular}
 \end{tcolorbox}
 \subsection*{What is the purpose of Hilbert transform?}
-The Hilbert transform facilitates the formation of analytical signal. An analytic signal is a complex-valued signal that has no negative frequency components, and its real and imaginary parts are related to each other by the Hilbert transform.
+The Hilbert transform facilitates the formation of analytical signal. An analytic signal is a complex-valued signal that has no negative frequency components, and its real and imaginary parts are related to each other by the Hilbert transform. 
 \begin{equation}
 s_a(t)=s(t)+i\hat{s}(t)
 \label{Analytical signal}
 \end{equation}
 where, $s_a(t)$ is an analytical signal and $\hat{s}(t)$ is the Hilbert transform of the signal ${s}(t)$. Such analytical signal can be used to generate Single Sideband Signal (SSB) signal.
 \subsection*{Transfer function for the discrete Hilbert transform}
-There are two approached to generate the analytical signal using Hilbert transformation method. First method generates the analytical signal $S_a(t)$ directly, on the other hand, second method will generate the $\hat{s}(t)$ signal which is multiplied with $i$ and added to the ${s}(t)$ to generate the analytical signal $S_a(t)$.\\
+There are two approached to generate the analytical signal using Hilbert transformation method. First method generates the analytical signal $S_a(t)$ directly, on the other hand, second method will generate the $\hat{s}(t)$ signal which is multiplied with $i$ and added to the ${s}(t)$ to generate the analytical signal $S_a(t)$ .\\
 \textbf{Method 1 :}\\
-The discrete time analytical signal $S_a(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as
+The discrete time analytical signal $S_a(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as \cite{Marple} (This method requires MATLAB Hilbert transform definition)
 \begin{equation}
 S_a(f) = \begin{cases}
-2S(f) &\text{for $f>0$}\\
-S(f) &\text{for $f=0$}\\
+2S(f) &\text{for $f>0$}\\ 
+S(f) &\text{for $f=0$}\\ 
 0 &\text{for $f<0$}
 \end{cases}
 \end{equation}
 which is inverse transformed to obtain an analytical signal $S_a(t)$.\\
 \textbf{Method 2 :}\\
-The discrete time Hilbert transformed signal  $\hat{s}(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as
+The discrete time Hilbert transformed signal  $\hat{s}(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as \cite{Oppenheim1999}
 \begin{equation}
  \hat{S}(f)= \begin{cases}
--i S(f) &\text{for $f>0$}\\
-0 &\text{for $f=0$}\\
-i S(f) &\text{for $f<0$}
+i\hspace{1mm} S(f) &\text{for $f>0$}\\ 
+0 &\text{for $f=0$}\\ 
+-i\hspace{1mm} S(f) &\text{for $f<0$}
 \end{cases}
 \end{equation}
 which is inverse transformed to obtain a Hilbert transformed signal $\hat{S}(t)$. To generate an analytical signal,  $\hat{S}(t)$ is added to the $S(t)$ to get the equation \ref{Analytical signal}.\\
@@ -109,69 +110,22 @@ In the next iteration 2, we'll use \textbf{previousCopy} $A$ and $B$ along with 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=13cm]{./algorithms/hilbert/figures/S5.eps}
-	\caption{Complex analytical signal $S5$ with its real part $S4$ and imaginary part $\hat{S}4$}\label{S5}
+	\caption{$S5$ signal}\label{S5}
 \end{figure}
-\textbf{Remark :} Here, we have used method 1 to generate analytical signal using Hilbert transform.
-
-
-%\subsection*{Remarks}
-%Processing the data with the proposed overlap save method introduce delay of 512 samples (more precisely, it is equal to the bufferLength) and hence we cannot capture the last 512 samples of the input signal. \\ \textbf{Solution :} We need one flag which indicates the end of the input signal so that we can and acquire the full signal (see iteration 3 in the Figure \ref{Logical flow} how the last block has been recovered).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{./algorithms/hilbert/figures/S7.eps}
+	\caption{$S7$ signal}\label{S7}
+\end{figure}
+\textbf{Remark :} Here, we have used method 2 to generate analytical signal using Hilbert transform. If you want to use method 1 then you should use $ifft$ in place of $fft$ and vice-versa.
 
 
 
-
-
-
-
-
-
-%\renewcommand{\bibname}{References}
-%
-%\bibliographystyle{myIEEEtran}
-%\bibliography{./algorithms/fft/fft}
-%
-%
-
+% bibliographic references for the section ----------------------------
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%% Example flowchart START %%%%%%%%%%%%%%%%%
-%\tikzstyle{decision} = [diamond, draw, fill=blue!20,
-%text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
-%\tikzstyle{block} = [rectangle, draw, fill=blue!20,
-%text width=5em, text centered, rounded corners, minimum height=4em]
-%\tikzstyle{line} = [draw, -latex']
-%\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
-%minimum height=2em]
-%\begin{tikzpicture}[node distance = 2cm, auto]
-%% Place nodes
-%\node [block] (init) {initialize model};
-%\node [cloud, left of=init] (expert) {expert};
-%\node [cloud, right of=init] (system) {system};
-%\node [block, below of=init] (identify) {identify candidate models};
-%\node [block, below of=identify] (evaluate) {evaluate candidate models};
-%\node [block, left of=evaluate, node distance=3cm] (update) {update model};
-%\node [decision, below of=evaluate] (decide) {is best candidate better?};
-%\node [block, below of=decide, node distance=3cm] (stop) {stop};
-%% Draw edges
-%%\path [line] (init) -- (identify);
-%\path [line] (identify) -- (evaluate);
-%\path [line] (evaluate) -- (decide);
-%\path [line] (decide) -| node [near start] {yes} (update);
-%\path [line] (update) |- (identify);
-%\path [line] (decide) -- node {no}(stop);
-%\path [line,dashed] (expert) -- (init);
-%\path [line,dashed] (system) -- (init);
-%\path [line,dashed] (system) |- (evaluate);
-%\end{tikzpicture}
-%%%%%%%%%%% Example flowchart END %%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%\end{document}
+% --------------------------------------------------------------------- 
 

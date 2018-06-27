@@ -48,6 +48,7 @@
 }
 \clearpage
 \section{Filter}
+\begin{refsection}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}}
 		\textbf{Header File}   &:& filter\_*.h \\
@@ -55,14 +56,14 @@
 		\textbf{Version}       &:& 20180201 (Romil Patel)
 	\end{tabular}
 \end{tcolorbox}
-In order to filter any signal, a new generalized version of the filter namely $filter\_*.h$ \& $filter\_*.cpp$ are programmed which facilitate filtering in both time and frequency domain. Basically, $filter\_*.h$ file contains the declaration two distinct class namely \textbf{FIR\_Filter} and \textbf{FD\_Filter} which help to perform filtering in time-domain (using impulse response) and frequency-domain (using transfer function) respectively (see Figure \ref{FilterClass}). The $filter\_*.cpp$ file contains the definitions of all the functions declared in the  \textbf{FIR\_Filter} and \textbf{FD\_Filter}.\\
+In order to filter any signal, a new generalized version of the filter namely $filter\_*.h$ \& $filter\_*.cpp$ is programmed which facilitate to filtering in both time and frequency domain. Basically, $filter\_*.h$ file contains the declaration two distinct class namely \textbf{FIR\_Filter} and \textbf{FD\_Filter} which help to perform filtering in time-domain (using impulse response) and frequency-domain (using transfer function), respectively (see Figure \ref{FilterClass}). The $filter\_*.cpp$ file contains the definitions of all the functions declared in the  \textbf{FIR\_Filter} and \textbf{FD\_Filter}.\\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=16cm]{./algorithms/filter/figures/Filter_class.pdf}
 	\caption{Filter class}
 	\label{FilterClass}
 \end{figure}
-In the Figure \ref{FilterClass}, the function $\textbf{bool}$ $runblock(void)$ in the transfer function based \textbf{FD\_Filter} class is the declaration of the real-time overlap-save method for filtering in the frequency domain. On the other hand, the function  $\textbf{bool}$ $runblock(void)$ in the \textbf{FIR\_Filter} class is the declaration of the function to facilitate filtering in the time domain.\\
+In the Figure \ref{FilterClass}, the function $\textbf{bool}$ $runblock(void)$ in the transfer function based \textbf{FD\_Filter} class, is the declaration of the real-time overlap-save method for filtering in the frequency domain. On the other hand, the function  $\textbf{bool}$ $runblock(void)$ in the \textbf{FIR\_Filter} class is the declaration of the function to facilitate filtering in the time domain \cite{Kuo,Rappaport2002} .\\
 All those function declared in the $filter\_*.h$ file are defined in the $filter\_*.cpp$ file. The definition of $\textbf{bool}$ $runblock(void)$ function for both the classes are the following,
 \lstinputlisting[firstline=34, lastline=58, language=C++, caption=Definition of \textbf{bool FIR\_Filter::runBlock(void)}]{../../algorithms/filter/filter_20180306.cpp}
 \lstinputlisting[firstline=93, lastline=151, language=C++, caption=Definition of \textbf{bool FD\_Filter::runBlock(void)}]{../../algorithms/filter/filter_20180306.cpp}
@@ -97,7 +98,7 @@ Here, we have used three different types of pulse shaping filter namely, raised 
 \subsection*{Case 1 : Raised cosine}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{./algorithms/filter/figures/S6_S7.jpg}
+	\includegraphics[width=10cm]{./algorithms/filter/figures/RC_S6S7.eps}
 	\caption{Raised cosine pulse shaping results comparison}
 	\label{S6_S7}
 \end{figure}
@@ -105,7 +106,7 @@ Here, we have used three different types of pulse shaping filter namely, raised 
 \subsection*{Case 2 : Root raised cosine}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{./algorithms/filter/figures/RRCOS_result.jpg}
+	\includegraphics[width=10cm]{./algorithms/filter/figures/RRC_S6S7.eps}
 	\caption{Root raised cosine pulse shaping result}
 	\label{S6_S7_RRCOS}
 \end{figure}
@@ -113,7 +114,7 @@ Here, we have used three different types of pulse shaping filter namely, raised 
 \subsection*{Case 3 : Gaussian}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=10cm]{./algorithms/filter/figures/S6_S7_gaussian.jpg}
+	\includegraphics[width=10cm]{./algorithms/filter/figures/Gaussian_S6S7.eps}
 	\caption{Gaussian pulse shaping results comparison}
 	\label{S6_S7_gaussian}
 \end{figure}
@@ -178,19 +179,14 @@ Where, $BT_s$ is the 3-dB bandwidth-symbol time product which ranges from $0\leq
 
 
 
-\newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\renewcommand{\bibname}{References}
-%
-%\bibliographystyle{myIEEEtran}
-%\bibliography{./algorithms/fft/fft}
-%
-%
-
+% bibliographic references for the section ----------------------------
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
+% --------------------------------------------------------------------- 
 
 
 

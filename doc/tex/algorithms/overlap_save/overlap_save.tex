@@ -15,6 +15,7 @@
 %\maketitle
 \clearpage
 \section{Overlap-Save Method}
+\begin{refsection}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Header File}   &:&overlap\_save\_*.h \\
@@ -33,7 +34,7 @@ Overlap-save is an efficient way to evaluate the discrete convolution between a 
 %In this sense, it is used the computation of linear filtering in frequency domain resorting to the use of fast Fourier transform (FFT) and inverse fast Fourier transform (IFFT) algorithms as
 %However, for long input sequence, the direct implementation of frequency domain filtering in real-time is limited by the limited memory of the digital processors.
 %Hence, the filtering in frequency-domain is implemented by sectioning or block the input signal, such that the practical implementation  of FFT and IFFT is feasible. In order to implement the non-cyclic convolution with the finite-length of cyclic convolution that the FFT provides, overlap-save and overlap-add method are use, enabling that the complexity evolves in log scale $\mathcal{O}(N\log_2N)$. The general method is to split the input signal into manageable blocks, then apply the FFT to to perform the linear convolution and at the end recombine the output blocks such that it is avoided the wrap-around errors due to the circular convolution imposed by FFT.
-The overlap-save method can be computed in the following steps:\\
+The overlap-save method can be computed in the following steps \cite{Smith1999,Blahut1985} :\\
 \textbf{ Step 1 :} Determine the length $M$ of impulse response, $h(n)$.\\ \\ 
 \textbf{ Step 2 :} Define the size of FFT and IFFT operation, $N$. The value of $N$ must greater than $M$ and it should in the form $N = 2^k$ for the efficient implementation.\\ \\
 \textbf{ Step 3 :} Determine the length $L$ to section the input sequence $x(n)$, considering that $N=L+M-1$.\\ \\   
@@ -205,19 +206,19 @@ It'll display the graphs of comparative analysis of the MATLAB and C++ implement
 \subsubsection{1. Signal with two sinusoids and random noise}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{./algorithms/overlap_save/figures/randomNoise.eps}
+	\includegraphics[width=11cm]{./algorithms/overlap_save/figures/randomNoise.eps}
 	\caption{Random noise and two sinusoids signal \& Impulse response of rcos filter}\label{randomNoise}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=13cm]{./algorithms/overlap_save/figures/randomNoise_matlab_and_C++.eps}
+	\includegraphics[width=11cm]{./algorithms/overlap_save/figures/randomNoise_matlab_and_C++.eps}
 	\caption{MATLAB and C++ comparison}\label{randomNoise_matlab_and_C++}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=13cm]{./algorithms/overlap_save/figures/randomNoise_conv_and_C++.eps}
+	\includegraphics[width=12cm]{./algorithms/overlap_save/figures/randomNoise_conv_and_C++.eps}
 	\caption{MATLAB function conv() and C++ overlapSave comparison}\label{randomNoise_conv_and_C++}
 \end{figure}
 
@@ -230,13 +231,13 @@ It'll display the graphs of comparative analysis of the MATLAB and C++ implement
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=13cm]{./algorithms/overlap_save/figures/mixed_signal2_matlab_and_C++.eps}
+	\includegraphics[width=12.5cm]{./algorithms/overlap_save/figures/mixed_signal2_matlab_and_C++.eps}
 	\caption{MATLAB and C++ comparison}\label{mixed_signal2_matlab_and_C++}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=13cm]{./algorithms/overlap_save/figures/mixed_signal2_conv_and_C++.eps}
+	\includegraphics[width=12.5cm]{./algorithms/overlap_save/figures/mixed_signal2_conv_and_C++.eps}
 	\caption{MATLAB function conv() and C++ overlapSave comparison}\label{mixed_signal2_conv_and_C++}
 \end{figure}
 
@@ -281,15 +282,16 @@ In this project file, find \textit{filter\_20180306.cpp} in $Source Files$ secti
 \textbf{Step 4} : Open the MATLAB visualizer and compare the signal \textbf{S6.sgn} and \textbf{S7.sgn} as shown in Figure \ref{S6S7}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=12cm]{./algorithms/overlap_save/figures/S6_S7.jpg}
+	\includegraphics[width=12cm]{./algorithms/overlap_save/figures/S6_S7.eps}
 	\caption{Comparison of signal S6 and S7}\label{S6S7}
 \end{figure}
 
-\begin{thebibliography}{1}
- \bibitem{notes} Blahut, R.E. {\em Fast Algorithms for Digital Signal Processing}, Addison-Wesley, Reading, MA,
- 1985.
- \bibitem{notes} Steven W. Smith. {\em The Scientist and Engineer's Guide to Digital Signal Processing.} California Technical Publishing, San Diego, CA, USA, 1997.
-\end{thebibliography}
 
-%\end{document}
+% bibliographic references for the section ----------------------------
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
+\cleardoublepage
+% --------------------------------------------------------------------- 
 
