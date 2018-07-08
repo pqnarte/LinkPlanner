@@ -1812,6 +1812,8 @@ void SystemInputParameters::readSystemInputParameters()
 						parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
 					else if(parameters[splitline[0]]->getType() == BOOL)
 						parameters[splitline[0]]->setValue(parseBool(splitline[1]));
+					else if (parameters[splitline[0]]->getType() == STRING)
+						parameters[splitline[0]]->setValue(splitline[1]);
 					//Logs that a given parameter has been loaded from a file
 					loadedInputParameters.push_back(splitline[0]+" = "+splitline[1]);
 				}
@@ -1838,6 +1840,11 @@ void SystemInputParameters::addInputParameter(string name, double * variable)
 }
 
 void SystemInputParameters::addInputParameter(string name, bool * variable)
+{
+	parameters[name] = new Parameter(variable);
+}
+
+void SystemInputParameters::addInputParameter(string name, string * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -1904,6 +1911,12 @@ void SystemInputParameters::Parameter::setValue(bool value)
 	*b = value;
 }
 
+void SystemInputParameters::Parameter::setValue(string value)
+{
+	if (type != STRING) throw invalid_argument("Parameter is not of type STRING");
+	*s = value;
+}
+
 SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
 {
 	return type;
@@ -1925,4 +1938,10 @@ SystemInputParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;
+}
+
+SystemInputParameters::Parameter::Parameter(string * elem)
+{
+	type = STRING;
+	s = elem;
 }
