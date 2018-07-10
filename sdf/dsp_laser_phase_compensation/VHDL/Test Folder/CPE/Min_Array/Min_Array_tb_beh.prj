@@ -1,0 +1,2 @@
+vhdl work "../Min_Array.vhd"
+vhdl work "Min_Array_tb.vhd"

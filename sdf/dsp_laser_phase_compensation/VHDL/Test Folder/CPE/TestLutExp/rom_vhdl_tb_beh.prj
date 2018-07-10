@@ -1,0 +1,2 @@
+vhdl work "../../../../../../../Downloads/rom_vhd.vhd"
+vhdl work "rom_vhdl_tb.vhd"

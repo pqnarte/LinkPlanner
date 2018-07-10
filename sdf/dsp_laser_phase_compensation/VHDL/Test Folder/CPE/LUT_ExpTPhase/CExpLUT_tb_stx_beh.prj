@@ -1,0 +1,2 @@
+vhdl isim_temp "../Basic Functions/ExpTestPhase.vhd"
+vhdl isim_temp "LUT_ExpTPhase_tb.vhd"

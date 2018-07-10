@@ -1,0 +1,2 @@
+vhdl work "../RAM_Nsample.vhd"
+vhdl work "RAM_tb.vhd"

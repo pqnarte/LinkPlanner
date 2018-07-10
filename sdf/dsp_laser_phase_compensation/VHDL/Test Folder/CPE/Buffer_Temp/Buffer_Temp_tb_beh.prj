@@ -1,0 +1,2 @@
+vhdl work "../Buffer_Temp.vhd"
+vhdl work "Buffer_Temp_tb.vhd"

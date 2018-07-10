@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9240A19E-6098-4B7A-9E2D-00AB01EDEA59}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>netplus</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\..\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lib\adc_20180423.cpp" />
+    <ClCompile Include="..\..\lib\binary_source_20180118.cpp" />
+    <ClCompile Include="..\..\lib\cpe_20180423.cpp" />
+    <ClCompile Include="..\..\lib\discrete_to_continuous_time_20180118.cpp" />
+    <ClCompile Include="..\..\lib\dsp_20180423.cpp" />
+    <ClCompile Include="..\..\lib\ideal_amplifier_20180118.cpp" />
+    <ClCompile Include="..\..\lib\iq_modulator_20180130.cpp" />
+    <ClCompile Include="..\..\lib\local_oscillator_20180130.cpp" />
+    <ClCompile Include="..\..\lib\m_qam_mapper_20180118.cpp" />
+    <ClCompile Include="..\..\lib\netxpto_20180118.cpp" />
+    <ClCompile Include="..\..\lib\optical_hybrid_20180118.cpp" />
+    <ClCompile Include="..\..\lib\photodiode_old_20180118.cpp" />
+    <ClCompile Include="..\..\lib\pulse_shaper_20180111.cpp" />
+    <ClCompile Include="..\..\lib\quantizer_20180423.cpp" />
+    <ClCompile Include="..\..\lib\real_to_complex_20180221.cpp" />
+    <ClCompile Include="..\..\lib\resample_20180423.cpp" />
+    <ClCompile Include="..\..\lib\sampler_20171119.cpp" />
+    <ClCompile Include="..\..\lib\sink_20180118.cpp" />
+    <ClCompile Include="dsp_laser_phase_compensation_sdf.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../../include</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.12.25827\include\algorithm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\adc_20180423.h" />
+    <ClInclude Include="..\..\include\binary_source_20180118.h" />
+    <ClInclude Include="..\..\include\cpe_20180423.h" />
+    <ClInclude Include="..\..\include\discrete_to_continuous_time_20180118.h" />
+    <ClInclude Include="..\..\include\dsp_20180423.h" />
+    <ClInclude Include="..\..\include\ideal_amplifier_20180118.h" />
+    <ClInclude Include="..\..\include\iq_modulator_20180130.h" />
+    <ClInclude Include="..\..\include\local_oscillator_20180130.h" />
+    <ClInclude Include="..\..\include\m_qam_mapper_20180118.h" />
+    <ClInclude Include="..\..\include\netxpto_20180118.h" />
+    <ClInclude Include="..\..\include\optical_hybrid_20180118.h" />
+    <ClInclude Include="..\..\include\photodiode_old_20180118.h" />
+    <ClInclude Include="..\..\include\pulse_shaper_20180111.h" />
+    <ClInclude Include="..\..\include\quantizer_20180423.h" />
+    <ClInclude Include="..\..\include\real_to_complex_20180221.h" />
+    <ClInclude Include="..\..\include\resample.h" />
+    <ClInclude Include="..\..\include\resample_20180423.h" />
+    <ClInclude Include="..\..\include\sampler_20171119.h" />
+    <ClInclude Include="..\..\include\sink_20180118.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

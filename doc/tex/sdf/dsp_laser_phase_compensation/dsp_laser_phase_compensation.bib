@@ -1,0 +1,48 @@
+% Encoding: UTF-8
+
+@Article{Viterbi83,
+  author   = {A. Viterbi},
+  title    = {Nonlinear estimation of PSK-modulated carrier phase with application to burst digital transmission},
+  journal  = {IEEE Transactions on Information Theory},
+  year     = {1983},
+  volume   = {29},
+  number   = {4},
+  pages    = {543-551},
+  month    = {July},
+  issn     = {0018-9448},
+  abstract = {Burst transmission of digital data and voice has become commonplace, particularly in satellite communication systems employing time-division multiple-access (TI)MA) and packet demand-assignment multiple-access (DAMA) techniques. In TDMA systems particularly, phase estimation on each successive burst is a requirement, while bit timing and carrier frequency can be accurately tracked between bursts. A class of nonlinear estimation algorithms is described to estimate the unknown phase of a carrier which is fully modulated bym-ary PSK modulation. Performance of the method is determined in closed form and compared to the Cramér-Rao lower bound for the variance of the estimation error in the phase of an unmodulated carrier. Results are also obtained when the carrier frequency is imprecisely known. Finally, the effect of quantization and finite read-only-memory (ROM) implementation of the nonlinearity are determined by computer simulation.},
+  doi      = {10.1109/TIT.1983.1056713},
+  keywords = {Demand-assigned multiaccess;Nonlinear estimation;Phase estimation;Phase-shift keying;Satellite communication, multiaccess;TDMA (time-division multiple-access);Time-division multiple-access},
+}
+
+@Article{Pfau09,
+  author   = {T. Pfau and S. Hoffmann and R. Noe},
+  title    = {Hardware-Efficient Coherent Digital Receiver Concept With Feedforward Carrier Recovery for $M$ -QAM Constellations},
+  journal  = {Journal of Lightwave Technology},
+  year     = {2009},
+  volume   = {27},
+  number   = {8},
+  pages    = {989-999},
+  month    = {April},
+  issn     = {0733-8724},
+  abstract = {This paper presents a novel digital feedforward carrier recovery algorithm for arbitrary M-ary quadrature amplitude modulation (M-QAM) constellations in an intradyne coherent optical receiver. The approach does not contain any feedback loop and is therefore highly tolerant against laser phase noise. This is crucial, especially for higher order QAM constellations, which inherently have a smaller phase noise tolerance due to the lower spacing between adjacent constellation points. In addition to the mathematical description of the proposed carrier recovery algorithm also a possible hardware-efficient implementation in a parallelized system is presented and the performance of the algorithm is evaluated by Monte Carlo simulations for square 4-QAM (QPSK), 16-QAM, 64-QAM, and 256-QAM. For the simulations ASE noise and laser phase noise are considered as well as analog-to-digital converter (ADC) and internal resolution effects. For a 1 dB penalty at BER = 10-3, linewidth times symbol duration products of 4.1 x 10-4 (4-QAM), 1.4 x 10-4 (16-QAM), 4.0 x 10-5 (64-QAM) and 8.0 x 10-6 (256-QAM) are tolerable.},
+  doi      = {10.1109/JLT.2008.2010511},
+  keywords = {feedforward;laser noise;optical modulation;optical receivers;phase noise;quadrature amplitude modulation;ASE noise;BER;M-ary QAM constellation;Monte Carlo simulation;analog-to-digital converter;feedback loop;feedforward carrier recovery algorithm;hardware-efficient coherent digital receiver concept;intradyne coherent optical receiver;laser phase noise tolerance;parallelized system;quadrature amplitude modulation;Feedback loop;Laser feedback;Laser noise;Optical feedback;Optical fiber communication;Optical receivers;Phase noise;Quadrature amplitude modulation;Quadrature phase shift keying;Wavelength division multiplexing;Coherent communication;feedforward carrier recovery;optical communication;parallel processing;phase estimation;phase noise;quadrature amplitude modulation},
+}
+
+@Article{Ip07,
+  author   = {E. Ip and J. M. Kahn},
+  title    = {Feedforward Carrier Recovery for Coherent Optical Communications},
+  journal  = {Journal of Lightwave Technology},
+  year     = {2007},
+  volume   = {25},
+  number   = {9},
+  pages    = {2675-2692},
+  month    = {Sept},
+  issn     = {0733-8724},
+  abstract = {We study a carrier-synchronization scheme for coherent optical communications that uses a feedforward architecture that can be implemented in digital hardware without a phase-locked loop. We derive the equations for maximum a posteriori joint detection of the transmitted symbols and the carrier phase. The result is a multidimensional optimization problem that we approximate with a two-stage iterative algorithm: The first stage is a symbol-by-symbol soft detector of the carrier phase, and the second stage is a hard-decision phase estimator that uses prior and subsequent soft-phase decisions to obtain a minimum mean-square-error phase estimate by exploiting the temporal correlation in the phase-noise process. The received symbols are then derotated by the hard-decision phase estimates, and maximum- likelihood sequence detection of the symbols follows. As each component in the carrier-recovery unit can be separately optimized, the resulting system is highly flexible. We show that the optimum hard-decision phase estimator is a linear filter whose impulse response consists of a causal and an anticausal exponential sequence, which we can truncate and implement as an finite-impulse- response filter. We derive equations for the phase-error variance and the system bit-error ratio (BER). Our results show that 4, 8, and 16 quadrature-amplitude-modulation (QAM) transmissions at 1 dB above sensitivity for BER = 10-3 is possible with laser beat linewidths of DeltanuTb = 1.3 X 10-4, 1.3 X 10-4, and 1.5 x 105 when a decision-directed soft-decision phase estimator is employed.},
+  doi      = {10.1109/JLT.2007.902118},
+  keywords = {FIR filters;error statistics;iterative methods;least mean squares methods;maximum likelihood sequence estimation;optical communication;phase estimation;BER;QAM transmissions;bit-error ratio;carrier-synchronization scheme;coherent optical communications;decision-directed soft-decision phase estimator;feedforward carrier recovery;finite-impulse-response filter;hard-decision phase estimator;impulse response;linear filter;maximum a posteriori joint detection;maximum-likelihood sequence detection;minimum mean-square-error phase estimation;multidimensional optimization problem;phase-noise process;quadrature-amplitude-modulation;symbol-by-symbol soft detector;two-stage iterative algorithm;Bit error rate;Equations;Hardware;Iterative algorithms;Multidimensional systems;Nonlinear filters;Optical fiber communication;Phase detection;Phase estimation;Phase locked loops;Carrier synchronization;coherent detection;digital signal processing;feedforward;optical communications;phase locked loop},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

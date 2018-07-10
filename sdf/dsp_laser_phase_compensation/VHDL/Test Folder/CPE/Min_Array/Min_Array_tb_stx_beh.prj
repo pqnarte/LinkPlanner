@@ -1,0 +1,2 @@
+vhdl isim_temp "../Min_Array.vhd"
+vhdl isim_temp "Min_Array_tb.vhd"
