@@ -1975,6 +1975,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -1994,6 +1995,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2016,6 +2018,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2039,6 +2042,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2062,6 +2066,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2074,11 +2079,10 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="4">
-    <bcf:citekey order="1">Katsoprinakis08</bcf:citekey>
-    <bcf:citekey order="2">Jennewein00</bcf:citekey>
-    <bcf:citekey order="3">Jennewein00</bcf:citekey>
-    <bcf:citekey order="4">Jennewein00</bcf:citekey>
-    <bcf:citekey order="5">Fox06</bcf:citekey>
+    <bcf:citekey order="1">Ip07</bcf:citekey>
+    <bcf:citekey order="2">Viterbi83</bcf:citekey>
+    <bcf:citekey order="2">Ip07</bcf:citekey>
+    <bcf:citekey order="3">Pfau09</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2089,6 +2093,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2101,7 +2106,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="5">
-    <bcf:citekey order="1">yao1982</bcf:citekey>
+    <bcf:citekey order="1">Katsoprinakis08</bcf:citekey>
+    <bcf:citekey order="2">Jennewein00</bcf:citekey>
+    <bcf:citekey order="3">Jennewein00</bcf:citekey>
+    <bcf:citekey order="4">Jennewein00</bcf:citekey>
+    <bcf:citekey order="5">Fox06</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2112,6 +2121,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2124,11 +2134,10 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="6">
-    <bcf:citekey order="1">Almeida16</bcf:citekey>
+    <bcf:citekey order="1">yao1982</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
-    <bcf:citekey order="1">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 7 -->
   <bcf:bibdata section="7">
@@ -2136,6 +2145,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2148,15 +2158,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="7">
-    <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">saleh1991</bcf:citekey>
-    <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">saleh1991</bcf:citekey>
-    <bcf:citekey order="5">saleh1991</bcf:citekey>
-    <bcf:citekey order="6">saleh1991</bcf:citekey>
+    <bcf:citekey order="1">Almeida16</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
+    <bcf:citekey order="1">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 8 -->
   <bcf:bibdata section="8">
@@ -2164,6 +2170,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2176,9 +2183,12 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="8">
-    <bcf:citekey order="1">john2007digital</bcf:citekey>
-    <bcf:citekey order="2">john2007digital</bcf:citekey>
-    <bcf:citekey order="3">tranter2004principles</bcf:citekey>
+    <bcf:citekey order="1">saleh1991</bcf:citekey>
+    <bcf:citekey order="2">saleh1991</bcf:citekey>
+    <bcf:citekey order="3">saleh1991</bcf:citekey>
+    <bcf:citekey order="4">saleh1991</bcf:citekey>
+    <bcf:citekey order="5">saleh1991</bcf:citekey>
+    <bcf:citekey order="6">saleh1991</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2189,6 +2199,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2201,10 +2212,9 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="9">
-    <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">smith1997</bcf:citekey>
-    <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">george2011</bcf:citekey>
+    <bcf:citekey order="1">john2007digital</bcf:citekey>
+    <bcf:citekey order="2">john2007digital</bcf:citekey>
+    <bcf:citekey order="3">tranter2004principles</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2215,6 +2225,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2227,9 +2238,10 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="10">
-    <bcf:citekey order="1">john2007digital</bcf:citekey>
-    <bcf:citekey order="2">john2007digital</bcf:citekey>
-    <bcf:citekey order="3">tranter2004principles</bcf:citekey>
+    <bcf:citekey order="1">saleh1991</bcf:citekey>
+    <bcf:citekey order="2">smith1997</bcf:citekey>
+    <bcf:citekey order="3">saleh1991</bcf:citekey>
+    <bcf:citekey order="4">george2011</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2240,6 +2252,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2252,10 +2265,9 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="11">
-    <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">smith1997</bcf:citekey>
-    <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">george2011</bcf:citekey>
+    <bcf:citekey order="1">john2007digital</bcf:citekey>
+    <bcf:citekey order="2">john2007digital</bcf:citekey>
+    <bcf:citekey order="3">tranter2004principles</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2266,6 +2278,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2278,7 +2291,10 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="12">
-    <bcf:citekey order="1">Czegledi16</bcf:citekey>
+    <bcf:citekey order="1">saleh1991</bcf:citekey>
+    <bcf:citekey order="2">smith1997</bcf:citekey>
+    <bcf:citekey order="3">saleh1991</bcf:citekey>
+    <bcf:citekey order="4">george2011</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2289,6 +2305,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2301,8 +2318,7 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="13">
-    <bcf:citekey order="1">Rao2010a</bcf:citekey>
-    <bcf:citekey order="2">Chu2000</bcf:citekey>
+    <bcf:citekey order="1">Czegledi16</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2313,6 +2329,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2325,8 +2342,8 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="14">
-    <bcf:citekey order="1">Smith1999</bcf:citekey>
-    <bcf:citekey order="1">Blahut1985</bcf:citekey>
+    <bcf:citekey order="1">Rao2010a</bcf:citekey>
+    <bcf:citekey order="2">Chu2000</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2337,6 +2354,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2349,8 +2367,8 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="15">
-    <bcf:citekey order="1">Kuo</bcf:citekey>
-    <bcf:citekey order="1">Rappaport2002</bcf:citekey>
+    <bcf:citekey order="1">Smith1999</bcf:citekey>
+    <bcf:citekey order="1">Blahut1985</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2361,6 +2379,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
@@ -2373,6 +2392,31 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="16">
+    <bcf:citekey order="1">Kuo</bcf:citekey>
+    <bcf:citekey order="1">Rappaport2002</bcf:citekey>
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 17 -->
+  <bcf:bibdata section="17">
+    <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/qpsk_transmitter/qpsk_transmitter.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/m_qam_system/m_qam_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/dsp_laser_phase_compensation/dsp_laser_phase_compensation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/classical_mpc/classical_mpc.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/overlap_save/overlap_save.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/filter/filter.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="17">
     <bcf:citekey order="1">Marple</bcf:citekey>
     <bcf:citekey order="2">Oppenheim1999</bcf:citekey>
   </bcf:section>
@@ -2522,6 +2566,15 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
   <bcf:datalist section="16"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="17"
                 name="none/global//global/global"
                 type="entry"
                 sortingtemplatename="none"

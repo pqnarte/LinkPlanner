@@ -1,18 +1,55 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: main_netxpto.aux
-A level-1 auxiliary file: chapter/preface.aux
-A level-1 auxiliary file: chapter/introduction.aux
-A level-1 auxiliary file: chapter/simulator_structure/simulator_structure.aux
-A level-1 auxiliary file: chapter/development_cycle.aux
-A level-1 auxiliary file: chapter/visualizer.aux
-A level-1 auxiliary file: chapter/case_studies.aux
-A level-1 auxiliary file: chapter/library.aux
-A level-1 auxiliary file: chapter/mtools.aux
-A level-1 auxiliary file: chapter/algorithms.aux
-A level-1 auxiliary file: chapter/code_development_guidelines.aux
-A level-1 auxiliary file: chapter/msbuild.aux
-A level-1 auxiliary file: chapter/git/git_helper.aux
-A level-1 auxiliary file: chapter/ghdl.aux
-I found no \citation commands---while reading file main_netxpto.aux
-I found no \bibdata command---while reading file main_netxpto.aux
-I found no \bibstyle command---while reading file main_netxpto.aux
-(There were 3 error messages)
+[0] Config.pm:302> INFO - This is Biber 2.11
+[1] Config.pm:305> INFO - Logfile is 'main_netxpto.blg'
+[41] biber-MSWIN64:313> INFO - === 
+[77] Biber.pm:371> INFO - Reading 'main_netxpto.bcf'
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 1
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[221] Biber.pm:857> INFO - Found 1 citekeys in bib section 2
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[221] Biber.pm:857> INFO - Found 1 citekeys in bib section 3
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[221] Biber.pm:857> INFO - Found 3 citekeys in bib section 4
+[221] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[222] Biber.pm:857> INFO - Found 3 citekeys in bib section 5
+[222] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[222] Biber.pm:857> INFO - Found 1 citekeys in bib section 6
+[222] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[222] Biber.pm:857> INFO - Found 1 citekeys in bib section 7
+[222] Biber.pm:857> INFO - Found 1 citekeys in bib section 0
+[222] Biber.pm:857> INFO - Found 1 citekeys in bib section 8
+[222] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[222] Biber.pm:857> INFO - Found 2 citekeys in bib section 9
+[222] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 3 citekeys in bib section 10
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 2 citekeys in bib section 11
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 3 citekeys in bib section 12
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 1 citekeys in bib section 13
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 2 citekeys in bib section 14
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[223] Biber.pm:857> INFO - Found 2 citekeys in bib section 15
+[223] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[224] Biber.pm:857> INFO - Found 2 citekeys in bib section 16
+[224] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[224] Biber.pm:857> INFO - Found 2 citekeys in bib section 17
+[224] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[338] Biber.pm:3976> INFO - Processing section 0
+[353] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 0
+[356] bibtex.pm:1500> INFO - LaTeX decoding ...
+[364] bibtex.pm:1316> INFO - Found BibTeX data source './chapter/simulator_structure/simulator_structure.bib'
+[372] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/qpsk_transmitter/qpsk_transmitter.bib' for section 0
+[375] bibtex.pm:1500> INFO - LaTeX decoding ...
+[385] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/qpsk_transmitter/qpsk_transmitter.bib'
+[386] Utils.pm:193> WARN - Duplicate entry key: 'thorlabs' in file './sdf/qpsk_transmitter/qpsk_transmitter.bib', skipping ...
+[388] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 0
+[391] bibtex.pm:1500> INFO - LaTeX decoding ...
+[394] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bpsk_system/bpsk_system.bib'
+[394] Utils.pm:193> WARN - Duplicate entry key: 'thorlabs' in file './sdf/bpsk_system/bpsk_system.bib', skipping ...
+[396] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/m_qam_system/m_qam_system.bib' for section 0
+[550] Utils.pm:209> ERROR - Cannot find './sdf/m_qam_system/m_qam_system.bib'!
+[550] Biber.pm:110> INFO - WARNINGS: 2
+[550] Biber.pm:114> INFO - ERRORS: 1
