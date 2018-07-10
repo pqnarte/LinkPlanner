@@ -1,0 +1,7 @@
+vhdl isim_temp "../Subtractor_IT.vhd"
+vhdl isim_temp "../Sqrt_IT.vhd"
+vhdl isim_temp "../Register_IT.vhd"
+vhdl isim_temp "../Multiplier_IT.vhd"
+vhdl isim_temp "../Adder_IT.vhd"
+vhdl isim_temp "../SymbolDecision.vhd"
+vhdl isim_temp "SymbolDecision_tb.vhd"
