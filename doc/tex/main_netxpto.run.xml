@@ -82,6 +82,7 @@
       <file>./chapter/simulator_structure/simulator_structure.bib</file>
       <file>./sdf/qpsk_transmitter/qpsk_transmitter.bib</file>
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
+      <file>./sdf/m_qam_system/m_qam_system.bib</file>
       <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
       <file>./sdf/classical_mpc/classical_mpc.bib</file>
       <file>./lib/bit_error_rate/bit_error_rate.bib</file>
