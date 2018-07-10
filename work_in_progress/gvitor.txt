@@ -1,6 +1,18 @@
 Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
 
 
+2018-07-10
+TO BE DONE
+
+	explicar a instalação do TinyGarble
+
+	continuar a explorar o TinyGarble
+	associar aquilo que estamos a fazer ao flowchart e ao diagrama de blocos
+
+	especificar que estamos a testar a entrada Verilog
+
+Next meeting: 19/7, 13h30
+
 2018-06-22
 TO BE DONE
 
