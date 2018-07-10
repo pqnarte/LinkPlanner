@@ -753,7 +753,7 @@ private:
 	vector<string> loadedInputParameters;
 	string inputParametersFileName{ "input_parameters_0.txt" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL, STRING }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -763,6 +763,7 @@ private:
 			int* i;
 			double* d;
 			bool* b;
+			string* s;
 		};
 
 	public:
@@ -770,6 +771,7 @@ private:
 		void setValue(int value);
 		void setValue(double value);
 		void setValue(bool value);
+		void setValue(string value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -777,6 +779,8 @@ private:
 		Parameter(double* elem);
 		//Constructor for parameter of type bool
 		Parameter(bool* elem);
+		//Constructor for parameter of type string
+		Parameter(string* elem);
 	};
 
 	int parseInt(string str);
@@ -794,6 +798,7 @@ public:
 	void addInputParameter(string name, int* variable);
 	void addInputParameter(string name, double* variable);
 	void addInputParameter(string name, bool* variable);
+	void addInputParameter(string name, string* variable);
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters(){}
 	SystemInputParameters(int argc,char*argv[]);
