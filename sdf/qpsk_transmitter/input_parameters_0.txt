@@ -1,2 +1,3 @@
 //----------QPSK PARAMETERS--------------
-//bLength = 10000000
+patternLength = 12
+bLength = 10000000

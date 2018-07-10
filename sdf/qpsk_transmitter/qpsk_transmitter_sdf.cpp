@@ -14,7 +14,7 @@
 class QPSKInputParameters : public SystemInputParameters {
 public:
 	//INPUT PARAMETERS
-	BinarySourceMode sourceMode{ Random };
+	BinarySourceMode sourceMode{ PseudoRandom };
 	int patternLength{ 5 };
 	string bitStream{ "0" };
 	double bitPeriod{ 1.0 / 50e9 };
