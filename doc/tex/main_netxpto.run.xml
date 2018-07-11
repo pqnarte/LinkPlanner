@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="0">
+  <internal package="biblatex" priority="9" active="1">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>main_netxpto.bcf</file>
@@ -60,7 +60,7 @@
       <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="0">
+  <external package="biblatex" priority="5" active="1">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
@@ -83,6 +83,7 @@
       <file>./sdf/bpsk_system/bpsk_system.bib</file>
       <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
       <file>./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</file>
+      <file>./sdf/eit_64926_dynHuff_CoderDecoder/eit_64926_dynHuff_CoderDecoder.bib</file>
       <file>./lib/bit_error_rate/bit_error_rate.bib</file>
       <file>./lib/photoelectron_generator/photoelectron_generator.bib</file>
       <file>./lib/snr_estimator/snr_estimator.bib</file>
