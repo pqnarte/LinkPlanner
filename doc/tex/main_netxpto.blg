@@ -1,125 +1,125 @@
 [0] Config.pm:302> INFO - This is Biber 2.11
 [0] Config.pm:305> INFO - Logfile is 'main_netxpto.blg'
-[48] biber-MSWIN64:313> INFO - === 
-[85] Biber.pm:371> INFO - Reading 'main_netxpto.bcf'
-[204] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[204] Biber.pm:857> INFO - Found 1 citekeys in bib section 1
-[204] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[204] Biber.pm:857> INFO - Found 3 citekeys in bib section 2
-[204] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[204] Biber.pm:857> INFO - Found 5 citekeys in bib section 3
-[204] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[204] Biber.pm:857> INFO - Found 1 citekeys in bib section 4
-[204] Biber.pm:857> INFO - Found 1 citekeys in bib section 0
-[207] Biber.pm:857> INFO - Found 1 citekeys in bib section 5
-[207] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[207] Biber.pm:857> INFO - Found 3 citekeys in bib section 6
-[207] Biber.pm:857> INFO - Found 8 citekeys in bib section 0
-[252] Biber.pm:3976> INFO - Processing section 0
-[264] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 0
-[268] bibtex.pm:1500> INFO - LaTeX decoding ...
-[275] bibtex.pm:1316> INFO - Found BibTeX data source './chapter/simulator_structure/simulator_structure.bib'
-[283] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 0
+[35] biber-MSWIN64:313> INFO - === 
+[68] Biber.pm:371> INFO - Reading 'main_netxpto.bcf'
+[163] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[163] Biber.pm:857> INFO - Found 1 citekeys in bib section 1
+[163] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[164] Biber.pm:857> INFO - Found 3 citekeys in bib section 2
+[164] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[164] Biber.pm:857> INFO - Found 5 citekeys in bib section 3
+[164] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[164] Biber.pm:857> INFO - Found 1 citekeys in bib section 4
+[164] Biber.pm:857> INFO - Found 1 citekeys in bib section 0
+[169] Biber.pm:857> INFO - Found 1 citekeys in bib section 5
+[169] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
+[169] Biber.pm:857> INFO - Found 3 citekeys in bib section 6
+[170] Biber.pm:857> INFO - Found 8 citekeys in bib section 0
+[236] Biber.pm:3976> INFO - Processing section 0
+[249] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 0
+[252] bibtex.pm:1500> INFO - LaTeX decoding ...
+[256] bibtex.pm:1316> INFO - Found BibTeX data source './chapter/simulator_structure/simulator_structure.bib'
+[264] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 0
+[266] bibtex.pm:1500> INFO - LaTeX decoding ...
+[270] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bpsk_system/bpsk_system.bib'
+[270] Utils.pm:193> WARN - Duplicate entry key: 'thorlabs' in file './sdf/bpsk_system/bpsk_system.bib', skipping ...
+[272] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 0
+[275] bibtex.pm:1500> INFO - LaTeX decoding ...
+[281] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/quantum_random_number_generator/quantum_random_number_generator.bib'
+[283] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 0
 [286] bibtex.pm:1500> INFO - LaTeX decoding ...
-[289] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bpsk_system/bpsk_system.bib'
-[289] Utils.pm:193> WARN - Duplicate entry key: 'thorlabs' in file './sdf/bpsk_system/bpsk_system.bib', skipping ...
-[291] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 0
-[294] bibtex.pm:1500> INFO - LaTeX decoding ...
-[300] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/quantum_random_number_generator/quantum_random_number_generator.bib'
-[303] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 0
-[306] bibtex.pm:1500> INFO - LaTeX decoding ...
-[316] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib'
-[318] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 0
-[321] bibtex.pm:1500> INFO - LaTeX decoding ...
-[325] bibtex.pm:1316> INFO - Found BibTeX data source './lib/bit_error_rate/bit_error_rate.bib'
-[327] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 0
-[330] bibtex.pm:1500> INFO - LaTeX decoding ...
-[333] bibtex.pm:1316> INFO - Found BibTeX data source './lib/photoelectron_generator/photoelectron_generator.bib'
-[336] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_estimator/snr_estimator.bib' for section 0
-[338] bibtex.pm:1500> INFO - LaTeX decoding ...
-[342] bibtex.pm:1316> INFO - Found BibTeX data source './lib/snr_estimator/snr_estimator.bib'
-[345] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 0
-[347] bibtex.pm:1500> INFO - LaTeX decoding ...
-[353] bibtex.pm:1316> INFO - Found BibTeX data source './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib'
-[353] Utils.pm:193> WARN - Duplicate entry key: 'saleh1991' in file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib', skipping ...
-[355] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/fft/fft.bib' for section 0
-[366] bibtex.pm:1500> INFO - LaTeX decoding ...
-[375] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/fft/fft.bib'
-[407] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\qT_l821TG2\fft.bib_256.utf8, line 6, warning: 173 characters of junk seen at toplevel
-[407] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/overlap_save/overlap_save.bib' for section 0
-[411] bibtex.pm:1500> INFO - LaTeX decoding ...
-[415] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/overlap_save/overlap_save.bib'
-[428] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\qT_l821TG2\overlap_save.bib_256.utf8, line 6, warning: 173 characters of junk seen at toplevel
-[429] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/filter/filter.bib' for section 0
-[440] bibtex.pm:1500> INFO - LaTeX decoding ...
-[460] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/filter/filter.bib'
-[489] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\qT_l821TG2\filter.bib_256.utf8, line 6, warning: 173 characters of junk seen at toplevel
-[490] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/hilbert/hilbert.bib' for section 0
-[493] bibtex.pm:1500> INFO - LaTeX decoding ...
-[500] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/hilbert/hilbert.bib'
-[519] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\qT_l821TG2\hilbert.bib_256.utf8, line 6, warning: 173 characters of junk seen at toplevel
-[519] Utils.pm:193> WARN - I didn't find a database entry for 'probabilitySheldon' (section 0)
-[529] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[529] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[529] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[530] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[539] Biber.pm:3976> INFO - Processing section 1
-[539] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 1
-[550] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[550] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[551] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[551] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[551] Biber.pm:3976> INFO - Processing section 2
-[552] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 2
-[553] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 2
-[555] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 2
-[581] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[581] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[581] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[581] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[583] Biber.pm:3976> INFO - Processing section 3
-[583] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 3
-[584] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 3
-[586] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 3
-[587] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 3
-[619] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[619] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[619] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[619] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[622] Biber.pm:3976> INFO - Processing section 4
-[623] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 4
-[624] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 4
-[625] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 4
-[627] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 4
-[628] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 4
-[644] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[644] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[644] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[644] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[645] Biber.pm:3976> INFO - Processing section 5
-[645] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 5
-[647] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 5
-[648] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 5
-[649] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 5
-[651] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 5
-[652] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 5
-[663] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[694] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[694] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[694] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[696] Biber.pm:3976> INFO - Processing section 6
-[696] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 6
-[699] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 6
-[702] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 6
-[705] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 6
-[707] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 6
-[710] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 6
-[720] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_estimator/snr_estimator.bib' for section 6
-[722] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 6
-[740] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[740] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[740] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[740] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
-[742] bbl.pm:617> INFO - Writing 'main_netxpto.bbl' with encoding 'ansinew'
-[753] bbl.pm:720> INFO - Output to main_netxpto.bbl
-[761] Biber.pm:110> INFO - WARNINGS: 7
+[297] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib'
+[299] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 0
+[302] bibtex.pm:1500> INFO - LaTeX decoding ...
+[306] bibtex.pm:1316> INFO - Found BibTeX data source './lib/bit_error_rate/bit_error_rate.bib'
+[308] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 0
+[310] bibtex.pm:1500> INFO - LaTeX decoding ...
+[314] bibtex.pm:1316> INFO - Found BibTeX data source './lib/photoelectron_generator/photoelectron_generator.bib'
+[316] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_estimator/snr_estimator.bib' for section 0
+[319] bibtex.pm:1500> INFO - LaTeX decoding ...
+[323] bibtex.pm:1316> INFO - Found BibTeX data source './lib/snr_estimator/snr_estimator.bib'
+[325] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 0
+[327] bibtex.pm:1500> INFO - LaTeX decoding ...
+[333] bibtex.pm:1316> INFO - Found BibTeX data source './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib'
+[333] Utils.pm:193> WARN - Duplicate entry key: 'saleh1991' in file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib', skipping ...
+[336] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/fft/fft.bib' for section 0
+[339] bibtex.pm:1500> INFO - LaTeX decoding ...
+[348] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/fft/fft.bib'
+[376] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\r8ROytkX83\fft.bib_12536.utf8, line 6, warning: 173 characters of junk seen at toplevel
+[377] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/overlap_save/overlap_save.bib' for section 0
+[379] bibtex.pm:1500> INFO - LaTeX decoding ...
+[382] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/overlap_save/overlap_save.bib'
+[392] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\r8ROytkX83\overlap_save.bib_12536.utf8, line 6, warning: 173 characters of junk seen at toplevel
+[393] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/filter/filter.bib' for section 0
+[395] bibtex.pm:1500> INFO - LaTeX decoding ...
+[402] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/filter/filter.bib'
+[412] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\r8ROytkX83\filter.bib_12536.utf8, line 6, warning: 173 characters of junk seen at toplevel
+[413] Biber.pm:4136> INFO - Looking for bibtex format file './algorithms/hilbert/hilbert.bib' for section 0
+[415] bibtex.pm:1500> INFO - LaTeX decoding ...
+[422] bibtex.pm:1316> INFO - Found BibTeX data source './algorithms/hilbert/hilbert.bib'
+[435] Utils.pm:193> WARN - BibTeX subsystem: C:\Users\anp\AppData\Local\Temp\r8ROytkX83\hilbert.bib_12536.utf8, line 6, warning: 173 characters of junk seen at toplevel
+[437] Utils.pm:193> WARN - I didn't find a database entry for 'probabilitySheldon' (section 0)
+[465] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[466] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[466] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[466] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[486] Biber.pm:3976> INFO - Processing section 1
+[486] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 1
+[505] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[505] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[505] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[505] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[507] Biber.pm:3976> INFO - Processing section 2
+[507] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 2
+[510] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 2
+[512] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 2
+[562] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[562] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[562] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[562] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[565] Biber.pm:3976> INFO - Processing section 3
+[566] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 3
+[568] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 3
+[570] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 3
+[572] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 3
+[608] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[608] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[608] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[609] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[612] Biber.pm:3976> INFO - Processing section 4
+[612] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 4
+[613] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 4
+[615] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 4
+[616] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 4
+[618] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 4
+[634] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[634] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[634] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[634] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[635] Biber.pm:3976> INFO - Processing section 5
+[635] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 5
+[637] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 5
+[638] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 5
+[639] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 5
+[641] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 5
+[642] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 5
+[654] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[702] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[702] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[703] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[705] Biber.pm:3976> INFO - Processing section 6
+[706] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 6
+[710] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 6
+[714] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 6
+[718] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 6
+[722] Biber.pm:4136> INFO - Looking for bibtex format file './lib/bit_error_rate/bit_error_rate.bib' for section 6
+[726] Biber.pm:4136> INFO - Looking for bibtex format file './lib/photoelectron_generator/photoelectron_generator.bib' for section 6
+[740] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_estimator/snr_estimator.bib' for section 6
+[744] Biber.pm:4136> INFO - Looking for bibtex format file './lib/snr_photoelectron_generator/snr_photoelectron_generator.bib' for section 6
+[779] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[779] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[779] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[779] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[783] bbl.pm:617> INFO - Writing 'main_netxpto.bbl' with encoding 'ansinew'
+[800] bbl.pm:720> INFO - Output to main_netxpto.bbl
+[809] Biber.pm:110> INFO - WARNINGS: 7
