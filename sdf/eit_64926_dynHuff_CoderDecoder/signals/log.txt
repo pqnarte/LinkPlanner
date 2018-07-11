@@ -1,1044 +1,1044 @@
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:49
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.021
-
-2018-07-03 12:21:49
-DynHuffmanDec|S1|ready=377
-DynHuffmanDec|S2|space=512
 0.007
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=377
+DynHuffmanDec|S2|space=512
+0.004
+
+2018-07-11 17:34:19
 SinkString|S2|ready=336
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=336
-0.001
+0
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.017
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=348
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.005
+
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
 0.011
 
-2018-07-03 12:21:49
-DynHuffmanDec|S1|ready=348
-DynHuffmanDec|S2|space=512
-0.014
-
-2018-07-03 12:21:49
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:49
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:49
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.018
-
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=306
 DynHuffmanDec|S2|space=512
-0.01
+0.006
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.009
+0.006
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=374
 DynHuffmanDec|S2|space=512
-0.01
+0.007
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.006
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.018
+0.01
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=317
 DynHuffmanDec|S2|space=512
 0.01
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.006
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=294
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.003
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.004
+
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
 0.008
 
-2018-07-03 12:21:49
-DynHuffmanDec|S1|ready=294
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=279
 DynHuffmanDec|S2|space=512
 0.009
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
 0.003
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.015
+0.008
 
-2018-07-03 12:21:49
-DynHuffmanDec|S1|ready=279
-DynHuffmanDec|S2|space=512
-0.044
-
-2018-07-03 12:21:49
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:49
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:49
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.021
-
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=303
 DynHuffmanDec|S2|space=512
-0.01
+0.009
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
+0.003
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.004
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
 0.005
 
-2018-07-03 12:21:49
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:49
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=276
 DynHuffmanDec|S2|space=512
-0.007
+0.009
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.011
+0.008
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=284
 DynHuffmanDec|S2|space=512
 0.009
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.005
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.009
+0.006
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=313
 DynHuffmanDec|S2|space=512
-0.024
+0.014
 
-2018-07-03 12:21:49
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:49
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:49
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.009
-
-2018-07-03 12:21:49
-DynHuffmanDec|S1|ready=321
-DynHuffmanDec|S2|space=512
-0.017
-
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
 0.005
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.006
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
 0.011
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=321
+DynHuffmanDec|S2|space=512
+0.011
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:19
 DynHuffmanDec|S1|ready=267
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.009
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=279
 DynHuffmanDec|S2|space=512
 0.009
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SinkString|S2|ready=512
-0.002
+0.004
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
 SourceString|S0|space=512
-0.001
+0.014
 
-2018-07-03 12:21:49
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.016
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=288
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=272
+DynHuffmanDec|S2|space=512
+0.012
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.011
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=280
+DynHuffmanDec|S2|space=512
+0.011
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=292
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.012
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=381
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:19
+SinkString|S2|ready=504
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=504
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=290
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.003
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.009
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=288
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.006
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.01
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=291
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=277
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.009
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=329
+DynHuffmanDec|S2|space=512
+0.011
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=269
+DynHuffmanDec|S2|space=512
+0.011
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.01
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=284
+DynHuffmanDec|S2|space=512
+0.01
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=265
+DynHuffmanDec|S2|space=512
+0.011
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.008
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.01
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=290
+DynHuffmanDec|S2|space=512
+0.012
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:19
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:19
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.011
+
+2018-07-11 17:34:19
+DynHuffmanDec|S1|ready=334
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:19
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=356
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.008
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.011
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=271
+DynHuffmanDec|S2|space=512
+0.012
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=310
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.003
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.016
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=309
+DynHuffmanDec|S2|space=512
+0.027
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.008
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.016
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.023
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=287
+DynHuffmanDec|S2|space=512
+0.028
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.008
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.018
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.007
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=278
+DynHuffmanDec|S2|space=512
+0.023
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.007
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.016
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.016
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=278
+DynHuffmanDec|S2|space=512
+0.016
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.011
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.004
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=263
+DynHuffmanDec|S2|space=512
+0.012
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.008
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.011
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=287
+DynHuffmanDec|S2|space=512
+0.014
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.007
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=285
+DynHuffmanDec|S2|space=512
+0.013
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.008
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.014
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=332
+DynHuffmanDec|S2|space=512
+0.024
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.018
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=292
+DynHuffmanDec|S2|space=512
+0.022
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.008
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=316
+DynHuffmanDec|S2|space=512
+0.025
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.006
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.014
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.012
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=287
+DynHuffmanDec|S2|space=512
+0.015
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.006
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=260
+DynHuffmanDec|S2|space=512
+0.014
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.01
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.015
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=290
+DynHuffmanDec|S2|space=512
+0.015
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.005
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=281
+DynHuffmanDec|S2|space=512
+0.014
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.011
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=278
+DynHuffmanDec|S2|space=512
+0.014
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.009
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.005
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=282
+DynHuffmanDec|S2|space=512
+0.029
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.007
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.023
+
+2018-07-11 17:34:20
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.024
+
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=296
+DynHuffmanDec|S2|space=512
+0.025
+
+2018-07-11 17:34:20
+SinkString|S2|ready=512
+0.007
+
+2018-07-11 17:34:20
+SourceString|S0|space=512
+0.011
+
+2018-07-11 17:34:20
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
 0.022
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=279
+2018-07-11 17:34:20
+DynHuffmanDec|S1|ready=274
 DynHuffmanDec|S2|space=512
-0.007
+0.023
 
-2018-07-03 12:21:50
+2018-07-11 17:34:20
 SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.008
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=288
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
 0.006
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=272
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
+2018-07-11 17:34:20
 SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=280
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=292
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.01
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=381
-DynHuffmanDec|S2|space=512
-0.01
-
-2018-07-03 12:21:50
-SinkString|S2|ready=504
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=504
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=290
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=288
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=291
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=277
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.001
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.008
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=329
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=269
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.009
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=284
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=265
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=290
-DynHuffmanDec|S2|space=512
-0.006
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.009
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=334
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=356
-DynHuffmanDec|S2|space=512
-0.011
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.01
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=271
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=310
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.005
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.008
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=309
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.008
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=287
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=278
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=278
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.005
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=263
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=287
-DynHuffmanDec|S2|space=512
-0.006
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.001
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=285
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.009
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=332
-DynHuffmanDec|S2|space=512
 0.012
 
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
+2018-07-11 17:34:20
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.008
+0.012
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=292
+2018-07-11 17:34:21
+DynHuffmanDec|S1|ready=269
 DynHuffmanDec|S2|space=512
-0.008
+0.023
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.008
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=316
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
 0.007
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=287
-DynHuffmanDec|S2|space=512
+2018-07-11 17:34:21
+SourceString|S0|space=512
 0.011
 
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.006
+0.021
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=260
+2018-07-11 17:34:21
+DynHuffmanDec|S1|ready=271
 DynHuffmanDec|S2|space=512
-0.008
+0.023
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=512
-0.002
+0.011
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SourceString|S0|space=512
-0.001
+0.012
 
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.009
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=290
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=281
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=278
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
 0.013
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=282
+2018-07-11 17:34:21
+DynHuffmanDec|S1|ready=295
 DynHuffmanDec|S2|space=512
 0.024
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=512
-0.003
+0.006
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
 0.01
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=296
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.006
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.007
+0.015
 
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=274
-DynHuffmanDec|S2|space=512
-0.008
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.005
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=269
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.006
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.014
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=271
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.006
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=295
-DynHuffmanDec|S2|space=512
-0.007
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.007
-
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanDec|S1|ready=293
 DynHuffmanDec|S2|space=512
-0.008
+0.016
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=512
-0.003
+0.009
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SourceString|S0|space=512
-0.008
+0.009
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanCod|S0|ready=512
 DynHuffmanCod|S1|space=512
-0.011
+0.007
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanDec|S1|ready=291
+DynHuffmanDec|S2|space=512
+0.016
+
+2018-07-11 17:34:21
+SinkString|S2|ready=512
+0.009
+
+2018-07-11 17:34:21
+SourceString|S0|space=512
+0.01
+
+2018-07-11 17:34:21
+DynHuffmanCod|S0|ready=512
+DynHuffmanCod|S1|space=512
+0.015
+
+2018-07-11 17:34:21
+DynHuffmanDec|S1|ready=307
+DynHuffmanDec|S2|space=512
+0.016
+
+2018-07-11 17:34:21
+SinkString|S2|ready=512
+0.004
+
+2018-07-11 17:34:21
+SourceString|S0|space=512
+0.009
+
+2018-07-11 17:34:21
+DynHuffmanCod|S0|ready=488
+DynHuffmanCod|S1|space=512
+0.007
+
+2018-07-11 17:34:21
+DynHuffmanDec|S1|ready=257
 DynHuffmanDec|S2|space=512
 0.015
 
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.003
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.002
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=512
-DynHuffmanCod|S1|space=512
-0.014
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=307
-DynHuffmanDec|S2|space=512
-0.009
-
-2018-07-03 12:21:50
-SinkString|S2|ready=512
-0.002
-
-2018-07-03 12:21:50
-SourceString|S0|space=512
-0.001
-
-2018-07-03 12:21:50
-DynHuffmanCod|S0|ready=488
-DynHuffmanCod|S1|space=512
-0.005
-
-2018-07-03 12:21:50
-DynHuffmanDec|S1|ready=257
-DynHuffmanDec|S2|space=512
-0.006
-
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=488
-0.003
+0.002
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SourceString|S0|space=512
 0
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanCod|S0|ready=0
 DynHuffmanCod|S1|space=512
 0
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 DynHuffmanDec|S1|ready=0
 DynHuffmanDec|S2|space=512
 0
 
-2018-07-03 12:21:50
+2018-07-11 17:34:21
 SinkString|S2|ready=0
 0
 
