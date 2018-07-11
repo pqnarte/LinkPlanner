@@ -1,0 +1,32 @@
+\clearpage
+
+\section{Huffman Dynamic Decoder}
+
+\begin{tcolorbox}	
+\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+\textbf{Header File}   &:& dynhuffdec.h \\
+\textbf{Source File}   &:& dynhuffdec.cpp \\
+\textbf{Version}       &:& 20180629
+\end{tabular}
+\end{tcolorbox}
+
+\subsection*{Input Parameters}
+
+This block does not have input parameters.
+
+\subsection*{Functional Description}
+
+This block implements a dynamic huffman decoder. It build a tree that matches exactly the one build in the coder so it can decode the dynamically encoded bytes.\\
+If the input code leads to the empty leaf of the tree the next 8 bits represent the ASCII code of the character that is to be added to the tree. Otherwise the code leads to the leaf that stores the encoded character.
+
+\subsection*{Input Signals}
+
+\textbf{Number}: 1\\
+\textbf{Type}: Binary $($huffman code of text$)$
+
+\subsection*{Output Signals}
+
+\textbf{Number}: 1\\
+\textbf{Type}: Binary $($considered as group of characters/bytes$)$
+
+%\end{document}
