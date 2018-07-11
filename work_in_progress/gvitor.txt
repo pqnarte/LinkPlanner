@@ -1,5 +1,7 @@
 Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
 
+Instalar e usar a biblioteca libscapi
+http://biulibscapi.readthedocs.io/en/latest/index.html#
 
 2018-07-10
 TO BE DONE
