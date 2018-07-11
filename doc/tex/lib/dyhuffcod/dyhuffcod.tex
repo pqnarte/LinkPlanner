@@ -1,0 +1,35 @@
+\clearpage
+
+\section{Huffman Dynamic Coder}
+
+\begin{tcolorbox}	
+\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+\textbf{Header File}   &:& dynhuffcod.h \\
+\textbf{Source File}   &:& dynhuffcod.cpp \\
+\textbf{Version}       &:& 20180629
+\end{tabular}
+\end{tcolorbox}
+
+\subsection*{Input Parameters}
+
+This block does not have input parameters.
+
+\subsection*{Functional Description}
+
+This block implements a dynamic huffman coder. This encoder is used to compress text files, attributing shorter codes to characters that appear more frequently in the text.\\
+It creates and updates a tree that store the codes used for every character. Each character is represented by a node, that has four fields: The character itself; Its frequency in the text; A pointer to the left soon character. A pointer to the right soon character. \\
+When a new character is received two possible actions can be performed: It can be added to the tree, in case it did not exists before; Or it's frequency can be incremented, in case it is already part of the tree. \\
+After each modification, the tree it is ordered following huffman algorithm.\\
+The output code is the location of the character, if it exists, otherwise, it is the location of the empty tree leaf plus the character ASCII code $($8 bits$)$.
+
+\subsection*{Input Signals}
+
+\textbf{Number}: 1\\
+\textbf{Type}: Binary $($considered as group of characters/bytes$)$
+
+\subsection*{Output Signals}
+
+\textbf{Number}: 1\\
+\textbf{Type}: Binary $($huffman code of input text$)$
+
+%\end{document}
