@@ -79,10 +79,13 @@ After that to perform the decoding we just need to segment the last 4 bits from 
 The project flow can be observed in Figure \ref{fig:hammingEncoderDecoder}.
 
 \begin{figure}[h!]
+	\vspace{-3mm}
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/blockDesign.png}
+	\vspace{-3mm}
 	\caption{Hamming Encoder/Decoder Design Flow}
 	\label{fig:hammingEncoderDecoder}
+	\vspace{-3mm}
 \end{figure}
 
 Initially the project uses a Binary Source block in order to create a random number of bits that form the Data Signal $S0$ (Figure \ref{fig:hammingEncoderDecoder_S0}).
@@ -90,6 +93,7 @@ Initially the project uses a Binary Source block in order to create a random num
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S0.png}
+	\vspace{-3mm}
 	\caption{S0 Signal Example for Hamming Code (7, 4)}
 	\label{fig:hammingEncoderDecoder_S0}
 \end{figure}
@@ -101,6 +105,7 @@ After that $S0$ is encoded using the Hamming Encoder Block and we obtain the enc
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S1.png}
+	\vspace{-3mm}
 	\caption{S1 Signal Example for Hamming Code (7, 4)}
 	\label{fig:hammingEncoderDecoder_S1}
 \end{figure}
@@ -110,15 +115,19 @@ In order to simulate the occurrence of errors a second Binary Source block is us
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S2.png}
+	\vspace{-3mm}
 	\caption{S2 Signal Example for Hamming Code (7, 4)}
 	\label{fig:hammingEncoderDecoder_S2}
 \end{figure}
+
+\vspace{60mm}
 
 After that the data signal, $S0$, is summed, using an add block, with the noise signal, $S2$, and we obtain the data signal with errors, $S3$, simulating a noise channel (Figure \ref{fig:hammingEncoderDecoder_S3} and Figure \ref{fig:hammingEncoderDecoder_S1_S3}).
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S3.png}
+	\vspace{-3mm}
 	\caption{S3 Signal Example for Hamming Code (7, 4)}
 	\label{fig:hammingEncoderDecoder_S3}
 \end{figure}
@@ -126,6 +135,7 @@ After that the data signal, $S0$, is summed, using an add block, with the noise 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S1_S3.png}
+	\vspace{-3mm}
 	\caption{Comparison of S1 and S3 Signals}
 	\label{fig:hammingEncoderDecoder_S1_S3}
 \end{figure}
@@ -135,6 +145,7 @@ Then the obtained signal is decoded using the Hamming Decoder block, returning t
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S4.png}
+	\vspace{-3mm}
 	\caption{S4 Signal Example for Hamming Code (7, 4)}
 	\label{fig:hammingEncoderDecoder_S4}
 \end{figure}
@@ -144,11 +155,38 @@ Finally a BER comparison using the BER block is performed in order to evaluate t
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/S0_S4.png}
+	\vspace{-3mm}
 	\caption{Comparison of S0 and S4 Signals (Original and Decoded Signals)}
 	\label{fig:hammingEncoderDecoder_S0_S4}
+	\vspace{-3mm}
 \end{figure}
 
-\vspace{15mm}
+\vspace{-3mm}
+
+\subsection*{BER Comparison}
+
+\vspace{-1mm}
+
+In this subsection we show the observed BER relations between the inputed error probability in the channel and the actual BER on the output of the channel (Figure \ref{fig:hammingEncoderDecoder_BER_input_output_channel}) and the relation between the inputed probability of error of the channel and the BER on the output of the Hamming Decoder (Figure \ref{fig:hammingEncoderDecoder_BER_input_output}) .
+
+\begin{figure}[h!]
+	\vspace{-4mm}
+	\centering
+	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/BER_1.png}
+	\vspace{-5mm}
+	\caption{Comparison between Imposed BER and measured BER on Channel}
+	\label{fig:hammingEncoderDecoder_BER_input_output_channel}
+\end{figure}
+
+\begin{figure}[h!]
+	\vspace{-9mm}
+	\centering
+	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/BER_2.png}
+	\vspace{-5mm}
+	\caption{Comparison between Imposed BER and measured BER on Output of Decoder}
+	\label{fig:hammingEncoderDecoder_BER_input_output}
+	\vspace{-30mm}
+\end{figure}
 
 \subsection*{Required files}
 \label{Required files}
@@ -176,7 +214,7 @@ sink\_20180118.h             &                   & \checkmark \\ \hline
 %
 \begin{table}[H]
 \centering
-\begin{tabulary}{1.0\textwidth}{|p{7.5cm}|p{6.5cm}|p{1cm}|}
+\begin{tabulary}{1.0\textwidth}{|p{9.5cm}|p{4.5cm}|p{1cm}|}
 \hline
 \multicolumn{3}{|c|}{ \textbf{Source Files} } \\
 \hline
@@ -193,7 +231,6 @@ eit\_25828\_hamming\_channel\_encoder\_decoder.cpp &                   & \checkm
 \end{tabulary}
 \end{table}		
 
-\newpage
 \subsection*{System Input Parameters}
 
 In order to successfully run this project it is required to set the following input parameters:
@@ -220,8 +257,33 @@ This project outputs the following signals:
 	\item \textbf{\textit{S2.sgn}} - The noise signal.
 	\item \textbf{\textit{S3.sgn}} - The resulting signal of adding the encoded signal $(S1.sgn)$ with the noise signal $(S2.sgn)$.
 	\item \textbf{\textit{S4.sgn}} - The decoded signal using the Hamming Code $(n, k)$.
-	\item \textbf{\textit{S5.sgn}} - The BER signal.
+	\item \textbf{\textit{S5.sgn}} - The BER signal on the channel.
+	\item \textbf{\textit{S6.sgn}} - The BER signal after decoding.
 \end{itemize}
+
+\subsection*{Open Issues}
+\label{Open Issues}
+
+The only issue found, at the time of the construction of these blocks, was not related to the developed blocks, but regarding another block, the Binary Source (\textit{binary\_source\_20180523.h}).
+
+The mode \textit{Random} doesn't work as intended. The block requires the user to define a probability of Zero for the output of the block, but if the output buffer becomes full on the next time the block is called again to continue producing bits, the sequence is exactly the same (Figure \ref{fig:hammingEncoderDecoder_BinarySource_ERROR}). 
+
+Observing the Figure below we can see a pattern that repeats itself over and over again instead of obtaining a completely random error vector.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=.9\linewidth]{./sdf/eit_25828_hamming_channel_encoder_decoder/images/ERROR.png}
+	\vspace{-3mm}
+	\caption{Binary Source - Random mode - Observed Error}
+	\label{fig:hammingEncoderDecoder_BinarySource_ERROR}
+\end{figure}
+
+\vspace{30mm}
+
+This behavior needs to be resolved, not only to properly set this mode in the Binary Source, but also to improve the results of the developed blocks, since it is my belief that the curves observed in Figure \ref{fig:hammingEncoderDecoder_BER_input_output} would improved, reducing the BER observed on the output of the decoder for the same imposed BER.
+
+
+
 
 % bibliographic references for the section ----------------------------
 \clearpage
