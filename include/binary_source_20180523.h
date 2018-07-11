@@ -34,6 +34,7 @@ string bitStream{ "01" };
 long int numberOfBits{ -1 };
 double bitPeriod{ 1.0 / 100e9 };
 */ 
+
 class BinarySource : public Block {
 
 private:
