@@ -20,7 +20,7 @@ public:
 	SourceCodeEfficiency(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
 
 private:
-	double probabilityOfZero = 0.7; // = 0.7
+	double probabilityOfZero = 0.05; // = 0.7
 	int sourceOrder = 2; // = 2
 	int totalSymbols = 0;
 

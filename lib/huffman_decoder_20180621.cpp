@@ -20,12 +20,24 @@ bool HuffmanDecoder::runBlock(void) {
 
 	/* Avaiable space on output buffer */
 	int space = outputSignals[0]->space();
+
+
 	int saveOrder = getSourceOrder();
-	int spaceLimit = saveOrder;
+	int readyLimit;
+
+	if (saveOrder == 2) {
+		readyLimit = 3;
+	}
+	else if (saveOrder == 3) {
+		readyLimit = 7;
+	}
+	else {
+		readyLimit = 15;
+	}
 
 
 	/* Cycle to process data */
-	while ((ready > 0) && (space >= spaceLimit)) {
+	while ((ready > 0) && (space >= saveOrder)) {
 		int counter = 0;
 		bool symbolDetected = false;
 

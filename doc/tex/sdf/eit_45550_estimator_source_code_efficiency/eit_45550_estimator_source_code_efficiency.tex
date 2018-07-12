@@ -54,7 +54,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 2 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Encoder 2 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmanencoder2}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -69,7 +69,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 2 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Encoder 2 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmanencoder3}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -85,7 +85,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 3 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Encoder 3 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmanencoder4}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -103,7 +103,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 3 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Encoder 3 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmanencoder5}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -123,7 +123,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 4 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Encoder 4 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmanencoder6}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -150,7 +150,7 @@ Otherwise, if probability of zero is greater than probability of one, the encode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Encoder 4 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Encoder 4 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmanencoder7}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -195,7 +195,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 2 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Decoder 2 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmandecoder2}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -210,7 +210,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 2 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Decoder 2 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmandecoder3}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -226,7 +226,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 3 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Decoder 3 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmandecoder4}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -244,7 +244,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 3 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Decoder 3 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmandecoder5}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -264,7 +264,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 4 Order, when Priority of Zero less or equal than Priority of One}
+\caption{Huffman Decoder 4 Order, when probability of Zero less or equal than probability of One}
 \label{tb:hufmmandecoder6}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -291,7 +291,7 @@ Otherwise, if probability of zero is greater than probability of one, the decode
 
 \begin{table}[H]
 \centering
-\caption{Huffman Decoder 4 Order, when Priority of Zero greater than Priority of One}
+\caption{Huffman Decoder 4 Order, when probability of Zero greater than probability of One}
 \label{tb:hufmmandecoder7}
 \begin{tabular}{|l|l|l|}
 \hline
@@ -324,7 +324,7 @@ In table \ref{tb:inputparameters2} are presented the input parameters of the sys
 \subsection{Simulation Analysis}
 
 The simulation implementation will be described in order to implement the Source Code Efficiency project. In Figure \ref{f:simulationdiagram} the block diagram of simulation process is shown.
-For this simulation, the value of probabilityOfZero variable was 0.45. 
+For this simulation, the value of probabilityOfZero variable was 0.05. 
 
 \begin{figure}[!h]
 \centering
@@ -338,7 +338,7 @@ First, the Binary source block is executed, in order to generate a sequence of r
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S0.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S0.png}
 \caption[S0 Signal from binary source.]{S0 Signal from binary source.}
 \label{f:S0}
 \end{figure}
@@ -349,7 +349,7 @@ The first copy was applied to Entropy Estimator block to estimate the entropy va
 \begin{figure}[!h]
 \centering
 \includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/entropy.png}
-\caption[Entropy results for aa binary source.]{Entropy results for a binary source.}
+\caption[Entropy results for aa binary source.]{Entropy results for a binary source.  The entropy theorical value is 0.2864.}
 \label{f:entropy}
 \end{figure}
 
@@ -358,7 +358,7 @@ Then, a fork was applied to copy the signal S1 in 2 signals, one to applied in t
 From the Efficiency Estimator arises the signal X2, wich can be seen in Figure \ref{f:efficiencygraph} and the decoder signal S2 from Hufman Decoder block, for a order of 2 appears in Figure \ref{f:S2}. 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S1.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S1.png}
 \caption[S1 Signal from Hufman Encoder 2 order.]{S1 Signal from Hufman Encoder 2 order.}
 \label{f:S1}
 \end{figure}
@@ -366,7 +366,7 @@ From the Efficiency Estimator arises the signal X2, wich can be seen in Figure \
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S2.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S2.png}
 \caption[S2 Signal from Hufman Decoder 2 order.]{S2 Signal from Hufman Decoder 2 order.}
 \label{f:S2}
 \end{figure}
@@ -377,7 +377,7 @@ From the Efficiency Estimator arises the signal X3, wich can be seen in Figure \
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S3.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S3.png}
 \caption[S3 Signal from Hufman Encoder 3 order.]{S3 Signal from Hufman Encoder 3 order.}
 \label{f:S3}
 \end{figure}
@@ -385,7 +385,7 @@ From the Efficiency Estimator arises the signal X3, wich can be seen in Figure \
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S4.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S4.png}
 \caption[S4 Signal from Hufman Decoder 3 order.]{S4 Signal from Hufman Decoder 3 order.}
 \label{f:S4}
 \end{figure}
@@ -397,7 +397,7 @@ From the Efficiency Estimator arises the signal X4, wich can be seen in Figure \
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S5.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S5.png}
 \caption[S5 Signal from Hufman Encoder 4 order.]{S5 Signal from Hufman Encoder 4 order.}
 \label{f:S5}
 \end{figure}
@@ -405,7 +405,7 @@ From the Efficiency Estimator arises the signal X4, wich can be seen in Figure \
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S6.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S6.png}
 \caption[S6 Signal from Hufman Decoder 4 order.]{S6 Signal from Hufman Decoder 4 order.}
 \label{f:S6}
 \end{figure}
@@ -415,7 +415,7 @@ This comparation of signals can be seen in Figure \ref{f:S0S2S4S6}. As can be se
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S0S2S4S6.png}
+\includegraphics[width=5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/S0S2S4S6.png}
 \caption[S0, S2, S4 and S6 signals comparation]{S0, S2, S4 and S6 signals comparation.}
 \label{f:S0S2S4S6}
 \end{figure}
@@ -424,8 +424,8 @@ In Figure \ref{f:efficiencygraph} can be seen the efficiency results for a sourc
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=4.5in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/efficiencygraph.png}
-\caption[Efficiency results for 2, 3 and 4 orders using Hufman Encoder.]{Efficiency results for 2, 3 and 4 orders using Hufman Encoder.}
+\includegraphics[width=4.2in]{./sdf/eit_45550_estimator_source_code_efficiency/figures/efficiencygraph.png}
+\caption[Efficiency results for 2, 3 and 4 orders using Hufman Encoder.]{Efficiency results for 2, 3 and 4 orders using Hufman Encoder. The efficiency theorical values for each order are 49.92\%, 63.65\% and 65.46\%, respectively.}
 \label{f:efficiencygraph}
 \end{figure}
 
