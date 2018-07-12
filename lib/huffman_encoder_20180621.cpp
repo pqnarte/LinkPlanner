@@ -15,11 +15,14 @@ void HuffmanEncoder::initialize(void) {
 bool HuffmanEncoder::runBlock(void) {
 	bool alive{ false };
 
+
+
 	/* Avaiable bits on input buffer */
-	int ready = inputSignals[0]->ready();
+ 	int ready = inputSignals[0]->ready();
 
 	/* Avaiable space on output buffer */
 	int space = outputSignals[0]->space();
+
 	int saveOrder = getSourceOrder();
 	int spaceLimit;
 
@@ -34,7 +37,7 @@ bool HuffmanEncoder::runBlock(void) {
 	}
 
 	/* Cycle to process data */
-	while ((ready > 0) && (space >= spaceLimit)) {
+	while ((ready >= saveOrder) && (space >= spaceLimit)) {
 		int a1, a2, a3, a4;
 
 		switch (sourceOrder) {

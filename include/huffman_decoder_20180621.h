@@ -20,9 +20,8 @@ public:
 	HuffmanDecoder(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) :Block(InputSig, OutputSig) {};
 
 private:
-	double probabilityOfZero = 0.45;
+	double probabilityOfZero = 0.05;
 	int sourceOrder = 2 ;
-
 	bool getData(int counter);
 };
 
