@@ -26,7 +26,7 @@ bool entropyEst::runBlock(void)
 	process = ready;
 	if (process == 0) return false;
 	
-	double n_windows;							// Nº of windows to compute entropy
+	float n_windows;							// Nº of windows to compute entropy
 
 	if ((process % w) != 0) {					// Considers a single window		
 		n_windows = 1;
@@ -63,7 +63,13 @@ bool entropyEst::runBlock(void)
 
 		if (k == w && b <= n_windows && (process % w) == 0) {
 			p_one = (double) n_one / w;
-			h[b] = (double) -p_one * log2(p_one) - (1 - p_one) * log2(1 - p_one);
+
+			if (p_one == 1 || p_one == 0)
+				h[b] = 0;					// Info theory convention 0xlog2(0) = 0
+			else {
+				h[b] = (double) -p_one * log2(p_one) - (1 - p_one) * log2(1 - p_one);
+			}
+
 			k = 0;
 			b++;
 			n_one = 0;
@@ -74,7 +80,14 @@ bool entropyEst::runBlock(void)
 	if ((process % w) != 0) {
 
 		p_one = (double) n_one / process;
-		h[0] = (double) -p_one * log2(p_one) - (1 - p_one) * log2(1 - p_one);
+		
+		
+		if (p_one == 1 || p_one == 0)
+			h[0] = 0;					// Info theory convention 0xlog2(0) = 0
+		else {
+			h[0] = (double) -p_one * log2(p_one) - (1 - p_one) * log2(1 - p_one);
+		}
+
 
 		fOut << "Warning: nº of bits must be a multiple of window size";
 
