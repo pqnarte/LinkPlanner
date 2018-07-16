@@ -1,0 +1,24 @@
+2018-07-16 16:22:49
+BinarySource|S0|space=100000
+0.068
+
+2018-07-16 16:22:49
+entropyEst|S0|ready=100000
+0.05
+
+2018-07-16 16:22:50
+Sink|S0|ready=0
+0
+
+2018-07-16 16:22:50
+BinarySource|S0|space=100000
+0
+
+2018-07-16 16:22:50
+entropyEst|S0|ready=0
+0
+
+2018-07-16 16:22:50
+Sink|S0|ready=0
+0
+
