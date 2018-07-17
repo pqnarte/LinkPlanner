@@ -1,24 +1,18 @@
 \clearpage
-\section{Hamming Encoder/Decoder Chain}
+\section{Hamming Channel Encoder and Decoder }
 
 \begin{refsection}
 
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-		\textbf{Students Name} &:& Lu\'{i}s Almeida (08/06/2018 - ?) \\
-		\textbf{Goal}          &:& Hamming Channel Encoder/Decoder implementation.
+		\textbf{Students Name} &:& Lu\'{i}s Almeida (08/06/2018 - 10/07/2018) \\
+		\textbf{Goal}          &:& Implement a channel coder and decoder based on the Hamming algorithm.
 	\end{tabular}
 \end{tcolorbox}
 
 Hamming Channel Encoder/Decoder simulates a channel encoder and decoder that uses the Hamming Algorithm. The goal is to perform the encoding of supplied source data, then encode it using the Hamming Encoder, pass the encoded data through a channel that implements errors according to a defined probability and finally perform the decoding using the Hamming Decoder. In the end a BER is performed to detect the possibility of errors.
 
 \subsection{Introduction}
-\begin{tcolorbox}	
-	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-		\textbf{Students Name} &:& Lu\'{i}s Almeida (08/06/2018 - ?)\\
-		\textbf{Goal}          &:& Hamming Channel Encoder/Decoder protocol description.
-	\end{tabular}
-\end{tcolorbox}
 
 The Hamming code is a linear block code, was developed by Richard Hamming, is used in signal processing and telecommunications. Its use allows the transfer and storage of data in a safe and efficient way.
 
@@ -42,18 +36,18 @@ where,
 
 \begin{equation}
 	p = \begin{bmatrix}
-	0 & 1 & 1 \\ 
-	1 & 0 & 1 \\ 
-	1 & 1 & 0 \\ 
-	1 & 1 & 1 
+	0 & 1 & 1 \\
+	1 & 0 & 1 \\
+	1 & 1 & 0 \\
+	1 & 1 & 1
 	\end{bmatrix}
 \end{equation}
 
 \begin{equation}
 	d = \begin{bmatrix}
-	1 & 0 & 0 & 0 \\ 
-	0 & 1 & 0 & 0 \\ 
-	0 & 0 & 1 & 0 \\ 
+	1 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 \\
+	0 & 0 & 1 & 0 \\
 	0 & 0 & 0 & 1
 	\end{bmatrix}
 \end{equation}
@@ -62,8 +56,8 @@ Also for decode it is required to create a decoding matrix $H$, and using the sa
 
 \begin{equation}
 H = \begin{bmatrix}
-1 & 0 & 0 & 0 & 1 & 1 & 1 \\ 
-0 & 1 & 0 & 1 & 0 & 1 & 1 \\ 
+1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+0 & 1 & 0 & 1 & 0 & 1 & 1 \\
 0 & 0 & 1 & 1 & 1 & 0 & 1
 \end{bmatrix}
 \end{equation}
@@ -266,7 +260,7 @@ This project outputs the following signals:
 
 The only issue found, at the time of the construction of these blocks, was not related to the developed blocks, but regarding another block, the Binary Source (\textit{binary\_source\_20180523.h}).
 
-The mode \textit{Random} doesn't work as intended. The block requires the user to define a probability of Zero for the output of the block, but if the output buffer becomes full on the next time the block is called again to continue producing bits, the sequence is exactly the same (Figure \ref{fig:hammingEncoderDecoder_BinarySource_ERROR}). 
+The mode \textit{Random} doesn't work as intended. The block requires the user to define a probability of Zero for the output of the block, but if the output buffer becomes full on the next time the block is called again to continue producing bits, the sequence is exactly the same (Figure \ref{fig:hammingEncoderDecoder_BinarySource_ERROR}).
 
 Observing the Figure below we can see a pattern that repeats itself over and over again instead of obtaining a completely random error vector.
 
