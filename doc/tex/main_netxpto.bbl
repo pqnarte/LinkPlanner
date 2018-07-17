@@ -630,6 +630,38 @@
 
 \refsection{4}
   \datalist[entry]{none/global//global/global}
+    \entry{venkatesanguruswami2010}{online}{}
+      \name{author}{1}{}{%
+        {{hash=fb6e0e6ff36a30395ada0c82fe11cc98}{%
+           family={Guruswami},
+           familyi={G\bibinitperiod},
+           given={Venkatesan},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \strng{fullhash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \strng{bibnamehash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \strng{authorbibnamehash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \strng{authornamehash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \strng{authorfullhash}{fb6e0e6ff36a30395ada0c82fe11cc98}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Introduction to Coding Theory - Notes 1: Introduction, linear codes}
+      \field{year}{2010}
+      \verb{urlraw}
+      \verb https://www.cs.cmu.edu/venkatg/teaching/codingtheory/notes/notes1.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.cs.cmu.edu/venkatg/teaching/codingtheory/notes/notes1.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{5}
+  \datalist[entry]{none/global//global/global}
     \entry{Almeida16}{article}{}
       \name{author}{6}{}{%
         {{hash=e034f1f85780ead02737ecfb617fcc7c}{%
@@ -687,7 +719,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{5}
+\refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
@@ -725,7 +757,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{6}
+\refsection{7}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
