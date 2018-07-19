@@ -5,7 +5,8 @@
 
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Students Name}      &:& Mariana Ramos (02/05/2018 - 21/05/2018)\\
+\textbf{Students Name}      &:& Mariana Ramos (02/05/2018 - 21/05/2018) \\
+\textbf && Goncalo Vitor (15/06/2018 - x)\\
 \textbf{Goal}               &:& Description of the problem of Secure Multi-Party Computation.\\
 \textbf{Directory}          &:& \\
 \end{tabular}
@@ -200,11 +201,10 @@ Since Bob knows $X_1 = W_1^i$, $X_2=W_2^i$ and the result of $\textrm{Enc}(H(W_1
 \newpage
 
 \subsection{TinyGarble}
-	
-This subsection will cover \href{https://github.com/esonghori/TinyGarble}{TinyGarble}, a GC framework that allows two parties to safely compute any function with their private inputs through Yao's Garbled Circuit Potocol.
-With TinyGarble it's possible to use both High Level Languages and Hardware Design Languages as input formats. With the former, High Level Synthesis (HLS) will be needed to convert the high level language into HDL, some tools that can be used are SPARK or Xilinx Vivado, for C.
-With HDL inputs, like VHDL or Verilog, a  RTL Synthesis tool like Yosys-ABC, along with TinyGarble's custom libraries, have to be used in order to generate a Netlist file. This file then has to be translated into a simple circuit description file (SCD) with the help of TinyGarble's converter.
-Once the SCD file is generated, it can be provided to and executed by both parties.
+
+This subsection will cover the usage of TinyGarble, a GC framework that allows two parties to safely compute any function with their private inputs through Yao's Garbled Circuit Potocol. It's installation can be followed on \url{https://github.com/esonghori/TinyGarble}.
+
+To use TinyGarble, a RTL Synthesis tool will also be needed. In this example Yosys-abc was used, whose installation instructions can be found at \url{http://www.clifford.at/yosys/download.html}.
 
 \begin{figure}[H]
 	\centering
@@ -212,8 +212,7 @@ Once the SCD file is generated, it can be provided to and executed by both parti
     \caption{TinyGarble Global Flow\cite{Songhori}}\label{fig:tinygarble_flow}
 \end{figure}
 
-In terms of performance, when using HDL input directly, the end circuit will have considerably less logical gates, depending on the function, than when using high level languages inputs, since these last ones need an extra step of synthesis. The table below shows the comparison between the performance of the circuits generated with
-C input to Verilog using a HLS tool, and a Verilog input.
+Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or HDL (Hardware Design Language) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a  High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly, as shown below. 
 
 \begin{figure}[H]
 	\centering
@@ -222,61 +221,47 @@ C input to Verilog using a HLS tool, and a Verilog input.
 \end{figure}
 
 \newpage
+ 
+Some attention to the circuit format is needed, more specifically at the names of the ports, as mentioned at \url{https://github.com/esonghori/TinyGarble/tree/master/scd}.
 
-Below it's the implementation of an 'And' function with TinyGarble.
-First the verilog/vhdl code is written.
+For this example an and\_gate written in verilog was used.
 
 \begin{lstlisting}[caption={and\_gate.v}, language=Verilog] 
-module and_gate (input a, b, output y);
-	assign y = a & b;
+module and_gate (input g_input, e_input, output o);
+	assign o = g_input & e_input;
 endmodule
 \end{lstlisting}
 
-Then, following TinyGarbles' isntructions for Yosys (The RTL Synthesis tool mensioned above) to compile the verilog file into a netlist verilog file, the following output was produced:
+This next step requires the RTL Synthesis tool (Yosys) mentioned above, in order to compile the HDL file into a Netlist Verilog File. The instructions on how to use Yosys with TinyGarble's custom libraries can be found at the end of \url{https://github.com/esonghori/TinyGarble/tree/master/circuit\_synthesis}.
+Following these, the Netlist file below was generated.
 
 \begin{lstlisting}[caption={and\_gate\_netlist.v}, language=Verilog] 
 (* top =  1  *)
 (* src = "and.v:1" *)
-module and_gate(a, b, y);
+module and_gate( g_input,  e_input, o);
   (* src = "and.v:2" *)
-  input a;
-  (* src = "and.v:2" *)
-  input b;
-  (* src = "and.v:3" *)
-  output y;
-  AND _0_ (
-    .A(b),
-    .B(a),
-    .Z(y)
-  );
-endmodule
-\end{lstlisting}
-
-The next step would be to convert the netlist file into a SCD file, but TinyGarble's converter was failing in middle process with Segmentation Fault error.
-Looking back at the netlist file, there are some noticeably weird lines, starting with "(*", removing those lines fixed the Segmentation Fault problem, but the SCD file wasn't being generated.
-Checking the log files, the converter was complaining about invalid input and output names, it needed (p\_init, g\_init, e\_init, p\_input, g\_input, e\_input) as input name, and (o, terminate) as output name.
-Fixing everything the final netlist file looked like the following:
-
-\newpage
-
-\begin{lstlisting}[caption={and\_gate\_netlist\_fix.v}, language=Verilog] 
-module and_gate(p_input, g_input, o);
-  input p_input;
   input g_input;
+  (* src = "and.v:2" *)
+  input e_input;
+  (* src = "and.v:3" *)
   output o;
   AND _0_ (
-    .A(g_input),
-    .B(p_input),
+    .A(e_input),
+    .B(g_input),
     .Z(o)
   );
 endmodule
 \end{lstlisting}
 
-Even though the SCD file was finally generated, it was producing wrong outputs when executed by Alice and Bob:
+The next step would be to convert the netlist file into a SCD file, but TinyGarble's converter was failing in the middle of the process with a Segmentation Fault error.
+Looking back at the netlist file, there are some noticeably weird lines, starting with "(*", removing those lines fixed the Segmentation Fault problem and the SCD file was generated.
+
+The SCD file could then be executed by both parties "Alice" and "Bob".
+The picture below shows the execution of the function '1 and 1', represented by the green lines, and '0 and 1', represented by the blue lines, which outputs are 1 and 0 respectively. The upper terminal is executing as the garbled circuit "Alice", and the lower one is executing as the evaluator "Bob". The output is showed only in Bob's terminal since it's him who decodes the result of the function to compute \ref{fig:garbledcircuit}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=4cm]{./sdf/secure_multiparty_computation/figures/tinygarble_terminal.png}
+	\includegraphics[width=1\textwidth, height=10.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_terminal.png}
     \caption{And function executed by Alice and Bob with TinyGarble}\label{fig:tinygarble_terminal}
 \end{figure}
 
