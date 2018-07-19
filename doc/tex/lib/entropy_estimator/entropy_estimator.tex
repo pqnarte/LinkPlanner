@@ -1,0 +1,47 @@
+\documentclass[]{article}
+\usepackage{graphicx}
+\usepackage{float}
+
+\title{Binary Entropy Estimator}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\subsection*{Functional Description}
+\paragraph{}
+entropyEst(vector$<$Signal *$>$ \&InputSig, int window)
+\paragraph{}
+The estimator sweeps the full range of the binary input computing an entropy estimation for each window. Then, the entropy mean, the variance and the individual entropy estimations are outputted to a file.
+
+\subsection*{Input Parameters}
+\paragraph{}
+The block accepts as input parameter the window size, which defines the length over which each entropy estimation is computed. 
+
+\paragraph{}
+Note: If the length of the binary stream is not an integer multiple of the window size, the estimator considers the window size equal to the full length of the input signal.
+
+
+\subsection*{Input Signals}
+
+\textbf{Number}: 1
+
+\textbf{Type}: Binary Stream
+
+\subsection*{Output Data} 
+\paragraph{}
+Entropy mean, entropy variance and entropy estimations.
+
+\paragraph{}
+
+The entropy estimator generates a file with the name \texttt{"entropy\_est.txt"} where the output data is written.
+
+\begin{figure}[H]
+\subsection*{Results}
+    \centerline{
+       \includegraphics[scale=0.75]{images/BinEntropyResults.png}
+    }
+\end{figure}
+
+\end{document}
