@@ -6,6 +6,7 @@
 
 class entropyEst : public Block {
 
+	int window;
 
 public:
 	
@@ -15,6 +16,9 @@ public:
 	//Methods
 	entropyEst(){};
 	entropyEst(vector<Signal *> &InputSig, int window);
+
+	void setWindow(int w) { window = w; };
+	int getWindow() { return window; };
 
 	bool runBlock(void);
 

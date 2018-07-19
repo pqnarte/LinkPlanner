@@ -12,10 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\lib\binary_source_20180523.cpp" />
-    <ClCompile Include="..\..\..\lib\entropyEst.cpp" />
+    <ClCompile Include="..\..\..\lib\entropy_estimator_20180715.cpp" />
     <ClCompile Include="..\..\..\lib\netxpto_20180118.cpp" />
     <ClCompile Include="..\..\..\lib\sink_20180118.cpp" />
-    <ClCompile Include="eit_42256_estimator_entropy.cpp" />
+    <ClCompile Include="eit_42256_estimator_entropy_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\binary_source_20180523.h" />
@@ -53,7 +53,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\gustavoanjos\source\repos\LinkPlanner\include;..\..\algorithms\Hilbert;..\..\algorithms\Filter;..\..\algorithms\overlapSave;..\..\algorithms\fft;..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\..\..\include;..\..\algorithms\Hilbert;..\..\algorithms\Filter;..\..\algorithms\overlapSave;..\..\algorithms\fft;$(IncludePath)</IncludePath>
     <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
