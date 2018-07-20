@@ -1,0 +1,2400 @@
+2018-07-19 13:30:09
+BinarySource|S1|space=512
+0.003
+
+2018-07-19 13:30:09
+Fork|S1|ready=512
+Fork|S1_1|space=512
+Fork|S1_2|space=512
+0.005
+
+2018-07-19 13:30:09
+ArithmeticEncoder|S1_1|ready=512
+ArithmeticEncoder|S2|space=512
+0.005
+
+2018-07-19 13:30:09
+Fork|S2|ready=492
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0
+
+2018-07-19 13:30:09
+ArithmeticDecoder|S2_1|ready=492
+ArithmeticDecoder|S3|space=512
+0.007
+
+2018-07-19 13:30:09
+Sink|S2_2|ready=492
+0
+
+2018-07-19 13:30:09
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.001
+
+2018-07-19 13:30:09
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:09
+BinarySource|S1|space=512
+0.002
+
+2018-07-19 13:30:09
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0
+
+2018-07-19 13:30:09
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.005
+
+2018-07-19 13:30:09
+Fork|S2|ready=482
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.004
+
+2018-07-19 13:30:09
+ArithmeticDecoder|S2_1|ready=482
+ArithmeticDecoder|S3|space=512
+0.006
+
+2018-07-19 13:30:09
+Sink|S2_2|ready=482
+0
+
+2018-07-19 13:30:09
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.003
+
+2018-07-19 13:30:09
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:09
+BinarySource|S1|space=500
+0.001
+
+2018-07-19 13:30:09
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.005
+
+2018-07-19 13:30:09
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.017
+
+2018-07-19 13:30:09
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.005
+
+2018-07-19 13:30:09
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.009
+
+2018-07-19 13:30:09
+Sink|S2_2|ready=477
+0
+
+2018-07-19 13:30:09
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.003
+
+2018-07-19 13:30:09
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:09
+BinarySource|S1|space=500
+0.002
+
+2018-07-19 13:30:09
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.004
+
+2018-07-19 13:30:09
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.006
+
+2018-07-19 13:30:09
+Fork|S2|ready=485
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.004
+
+2018-07-19 13:30:09
+ArithmeticDecoder|S2_1|ready=485
+ArithmeticDecoder|S3|space=512
+0.008
+
+2018-07-19 13:30:09
+Sink|S2_2|ready=485
+0
+
+2018-07-19 13:30:09
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.002
+
+2018-07-19 13:30:09
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:09
+BinarySource|S1|space=500
+0.011
+
+2018-07-19 13:30:09
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.02
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.014
+
+2018-07-19 13:30:10
+Fork|S2|ready=486
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.021
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=486
+ArithmeticDecoder|S3|space=512
+0.015
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=486
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.011
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.011
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.022
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.019
+
+2018-07-19 13:30:10
+Fork|S2|ready=484
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.026
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=484
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=484
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.011
+
+2018-07-19 13:30:10
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.012
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.029
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.018
+
+2018-07-19 13:30:10
+Fork|S2|ready=478
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.022
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=478
+ArithmeticDecoder|S3|space=512
+0.018
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=478
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.013
+
+2018-07-19 13:30:10
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=495
+0.011
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.022
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:10
+Fork|S2|ready=491
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.022
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=491
+ArithmeticDecoder|S3|space=512
+0.022
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=491
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.012
+
+2018-07-19 13:30:10
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=495
+0.013
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.023
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.015
+
+2018-07-19 13:30:10
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.023
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.015
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=477
+0.001
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.011
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=495
+0.012
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.024
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.014
+
+2018-07-19 13:30:10
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.023
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.02
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=483
+0.001
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.011
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.012
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.024
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:10
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.026
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.017
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=483
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.012
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.022
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.026
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:10
+Fork|S2|ready=478
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.025
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=478
+ArithmeticDecoder|S3|space=512
+0.017
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=478
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.014
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.026
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:10
+Fork|S2|ready=478
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.024
+
+2018-07-19 13:30:10
+ArithmeticDecoder|S2_1|ready=478
+ArithmeticDecoder|S3|space=512
+0.018
+
+2018-07-19 13:30:10
+Sink|S2_2|ready=478
+0
+
+2018-07-19 13:30:10
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.013
+
+2018-07-19 13:30:10
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:10
+BinarySource|S1|space=500
+0.012
+
+2018-07-19 13:30:10
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.025
+
+2018-07-19 13:30:10
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:11
+Fork|S2|ready=485
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.027
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=485
+ArithmeticDecoder|S3|space=512
+0.017
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=485
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.013
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.013
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.025
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.016
+
+2018-07-19 13:30:11
+Fork|S2|ready=488
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.026
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=488
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=488
+0.001
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.017
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.03
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.02
+
+2018-07-19 13:30:11
+Fork|S2|ready=484
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.028
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=484
+ArithmeticDecoder|S3|space=512
+0.018
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=484
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.014
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.013
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.027
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.018
+
+2018-07-19 13:30:11
+Fork|S2|ready=488
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.028
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=488
+ArithmeticDecoder|S3|space=512
+0.017
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=488
+0.001
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.014
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.014
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.029
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.003
+
+2018-07-19 13:30:11
+Fork|S2|ready=479
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.001
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=479
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=479
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.014
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.015
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.032
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.017
+
+2018-07-19 13:30:11
+Fork|S2|ready=496
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.028
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=496
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=496
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.014
+
+2018-07-19 13:30:11
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.014
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.028
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.017
+
+2018-07-19 13:30:11
+Fork|S2|ready=485
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.027
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=485
+ArithmeticDecoder|S3|space=512
+0.018
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=485
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.013
+
+2018-07-19 13:30:11
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=495
+0.015
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.031
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:11
+Fork|S2|ready=484
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.03
+
+2018-07-19 13:30:11
+ArithmeticDecoder|S2_1|ready=484
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:11
+Sink|S2_2|ready=484
+0
+
+2018-07-19 13:30:11
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:11
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:11
+BinarySource|S1|space=500
+0.015
+
+2018-07-19 13:30:11
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.029
+
+2018-07-19 13:30:11
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.017
+
+2018-07-19 13:30:11
+Fork|S2|ready=480
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.029
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=480
+ArithmeticDecoder|S3|space=512
+0.02
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=480
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=495
+0.017
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.03
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.017
+
+2018-07-19 13:30:12
+Fork|S2|ready=482
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.029
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=482
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=482
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:12
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=500
+0.015
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.031
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.019
+
+2018-07-19 13:30:12
+Fork|S2|ready=478
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.032
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=478
+ArithmeticDecoder|S3|space=512
+0.02
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=478
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.016
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=495
+0.016
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.031
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.018
+
+2018-07-19 13:30:12
+Fork|S2|ready=486
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.03
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=486
+ArithmeticDecoder|S3|space=512
+0.021
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=486
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=500
+0.016
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.032
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.019
+
+2018-07-19 13:30:12
+Fork|S2|ready=490
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.03
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=490
+ArithmeticDecoder|S3|space=512
+0.019
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=490
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.015
+
+2018-07-19 13:30:12
+Sink|S4|ready=495
+0
+
+2018-07-19 13:30:12
+BinarySource|S1|space=500
+0.016
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.033
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.021
+
+2018-07-19 13:30:12
+Fork|S2|ready=484
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.034
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=484
+ArithmeticDecoder|S3|space=512
+0.021
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=484
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.016
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=495
+0.018
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.033
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.019
+
+2018-07-19 13:30:12
+Fork|S2|ready=486
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.032
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=486
+ArithmeticDecoder|S3|space=512
+0.022
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=486
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.017
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:12
+BinarySource|S1|space=500
+0.017
+
+2018-07-19 13:30:12
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.033
+
+2018-07-19 13:30:12
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.02
+
+2018-07-19 13:30:12
+Fork|S2|ready=491
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.032
+
+2018-07-19 13:30:12
+ArithmeticDecoder|S2_1|ready=491
+ArithmeticDecoder|S3|space=512
+0.02
+
+2018-07-19 13:30:12
+Sink|S2_2|ready=491
+0
+
+2018-07-19 13:30:12
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.016
+
+2018-07-19 13:30:12
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.018
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.035
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.019
+
+2018-07-19 13:30:13
+Fork|S2|ready=487
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.033
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=487
+ArithmeticDecoder|S3|space=512
+0.021
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=487
+0
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.016
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.017
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.034
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.021
+
+2018-07-19 13:30:13
+Fork|S2|ready=493
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.038
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=493
+ArithmeticDecoder|S3|space=512
+0.022
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=493
+0.001
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.018
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.035
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.021
+
+2018-07-19 13:30:13
+Fork|S2|ready=487
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.034
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=487
+ArithmeticDecoder|S3|space=512
+0.022
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=487
+0
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.019
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.036
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.021
+
+2018-07-19 13:30:13
+Fork|S2|ready=486
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.035
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=486
+ArithmeticDecoder|S3|space=512
+0.022
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=486
+0
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.017
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.018
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.038
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.022
+
+2018-07-19 13:30:13
+Fork|S2|ready=491
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.036
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=491
+ArithmeticDecoder|S3|space=512
+0.023
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=491
+0
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.002
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.019
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.037
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.022
+
+2018-07-19 13:30:13
+Fork|S2|ready=480
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.038
+
+2018-07-19 13:30:13
+ArithmeticDecoder|S2_1|ready=480
+ArithmeticDecoder|S3|space=512
+0.023
+
+2018-07-19 13:30:13
+Sink|S2_2|ready=480
+0
+
+2018-07-19 13:30:13
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:13
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:13
+BinarySource|S1|space=500
+0.019
+
+2018-07-19 13:30:13
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.037
+
+2018-07-19 13:30:13
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.021
+
+2018-07-19 13:30:14
+Fork|S2|ready=481
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.037
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=481
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=481
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.019
+
+2018-07-19 13:30:14
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=500
+0.02
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.039
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.022
+
+2018-07-19 13:30:14
+Fork|S2|ready=495
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.037
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=495
+ArithmeticDecoder|S3|space=512
+0.024
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=495
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.018
+
+2018-07-19 13:30:14
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=500
+0.021
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.039
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.004
+
+2018-07-19 13:30:14
+Fork|S2|ready=485
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=485
+ArithmeticDecoder|S3|space=512
+0.023
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=485
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.019
+
+2018-07-19 13:30:14
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.039
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:14
+Fork|S2|ready=487
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.039
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=487
+ArithmeticDecoder|S3|space=512
+0.024
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=487
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:14
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=500
+0.02
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.04
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.022
+
+2018-07-19 13:30:14
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.039
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.004
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=477
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0
+
+2018-07-19 13:30:14
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=500
+0.028
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.001
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:14
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.041
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=477
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:14
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=495
+0.001
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.043
+
+2018-07-19 13:30:14
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:14
+Fork|S2|ready=472
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.042
+
+2018-07-19 13:30:14
+ArithmeticDecoder|S2_1|ready=472
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:14
+Sink|S2_2|ready=472
+0
+
+2018-07-19 13:30:14
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:14
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:14
+BinarySource|S1|space=495
+0.021
+
+2018-07-19 13:30:14
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.04
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:15
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.042
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=477
+0
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:15
+Sink|S4|ready=495
+0.002
+
+2018-07-19 13:30:15
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:15
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.042
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:15
+Fork|S2|ready=476
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=476
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=476
+0
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:15
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:15
+BinarySource|S1|space=495
+0.021
+
+2018-07-19 13:30:15
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.041
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.028
+
+2018-07-19 13:30:15
+Fork|S2|ready=476
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.041
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=476
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=476
+0
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:15
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:15
+BinarySource|S1|space=495
+0.022
+
+2018-07-19 13:30:15
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.04
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:15
+Fork|S2|ready=478
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=478
+ArithmeticDecoder|S3|space=512
+0.024
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=478
+0
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:15
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:15
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:15
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.042
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:15
+Fork|S2|ready=486
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.041
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=486
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=486
+0
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:15
+Sink|S4|ready=495
+0
+
+2018-07-19 13:30:15
+BinarySource|S1|space=500
+0.02
+
+2018-07-19 13:30:15
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.042
+
+2018-07-19 13:30:15
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.026
+
+2018-07-19 13:30:15
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:15
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.024
+
+2018-07-19 13:30:15
+Sink|S2_2|ready=483
+0.001
+
+2018-07-19 13:30:15
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:16
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=495
+0.021
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.043
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:16
+Fork|S2|ready=471
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.043
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=471
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:16
+Sink|S2_2|ready=471
+0
+
+2018-07-19 13:30:16
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:16
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.04
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:16
+Fork|S2|ready=482
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.043
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=482
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:16
+Sink|S2_2|ready=482
+0
+
+2018-07-19 13:30:16
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:16
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.04
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:16
+Fork|S2|ready=477
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.041
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=477
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:16
+Sink|S2_2|ready=477
+0
+
+2018-07-19 13:30:16
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.02
+
+2018-07-19 13:30:16
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=495
+0.02
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.041
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:16
+Fork|S2|ready=476
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=476
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:16
+Sink|S2_2|ready=476
+0
+
+2018-07-19 13:30:16
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:16
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=500
+0.023
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.065
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.027
+
+2018-07-19 13:30:16
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.041
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:16
+Sink|S2_2|ready=483
+0.001
+
+2018-07-19 13:30:16
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.024
+
+2018-07-19 13:30:16
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:16
+BinarySource|S1|space=495
+0.021
+
+2018-07-19 13:30:16
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.041
+
+2018-07-19 13:30:16
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.004
+
+2018-07-19 13:30:16
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0
+
+2018-07-19 13:30:16
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.025
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=483
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=495
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:17
+Sink|S4|ready=495
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=500
+0.021
+
+2018-07-19 13:30:17
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=495
+0.04
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=497
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:17
+Fork|S2|ready=488
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.042
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=488
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=488
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:17
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=495
+0.021
+
+2018-07-19 13:30:17
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.041
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:17
+Fork|S2|ready=483
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.042
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=483
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=483
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:17
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=500
+0.021
+
+2018-07-19 13:30:17
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.04
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.023
+
+2018-07-19 13:30:17
+Fork|S2|ready=497
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=497
+ArithmeticDecoder|S3|space=512
+0.024
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=497
+0.001
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.022
+
+2018-07-19 13:30:17
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=500
+0.022
+
+2018-07-19 13:30:17
+Fork|S1|ready=512
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0.042
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=502
+ArithmeticEncoder|S2|space=512
+0.024
+
+2018-07-19 13:30:17
+Fork|S2|ready=485
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.04
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=485
+ArithmeticDecoder|S3|space=512
+0.026
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=485
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=512
+BitErrorRate|S3|ready=500
+BitErrorRate|S4|space=512
+0.021
+
+2018-07-19 13:30:17
+Sink|S4|ready=500
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=500
+0
+
+2018-07-19 13:30:17
+Fork|S1|ready=64
+Fork|S1_1|space=510
+Fork|S1_2|space=500
+0
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=66
+ArithmeticEncoder|S2|space=512
+0
+
+2018-07-19 13:30:17
+Fork|S2|ready=79
+Fork|S2_1|space=512
+Fork|S2_2|space=512
+0.001
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=79
+ArithmeticDecoder|S3|space=512
+0
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=79
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=76
+BitErrorRate|S3|ready=75
+BitErrorRate|S4|space=512
+0
+
+2018-07-19 13:30:17
+Sink|S4|ready=75
+0.001
+
+2018-07-19 13:30:17
+BinarySource|S1|space=512
+0
+
+2018-07-19 13:30:17
+Fork|S1|ready=0
+Fork|S1_1|space=511
+Fork|S1_2|space=511
+0
+
+2018-07-19 13:30:17
+ArithmeticEncoder|S1_1|ready=1
+ArithmeticEncoder|S2|space=512
+0
+
+2018-07-19 13:30:17
+Fork|S2|ready=0
+Fork|S2_1|space=507
+Fork|S2_2|space=512
+0
+
+2018-07-19 13:30:17
+ArithmeticDecoder|S2_1|ready=5
+ArithmeticDecoder|S3|space=512
+0
+
+2018-07-19 13:30:17
+Sink|S2_2|ready=0
+0
+
+2018-07-19 13:30:17
+BitErrorRate|S1_2|ready=1
+BitErrorRate|S3|ready=0
+BitErrorRate|S4|space=512
+0.002
+
+2018-07-19 13:30:17
+Sink|S4|ready=0
+0
+

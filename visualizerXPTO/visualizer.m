@@ -11,7 +11,7 @@ function [ ] = visualizer( ~ )
 %% Clear command window
 
 warning('off');
-clc;
+% clc;
 
 s1 = [ pwd '\set'];
 s2 = [ pwd '\get'];
