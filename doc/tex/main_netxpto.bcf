@@ -1972,6 +1972,7 @@
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -1989,6 +1990,7 @@
   <!-- SECTION 1 -->
   <bcf:bibdata section="1">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2010,6 +2012,7 @@
   <!-- SECTION 2 -->
   <bcf:bibdata section="2">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2035,6 +2038,7 @@
   <!-- SECTION 3 -->
   <bcf:bibdata section="3">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2061,6 +2065,7 @@
   <!-- SECTION 4 -->
   <bcf:bibdata section="4">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2074,6 +2079,9 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="4">
+    <bcf:citekey order="1">Abramson63</bcf:citekey>
+    <bcf:citekey order="2">Pasco76</bcf:citekey>
+    <bcf:citekey order="3">Rissanen76</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2081,6 +2089,7 @@
   <!-- SECTION 5 -->
   <bcf:bibdata section="5">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2103,6 +2112,7 @@
   <!-- SECTION 6 -->
   <bcf:bibdata section="6">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
@@ -2129,6 +2139,7 @@
   <!-- SECTION 7 -->
   <bcf:bibdata section="7">
     <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/eit_46084_arithmetic_encoder_decoder/eit_46084_arithmetic_encoder_decoder.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
