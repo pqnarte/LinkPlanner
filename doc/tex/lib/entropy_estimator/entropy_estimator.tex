@@ -1,47 +1,74 @@
-\documentclass[]{article}
-\usepackage{graphicx}
-\usepackage{float}
+\clearpage
 
-\title{Binary Entropy Estimator}
-\date{}
+\section{Entropy Estimator}
 
-\begin{document}
+\begin{tcolorbox}	
+	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
+		\textbf{Header File}   &:& entropy_estimator_20180715.h \\
+		\textbf{Source File}   &:& entropy_estimator_20180715.cpp \\
+	\end{tabular}
+\end{tcolorbox}
 
-\maketitle
-
-\subsection*{Functional Description}
-\paragraph{}
-entropyEst(vector$<$Signal *$>$ \&InputSig, int window)
-\paragraph{}
-The estimator sweeps the full range of the binary input computing an entropy estimation for each window. Then, the entropy mean, the variance and the individual entropy estimations are outputted to a file.
 
 \subsection*{Input Parameters}
-\paragraph{}
-The block accepts as input parameter the window size, which defines the length over which each entropy estimation is computed. 
 
-\paragraph{}
-Note: If the length of the binary stream is not an integer multiple of the window size, the estimator considers the window size equal to the full length of the input signal.
-
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\cline{1-4}
+		\textbf{Parameter} & \textbf{Type} &\textbf{Values} &   \textbf{Default}& \\ \cline{1-4}
+		nBits 	& int 	& $\geq$ 1 & Input Buffer Size \\ \cline{1-4}
+		minWindow	 & int 	& ]0,nBits]  & Input Buffer Size \\ \cline{1-4} \cline{1-4}
+	\end{tabular}
+	\caption{Entropy estimator input parameters}
+	\label{table:estimator_in_par}
+\end{table}
 
 \subsection*{Input Signals}
+\subparagraph*{Number:} 1
+\subparagraph*{Type:} Binary
 
-\textbf{Number}: 1
+\subsection*{Output Signals}
+\subparagraph*{Number:} 1
+\subparagraph*{Type:} Binary
 
-\textbf{Type}: Binary Stream
 
-\subsection*{Output Data} 
+\subsection*{Methods}
+
+entropy_estimator(vector<Signal *> \&InputSig, vector<Signal *> \&OutputSig);
+\bigbreak
+bool runBlock(void)
+\bigbreak
+void setNumbBits(int n)
+\bigbreak
+int getNumbBits()
+\bigbreak
+void setMinWindowSize(int w)
+\bigbreak
+int getMinWindowSize()
+
+
+\subsection*{Functional Description}
+This block computes the entropy of a binary signal defined at the input, generating 
+a file \texttt{"entropy\_est.txt"} with the mean and variance of the individual estimations.
+The binary signal at the input is writen at the output of the estimator without changes.
+
+\textbf{Mathematical Definition}: Defining \textit{p} as the probability of the 
+outcome '1', the binary entropy \textit{h} is computed using the following expression
+
+\begin{equation}
+h = -p\log_2(p) - (1-p)\log_2(1-p)
+\end{equation}  
+   
 \paragraph{}
-Entropy mean, entropy variance and entropy estimations.
+\textbf{Parameters Description}: The parameter 'minWindow' allows the user to set the 
+minimum window size for each individual estimation. If 'minWindow' is lower than the 
+input buffer size, the estimator adjusts the window to the size of the input buffer, 
+otherwise the window is rounded to a multiple of the input buffer size, ensuring always 
+that the window is greater or equal than 'minWindow'. The total number of bits processed 
+by the estimator is equal to the largest value that is a multiple of the window size and 
+is not greater than the input parameter 'nBits'.
 
-\paragraph{}
 
-The entropy estimator generates a file with the name \texttt{"entropy\_est.txt"} where the output data is written.
 
-\begin{figure}[H]
-\subsection*{Results}
-    \centerline{
-       \includegraphics[scale=0.75]{images/BinEntropyResults.png}
-    }
-\end{figure}
 
-\end{document}
