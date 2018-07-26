@@ -6,7 +6,7 @@
 
 using namespace std;
 
-entropy_est::entropy_est(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
+entropy_estimator::entropy_estimator(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {
 
 	//numberOfInputSignals = (int)InputSig.size();
 
@@ -18,14 +18,13 @@ entropy_est::entropy_est(vector<Signal *> &InputSig, vector<Signal *> &OutputSig
 
 
 
-bool entropy_est::runBlock(void)
+bool entropy_estimator::runBlock(void)
 {
 
 	int ready = inputSignals[0]->ready();
 	int buf_L = inputSignals[0]->getBufferLength();
 
 	int process, N;
-	double p_one;
 
 	t_binary data;
 
@@ -90,7 +89,7 @@ bool entropy_est::runBlock(void)
 
 
 
-double entropy_est::compute_entropy(vector<int> h_store, int window_size) {
+double entropy_estimator::compute_entropy(vector<int> h_store, int window_size) {
 
 	int n_one = 0;
 	double h;
@@ -119,7 +118,7 @@ double entropy_est::compute_entropy(vector<int> h_store, int window_size) {
 }
 
 
-void entropy_est::print_to_file(vector<double> &h) {
+void entropy_estimator::print_to_file(vector<double> &h) {
 
 	ofstream fOut("entropy_est.txt");
 	fOut << "-------- Parameters ---------" << "\n";
@@ -137,7 +136,7 @@ void entropy_est::print_to_file(vector<double> &h) {
 
 }
 
-void entropy_est::compute_mean_var(vector<double> &h) {
+void entropy_estimator::compute_mean_var(vector<double> &h) {
 
 	double sum = 0;
 	double sum2 = 0;

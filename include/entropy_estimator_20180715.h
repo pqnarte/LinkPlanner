@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class entropy_est : public Block {
+class entropy_estimator : public Block {
 
 
 public:
@@ -22,8 +22,8 @@ public:
 	double m, var;			// Mean and var
 
 							//Methods
-	entropy_est() {};
-	entropy_est(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
+	entropy_estimator() {};
+	entropy_estimator(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 
 	void setNumbBits(int N) { n_bits = N; }				// Number of bits for analysis
 	int getNumbBits() { return n_bits; }
