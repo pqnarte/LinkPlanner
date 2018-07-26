@@ -14,6 +14,9 @@ entropy_estimator::entropy_estimator(vector<Signal *> &InputSig, vector<Signal *
 
 	outputSignals = OutputSig;
 
+	n_bits = inputSignals[0]->getBufferLength();		// Default
+	min_window = n_bits;								// Default
+
 }
 
 
