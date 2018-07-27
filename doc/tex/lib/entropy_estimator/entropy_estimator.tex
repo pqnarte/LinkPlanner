@@ -30,6 +30,13 @@ This block computes the entropy of a binary signal defined at the input, generat
 a file \texttt{"entropy\_est.txt"} with the mean and variance of the individual estimations.
 The binary signal at the input is writen at the output of the estimator without changes.
 
+\begin{figure}[h]
+\subsection*{}
+    \centerline{
+       \includegraphics[scale=0.75]{figures/block_entropy_est.jpg}
+    }
+\end{figure}
+
 \textbf{Mathematical Definition}: Defining \textit{p} as the probability of the 
 outcome '1', the binary entropy \textit{h} is computed using the following expression
 
@@ -53,7 +60,6 @@ is not greater than the input parameter 'nBits'.
 \subsection*{Output Signals}
 \subparagraph*{Number:} 1
 \subparagraph*{Type:} Binary
-\paragraph{}
 
 \subsection*{Methods}
 \subparagraph*{}
@@ -63,11 +69,11 @@ bool runBlock(void)
 \subparagraph*{}
 void setNumbBits(int n)
 \subparagraph*{}
-int getNumbBits()
+int getNumbBits(void)
 \subparagraph*{}
 void setMinWindowSize(int w)
 \subparagraph*{}
-int getMinWindowSize()
+int getMinWindowSize(void)
 
 
 
