@@ -16,20 +16,20 @@ public:
 
 	// Vars
 	long int numberOfSamples{ -1 };
-	int n_bits;				// Total number of bits
-	int min_window;			// Minimum window size
+	int nBits;											// Total number of bits
+	int minWindow;										// Minimum window size
 	int p;
-	double m, var;			// Mean and var
+	double m, var;										// Mean and var
 
-							//Methods
+	//Methods
 	entropy_estimator() {};
 	entropy_estimator(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 
-	void setNumbBits(int N) { n_bits = N; }				// Number of bits for analysis
-	int getNumbBits() { return n_bits; }
+	void setNumbBits(int N) { nBits = N; }				// Number of bits for analysis
+	int getNumbBits() { return nBits; }
 
-	void setMinWindowSize(int w) { min_window = w; }	// Defines minimum window size	
-	int getMinWindowSize() { return min_window; }
+	void setMinWindowSize(int w) { minWindow = w; }		// Defines minimum window size	
+	int getMinWindowSize() { return minWindow; }
 
 	bool runBlock(void);
 

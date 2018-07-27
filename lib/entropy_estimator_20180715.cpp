@@ -14,8 +14,8 @@ entropy_estimator::entropy_estimator(vector<Signal *> &InputSig, vector<Signal *
 
 	outputSignals = OutputSig;
 
-	n_bits = inputSignals[0]->getBufferLength();		// Default
-	min_window = n_bits;								// Default
+	nBits = inputSignals[0]->getBufferLength();		// Default
+	minWindow = nBits;								// Default
 
 }
 
@@ -31,8 +31,8 @@ bool entropy_estimator::runBlock(void)
 
 	t_binary data;
 
-	if (buf_L < min_window) {
-		n = ceil((double)min_window / buf_L);				// Window equal to count x buffer length
+	if (buf_L < minWindow) {
+		n = ceil((double)minWindow / buf_L);				// Window equal to count x buffer length
 	}
 	else {
 		n = 1;												// Window equal to buffer length
@@ -41,7 +41,7 @@ bool entropy_estimator::runBlock(void)
 	window_size = n * buf_L;								// Size of the window in multiples of buffer length
 	static vector<int> h_store(window_size);				// Stores the bits to be processed
 
-	N = n_bits / window_size;								// Total number of estimations
+	N = nBits / window_size;								// Total number of estimations
 	static vector<double> h_entropy(N);						// Vector that stores the estimations
 
 	if (count == n) {										// If the window is filled, the estimation is computed
@@ -52,7 +52,7 @@ bool entropy_estimator::runBlock(void)
 
 	process = ready;
 	//if (process == 0 || process < buf_L) {				
-	if ((count_est + 1)*window_size > n_bits)					// The number of bits defined for analysis was reached
+	if ((count_est + 1)*window_size > nBits)					// The number of bits defined for analysis was reached
 	{
 		for (int k = 0; k < ready; k++) {					// Put the remaining data at the output
 			(inputSignals[0])->bufferGet(&data);
