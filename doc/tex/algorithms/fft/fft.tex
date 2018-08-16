@@ -32,7 +32,7 @@
 }
 \clearpage
 \section{Fast Fourier Transform}
-%\begin{refsection}
+\begin{refsection}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Header File}   &:& fft\_*.h \\
@@ -54,25 +54,25 @@
 \subsubsection{Algorithm}
 The algorithm for the FFT will be implemented according with the following expression,
 \begin{equation}
-X_k =\dfrac{1}{\sqrt{N}}\sum\limits_{n=0}^{N-1} x_n \hspace{2mm} e^{-i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
+X_k =\dfrac{1}{\sqrt{N}}\sum\limits_{n=0}^{N-1} x_n \hspace{2mm} e^{i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
 \label{FFT}
 \end{equation}
 Similarly, for IFFT,
 \begin{equation}
-x_n =\frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} X_k \hspace{2mm}  e^{i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
+x_n =\frac{1}{\sqrt{N}} \sum\limits_{k=0}^{N-1} X_k \hspace{2mm}  e^{-i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
 \label{IFFT}
 \end{equation}
 From equations \ref{FFT} and \ref{IFFT}, we can write only one script for the implementations of the direct and inverse Discrete Fourier Transfer and manipulate its functionality as a FFT or IFFT by applying an appropriate input arguments. The generalized form for the algorithm can be given as,
 \begin{equation}
-y =\frac{1}{\sqrt{N}} \sum\limits_{n=0}^{N-1} x \hspace{2mm}  e^{m  i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
+y =\frac{1}{\sqrt{N}} \sum\limits_{n=0}^{N-1} x \hspace{2mm}  e^{m \hspace{1mm} i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
 \label{FT}
 \end{equation}
-where, $x$ is an input complex signal, $y$ is the output complex signal and $m$ equals -1 or 1 for FFT and IFFT, respectively. An optimized fft function is also implemented without the $1/\sqrt(N) factor$, see below in the optimized fft section.
+where, $x$ is an input complex signal, $y$ is the output complex signal and $m$ equals 1 or -1 for FFT and IFFT, respectively. An optimized fft function is also implemented without the $1/\sqrt(N) factor$, see below in the optimized fft section.
 
 \subsubsection{Function description}
 To perform FFT operation, the fft\_*.h header file must be included and the input argument to the function can be given as follows,
 \begin{equation*}
-y=f\hspace{-0.85mm}ft(x,-1)
+y=f\hspace{-0.85mm}ft(x,1)
 \end{equation*}
 or
 \begin{equation*}
@@ -227,26 +227,26 @@ To write the data from the MATLAB in the form of text file, \textbf{fprintf} MAT
 \subsubsection{Algorithm}
 The algorithm for the optimized FFT will be implemented according with the following expression,
 \begin{equation}
-X_k =\sum\limits_{n=0}^{N-1} x_n \hspace{2mm} e^{mi2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
+X_k =\sum\limits_{n=0}^{N-1} x_n \hspace{2mm} e^{m\hspace{1mm}i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
 \label{optimized_FFT}
 \end{equation}
 Similarly, for IFFT,
 \begin{equation}
-x_n =\frac{1}{N} \sum\limits_{k=0}^{N-1} X_k \hspace{2mm}  e^{mi2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
+x_n =\frac{1}{N} \sum\limits_{k=0}^{N-1} X_k \hspace{2mm}  e^{m\hspace{1mm}i2\pi kn/N}		\hspace{2cm}	0\leq k \leq N-1
 \label{optimized_IFFT}
 \end{equation}
-where, $X_k$ is the Fourier transform of $x_n$, and $m$ equals -1 or 1 for FFT and IFFT, respectively.
+where, $X_k$ is the Fourier transform of $x_n$, and $m$ equals 1 or -1 for FFT and IFFT, respectively.
 
 \subsubsection{Function description}
 To perform optimized FFT operation, the fft\_*.h header file must be included and the input argument to the function can be given as follows,
 \begin{equation*}
-	y=f\hspace{-0.85mm}ft(x,-1,1)
+	y=f\hspace{-0.85mm}ft(x,1,1)
 \end{equation*}
 where $x$ and $y$ are of the C++ type vector<complex>. In a similar way, IFFT can be manipulated as,
 \begin{equation*}
-	x=f\hspace{-0.85mm}ft(y,1,1)
+	x=f\hspace{-0.85mm}ft(y,-1,1)
 \end{equation*}
-If we manipulate the optimized FFT and IFFT functions as $y=f\hspace{-0.85mm}ft(x,-1,0)$ and  $x=f\hspace{-0.85mm}ft(y,1,0)$ then it'll calculate the FFT and IFFT as discussed in equation \ref{FFT} and \ref{IFFT} respectively.
+If we manipulate the optimized FFT and IFFT functions as $y=f\hspace{-0.85mm}ft(x,1,0)$ and  $x=f\hspace{-0.85mm}ft(y,-1,0)$ then it'll calculate the FFT and IFFT as discussed in equation \ref{FFT} and \ref{IFFT} respectively.
 \subsubsection{Comparative analysis }
 The following table displays the comparative analysis of time elapsed by FFT and optimized FFT for the various length of the data sequence. This comparison performed on the computer having configuration of 16 GB RAM, i7-3770 CPU @ 3.40GHz with 64-bit Microsoft Windows 10 operating system.
 \begin{center}
@@ -278,11 +278,11 @@ The following table displays the comparative analysis of time elapsed by FFT and
 
 
 % bibliographic references for the section ----------------------------
-%\clearpage
-%\printbibliography[heading=subbibliography]
-%\end{refsection}
-%\addcontentsline{toc}{subsection}{Bibliography}
-%\cleardoublepage
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
+\cleardoublepage
 % --------------------------------------------------------------------- 
 
 

@@ -228,14 +228,22 @@ Table \ref{tb:signals} presents the system signals as well as them type.
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{Parameter}                      & \textbf{Default Value}                                & \textbf{Description} \\ \hline
-RateOfPhotons                           & 1K                                                    &                 \\ \hline
-iqAmplitudeValues                       & \{-45,0\},\{0,0\},\{45,0\},\{90,0\}   &                 \\ \hline
-NumberOfSamplesPerSylbom                & 16                                                    &                   \\ \hline
-DetectorWindowTimeOpen                  & 0.2                                                   & smaller than 1 ms \\ \hline
-DetectorPulseDelay                      & 0.7                                                   & in units of ms \\ \hline
-DetectorProbabilityDarkCount            & 0.0                                                   &    \\ \hline
-RotationAngle                           & 0.0                                                   & \\ \hline
-ElevationAngle                          & 0.0                                                   & \\ \hline
+rateOfPhotons                           & 1000 photons/s                                        &  Number of photon per sample.\\ \hline
+iqAmplitudeValues                       & \{-45,0\},\{0,0\},\{45,0\},\{90,0\}                   &  Possible photon states. \\ \hline
+numberOfSamplesPerSymbol                & 16                                                    &  Number of samples per symbol. \\ \hline
+detectorWindowTimeOpen                  & 0.2 ms                                                & smaller than 1 ms \\ \hline
+detectorPulseDelay                      & 0.7 ms                                                & in units of ms \\ \hline
+detectorProbabilityDarkCount            & 0.0                                                   &  Probability of dark counts  \\
+                                        &                                                       &  in single-photon detector.  \\ \hline
+rotationAngle                           & 0.0                                                   & Polarization angle in XY axis   \\
+                                        &                                                       & to introduce in Deterministic \\
+                                        &                                                       & SOP changes.\\ \hline
+elevationAngle                          & 0.0                                                   & Polarization angle in Poincare \\
+                                        &                                                       &  sphere to introduce in \\
+                                        &                                                       &  Deterministic SOP changes.\\ \hline
+fiberLength                             & 10 km                                                    &  Length of the optical fibre in km. \\ \hline
+fiberAttenuation                        & 0.2 dB/km                                               &  Attenuation of the optical fibre \\
+                                        &                                                       &  in dB/km.  \\ \hline
 
 \end{tabular}
 \end{table}
@@ -351,7 +359,7 @@ Now, it is important to calculate the QBER as a function of the rotation angle $
 
 \begin{figure}[h]
     \centering
-        \includegraphics[clip, trim=4cm 17.0cm 5cm 17cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures/prob_qber.pdf}
+        \includegraphics[clip, trim=4cm 17.0cm 5cm 5cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures/prob_qber.pdf}
     \caption{Representation of two orthogonal states rotated by an angle $\theta$.}\label{rep_rotation}
 \end{figure}
 
@@ -374,33 +382,36 @@ This way,
    QBER & = & sin^2(\theta).
 \end{eqnarray}
 
- In figure \ref{qber} are represented two curves: qber calculated from simulated data and qber calculated using theoretical model from equation \ref{eq:qber_final}. Furthermore, the cross correlation coefficient between the two signals was calculated using a function from MATLAB \textit{xcorr(x,y,'coeff')} which the result is $99.92\%$. From that, we can conclude that the QBER calculated from simulated data follows the theoretical curve with high correlation. Nevertheless, the error bars presented in figure \ref{qber} were calculated based on a confidence interval of $95\%$.
+ In figure \ref{qber} are represented two curves: QBER calculated from simulated data and QBER calculated using theoretical model from equation \ref{eq:qber_final}. Furthermore, the cross correlation coefficient between the two signals was calculated using a function from MATLAB \textit{xcorr(x,y,'coeff')} which the result is $99.92\%$. From that, we can conclude that the QBER calculated from simulated data follows the theoretical curve with high correlation. Nevertheless, the error bars presented in figure \ref{qber} were calculated based on a confidence interval of $95\%$.
 
 \begin{figure}[h]
     \centering
         \includegraphics[clip, trim=0.5cm 0.0cm 0.5cm 1cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures/QBER_vs_theta_normal_scale.pdf}
-    \caption{Qber evolution in relation with deterministic SOP drift.}\label{qber}
+    \caption{QBER evolution in relation with deterministic SOP drift.}\label{qber}
 \end{figure}
 
 \begin{figure}[H]
     \centering
         \includegraphics[clip, trim=0.2cm 0.0cm 0.5cm 1cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures/qber_vs_theta_all.pdf}
-    \caption{Qber evolution in relation with deterministic SOP drift in log scale.}\label{qber_log}
+    \caption{QBER evolution in relation with deterministic SOP drift in log scale.}\label{qber_log}
 \end{figure}
 
 \begin{figure}[H]
     \centering
         \includegraphics[clip, trim=0.2cm 0.0cm 0.5cm 1cm, width=0.80\textwidth]{./sdf/bb84_with_discrete_variables/figures/QBER_vs_theta_upto15.pdf}
-    \caption{Qber evolution in relation with deterministic SOP drift scaled.}\label{qber_log_scaled}
+    \caption{QBER evolution in relation with deterministic SOP drift scaled.}\label{qber_log_scaled}
 \end{figure}
 \newpage
 
 \subsection{Open Issues}
 \begin{enumerate}
-   
-    \item Implementation of the scrambling algorithm in order to spread the errors.
+    \item Estimation of the photons received rate (raw key rate), from the \textrm{SSPR} signal.
+    \item Estimation of the key rate after basis reconciliation, from \textrm{MI\_B}.
+    \item Include the random polarization rotations in the communication channel.
     \item Implementation of the control system for polarization rotations.
-    \item Implementation of a QBER estimation protocol.
+    \item Implementation of a \textrm{QBER} estimation protocol.
+    \item Insertion of a new block in \textrm{Bob\_qkd} super block, after the DEMUX\_2\_1 so that we can choose the bits that are going to be used in \textrm{BER} estimation.
+    \item Implementation of the scrambling algorithm in order to spread the errors.
     \item Implementation of the cascade for error correction.
     \item Implementation of the output which represents the final key that is built.
     \item Introduce EVE in simulation as shown in figure \ref{toplevelsimulation2}.
@@ -409,9 +420,10 @@ This way,
         	\includegraphics[width=1.0\textwidth, height=9cm]{./sdf/bb84_with_discrete_variables/figures/toplevel_simulation.png}
         	\caption{Simulation diagram at a top level}\label{toplevelsimulation2}
         \end{figure}
+    \item Analyze different strategies for Eve.
     \item Experimental Implementation.
 \end{enumerate}
-  
+
 
 
 \newpage

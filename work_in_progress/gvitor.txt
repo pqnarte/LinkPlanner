@@ -1,5 +1,42 @@
 Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
 
+Instalar e usar a biblioteca libscapi
+http://biulibscapi.readthedocs.io/en/latest/index.html#
+
+
+2018-07-19
+TO BE DONE
+
+	- usando o TinyGarble, implementar a partir de VHDL e depois a partir de C/C++
+
+	- instala-se esta lisbscapi (windows), fazer aquilo que fez com o TinyGarble nesta libraria era bom
+
+	- documentar todo com detalhe
+
+	- enviar um e-mail e fazer um push
+
+Next meeting: início de setembro
+
+2018-07-10
+TO BE DONE
+
+	explicar a instalação do TinyGarble
+
+	continuar a explorar o TinyGarble
+	associar aquilo que estamos a fazer ao flowchart e ao diagrama de blocos
+
+	especificar que estamos a testar a entrada Verilog
+
+Next meeting: 19/7, 13h30
+
+2018-06-22
+TO BE DONE
+
+	1) Estudar a aplicação TinyGarbled (melhorar aquela sub-secção)
+	2) Inserir as refer~encias (JabRef)
+
+Next meeting: 21/6, 10h
+
 
 2018-05-23
 TO BE DONE
@@ -10,7 +47,7 @@ TO BE DONE
 
 	- pull request
 
-Next meeting: 12/6, 10h
+Next meeting: 21/6, 10h
 
 2018-05-23
 TO BE DONE

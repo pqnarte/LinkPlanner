@@ -47,7 +47,7 @@
 }
 \clearpage
 \section{Hilbert Transform}
-%\begin{refsection}
+\begin{refsection}
 \begin{tcolorbox}	
 	\begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
 		\textbf{Header File}   &:& hilbert\_filter\_*.h \\
@@ -65,7 +65,7 @@ where, $s_a(t)$ is an analytical signal and $\hat{s}(t)$ is the Hilbert transfor
 \subsection*{Transfer function for the discrete Hilbert transform}
 There are two approached to generate the analytical signal using Hilbert transformation method. First method generates the analytical signal $S_a(t)$ directly, on the other hand, second method will generate the $\hat{s}(t)$ signal which is multiplied with $i$ and added to the ${s}(t)$ to generate the analytical signal $S_a(t)$ .\\
 \textbf{Method 1 :}\\
-The discrete time analytical signal $S_a(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as \cite{Marple}
+The discrete time analytical signal $S_a(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as \cite{Marple} (This method requires MATLAB Hilbert transform definition)
 \begin{equation}
 S_a(f) = \begin{cases}
 2S(f) &\text{for $f>0$}\\ 
@@ -78,9 +78,9 @@ which is inverse transformed to obtain an analytical signal $S_a(t)$.\\
 The discrete time Hilbert transformed signal  $\hat{s}(t)$ corresponding to  ${s}(t)$ is defined in the frequency domain as \cite{Oppenheim1999}
 \begin{equation}
  \hat{S}(f)= \begin{cases}
--i S(f) &\text{for $f>0$}\\ 
+i\hspace{1mm} S(f) &\text{for $f>0$}\\ 
 0 &\text{for $f=0$}\\ 
-i S(f) &\text{for $f<0$}
+-i\hspace{1mm} S(f) &\text{for $f<0$}
 \end{cases}
 \end{equation}
 which is inverse transformed to obtain a Hilbert transformed signal $\hat{S}(t)$. To generate an analytical signal,  $\hat{S}(t)$ is added to the $S(t)$ to get the equation \ref{Analytical signal}.\\
@@ -110,17 +110,22 @@ In the next iteration 2, we'll use \textbf{previousCopy} $A$ and $B$ along with 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=13cm]{./algorithms/hilbert/figures/S5.eps}
-	\caption{Complex analytical signal $S5$ with its real part $S4$ and imaginary part $\hat{S}4$}\label{S5}
+	\caption{$S5$ signal}\label{S5}
 \end{figure}
-\textbf{Remark :} Here, we have used method 1 to generate analytical signal using Hilbert transform.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=13cm]{./algorithms/hilbert/figures/S7.eps}
+	\caption{$S7$ signal}\label{S7}
+\end{figure}
+\textbf{Remark :} Here, we have used method 2 to generate analytical signal using Hilbert transform. If you want to use method 1 then you should use $ifft$ in place of $fft$ and vice-versa.
 
 
 
 % bibliographic references for the section ----------------------------
-%\clearpage
-%\printbibliography[heading=subbibliography]
-%\end{refsection}
-%\addcontentsline{toc}{subsection}{Bibliography}
-%\cleardoublepage
+\clearpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+\addcontentsline{toc}{subsection}{Bibliography}
+\cleardoublepage
 % --------------------------------------------------------------------- 
 
