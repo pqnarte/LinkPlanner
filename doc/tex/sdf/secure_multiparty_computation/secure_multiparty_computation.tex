@@ -202,9 +202,61 @@ Since Bob knows $X_1 = W_1^i$, $X_2=W_2^i$ and the result of $\textrm{Enc}(H(W_1
 
 \subsection{TinyGarble}
 
-This subsection will cover the usage of TinyGarble, a GC framework that allows two parties to safely compute any function with their private inputs through Yao's Garbled Circuit Potocol. It's installation can be followed on \url{https://github.com/esonghori/TinyGarble}.
+This subsection will cover the installation and usage of TinyGarble, a GC framework that allows two parties to safely compute any function with their private inputs through Yao's Garbled Circuit Potocol. It accepts HDL and C/C++ as user inputs.
 
-To use TinyGarble, a RTL Synthesis tool will also be needed. In this example Yosys-abc was used, whose installation instructions can be found at \url{http://www.clifford.at/yosys/download.html}.
+\subsubsection{Installation}
+
+For TinyGarble to work, some dependencies have to be installed first, on Ubuntu it can be done with the following lines:
+
+\begin{lstlisting}[caption={Installation of TinyGarble's dependencies}, language=bash, captionpos=b] 
+g++:
+$ sudo apt-get install g++
+
+OpenSSL(1.0.1f<):
+$ sudo apt-get install libssl1.0.0-dev
+
+boost(1.55.0<):
+$ sudo apt-get install libboost-all-dev
+
+cmake(3.1.0<):
+$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository ppa:george-edison55/cmake-3.x
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get install cmake
+\end{lstlisting}
+
+After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}.
+When the cloning is complete, the following lines have to be executed on the cloned directory:
+
+\begin{lstlisting}[caption={Configuration and compilation of TinyGarble}, language=bash, captionpos=b] 
+$ ./configure
+$ cd bin
+$ make
+\end{lstlisting}
+
+\newpage
+
+To be able to use TinyGarble, a RTL Synthesis tool is also needed, to translate a Verilog file into a Netlist one. In the example showed later, Yosys-abc is used, which can be installed on Ubuntu with the lines below: 
+
+\begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b] 
+$ sudo add-apt-repository ppa:saltmakrell/ppa
+$ sudo apt-get update                                                                                                                                                                                             
+$ sudo apt-get install yosys
+\end{lstlisting}
+
+This next tool, vhd2vl, will also be needed if the desirable input is VHDL, to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned above. To install it first clone it's repository, which can be found at \url{https://github.com/ldoolitt/vhd2vl}, and then execute the following lines:
+
+\begin{lstlisting}[caption={Installation of VHD2VL}, language=bash, captionpos=b]  
+$ sudo apt-get install gcc                                                                                                                                                                                     
+$ sudo apt-get install flex                                                                                                                                                                         
+$ sudo apt-get install bison
+$ cd ClonedDirectory/vhd2vl/src
+$ make
+$ cp vhd2vl /usr/local/bin
+\end{lstlisting}
+
+\subsubsection{Usage}
 
 \begin{figure}[H]
 	\centering
@@ -212,30 +264,55 @@ To use TinyGarble, a RTL Synthesis tool will also be needed. In this example Yos
     \caption{TinyGarble Global Flow\cite{Songhori}}\label{fig:tinygarble_flow}
 \end{figure}
 
-Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or HDL (Hardware Design Language) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a  High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly, as shown below. 
+Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or Hardware Design Language (HDL) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth, height=5cm]{./sdf/secure_multiparty_computation/figures/tiny_garble_CvsHDL.png}
-    \caption{Performance comparison between C and Verilog input\cite{Songhori}}\label{fig:tinygarble_comparison}
-\end{figure}
+When writting the input file, some attention to the circuit's ports is needed, since TinyGarble's V2SCD (Netlist Verilog to SCD converter) accepts netlist files with a special format. 
+Below are the ports that can be used and what they represent.
 
-\newpage
- 
-Some attention to the circuit format is needed, more specifically at the names of the ports, as mentioned at \url{https://github.com/esonghori/TinyGarble/tree/master/scd}.
+\begin{itemize}  
+\item clk: clock cycle
+\item rst: active high reset
+\item g\_init: garbler's initial values (read at the first clock)
+\item e\_init: evaluator's initial values (read at the first clock)
+\item g\_input: garbler's input (read at every clock)
+\item e\_input: evaluator's input (read at every clock)
+\item o: output
+\end{itemize}
 
-For this example an and\_gate written in verilog was used.
+Below it's an example of an and\_gate written in verilog with the format above.
 
-\begin{lstlisting}[caption={and\_gate.v}, language=Verilog] 
+\begin{lstlisting}[caption={and\_gate.v}, language=Verilog, captionpos=b] 
 module and_gate (input g_input, e_input, output o);
 	assign o = g_input & e_input;
 endmodule
 \end{lstlisting}
 
-This next step requires the RTL Synthesis tool (Yosys) mentioned above, in order to compile the HDL file into a Netlist Verilog File. The instructions on how to use Yosys with TinyGarble's custom libraries can be found at the end of \url{https://github.com/esonghori/TinyGarble/tree/master/circuit\_synthesis}.
-Following these, the Netlist file below was generated.
+Since the next step needs a Verilog file, if the file above was written in VHDL instead, it would have to be translated to Verilog with the tool mentioned before, vhd2vl, and it can be done with:
 
-\begin{lstlisting}[caption={and\_gate\_netlist.v}, language=Verilog] 
+\begin{lstlisting}[caption={Translation of VHDL file into Verilog}, language=bash, captionpos=b] 
+$ vhd2vl and_gate.vhd and_gate.v	
+\end{lstlisting}
+
+This next step requires the RTL Synthesis tool (Yosys) mentioned above, in order to compile the Verilog file into a Netlist Verilog File. 
+Using TinyGarble's custom library "asic\_cell\_extended.lib", located at TinyGarble/bin/ciruit\_synthesis/lib/, and assuming that the Verilog file is at a folder named "circuits", the compilation can be done with the following instructions:
+
+\begin{lstlisting}[caption={Yosys instructions to compile the HDL file to a Netlist file}, language=bash, captionpos=b] 
+$ ./yosys
+yosys> read_verilog circuits/and_gate.v
+yosys> hierarchy -check -top and_gate
+yosys> proc; opt; memory; opt; fsm; opt; techmap; opt;
+yosys> abc -liberty TinyGarble/bin/ciruit_synthesis/lib/
+asic_cell_extended.lib
+yosys> opt
+yosys> write_verilog circuits/and_gate_syn.v
+yosys> exit					
+\end{lstlisting}
+
+\newpage
+
+Following these, the Netlist file below should be generated.
+
+\begin{lstlisting}[caption={and\_gate\_netlist.v}, language=Verilog, captionpos=b] 
 (* top =  1  *)
 (* src = "and.v:1" *)
 module and_gate( g_input,  e_input, o);
@@ -253,17 +330,64 @@ module and_gate( g_input,  e_input, o);
 endmodule
 \end{lstlisting}
 
-The next step would be to convert the netlist file into a SCD file, but TinyGarble's converter was failing in the middle of the process with a Segmentation Fault error.
-Looking back at the netlist file, there are some noticeably weird lines, starting with "(*", removing those lines fixed the Segmentation Fault problem and the SCD file was generated.
+For some unkown reason, the output file has some noticeably weird lines, starting with "(*", that will cause Segmentation Fault error in the next step if not removed.
+After removing those lines, the Netlist file can be converted into a SCD file with the instruction below:
 
-The SCD file could then be executed by both parties "Alice" and "Bob".
-The picture below shows the execution of the function '1 and 1', represented by the green lines, and '0 and 1', represented by the blue lines, which outputs are 1 and 0 respectively. The upper terminal is executing as the garbled circuit "Alice", and the lower one is executing as the evaluator "Bob". The output is showed only in Bob's terminal since it's him who decodes the result of the function to compute \ref{fig:garbledcircuit}.
+\begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b] 
+$ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_syn.v 
+-o circuits/and_gate_scd.scd		
+\end{lstlisting}
+
+\newpage
+
+The SCD file can now be executed by both parties, "Alice" and "Bob", as shown on the upper terminal and lower terminal of the following images, respectively.
+For this examples the SCD file was located at TinyGarble/bin/garbled\_circuits, same directory where the instructions were executed.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=10.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_terminal.png}
-    \caption{And function executed by Alice and Bob with TinyGarble}\label{fig:tinygarble_terminal}
+	\includegraphics[width=1\textwidth, height=8.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_a.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively}\label{fig:tinygarble_terminal}
 \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=8.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_b.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_terminal}
+\end{figure}
+
+\subsection{Libscapi}
+
+Libscapi is another framework that can be used, it allows Yao's Two Party Computation,  GMW Protocol for Multy Party Computation, and others. This subsection will cover it's installation and usage.
+
+\subsubsection{Installation}
+
+To install libscapi dependencies run the following lines:
+
+\begin{lstlisting}[caption={Installation of libscapi's dependencies}, language=bash, captionpos=b] 
+gcc:
+$ sudo apt-get install build-essential
+
+OpenSSL(1.0.2f<):
+$ sudo apt-get install libssl1.0.0-dev
+
+GMP:
+$ sudo apt-get install libgmp3-dev
+
+cmake:
+$ sudo apt-get install cmake
+\end{lstlisting}
+
+After this step, pull Libscapi from github, at \url{https://github.com/cryptobiu/libscapi} and build it with the following line:
+
+\begin{lstlisting}[caption={Build libscapi}, language=bash, captionpos=b] 
+$ cd libscapi
+$ make
+\end{lstlisting}
+
+After building libscapi sucessfully without failing any test, i tried to run the samples, but it failed while building them (with make).
+
+Instead of that i pulled MPC-Benchmark github, at \url{https://github.com/cryptobiu/MPC-Benchmark}, which is the repository where the protocols are.
+Ran into a lot of problems when trying to build MaliciousYaoSingleExecution, had to build all folders inside libscapi/lib/EMP/, and still run into some problems with cpp files, where the includes had wrong paths, fixing that manually solved that problem but more came next.
 
 % bibliographic references for the section ----------------------------
 \clearpage
