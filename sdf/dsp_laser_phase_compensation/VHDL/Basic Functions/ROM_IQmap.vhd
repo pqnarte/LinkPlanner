@@ -46,8 +46,8 @@ architecture BEHAVIOR of ROM_IQmap is
 		return temp_mem;
 	end function;
 	
-	constant s_tmemory1 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab Functions\IQMap_re.txt");
-	constant s_tmemory2 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab Functions\IQMap_im.txt");
+	constant s_tmemory1 : tmemory := init_mem(".\..\Matlab Functions\IQMap_re.txt");
+	constant s_tmemory2 : tmemory := init_mem(".\..\Matlab Functions\IQMap_im.txt");
 
 	begin -- BEHAVIOR
 		process (Clk)

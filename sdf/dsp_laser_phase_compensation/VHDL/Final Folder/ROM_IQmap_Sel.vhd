@@ -43,8 +43,8 @@ architecture BEHAVIOR of ROM_IQmap_Sel is
 	--constant s_tmemory1 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\IQMap_re.txt");
 	--constant s_tmemory2 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\IQMap_im.txt");
 
-	constant s_tmemory1 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\IQMapQPSK_re.txt");
-	constant s_tmemory2 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\IQMapQPSK_im.txt");
+	constant s_tmemory1 : tmemory := init_mem(".\..\Matlab_Functions\IQMapQPSK_re.txt");
+	constant s_tmemory2 : tmemory := init_mem(".\..\Matlab_Functions\IQMapQPSK_im.txt");
 
 	begin -- BEHAVIOR
 		process (Clk)
