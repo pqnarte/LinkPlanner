@@ -1,7 +1,7 @@
 # ifndef PROGRAM_INCLUDE_REAL_TO_COMPLEX_H_
 # define PROGRAM_INCLUDE_REAL_TO_COMPLEX_H_
 
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
 
 // Creates a complex signal from two real signals
