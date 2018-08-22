@@ -4,6 +4,22 @@ Instalar e usar a biblioteca libscapi
 http://biulibscapi.readthedocs.io/en/latest/index.html#
 
 
+2018-08-20
+TO BE DONE
+
+	Focar no TinyGarble (Linux / Windows)
+	Executar a gate AND
+	Escolher outro exemplo 
+	
+	## Ver como é que eu passo as chaves ##
+
+	Documentar isto bem.
+
+	Instalar no meu PC
+
+Next meeting: 4/9, 14h30m
+	
+
 2018-07-19
 TO BE DONE
 
