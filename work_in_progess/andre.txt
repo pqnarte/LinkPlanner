@@ -1,3 +1,21 @@
+2018-08-23
+TO BE DONE
+
+	ajudar o Celestino a simular o código dele em VHDL
+
+	criar uma AsciiSource (ler de um ficheiro carateres ascii, ler de uma string) (Terminate, AppendZeros, Cyclic)
+
+		AsciiSourceMode mode{Terminate}
+		string ascciString{"ABCabc"}
+		string asciiFilePath{ "text_file.txt" };
+
+	sinal de saída ASCII
+
+	Bloco AsciiToBinary / BinaryToAscii
+
+Next meeting: 30/8, 16h
+
+
 2018-07-10
 TO BE DONE
 
