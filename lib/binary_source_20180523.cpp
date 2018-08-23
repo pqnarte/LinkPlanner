@@ -15,6 +15,9 @@ void BinarySource::initialize(void){
 
 bool BinarySource::runBlock(void) {
 
+	typedef std::chrono::high_resolution_clock myclock;
+	myclock::time_point beginning = myclock::now();
+
 	long int space = outputSignals[0]->space();
 	for (auto k = 1; k < numberOfOutputSignals; k++) {
 		long int aux = outputSignals[k]->space();
@@ -168,7 +171,9 @@ bool BinarySource::runBlock(void) {
 		//std::random_device rd;
 		//std::mt19937 gen(rd()); // I think using rd to seed the mt19937 may always produce the same sequence
 		//std::uniform_int_distribution<> dis(0, 1);
-		std::default_random_engine rd;
+		myclock::duration d = myclock::now() - beginning;
+		double seed = d.count();
+		std::default_random_engine rd(seed);
 		std::uniform_real_distribution<> dis(0, 1);
 
 		

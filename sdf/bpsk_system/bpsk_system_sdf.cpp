@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
 
 	B1.setNumberOfBits(param.numberOfBitsGenerated);
 	B1.setOutputOpticalPower_dBm(param.signalOutputPower_dBm);
-	B1.setMode(AsciiFileAppendZeros);
+	B1.setMode(Random);
 	B1.setBitPeriod(param.bitPeriod);
 	B1.setPatternLength(param.pLength);
 	B1.setIqAmplitudes(param.iqAmplitudeValues);
@@ -147,12 +147,12 @@ int main(int argc, char *argv[]) {
 
 	BitErrorRate B7{ vector<Signal*> {&S0, &S7}, vector<Signal*> {&S8} };
 
-	//Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
-	Sink B8{ vector<Signal*> { &S0 }, vector<Signal*> {  } };
+	Sink B8{ vector<Signal*> { &S8 }, vector<Signal*> {} };
+	//Sink B8{ vector<Signal*> { &S0 }, vector<Signal*> {  } };
 	B8.setNumberOfSamples(param.numberOfBitsGenerated);
 	B8.setDisplayNumberOfSamples(true);
-	B8.setNumberOfBytesToSaveInFile(4);
-	B8.setNumberOfBitsToSkipBeforeSave(0);
+	//B8.setNumberOfBytesToSaveInFile(4);
+	//B8.setNumberOfBitsToSkipBeforeSave(0);
 
 
 	// #####################################################################################################
