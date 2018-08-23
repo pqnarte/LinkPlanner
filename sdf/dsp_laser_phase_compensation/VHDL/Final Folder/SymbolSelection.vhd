@@ -43,50 +43,98 @@ BEGIN
 	begin
 		--if rising_edge(clk) then
 			--if(clk_en='1') then
-			C0: case QuadNumber is
-				  when "00" => 
-						if (Input_I < dcI1) and (Input_R < dcR1) then
-								aux <= "0000";
-						elsif (Input_I < dcI1) and (Input_R > dcR1) then
-							aux <= "0001";
-						elsif (Input_I > dcI1) and (Input_R < dcR1) then
-							aux <= "0010";
-						else
-							aux <= "0011";
-						end if;
-				  when "01" => 
-						if (Input_I < dcI1) and (Input_R < dcR2) then
-								aux <= "0100";
-						elsif (Input_I < dcI1) and (Input_R > dcR2) then
-							aux <= "0101";
-						elsif (Input_I > dcI1) and (Input_R < dcR2) then
-							aux <= "0110";
-						else
-							aux <= "0111";
-						end if;
-				  when "10" => 
-						if (Input_I < dcI2) and (Input_R < dcR2) then
-								aux <= "1000";
-						elsif (Input_I < dcI2) and (Input_R > dcR2) then
-							aux <= "1001";
-						elsif (Input_I > dcI2) and (Input_R < dcR2) then
-							aux <= "1010";
-						else
-							aux <= "1011";
-						end if;
-				  when "11" => 
-						if (Input_I < dcI2) and (Input_R < dcR1) then
-								aux <= "1100";
-						elsif (Input_I < dcI2) and (Input_R > dcR1) then
-							aux <= "1101";
-						elsif (Input_I > dcI2) and (Input_R < dcR1) then
-							aux <= "1110";
-						else
-							aux <= "1111";
-						end if;
-					WHEN OTHERS => 
-						aux <= "0000";
-			end case C0;
+			
+			if(QuadNumber = "00") then
+				if (Input_I < dcI1) and (Input_R < dcR1) then
+					aux <= "0000";
+				elsif (Input_I < dcI1) and (Input_R > dcR1) then
+					aux <= "0001";
+				elsif (Input_I > dcI1) and (Input_R < dcR1) then
+					aux <= "0010";
+				else
+					aux <= "0011";
+				end if;
+			
+			elsif(QuadNumber = "01") then
+				if (Input_I < dcI1) and (Input_R < dcR2) then
+						aux <= "0100";
+				elsif (Input_I < dcI1) and (Input_R > dcR2) then
+					aux <= "0101";
+				elsif (Input_I > dcI1) and (Input_R < dcR2) then
+					aux <= "0110";
+				else
+					aux <= "0111";
+				end if;
+			elsif(QuadNumber = "10") then
+				if (Input_I < dcI2) and (Input_R < dcR2) then
+						aux <= "1000";
+				elsif (Input_I < dcI2) and (Input_R > dcR2) then
+					aux <= "1001";
+				elsif (Input_I > dcI2) and (Input_R < dcR2) then
+					aux <= "1010";
+				else
+					aux <= "1011";
+				end if;
+			elsif(QuadNumber = "11") then
+				if (Input_I < dcI2) and (Input_R < dcR1) then
+						aux <= "1100";
+				elsif (Input_I < dcI2) and (Input_R > dcR1) then
+					aux <= "1101";
+				elsif (Input_I > dcI2) and (Input_R < dcR1) then
+					aux <= "1110";
+				else
+					aux <= "1111";
+				end if;
+			else
+				aux <= "0000";
+			end if;
+			
+--			C0: case QuadNumber is
+--				  when "00" => 
+--						if (Input_I < dcI1) and (Input_R < dcR1) then
+--								aux <= "0000";
+--						elsif (Input_I < dcI1) and (Input_R > dcR1) then
+--							aux <= "0001";
+--						elsif (Input_I > dcI1) and (Input_R < dcR1) then
+--							aux <= "0010";
+--						else
+--							aux <= "0011";
+--						end if;
+--				  when "01" => 
+--						if (Input_I < dcI1) and (Input_R < dcR2) then
+--								aux <= "0100";
+--						elsif (Input_I < dcI1) and (Input_R > dcR2) then
+--							aux <= "0101";
+--						elsif (Input_I > dcI1) and (Input_R < dcR2) then
+--							aux <= "0110";
+--						else
+--							aux <= "0111";
+--						end if;
+--				  when "10" => 
+--						if (Input_I < dcI2) and (Input_R < dcR2) then
+--								aux <= "1000";
+--						elsif (Input_I < dcI2) and (Input_R > dcR2) then
+--							aux <= "1001";
+--						elsif (Input_I > dcI2) and (Input_R < dcR2) then
+--							aux <= "1010";
+--						else
+--							aux <= "1011";
+--						end if;
+--				  when "11" => 
+--						if (Input_I < dcI2) and (Input_R < dcR1) then
+--								aux <= "1100";
+--						elsif (Input_I < dcI2) and (Input_R > dcR1) then
+--							aux <= "1101";
+--						elsif (Input_I > dcI2) and (Input_R < dcR1) then
+--							aux <= "1110";
+--						else
+--							aux <= "1111";
+--						end if;
+--					WHEN OTHERS => 
+--						aux <= "0000";
+--			end case C0;
+
+
 --		end if;
 --	end if;
 	end process;

@@ -1,22 +1,22 @@
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
-# include "binary_source_20180118.h"
-# include "m_qam_mapper.h"
-# include "discrete_to_continuous_time.h"
-# include "pulse_shaper_20180111.h"
+# include "binary_source_20180523.h"
+# include "m_qam_mapper_20180118.h"
+# include "discrete_to_continuous_time_20180118.h"
+# include "pulse_shaper_20180118.h"
 # include "local_oscillator_20180130.h"
 # include "iq_modulator_20180130.h"
 # include "photodiode_old_20180118.h"
 # include "ideal_amplifier_20180118.h"
-# include "sampler.h"
-# include "optical_hybrid.h"
+# include "sampler_20171119.h"
+# include "optical_hybrid_20180118.h"
 # include "adc_20180423.h"
 # include "resample_20180423.h"
 # include "quantizer_20180423.h"
 # include "cpe_20180423.h"
-#include "dsp_20180423.h"
+# include "dsp_20180423.h"
 # include "real_to_complex_20180221.h"
-# include "sink.h"
+# include "sink_20180620.h"
 # include <limits>
 
 int main(){
@@ -195,7 +195,7 @@ int main(){
 	B17.setSamplingPeriod(samplingPeriod);
 	B17.setCPETestPhase(NTestPhase);
 	B17.setCPETestPhase(NTestPhase);
-	B17.setCPEmQAM(M);
+	//B17.setCPEmQAM(M);
 
 	Sink B21{ vector<Signal*> { &S21 }, vector<Signal*> {} };
 	//B9.setNumberOfSamples(5000);

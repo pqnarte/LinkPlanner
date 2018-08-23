@@ -44,8 +44,8 @@ architecture BEHAVIOR of TPhaseExpLut_File is
 		return temp_mem;
 	end function;
 	
-	constant s_tmemory1 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\TPhaseExp_cos.txt");
-	constant s_tmemory2 : tmemory := init_mem("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\TPhaseExp_sin.txt");
+	constant s_tmemory1 : tmemory := init_mem(".\..\Matlab_Functions\TPhaseExp_cos.txt");
+	constant s_tmemory2 : tmemory := init_mem(".\..\Matlab_Functions\TPhaseExp_sin.txt");
 
 --	constant s_tmemory1 : tmemory := init_mem("C:\Users\ny_martins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\TPhaseExp_cos.txt");
 --	constant s_tmemory2 : tmemory := init_mem("C:\Users\ny_martins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\TPhaseExp_sin.txt");

@@ -1549,7 +1549,63 @@ vector<complex <double>> ComplexMult::complexVectorMultiplication(vector<complex
 	return v_out;
 }
 
+complex <double> DecisionCircuitQPSK::DecisionCircuit(complex <double> &Signal_in) {
 
+	double inf = std::numeric_limits<double>::infinity();
+	vector<complex <double>> ConstMap = { { 1,-1 },{ -1,1 },{ -1,-1 },{ 1,1 } };
+	//vector<complex <double>> ConstMap({ { { 0.707,0.707 },{ -0.707,0.707 },{ -0.707,-0.707 },{ 0.707,-0.707 } } });
+	vector<double> distMod(ConstMap.size(), 0.0);
+	complex <double> result(0.0, 0.0);
+	double temp(0.0);
+	int minDist(0);
+
+	if (Signal_in == (0.0, 0.0)) {
+		result = (0.0, 0.0);
+		return result;
+	}
+
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		complex <double> aux = Signal_in - ConstMap.at(i);
+		complex <double> aux2 = (aux.real(), aux.imag());
+		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
+	}
+	temp = distMod.at(0);
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		if (temp > distMod.at(i)) {
+			minDist = i;
+			temp = distMod.at(i);
+		}
+	}
+
+	result = ConstMap.at(minDist);
+	return result;
+}
+
+void UnwrapFunctions::Unwrap(vector<double> &PhaseIn) {
+
+
+	vector<double> PhaseWrap(PhaseIn.size(), 0);
+
+	PhaseWrap = PhaseIn;
+
+	for (int i = 1; i != PhaseWrap.size(); ++i) {
+
+		double difference = PhaseWrap.at(i) - PhaseWrap.at(i - 1);
+		if (difference > M_PI) {
+			for (int k = i; k != PhaseWrap.size(); ++k) {
+				PhaseIn.at(k) = PhaseIn.at(k) - 2 * M_PI;
+			}
+		}
+		if (difference < -M_PI) {
+			for (int k = i; k != PhaseWrap.size(); ++k) {
+				PhaseIn.at(k) = PhaseIn.at(k) + 2 * M_PI;
+			}
+		}
+	}
+
+}
 
 ////////////  Fast FourierTransform  /////////////// 
 
