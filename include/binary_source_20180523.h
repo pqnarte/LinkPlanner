@@ -17,7 +17,7 @@
 
 # include "netxpto_20180418.h"
 
-enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros, AsciiFileAppendZeros, AsciiFileCyclic};
+enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 
 using namespace std;
 
@@ -48,10 +48,6 @@ private:
 	 double probabilityOfZero{ 0.5 };
 	 int patternLength{ 7 };
 	 string bitStream{ "0100011101010101" };
-	 string asciiFilePath{ "file_input_data.txt" };
-	 
-	 int nextCharacterIndex{ 0 };//Index of the next character
-	 int nextBitIndex{ 0 }; //Index of the next bit to be read from the next character
 
 	 long int numberOfBits{ -1 };
 	 double bitPeriod{ 1.0 / 100e9 };
@@ -64,9 +60,6 @@ public:
 	void initialize(void);
 	
 	bool runBlock(void);
-
-	void setAsciiFileName(string nName) { asciiFilePath = nName; nextCharacterIndex = 0; nextBitIndex = 0; }
-	string getAsciiFileName() { return asciiFilePath; }
 
 	void setMode(BinarySourceMode m) {mode = m;}
 	BinarySourceMode const getMode(void) { return mode; };
