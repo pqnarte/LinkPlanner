@@ -39,6 +39,10 @@ void Signal::close() {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
 			}
+			else if (type == "Ascii") {
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(char);
+				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(char));
+			}
 			else if (type == "TimeContinuousAmplitudeContinuousComplex" || type == "BandpassSignal") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_complex);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_complex));
