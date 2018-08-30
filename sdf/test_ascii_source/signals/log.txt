@@ -1,0 +1,12 @@
+The following input parameters were loaded from a file:
+-------------------------------------------------------
+Block start time: 2018-08-30 17:30:58
+AsciiSource|S1|space=8
+Elapsed time: 81674 milliseconds
+
+Block start time: 2018-08-30 17:32:28
+Sink|S1|ready=3
+Elapsed time: 38557 milliseconds
+
+Block start time: 2018-08-30 17:33:09
+AsciiSource|S1|space=8

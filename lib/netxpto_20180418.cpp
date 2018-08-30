@@ -1568,14 +1568,14 @@ complex <double> DecisionCircuitQPSK::DecisionCircuit(complex <double> &Signal_i
 		return result;
 	}
 
-	for (int i = 0; i < ConstMap.size(); ++i) {
+	for (size_t i = 0; i < ConstMap.size(); ++i) {
 
 		complex <double> aux = Signal_in - ConstMap.at(i);
 		complex <double> aux2 = (aux.real(), aux.imag());
 		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
 	}
 	temp = distMod.at(0);
-	for (int i = 0; i < ConstMap.size(); ++i) {
+	for (size_t i = 0; i < ConstMap.size(); ++i) {
 
 		if (temp > distMod.at(i)) {
 			minDist = i;

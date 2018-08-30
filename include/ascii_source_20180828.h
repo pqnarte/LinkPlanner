@@ -30,7 +30,7 @@ private:
 
 public:
 	AsciiSource() {};
-	AsciiSource(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) { initializeBlock(InputSig,OutputSig); };
+	AsciiSource(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) : Block(InputSig, OutputSig) { };
 
 	void initializeBlock(vector<Signal *> &InputSig, vector<Signal *> &OutputSig);
 	void initialize(void);

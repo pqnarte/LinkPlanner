@@ -1,15 +1,5 @@
 #include "ascii_source_20180828.h"
 
-void AsciiSource::initializeBlock(vector<Signal*>& InputSig, vector<Signal*>& OutputSig)
-{
-	Block::initializeBlock(InputSig,OutputSig);
-	input_file.open(asciiFilePath, ios::binary);
-	if (input_file)
-		asciistring = std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
-	else
-		throw exception("Could not open file!");
-}
-
 void AsciiSource::initialize(void)
 {
 	numberOfOutputSignals = (int)outputSignals.size();
@@ -19,6 +9,12 @@ void AsciiSource::initialize(void)
 		outputSignals[i]->setSamplesPerSymbol(1.0);
 		outputSignals[i]->setFirstValueToBeSaved(1);
 	}
+
+	input_file.open(asciiFilePath, ios::binary);
+	if (input_file)
+		asciistring = std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+	else
+		throw exception("Could not open file!");
 }
 
 bool AsciiSource::runBlock(void)
