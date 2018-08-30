@@ -40,7 +40,7 @@ typedef struct {
 	int size() { return 3; }
 } t_message;
 
-enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
+enum signal_value_type {AsciiValue, BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
 
 //########################################################################################################################################################
@@ -241,6 +241,15 @@ public:
 	TimeDiscreteAmplitudeDiscreteComplex() {}
 };
 
+class Ascii : public Signal {
+
+public:
+	Ascii(string fName) { setType("Ascii", AsciiValue);  setFileName(fName); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
+	Ascii(string fName, string folderName) : Signal(fName, folderName) { setType("Ascii", AsciiValue); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
+	Ascii(string fName, int bLength) { setType("Ascii", AsciiValue); setFileName(fName); setBufferLength(bLength); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
+	Ascii(int bLength) { setType("Ascii", AsciiValue); setBufferLength(bLength); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
+	Ascii() { setType("Ascii", AsciiValue); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
+};
 
 class Binary : public Signal {
 	
