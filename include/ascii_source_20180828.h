@@ -9,9 +9,9 @@
 # include <string>
 
 /*
-	Terminate - Creates a signal with asciistring as sequence
-	AppendZeros - Creates a signal with asciistring as the starting sequence and appends zeros
-	Cyclic - Creates a signal with asciistring as the starting sequence and repeats it
+	Terminate - Creates a signal with asciiString as sequence
+	AppendZeros - Creates a signal with asciiString as the starting sequence and appends zeros
+	Cyclic - Creates a signal with asciiString as the starting sequence and repeats it
 */
 enum AsciiSourceMode { Terminate, AppendZeros, Cyclic };
 
@@ -22,8 +22,8 @@ class AsciiSource : public Block {
 private:
 	//Input Parameters
 	AsciiSourceMode mode{ Terminate };
-	string asciistring{ "ABCabc" }; //The sequence that will be written to the signal.
-	string asciiFilePath{ "text_file.txt" }; //The file from where the block will read the asciistring pattern
+	string asciiString{ "" }; //The sequence that will be written to the signal.
+	string asciiFilePath{ "text_file.txt" }; //The file from where the block will read the asciiString pattern
 	//Auxiliary variables
 	long charIndex{ -1 };
 	ifstream input_file;
@@ -40,8 +40,8 @@ public:
 	void setMode(AsciiSourceMode m) { mode = m; }
 	AsciiSourceMode getMode() { return mode; }
 
-	void setAsciiString(string s) { asciistring = s; }
-	string getAsciiString() { return asciistring; }
+	void setasciiString(string s) { asciiString = s; }
+	string getasciiString() { return asciiString; }
 
 	void setAsciiFilePath(string p) { asciiFilePath = p; }
 	string getAsciiFilePath() { return asciiFilePath; }
