@@ -4,7 +4,7 @@
 
 int main()
 {
-	Ascii S1{ "S1.sgn", 2 };
+	Ascii S1{ "S1.sgn", 8 };
 
 	AsciiSource B1{ vector<Signal*>{},vector<Signal*>{&S1} };
 	B1.setAsciiFilePath("test.txt");
