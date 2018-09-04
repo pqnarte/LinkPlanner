@@ -209,58 +209,57 @@ This subsection will cover the installation and usage of TinyGarble, a GC framew
 For TinyGarble to work, some dependencies have to be installed first, on Ubuntu it can be done with the following lines:
 
 \begin{lstlisting}[caption={Installation of TinyGarble's dependencies}, language=bash, captionpos=b] 
-g++:
-$ sudo apt-get install g++
-
-OpenSSL(1.0.1f<):
-$ sudo apt-get install libssl1.0.0-dev
-
-boost(1.55.0<):
+$ sudo apt-get install build-essential
+$ sudo apt-get install libssl1.0-dev
 $ sudo apt-get install libboost-all-dev
-
-cmake(3.1.0<):
-$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository ppa:george-edison55/cmake-3.x
-$ sudo apt-get update
-$ sudo apt-get upgrade
 $ sudo apt-get install cmake
 \end{lstlisting}
 
-After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}.
-When the cloning is complete, the following lines have to be executed on the cloned directory:
+After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}, and build it.
 
 \begin{lstlisting}[caption={Configuration and compilation of TinyGarble}, language=bash, captionpos=b] 
+$ git clone https://github.com/esonghori/TinyGarble.git
+$ cd TinyGarble/
 $ ./configure
-$ cd bin
+$ cd bin/
 $ make
 \end{lstlisting}
 
-\newpage
+To be able to use TinyGarble, a RTL Synthesis tool is also needed, to translate Verilog files into Netlist ones. In the example showed later, Yosys-abc is used. Which can be installed on Ubuntu 15.04+ with:
 
-To be able to use TinyGarble, a RTL Synthesis tool is also needed, to translate a Verilog file into a Netlist one. In the example showed later, Yosys-abc is used, which can be installed on Ubuntu with the lines below: 
+\begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 15.04>}, language=bash, captionpos=b]                                                                                                                                                                
+$ sudo apt-get install yosys
+\end{lstlisting}
 
-\begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b] 
+If on Ubuntu 14.04-, a repository needs to be added first:
+
+\begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 14.04<}, language=bash, captionpos=b] 
 $ sudo add-apt-repository ppa:saltmakrell/ppa
 $ sudo apt-get update                                                                                                                                                                                             
 $ sudo apt-get install yosys
 \end{lstlisting}
 
-This next tool, vhd2vl, will also be needed if the desirable input is VHDL, to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned above. To install it first clone it's repository, which can be found at \url{https://github.com/ldoolitt/vhd2vl}, and then execute the following lines:
+\newpage
 
-\begin{lstlisting}[caption={Installation of VHD2VL}, language=bash, captionpos=b]  
-$ sudo apt-get install gcc                                                                                                                                                                                     
+This next tool, vhd2vl, will also be needed if the desirable input is VHDL, to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned above.
+Before cloning vhd2vl at \url{https://github.com/ldoolitt/vhd2vl} and building it, some dependencies have to be installed:
+
+\begin{lstlisting}[caption={Installation of VHD2VL}, language=bash, captionpos=b]                                                                                                                                                                                  
 $ sudo apt-get install flex                                                                                                                                                                         
 $ sudo apt-get install bison
-$ cd ClonedDirectory/vhd2vl/src
+$ git clone https://github.com/ldoolitt/vhd2vl
+$ cd vhd2vl/src
 $ make
-$ cp vhd2vl /usr/local/bin
+$ sudo cp vhd2vl /usr/local/bin
 \end{lstlisting}
+
+\newpage
 
 \subsubsection{Usage}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=4cm]{./sdf/secure_multiparty_computation/figures/tiny_garble_flow.png}
+	\includegraphics[width=1\textwidth, height=3cm]{./sdf/secure_multiparty_computation/figures/tiny_garble_flow.png}
     \caption{TinyGarble Global Flow\cite{Songhori}}\label{fig:tinygarble_flow}
 \end{figure}
 
@@ -287,28 +286,26 @@ module and_gate (input g_input, e_input, output o);
 endmodule
 \end{lstlisting}
 
-Since the next step needs a Verilog file, if the file above was written in VHDL instead, it would have to be translated to Verilog with the tool mentioned before, vhd2vl, and it can be done with:
+If the file is written in VHDL instead, it has to be translated to Verilog with the tool mentioned before, vhd2vl, since the next step needs a Verilog file.
 
 \begin{lstlisting}[caption={Translation of VHDL file into Verilog}, language=bash, captionpos=b] 
 $ vhd2vl and_gate.vhd and_gate.v	
 \end{lstlisting}
 
-This next step requires the RTL Synthesis tool (Yosys) mentioned above, in order to compile the Verilog file into a Netlist Verilog File. 
-Using TinyGarble's custom library "asic\_cell\_extended.lib", located at TinyGarble/bin/ciruit\_synthesis/lib/, and assuming that the Verilog file is at a folder named "circuits", the compilation can be done with the following instructions:
+This next step requires the RTL Synthesis tool mentioned before, Yosys, in order to compile the RTL Verilog file into a Netlist Verilog File. 
+Using TinyGarble's custom library, "asic\_cell\_extended.lib", located at TinyGarble/ciruit\_synthesis/lib/, and assuming that the Verilog file is located at a folder named "circuits", the compilation can be done with the following instructions:
 
 \begin{lstlisting}[caption={Yosys instructions to compile the HDL file to a Netlist file}, language=bash, captionpos=b] 
 $ ./yosys
 yosys> read_verilog circuits/and_gate.v
 yosys> hierarchy -check -top and_gate
 yosys> proc; opt; memory; opt; fsm; opt; techmap; opt;
-yosys> abc -liberty TinyGarble/bin/ciruit_synthesis/lib/
+yosys> abc -liberty TinyGarble/circuit_synthesis/lib/
 asic_cell_extended.lib
-yosys> opt
-yosys> write_verilog circuits/and_gate_syn.v
+yosys> clean
+yosys> write_verilog circuits/and_gate_netlist.v
 yosys> exit					
 \end{lstlisting}
-
-\newpage
 
 Following these, the Netlist file below should be generated.
 
@@ -334,7 +331,7 @@ For some unkown reason, the output file has some noticeably weird lines, startin
 After removing those lines, the Netlist file can be converted into a SCD file with the instruction below:
 
 \begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b] 
-$ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_syn.v 
+$ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_netlist.v 
 -o circuits/and_gate_scd.scd		
 \end{lstlisting}
 
@@ -345,49 +342,17 @@ For this examples the SCD file was located at TinyGarble/bin/garbled\_circuits, 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=8.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_a.png}
+	\includegraphics[width=1\textwidth, height=8cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_a.png}
     \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively}\label{fig:tinygarble_terminal}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=8.5cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_b.png}
+	\includegraphics[width=1\textwidth, height=8cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_b.png}
     \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_terminal}
 \end{figure}
 
-\subsection{Libscapi}
-
-Libscapi is another framework that can be used, it allows Yao's Two Party Computation,  GMW Protocol for Multy Party Computation, and others. This subsection will cover it's installation and usage.
-
-\subsubsection{Installation}
-
-To install libscapi dependencies run the following lines:
-
-\begin{lstlisting}[caption={Installation of libscapi's dependencies}, language=bash, captionpos=b] 
-gcc:
-$ sudo apt-get install build-essential
-
-OpenSSL(1.0.2f<):
-$ sudo apt-get install libssl1.0.0-dev
-
-GMP:
-$ sudo apt-get install libgmp3-dev
-
-cmake:
-$ sudo apt-get install cmake
-\end{lstlisting}
-
-After this step, pull Libscapi from github, at \url{https://github.com/cryptobiu/libscapi} and build it with the following line:
-
-\begin{lstlisting}[caption={Build libscapi}, language=bash, captionpos=b] 
-$ cd libscapi
-$ make
-\end{lstlisting}
-
-After building libscapi sucessfully without failing any test, i tried to run the samples, but it failed while building them (with make).
-
-Instead of that i pulled MPC-Benchmark github, at \url{https://github.com/cryptobiu/MPC-Benchmark}, which is the repository where the protocols are.
-Ran into a lot of problems when trying to build MaliciousYaoSingleExecution, had to build all folders inside libscapi/lib/EMP/, and still run into some problems with cpp files, where the includes had wrong paths, fixing that manually solved that problem but more came next.
+The input is written in hexadecimal, and the log2std option is to show info of the computation on the terminal instead of creating a log file.
 
 % bibliographic references for the section ----------------------------
 \clearpage
