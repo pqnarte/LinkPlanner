@@ -1,8 +1,21 @@
-Sort term goal:	escolher ferramenta de síntese e implementar y = x_1 and x_2
+Sort term goal:	
+	- alterar as chaves do AES (ler de dois ficheiro)
+	- colocar o sistema a funcionar entre duas máquinas
+	- implementar um sistema QKD que escreva as chaves nos ficheiros (não é para o Gonçalo fazer)
+	- implementar funções mais complexas
 
-Instalar e usar a biblioteca libscapi
-http://biulibscapi.readthedocs.io/en/latest/index.html#
+2018-09-04
+TO BE DONE
 
+	Perceber e documentar a relação entre o TinyGarble e o JustGarble
+
+	o Justgarble usa o AES e usa chaves simétricas, perceber qual a rotina que gera e distribui as chaves e ver como é que posso substituir essa rotina por outra que vai buscar as chaves a um ficheiro
+
+	testar e documentar outros exemplos para além do AND
+
+	melhorar a documentação
+
+Next meeting: 13/9, 14h
 
 2018-08-20
 TO BE DONE
