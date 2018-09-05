@@ -1,3 +1,0 @@
-xst -intstyle ise -ifn "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/Buffer_Temp/Buffer_Temp.xst" -ofn "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/Buffer_Temp/Buffer_Temp.syr" 
-ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6vlx240t-ff1156-1 "Buffer_Temp.ngc" Buffer_Temp.ngd  
-map -intstyle ise -p xc6vlx240t-ff1156-1 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o Buffer_Temp_map.ncd Buffer_Temp.ngd Buffer_Temp.pcf 

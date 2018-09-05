@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/RAM_test/TB_RAM_isim_beh.exe" -prj "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/RAM_test/TB_RAM_beh.prj" "work.TB_RAM" 

@@ -1,3 +1,0 @@
-vhdl work "../2Darray_pkg.vhd"
-vhdl work "../ArrayN2ArrayM.vhd"
-vhdl work "ROM_Mod_Read_tb.vhd"

@@ -1,2 +1,0 @@
-vhdl isim_temp "../constDef_pkg.vhd"
-vhdl isim_temp "../SymbolSelection.vhd"

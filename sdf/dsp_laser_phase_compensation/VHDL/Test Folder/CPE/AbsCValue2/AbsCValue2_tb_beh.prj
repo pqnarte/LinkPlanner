@@ -1,5 +1,0 @@
-vhdl work "../Multiplier_IT.vhd"
-vhdl work "../Adder_IT.vhd"
-vhdl work "../../../Basic Functions/Expander_NSigned.vhd"
-vhdl work "../../../Basic Functions/AbsCValue2.vhd"
-vhdl work "AbsCValue2_tb.vhd"

@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/DecisionCircuit16QAM/DecisionCircuit16QAM_tb_isim_beh.exe" -prj "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/DecisionCircuit16QAM/DecisionCircuit16QAM_tb_beh.prj" "work.DecisionCircuit16QAM_tb" 

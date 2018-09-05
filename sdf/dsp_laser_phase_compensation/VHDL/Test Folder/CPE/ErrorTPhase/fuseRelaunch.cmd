@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/ErrorTPhase/ErrorTPhase_tb_isim_beh.exe" -prj "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/ErrorTPhase/ErrorTPhase_tb_beh.prj" "work.ErrorTPhase_tb" 

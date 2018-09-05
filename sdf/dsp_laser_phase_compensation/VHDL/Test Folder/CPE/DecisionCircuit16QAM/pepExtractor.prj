@@ -1,4 +1,0 @@
-work	"../../../Basic Functions/ROM_IQmap.vhd"
-work	"../DecisionCircuit16QAM.vhd"
-work	"../FindQuad.vhd"
-work	"../SymbolSelection.vhd"

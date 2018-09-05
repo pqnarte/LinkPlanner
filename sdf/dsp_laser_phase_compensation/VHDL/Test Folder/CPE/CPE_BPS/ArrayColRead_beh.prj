@@ -1,2 +1,0 @@
-vhdl work "../constDef_pkg.vhd"
-vhdl work "../ArrayColRead.vhd"

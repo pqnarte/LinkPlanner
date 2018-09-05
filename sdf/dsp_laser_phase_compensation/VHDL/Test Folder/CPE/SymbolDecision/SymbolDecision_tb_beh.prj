@@ -1,7 +1,0 @@
-vhdl work "../Subtractor_IT.vhd"
-vhdl work "../Sqrt_IT.vhd"
-vhdl work "../Register_IT.vhd"
-vhdl work "../Multiplier_IT.vhd"
-vhdl work "../Adder_IT.vhd"
-vhdl work "../SymbolDecision.vhd"
-vhdl work "SymbolDecision_tb.vhd"

@@ -1,2 +1,0 @@
-vhdl work "../../../Basic Functions/LutExpTPhase.vhd"
-vhdl work "LUT_ExpTPhase_tb.vhd"

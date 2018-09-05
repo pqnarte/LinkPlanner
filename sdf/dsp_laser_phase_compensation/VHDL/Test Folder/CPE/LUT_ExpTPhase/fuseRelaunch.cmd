@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/LUT_ExpTPhase/CExpLUT_tb_isim_beh.exe" -prj "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/LUT_ExpTPhase/CExpLUT_tb_beh.prj" "work.CExpLUT_tb" 

@@ -1,3 +1,0 @@
-vhdl isim_temp "../2Darray_pkg.vhd"
-vhdl isim_temp "../ArrayN2ArrayM.vhd"
-vhdl isim_temp "ROM_Mod_Read_tb.vhd"

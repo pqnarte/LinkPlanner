@@ -1,2 +1,0 @@
-vhdl work "../Average_Ncylce.vhd"
-vhdl work "AverageN_IT_tb.vhd"

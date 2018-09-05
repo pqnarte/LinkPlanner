@@ -1,2 +1,0 @@
-vhdl isim_temp "../../../../../../../Downloads/rom_vhd.vhd"
-vhdl isim_temp "rom_vhdl_tb.vhd"

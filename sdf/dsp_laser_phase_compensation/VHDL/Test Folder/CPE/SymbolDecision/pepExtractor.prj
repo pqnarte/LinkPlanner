@@ -1,6 +1,0 @@
-work	"../Adder_IT.vhd"
-work	"../Multiplier_IT.vhd"
-work	"../Register_IT.vhd"
-work	"../Sqrt_IT.vhd"
-work	"../Subtractor_IT.vhd"
-work	"../SymbolDecision.vhd"
