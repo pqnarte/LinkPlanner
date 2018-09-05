@@ -131,6 +131,7 @@ public:
 	};
 
 	void virtual bufferGet();
+	void virtual bufferGet(char * valueAddr);
 	void virtual bufferGet(t_binary *valueAddr);
 	void virtual bufferGet(t_integer *valueAddr);
 	void virtual bufferGet(t_real *valueAddr);

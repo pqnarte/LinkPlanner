@@ -153,6 +153,15 @@ void Signal::bufferGet() {
 	return;
 };
 
+void Signal::bufferGet(char *valueAddr) {
+	*valueAddr = static_cast<char *>(buffer)[outPosition];
+	if (bufferFull) bufferFull = false;
+	outPosition++;
+	if (outPosition == bufferLength) outPosition = 0;
+	if (outPosition == inPosition) bufferEmpty = true;
+	return;
+};
+
 void Signal::bufferGet(t_binary *valueAddr) {
 	*valueAddr = static_cast<t_binary *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
