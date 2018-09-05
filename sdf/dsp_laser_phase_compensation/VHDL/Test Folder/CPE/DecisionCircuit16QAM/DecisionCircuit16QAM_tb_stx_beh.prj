@@ -1,0 +1,6 @@
+vhdl isim_temp "../constDef_pkg.vhd"
+vhdl isim_temp "../SymbolSelection.vhd"
+vhdl isim_temp "../ROM_IQmap_Sel.vhd"
+vhdl isim_temp "../FindQuad.vhd"
+vhdl isim_temp "../DecisionCircuit16QAM.vhd"
+vhdl isim_temp "DecisionCircuit16QAM_tb.vhd"

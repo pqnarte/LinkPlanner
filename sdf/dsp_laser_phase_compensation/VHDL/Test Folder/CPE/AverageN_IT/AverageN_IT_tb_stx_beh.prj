@@ -1,0 +1,2 @@
+vhdl isim_temp "../AverageN_IT.vhd"
+vhdl isim_temp "AverageN_IT_tb.vhd"

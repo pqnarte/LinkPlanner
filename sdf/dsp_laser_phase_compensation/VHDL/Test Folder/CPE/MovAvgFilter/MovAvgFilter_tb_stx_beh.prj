@@ -1,0 +1,2 @@
+vhdl isim_temp "../MovAvgFilter.vhd"
+vhdl isim_temp "MovAvgFilter_tb.vhd"
