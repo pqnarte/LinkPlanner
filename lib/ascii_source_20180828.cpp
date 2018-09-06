@@ -13,6 +13,7 @@ void AsciiSource::initialize(void)
 	input_file.open(asciiFilePath, ios::binary);
 	//If file exists the program will load its content to asciiString. Else asciiString will assume its default value: "ABCabc"
 	if (input_file) asciiString = std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+	else throw exception("ERROR: Cannot open file.");
 }
 
 bool AsciiSource::runBlock(void)

@@ -47,7 +47,7 @@
     <ClCompile Include="..\..\lib\ascii_to_binary_20180905.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\include\binary_to_ascii_20180905.cpp">
+    <ClCompile Include="..\..\lib\binary_to_ascii_20180905.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,27 +7,26 @@
 int main()
 {
 	//Signals
-	Ascii S1{ "S1.sgn", 1 };
+	Ascii S1{ "S1.sgn", 8 };
 
 	Binary S2{ "S2.sgn", 1 };
 
-	//Ascii S3{ "S3.sgn", 1 };
+	Ascii S3{ "S3.sgn", 2 };
 
 	//Blocks
 	AsciiSource B1{ vector<Signal*>{},vector<Signal*>{&S1} };
 	B1.setAsciiFilePath("test.txt");
-	B1.setMode(AppendZeros);
-	B1.setNumberOfCharacters(25);
+	B1.setMode(Cyclic);
+	B1.setNumberOfCharacters(10);
 
 	AsciiToBinary B2{ vector<Signal*>{&S1} , vector<Signal*>{&S2} };
 	
-	//BinaryToAscii B3{ vector<Signal*>{&S2} , vector<Signal*>{&S3} };
+	BinaryToAscii B3{ vector<Signal*>{&S2} , vector<Signal*>{&S3} };
 
-	Sink B4{ vector<Signal*>{&S2} , vector<Signal*>{} };
+	Sink B4{ vector<Signal*>{&S3} , vector<Signal*>{} };
 	B4.setDisplayNumberOfSamples(true);
 
-	//System Main{ vector<Block*>{&B1, &B2, &B3, &B4} };
-	System Main{ vector<Block*>{&B1, &B2, &B4} };
+	System Main{ vector<Block*>{&B1, &B2, &B3, &B4} };
 	Main.run();
 
 	return 0;
