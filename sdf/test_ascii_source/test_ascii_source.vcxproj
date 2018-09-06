@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{7C24CDB4-A6D3-4877-AA2D-2F389810EB8A}</ProjectGuid>
     <RootNamespace>test_ascii_source</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -72,6 +72,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\include;</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ExecutablePath>$(VC_ExecutablePath_x64);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(FxCopDir);$(PATH)</ExecutablePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\..\include</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -114,11 +118,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\ascii_source_20180828.h" />
+    <ClInclude Include="..\..\include\ascii_to_binary_20180905.h" />
+    <ClInclude Include="..\..\include\binary_to_ascii_20180905.h" />
     <ClInclude Include="..\..\include\netxpto_20180418.h" />
     <ClInclude Include="..\..\include\sink_20180118.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\lib\ascii_source_20180828.cpp" />
+    <ClCompile Include="..\..\lib\ascii_to_binary_20180905.cpp" />
+    <ClCompile Include="..\..\lib\binary_to_ascii_20180905.cpp" />
     <ClCompile Include="..\..\lib\netxpto_20180418.cpp" />
     <ClCompile Include="..\..\lib\sink_20180118.cpp" />
     <ClCompile Include="test_ascii_source_sdf.cpp" />

@@ -11,10 +11,9 @@ void AsciiSource::initialize(void)
 	}
 
 	input_file.open(asciiFilePath, ios::binary);
-	if (input_file)
-		asciistring = std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
-	else
-		throw exception("Could not open file!");
+	//If file exists the program will load its content to asciiString. Else asciiString will assume its default value: "ABCabc"
+	if (input_file) asciiString = std::string((std::istreambuf_iterator<char>(input_file)), std::istreambuf_iterator<char>());
+	else throw exception("ERROR: Cannot open file.");
 }
 
 bool AsciiSource::runBlock(void)
@@ -25,27 +24,24 @@ bool AsciiSource::runBlock(void)
 		long int aux = outputSignals[k]->space();
 		space = std::min(space, aux);
 	}
-	long int process;
-	process = space;
+	long int process = std::min(space, (long)numberOfCharacters);
+	if (mode == Terminate) process = std::min((long)asciiString.length()-charIndex,process);
 	if (process <= 0) return false;
 
 	for (int i = 0; i < process; i++) {
-		charIndex += 1;
-		if (charIndex == asciistring.length()) {
-			if (mode == Terminate) return false;
-			else if (mode == AppendZeros) {
-				for (int j = 0; j < numberOfOutputSignals; j++) {
-					outputSignals[j]->bufferPut('\0'); //Appends the null character until the buffer is filled
-				}
-				charIndex -= 1;
-				continue;
+		if (mode == AppendZeros && charIndex == asciiString.length()) {
+			for (int k = 0; k < numberOfOutputSignals; k++) {
+				outputSignals[k]->bufferPut('\0');
 			}
-			charIndex = charIndex % asciistring.length();
+		} else {
+			for (int k = 0; k < numberOfOutputSignals; k++) {
+				char aux = asciiString[charIndex];
+				outputSignals[k]->bufferPut(aux);
+			}
+			charIndex += 1;
+			if (mode == Cyclic) charIndex = charIndex % asciiString.length();
 		}
-		for (int k = 0; k < numberOfOutputSignals; k++) {
-			char aux = asciistring[charIndex];
-			outputSignals[k]->bufferPut(aux);
-		}
+		numberOfCharacters--;
 	}
 
 	return true;
