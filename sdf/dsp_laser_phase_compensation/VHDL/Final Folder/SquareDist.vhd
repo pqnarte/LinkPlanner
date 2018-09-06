@@ -22,6 +22,7 @@ ENTITY SquareDist IS
 	  clk           : IN     std_logic;
 	  clk_en        : IN     std_logic;
 	  Output_dist   : OUT    std_logic_vector ((Dist_int+Dist_frac)-1 DOWNTO 0);
+	  --Output_adrr2   : OUT    std_logic_vector (2-1 DOWNTO 0);
 	  Output_adrr   : OUT    std_logic_vector (AdrrWidth-1 DOWNTO 0)
    );
 END SquareDist ;

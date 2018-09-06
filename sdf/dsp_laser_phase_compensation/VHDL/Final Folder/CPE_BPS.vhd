@@ -18,10 +18,10 @@ ENTITY CpeBPS IS
 		Dist_int   			: integer := 2;
 		Dist_frac  			: integer := 14;
 		Output_int  		: integer := 2;
-		Output_frac 		: integer := 6;
+		Output_frac 		: integer := 12;
 		data_lut_width		: integer := 8;
 		--AdrrWidth  			: integer := 4;
-		Nsig  				: integer :=1;
+		Nsig  				: integer := 1;
 		NTphase				: integer := 2;
 		Ntap				 	: integer := 1
    );
@@ -30,10 +30,6 @@ ENTITY CpeBPS IS
 	   Input_im	    		: IN     std_logic_vector (Nsig*(Input_int+Input_frac)-1 DOWNTO 0);
       clk              	: IN     std_logic;
       clk_en          	: IN     std_logic;      		
-		--Out_vet0    	   : OUT    std_logic_vector (Nsig*NTphase*(Dist_int+Dist_frac)-1 DOWNTO 0);
-		--Out_vet    	   : OUT    std_logic_vector (Nsig*-2-1 DOWNTO 0);
-		--Out_vet1    	   	: OUT    std_logic_vector (Nsig*NTphase*4-1 DOWNTO 0);
-		--Out_vet2    	   	: OUT    std_logic_vector (Nsig*4-1 DOWNTO 0);
       Output_re    	   : OUT    std_logic_vector (Nsig*(Output_int+Output_frac)-1 DOWNTO 0);
 	   Output_im   	   : OUT    std_logic_vector (Nsig*(Output_int+Output_frac)-1 DOWNTO 0)
    );
@@ -61,9 +57,7 @@ ARCHITECTURE Struct OF CpeBPS IS
 	SIGNAL Out_vet_aux          : std_logic_vector (1*(nBitIQmap)-1 DOWNTO 0) := (others =>'0');	
 	SIGNAL EstPhase_re		    : std_logic_vector (Nsig*(Input_int+Input_frac)-1 DOWNTO 0) := (others =>'0');
 	SIGNAL EstPhase_im		    : std_logic_vector (Nsig*(Input_int+Input_frac)-1 DOWNTO 0) := (others =>'0');
-  -- type mem1 is array (0 to NTphase-1 ) of std_logic_vector (Nsig*(Dist_int+Dist_frac)-1 DOWNTO 0);
---   type mem2In is array (0 to NTphase-1 ) of std_logic_vector (Nsig*(nBitIQmap)-1 DOWNTO 0);
---	type mem2Out is array (0 to Nsig-1 ) of std_logic_vector (NTphase*(nBitIQmap)-1 DOWNTO 0);
+  
 	 
 	signal Out_DS_memIn 			: ArrayIn1;
 	signal Out_DS_memOut 		: ArrayOut;
@@ -150,20 +144,6 @@ ARCHITECTURE Struct OF CpeBPS IS
 	END COMPONENT;
 	
 	COMPONENT ROM_IQmap_Sel
-	 GENERIC( 
-        Data_width  : integer := 8;
-	    Addr_width  : integer := 4
-	 );
-	 port (
-		clk     : in std_logic;
-		clk_en  : in std_logic;  
-		Addr    : in std_logic_vector (Addr_width-1 DOWNTO 0);  
-		Data1   : out std_logic_vector (Data_width-1 DOWNTO 0);        
-		Data2 	: out std_logic_vector (Data_width-1 DOWNTO 0)      
-	 );	
-	end COMPONENT;
-	
-	COMPONENT ROM2_IQmap_Sel
 	 GENERIC( 
         Data_width  : integer := 8;
 	    Addr_width  : integer := 4
@@ -300,8 +280,6 @@ BEGIN
     
 	-------------------------------	X Polarization ----------------------------------
 	---------------------------------------------------------------------------------
---	in_cpe_re <= Input_re;
---	in_cpe_im <= Input_im;
 
 	D_0 : Delay_IT
 	 GENERIC MAP (
@@ -366,12 +344,6 @@ BEGIN
 		);				
 	end generate;
 	
---	Out_vet0 <= Out_DS_memIn(0);
---	Out_vet1 <= Out_adrr_memIn(0);
-
---	Output_re <= "00000000000000";
---	Output_im <= "00000000000000";
-	
 	U_RAM0 : Array2Array 
 		GENERIC MAP (
 			Data_width		=> Dist_int+Dist_frac,
@@ -401,9 +373,6 @@ BEGIN
 			Clk_en       => clk_en,    
 			DataOut		 => Out_adrr_memOut
 		);
-	
-	--Out_vet0 <= Out_DS_memOut(0); --& Out_DS_memOut(1);
-	--Out_vet1 <= Out_adrr_memOut(0); --& Out_adrr_memOut(1);
 	
 	U_DLF : for I in 0 to Nsig-1 generate		
 	   D_1 : Delay_IT
@@ -448,11 +417,9 @@ BEGIN
 				DataOut		 => AdrrMTP((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap))
 			);
 	end generate; 
-		 
-	--Out_vet <= Out_MinDist;
 
 	U_AdrrF : for I in 0 to Nsig-1 generate
-		U_ROM : ROM2_IQmap_Sel 
+		U_ROM : ROM_IQmap_Sel 
 		  GENERIC MAP( 
 				Data_width  => Output_int+Output_frac,
 				Addr_width  => nBitIQmap
@@ -464,14 +431,6 @@ BEGIN
 			 Data1   => Output_re((I+1)*(Output_int+Output_frac)-1 DOWNTO I*(Output_int+Output_frac)),
 			 Data2 	=> Output_im((I+1)*(Output_int+Output_frac)-1 DOWNTO I*(Output_int+Output_frac))     
 		  );
-		  --Out_vet2((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap)) <= AdrrMTP((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap));
 	end generate; 
-		
-	
---	U_ROMF : for I in 0 to Nsig-1 generate
---		Out_vet2((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap)) <= AdrrMTP((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap));
---		Output_re((I+1)*(Output_int+Output_frac)-1 DOWNTO I*(Output_int+Output_frac)) <= s_tmemory1(to_integer(unsigned(AdrrMTP((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap)))));
---		Output_im((I+1)*(Output_int+Output_frac)-1 DOWNTO I*(Output_int+Output_frac)) <= s_tmemory2(to_integer(unsigned(AdrrMTP((I+1)*(nBitIQmap) -1 DOWNTO I*(nBitIQmap)))));
---	end generate;
 		
 END Struct;

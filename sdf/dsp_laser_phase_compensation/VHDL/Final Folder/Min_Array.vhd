@@ -28,10 +28,9 @@ BEGIN
 		variable C: std_logic_vector((IndexWidth)-1 Downto 0) := (others =>'0');
 		variable D: std_logic_vector((DataWidth_in)-1 Downto 0) := (others =>'0');
 	  begin		
-			--B := A(DataWidth_in-1 downto 0);			
+			B := A(DataWidth_in-1 downto 0);			
 			if rising_edge(clk) then			
 				if clk_en = '1' then
-					B := A(DataWidth_in-1 downto 0);
 					C := (others =>'0');
 					for i in 1 to Nsig-1 loop
 						D := A((i+1)*(DataWidth_in)-1 downto i*(DataWidth_in));
