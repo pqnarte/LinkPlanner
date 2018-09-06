@@ -24,8 +24,9 @@ private:
 	AsciiSourceMode mode{ Terminate };
 	string asciiString{ "" }; //The sequence that will be written to the signal.
 	string asciiFilePath{ "text_file.txt" }; //The file from where the block will read the asciiString pattern
+	unsigned int numberOfCharacters{ 10 }; //Maximum number of characters to be generated. Equivalent to numberOfBits in binary source
 	//Auxiliary variables
-	long charIndex{ -1 };
+	long charIndex{ 0 };
 	ifstream input_file;
 
 public:
@@ -45,6 +46,9 @@ public:
 
 	void setAsciiFilePath(string p) { asciiFilePath = p; }
 	string getAsciiFilePath() { return asciiFilePath; }
+
+	void setNumberOfCharacters(int n) { numberOfCharacters = n; }
+	int getNumberOfCharacters() { return numberOfCharacters; };
 
 };
 

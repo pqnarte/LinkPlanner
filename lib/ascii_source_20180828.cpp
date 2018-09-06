@@ -23,30 +23,24 @@ bool AsciiSource::runBlock(void)
 		long int aux = outputSignals[k]->space();
 		space = std::min(space, aux);
 	}
-	long int process;
-	process = space;
-	if (mode == Terminate && charIndex == asciiString.length()) return false;
-	if (mode == Cyclic && charIndex != -1) return false;
-	else if (mode == AppendZeros && charIndex == asciiString.length() - 1) return false;
-	else if (process <= 0) return false;
+	long int process = std::min(space, (long)numberOfCharacters);
+	if (mode == Terminate) process = std::min((long)asciiString.length()-charIndex,process);
+	if (process <= 0) return false;
 
 	for (int i = 0; i < process; i++) {
-		charIndex += 1;
-		if (charIndex == asciiString.length()) {
-			if (mode == Terminate) return false;
-			else if (mode == AppendZeros) {
-				for (int j = 0; j < numberOfOutputSignals; j++) {
-					outputSignals[j]->bufferPut('\0'); //Appends the null character until the buffer is filled
-				}
-				charIndex -= 1;
-				continue;
+		if (mode == AppendZeros && charIndex == asciiString.length()) {
+			for (int k = 0; k < numberOfOutputSignals; k++) {
+				outputSignals[k]->bufferPut('\0');
 			}
-			charIndex = charIndex % asciiString.length();
+		} else {
+			for (int k = 0; k < numberOfOutputSignals; k++) {
+				char aux = asciiString[charIndex];
+				outputSignals[k]->bufferPut(aux);
+			}
+			charIndex += 1;
+			if (mode == Cyclic) charIndex = charIndex % asciiString.length();
 		}
-		for (int k = 0; k < numberOfOutputSignals; k++) {
-			char aux = asciiString[charIndex];
-			outputSignals[k]->bufferPut(aux);
-		}
+		numberOfCharacters--;
 	}
 
 	return true;
