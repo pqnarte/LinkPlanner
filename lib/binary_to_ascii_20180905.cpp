@@ -18,11 +18,9 @@ bool BinaryToAscii::runBlock(void)
 {
 	long int process = std::min(inputSignals[0]->ready(),outputSignals[0]->space()*8);
 	if (process == 0) {
-		//Fills the remaining
-		int bits = bitIndex == 0 ? 8 : bitIndex;
-		int remaining = 8 - bits;
-		for (int i = 0; i < remaining; i++) {
+		if (bitIndex != 0) {
 			outputSignals[0]->bufferPut(aux);
+			bitIndex = 0;
 		}
 		return false;
 	}
