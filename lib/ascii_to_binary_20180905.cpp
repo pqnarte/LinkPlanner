@@ -17,16 +17,16 @@ void AsciiToBinary::initialize(void)
 
 bool AsciiToBinary::runBlock(void)
 {
-	long int process = inputSignals[0]->ready();
+	int pendingChar = bitIndex == 0 ? 0 : 1;
+	long int process = std::min((inputSignals[0]->ready()+pendingChar)*8-bitIndex,outputSignals[0]->space());
 	if (process == 0) return false;
-	for (long int k = 0; k < process; k++) {
-		char c = '\0';
-		inputSignals[0]->bufferGet(&c);
-		bitset<8> set = bitset<8>(c);
-		for (int i = 7; i >= 0; i--) {
-			outputSignals[0]->bufferPut((t_binary)set[i]);
-		}
-	}
 
+	for (long int k = 0; k < process; k++) {
+		if (bitIndex == 0) inputSignals[0]->bufferGet(&aux);
+		bitset<8> set = bitset<8>(aux);
+		outputSignals[0]->bufferPut((t_binary)set[7-bitIndex]);
+		bitIndex++;
+		bitIndex = bitIndex % 8;
+	}
 	return true;
 }
