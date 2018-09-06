@@ -1,7 +1,7 @@
 #ifndef COINCIDENCE_DETECTOR_H
 #define COINCIDENCE_DETECTOR_H
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 
 class CoincidenceDetector : public Block {
 	/*Input Parameters*/

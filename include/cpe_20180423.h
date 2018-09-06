@@ -2,7 +2,7 @@
 # define PROGRAM_INCLUDE_CPE_H_
 
 
-# include "netxpto_20180418.h"
+# include "netxpto_20180118.h"
 
 # include <complex>
 # include <random>
@@ -18,7 +18,9 @@ class CPE : public Block {
 	int nTaps{ 12};
 	int nTestPhase{ 64 };
 	double phiInt{ 3.14159265358979323846 / 2 };
+	int mQAM{ 4 };
 	string methodType = "VV";
+	string BPStype = "A";
 	double samplingPeriod{ 0.0 };
 	double symbolPeriod{ 0.0 };
 
@@ -37,11 +39,17 @@ public:
 	void setnTaps(int ntaps) { nTaps = ntaps; }
 	double getnTaps() { return nTaps; }
 
+	void setmQAM(int mQAMs) { mQAM = mQAMs; }
+	double getmQAM() { return mQAM; }
+
 	void setTestPhase(int nTphase) { nTestPhase = nTphase; }
 	double getTestPhase() { return nTestPhase; }
 
 	void setmethodType(string mType) { methodType = mType; }
 	string getmethodType() { return methodType; }
+
+	void setBPStype(string tBPS) { BPStype = tBPS; }
+	string getBPStype() { return BPStype; }
 
 };
 

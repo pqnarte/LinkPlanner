@@ -10,8 +10,8 @@ vect_im=valConvertNbit(imag(vect),nFracbit,bitLength);
 % vect_re=valConvert(real(vect),nFracbit,bitLength);
 % vect_im=valConvert(imag(vect),nFracbit,bitLength);valConvertNbit
 
-fid_x_real=fopen('IQMapQPSK0_re.txt','w');
-fid_x_imag=fopen('IQMapQPSK0_im.txt','w');
+fid_x_real=fopen('IQMapQPSK_re8bits.txt','w');
+fid_x_imag=fopen('IQMapQPSK_im8bits.txt','w');
 
 for k=1:length(vect)
     fprintf(fid_x_real,formatSpec,vect_re(k));

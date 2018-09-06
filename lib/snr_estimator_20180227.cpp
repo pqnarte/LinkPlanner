@@ -13,8 +13,6 @@
 
 
 void SNREstimator::initialize(void) {
-	firstTime = false;
-
 	outputSignals[0]->setSymbolPeriod(inputSignals[0]->getSymbolPeriod());
 	outputSignals[0]->setSamplingPeriod(inputSignals[0]->getSamplingPeriod());
 	outputSignals[0]->setFirstValueToBeSaved(inputSignals[0]->getFirstValueToBeSaved());
@@ -94,19 +92,32 @@ bool SNREstimator::runBlock(void) {
 	
 	// Get values until the vector/array has the desired number of elements
 	for (long int i = 0; i < process; i++) {
-		inputSignals[0]->bufferGet(&inValueI);
-		outputSignals[0]->bufferPut(inValueI);
-		if (numberOfInputSignals == 2 && numberOfOutputSignals == 2) {
-			inputSignals[1]->bufferGet(&inValueQ);
-			outputSignals[1]->bufferPut(inValueQ);
-			inValue= complex<double>(inValueI, inValueQ);
+		if (inputSignals[0]->getValueType() == ComplexValue) {
+			inputSignals[0]->bufferGet(&inValue);
+			outputSignals[0]->bufferPut(inValue);
+			if (ignoreInitialSamples>0) {
+				ignoreInitialSamples -= 1;
+			}
+			if (ignoreInitialSamples == 0) {
+				measuredInterval.insert(measuredInterval.end(), inValue);
+			}
 		}
 		else {
-			inValue=complex<double>(inValueI,0);
+			inputSignals[0]->bufferGet(&inValueI);
+			outputSignals[0]->bufferPut(inValueI);
+			if (ignoreInitialSamples>0) {
+				ignoreInitialSamples -= 1;
+			} if (numberOfInputSignals == 2 && numberOfOutputSignals == 2) {
+				inputSignals[1]->bufferGet(&inValueQ);
+				outputSignals[1]->bufferPut(inValueQ);
+				inValue = complex<double>(inValueI, inValueQ);
+			}
+			else {
+				inValue = complex<double>(inValueI, 0);
+			} if (ignoreInitialSamples == 0) {
+				measuredInterval.insert(measuredInterval.end(), inValue);
+			}
 		}
-
-		measuredInterval.insert(measuredInterval.end(), inValue);
-
 	}
 	
 	if (measuredInterval.size() == measuredIntervalSize) {
@@ -142,7 +153,9 @@ bool SNREstimator::runBlock(void) {
 					}*/
 					// Get the FFT
 					fourierTransformed = fft(segmentComplex);
-					fourierTransformed = fftshift(fourierTransformed);
+					if (inputSignals[0]->getValueType() != ComplexValue) {
+						fourierTransformed = fftshift(fourierTransformed);
+					}
 					double absFFTi = 0;
 					for (unsigned int i = 0; i < fourierTransformed.size(); i++) {
 						absFFTi = abs(fourierTransformed[i]);
@@ -168,28 +181,36 @@ bool SNREstimator::runBlock(void) {
 
 				vector<double> signalPsd;
 				vector<double> noisePsd;
-		
+				vector<double> noiseBorders;
+				double noiseBorderPower = 0;
 				// Divide by number of segments used, and separate the signal frequencies from the rest
 				for (unsigned int i = 0; i < periodogramTmp.size(); i++) {
 					periodogramSum[i] = periodogramSum[i] / summed;
 					if ((frequencies[i] < 0.5*(1+rollOffComp) / symbolPeriod) && (frequencies[i] > -0.5*(1 + rollOffComp) / symbolPeriod)) {
 						signalPsd.insert(signalPsd.end(), periodogramSum[i]);
-					} else {
+					} else if (((frequencies[i] > 0.5*(1 + rollOffComp) / symbolPeriod) && (frequencies[i] < noiseBw)) || ((frequencies[i] < -0.5*(1 + rollOffComp) / symbolPeriod) && (frequencies[i] > -noiseBw))) {
 						noisePsd.insert(noisePsd.end(), periodogramSum[i]);
+					}
+					else {
+						noiseBorders.insert(noiseBorders.end(), periodogramSum[i]);
 					}
 				}
 
 				// Calculate overall noise and signal power
-				// Assume that noise is uniformly distributed and that there is noise all over the spectrum
-				for (unsigned int i = 1; i < noisePsd.size(); i++) {
-					noisePower += (noisePsd[i - 1] + noisePsd[i]) / 2;
+				for (unsigned int i = 0; i < noisePsd.size(); i++) {
+					noisePower += (noisePsd[i]);
 				}
 
-				for (unsigned int i = 1; i < signalPsd.size(); i++) {
-					signalPower += (signalPsd[i - 1] + signalPsd[i]) / 2;
+				for (unsigned int i = 0; i < signalPsd.size(); i++) {
+					signalPower += (signalPsd[i]);
 				}
-				signalPower = signalPower - noisePower * signalPsd.size() / noisePsd.size();
-				noisePower = noisePower * periodogramSum.size() / noisePsd.size();
+				
+				for (unsigned int i = 0; i < noiseBorders.size(); i++) {
+					noiseBorderPower+= (noiseBorders[i]);
+				}
+
+				signalPower = signalPower - noisePower * (1+rollOffComp)*(1/symbolPeriod) / (noisePsd.size()*(1 / samplingPeriod) / periodogramSum.size());
+				noisePower = noisePower * 2 * noiseBw / (noisePsd.size()*(1/samplingPeriod)/periodogramSum.size()) + noiseBorderPower;
 					if (signalPower <= 0) {
 					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
 				} else {
@@ -245,7 +266,97 @@ bool SNREstimator::runBlock(void) {
 			}
 			case constantAmplitudeMoments:
 			{
-				
+				// Does not work yet
+				int start = 0;
+				int finish = start + segmentSize;
+				int summed = 0;
+
+				vector<complex<double>> sampledSegment;
+
+				for (int i = 0; i < measuredInterval.size(); i++)
+				{
+					if (i % sps == 0) {
+						sampledSegment.insert(sampledSegment.end(), measuredInterval[i]);
+					}
+				}
+
+				// Get fourth power and its fourth root
+				for (int i = 0; i < sampledSegment.size(); i++)
+				{
+					sampledSegment[i] = pow(sampledSegment[i], 4);
+					sampledSegment[i] = pow(sampledSegment[i], 1 / 4);
+				}
+
+
+				// Get average and variance -> Signal == average, noise == variance
+				for (unsigned int i = 0; i < sampledSegment.size(); i++) {
+					signalPower += real(sampledSegment[i]);
+				}
+				signalPower = signalPower / sampledSegment.size();
+				for (unsigned int i = 0; i < sampledSegment.size(); i++) {
+					noisePower += pow((signalPower - real(sampledSegment[i])), 2);
+				}
+				if (sampledSegment.size() > 1) {
+					noisePower = sqrt(noisePower / (sampledSegment.size() - 1));
+				}
+				else {
+					noisePower = 0;
+				}
+
+				if (signalPower <= 0) {
+					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
+				}
+				else {
+					allSNR.insert(allSNR.end(), signalPower / noisePower);
+					cout << "SNR: " << 10 * (log10(signalPower) - log10(noisePower)) << "\n";
+				}
+
+				/* Calculating average SNR and bounds */
+				if (!allSNR.empty()) {
+
+
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						SNR += allSNR[i];
+					}
+					SNR = SNR / allSNR.size();
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						stdSNR += pow((SNR - allSNR[i]), 2);
+					}
+					if (allSNR.size() > 1) {
+						stdSNR = sqrt(stdSNR / (allSNR.size() - 1));
+					}
+					else {
+						stdSNR = 0;
+					}
+
+					if (allSNR.size() > 1) {
+						LowerBound = 10 * log10(SNR - z * stdSNR / sqrt(allSNR.size()));
+						UpperBound = 10 * log10(SNR + z * stdSNR / sqrt(allSNR.size()));
+					}
+					else {
+						LowerBound = 0;
+						UpperBound = 0;
+					}
+					SNR = 10 * log10(SNR);
+					//			if (LowerBound<lowestMinorant) {
+					//					LowerBound = lowestMinorant;
+					//				}
+
+					/* Outputting a .txt report*/
+					ofstream myfile;
+					myfile.open(filename);
+					//			myfile.open("SNR.txt", std::ios_base::app);
+					myfile << "SNR= " << SNR << "\n";
+					myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
+					myfile << "Upper Bound= " << UpperBound << "\n";
+					myfile << "Lower Bound= " << LowerBound << "\n";
+					myfile << "Number of measurements= " << allSNR.size() << "\n";
+					myfile.close();
+				}
+				measuredInterval.clear();
+				noisePower = 0;
+				signalPower = 0;
+				break;
 				// Identify the symbols (points of constant amplitude)
 				
 				// Get the average of the absolute value (square root of signal power)
@@ -253,70 +364,356 @@ bool SNREstimator::runBlock(void) {
 				// Get noise power by subtracting to average signal power (signal variance)
 
 				// Divide signal power by noise power, get log and do stuff for interval
-				break;
 			}
 			case m2m4: 
 			{
+
+				int start = 0;
+				int finish = start + segmentSize;
+				int summed = 0;
+				double ones = 0;
+				double zeros = 0;
+				double stdOnes = 0;
+				double stdZeros = 0;
+
+				vector<complex<double>> sampledSegment;
+				vector<double> m2Vec;
+				vector<double> m4Vec;
+				vector<double> m4NewVec;
+				double m2 = 0;
+				double m4 = 0;
+				double m4New = 0;
+
+				for (int i = 0; i < measuredInterval.size(); i++)
+				{
+					if (i % sps == 0) {
+						sampledSegment.insert(sampledSegment.end(), measuredInterval[i]);
+					}
+				}
+				// HERE the binary list should be checked to find ones and zeros
+				for (int i = 0; i < sampledSegment.size(); i++)
+				{
+					m2Vec.insert(m2Vec.end(), pow(real(sampledSegment[i]),2)+ pow(imag(sampledSegment[i]), 2));
+					m4Vec.insert(m4Vec.end(), pow(pow(real(sampledSegment[i]), 2) + pow(imag(sampledSegment[i]), 2),2));
+					m4NewVec.insert(m4NewVec.end(), pow(pow(imag(sampledSegment[i]), 2) - pow(real(sampledSegment[i]), 2), 2));
+				}
+
+				for (unsigned int i = 0; i < m2Vec.size(); i++) {
+					m2 += m2Vec[i];
+					m4 += m4Vec[i];
+					m4New += m4NewVec[i];
+				}
+				m2 = m2 / m2Vec.size();
+				m4 = m4 / m4Vec.size();
+				m4New = m4New / m4NewVec.size();
+
+				signalPower = 2 * pow(m2, 2);
+				signalPower = signalPower - m4;
+				signalPower = pow(signalPower,0.5);
+				
+				noisePower = (m2 - pow(2 * pow(m2, 2) - m4, 0.5));
+
+
+				if ((signalPower <= 0) || (isnan(signalPower))) {
+					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
+				}
+				else {
+					allSNR.insert(allSNR.end(), signalPower / noisePower);
+					cout << "SNR: " << 10 * (log10(signalPower) - log10(noisePower)) << "\n";
+				}
+
+				/* Calculating average SNR and bounds */
+				if (!allSNR.empty()) {
+
+
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						SNR += allSNR[i];
+					}
+					SNR = SNR / allSNR.size();
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						stdSNR += pow((SNR - allSNR[i]), 2);
+					}
+					if (allSNR.size() > 1) {
+						stdSNR = sqrt(stdSNR / (allSNR.size() - 1));
+					}
+					else {
+						stdSNR = 0;
+					}
+
+					if (allSNR.size() > 1) {
+						LowerBound = 10 * log10(SNR - z * stdSNR / sqrt(allSNR.size()));
+						UpperBound = 10 * log10(SNR + z * stdSNR / sqrt(allSNR.size()));
+					}
+					else {
+						LowerBound = 0;
+						UpperBound = 0;
+					}
+					SNR = 10 * log10(SNR);
+					//			if (LowerBound<lowestMinorant) {
+					//					LowerBound = lowestMinorant;
+					//				}
+
+					/* Outputting a .txt report*/
+					ofstream myfile;
+					myfile.open(filename);
+					//			myfile.open("SNR.txt", std::ios_base::app);
+					myfile << "SNR= " << SNR << "\n";
+					myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
+					myfile << "Upper Bound= " << UpperBound << "\n";
+					myfile << "Lower Bound= " << LowerBound << "\n";
+					myfile << "Number of measurements= " << allSNR.size() << "\n";
+					myfile.close();
+				}
+				measuredInterval.clear();
+				noisePower = 0;
+				signalPower = 0;
+				break;
+				// I think it requires complex signal
+				break;
+			}
+			case ren:
+			{
+
+				int start = 0;
+				int finish = start + segmentSize;
+				int summed = 0;
+				double ones = 0;
+				double zeros = 0;
+				double stdOnes = 0;
+				double stdZeros = 0;
+
+				vector<complex<double>> sampledSegment;
+				vector<double> m2Vec;
+				vector<double> m4Vec;
+				vector<double> m4NewVec;
+				double m2 = 0;
+				double m4New = 0;
+
+				for (int i = 0; i < measuredInterval.size(); i++)
+				{
+					if (i % sps == 0) {
+						sampledSegment.insert(sampledSegment.end(), measuredInterval[i]);
+					}
+				}
+				// HERE the binary list should be checked to find ones and zeros
+				for (int i = 0; i < sampledSegment.size(); i++)
+				{
+					m2Vec.insert(m2Vec.end(), pow(real(sampledSegment[i]), 2) + pow(imag(sampledSegment[i]), 2));
+					m4NewVec.insert(m4NewVec.end(), pow(pow(imag(sampledSegment[i]), 2) - pow(real(sampledSegment[i]), 2), 2));
+				}
+
+				for (unsigned int i = 0; i < m2Vec.size(); i++) {
+					m2 += m2Vec[i];
+					m4New += m4NewVec[i];
+				}
+				m2 = m2 / m2Vec.size();
+				m4New = m4New / m4NewVec.size();
+
+				/*				signalPower = 2 * pow(m2, 2);
+				signalPower = signalPower - m4;
+				signalPower = pow(signalPower,0.5);
+
+				noisePower = (m2 - pow(2 * pow(m2, 2) - m4, 0.5));
+				*/
+				signalPower = pow(m2, 2) - m4New;
+				signalPower = pow(signalPower, 0.5);
+
+				noisePower = pow(m2, 2);
+				noisePower = noisePower - m4New;
+				noisePower = (m2 - pow(noisePower, 0.5));
+
+				if ((signalPower <= 0) || (isnan(signalPower))) {
+					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
+				}
+				else {
+					allSNR.insert(allSNR.end(), signalPower / noisePower);
+					cout << "SNR: " << 10 * (log10(signalPower) - log10(noisePower)) << "\n";
+				}
+
+				/* Calculating average SNR and bounds */
+				if (!allSNR.empty()) {
+
+
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						SNR += allSNR[i];
+					}
+					SNR = SNR / allSNR.size();
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						stdSNR += pow((SNR - allSNR[i]), 2);
+					}
+					if (allSNR.size() > 1) {
+						stdSNR = sqrt(stdSNR / (allSNR.size() - 1));
+					}
+					else {
+						stdSNR = 0;
+					}
+
+					if (allSNR.size() > 1) {
+						LowerBound = 10 * log10(SNR - z * stdSNR / sqrt(allSNR.size()));
+						UpperBound = 10 * log10(SNR + z * stdSNR / sqrt(allSNR.size()));
+					}
+					else {
+						LowerBound = 0;
+						UpperBound = 0;
+					}
+					SNR = 10 * log10(SNR);
+					//			if (LowerBound<lowestMinorant) {
+					//					LowerBound = lowestMinorant;
+					//				}
+
+					/* Outputting a .txt report*/
+					ofstream myfile;
+					myfile.open(filename);
+					//			myfile.open("SNR.txt", std::ios_base::app);
+					myfile << "SNR= " << SNR << "\n";
+					myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
+					myfile << "Upper Bound= " << UpperBound << "\n";
+					myfile << "Lower Bound= " << LowerBound << "\n";
+					myfile << "Number of measurements= " << allSNR.size() << "\n";
+					myfile.close();
+				}
+				measuredInterval.clear();
+				noisePower = 0;
+				signalPower = 0;
+				break;
 				// I think it requires complex signal
 				break;
 			}
 			case qFactor:
 			{
-/*				if (inputSignals[1]->getType != typeid(Binary) && inputSignals[2]->getType != typeid(Binary)) {
-					throw std::invalid_argument("Either the second or third signals should contain the binary signal.");
-					break;
-				} else if (inputSignals[2]->getType == typeid(Binary) && inputSignals[1]->getType != typeid(TimeContinuousAmplitudeContinuousReal)) {
-					throw std::invalid_argument("Wrong signal types for calculating Q-Factor.");
-					break;
+
+				// This was hacked quickly. Should resort to original binary sequence to identify ones and zeros.
+				// Should provide a good aproximation as is, though.
+				int start = 0;
+				int finish = start + segmentSize;
+				int summed = 0;
+				double ones = 0;
+				double zeros = 0;
+				double stdOnes = 0;
+				double stdZeros = 0;
+
+				vector<complex<double>> sampledSegment;
+				vector<double> sampledSegmentOnes;
+				vector<double> sampledSegmentZeros;
+
+				for (int i = 0; i < measuredInterval.size(); i++)
+				{
+					if (i % sps == 0) {
+						sampledSegment.insert(sampledSegment.end(),measuredInterval[i]);
+					}
 				}
-
-				int samples1 = 0;
-				double mu1 = 0;
-				double sigma1 = 0;
-				int samples0 = 0;
-				double mu0 = 0;
-				double sigma0 = 0;
-				double qFactor = 0;
-				int bitIdx = 0;
-
-				for (long int i = 0; i < segmentSize; i++) {
-					if (i % sps == 0) {								// Identify symbols (assuming sps is integer, currently mandatory)
-						if (bitValue == 1) {
-							samples1 += 1;
-							mu1 += segment[i];
-						}
-						else {
-							samples0 += 1;
-							mu0 += segment[i];
-						}
+				// HERE the binary list should be checked to find ones and zeros
+				for (int i = 0; i < sampledSegment.size(); i++)
+				{
+					if (real(sampledSegment[i]) > 0)
+					{
+						sampledSegmentOnes.insert(sampledSegmentOnes.end(), real(sampledSegment[i]));
+					}
+					else {
+						sampledSegmentZeros.insert(sampledSegmentZeros.end(), real(sampledSegment[i]));
+					}
+				}
+				for (int i = 0; i < sampledSegment.size(); i++)
+				{
+					if (imag(sampledSegment[i]) > 0)
+					{
+						sampledSegmentOnes.insert(sampledSegmentOnes.end(), imag(sampledSegment[i]));
+					}
+					else {
+						sampledSegmentZeros.insert(sampledSegmentZeros.end(), imag(sampledSegment[i]));
 					}
 				}
 
-				mu1 = mu1 / samples1;
-				mu0 = mu0 / samples0;
 
-				for (long int i = 0; i < segmentSize; i++) {
-					if (i % sps == 0) {								// Identify symbols (assuming sps is integer, currently mandatory)
-						if (bitValues[bitIdx] == 1) {
-							sigma1 += (segment[i] - mu1) * (segment[i] - mu1);
-							bitIdx += 1;
-						}
-						else {
-							sigma0 += (segment[i] - mu0) * (segment[i] - mu0);
-							bitIdx += 1;
-						}
-					}
+
+				for (unsigned int i = 0; i < sampledSegmentOnes.size(); i++) {
+					ones += sampledSegmentOnes[i];
+				}
+				ones = ones / sampledSegmentOnes.size();
+				for (unsigned int i = 0; i < sampledSegmentZeros.size(); i++) {
+					zeros += sampledSegmentZeros[i];
+				}
+				zeros = zeros / sampledSegmentOnes.size();
+
+				for (unsigned int i = 0; i < sampledSegmentOnes.size(); i++) {
+					stdOnes += pow((ones - sampledSegmentOnes[i]), 2);
+				}
+				if (sampledSegmentOnes.size() > 1) {
+					stdOnes = sqrt(stdOnes / (sampledSegmentOnes.size() - 1));
+				}
+				else {
+					stdOnes = 0;
 				}
 
-				sigma1 = sqrt(sigma1 / (samples1 - 1));
-				sigma0 = sqrt(sigma0 / (samples0 - 1));
+				for (unsigned int i = 0; i < sampledSegmentZeros.size(); i++) {
+					stdZeros += pow((zeros - sampledSegmentZeros[i]), 2);
+				}
+				if (sampledSegmentZeros.size() > 1) {
+					stdZeros = sqrt(stdZeros / (sampledSegmentZeros.size() - 1));
+				}
+				else {
+					stdZeros = 0;
+				}
+
+				// Get average and variance -> Signal == average, noise == variance
 				
-				// Requires the bit sequence to work, as it would be necessary to identify the symbol values
-				// Read the bit sequence
+				signalPower = ones - zeros;
 
-				qFactor = (mu1 - mu0)/(sigma1 + sigma0);
-				allSNR.insert(allSNR.end(), qFactor);
-*/				
+				noisePower = stdOnes + stdZeros;
+
+				if (signalPower <= 0) {
+					cout << "ERROR: SNR too low, cannot identify the signal within the noise" << "\n";
+				}
+				else {
+					allSNR.insert(allSNR.end(), signalPower / noisePower);
+					cout << "SNR: " << 10 * (log10(signalPower) - log10(noisePower)) << "\n";
+				}
+
+				/* Calculating average SNR and bounds */
+				if (!allSNR.empty()) {
+
+
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						SNR += allSNR[i];
+					}
+					SNR = SNR / allSNR.size();
+					for (unsigned int i = 0; i < allSNR.size(); i++) {
+						stdSNR += pow((SNR - allSNR[i]), 2);
+					}
+					if (allSNR.size() > 1) {
+						stdSNR = sqrt(stdSNR / (allSNR.size() - 1));
+					}
+					else {
+						stdSNR = 0;
+					}
+
+					if (allSNR.size() > 1) {
+						LowerBound = 10 * log10(SNR - z * stdSNR / sqrt(allSNR.size()));
+						UpperBound = 10 * log10(SNR + z * stdSNR / sqrt(allSNR.size()));
+					}
+					else {
+						LowerBound = 0;
+						UpperBound = 0;
+					}
+					SNR = 10 * log10(SNR);
+					//			if (LowerBound<lowestMinorant) {
+					//					LowerBound = lowestMinorant;
+					//				}
+
+					/* Outputting a .txt report*/
+					ofstream myfile;
+					myfile.open(filename);
+					//			myfile.open("SNR.txt", std::ios_base::app);
+					myfile << "SNR= " << SNR << "\n";
+					myfile << "Upper and lower confidence bounds for " << (1 - alpha) * 100 << "% confidence level \n";
+					myfile << "Upper Bound= " << UpperBound << "\n";
+					myfile << "Lower Bound= " << LowerBound << "\n";
+					myfile << "Number of measurements= " << allSNR.size() << "\n";
+					myfile.close();
+				}
+				measuredInterval.clear();
+				noisePower = 0;
+				signalPower = 0;
 				break;
 			}
 			}
@@ -326,7 +723,7 @@ bool SNREstimator::runBlock(void) {
 }
 
 
-vector<double> SNREstimator::getWindow(WindowType windowType, int windowSize) {
+/*vector<double> SNREstimator::getWindow(WindowType windowType, int windowSize) {
 	vector<double> wn(windowSize);
 	switch (windowType)
 	{
@@ -343,7 +740,7 @@ vector<double> SNREstimator::getWindow(WindowType windowType, int windowSize) {
 			return wn;
 	}
 	return wn;
-}
+}*/
 
 // NOT YET INCLUDED IN THE FFT ".CPP". REMOVE WHEN IT ARRIVES
 vector<complex<double>> SNREstimator::fftshift(vector<complex<double>> &vec)

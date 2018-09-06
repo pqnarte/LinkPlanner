@@ -1,13 +1,13 @@
 // Currently mostly copied from BER
-# ifndef PROGRAM_INCLUDE_SRN_ESTIMATOR_
-# define PROGRAM_INCLUDE_SRN_ESTIMATOR_
 
+
+# ifndef PROGRAM_INCLUDE_SNR_ESTIMATOR_
+# define PROGRAM_INCLUDE_SNR_ESTIMATOR_
 # include "netxpto_20180118.h"
+# include "window_20180704.h"
 # include <vector>
-
-enum WindowType{ Hanning, Hamming };
 // Currently only powerSpectrum is implemented
-enum EstimatorMethod{ powerSpectrum, m2m4, constantAmplitudeMoments, qFactor};
+enum SNREstimatorMethod{ powerSpectrum, m2m4, ren, constantAmplitudeMoments, qFactor};
 
 // Estimates the SNR of a signal
 class SNREstimator : public Block {
@@ -30,6 +30,9 @@ public:
 	void setOverlapCount(int olp) { overlapCount = olp; }
 	int getOverlapCount(void) { return overlapCount; }
 
+	void setOverlapPercent(double olp) { overlapCount = floor(segmentSize*olp); }
+	double getOverlapPercent(void) { return overlapCount/segmentSize; }
+
 	void setConfidence(double P) { alpha = 1-P; }
 	double getConfidence(void) { return 1 - alpha; }
 
@@ -39,20 +42,31 @@ public:
 	void setFilename(string fname) { filename = fname; }
 	string getFilename(void) { return filename; }
 
-	vector<double> getWindow(WindowType windowType, int windowSize);
 	vector<complex<double>> fftshift(vector<complex<double>> &vec);
 
 	void setRollOff(double rollOff) { rollOffComp = rollOff; }
 	double getRollOff(void) { return rollOffComp; }
 
+	void setNoiseBw(double nBw) {  noiseBw = nBw; }
+	double getNoiseBw(void) { return noiseBw; }
+
+	void setEstimatorMethod(SNREstimatorMethod mtd) { method = mtd; }
+	SNREstimatorMethod getEstimatorMethod(void) { return method; }
+
+	void setIgnoreInitialSamples(int iis) { ignoreInitialSamples = iis; }
+	int getIgnoreInitialSamples(void) { return ignoreInitialSamples; }
+
+
 private:
 	vector <complex<double>> measuredInterval;
-	WindowType windowType = Hamming;
+	WindowType windowType = Hann;
 	vector<double> window;
 	vector<double> frequencies;
 	vector <double> allSNR;
+	int ignoreInitialSamples = 513;
 	bool firstPass = true;
-	int measuredIntervalSize = 2048;
+	double noiseBw = 32e9;
+	int measuredIntervalSize = 4096;
 	int currentSize = 0;
 	int segmentSize = 1024;
 	int overlapCount = 256;
@@ -61,7 +75,7 @@ private:
 	double U;
 	double rollOffComp = 0.9;
 	string filename = "SNR.txt";
-	EstimatorMethod method = powerSpectrum;
+	SNREstimatorMethod method = powerSpectrum;
 };
 
 

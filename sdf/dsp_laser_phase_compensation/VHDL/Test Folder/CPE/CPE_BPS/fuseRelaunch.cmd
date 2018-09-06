@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/CPE_BPS/CpeBPS_tb_isim_beh.exe" -prj "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/CPE_BPS/CpeBPS_tb_beh.prj" "work.CpeBPS_tb" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Test Folder/CPE/CPE_BPS/CpeBPS_tb_isim_beh.exe" -prj "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Test Folder/CPE/CPE_BPS/CpeBPS_tb_beh.prj" "work.CpeBPS_tb" 

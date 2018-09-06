@@ -703,11 +703,11 @@ public:
 	
 };
 
-class DecisionCircuitQPSK
+class DecisionCircuit
 {
 public:
-	complex <double> DecisionCircuit(complex <double> &Signal_in);
-
+	complex <double> DecisionCircuitQPSK(complex <double> &Signal_in);
+	complex <double> DecisionCircuit16QAM(complex <double> &Signal_in);
 };
 
 ///////////////////// Fast Fourier Transform ////////////////////////

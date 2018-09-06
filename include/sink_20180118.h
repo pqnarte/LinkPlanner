@@ -8,13 +8,10 @@
 
 class Sink : public Block {
 
-	/* State Variables */
-
-	bool displayNumberOfSamples{ false };
 
 public:
 
-	/* Input Parameters */
+	/* State Variables */
 
 	long int numberOfSamples{ -1 };
 
@@ -27,6 +24,13 @@ public:
 	void setNumberOfSamples(long int nOfSamples){ numberOfSamples = nOfSamples; };
 
 	void setDisplayNumberOfSamples(bool opt) { displayNumberOfSamples = opt; };
+
+private: 
+
+	/* Input Parameters */
+
+	bool displayNumberOfSamples{ true };
+
 
 };
 

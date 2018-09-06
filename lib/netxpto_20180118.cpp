@@ -1447,8 +1447,8 @@ void Fft::convolve(const vector<double> &xreal, const vector<double> &ximag, con
 		outimag[i] = xi[i] / n;
 	}
 }*/
-/*
-complex <double> DecisionCircuitQPSK::DecisionCircuit(complex <double> &Signal_in) {
+
+complex <double> DecisionCircuit::DecisionCircuitQPSK(complex <double> &Signal_in) {
 
 	double inf = std::numeric_limits<double>::infinity();
 	vector<complex <double>> ConstMap = { { 1,-1 },{ -1,1 },{ -1,-1 },{ 1,1 } } ; 
@@ -1482,6 +1482,39 @@ complex <double> DecisionCircuitQPSK::DecisionCircuit(complex <double> &Signal_i
 	return result;
 }
 
+complex <double> DecisionCircuit::DecisionCircuit16QAM(complex <double> &Signal_in) {
+
+	double inf = std::numeric_limits<double>::infinity();
+	vector<complex <double>> ConstMap = { { -3.0, -3.0 },{ -3.0, -1.0 },{ -3.0, 3.0 },{ -3.0, 1.0 },{ -1.0, -3.0 },{ -1.0, -1.0 },{ -1.0, 3.0 },{ -1.0, 1.0 },{ 3.0, -3.0 },{ 3.0, -1.0 },{ 3.0, 3.0 },{ 3.0, 1.0 },{ 1.0, -3.0 },{ 1.0, -1.0 },{ 1.0, 3.0 },{ 1.0, 1.0 } };
+	//vector<complex <double>> ConstMap({ { { 0.707,0.707 },{ -0.707,0.707 },{ -0.707,-0.707 },{ 0.707,-0.707 } } });
+	vector<double> distMod(ConstMap.size(), 0.0);
+	complex <double> result(0.0, 0.0);
+	double temp(0.0);
+	int minDist(0);
+
+	if (Signal_in == (0.0, 0.0)) {
+		result = (0.0, 0.0);
+		return result;
+	}
+
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		complex <double> aux = Signal_in - ConstMap.at(i);
+		complex <double> aux2 = (aux.real(), aux.imag());
+		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
+	}
+	temp = distMod.at(0);
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		if (temp > distMod.at(i)) {
+			minDist = i;
+			temp = distMod.at(i);
+		}
+	}
+
+	result = ConstMap.at(minDist);
+	return result;
+}
 void UnwrapFunctions::Unwrap(vector<double> &PhaseIn) {
 
 
@@ -1505,7 +1538,7 @@ void UnwrapFunctions::Unwrap(vector<double> &PhaseIn) {
 	}
 
 }
-*/
+
 void ComplexMult::CMultVector(vector<double> &v1_real, vector<double> &v1_imag, vector<double> v2_real, vector<double> v2_imag) {
 
 

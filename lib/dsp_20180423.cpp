@@ -13,7 +13,7 @@ DSP::DSP(vector<Signal *> &inputSignal, vector<Signal *> &outputSignal) :SuperBl
 
 	B01.initializeBlock(vector<Signal*> { inputSignals[0], inputSignals[1] }, vector<Signal*> { &DSP01 }); // real to complex
 	B02.initializeBlock(vector<Signal*> { &DSP01 }, vector<Signal*> { &DSP02 }); // cpe
+	B03.initializeBlock(vector<Signal*> { &DSP02 }, vector<Signal*> { &DSP03, &DSP04}); // complex to real
 	
-	
-	setModuleBlocks({ &B01, &B02 });
+	setModuleBlocks({ &B01, &B02, &B03 });
 };

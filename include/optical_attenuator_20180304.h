@@ -1,7 +1,7 @@
 #ifndef OPTICAL_ATTENUATOR_H
 #define OPTICAL_ATTENUATOR_H
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 #include <math.h>
 
 class OpticalAttenuator : public Block {

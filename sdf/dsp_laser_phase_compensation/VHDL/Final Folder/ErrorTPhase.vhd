@@ -23,7 +23,6 @@ ENTITY ErrorTPhase IS
 	  Tphase_im	    : IN     std_logic_vector ((Input_int+Input_frac)-1 DOWNTO 0);
 	  clk           : IN     std_logic;
 	  clk_en        : IN     std_logic;
-	  --Out2_AvgDist   : OUT    std_logic_vector ((NtapCPE)*(Dist_int+Dist_frac)-1 DOWNTO 0);
 	  Out_AvgDist   : OUT    std_logic_vector ((Nsample)*(Dist_int+Dist_frac)-1 DOWNTO 0);
 	  Output_adrr   : OUT    std_logic_vector (Nsample*AdrrWidth-1 DOWNTO 0)
    );
@@ -185,8 +184,6 @@ BEGIN
 				  Output_adrr   => Out_adrr((I+1)*AdrrWidth-1 DOWNTO (I)*AdrrWidth)
 		);
 	end generate;
---	Output_adrr <= Out_adrr;
---   Out_AvgDist <= Out_distSquare;
 
 	D_0 : Delay_IT
        GENERIC MAP (
@@ -226,7 +223,7 @@ BEGIN
 		  Y 				=> Out_AvgDist((I+1)*(Dist_int+Dist_frac) -1 DOWNTO I*(Dist_int+Dist_frac))
 		);		
 	 end generate;  
-	 
+
 	Output_adrr <= Out_adrr_dl;
 
 	 

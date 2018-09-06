@@ -5,8 +5,9 @@ using namespace std;
 
 
 SuperBlockInterface::SuperBlockInterface(vector<Signal *> &inputSignals, vector<Signal *> &outputSignals) :Block(inputSignals, outputSignals) {
-	numberOfInputSignals = (int) inputSignals.size();
-	numberOfOutputSignals = (int) outputSignals.size();
+	
+	setNumberOfInputSignals(inputSignals.size());
+	setNumberOfOutputSignals(outputSignals.size());
 
 	inputSignals = inputSignals;
 	outputSignals = outputSignals;
@@ -15,20 +16,19 @@ SuperBlockInterface::SuperBlockInterface(vector<Signal *> &inputSignals, vector<
 
 void SuperBlockInterface::initialize(void) {
 
-	for (int k = 0; k < numberOfOutputSignals; k++) {
+	for (auto k = 0; k < numberOfOutputSignals; k++) {
 		outputSignals[k]-> setSymbolPeriod(inputSignals[k]->getSymbolPeriod());
 		outputSignals[k]-> setSamplingPeriod(inputSignals[k]->getSamplingPeriod());
 		outputSignals[k]-> setSamplesPerSymbol(inputSignals[k]->getSamplesPerSymbol());
-		outputSignals[k]->setFirstValueToBeSaved(inputSignals[k]->getFirstValueToBeSaved());
+		outputSignals[k]-> setFirstValueToBeSaved(inputSignals[k]->getFirstValueToBeSaved());
 	}
-	
 }
 
 bool SuperBlockInterface::runBlock(void) {
 
 	bool alive{ false };
 
-	int numberOfSignals = numberOfInputSignals;
+	std::size_t numberOfSignals = getNumberOfInputSignals();
 	if (numberOfSignals != numberOfOutputSignals) {
 		cout << "ERRO: super_block_interface.cpp (1)" << "\n";
 	}

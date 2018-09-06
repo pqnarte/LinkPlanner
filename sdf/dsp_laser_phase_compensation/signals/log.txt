@@ -1,1010 +1,1339 @@
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 BinarySource|S1|space=512
-BinarySource|S25|space=512
+BinarySource|S23|space=512
 0.008
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 MQamMapper|S1|ready=512
 MQamMapper|S2|space=512
 MQamMapper|S3|space=512
-0.001
+0
 
-2018-06-27 14:30:23
-DiscreteToContinuousTime|S2|ready=128
+2018-09-06 17:56:32
+DiscreteToContinuousTime|S2|ready=256
 DiscreteToContinuousTime|S4|space=512
-0.001
+0.005
 
-2018-06-27 14:30:23
-DiscreteToContinuousTime|S3|ready=128
+2018-09-06 17:56:32
+DiscreteToContinuousTime|S3|ready=256
 DiscreteToContinuousTime|S5|space=512
-0.001
+0.006
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 PulseShaper|S4|ready=512
 PulseShaper|S6|space=512
-0.036
+0.027
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 PulseShaper|S5|ready=512
 PulseShaper|S7|space=512
-0.023
+0.027
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 LocalOscillator|S8|space=512
-0.01
+0.006
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 IqModulator|S6|ready=512
 IqModulator|S7|ready=512
 IqModulator|S8|ready=512
 IqModulator|S9|space=512
-0.003
+0.005
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 LocalOscillator|S10|space=512
-0.009
+0.005
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 OpticalHybrid|S10|ready=512
 OpticalHybrid|S9|ready=512
 OpticalHybrid|S11|space=512
 OpticalHybrid|S12|space=512
 OpticalHybrid|S13|space=512
 OpticalHybrid|S14|space=512
-0.03
+0.017
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 Photodiode|S11|ready=512
 Photodiode|S12|ready=512
 Photodiode|S15|space=512
 0.006
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 Photodiode|S13|ready=512
 Photodiode|S14|ready=512
 Photodiode|S16|space=512
-0.01
+0.056
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 IdealAmplifier|S15|ready=512
 IdealAmplifier|S17|space=512
-0.002
+0.004
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 IdealAmplifier|S16|ready=512
 IdealAmplifier|S18|space=512
-0.002
+0.004
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 ADC|S17|ready=512
 ADC|S19|space=512
-0.008
+0.007
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 ADC|S18|ready=512
 ADC|S20|space=512
-0.064
+0.013
 
-2018-06-27 14:30:23
+2018-09-06 17:56:32
 DSP|S19|ready=512
 DSP|S20|ready=512
 DSP|S21|space=512
-1.732
+DSP|S22|space=512
+0.427
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 Sink|S21|ready=512
+Sink|S22|ready=512
 0
 
-2018-06-27 14:30:25
-Sink|S25|ready=512
-0
-
-2018-06-27 14:30:25
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0.006
-
-2018-06-27 14:30:25
-MQamMapper|S1|ready=488
-MQamMapper|S2|space=416
-MQamMapper|S3|space=416
+2018-09-06 17:56:33
+Sink|S23|ready=512
 0.001
 
-2018-06-27 14:30:25
-DiscreteToContinuousTime|S2|ready=218
+2018-09-06 17:56:33
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0.002
+
+2018-09-06 17:56:33
+MQamMapper|S1|ready=488
+MQamMapper|S2|space=288
+MQamMapper|S3|space=288
+0
+
+2018-09-06 17:56:33
+DiscreteToContinuousTime|S2|ready=468
 DiscreteToContinuousTime|S4|space=512
-0.01
+0.004
 
-2018-06-27 14:30:25
-DiscreteToContinuousTime|S3|ready=218
+2018-09-06 17:56:33
+DiscreteToContinuousTime|S3|ready=468
 DiscreteToContinuousTime|S5|space=512
-0.009
+0.004
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 PulseShaper|S4|ready=512
 PulseShaper|S6|space=512
-0.044
+0.024
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.024
+
+2018-09-06 17:56:33
+LocalOscillator|S8|space=512
+0.005
+
+2018-09-06 17:56:33
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.004
+
+2018-09-06 17:56:33
+LocalOscillator|S10|space=512
+0.009
+
+2018-09-06 17:56:33
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.018
+
+2018-09-06 17:56:33
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.005
+
+2018-09-06 17:56:33
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.051
+
+2018-09-06 17:56:33
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=512
+0.005
+
+2018-09-06 17:56:33
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=512
+0.005
+
+2018-09-06 17:56:33
+ADC|S17|ready=512
+ADC|S19|space=512
+0.014
+
+2018-09-06 17:56:33
+ADC|S18|ready=512
+ADC|S20|space=512
+0.014
+
+2018-09-06 17:56:33
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0.438
+
+2018-09-06 17:56:33
+Sink|S21|ready=512
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:33
+Sink|S23|ready=488
+0
+
+2018-09-06 17:56:33
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:33
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=76
+MQamMapper|S3|space=76
+0
+
+2018-09-06 17:56:33
+DiscreteToContinuousTime|S2|ready=436
+DiscreteToContinuousTime|S4|space=512
+0.005
+
+2018-09-06 17:56:33
+DiscreteToContinuousTime|S3|ready=436
+DiscreteToContinuousTime|S5|space=512
+0.005
+
+2018-09-06 17:56:33
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.025
+
+2018-09-06 17:56:33
 PulseShaper|S5|ready=512
 PulseShaper|S7|space=512
 0.025
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 LocalOscillator|S8|space=512
-0.011
+0.005
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 IqModulator|S6|ready=512
 IqModulator|S7|ready=512
 IqModulator|S8|ready=512
 IqModulator|S9|space=512
-0.011
+0.004
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 LocalOscillator|S10|space=512
-0.02
+0.01
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 OpticalHybrid|S10|ready=512
 OpticalHybrid|S9|ready=512
 OpticalHybrid|S11|space=512
 OpticalHybrid|S12|space=512
 OpticalHybrid|S13|space=512
 OpticalHybrid|S14|space=512
-0.022
+0.018
 
-2018-06-27 14:30:25
+2018-09-06 17:56:33
 Photodiode|S11|ready=512
 Photodiode|S12|ready=512
 Photodiode|S15|space=512
-0.009
+0.006
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 Photodiode|S13|ready=512
 Photodiode|S14|ready=512
 Photodiode|S16|space=512
-0.009
+0.051
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 IdealAmplifier|S15|ready=512
 IdealAmplifier|S17|space=512
-0.053
+0.004
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 IdealAmplifier|S16|ready=512
 IdealAmplifier|S18|space=512
 0.004
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 ADC|S17|ready=512
 ADC|S19|space=512
-0.059
+0.012
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 ADC|S18|ready=512
 ADC|S20|space=512
-0.059
+0.013
 
-2018-06-27 14:30:25
+2018-09-06 17:56:34
 DSP|S19|ready=512
 DSP|S20|ready=512
 DSP|S21|space=512
-1.751
+DSP|S22|space=0
+0.444
 
-2018-06-27 14:30:27
-Sink|S21|ready=512
-0.001
-
-2018-06-27 14:30:27
-Sink|S25|ready=488
+2018-09-06 17:56:34
+Sink|S21|ready=0
+Sink|S22|ready=512
 0
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:34
 BinarySource|S1|space=512
-BinarySource|S25|space=512
+BinarySource|S23|space=512
 0
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 MQamMapper|S1|ready=0
-MQamMapper|S2|space=326
-MQamMapper|S3|space=326
+MQamMapper|S2|space=108
+MQamMapper|S3|space=108
 0
 
-2018-06-27 14:30:27
-DiscreteToContinuousTime|S2|ready=186
+2018-09-06 17:56:34
+DiscreteToContinuousTime|S2|ready=404
 DiscreteToContinuousTime|S4|space=512
-0.01
+0.005
 
-2018-06-27 14:30:27
-DiscreteToContinuousTime|S3|ready=186
+2018-09-06 17:56:34
+DiscreteToContinuousTime|S3|ready=404
 DiscreteToContinuousTime|S5|space=512
-0.007
+0.005
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 PulseShaper|S4|ready=512
 PulseShaper|S6|space=512
-0.047
+0.025
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 PulseShaper|S5|ready=512
 PulseShaper|S7|space=512
-0.058
+0.024
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 LocalOscillator|S8|space=512
-0.006
+0.005
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 IqModulator|S6|ready=512
 IqModulator|S7|ready=512
 IqModulator|S8|ready=512
 IqModulator|S9|space=512
-0.004
+0.005
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 LocalOscillator|S10|space=512
 0.012
 
-2018-06-27 14:30:27
+2018-09-06 17:56:34
 OpticalHybrid|S10|ready=512
 OpticalHybrid|S9|ready=512
 OpticalHybrid|S11|space=512
 OpticalHybrid|S12|space=512
 OpticalHybrid|S13|space=512
 OpticalHybrid|S14|space=512
-0.019
-
-2018-06-27 14:30:27
-Photodiode|S11|ready=512
-Photodiode|S12|ready=512
-Photodiode|S15|space=512
-0.008
-
-2018-06-27 14:30:27
-Photodiode|S13|ready=512
-Photodiode|S14|ready=512
-Photodiode|S16|space=512
-0.014
-
-2018-06-27 14:30:27
-IdealAmplifier|S15|ready=512
-IdealAmplifier|S17|space=512
-0.049
-
-2018-06-27 14:30:27
-IdealAmplifier|S16|ready=512
-IdealAmplifier|S18|space=512
-0.004
-
-2018-06-27 14:30:27
-ADC|S17|ready=512
-ADC|S19|space=512
-0.059
-
-2018-06-27 14:30:27
-ADC|S18|ready=512
-ADC|S20|space=512
-0.059
-
-2018-06-27 14:30:27
-DSP|S19|ready=512
-DSP|S20|ready=512
-DSP|S21|space=512
-1.758
-
-2018-06-27 14:30:29
-Sink|S21|ready=512
-0
-
-2018-06-27 14:30:29
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:29
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:29
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=358
-MQamMapper|S3|space=358
-0
-
-2018-06-27 14:30:29
-DiscreteToContinuousTime|S2|ready=154
-DiscreteToContinuousTime|S4|space=512
-0.01
-
-2018-06-27 14:30:29
-DiscreteToContinuousTime|S3|ready=154
-DiscreteToContinuousTime|S5|space=512
-0.011
-
-2018-06-27 14:30:29
-PulseShaper|S4|ready=512
-PulseShaper|S6|space=512
-0.046
-
-2018-06-27 14:30:29
-PulseShaper|S5|ready=512
-PulseShaper|S7|space=512
-0.035
-
-2018-06-27 14:30:29
-LocalOscillator|S8|space=512
-0.007
-
-2018-06-27 14:30:29
-IqModulator|S6|ready=512
-IqModulator|S7|ready=512
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0.004
-
-2018-06-27 14:30:29
-LocalOscillator|S10|space=512
-0.013
-
-2018-06-27 14:30:29
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=512
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0.016
-
-2018-06-27 14:30:29
-Photodiode|S11|ready=512
-Photodiode|S12|ready=512
-Photodiode|S15|space=512
-0.005
-
-2018-06-27 14:30:29
-Photodiode|S13|ready=512
-Photodiode|S14|ready=512
-Photodiode|S16|space=512
-0.005
-
-2018-06-27 14:30:29
-IdealAmplifier|S15|ready=512
-IdealAmplifier|S17|space=512
-0.049
-
-2018-06-27 14:30:29
-IdealAmplifier|S16|ready=512
-IdealAmplifier|S18|space=512
-0.005
-
-2018-06-27 14:30:29
-ADC|S17|ready=512
-ADC|S19|space=512
-0.066
-
-2018-06-27 14:30:29
-ADC|S18|ready=512
-ADC|S20|space=512
-0.06
-
-2018-06-27 14:30:30
-DSP|S19|ready=512
-DSP|S20|ready=512
-DSP|S21|space=512
-1.809
-
-2018-06-27 14:30:31
-Sink|S21|ready=512
-0.001
-
-2018-06-27 14:30:31
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:31
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:31
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=390
-MQamMapper|S3|space=390
-0
-
-2018-06-27 14:30:31
-DiscreteToContinuousTime|S2|ready=122
-DiscreteToContinuousTime|S4|space=512
-0.008
-
-2018-06-27 14:30:31
-DiscreteToContinuousTime|S3|ready=122
-DiscreteToContinuousTime|S5|space=512
-0.008
-
-2018-06-27 14:30:31
-PulseShaper|S4|ready=512
-PulseShaper|S6|space=512
-0.061
-
-2018-06-27 14:30:31
-PulseShaper|S5|ready=512
-PulseShaper|S7|space=512
-0.041
-
-2018-06-27 14:30:31
-LocalOscillator|S8|space=512
-0.005
-
-2018-06-27 14:30:31
-IqModulator|S6|ready=512
-IqModulator|S7|ready=512
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0.004
-
-2018-06-27 14:30:31
-LocalOscillator|S10|space=512
-0.015
-
-2018-06-27 14:30:31
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=512
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0.016
-
-2018-06-27 14:30:31
-Photodiode|S11|ready=512
-Photodiode|S12|ready=512
-Photodiode|S15|space=512
-0.005
-
-2018-06-27 14:30:31
-Photodiode|S13|ready=512
-Photodiode|S14|ready=512
-Photodiode|S16|space=512
-0.005
-
-2018-06-27 14:30:31
-IdealAmplifier|S15|ready=512
-IdealAmplifier|S17|space=512
-0.049
-
-2018-06-27 14:30:32
-IdealAmplifier|S16|ready=512
-IdealAmplifier|S18|space=512
-0.004
-
-2018-06-27 14:30:32
-ADC|S17|ready=512
-ADC|S19|space=512
-0.059
-
-2018-06-27 14:30:32
-ADC|S18|ready=512
-ADC|S20|space=512
-0.059
-
-2018-06-27 14:30:32
-DSP|S19|ready=512
-DSP|S20|ready=512
-DSP|S21|space=512
-1.807
-
-2018-06-27 14:30:33
-Sink|S21|ready=512
-0
-
-2018-06-27 14:30:33
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:33
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:33
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=422
-MQamMapper|S3|space=422
-0
-
-2018-06-27 14:30:33
-DiscreteToContinuousTime|S2|ready=90
-DiscreteToContinuousTime|S4|space=512
-0.013
-
-2018-06-27 14:30:33
-DiscreteToContinuousTime|S3|ready=90
-DiscreteToContinuousTime|S5|space=512
-0.006
-
-2018-06-27 14:30:33
-PulseShaper|S4|ready=512
-PulseShaper|S6|space=512
-0.045
-
-2018-06-27 14:30:34
-PulseShaper|S5|ready=512
-PulseShaper|S7|space=512
-0.035
-
-2018-06-27 14:30:34
-LocalOscillator|S8|space=512
-0.005
-
-2018-06-27 14:30:34
-IqModulator|S6|ready=512
-IqModulator|S7|ready=512
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0.005
-
-2018-06-27 14:30:34
-LocalOscillator|S10|space=512
 0.018
 
-2018-06-27 14:30:34
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=512
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0.016
-
-2018-06-27 14:30:34
+2018-09-06 17:56:34
 Photodiode|S11|ready=512
 Photodiode|S12|ready=512
 Photodiode|S15|space=512
-0.007
-
-2018-06-27 14:30:34
-Photodiode|S13|ready=512
-Photodiode|S14|ready=512
-Photodiode|S16|space=512
-0.007
-
-2018-06-27 14:30:34
-IdealAmplifier|S15|ready=512
-IdealAmplifier|S17|space=512
-0.049
-
-2018-06-27 14:30:34
-IdealAmplifier|S16|ready=512
-IdealAmplifier|S18|space=512
 0.005
 
-2018-06-27 14:30:34
-ADC|S17|ready=512
-ADC|S19|space=512
-0.058
-
-2018-06-27 14:30:34
-ADC|S18|ready=512
-ADC|S20|space=512
-0.058
-
-2018-06-27 14:30:34
-DSP|S19|ready=512
-DSP|S20|ready=512
-DSP|S21|space=512
-1.779
-
-2018-06-27 14:30:36
-Sink|S21|ready=512
-0
-
-2018-06-27 14:30:36
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:36
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:36
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=454
-MQamMapper|S3|space=454
-0
-
-2018-06-27 14:30:36
-DiscreteToContinuousTime|S2|ready=58
-DiscreteToContinuousTime|S4|space=512
-0.014
-
-2018-06-27 14:30:36
-DiscreteToContinuousTime|S3|ready=58
-DiscreteToContinuousTime|S5|space=512
-0.013
-
-2018-06-27 14:30:36
-PulseShaper|S4|ready=512
-PulseShaper|S6|space=512
-0.051
-
-2018-06-27 14:30:36
-PulseShaper|S5|ready=512
-PulseShaper|S7|space=512
-0.045
-
-2018-06-27 14:30:36
-LocalOscillator|S8|space=512
-0.006
-
-2018-06-27 14:30:36
-IqModulator|S6|ready=512
-IqModulator|S7|ready=512
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0.006
-
-2018-06-27 14:30:36
-LocalOscillator|S10|space=512
-0.023
-
-2018-06-27 14:30:36
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=512
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0.019
-
-2018-06-27 14:30:36
-Photodiode|S11|ready=512
-Photodiode|S12|ready=512
-Photodiode|S15|space=512
-0.013
-
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 Photodiode|S13|ready=512
 Photodiode|S14|ready=512
 Photodiode|S16|space=512
-0.011
+0.049
 
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 IdealAmplifier|S15|ready=512
 IdealAmplifier|S17|space=512
-0.066
+0.005
 
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 IdealAmplifier|S16|ready=512
 IdealAmplifier|S18|space=512
-0.009
+0.004
 
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 ADC|S17|ready=512
 ADC|S19|space=512
-0.041
+0.033
 
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 ADC|S18|ready=512
 ADC|S20|space=512
 0.033
 
-2018-06-27 14:30:36
+2018-09-06 17:56:34
 DSP|S19|ready=512
 DSP|S20|ready=512
 DSP|S21|space=512
-1.767
+DSP|S22|space=0
+0.004
 
-2018-06-27 14:30:38
-Sink|S21|ready=512
+2018-09-06 17:56:34
+Sink|S21|ready=0
+Sink|S22|ready=512
 0
 
-2018-06-27 14:30:38
-Sink|S25|ready=0
+2018-09-06 17:56:34
+Sink|S23|ready=0
 0
 
-2018-06-27 14:30:38
+2018-09-06 17:56:34
 BinarySource|S1|space=512
-BinarySource|S25|space=512
+BinarySource|S23|space=512
 0
 
-2018-06-27 14:30:38
+2018-09-06 17:56:34
 MQamMapper|S1|ready=0
-MQamMapper|S2|space=486
-MQamMapper|S3|space=486
+MQamMapper|S2|space=140
+MQamMapper|S3|space=140
 0
 
-2018-06-27 14:30:38
-DiscreteToContinuousTime|S2|ready=26
+2018-09-06 17:56:34
+DiscreteToContinuousTime|S2|ready=372
 DiscreteToContinuousTime|S4|space=512
+0.005
+
+2018-09-06 17:56:34
+DiscreteToContinuousTime|S3|ready=372
+DiscreteToContinuousTime|S5|space=512
+0.005
+
+2018-09-06 17:56:34
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.025
+
+2018-09-06 17:56:34
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.025
+
+2018-09-06 17:56:34
+LocalOscillator|S8|space=512
+0.005
+
+2018-09-06 17:56:34
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.004
+
+2018-09-06 17:56:34
+LocalOscillator|S10|space=512
+0.014
+
+2018-09-06 17:56:34
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.018
+
+2018-09-06 17:56:34
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.005
+
+2018-09-06 17:56:34
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.049
+
+2018-09-06 17:56:34
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=512
+0.004
+
+2018-09-06 17:56:34
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=512
+0.004
+
+2018-09-06 17:56:34
+ADC|S17|ready=512
+ADC|S19|space=512
+0.032
+
+2018-09-06 17:56:34
+ADC|S18|ready=512
+ADC|S20|space=512
+0.032
+
+2018-09-06 17:56:34
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
 0
 
-2018-06-27 14:30:38
-DiscreteToContinuousTime|S3|ready=26
+2018-09-06 17:56:34
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:34
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:34
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:34
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=172
+MQamMapper|S3|space=172
+0
+
+2018-09-06 17:56:34
+DiscreteToContinuousTime|S2|ready=340
+DiscreteToContinuousTime|S4|space=512
+0.005
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S3|ready=340
 DiscreteToContinuousTime|S5|space=512
-0.001
+0.005
 
-2018-06-27 14:30:38
-PulseShaper|S4|ready=416
+2018-09-06 17:56:35
+PulseShaper|S4|ready=512
 PulseShaper|S6|space=512
-0.016
+0.024
 
-2018-06-27 14:30:38
-PulseShaper|S5|ready=416
+2018-09-06 17:56:35
+PulseShaper|S5|ready=512
 PulseShaper|S7|space=512
+0.025
+
+2018-09-06 17:56:35
+LocalOscillator|S8|space=512
+0.005
+
+2018-09-06 17:56:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.004
+
+2018-09-06 17:56:35
+LocalOscillator|S10|space=512
 0.016
 
-2018-06-27 14:30:38
+2018-09-06 17:56:35
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.017
+
+2018-09-06 17:56:35
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.005
+
+2018-09-06 17:56:35
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.049
+
+2018-09-06 17:56:35
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=512
+0.005
+
+2018-09-06 17:56:35
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=512
+0.004
+
+2018-09-06 17:56:35
+ADC|S17|ready=512
+ADC|S19|space=0
+0.049
+
+2018-09-06 17:56:35
+ADC|S18|ready=512
+ADC|S20|space=0
+0.011
+
+2018-09-06 17:56:35
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:35
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:35
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:35
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=204
+MQamMapper|S3|space=204
+0
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S2|ready=308
+DiscreteToContinuousTime|S4|space=512
+0.006
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S3|ready=308
+DiscreteToContinuousTime|S5|space=512
+0.005
+
+2018-09-06 17:56:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.048
+
+2018-09-06 17:56:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.056
+
+2018-09-06 17:56:35
+LocalOscillator|S8|space=512
+0.008
+
+2018-09-06 17:56:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.016
+
+2018-09-06 17:56:35
+LocalOscillator|S10|space=512
+0.034
+
+2018-09-06 17:56:35
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.02
+
+2018-09-06 17:56:35
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.01
+
+2018-09-06 17:56:35
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.049
+
+2018-09-06 17:56:35
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=512
+0.004
+
+2018-09-06 17:56:35
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=512
+0.004
+
+2018-09-06 17:56:35
+ADC|S17|ready=512
+ADC|S19|space=0
+0.005
+
+2018-09-06 17:56:35
+ADC|S18|ready=512
+ADC|S20|space=0
+0.023
+
+2018-09-06 17:56:35
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:35
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:35
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:35
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=236
+MQamMapper|S3|space=236
+0
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S2|ready=276
+DiscreteToContinuousTime|S4|space=512
+0.006
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S3|ready=276
+DiscreteToContinuousTime|S5|space=512
+0.006
+
+2018-09-06 17:56:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.026
+
+2018-09-06 17:56:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.025
+
+2018-09-06 17:56:35
+LocalOscillator|S8|space=512
+0.005
+
+2018-09-06 17:56:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.005
+
+2018-09-06 17:56:35
+LocalOscillator|S10|space=512
+0.019
+
+2018-09-06 17:56:35
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.021
+
+2018-09-06 17:56:35
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.009
+
+2018-09-06 17:56:35
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.075
+
+2018-09-06 17:56:35
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=512
+0.023
+
+2018-09-06 17:56:35
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=512
+0.004
+
+2018-09-06 17:56:35
+ADC|S17|ready=512
+ADC|S19|space=0
+0
+
+2018-09-06 17:56:35
+ADC|S18|ready=512
+ADC|S20|space=0
+0
+
+2018-09-06 17:56:35
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:35
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:35
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:35
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=268
+MQamMapper|S3|space=268
+0
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S2|ready=244
+DiscreteToContinuousTime|S4|space=512
+0.006
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S3|ready=244
+DiscreteToContinuousTime|S5|space=512
+0.006
+
+2018-09-06 17:56:35
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.039
+
+2018-09-06 17:56:35
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.028
+
+2018-09-06 17:56:35
+LocalOscillator|S8|space=512
+0.007
+
+2018-09-06 17:56:35
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.006
+
+2018-09-06 17:56:35
+LocalOscillator|S10|space=512
+0.038
+
+2018-09-06 17:56:35
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.024
+
+2018-09-06 17:56:35
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=512
+0.009
+
+2018-09-06 17:56:35
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=512
+0.076
+
+2018-09-06 17:56:35
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=0
+0
+
+2018-09-06 17:56:35
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=0
+0
+
+2018-09-06 17:56:35
+ADC|S17|ready=512
+ADC|S19|space=0
+0
+
+2018-09-06 17:56:35
+ADC|S18|ready=512
+ADC|S20|space=0
+0
+
+2018-09-06 17:56:35
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:35
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:35
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:35
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:35
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=300
+MQamMapper|S3|space=300
+0
+
+2018-09-06 17:56:35
+DiscreteToContinuousTime|S2|ready=212
+DiscreteToContinuousTime|S4|space=512
+0.01
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S3|ready=212
+DiscreteToContinuousTime|S5|space=512
+0.007
+
+2018-09-06 17:56:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.054
+
+2018-09-06 17:56:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.031
+
+2018-09-06 17:56:36
+LocalOscillator|S8|space=512
+0.013
+
+2018-09-06 17:56:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.007
+
+2018-09-06 17:56:36
+LocalOscillator|S10|space=512
+0.031
+
+2018-09-06 17:56:36
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=512
+OpticalHybrid|S12|space=512
+OpticalHybrid|S13|space=512
+OpticalHybrid|S14|space=512
+0.026
+
+2018-09-06 17:56:36
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=0
+0
+
+2018-09-06 17:56:36
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S17|ready=512
+ADC|S19|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S18|ready=512
+ADC|S20|space=0
+0
+
+2018-09-06 17:56:36
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:36
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:36
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:36
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=332
+MQamMapper|S3|space=332
+0
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S2|ready=180
+DiscreteToContinuousTime|S4|space=512
+0.007
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S3|ready=180
+DiscreteToContinuousTime|S5|space=512
+0.008
+
+2018-09-06 17:56:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.058
+
+2018-09-06 17:56:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.029
+
+2018-09-06 17:56:36
+LocalOscillator|S8|space=512
+0.007
+
+2018-09-06 17:56:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=512
+0.006
+
+2018-09-06 17:56:36
+LocalOscillator|S10|space=512
+0.035
+
+2018-09-06 17:56:36
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=0
+OpticalHybrid|S12|space=0
+OpticalHybrid|S13|space=0
+OpticalHybrid|S14|space=0
+0
+
+2018-09-06 17:56:36
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=0
+0
+
+2018-09-06 17:56:36
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S17|ready=512
+ADC|S19|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S18|ready=512
+ADC|S20|space=0
+0
+
+2018-09-06 17:56:36
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:36
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:36
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:36
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=364
+MQamMapper|S3|space=364
+0
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S2|ready=148
+DiscreteToContinuousTime|S4|space=512
+0.008
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S3|ready=148
+DiscreteToContinuousTime|S5|space=512
+0.007
+
+2018-09-06 17:56:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=512
+0.033
+
+2018-09-06 17:56:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=512
+0.03
+
+2018-09-06 17:56:36
 LocalOscillator|S8|space=512
 0.009
 
-2018-06-27 14:30:38
-IqModulator|S6|ready=416
-IqModulator|S7|ready=416
+2018-09-06 17:56:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
 IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0.001
-
-2018-06-27 14:30:38
-LocalOscillator|S10|space=512
-0.037
-
-2018-06-27 14:30:38
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=416
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0.004
-
-2018-06-27 14:30:38
-Photodiode|S11|ready=416
-Photodiode|S12|ready=416
-Photodiode|S15|space=512
-0.004
-
-2018-06-27 14:30:38
-Photodiode|S13|ready=416
-Photodiode|S14|ready=416
-Photodiode|S16|space=512
-0.004
-
-2018-06-27 14:30:38
-IdealAmplifier|S15|ready=416
-IdealAmplifier|S17|space=512
-0.001
-
-2018-06-27 14:30:38
-IdealAmplifier|S16|ready=416
-IdealAmplifier|S18|space=512
-0.001
-
-2018-06-27 14:30:38
-ADC|S17|ready=416
-ADC|S19|space=512
-0.003
-
-2018-06-27 14:30:38
-ADC|S18|ready=416
-ADC|S20|space=512
-0.001
-
-2018-06-27 14:30:38
-DSP|S19|ready=416
-DSP|S20|ready=416
-DSP|S21|space=512
-1.404
-
-2018-06-27 14:30:39
-Sink|S21|ready=416
+IqModulator|S9|space=0
 0
 
-2018-06-27 14:30:39
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:39
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:39
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=512
-MQamMapper|S3|space=512
-0
-
-2018-06-27 14:30:39
-DiscreteToContinuousTime|S2|ready=0
-DiscreteToContinuousTime|S4|space=512
-0
-
-2018-06-27 14:30:39
-DiscreteToContinuousTime|S3|ready=0
-DiscreteToContinuousTime|S5|space=512
-0
-
-2018-06-27 14:30:39
-PulseShaper|S4|ready=0
-PulseShaper|S6|space=512
-0
-
-2018-06-27 14:30:39
-PulseShaper|S5|ready=0
-PulseShaper|S7|space=512
-0
-
-2018-06-27 14:30:39
-LocalOscillator|S8|space=416
-0.001
-
-2018-06-27 14:30:39
-IqModulator|S6|ready=0
-IqModulator|S7|ready=0
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0
-
-2018-06-27 14:30:39
-LocalOscillator|S10|space=416
-0.001
-
-2018-06-27 14:30:39
-OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=0
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
-0
-
-2018-06-27 14:30:39
-Photodiode|S11|ready=0
-Photodiode|S12|ready=0
-Photodiode|S15|space=512
-0
-
-2018-06-27 14:30:39
-Photodiode|S13|ready=0
-Photodiode|S14|ready=0
-Photodiode|S16|space=512
-0
-
-2018-06-27 14:30:39
-IdealAmplifier|S15|ready=0
-IdealAmplifier|S17|space=512
-0
-
-2018-06-27 14:30:39
-IdealAmplifier|S16|ready=0
-IdealAmplifier|S18|space=512
-0
-
-2018-06-27 14:30:39
-ADC|S17|ready=0
-ADC|S19|space=512
-0
-
-2018-06-27 14:30:39
-ADC|S18|ready=0
-ADC|S20|space=512
-0
-
-2018-06-27 14:30:39
-DSP|S19|ready=0
-DSP|S20|ready=0
-DSP|S21|space=512
-0
-
-2018-06-27 14:30:39
-Sink|S21|ready=0
-0
-
-2018-06-27 14:30:39
-Sink|S25|ready=0
-0
-
-2018-06-27 14:30:39
-BinarySource|S1|space=512
-BinarySource|S25|space=512
-0
-
-2018-06-27 14:30:39
-MQamMapper|S1|ready=0
-MQamMapper|S2|space=512
-MQamMapper|S3|space=512
-0
-
-2018-06-27 14:30:39
-DiscreteToContinuousTime|S2|ready=0
-DiscreteToContinuousTime|S4|space=512
-0
-
-2018-06-27 14:30:39
-DiscreteToContinuousTime|S3|ready=0
-DiscreteToContinuousTime|S5|space=512
-0
-
-2018-06-27 14:30:39
-PulseShaper|S4|ready=0
-PulseShaper|S6|space=512
-0
-
-2018-06-27 14:30:39
-PulseShaper|S5|ready=0
-PulseShaper|S7|space=512
-0
-
-2018-06-27 14:30:39
-LocalOscillator|S8|space=0
-0
-
-2018-06-27 14:30:39
-IqModulator|S6|ready=0
-IqModulator|S7|ready=0
-IqModulator|S8|ready=512
-IqModulator|S9|space=512
-0
-
-2018-06-27 14:30:39
+2018-09-06 17:56:36
 LocalOscillator|S10|space=0
 0
 
-2018-06-27 14:30:39
+2018-09-06 17:56:36
 OpticalHybrid|S10|ready=512
-OpticalHybrid|S9|ready=0
-OpticalHybrid|S11|space=512
-OpticalHybrid|S12|space=512
-OpticalHybrid|S13|space=512
-OpticalHybrid|S14|space=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=0
+OpticalHybrid|S12|space=0
+OpticalHybrid|S13|space=0
+OpticalHybrid|S14|space=0
 0
 
-2018-06-27 14:30:39
-Photodiode|S11|ready=0
-Photodiode|S12|ready=0
-Photodiode|S15|space=512
+2018-09-06 17:56:36
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=0
 0
 
-2018-06-27 14:30:39
-Photodiode|S13|ready=0
-Photodiode|S14|ready=0
-Photodiode|S16|space=512
+2018-09-06 17:56:36
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=0
 0
 
-2018-06-27 14:30:39
-IdealAmplifier|S15|ready=0
-IdealAmplifier|S17|space=512
+2018-09-06 17:56:36
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=0
 0
 
-2018-06-27 14:30:39
-IdealAmplifier|S16|ready=0
-IdealAmplifier|S18|space=512
+2018-09-06 17:56:36
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=0
 0
 
-2018-06-27 14:30:39
-ADC|S17|ready=0
-ADC|S19|space=512
+2018-09-06 17:56:36
+ADC|S17|ready=512
+ADC|S19|space=0
 0
 
-2018-06-27 14:30:39
-ADC|S18|ready=0
-ADC|S20|space=512
+2018-09-06 17:56:36
+ADC|S18|ready=512
+ADC|S20|space=0
 0
 
-2018-06-27 14:30:39
-DSP|S19|ready=0
-DSP|S20|ready=0
+2018-09-06 17:56:36
+DSP|S19|ready=512
+DSP|S20|ready=512
 DSP|S21|space=512
+DSP|S22|space=0
 0
 
-2018-06-27 14:30:39
+2018-09-06 17:56:36
 Sink|S21|ready=0
+Sink|S22|ready=512
 0
 
-2018-06-27 14:30:39
-Sink|S25|ready=0
+2018-09-06 17:56:36
+Sink|S23|ready=0
+0
+
+2018-09-06 17:56:36
+BinarySource|S1|space=512
+BinarySource|S23|space=512
+0
+
+2018-09-06 17:56:36
+MQamMapper|S1|ready=0
+MQamMapper|S2|space=396
+MQamMapper|S3|space=396
+0
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S2|ready=116
+DiscreteToContinuousTime|S4|space=512
+0.016
+
+2018-09-06 17:56:36
+DiscreteToContinuousTime|S3|ready=116
+DiscreteToContinuousTime|S5|space=512
+0.01
+
+2018-09-06 17:56:36
+PulseShaper|S4|ready=512
+PulseShaper|S6|space=0
+0
+
+2018-09-06 17:56:36
+PulseShaper|S5|ready=512
+PulseShaper|S7|space=0
+0
+
+2018-09-06 17:56:36
+LocalOscillator|S8|space=0
+0
+
+2018-09-06 17:56:36
+IqModulator|S6|ready=512
+IqModulator|S7|ready=512
+IqModulator|S8|ready=512
+IqModulator|S9|space=0
+0
+
+2018-09-06 17:56:36
+LocalOscillator|S10|space=0
+0
+
+2018-09-06 17:56:36
+OpticalHybrid|S10|ready=512
+OpticalHybrid|S9|ready=512
+OpticalHybrid|S11|space=0
+OpticalHybrid|S12|space=0
+OpticalHybrid|S13|space=0
+OpticalHybrid|S14|space=0
+0
+
+2018-09-06 17:56:36
+Photodiode|S11|ready=512
+Photodiode|S12|ready=512
+Photodiode|S15|space=0
+0
+
+2018-09-06 17:56:36
+Photodiode|S13|ready=512
+Photodiode|S14|ready=512
+Photodiode|S16|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S15|ready=512
+IdealAmplifier|S17|space=0
+0
+
+2018-09-06 17:56:36
+IdealAmplifier|S16|ready=512
+IdealAmplifier|S18|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S17|ready=512
+ADC|S19|space=0
+0
+
+2018-09-06 17:56:36
+ADC|S18|ready=512
+ADC|S20|space=0
+0
+
+2018-09-06 17:56:36
+DSP|S19|ready=512
+DSP|S20|ready=512
+DSP|S21|space=512
+DSP|S22|space=0
+0
+
+2018-09-06 17:56:36
+Sink|S21|ready=0
+Sink|S22|ready=512
+0
+
+2018-09-06 17:56:36
+Sink|S23|ready=0
 0
 

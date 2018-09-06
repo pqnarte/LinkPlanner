@@ -3,17 +3,12 @@
 
 # include <algorithm>  // min()
 # include <math.h>     // cos(), sin()
-#include <array>
+# include <array>
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 
 
 class PolarizationBeamSplitter : public Block {
-
-	/* input parameters */
-
-	array <t_complex, 4> matrixH = { { 1, 0, 0, 0 } };
-	array <t_complex, 4> matrixV = { { 0, 0, 0, 1 } };
 
 public:
 
@@ -28,6 +23,13 @@ public:
 
 	void setTransferMatrixV(array<complex<double>, 4> TransferMatrix) { matrixV = TransferMatrix; }
 	array<complex<double>, 4> const getTransferMatrixV(void) { return matrixV; }
+
+private:
+
+	/* input parameters */
+
+	array <t_complex, 4> matrixH = { { 1, 0, 0, 0 } };
+	array <t_complex, 4> matrixV = { { 0, 0, 0, 1 } };
 
 };
 

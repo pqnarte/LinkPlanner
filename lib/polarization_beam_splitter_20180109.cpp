@@ -37,7 +37,7 @@ bool PolarizationBeamSplitter::runBlock(void) {
 		outSignal1.path[1] = { xValueV, yValueV };
 
 
-		outputSignals[0]->bufferPut((t_photon_mp_xy)outSignal1);
+		outputSignals[0]->bufferPut((t_photon_mp_xy) outSignal1);
 	}
 	
 	return true;
