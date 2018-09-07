@@ -40,6 +40,10 @@ void Signal::close() {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_complex);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_complex));
 			}
+			else if (type == "Ascii") {
+				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(char);
+				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(char));
+			}
 			else {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_real);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_real));
@@ -139,6 +143,15 @@ void Signal::writeHeader(string signalPath){
 };
 
 void Signal::bufferGet() {
+	if (bufferFull) bufferFull = false;
+	outPosition++;
+	if (outPosition == bufferLength) outPosition = 0;
+	if (outPosition == inPosition) bufferEmpty = true;
+	return;
+}
+
+void Signal::bufferGet(char *valueAddr) {
+	*valueAddr = static_cast<char *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
 	outPosition++;
 	if (outPosition == bufferLength) outPosition = 0;
