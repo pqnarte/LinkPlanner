@@ -7,10 +7,7 @@
 # include <strstream>
 # include <algorithm>
 # include <ctime>
-#include  <filesystem>
-#include  <functional>  
-#include  <cctype> 
-#include  <locale> 
+#include <filesystem>
 
 # include "netxpto_20180418.h"
 
@@ -38,10 +35,6 @@ void Signal::close() {
 			if (type == "Binary") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_binary);
 				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(t_binary));
-			}
-			else if (type == "Ascii") {
-				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(char);
-				fileHandler.write((char *)ptr, (inPosition - (firstValueToBeSaved - 1)) * sizeof(char));
 			}
 			else if (type == "TimeContinuousAmplitudeContinuousComplex" || type == "BandpassSignal") {
 				ptr = ptr + (firstValueToBeSaved - 1) * sizeof(t_complex);
@@ -146,15 +139,6 @@ void Signal::writeHeader(string signalPath){
 };
 
 void Signal::bufferGet() {
-	if (bufferFull) bufferFull = false;
-	outPosition++;
-	if (outPosition == bufferLength) outPosition = 0;
-	if (outPosition == inPosition) bufferEmpty = true;
-	return;
-};
-
-void Signal::bufferGet(char *valueAddr) {
-	*valueAddr = static_cast<char *>(buffer)[outPosition];
 	if (bufferFull) bufferFull = false;
 	outPosition++;
 	if (outPosition == bufferLength) outPosition = 0;
@@ -697,6 +681,99 @@ DiscreteToContinuousTime::DiscreteToContinuousTime(vector<Signal *> &InputSig, v
 */
 
 
+void UnwrapFunctions::Unwrap(vector<double> &PhaseIn) {
+
+
+	vector<double> PhaseWrap(PhaseIn.size(), 0);
+
+	PhaseWrap = PhaseIn;
+
+	for (int i = 1; i != PhaseWrap.size(); ++i) {
+
+		double difference = PhaseWrap.at(i) - PhaseWrap.at(i - 1);
+		if (difference > M_PI) {
+			for (int k = i; k != PhaseWrap.size(); ++k) {
+				PhaseIn.at(k) = PhaseIn.at(k) - 2 * M_PI;
+			}
+		}
+		if (difference < -M_PI) {
+			for (int k = i; k != PhaseWrap.size(); ++k) {
+				PhaseIn.at(k) = PhaseIn.at(k) + 2 * M_PI;
+			}
+		}
+	}
+
+}
+
+
+complex <double> DecisionCircuit::DecisionCircuitQPSK(complex <double> &Signal_in) {
+
+	double inf = std::numeric_limits<double>::infinity();
+	vector<complex <double>> ConstMap = { { 1,-1 },{ -1,1 },{ -1,-1 },{ 1,1 } };
+	//vector<complex <double>> ConstMap({ { { 0.707,0.707 },{ -0.707,0.707 },{ -0.707,-0.707 },{ 0.707,-0.707 } } });
+	vector<double> distMod(ConstMap.size(), 0.0);
+	complex <double> result(0.0, 0.0);
+	double temp(0.0);
+	int minDist(0);
+
+	if (Signal_in == (0.0, 0.0)) {
+		result = (0.0, 0.0);
+		return result;
+	}
+
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		complex <double> aux = Signal_in - ConstMap.at(i);
+		complex <double> aux2 = (aux.real(), aux.imag());
+		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
+	}
+	temp = distMod.at(0);
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		if (temp > distMod.at(i)) {
+			minDist = i;
+			temp = distMod.at(i);
+		}
+	}
+
+	result = ConstMap.at(minDist);
+	return result;
+}
+
+complex <double> DecisionCircuit::DecisionCircuit16QAM(complex <double> &Signal_in) {
+
+	double inf = std::numeric_limits<double>::infinity();
+	vector<complex <double>> ConstMap = { { -3.0, -3.0 },{ -3.0, -1.0 },{ -3.0, 3.0 },{ -3.0, 1.0 },{ -1.0, -3.0 },{ -1.0, -1.0 },{ -1.0, 3.0 },{ -1.0, 1.0 },{ 3.0, -3.0 },{ 3.0, -1.0 },{ 3.0, 3.0 },{ 3.0, 1.0 },{ 1.0, -3.0 },{ 1.0, -1.0 },{ 1.0, 3.0 },{ 1.0, 1.0 } };
+	//vector<complex <double>> ConstMap({ { { 0.707,0.707 },{ -0.707,0.707 },{ -0.707,-0.707 },{ 0.707,-0.707 } } });
+	vector<double> distMod(ConstMap.size(), 0.0);
+	complex <double> result(0.0, 0.0);
+	double temp(0.0);
+	int minDist(0);
+
+	if (Signal_in == (0.0, 0.0)) {
+		result = (0.0, 0.0);
+		return result;
+	}
+
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		complex <double> aux = Signal_in - ConstMap.at(i);
+		complex <double> aux2 = (aux.real(), aux.imag());
+		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
+	}
+	temp = distMod.at(0);
+	for (int i = 0; i < ConstMap.size(); ++i) {
+
+		if (temp > distMod.at(i)) {
+			minDist = i;
+			temp = distMod.at(i);
+		}
+	}
+
+	result = ConstMap.at(minDist);
+	return result;
+}
+
 
 RealToComplex::RealToComplex(vector <Signal *> &InputSig, vector <Signal *> &OutputSig) {
 
@@ -980,7 +1057,7 @@ void System::run(string signalPath) {
 				localtime_s(&now, &t_now);
 				char buffer[20];
 				snprintf(buffer, 20, "%04d-%02d-%02d %02d:%02d:%02d", 1900 + now.tm_year, now.tm_mon + 1, now.tm_mday, now.tm_hour, now.tm_min, now.tm_sec);
-				logFile << "Block start time: " << buffer << endl; 
+				logFile << buffer << endl;
 				// Prints line for each input signal in the current block being executed
 				for (Signal *b : SystemBlocks[i]->inputSignals) {
 					string filename = (*b).getFileName(); // Gets filename e.g: "S8.sgn"
@@ -999,7 +1076,7 @@ void System::run(string signalPath) {
 			}
 			bool aux = SystemBlocks[i]->runBlock();
 			if (logValue)
-				logFile << "Elapsed time: " << (float)(clock() - start) << " milliseconds" << endl << endl; 
+				logFile << (float)(clock() - start) / 1000 << endl << endl;
 			Alive = (Alive || aux);
 		}
 		l++;
@@ -1562,63 +1639,7 @@ vector<complex <double>> ComplexMult::complexVectorMultiplication(vector<complex
 	return v_out;
 }
 
-complex <double> DecisionCircuitQPSK::DecisionCircuit(complex <double> &Signal_in) {
 
-	double inf = std::numeric_limits<double>::infinity();
-	vector<complex <double>> ConstMap = { { 1,-1 },{ -1,1 },{ -1,-1 },{ 1,1 } };
-	//vector<complex <double>> ConstMap({ { { 0.707,0.707 },{ -0.707,0.707 },{ -0.707,-0.707 },{ 0.707,-0.707 } } });
-	vector<double> distMod(ConstMap.size(), 0.0);
-	complex <double> result(0.0, 0.0);
-	double temp(0.0);
-	int minDist(0);
-
-	if (Signal_in == (0.0, 0.0)) {
-		result = (0.0, 0.0);
-		return result;
-	}
-
-	for (size_t i = 0; i < ConstMap.size(); ++i) {
-
-		complex <double> aux = Signal_in - ConstMap.at(i);
-		complex <double> aux2 = (aux.real(), aux.imag());
-		distMod.at(i) = abs(Signal_in - ConstMap.at(i));
-	}
-	temp = distMod.at(0);
-	for (size_t i = 0; i < ConstMap.size(); ++i) {
-
-		if (temp > distMod.at(i)) {
-			minDist = i;
-			temp = distMod.at(i);
-		}
-	}
-
-	result = ConstMap.at(minDist);
-	return result;
-}
-
-void UnwrapFunctions::Unwrap(vector<double> &PhaseIn) {
-
-
-	vector<double> PhaseWrap(PhaseIn.size(), 0);
-
-	PhaseWrap = PhaseIn;
-
-	for (int i = 1; i != PhaseWrap.size(); ++i) {
-
-		double difference = PhaseWrap.at(i) - PhaseWrap.at(i - 1);
-		if (difference > M_PI) {
-			for (int k = i; k != PhaseWrap.size(); ++k) {
-				PhaseIn.at(k) = PhaseIn.at(k) - 2 * M_PI;
-			}
-		}
-		if (difference < -M_PI) {
-			for (int k = i; k != PhaseWrap.size(); ++k) {
-				PhaseIn.at(k) = PhaseIn.at(k) + 2 * M_PI;
-			}
-		}
-	}
-
-}
 
 ////////////  Fast FourierTransform  /////////////// 
 
@@ -1828,22 +1849,6 @@ vector<complex<double>> FourierTransform::fft(vector<complex<double> > &vec, int
 // #####################################################################################################
 
 /* Auxiliary method to split string by a delimiter. Returns a vector of string */
-static inline std::string &ltrim(std::string &s) { 
-  s.erase(s.begin(), std::find_if(s.begin(), s.end(), 
-    std::not1(std::ptr_fun<int, int>(std::isspace)))); 
-  return s; 
-} 
- 
-static inline std::string &rtrim(std::string &s) { 
-  s.erase(std::find_if(s.rbegin(), s.rend(), 
-    std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end()); 
-  return s; 
-} 
- 
-static inline std::string &trim(std::string &s) { 
-  return ltrim(rtrim(s)); 
-} 
-
 vector<string> SystemInputParameters::split(const string &text, char sep) {
 	vector<string> tokens;
 	size_t start = 0, end = 0;
@@ -1867,13 +1872,10 @@ void SystemInputParameters::readSystemInputParameters()
 	//Reads each line
 	string line;
 	while (getline(inputFile, line)) {
-		line = trim(line); 
 		try {
 			//If the line is a comment, it just skips to the next one
 			if (string(line).substr(0, 2) != "//") { //Lines that start by // are comments
 				vector<string> splitline = split(line, '=');
-				splitline[0] = trim(splitline[0]); 
-				splitline[1] = trim(splitline[1]); 
 				if (parameters.find(splitline[0]) != parameters.end()) { //if parameter exists
 					if(parameters[splitline[0]]->getType() == INT) //If parameter is an int
 						parameters[splitline[0]]->setValue(parseInt(splitline[1]));
@@ -1881,10 +1883,8 @@ void SystemInputParameters::readSystemInputParameters()
 						parameters[splitline[0]]->setValue(parseDouble(splitline[1]));
 					else if(parameters[splitline[0]]->getType() == BOOL)
 						parameters[splitline[0]]->setValue(parseBool(splitline[1]));
-					else if (parameters[splitline[0]]->getType() == STRING)
-						parameters[splitline[0]]->setValue(splitline[1]);
 					//Logs that a given parameter has been loaded from a file
-					loadedInputParameters.push_back(splitline[0]+" = "+splitline[1]);
+					loadedInputParameters.push_back(splitline[0]);
 				}
 			}
 			errorLine++;
@@ -1909,11 +1909,6 @@ void SystemInputParameters::addInputParameter(string name, double * variable)
 }
 
 void SystemInputParameters::addInputParameter(string name, bool * variable)
-{
-	parameters[name] = new Parameter(variable);
-}
-
-void SystemInputParameters::addInputParameter(string name, string * variable)
 {
 	parameters[name] = new Parameter(variable);
 }
@@ -1980,12 +1975,6 @@ void SystemInputParameters::Parameter::setValue(bool value)
 	*b = value;
 }
 
-void SystemInputParameters::Parameter::setValue(string value)
-{
-	if (type != STRING) throw invalid_argument("Parameter is not of type STRING");
-	*s = value;
-}
-
 SystemInputParameters::ParameterType SystemInputParameters::Parameter::getType()
 {
 	return type;
@@ -2007,10 +1996,4 @@ SystemInputParameters::Parameter::Parameter(bool * elem)
 {
 	type = BOOL;
 	b = elem;
-}
-
-SystemInputParameters::Parameter::Parameter(string * elem)
-{
-	type = STRING;
-	s = elem;
 }

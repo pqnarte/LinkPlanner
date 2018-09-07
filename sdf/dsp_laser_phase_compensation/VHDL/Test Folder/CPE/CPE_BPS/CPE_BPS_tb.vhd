@@ -16,7 +16,7 @@
 		Dist_int   			: integer := 2;
 		Dist_frac  			: integer := 14;
 		Output_int  		: integer := 2;
-		Output_frac 		: integer := 12;
+		Output_frac 		: integer := 6;
 		data_lut_width		: integer := 8;
 		--AdrrWidthMP 		: integer := 2;
 		Nsig  				: integer := 1;
@@ -34,10 +34,10 @@
 					Input_im	    		: IN     std_logic_vector (Nsig*(Input_int+Input_frac)-1 DOWNTO 0);
 					clk              	: IN     std_logic;
 					clk_en          	: IN     std_logic;      
-					Out_vet0    	   : OUT    std_logic_vector (Nsig*NTphase*(Dist_int+Dist_frac)-1 DOWNTO 0);
-					Out_vet    	   	: OUT    std_logic_vector (Nsig*1-1 DOWNTO 0);
-					Out_vet1    	   	: OUT    std_logic_vector (Nsig*NTphase*2-1 DOWNTO 0);
-				   Out_vet2    	   	: OUT    std_logic_vector (Nsig*2-1 DOWNTO 0);
+					--Out_vet0    	   : OUT    std_logic_vector (Nsig*NTphase*(Dist_int+Dist_frac)-1 DOWNTO 0);
+					--Out_vet    	   	: OUT    std_logic_vector (Nsig*2-1 DOWNTO 0);
+					--Out_vet1    	   	: OUT    std_logic_vector (Nsig*NTphase*4-1 DOWNTO 0);
+				   --Out_vet2    	   	: OUT    std_logic_vector (Nsig*4-1 DOWNTO 0);
 					Output_re    	   : OUT    std_logic_vector (Nsig*(Output_int+Output_frac)-1 DOWNTO 0);
 					Output_im   	   : OUT    std_logic_vector (Nsig*(Output_int+Output_frac)-1 DOWNTO 0)
 				);
@@ -50,12 +50,12 @@
 		signal Input_R_tb : std_logic_vector(Nsig*(Input_int+Input_frac)-1 downto 0) := (others => '0');
 		
 		--Outputs
-		signal Out_adrr	:    std_logic_vector (Nsig*2-1 DOWNTO 0);
+		signal Out_adrr	:    std_logic_vector (Nsig*4-1 DOWNTO 0);
 		--signal Output_dist_tb : std_logic_vector((Nsig)*(Dist_int+Dist_frac)-1 downto 0);
-		signal Out_MinDist1_tb : std_logic_vector(Nsig*NTphase*(2)-1 downto 0);
-		signal Out_MinDist2_tb : std_logic_vector(Nsig*(2)-1 downto 0);
+		signal Out_MinDist1_tb : std_logic_vector(Nsig*NTphase*(4)-1 downto 0);
+		signal Out_MinDist2_tb : std_logic_vector(Nsig*(4)-1 downto 0);
 		signal Out_MinDist0_tb : std_logic_vector(Nsig*NTphase*(Dist_int+Dist_frac)-1 downto 0);
-		signal Out_MinDist_tb  : std_logic_vector (Nsig*1-1 DOWNTO 0);
+		signal Out_MinDist_tb  : std_logic_vector (Nsig*2-1 DOWNTO 0);
 		signal Output_re_tb : std_logic_vector(Nsig*(Output_int+Output_frac)-1 downto 0);
 		signal Output_im_tb : std_logic_vector(Nsig*(Output_int+Output_frac)-1 downto 0);
           
@@ -70,10 +70,10 @@
 				 Input_im => Input_I_tb,
 				 clk => clk_tb,
 				 clk_en => clk_en_tb,
-				 Out_vet0 => Out_MinDist0_tb,
-				 Out_vet => Out_MinDist_tb,
-				 Out_vet1 => Out_MinDist1_tb,
-				 Out_vet2 => Out_MinDist2_tb,
+				 --Out_vet0 => Out_MinDist0_tb,
+				 --Out_vet => Out_MinDist_tb,
+				 --Out_vet1 => Out_MinDist1_tb,
+				 --Out_vet2 => Out_MinDist2_tb,
 				 Output_re => Output_re_tb,
 				 Output_im => Output_im_tb		
 				 
@@ -109,9 +109,9 @@
 		variable var_Outputs_Real, var_Outputs_Imag	: integer := 0;
 		--variable var_Outputs_Real_bit  :	bit_vector((Nsig+Ntap-1)*(Dist_int+Dist_frac)-1 downto 0);
 		variable var_Outputs_Real_bit  :	bit_vector((Nsig*NTphase)*(Dist_int+Dist_frac)-1 downto 0);
-		variable var_Outputs_Real_bit0  :	bit_vector((Nsig)*(1)-1 downto 0);
+		variable var_Outputs_Real_bit0  :	bit_vector((Nsig)*(2)-1 downto 0);
 		variable var_Outputs_Real_bit1  :	bit_vector((Nsig*NTphase)*(2)-1 downto 0);
-		variable var_Outputs_Real_bit2  :	bit_vector((Nsig)*(2)-1 downto 0);
+		variable var_Outputs_Real_bit2  :	bit_vector((Nsig)*(4)-1 downto 0);
 		variable var_Outputs_Real_bit3  :	bit_vector((Nsig)*(Output_int+Output_frac)-1 downto 0);
 		variable var_Outputs_Real_bit4  :	bit_vector((Nsig)*(Output_int+Output_frac)-1 downto 0);
 		Variable Count : Integer := 0;		
@@ -130,12 +130,12 @@
 --		wait;
 	
 		--abrir vectores com as componentes dos sinais X e Y canais para leitura
-		file_open(file_pointer_Input_re, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Input_R.txt"), READ_MODE);
-		file_open(file_pointer_Input_img, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Input_I.txt"), READ_MODE);
+		file_open(file_pointer_Input_re, string'("C:\netxpto\Celestino\sdf\dsp_laser_phase_compensation\VHDL\Matlab_Functions\Input_R.txt"), READ_MODE);
+		file_open(file_pointer_Input_img, string'("C:\netxpto\Celestino\sdf\dsp_laser_phase_compensation\VHDL\Matlab_Functions\Input_I.txt"), READ_MODE);
 						
 		--abrir vectores de escrita
-		file_open(file_pointer_Output_re, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Output_R0.txt"), WRITE_MODE);
-		file_open(file_pointer_Output_img, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Output_I0.txt"), WRITE_MODE);
+		file_open(file_pointer_Output_re, string'("C:\netxpto\Celestino\sdf\dsp_laser_phase_compensation\VHDL\Matlab_Functions\Output_R0.txt"), WRITE_MODE);
+		file_open(file_pointer_Output_img, string'("C:\netxpto\Celestino\sdf\dsp_laser_phase_compensation\VHDL\Matlab_Functions\Output_I0.txt"), WRITE_MODE);
 		
 		file_open(file_pointer_Output_re_bit, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Output_re_bit.txt"), WRITE_MODE);
 		file_open(file_pointer_Output_re_bit0, string'("C:\Users\csmartins\Dropbox\_PhD\MyWorks\VHDL\Matlab_Functions\Output_re0_bit.txt"), WRITE_MODE);

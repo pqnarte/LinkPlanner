@@ -7,7 +7,7 @@
 # include <random>
 #include <math.h>
 
-# include "netxpto_20180418.h"
+//# include "netxpto_20180118.h"
 using namespace std;
 
 #ifndef M_PI
@@ -78,15 +78,17 @@ bool CPE::runBlock(void) {
 	}
 	if (!methodType.compare("BPS")) {
 
-		DecisionCircuitQPSK DC;
+		DecisionCircuit DC;
 
 		t_complex var(0.0, 0.0);
 		t_complex Signal_rot(0.0, 0.0);
-		t_complex Signal_ref(0.0, 0.0);
+		//t_complex Signal_ref(0.0, 0.0);
+		
 		vector <double> vect_temp(process + nTaps - 1, 0);
 		vector<vector <double>> bufferABSdiff(nTestPhase, vect_temp);
 		vector<vector <double>> phaseEstimationBPS(nTestPhase, vect_temp);
 		vector<complex <double>> bufferOutput(process);
+		vector<vector <complex <double>>> Signal_ref(nTestPhase, bufferOutput);
 		vector <double> phaseEstimation(process);
 		vector <int> index_phaseTest(process);
 		vector<complex <double>> InputRotated(process);
@@ -101,8 +103,13 @@ bool CPE::runBlock(void) {
 
 				inputSignals[0]->bufferGet(&var);
 				Signal_rot = var * exp(I * phiTest);
-				Signal_ref = DC.DecisionCircuit(Signal_rot);			
-				bufferABSdiff[b][(nTaps - 1) / 2 + i] = pow(abs(Signal_rot - Signal_ref), 2);
+				if (mQAM == 4) {
+					Signal_ref[b][i] = DC.DecisionCircuitQPSK(Signal_rot);
+				}
+				if (mQAM == 16) {
+					Signal_ref[b][i] = DC.DecisionCircuit16QAM(Signal_rot);
+				}
+				bufferABSdiff[b][(nTaps - 1) / 2 + i] = pow(abs(Signal_rot - Signal_ref[b][i]), 2);
 			}						
 		}
 
@@ -134,15 +141,26 @@ bool CPE::runBlock(void) {
 			}
 			phiTestSel.at(i) = (double(index_phaseTest.at(i)) / double(nTestPhase) - 1.0 / 2.0) * phiInt;
 		}
-		UnWrapClass.Unwrap(phiTestSel);
-		
-		for (int i = 0; i < process; i++) {
+		if (!BPStype.compare("A")) {
 
-			inputSignals[0]->bufferGet(&var);
-			bufferOutput.at(i) = var * exp(I * (phiTestSel.at(i) )); 
-			outputSignals[0]->bufferPut(bufferOutput.at(i));
+			UnWrapClass.Unwrap(phiTestSel);
+
+			for (int i = 0; i < process; i++) {
+				inputSignals[0]->bufferGet(&var);
+				bufferOutput.at(i) = var * exp(I * (phiTestSel.at(i)));
+				outputSignals[0]->bufferPut(bufferOutput.at(i));
+			}
+			return true;
 		}
-		return true;
+		if (!BPStype.compare("B")) {
+
+			for (int i = 0; i < process; i++) {				
+				bufferOutput.at(i) = Signal_ref[index_phaseTest.at(i)][i];
+				outputSignals[0]->bufferPut(bufferOutput.at(i));
+			}
+			return true;
+		}
+		//return true;
 	}
 	cout << "ERROR: Undefined CPE method \n";
 	return false;

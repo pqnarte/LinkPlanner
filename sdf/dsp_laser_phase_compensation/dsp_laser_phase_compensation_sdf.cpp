@@ -1,9 +1,9 @@
-# include "netxpto_20180418.h"
+# include "netxpto_20180118.h"
 
-# include "binary_source_20180523.h"
+# include "binary_source_20180118.h"
 # include "m_qam_mapper_20180118.h"
 # include "discrete_to_continuous_time_20180118.h"
-# include "pulse_shaper_20180118.h"
+# include "pulse_shaper_20180111.h"
 # include "local_oscillator_20180130.h"
 # include "iq_modulator_20180130.h"
 # include "photodiode_old_20180118.h"
@@ -14,9 +14,9 @@
 # include "resample_20180423.h"
 # include "quantizer_20180423.h"
 # include "cpe_20180423.h"
-# include "dsp_20180423.h"
+#include "dsp_20180423.h"
 # include "real_to_complex_20180221.h"
-# include "sink_20180620.h"
+# include "sink.h"
 # include <limits>
 
 int main(){
@@ -48,8 +48,9 @@ int main(){
 	double rFactor{ 1.0 };
 	int nTapsCPE{ 1 };
 	string methodType = "BPS"; // VV or BPS
-	int NTestPhase = 64;
-	int M = 16;
+	string BPStype = "A"; // A or B
+	int NTestPhase = 32;
+	int M = 4;
 
 	// #####################################################################################################
 	// ########################### Signals Declaration and Inicialization ##################################
@@ -80,16 +81,19 @@ int main(){
 	//TimeContinuousAmplitudeDiscreteReal S22{ "S22.sgn" };
 	//BandpassSignal S23{ "S23.sgn" };
 
-	BandpassSignal S21{ "S21.sgn" };
+	//BandpassSignal S21{ "S21.sgn" };
 	//S21.setFirstValueToBeSaved(320);
 
-	Binary S22{ "S25.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S21{ "S21.sgn" };
+	TimeContinuousAmplitudeDiscreteReal S22{ "S22.sgn" };
+
+	Binary S23{ "S23.sgn" };
 
 	// #####################################################################################################
 	// ########################### Blocks Declaration and Inicialization ###################################
 	// #####################################################################################################
 
-	BinarySource B1{ vector<Signal*> {}, vector<Signal*> { &S1, &S22 } };
+	BinarySource B1{ vector<Signal*> {}, vector<Signal*> { &S1, &S23 } };
 	B1.setMode(sourceMode);
 	B1.setPatternLength(patternLength);
 	B1.setBitStream(bitStream);
@@ -97,8 +101,8 @@ int main(){
 	B1.setNumberOfBits(numberOfBits);
 	
 	MQamMapper B2{ vector<Signal*> { &S1 }, vector<Signal*> { &S2, &S3 } };
-	//B2.setIqAmplitudes(iqAmplitudes);
-	B2.setM(16);
+	B2.setIqAmplitudes(iqAmplitudes);
+	//B2.setM(M);
 
 	DiscreteToContinuousTime B3{ vector<Signal*> { &S2 }, vector<Signal*> { &S4 } };
 	B3.setNumberOfSamplesPerSymbol(numberOfSamplesPerSymbol);
@@ -188,20 +192,20 @@ int main(){
 	B16.setSamplingPeriod(samplingPeriod);
 	//B16.setSaveInternalSignals(true);
 
-	DSP B17{ vector<Signal*> { &S19, &S20 }, vector<Signal*> {&S21} };
+	DSP B17{ vector<Signal*> { &S19, &S20 }, vector<Signal*> {&S21, &S22} };
 	B17.setCPESamplingPeriod(samplingPeriod);
 	B17.setCPEnTaps(nTapsCPE);
 	B17.setCPEmethodType(methodType);
+	B17.setCPEBPStype(BPStype);
 	B17.setSamplingPeriod(samplingPeriod);
 	B17.setCPETestPhase(NTestPhase);
-	B17.setCPETestPhase(NTestPhase);
-	//B17.setCPEmQAM(M);
+	B17.setCPEmQAM(M);
 
-	Sink B21{ vector<Signal*> { &S21 }, vector<Signal*> {} };
+	Sink B21{ vector<Signal*> { &S21, &S22 }, vector<Signal*> {} };
 	//B9.setNumberOfSamples(5000);
 	//B9.setDisplayNumberOfSamples(true);
 
-	Sink B22{ vector<Signal*> { &S22 }, vector<Signal*> {} };
+	Sink B22{ vector<Signal*> { &S23 }, vector<Signal*> {} };
 
 	// #####################################################################################################
 	// ########################### System Declaration and Inicialization ###################################

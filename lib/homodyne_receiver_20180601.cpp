@@ -33,17 +33,17 @@ HomodyneReceiver::HomodyneReceiver(vector<Signal *> &inputSignal, vector<Signal 
 	B9.initializeBlock(vector<Signal*> { &HMD08, &HMD10 }, vector<Signal*> { &HMD12 }); //Add
 	B10.initializeBlock(vector<Signal*> { &HMD09, &HMD11 }, vector<Signal*> { &HMD13 }); //Add
 	T1.initializeBlock(vector<Signal*> { &HMD12, &HMD13 }, vector<Signal*> { &TS1, &TS2}); //SNR estimation
-	//T2.initializeBlock(vector<Signal*> { &HMD13 }, vector<Signal*> { &TS2 }); //SNR estimation
 	B11.initializeBlock(vector<Signal*> { &TS1 }, vector<Signal*> { &HMD14 }); //Pulse Shaper
 	B12.initializeBlock(vector<Signal*> { &TS2 }, vector<Signal*> { &HMD15 }); //Pulse Shaper
-	B13.initializeBlock(vector<Signal*> { &HMD14 }, vector<Signal*> { &HMD16 }); //Sampler
-	B14.initializeBlock(vector<Signal*> { &HMD15 }, vector<Signal*> { &HMD17 }); //Sampler
+	T2.initializeBlock(vector<Signal*> { &HMD14, &HMD15 }, vector<Signal*> { &TS3, &TS4 }); //SNR estimation
+	B13.initializeBlock(vector<Signal*> { &TS3 }, vector<Signal*> { &HMD16 }); //Sampler
+	B14.initializeBlock(vector<Signal*> { &TS4 }, vector<Signal*> { &HMD17 }); //Sampler
 //	B13.initializeBlock(vector<Signal*> { &TS1}, vector<Signal*> { &HMD16 }); //Sampler
 //	B14.initializeBlock(vector<Signal*> { &TS2 }, vector<Signal*> { &HMD17 }); //Sampler
 	B15.initializeBlock(vector<Signal*> { &HMD16, &HMD17 }, vector<Signal*> { &HMD18 }); //Decoder
 
 //	setModuleBlocks({ &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10, &B11, &B12 });
-	setModuleBlocks({ &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10, &T1, &B11, &B12, &B13, &B14, &B15 });
+	setModuleBlocks({ &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10, &T1, &B11, &B12, &T2, &B13, &B14, &B15 });
 //	setModuleBlocks({ &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10, &T1, &B13, &B14, &B15 });
 //	setModuleBlocks({ &B1, &B2, &B3, &B4, &B5, &B6, &B7, &B8, &B9, &B10, &B13, &B14, &B15 });
 };

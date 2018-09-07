@@ -1,7 +1,7 @@
 #ifndef SINGLE_PHOTON_RECEIVER_H
 #define SINGLE_PHOTON_RECEIVER_H
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 #include "pulse_shaper_20180111.h"
 #include "sampler_20171119.h"
 #include "coincidence_detector_20180206.h"

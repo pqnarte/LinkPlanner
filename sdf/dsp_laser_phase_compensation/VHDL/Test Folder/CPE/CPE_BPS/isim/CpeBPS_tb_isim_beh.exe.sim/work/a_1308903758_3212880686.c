@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/Min_Array.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Final Folder/Min_Array.vhd";
 extern char *IEEE_P_2592010699;
 extern char *IEEE_P_0774719531;
 extern char *IEEE_P_1242562249;
@@ -35,16 +35,16 @@ static void work_a_1308903758_3212880686_p_0(char *t0)
 {
     char t37[16];
     char *t1;
-    char *t2;
-    int t3;
-    unsigned int t4;
-    unsigned int t5;
-    unsigned int t6;
+    unsigned char t2;
+    char *t3;
+    char *t4;
+    unsigned char t5;
+    unsigned char t6;
     char *t7;
-    char *t8;
-    unsigned char t9;
-    unsigned char t10;
-    unsigned char t11;
+    int t8;
+    unsigned int t9;
+    unsigned int t10;
+    unsigned int t11;
     char *t12;
     char *t13;
     int t14;
@@ -71,22 +71,10 @@ static void work_a_1308903758_3212880686_p_0(char *t0)
     char *t35;
     char *t36;
 
-LAB0:    xsi_set_current_line(31, ng0);
-    t1 = (t0 + 1352U);
-    t2 = *((char **)t1);
-    t3 = (16 - 1);
-    t4 = (31 - t3);
-    t5 = (t4 * 1U);
-    t6 = (0 + t5);
-    t1 = (t2 + t6);
-    t7 = (t0 + 2168U);
-    t8 = *((char **)t7);
-    t7 = (t8 + 0);
-    memcpy(t7, t1, 16U);
-    xsi_set_current_line(32, ng0);
+LAB0:    xsi_set_current_line(32, ng0);
     t1 = (t0 + 992U);
-    t9 = ieee_p_2592010699_sub_1744673427_503743352(IEEE_P_2592010699, t1, 0U, 0U);
-    if (t9 != 0)
+    t2 = ieee_p_2592010699_sub_1744673427_503743352(IEEE_P_2592010699, t1, 0U, 0U);
+    if (t2 != 0)
         goto LAB2;
 
 LAB4:
@@ -95,92 +83,104 @@ LAB3:    t1 = (t0 + 3712);
 
 LAB1:    return;
 LAB2:    xsi_set_current_line(33, ng0);
-    t2 = (t0 + 1192U);
-    t7 = *((char **)t2);
-    t10 = *((unsigned char *)t7);
-    t11 = (t10 == (unsigned char)3);
-    if (t11 != 0)
+    t3 = (t0 + 1192U);
+    t4 = *((char **)t3);
+    t5 = *((unsigned char *)t4);
+    t6 = (t5 == (unsigned char)3);
+    if (t6 != 0)
         goto LAB5;
 
 LAB7:
 LAB6:    goto LAB3;
 
 LAB5:    xsi_set_current_line(34, ng0);
-    t2 = xsi_get_transient_memory(1U);
-    memset(t2, 0, 1U);
-    t8 = t2;
-    memset(t8, (unsigned char)2, 1U);
-    t12 = (t0 + 2288U);
+    t3 = (t0 + 1352U);
+    t7 = *((char **)t3);
+    t8 = (16 - 1);
+    t9 = (31 - t8);
+    t10 = (t9 * 1U);
+    t11 = (0 + t10);
+    t3 = (t7 + t11);
+    t12 = (t0 + 2168U);
     t13 = *((char **)t12);
     t12 = (t13 + 0);
-    memcpy(t12, t2, 1U);
+    memcpy(t12, t3, 16U);
     xsi_set_current_line(35, ng0);
-    t3 = (2 - 1);
-    t1 = (t0 + 6339);
+    t1 = xsi_get_transient_memory(1U);
+    memset(t1, 0, 1U);
+    t3 = t1;
+    memset(t3, (unsigned char)2, 1U);
+    t4 = (t0 + 2288U);
+    t7 = *((char **)t4);
+    t4 = (t7 + 0);
+    memcpy(t4, t1, 1U);
+    xsi_set_current_line(36, ng0);
+    t8 = (2 - 1);
+    t1 = (t0 + 6483);
     *((int *)t1) = 1;
-    t2 = (t0 + 6343);
-    *((int *)t2) = t3;
+    t3 = (t0 + 6487);
+    *((int *)t3) = t8;
     t14 = 1;
-    t15 = t3;
+    t15 = t8;
 
 LAB8:    if (t14 <= t15)
         goto LAB9;
 
-LAB11:    xsi_set_current_line(43, ng0);
+LAB11:    xsi_set_current_line(44, ng0);
     t1 = (t0 + 2288U);
-    t2 = *((char **)t1);
+    t3 = *((char **)t1);
     t1 = (t0 + 3792);
-    t7 = (t1 + 56U);
-    t8 = *((char **)t7);
-    t12 = (t8 + 56U);
+    t4 = (t1 + 56U);
+    t7 = *((char **)t4);
+    t12 = (t7 + 56U);
     t13 = *((char **)t12);
-    memcpy(t13, t2, 1U);
+    memcpy(t13, t3, 1U);
     xsi_driver_first_trans_fast_port(t1);
-    xsi_set_current_line(44, ng0);
+    xsi_set_current_line(45, ng0);
     t1 = xsi_get_transient_memory(16U);
     memset(t1, 0, 16U);
-    t2 = t1;
-    memset(t2, (unsigned char)2, 16U);
-    t7 = (t0 + 2168U);
-    t8 = *((char **)t7);
-    t7 = (t8 + 0);
-    memcpy(t7, t1, 16U);
-    xsi_set_current_line(46, ng0);
+    t3 = t1;
+    memset(t3, (unsigned char)2, 16U);
+    t4 = (t0 + 2168U);
+    t7 = *((char **)t4);
+    t4 = (t7 + 0);
+    memcpy(t4, t1, 16U);
+    xsi_set_current_line(47, ng0);
     t1 = xsi_get_transient_memory(16U);
     memset(t1, 0, 16U);
-    t2 = t1;
-    memset(t2, (unsigned char)2, 16U);
-    t7 = (t0 + 2408U);
-    t8 = *((char **)t7);
-    t7 = (t8 + 0);
-    memcpy(t7, t1, 16U);
+    t3 = t1;
+    memset(t3, (unsigned char)2, 16U);
+    t4 = (t0 + 2408U);
+    t7 = *((char **)t4);
+    t4 = (t7 + 0);
+    memcpy(t4, t1, 16U);
     goto LAB6;
 
-LAB9:    xsi_set_current_line(36, ng0);
-    t7 = (t0 + 1352U);
-    t8 = *((char **)t7);
-    t7 = (t0 + 6339);
-    t16 = *((int *)t7);
+LAB9:    xsi_set_current_line(37, ng0);
+    t4 = (t0 + 1352U);
+    t7 = *((char **)t4);
+    t4 = (t0 + 6483);
+    t16 = *((int *)t4);
     t17 = (t16 + 1);
     t18 = (t17 * 16);
     t19 = (t18 - 1);
-    t4 = (31 - t19);
-    t12 = (t0 + 6339);
+    t9 = (31 - t19);
+    t12 = (t0 + 6483);
     t20 = *((int *)t12);
     t21 = (t20 * 16);
     xsi_vhdl_check_range_of_slice(31, 0, -1, t19, t21, -1);
-    t5 = (t4 * 1U);
-    t6 = (0 + t5);
-    t13 = (t8 + t6);
+    t10 = (t9 * 1U);
+    t11 = (0 + t10);
+    t13 = (t7 + t11);
     t22 = (t0 + 2408U);
     t23 = *((char **)t22);
     t22 = (t23 + 0);
-    t24 = (t0 + 6339);
+    t24 = (t0 + 6483);
     t25 = *((int *)t24);
     t26 = (t25 + 1);
     t27 = (t26 * 16);
     t28 = (t27 - 1);
-    t29 = (t0 + 6339);
+    t29 = (t0 + 6483);
     t30 = *((int *)t29);
     t31 = (t30 * 16);
     t32 = (t31 - t28);
@@ -188,57 +188,57 @@ LAB9:    xsi_set_current_line(36, ng0);
     t33 = (t33 + 1);
     t34 = (1U * t33);
     memcpy(t22, t13, t34);
-    xsi_set_current_line(37, ng0);
+    xsi_set_current_line(38, ng0);
     t1 = (t0 + 2168U);
-    t2 = *((char **)t1);
-    t1 = (t0 + 6204U);
-    t7 = (t0 + 2408U);
-    t8 = *((char **)t7);
-    t7 = (t0 + 6236U);
-    t9 = ieee_p_0774719531_sub_2698860368_2162500114(IEEE_P_0774719531, t2, t1, t8, t7);
-    if (t9 != 0)
+    t3 = *((char **)t1);
+    t1 = (t0 + 6348U);
+    t4 = (t0 + 2408U);
+    t7 = *((char **)t4);
+    t4 = (t0 + 6380U);
+    t2 = ieee_p_0774719531_sub_2698860368_2162500114(IEEE_P_0774719531, t3, t1, t7, t4);
+    if (t2 != 0)
         goto LAB12;
 
 LAB14:
 LAB13:
-LAB10:    t1 = (t0 + 6339);
+LAB10:    t1 = (t0 + 6483);
     t14 = *((int *)t1);
-    t2 = (t0 + 6343);
-    t15 = *((int *)t2);
+    t3 = (t0 + 6487);
+    t15 = *((int *)t3);
     if (t14 == t15)
         goto LAB11;
 
-LAB15:    t3 = (t14 + 1);
-    t14 = t3;
-    t7 = (t0 + 6339);
-    *((int *)t7) = t14;
+LAB15:    t8 = (t14 + 1);
+    t14 = t8;
+    t4 = (t0 + 6483);
+    *((int *)t4) = t14;
     goto LAB8;
 
-LAB12:    xsi_set_current_line(38, ng0);
+LAB12:    xsi_set_current_line(39, ng0);
     t12 = (t0 + 1352U);
     t13 = *((char **)t12);
-    t12 = (t0 + 6339);
-    t3 = *((int *)t12);
-    t16 = (t3 + 1);
+    t12 = (t0 + 6483);
+    t8 = *((int *)t12);
+    t16 = (t8 + 1);
     t17 = (t16 * 16);
     t18 = (t17 - 1);
-    t4 = (31 - t18);
-    t22 = (t0 + 6339);
+    t9 = (31 - t18);
+    t22 = (t0 + 6483);
     t19 = *((int *)t22);
     t20 = (t19 * 16);
     xsi_vhdl_check_range_of_slice(31, 0, -1, t18, t20, -1);
-    t5 = (t4 * 1U);
-    t6 = (0 + t5);
-    t23 = (t13 + t6);
+    t10 = (t9 * 1U);
+    t11 = (0 + t10);
+    t23 = (t13 + t11);
     t24 = (t0 + 2168U);
     t29 = *((char **)t24);
     t24 = (t29 + 0);
-    t35 = (t0 + 6339);
+    t35 = (t0 + 6483);
     t21 = *((int *)t35);
     t25 = (t21 + 1);
     t26 = (t25 * 16);
     t27 = (t26 - 1);
-    t36 = (t0 + 6339);
+    t36 = (t0 + 6483);
     t28 = *((int *)t36);
     t30 = (t28 * 16);
     t31 = (t30 - t27);
@@ -246,16 +246,16 @@ LAB12:    xsi_set_current_line(38, ng0);
     t33 = (t33 + 1);
     t34 = (1U * t33);
     memcpy(t24, t23, t34);
-    xsi_set_current_line(39, ng0);
-    t1 = (t0 + 6339);
-    t2 = ieee_p_1242562249_sub_180853171_1035706684(IEEE_P_1242562249, t37, *((int *)t1), 1);
-    t7 = (t0 + 2288U);
-    t8 = *((char **)t7);
-    t7 = (t8 + 0);
+    xsi_set_current_line(40, ng0);
+    t1 = (t0 + 6483);
+    t3 = ieee_p_1242562249_sub_180853171_1035706684(IEEE_P_1242562249, t37, *((int *)t1), 1);
+    t4 = (t0 + 2288U);
+    t7 = *((char **)t4);
+    t4 = (t7 + 0);
     t12 = (t37 + 12U);
-    t4 = *((unsigned int *)t12);
-    t4 = (t4 * 1U);
-    memcpy(t7, t2, t4);
+    t9 = *((unsigned int *)t12);
+    t9 = (t9 * 1U);
+    memcpy(t4, t3, t9);
     goto LAB13;
 
 }

@@ -126,7 +126,7 @@ bool WhiteNoise::runBlock(void){
 							 {
 								 t_real noiseI = distributionNoiseI(generator1);
 								 t_real noiseQ = distributionNoiseQ(generator2);
-								 output = (noiseI*sqrt(noisePower / 2), noiseQ*sqrt(noisePower / 2));
+								 output = t_complex(noiseI*sqrt(noisePower)/2, noiseQ*sqrt(noisePower)/2);
 							 }
 
 							 outputSignals[0]->bufferPut(output);

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Basic Functions/Expander_NSigned.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Basic Functions/Expander_NSigned.vhd";
 extern char *IEEE_P_2592010699;
 
 
@@ -133,8 +133,8 @@ LAB3:    t1 = (t0 + 1880U);
     t1 = (t0 + 2040U);
     t3 = *((char **)t1);
     t5 = ((IEEE_P_2592010699) + 4024);
-    t6 = (t0 + 7424U);
-    t7 = (t0 + 7440U);
+    t6 = (t0 + 7632U);
+    t7 = (t0 + 7648U);
     t1 = xsi_base_array_concat(t1, t4, t5, (char)97, t2, t6, (char)97, t3, t7, (char)101);
     t8 = (2U + 12U);
     t9 = (14U != t8);

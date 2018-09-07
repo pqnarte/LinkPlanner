@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/FindROMadrr.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Final Folder/FindROMadrr.vhd";
 extern char *IEEE_P_2592010699;
 extern char *IEEE_P_1242562249;
 
@@ -103,7 +103,7 @@ LAB5:    xsi_set_current_line(31, ng0);
     t7 = *((char **)t3);
     t3 = (t0 + 1192U);
     t8 = *((char **)t3);
-    t3 = (t0 + 6224U);
+    t3 = (t0 + 6364U);
     t9 = ieee_p_1242562249_sub_1657552908_1035706684(IEEE_P_1242562249, t8, t3);
     t10 = (t9 + 1);
     t11 = (t10 * 2);
@@ -111,7 +111,7 @@ LAB5:    xsi_set_current_line(31, ng0);
     t13 = (3 - t12);
     t14 = (t0 + 1192U);
     t15 = *((char **)t14);
-    t14 = (t0 + 6224U);
+    t14 = (t0 + 6364U);
     t16 = ieee_p_1242562249_sub_1657552908_1035706684(IEEE_P_1242562249, t15, t14);
     t17 = (t16 * 2);
     xsi_vhdl_check_range_of_slice(3, 0, -1, t12, t17, -1);

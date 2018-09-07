@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Basic Functions/Expander_NSigned.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Basic Functions/Expander_NSigned.vhd";
 extern char *IEEE_P_2592010699;
 
 
@@ -70,9 +70,9 @@ LAB0:    xsi_set_current_line(51, ng0);
     memcpy(t8, t1, 2U);
     xsi_set_current_line(52, ng0);
     t3 = (3 - 1);
-    t1 = (t0 + 7732);
+    t1 = (t0 + 7956);
     *((int *)t1) = 2;
-    t2 = (t0 + 7736);
+    t2 = (t0 + 7960);
     *((int *)t2) = t3;
     t4 = 2;
     t10 = t3;
@@ -107,7 +107,7 @@ LAB3:    xsi_set_current_line(53, ng0);
     t17 = *((unsigned char *)t8);
     t18 = (t0 + 2816U);
     t19 = *((char **)t18);
-    t18 = (t0 + 7732);
+    t18 = (t0 + 7956);
     t20 = *((int *)t18);
     t21 = (t20 - 2);
     t11 = (t21 * -1);
@@ -117,16 +117,16 @@ LAB3:    xsi_set_current_line(53, ng0);
     t22 = (t19 + t13);
     *((unsigned char *)t22) = t17;
 
-LAB4:    t1 = (t0 + 7732);
+LAB4:    t1 = (t0 + 7956);
     t4 = *((int *)t1);
-    t2 = (t0 + 7736);
+    t2 = (t0 + 7960);
     t10 = *((int *)t2);
     if (t4 == t10)
         goto LAB5;
 
 LAB6:    t3 = (t4 + 1);
     t4 = t3;
-    t8 = (t0 + 7732);
+    t8 = (t0 + 7956);
     *((int *)t8) = t4;
     goto LAB2;
 
@@ -197,8 +197,8 @@ LAB3:    t1 = (t0 + 1880U);
     t1 = (t0 + 2040U);
     t3 = *((char **)t1);
     t5 = ((IEEE_P_2592010699) + 4024);
-    t6 = (t0 + 7640U);
-    t7 = (t0 + 7656U);
+    t6 = (t0 + 7864U);
+    t7 = (t0 + 7880U);
     t1 = xsi_base_array_concat(t1, t4, t5, (char)97, t2, t6, (char)97, t3, t7, (char)101);
     t8 = (3U + 6U);
     t9 = (9U != t8);

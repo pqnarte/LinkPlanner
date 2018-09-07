@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/ErrorTPhasev2.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Final Folder/ErrorTPhase.vhd";
 
 
 
@@ -35,7 +35,7 @@ static void work_a_0798703736_3708392848_p_0(char *t0)
     char *t6;
     char *t7;
 
-LAB0:    xsi_set_current_line(244, ng0);
+LAB0:    xsi_set_current_line(227, ng0);
 
 LAB3:    t1 = (t0 + 3160U);
     t2 = *((char **)t1);

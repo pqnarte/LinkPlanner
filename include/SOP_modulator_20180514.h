@@ -1,7 +1,7 @@
 #ifndef SOP_MODULATOR_H
 #define SOP_MODULATOR_H
 
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 #include <math.h> 
 #include <random>
 #include <chrono>

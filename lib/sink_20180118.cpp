@@ -1,7 +1,5 @@
 # include "sink_20180118.h"
 
-
-
 using namespace std;
 
 Sink::Sink(vector<Signal *> &InputSig, vector<Signal *> &OutputSig) {

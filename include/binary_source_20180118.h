@@ -14,7 +14,7 @@
 # include <random>
 #include <chrono>
 
-# include "netxpto_20180118.h"
+# include "netxpto_20180418.h"
 
 enum BinarySourceMode { Random, PseudoRandom, DeterministicCyclic, DeterministicAppendZeros };
 

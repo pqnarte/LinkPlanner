@@ -24,137 +24,126 @@
   <files xmlns="http://www.xilinx.com/XMLSchema">
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Array2Array2_isim_beh.exe"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="AverageN_IT_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="CpeBPS.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="CpeBPS.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="CpeBPS.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="CpeBPS.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="CpeBPS.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="CpeBPS.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="CpeBPS.xst"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_beh.prj"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="CpeBPS_envsettings.html"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="CpeBPS_isim_beh.exe"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_stx_beh.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_stx_beh.prj"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="CpeBPS_summary.html"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_tb_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="CpeBPS_tb_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_ISIM_MISC" xil_pn:name="CpeBPS_tb_isim_beh.wdb"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_tb_stx_beh.prj"/>
-    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_tb_stx_translate.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_tb_stx_beh.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="CpeBPS_tb_stx_translate.prj"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="CpeBPS_xst.xrpt"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="FindROMIndex_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="FindROMIndex_stx_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="MinArray_isim_beh.exe"/>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="ROM_IQmap_Sel_isim_beh.exe"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ROM_IQmap_stx_beh.prj"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_ISIM_EXE" xil_pn:name="Register_IT_isim_beh.exe"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="fuse.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1530708551" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1530708551" xil_pn:in_ck="-775204116468590549" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:in_ck="-2651661247207148927" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../../../Basic Functions/AbsCValue2.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/AdderN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Adder_IT.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Average_IT.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Buffer_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/ComplexMultiplierN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Delay_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/Expander_NSigned.vhd"/>
-      <outfile xil_pn:name="../../../Basic Functions/LutExpTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/MultiplierN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Multiplier_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/SubtractorN_Signed.vhd"/>
-      <outfile xil_pn:name="../../../Basic Functions/Sum_N_Signed.vhd"/>
-      <outfile xil_pn:name="../2Darray_pkg.vhd"/>
-      <outfile xil_pn:name="../Adder_IT.vhd"/>
-      <outfile xil_pn:name="../ArrayColRead.vhd"/>
-      <outfile xil_pn:name="../ArrayN2ArrayM.vhd"/>
-      <outfile xil_pn:name="../ArrayN2ArrayM2.vhd"/>
-      <outfile xil_pn:name="../AverageN_IT.vhd"/>
-      <outfile xil_pn:name="../Average_IT.vhd"/>
-      <outfile xil_pn:name="../Average_Ncylce.vhd"/>
-      <outfile xil_pn:name="../Buffer_IT.vhd"/>
-      <outfile xil_pn:name="../CPE_BPSv2.vhd"/>
-      <outfile xil_pn:name="../DecisionCircuit16QAM.vhd"/>
-      <outfile xil_pn:name="../DecisionCircuit4QAM.vhd"/>
-      <outfile xil_pn:name="../Delay_IT.vhd"/>
-      <outfile xil_pn:name="../ErrorTPhasev2.vhd"/>
-      <outfile xil_pn:name="../FindQuad.vhd"/>
-      <outfile xil_pn:name="../FindROMIndex.vhd"/>
-      <outfile xil_pn:name="../FindROMadrr.vhd"/>
-      <outfile xil_pn:name="../Min_Array.vhd"/>
-      <outfile xil_pn:name="../MultiplierN_Signed.vhd"/>
-      <outfile xil_pn:name="../Multiplier_IT.vhd"/>
-      <outfile xil_pn:name="../ROM_IQmap.vhd"/>
-      <outfile xil_pn:name="../ROM_IQmap_Sel.vhd"/>
-      <outfile xil_pn:name="../Register_IT.vhd"/>
-      <outfile xil_pn:name="../SquareDistv2.vhd"/>
-      <outfile xil_pn:name="../Subtractor_IT.vhd"/>
-      <outfile xil_pn:name="../SymbolSelection.vhd"/>
-      <outfile xil_pn:name="../constDef_pkg.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Subtractor_IT.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ArrayN2ArrayM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ArrayN2ArrayM2.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/CPE_BPS.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/DecisionCircuit16QAM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/DecisionCircuit4QAM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ErrorTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/FindQuad.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/FindROMadrr.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/LutExpTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/Min_Array.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ROM2_IQmap_Sel.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ROM_IQmap_Sel.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/SquareDist.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/SymbolSelection.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/constDef_pkg.vhd"/>
       <outfile xil_pn:name="CPE_BPS_tb.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1530708551" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="9139461996083215368" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="9139461996083215368" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1530708551" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7249325023599164696" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7249325023599164696" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1530708551" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-533361953228861425" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="-5928229380441817019" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1530708551" xil_pn:in_ck="-775204116468590549" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244415" xil_pn:in_ck="-2651661247207148927" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../../../Basic Functions/AbsCValue2.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/AdderN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Adder_IT.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Average_IT.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Buffer_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/ComplexMultiplierN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Delay_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/Expander_NSigned.vhd"/>
-      <outfile xil_pn:name="../../../Basic Functions/LutExpTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/MultiplierN_Signed.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Multiplier_IT.vhd"/>
       <outfile xil_pn:name="../../../Basic Functions/SubtractorN_Signed.vhd"/>
-      <outfile xil_pn:name="../../../Basic Functions/Sum_N_Signed.vhd"/>
-      <outfile xil_pn:name="../2Darray_pkg.vhd"/>
-      <outfile xil_pn:name="../Adder_IT.vhd"/>
-      <outfile xil_pn:name="../ArrayColRead.vhd"/>
-      <outfile xil_pn:name="../ArrayN2ArrayM.vhd"/>
-      <outfile xil_pn:name="../ArrayN2ArrayM2.vhd"/>
-      <outfile xil_pn:name="../AverageN_IT.vhd"/>
-      <outfile xil_pn:name="../Average_IT.vhd"/>
-      <outfile xil_pn:name="../Average_Ncylce.vhd"/>
-      <outfile xil_pn:name="../Buffer_IT.vhd"/>
-      <outfile xil_pn:name="../CPE_BPSv2.vhd"/>
-      <outfile xil_pn:name="../DecisionCircuit16QAM.vhd"/>
-      <outfile xil_pn:name="../DecisionCircuit4QAM.vhd"/>
-      <outfile xil_pn:name="../Delay_IT.vhd"/>
-      <outfile xil_pn:name="../ErrorTPhasev2.vhd"/>
-      <outfile xil_pn:name="../FindQuad.vhd"/>
-      <outfile xil_pn:name="../FindROMIndex.vhd"/>
-      <outfile xil_pn:name="../FindROMadrr.vhd"/>
-      <outfile xil_pn:name="../Min_Array.vhd"/>
-      <outfile xil_pn:name="../MultiplierN_Signed.vhd"/>
-      <outfile xil_pn:name="../Multiplier_IT.vhd"/>
-      <outfile xil_pn:name="../ROM_IQmap.vhd"/>
-      <outfile xil_pn:name="../ROM_IQmap_Sel.vhd"/>
-      <outfile xil_pn:name="../Register_IT.vhd"/>
-      <outfile xil_pn:name="../SquareDistv2.vhd"/>
-      <outfile xil_pn:name="../Subtractor_IT.vhd"/>
-      <outfile xil_pn:name="../SymbolSelection.vhd"/>
-      <outfile xil_pn:name="../constDef_pkg.vhd"/>
+      <outfile xil_pn:name="../../../Basic Functions/Subtractor_IT.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ArrayN2ArrayM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ArrayN2ArrayM2.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/CPE_BPS.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/DecisionCircuit16QAM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/DecisionCircuit4QAM.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ErrorTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/FindQuad.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/FindROMadrr.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/LutExpTPhase.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/Min_Array.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ROM2_IQmap_Sel.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/ROM_IQmap_Sel.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/SquareDist.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/SymbolSelection.vhd"/>
+      <outfile xil_pn:name="../../../Final Folder/constDef_pkg.vhd"/>
       <outfile xil_pn:name="CPE_BPS_tb.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1530708557" xil_pn:in_ck="-775204116468590549" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="1415090434951581433" xil_pn:start_ts="1530708551">
+    <transform xil_pn:end_ts="1536244425" xil_pn:in_ck="-2651661247207148927" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="1415090434951581433" xil_pn:start_ts="1536244415">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CpeBPS_tb_beh.prj"/>
       <outfile xil_pn:name="CpeBPS_tb_isim_beh.exe"/>
@@ -163,16 +152,68 @@
       <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1530708557" xil_pn:in_ck="-1300950514354419958" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3036636931210756742" xil_pn:start_ts="1530708557">
+    <transform xil_pn:end_ts="1536244426" xil_pn:in_ck="9014093427049061441" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="3036636931210756742" xil_pn:start_ts="1536244425">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="CpeBPS_tb_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
       <outfile xil_pn:name="isim.log"/>
+    </transform>
+    <transform xil_pn:end_ts="1532020251" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1532020251">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1536067813" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="90670454085706968" xil_pn:start_ts="1536067813">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1536067813" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="-5928229380441817019" xil_pn:start_ts="1536067813">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1532020251" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1532020251">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1536067813" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="688001876698275464" xil_pn:start_ts="1536067813">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1532020252" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="15701343915878886" xil_pn:start_ts="1532020252">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1536067813" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="4200326380108884111" xil_pn:start_ts="1536067813">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1536068610" xil_pn:in_ck="8545204063719827520" xil_pn:name="TRANEXT_xstsynthesize_virtex6" xil_pn:prop_ck="-3763899903927973147" xil_pn:start_ts="1536068531">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
+      <outfile xil_pn:name="CpeBPS.lso"/>
+      <outfile xil_pn:name="CpeBPS.ngc"/>
+      <outfile xil_pn:name="CpeBPS.ngr"/>
+      <outfile xil_pn:name="CpeBPS.prj"/>
+      <outfile xil_pn:name="CpeBPS.stx"/>
+      <outfile xil_pn:name="CpeBPS.syr"/>
+      <outfile xil_pn:name="CpeBPS.xst"/>
+      <outfile xil_pn:name="CpeBPS_beh.prj"/>
+      <outfile xil_pn:name="CpeBPS_stx_beh.prj"/>
+      <outfile xil_pn:name="CpeBPS_tb_stx_beh.prj"/>
+      <outfile xil_pn:name="CpeBPS_tb_stx_translate.prj"/>
+      <outfile xil_pn:name="CpeBPS_xst.xrpt"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
     </transform>
   </transforms>
 

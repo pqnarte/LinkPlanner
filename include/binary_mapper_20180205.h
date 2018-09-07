@@ -1,7 +1,7 @@
 #ifndef BINARY_MAPPER_H
 #define BINARY_MAPPER_H
 	
-#include "netxpto_20180118.h"
+#include "netxpto_20180418.h"
 
 class BinaryMapper : public Block {
 	/* State Variables */

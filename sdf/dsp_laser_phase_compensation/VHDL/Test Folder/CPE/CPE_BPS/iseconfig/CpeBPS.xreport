@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2018-07-04T12:49:37</DateModified>
+  <DateModified>2018-09-06T15:31:16</DateModified>
   <ModuleName>CpeBPS</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/CPE_BPS/iseconfig/CpeBPS.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/CPE_BPS\</ImplementationReportsDirectory>
+  <SavedFilePath>C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Test Folder/CPE/CPE_BPS/iseconfig/CpeBPS.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Test Folder/CPE/CPE_BPS\</ImplementationReportsDirectory>
   <DateInitialized>2018-05-10T17:56:05</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

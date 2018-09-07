@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "C:/Users/csmartins/Dropbox/_PhD/MyWorks/VHDL/Test Folder/CPE/Average_IT.vhd";
+static const char *ng0 = "C:/netxpto/Celestino/sdf/dsp_laser_phase_compensation/VHDL/Basic Functions/Average_IT.vhd";
 extern char *IEEE_P_3972351953;
 extern char *IEEE_P_0774719531;
 
@@ -105,9 +105,9 @@ LAB0:    xsi_set_current_line(31, ng0);
     memcpy(t3, t1, 16U);
     xsi_set_current_line(32, ng0);
     t5 = (1 - 1);
-    t1 = (t0 + 5596);
+    t1 = (t0 + 5736);
     *((int *)t1) = 0;
-    t2 = (t0 + 5600);
+    t2 = (t0 + 5740);
     *((int *)t2) = t5;
     t6 = 0;
     t7 = t5;
@@ -189,13 +189,13 @@ LAB1:    return;
 LAB3:    xsi_set_current_line(33, ng0);
     t3 = (t0 + 1032U);
     t4 = *((char **)t3);
-    t3 = (t0 + 5596);
+    t3 = (t0 + 5736);
     t8 = *((int *)t3);
     t9 = (t8 + 1);
     t10 = (t9 * 16);
     t11 = (t10 - 1);
     t12 = (15 - t11);
-    t13 = (t0 + 5596);
+    t13 = (t0 + 5736);
     t14 = *((int *)t13);
     t15 = (t14 * 16);
     xsi_vhdl_check_range_of_slice(15, 0, -1, t11, t15, -1);
@@ -209,12 +209,12 @@ LAB3:    xsi_set_current_line(33, ng0);
     t23 = (t22 * 1U);
     t24 = (0 + t23);
     t19 = (t20 + t24);
-    t25 = (t0 + 5596);
+    t25 = (t0 + 5736);
     t26 = *((int *)t25);
     t27 = (t26 + 1);
     t28 = (t27 * 16);
     t29 = (t28 - 1);
-    t30 = (t0 + 5596);
+    t30 = (t0 + 5736);
     t31 = *((int *)t30);
     t32 = (t31 * 16);
     t33 = (t32 - t29);
@@ -234,9 +234,9 @@ LAB11:    t41 = (t37 - 0.50000000000000000);
 
 LAB12:    t8 = (16 + t5);
     t9 = (t8 - 1);
-    t1 = (t0 + 5604);
+    t1 = (t0 + 5744);
     *((int *)t1) = 16;
-    t2 = (t0 + 5608);
+    t2 = (t0 + 5748);
     *((int *)t2) = t9;
     t10 = 16;
     t11 = t9;
@@ -247,10 +247,10 @@ LAB6:    if (t10 <= t11)
 LAB9:    xsi_set_current_line(37, ng0);
     t1 = (t0 + 1848U);
     t2 = *((char **)t1);
-    t1 = (t0 + 5512U);
+    t1 = (t0 + 5652U);
     t3 = (t0 + 1968U);
     t4 = *((char **)t3);
-    t3 = (t0 + 5512U);
+    t3 = (t0 + 5652U);
     t13 = ieee_p_0774719531_sub_767668596_2162500114(IEEE_P_0774719531, t43, t2, t1, t4, t3);
     t18 = (t0 + 1848U);
     t19 = *((char **)t18);
@@ -260,23 +260,23 @@ LAB9:    xsi_set_current_line(37, ng0);
     t16 = (1U * t12);
     memcpy(t18, t13, t16);
 
-LAB4:    t1 = (t0 + 5596);
+LAB4:    t1 = (t0 + 5736);
     t6 = *((int *)t1);
-    t2 = (t0 + 5600);
+    t2 = (t0 + 5740);
     t7 = *((int *)t2);
     if (t6 == t7)
         goto LAB5;
 
 LAB16:    t5 = (t6 + 1);
     t6 = t5;
-    t3 = (t0 + 5596);
+    t3 = (t0 + 5736);
     *((int *)t3) = t6;
     goto LAB2;
 
 LAB7:    xsi_set_current_line(35, ng0);
     t3 = (t0 + 1032U);
     t4 = *((char **)t3);
-    t3 = (t0 + 5596);
+    t3 = (t0 + 5736);
     t14 = *((int *)t3);
     t15 = (t14 + 1);
     t21 = (t15 * 16);
@@ -290,7 +290,7 @@ LAB7:    xsi_set_current_line(35, ng0);
     t42 = *((unsigned char *)t13);
     t18 = (t0 + 1968U);
     t19 = *((char **)t18);
-    t18 = (t0 + 5604);
+    t18 = (t0 + 5744);
     t28 = *((int *)t18);
     t29 = (t28 - 15);
     t22 = (t29 * -1);
@@ -300,16 +300,16 @@ LAB7:    xsi_set_current_line(35, ng0);
     t20 = (t19 + t24);
     *((unsigned char *)t20) = t42;
 
-LAB8:    t1 = (t0 + 5604);
+LAB8:    t1 = (t0 + 5744);
     t10 = *((int *)t1);
-    t2 = (t0 + 5608);
+    t2 = (t0 + 5748);
     t11 = *((int *)t2);
     if (t10 == t11)
         goto LAB9;
 
 LAB15:    t5 = (t10 + 1);
     t10 = t5;
-    t3 = (t0 + 5604);
+    t3 = (t0 + 5744);
     *((int *)t3) = t10;
     goto LAB6;
 

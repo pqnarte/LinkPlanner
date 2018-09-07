@@ -40,7 +40,7 @@ typedef struct {
 	int size() { return 3; }
 } t_message;
 
-enum signal_value_type {AsciiValue, BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
+enum signal_value_type {BinaryValue, IntegerValue, RealValue, ComplexValue, ComplexValueXY, PhotonValue, PhotonValueMP, PhotonValueMPXY, Message};
 
 
 //########################################################################################################################################################
@@ -131,7 +131,6 @@ public:
 	};
 
 	void virtual bufferGet();
-	void virtual bufferGet(char * valueAddr);
 	void virtual bufferGet(t_binary *valueAddr);
 	void virtual bufferGet(t_integer *valueAddr);
 	void virtual bufferGet(t_real *valueAddr);
@@ -242,15 +241,6 @@ public:
 	TimeDiscreteAmplitudeDiscreteComplex() {}
 };
 
-class Ascii : public Signal {
-
-public:
-	Ascii(string fName) { setType("Ascii", AsciiValue);  setFileName(fName); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
-	Ascii(string fName, string folderName) : Signal(fName, folderName) { setType("Ascii", AsciiValue); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
-	Ascii(string fName, int bLength) { setType("Ascii", AsciiValue); setFileName(fName); setBufferLength(bLength); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
-	Ascii(int bLength) { setType("Ascii", AsciiValue); setBufferLength(bLength); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
-	Ascii() { setType("Ascii", AsciiValue); if (buffer == nullptr) buffer = new char[getBufferLength()]; };
-};
 
 class Binary : public Signal {
 	
@@ -632,6 +622,19 @@ public:
 
 };
 
+class UnwrapFunctions
+{
+public:
+	void Unwrap(vector<double> &PhaseIn);
+
+};
+
+class DecisionCircuit
+{
+public:
+	complex <double> DecisionCircuitQPSK(complex <double> &Signal_in);
+	complex <double> DecisionCircuit16QAM(complex <double> &Signal_in);
+};
 
 // Generates a complex signal knowing the real part and the complex part.
 class RealToComplex : public Block {
@@ -738,19 +741,6 @@ public:
 	vector<complex <double>> complexVectorMultiplication(vector<complex <double>> &v1_in, vector<complex <double>> &v2_in);
 };
 
-class UnwrapFunctions
-{
-public:
-	void Unwrap(vector<double> &PhaseIn);
-	
-};
-
-class DecisionCircuitQPSK
-{
-public:
-	complex <double> DecisionCircuit(complex <double> &Signal_in);
-
-};
 
 ///////////////////// Fast Fourier Transform ////////////////////////
 
@@ -774,9 +764,9 @@ public:
 class SystemInputParameters {
 private:
 	vector<string> loadedInputParameters;
-	string inputParametersFileName{ "input_parameters_0.txt" }; //name of the file from where the input parameters will be read
+	string inputParametersFileName{ "" }; //name of the file from where the input parameters will be read
 	string outputFolderName{ "signals" };
-	enum ParameterType { INT, DOUBLE, BOOL, STRING }; //types of parameters
+	enum ParameterType { INT, DOUBLE, BOOL }; //types of parameters
 											  //A parameter can only be of 1 type
 	class Parameter {
 	private:
@@ -786,7 +776,6 @@ private:
 			int* i;
 			double* d;
 			bool* b;
-			string* s;
 		};
 
 	public:
@@ -794,7 +783,6 @@ private:
 		void setValue(int value);
 		void setValue(double value);
 		void setValue(bool value);
-		void setValue(string value);
 		ParameterType getType();
 		//Constructor for parameter of type int
 		Parameter(int* elem);
@@ -802,8 +790,6 @@ private:
 		Parameter(double* elem);
 		//Constructor for parameter of type bool
 		Parameter(bool* elem);
-		//Constructor for parameter of type string
-		Parameter(string* elem);
 	};
 
 	int parseInt(string str);
@@ -821,7 +807,6 @@ public:
 	void addInputParameter(string name, int* variable);
 	void addInputParameter(string name, double* variable);
 	void addInputParameter(string name, bool* variable);
-	void addInputParameter(string name, string* variable);
 	/* Default empty constructor. Initializes the map */
 	SystemInputParameters(){}
 	SystemInputParameters(int argc,char*argv[]);
