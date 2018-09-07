@@ -41,8 +41,8 @@ public:
 	void setMode(AsciiSourceMode m) { mode = m; }
 	AsciiSourceMode getMode() { return mode; }
 
-	void setasciiString(string s) { asciiString = s; }
-	string getasciiString() { return asciiString; }
+	void setAsciiString(string s) { asciiString = s; }
+	string getAsciiString() { return asciiString; }
 
 	void setAsciiFilePath(string p) { asciiFilePath = p; }
 	string getAsciiFilePath() { return asciiFilePath; }
