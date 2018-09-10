@@ -15,9 +15,9 @@ int main()
 
 	//Blocks
 	AsciiSource B1{ vector<Signal*>{},vector<Signal*>{&S1} };
-	B1.setAsciiFilePath("test.txt");
-	B1.setMode(Cyclic);
-	B1.setNumberOfCharacters(10);
+	B1.setAsciiFilePath("test.txt"); //Loads the pattern from a file
+	B1.setMode(Cyclic); //Possible values: Terminate, Cyclic, AppendZeros
+	B1.setNumberOfCharacters(10); // Selects the number of characters to be generated
 
 	AsciiToBinary B2{ vector<Signal*>{&S1} , vector<Signal*>{&S2} };
 	
