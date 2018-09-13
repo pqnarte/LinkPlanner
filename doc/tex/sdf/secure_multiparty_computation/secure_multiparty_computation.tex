@@ -206,10 +206,10 @@ This subsection will cover the installation and usage of TinyGarble, a GC framew
 
 \subsubsection{Installation}
 
-Since TinyGarble and most of the tools mentioned below have been mostly tested on Linux, it will be assumed that the user is running Linux on a virtual machine (VM) , or directly from a partition. To do the former one can use Oracle's VirtualBox, which can be downloaded at \url{https://www.virtualbox.org/wiki/Downloads}. A coppy of Linux is also needed, for this section Ubuntu 18.04 was used, found at https://www.ubuntu.com/download/desktop.
+Since TinyGarble and most of the tools mentioned below have been mostly tested on Linux, it will be assumed that the user is running Linux on a virtual machine (VM), or directly from a partition. To do the former one can use Oracle's VirtualBox, which can be downloaded at \url{https://www.virtualbox.org/wiki/Downloads}. A copy of Linux is also needed, for this section Ubuntu 18.04 was used, found at \url{https://www.ubuntu.com/download/desktop}.
 
-After installing VirtualBox, just open it and select 'New', a Window should pop up asking a name for the new VM, it doesn't really matter, and for type and version, which should be Linux and Ubuntu respectively. The next step is choosing the amount of RAM that is going to be dedicated to the VM,  it depends on the system, but anything between 2048 and 4096 MB should be fine, 1024 MB or lower if the host PC has small amount of memory. Next create a virtual hard disk of VDI type, and choose dynamic or fixed size disk, neither will affect anything mentioned below, it comes down to user preference. For the size of the disk, 10GB was enough for tests below, but slightly more is advisable for more breathing room.
-After creating the virtual machine, it should ask for a start-up disk when launching it for the first time, just select the Linux ISO file that was donwloaded before. After that the installation of linux is pretty straight forward.
+After installing and opening VirtualBox, select 'New', a Window should pop up asking for a name for the new VM, it doesn't matter, and for type and version, which should be Linux and Ubuntu respectively. The next step is choosing the amount of RAM that is going to be dedicated to the VM,  it depends on the system, but anything between 2048 and 4096 MB should be fine, 1024 MB or lower if the host PC has small amount of memory. Next create a virtual hard disk of VDI type, and choose dynamic or fixed size disk, it comes down to user preference. For the size of the disk, 10GB was enough to install and use TinyGarble properly, but slightly more is advisable.
+After creating the virtual machine, it should ask for a start-up disk when launching it for the first time, select the Linux ISO file that was downloaded before. After that the installation of linux is pretty straight forward.
 
 For TinyGarble to work, some dependencies have to be installed first, on Ubuntu it can be done with the following lines:
 
@@ -256,18 +256,17 @@ $ make
 $ sudo cp vhd2vl /usr/local/bin
 \end{lstlisting}
 
-Since TinyGarble is based on JustGarble, it's garbling scheme will also be based on fixed-key AES. If the user wants to use other his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example the garbler would get his keys from a file and the evaluator from another file, to acomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
+Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES. If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
 
- 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth, height=5.5cm]{./sdf/secure_multiparty_computation/figures/key_file.png}
     \caption{Reading Garbler's key from a file.}\label{fig:key_file}
 \end{figure}
 
-The figure above is showing a piece of the changed GarbleStr function, the same would have to be done at the EvaluatorStr function with the respective path for the evaluator keys. The path has to be absolute (starting from the root), the console print was just for debuging reasons. "Include <fstream> may be also needed at the top of the file.
+The figure above is showing a piece of the modified GarbleStr function, the same would have to be done at the EvaluatorStr function with the respective path for the evaluator keys. The absolute(starting from the root) path has to be given. "\#Include <fstream>" is also needed at the top of the file.
 
-To apply any changes made to the file, go to TinyGarble/bin and run "make".
+To apply any changes made to the file, go to TinyGarble/bin and run the "make" command.
 
 \newpage
 
@@ -358,17 +357,30 @@ For this examples the SCD file was located at TinyGarble/bin/garbled\_circuits, 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=8cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_a.png}
-    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively}\label{fig:tinygarble_terminal}
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_a.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively}\label{fig:tinygarble_and_a}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=8cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_b.png}
-    \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_terminal}
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/tinygarble_and_b.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_and_b}
 \end{figure}
 
 The input is written in hexadecimal, and the log2std option is to show info of the computation on the terminal instead of creating a log file.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/tinygarble_xor_4bits_b.png}
+    \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs 0 and F, respectively}\label{fig:tinygarble_xor_b}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=14cm]{./sdf/secure_multiparty_computation/figures/tinygarble_xor_4bits_a.png}
+    \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs F and C, respectively}\label{fig:tinygarble_xor_a}
+\end{figure}
+
 
 % bibliographic references for the section ----------------------------
 \clearpage
