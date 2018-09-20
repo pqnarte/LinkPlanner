@@ -214,10 +214,11 @@ After creating the virtual machine, it should ask for a start-up disk when launc
 For TinyGarble to work, some dependencies have to be installed first, on Ubuntu it can be done with the following lines:
 
 \begin{lstlisting}[caption={Installation of TinyGarble's dependencies}, language=bash, captionpos=b] 
-$ sudo apt-get install build-essential
-$ sudo apt-get install libssl1.0-dev
-$ sudo apt-get install libboost-all-dev
-$ sudo apt-get install cmake
+$ sudo apt install git
+$ sudo apt install build-essential
+$ sudo apt install libssl1.0-dev
+$ sudo apt install libboost-all-dev
+$ sudo apt install cmake
 \end{lstlisting}
 
 After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}, and build it.
@@ -230,43 +231,19 @@ $ cd bin/
 $ make
 \end{lstlisting}
 
-To be able to use TinyGarble, a RTL Synthesis tool is also needed, to translate Verilog files into Netlist ones. In the example showed later, Yosys-abc is used. Which can be installed on Ubuntu 15.04+ with:
+To be able to use TinyGarble, a RTL Synthesis tool is also needed, to translate Verilog files into Netlist ones. In the example showed later, Yosys-abc is used. Which can be installed on Ubuntu 15.04 or higher with:
 
 \begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 15.04>}, language=bash, captionpos=b]                                                                                                                                                                
 $ sudo apt-get install yosys
 \end{lstlisting}
 
-If on Ubuntu 14.04-, a repository needs to be added first:
+If on Ubuntu 14.04 or lower, a repository needs to be added first:
 
 \begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 14.04<}, language=bash, captionpos=b] 
 $ sudo add-apt-repository ppa:saltmakrell/ppa
-$ sudo apt-get update                                                                                                                                                                                             
-$ sudo apt-get install yosys
+$ sudo apt update                                                                                                                                                                                             
+$ sudo apt install yosys
 \end{lstlisting}
-
-This next tool, vhd2vl, will also be needed if the desirable input is VHDL, to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned above.
-Before cloning vhd2vl at \url{https://github.com/ldoolitt/vhd2vl} and building it, some dependencies have to be installed:
-
-\begin{lstlisting}[caption={Installation of VHD2VL}, language=bash, captionpos=b]                                                                                                                                                                                  
-$ sudo apt-get install flex                                                                                                                                                                         
-$ sudo apt-get install bison
-$ git clone https://github.com/ldoolitt/vhd2vl
-$ cd vhd2vl/src
-$ make
-$ sudo cp vhd2vl /usr/local/bin
-\end{lstlisting}
-
-Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES. If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth, height=5.5cm]{./sdf/secure_multiparty_computation/figures/key_file.png}
-    \caption{Reading Garbler's key from a file.}\label{fig:key_file}
-\end{figure}
-
-The figure above is showing a piece of the modified GarbleStr function, the same would have to be done at the EvaluatorStr function with the respective path for the evaluator keys. The absolute(starting from the root) path has to be given. "\#Include <fstream>" is also needed at the top of the file.
-
-To apply any changes made to the file, go to TinyGarble/bin and run the "make" command.
 
 \newpage
 
@@ -278,7 +255,7 @@ To apply any changes made to the file, go to TinyGarble/bin and run the "make" c
     \caption{TinyGarble Global Flow\cite{Songhori}}\label{fig:tinygarble_flow}
 \end{figure}
 
-Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or Hardware Design Language (HDL) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly.
+Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or Hardware Design Language (HDL) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly. This section mostly covers Verilog, since it's the most direct input, if VHDL input is needed, check \ref{ssec:usingVHDL}.
 
 When writting the input file, some attention to the circuit's ports is needed, since TinyGarble's V2SCD (Netlist Verilog to SCD converter) accepts netlist files with a special format. 
 Below are the ports that can be used and what they represent.
@@ -301,14 +278,7 @@ module and_gate (input g_input, e_input, output o);
 endmodule
 \end{lstlisting}
 
-If the file is written in VHDL instead, it has to be translated to Verilog with the tool mentioned before, vhd2vl, since the next step needs a Verilog file.
-
-\begin{lstlisting}[caption={Translation of VHDL file into Verilog}, language=bash, captionpos=b] 
-$ vhd2vl and_gate.vhd and_gate.v	
-\end{lstlisting}
-
-This next step requires the RTL Synthesis tool mentioned before, Yosys, in order to compile the RTL Verilog file into a Netlist Verilog File. 
-Using TinyGarble's custom library, "asic\_cell\_extended.lib", located at TinyGarble/ciruit\_synthesis/lib/, and assuming that the Verilog file is located at a folder named "circuits", the compilation can be done with the following instructions:
+Using TinyGarble's custom library, asic\_cell\_yosys\_extended.lib", located at TinyGarble/ciruit\_synthesis/lib/, and assuming that the Verilog file is located at a folder named "circuits", the compilation can be done with the following instructions:
 
 \begin{lstlisting}[caption={Yosys instructions to compile the HDL file to a Netlist file}, language=bash, captionpos=b] 
 $ ./yosys
@@ -347,7 +317,13 @@ After removing those lines, the Netlist file can be converted into a SCD file wi
 
 \begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b] 
 $ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_netlist.v 
--o circuits/and_gate_scd.scd		
+-o circuits/and_gate.scd		
+\end{lstlisting}
+
+Before executing the SCD file, it can be tested with TinyGarble's SCD\_Evaluator\_Main located at TinyGarble/bin/scd, with the code below:
+
+\begin{lstlisting}[caption={Testing a SCD file}, language=bash, captionpos=b] 
+$ ./TinyGarble/bin/scd/SCD_Evaluator_Main -i circuits/and_gate --g_input 1 --e_input 0
 \end{lstlisting}
 
 \newpage
@@ -367,7 +343,7 @@ For this examples the SCD file was located at TinyGarble/bin/garbled\_circuits, 
     \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_and_b}
 \end{figure}
 
-The input is written in hexadecimal, and the log2std option is to show info of the computation on the terminal instead of creating a log file.
+The input is written in hexadecimal, and the log2std option is to show information of the computation on the terminal instead of creating a log file.
 
 \begin{figure}[H]
 	\centering
@@ -375,12 +351,146 @@ The input is written in hexadecimal, and the log2std option is to show info of t
     \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs 0 and F, respectively}\label{fig:tinygarble_xor_b}
 \end{figure}
 
+\subsubsection{Using VHDL} \label({ssec:usingVHDL}
+
+If the desirable input is VHDL, this next tool, V2VHDL, will be necessary to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned before.
+Before cloning vhd2vl at \url{https://github.com/ldoolitt/vhd2vl} and building it, some dependencies have to be installed:
+
+\begin{lstlisting}[caption={Installation of VHD2VL}, language=bash, captionpos=b]                                                                                                                                                                                  
+$ sudo apt install flex                                                                                                                                                                         
+$ sudo apt install bison
+$ git clone https://github.com/ldoolitt/vhd2vl
+$ cd vhd2vl/src
+$ make
+$ sudo cp vhd2vl /usr/local/bin
+\end{lstlisting}
+
+To use it simply run:
+
+\begin{lstlisting}[caption={Translation of VHDL file into Verilog}, language=bash, captionpos=b] 
+$ vhd2vl and_gate.vhd and_gate.v	
+\end{lstlisting}
+
+\newpage
+
+\subsubsection{Programming}
+
+\subsubsection{File Architecture}
+
+\begin{enumerate}
+\item a23: Algorithms wrote in C.
+\item bin: Created when building TinyGarble. Holds executables and examples of netlist and scd files.
+\item circuit\_synthesis: Holds netlist and RTL Verilog files and the custom libs to use with Yosys.
+\item crypto: Holds C++ files for the Oblivious Transfer and their data structure, 'block'.
+\item garbled\_circuit: Holds C++ files to deal with the garbling and evaluation of a circuit.
+\item scd:  Holds C++ files of the SCD Converter and Evaluator mentioned before, and of the netlist Parser.
+\item tcpip: Holds C++ files that deal with server connection.
+\item util: Holds C++ support files.
+\end{enumerate}
+
+\subsubsection{Keys}
+
+Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES. If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=14cm]{./sdf/secure_multiparty_computation/figures/tinygarble_xor_4bits_a.png}
-    \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs F and C, respectively}\label{fig:tinygarble_xor_a}
+	\includegraphics[width=1\textwidth, height=5.5cm]{./sdf/secure_multiparty_computation/figures/key_file.png}
+    \caption{Reading Garbler's key from a file.}\label{fig:key_file}
 \end{figure}
 
+The figure above is showing a piece of the modified GarbleStr function, the same would have to be done at the EvaluatorStr function with the respective path for the evaluator keys. The absolute(starting from the root) path has to be given. "\#Include <fstream>" is also needed at the top of the file.
+
+To apply any changes made to the file, go to TinyGarble/bin and run the "make" command.
+
+\subsubsection{Moda function}
+
+Since the input of the function both for Alice and Bob is a series of numbers, and TinyGarble uses hexadecimal input, it will be already in BCD form. To represennt commas 'b' can be used, and the start of the input by an 'a'.
+For example: a12b5b8 = 12,5,8
+
+The following fucntion was wriitten in VHDL:
+
+\begin{lstlisting}[caption={moda.vhd}, language=Verilog, captionpos=b] 
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity moda is
+port (clk:    	in std_logic;
+      g_input:  in std_logic_vector(63 downto 0);
+      e_input:  in std_logic_vector(63 downto 0);
+      o :       out std_logic_vector(7 downto 0));
+end moda;
+
+architecture Behavior of moda is
+
+signal g_iterator : unsigned(7 downto 0) := '00111111' ;
+signal g_number : unsigned(9 downto 0);
+signal g_tmp : unsigned(3 downto 0);
+
+signal e_iterator : unsigned(7 downto 0) := '00111111' ;
+signal e_number : unsigned(9 downto 0);
+signal e_tmp : unsigned(3 downto 0);
+
+signal counter: unsigned(7 downto 0);
+signal mod: unsigned(7 downto 0);
+signal bigger: unsigned(0 downto 0);
+
+TYPE State_type IS (A, B, C, D);  -- Define the states
+	signal State : State_type;    -- Create a signal that uses 
+
+begin
+
+process (clk) 
+begin 
+	if rising_edge(clk) then    
+		case State is
+		when A => 
+			if (g_tmp < 10) then
+				g_tmp <= unsigned(g_input(g_iterator downto g_iterator - 3));
+				g_iterator <= g_iterator - 4;
+			end if;
+			if (e_tmp < 10) then
+				e_tmp <= unsigned(e_input(e_iterator downto e_iterator - 3));
+				e_iterator <= e_iterator - 4;
+			end if;
+			State <= B;
+		when B => 
+			if(g_tmp = 11 and e_tmp = 11) then
+				State <= D;
+			elsif(g_tmp >= 10 and e_tmp >= 10) then
+				State <= C;
+			else
+				if(g_tmp >= 10) then
+					g_number <= (g_number * 10) + g_tmp;
+				end if;
+				if(e_tmp >= 10) then
+					e_number <= (e_number * 10) + e_tmp;
+				end if;
+			 	State <= A;
+			end if;
+		when C => 
+			if((g_tmp + e_tmp) > bigger) then
+				bigger <= g_tmp + e_tmp;
+				mod <= counter;
+			end if;				
+			counter <= counter + 1;
+			e_tmp <= (others => '0');
+			e_number <= (others => '0');
+			g_number <= (others => '0');
+			g_tmp <= (others => '0');
+	                state <= A;
+		when D=> 
+			o <= std_logic_vector(mod);
+			state <= D;
+		when others =>
+			State <= A;
+		end case; 
+	end if; 
+end process;
+
+end Behavior;
+
+\end{lstlisting}
 
 % bibliographic references for the section ----------------------------
 \clearpage
