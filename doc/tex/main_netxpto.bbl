@@ -43,6 +43,75 @@
 
 \refsection{10}
   \datalist[entry]{none/global//global/global}
+    \entry{Smith1999}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a1e4c9b197870fea6123471fddda3c0e}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Steven\bibnamedelima W.},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {California Technical Pub}%
+      }
+      \strng{namehash}{a1e4c9b197870fea6123471fddda3c0e}
+      \strng{fullhash}{a1e4c9b197870fea6123471fddda3c0e}
+      \strng{bibnamehash}{a1e4c9b197870fea6123471fddda3c0e}
+      \strng{authorbibnamehash}{a1e4c9b197870fea6123471fddda3c0e}
+      \strng{authornamehash}{a1e4c9b197870fea6123471fddda3c0e}
+      \strng{authorfullhash}{a1e4c9b197870fea6123471fddda3c0e}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{2nd edition.}
+      \field{isbn}{0966017676}
+      \field{title}{{The scientist and engineer's guide to digital signal processing}}
+      \field{year}{1999}
+    \endentry
+    \entry{Blahut1985}{book}{}
+      \name{author}{2}{}{%
+        {{hash=305e3c59ce24c6e5667bf0e3742b1b79}{%
+           family={Blahut},
+           familyi={B\bibinitperiod},
+           given={Richard\bibnamedelima E.},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=181f4afa3ed1afff979d349b089c6df8}{%
+           family={E.},
+           familyi={E\bibinitperiod},
+           given={Richard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley Pub. Co}%
+      }
+      \strng{namehash}{dead6683ca0ab7d42c60187e93b6b997}
+      \strng{fullhash}{dead6683ca0ab7d42c60187e93b6b997}
+      \strng{bibnamehash}{dead6683ca0ab7d42c60187e93b6b997}
+      \strng{authorbibnamehash}{dead6683ca0ab7d42c60187e93b6b997}
+      \strng{authornamehash}{dead6683ca0ab7d42c60187e93b6b997}
+      \strng{authorfullhash}{dead6683ca0ab7d42c60187e93b6b997}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{0201101556}
+      \field{title}{{Fast algorithms for digital signal processing}}
+      \field{year}{1985}
+      \field{pages}{441}
+      \range{pages}{1}
+      \verb{urlraw}
+      \verb https://dl.acm.org/citation.cfm?id=537283
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/citation.cfm?id=537283
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{11}
+  \datalist[entry]{none/global//global/global}
     \entry{Kuo}{book}{}
       \name{author}{3}{}{%
         {{hash=7e7ffb42023c388dc4bf528df5d54517}{%
@@ -112,7 +181,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{11}
+\refsection{12}
   \datalist[entry]{none/global//global/global}
     \entry{Marple}{inproceedings}{}
       \name{author}{1}{}{%
@@ -571,8 +640,8 @@
       \strng{authorbibnamehash}{17343c97cca5fe2cd16e584ec610f4e8}
       \strng{authornamehash}{17343c97cca5fe2cd16e584ec610f4e8}
       \strng{authorfullhash}{b04444358a03649faf8cedd3dee1cd8a}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{TinyGarble: Highly Compressed and Scalable Sequential Garbled Circuits}
@@ -582,6 +651,52 @@
 \endrefsection
 
 \refsection{5}
+  \datalist[entry]{none/global//global/global}
+    \entry{Songhori}{article}{}
+      \name{author}{5}{}{%
+        {{hash=07108106e4df55b952a0240023e33aeb}{%
+           family={Songhori},
+           familyi={S\bibinitperiod},
+           given={Ebrahim\bibnamedelima M.},
+           giveni={E\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=a95421676d7bbe86c57c5d94f5f5995b}{%
+           family={Hussain},
+           familyi={H\bibinitperiod},
+           given={Siam\bibnamedelima U.},
+           giveni={S\bibinitperiod\bibinitdelim U\bibinitperiod}}}%
+        {{hash=1ef0c377dd3d4449f949ff3fedd1a7f6}{%
+           family={Sadeghi},
+           familyi={S\bibinitperiod},
+           given={Ahmad-Reza},
+           giveni={A\bibinithyphendelim R\bibinitperiod}}}%
+        {{hash=5d62da517b335078f08436fbab3a5f69}{%
+           family={Schneider},
+           familyi={S\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=d1642679ae78814302ce585a8ca745a8}{%
+           family={Koushanfar},
+           familyi={K\bibinitperiod},
+           given={Farinaz},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{17343c97cca5fe2cd16e584ec610f4e8}
+      \strng{fullhash}{b04444358a03649faf8cedd3dee1cd8a}
+      \strng{bibnamehash}{17343c97cca5fe2cd16e584ec610f4e8}
+      \strng{authorbibnamehash}{17343c97cca5fe2cd16e584ec610f4e8}
+      \strng{authornamehash}{17343c97cca5fe2cd16e584ec610f4e8}
+      \strng{authorfullhash}{b04444358a03649faf8cedd3dee1cd8a}
+      \field{sortinit}{1}
+      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{TinyGarble: Highly Compressed and Scalable Sequential Garbled Circuits}
+      \field{year}{2015}
+    \endentry
+  \enddatalist
+\endrefsection
+
+\refsection{6}
   \datalist[entry]{none/global//global/global}
     \entry{Almeida16}{article}{}
       \name{author}{6}{}{%
@@ -640,7 +755,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{6}
+\refsection{7}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
@@ -678,7 +793,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{7}
+\refsection{8}
   \datalist[entry]{none/global//global/global}
     \entry{saleh1991}{book}{}
       \name{author}{2}{}{%
@@ -776,7 +891,7 @@
   \enddatalist
 \endrefsection
 
-\refsection{8}
+\refsection{9}
   \datalist[entry]{none/global//global/global}
     \entry{Rao2010a}{book}{}
       \name{author}{3}{}{%
@@ -853,75 +968,6 @@
       \endverb
       \verb{url}
       \verb https://www.crcpress.com/Inside-the-FFT-Black-Box-Serial-and-Parallel-Fast-Fourier-Transform-Algorithms/Chu-George/p/book/9780849302701
-      \endverb
-    \endentry
-  \enddatalist
-\endrefsection
-
-\refsection{9}
-  \datalist[entry]{none/global//global/global}
-    \entry{Smith1999}{book}{}
-      \name{author}{1}{}{%
-        {{hash=a1e4c9b197870fea6123471fddda3c0e}{%
-           family={Smith},
-           familyi={S\bibinitperiod},
-           given={Steven\bibnamedelima W.},
-           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {California Technical Pub}%
-      }
-      \strng{namehash}{a1e4c9b197870fea6123471fddda3c0e}
-      \strng{fullhash}{a1e4c9b197870fea6123471fddda3c0e}
-      \strng{bibnamehash}{a1e4c9b197870fea6123471fddda3c0e}
-      \strng{authorbibnamehash}{a1e4c9b197870fea6123471fddda3c0e}
-      \strng{authornamehash}{a1e4c9b197870fea6123471fddda3c0e}
-      \strng{authorfullhash}{a1e4c9b197870fea6123471fddda3c0e}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{2nd edition.}
-      \field{isbn}{0966017676}
-      \field{title}{{The scientist and engineer's guide to digital signal processing}}
-      \field{year}{1999}
-    \endentry
-    \entry{Blahut1985}{book}{}
-      \name{author}{2}{}{%
-        {{hash=305e3c59ce24c6e5667bf0e3742b1b79}{%
-           family={Blahut},
-           familyi={B\bibinitperiod},
-           given={Richard\bibnamedelima E.},
-           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
-        {{hash=181f4afa3ed1afff979d349b089c6df8}{%
-           family={E.},
-           familyi={E\bibinitperiod},
-           given={Richard},
-           giveni={R\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Addison-Wesley Pub. Co}%
-      }
-      \strng{namehash}{dead6683ca0ab7d42c60187e93b6b997}
-      \strng{fullhash}{dead6683ca0ab7d42c60187e93b6b997}
-      \strng{bibnamehash}{dead6683ca0ab7d42c60187e93b6b997}
-      \strng{authorbibnamehash}{dead6683ca0ab7d42c60187e93b6b997}
-      \strng{authornamehash}{dead6683ca0ab7d42c60187e93b6b997}
-      \strng{authorfullhash}{dead6683ca0ab7d42c60187e93b6b997}
-      \field{sortinit}{1}
-      \field{sortinithash}{2174f786c6195e7fe2ee1c229b416e29}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{0201101556}
-      \field{title}{{Fast algorithms for digital signal processing}}
-      \field{year}{1985}
-      \field{pages}{441}
-      \range{pages}{1}
-      \verb{urlraw}
-      \verb https://dl.acm.org/citation.cfm?id=537283
-      \endverb
-      \verb{url}
-      \verb https://dl.acm.org/citation.cfm?id=537283
       \endverb
     \endentry
   \enddatalist

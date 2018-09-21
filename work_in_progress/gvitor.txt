@@ -4,6 +4,23 @@ Sort term goal:
 	- implementar um sistema QKD que escreva as chaves nos ficheiros (não é para o Gonçalo fazer)
 	- implementar funções mais complexas
 
+2018-09-21
+TO BE DONE
+
+	avançar na secção da programação (descrever a estrutura dos ficheiros)
+		escolher um exemplo e correr um exemplo, e documentar
+
+
+	implementar a função moda para uma variavel binária
+		dois ficheiro txt, alice.txt o que está no ficheiro é isto 8, 10	
+				   bob.txt o que está no ficheiro 13, 5
+
+	colocar a funcionar em duas nmáquinas no laboratório
+
+	documentar todo bem
+
+Next meeting: 1/10, 16h15m
+
 2018-09-13
 TO BE DONE
 
