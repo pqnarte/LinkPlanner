@@ -404,93 +404,144 @@ To apply any changes made to the file, go to TinyGarble/bin and run the "make" c
 
 \subsubsection{Moda function}
 
-Since the input of the function both for Alice and Bob is a series of numbers, and TinyGarble uses hexadecimal input, it will be already in BCD form. To represennt commas 'b' can be used, and the start of the input by an 'a'.
-For example: a12b5b8 = 12,5,8
+Since the input of the function both for Alice and Bob is a series of numbers, and since TinyGarble's iinput is in hexadecimal, we can read each digit as bcd, and easily get the total by multiplying the current number by 10 and summing the digit. Instead of using a ',' any value beetween a and f can be used.
 
 The following fucntion was wriitten in VHDL:
 
 \begin{lstlisting}[caption={moda.vhd}, language=Verilog, captionpos=b] 
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
-entity moda is
-port (clk:    	in std_logic;
-      g_input:  in std_logic_vector(63 downto 0);
-      e_input:  in std_logic_vector(63 downto 0);
-      o :       out std_logic_vector(7 downto 0));
-end moda;
+module moda(clk,  rst, g_input, e_input, o);
 
-architecture Behavior of moda is
+  input clk,  rst;
+  input [1023:0] g_input, e_input; // Up to 256 hexa chars, sent from the testbench
+  output [8:0] o; // With 256 hexa chars the max of different numbers is 512 (256 / 2 (commas) * 4)
 
-signal g_iterator : unsigned(7 downto 0) := '00111111' ;
-signal g_number : unsigned(9 downto 0);
-signal g_tmp : unsigned(3 downto 0);
+  wire clk,  rst;
+  reg [8:0] o;
 
-signal e_iterator : unsigned(7 downto 0) := '00111111' ;
-signal e_number : unsigned(9 downto 0);
-signal e_tmp : unsigned(3 downto 0);
+  reg [9:0] g_iterator, e_iterator; // Represent up to the number 1023, to iterate the inputs
+  wire [3:0] g_tmp, e_tmp; // To hold the current hexa char beeing checked
+  reg [29:0] g_number, e_number; // Maximum of around 1 trillion, (10 hexa digits, because in bcd)
+  reg g_end, e_end, g_start, e_start, g_blocked, e_blocked; // Control registers
 
-signal counter: unsigned(7 downto 0);
-signal mod: unsigned(7 downto 0);
-signal bigger: unsigned(0 downto 0);
+  reg [30:0] bigger; // Hold the bigger number, one bit bigger than the biggest number for the inputs
+  reg [8:0] biggerKey, counter; // Same as output
 
-TYPE State_type IS (A, B, C, D);  -- Define the states
-	signal State : State_type;    -- Create a signal that uses 
+  reg [2:0] State; 
 
-begin
+  // Wires, constantly receiving the current value of their corresponding input with the current interator
+  assign g_tmp = g_input[g_iterator -: 4]; // -: notacao SystemVerilog, ver se funcioa com yosys 
+  assign e_tmp = e_input[e_iterator -: 4];
 
-process (clk) 
-begin 
-	if rising_edge(clk) then    
-		case State is
-		when A => 
-			if (g_tmp < 10) then
-				g_tmp <= unsigned(g_input(g_iterator downto g_iterator - 3));
-				g_iterator <= g_iterator - 4;
-			end if;
-			if (e_tmp < 10) then
-				e_tmp <= unsigned(e_input(e_iterator downto e_iterator - 3));
-				e_iterator <= e_iterator - 4;
-			end if;
-			State <= B;
-		when B => 
-			if(g_tmp = 11 and e_tmp = 11) then
-				State <= D;
-			elsif(g_tmp >= 10 and e_tmp >= 10) then
-				State <= C;
-			else
-				if(g_tmp >= 10) then
-					g_number <= (g_number * 10) + g_tmp;
-				end if;
-				if(e_tmp >= 10) then
-					e_number <= (e_number * 10) + e_tmp;
-				end if;
-			 	State <= A;
-			end if;
-		when C => 
-			if((g_tmp + e_tmp) > bigger) then
-				bigger <= g_tmp + e_tmp;
-				mod <= counter;
-			end if;				
-			counter <= counter + 1;
-			e_tmp <= (others => '0');
-			e_number <= (others => '0');
-			g_number <= (others => '0');
-			g_tmp <= (others => '0');
-	                state <= A;
-		when D=> 
-			o <= std_logic_vector(mod);
-			state <= D;
-		when others =>
-			State <= A;
-		end case; 
-	end if; 
-end process;
 
-end Behavior;
+always @(posedge clk) begin
+
+	
+    if ( rst) begin
+      State <= 0;
+      o = 0;
+    end else begin
+
+	    case(State)
+	    0 : begin
+
+		g_iterator <= 1023;
+		e_iterator <= 1023;
+		g_number <= 0;
+		e_number <= 0;
+		g_blocked <= 0;
+		e_blocked <= 0;
+
+		g_end <= 0;
+		e_end <= 0;
+
+		bigger <= 0;
+		biggerKey <= 0;
+		counter <= 0;
+
+		State <= 1;
+
+	    end
+	    1 : begin
+	      // Se ainda nao tiver chegado ao ultimo digito it ao proximo
+	      if(g_blocked == 0) begin
+		if(g_iterator < 4)
+		  g_end <= 1;
+		else
+		  g_iterator <= g_iterator - 4;
+	      end
+	      if(e_blocked == 0) begin
+		if(e_iterator < 4)
+		  e_end <= 1;
+		else begin
+		  e_iterator <= e_iterator - 4;
+		end
+	      end
+	      State <= 2;
+	    end
+	    2 : begin
+	      if(g_blocked == 1 & e_blocked == 1)
+		State <= 3;
+	      else begin
+		if(g_tmp == 10 | g_end == 1) 
+		  g_blocked <= 1;
+		else
+		  g_number <= (g_number * 10) + g_tmp;
+		if(e_tmp == 10 | e_end == 1) 
+		  e_blocked <= 1;
+		else 
+		  e_number <= (e_number * 10) + e_tmp;
+		State <= 1;
+	      end;
+	    end
+	    3 : begin
+	      if(g_number + e_number > bigger) begin
+		$display("Found bigger");
+		bigger <= g_number + e_number;
+		biggerKey <= counter;
+	      end
+	      counter <= counter + 1;
+	      g_number <= 0;
+	      g_blocked <= 0;
+	      e_number <= 0;
+	      e_blocked <= 0;
+	      if(g_end == 1 & e_end == 1) begin
+		State <= 4;
+	      end else 
+		State <= 1;
+	    end
+	    4 : begin
+	      o <= biggerKey + 1;
+	      State <= 4;
+	    end
+	    default : begin
+	      State <= 0;
+	    end
+	    endcase
+	end			
+  end
+
+endmodule
 
 \end{lstlisting}
+
+When running a testbench of the above with the g\_input = 80'h421a425a9a23a412a432, and e\_input = 80'h94a420a83a902a74a821,  the result is the below:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/moda_execution_testbench.png}
+    \caption{Moda's testbench execution}\label{fig:moda_execution}
+\end{figure}
+
+Converting the file to Netlist Verilog wasnt a problem besides having to delete all those weird lines mentioned above.
+When trying to converto to Scd it gives the error:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=4cm]{./sdf/secure_multiparty_computation/figures/tinygarble_moda_scd_fail.png}
+    \caption{Model SCD conversion fail}\label{fig:moda_scd_fail}
+\end{figure}
+
 
 % bibliographic references for the section ----------------------------
 \clearpage
