@@ -5,8 +5,9 @@
 
 \begin{tcolorbox}	
 \begin{tabular}{p{2.75cm} p{0.2cm} p{10.5cm}} 	
-\textbf{Students Name}      &:& Mariana Ramos (02/05/2018 - 21/05/2018) \\
-\textbf && Goncalo Vitor (15/06/2018 - x)\\
+\textbf{Students Name}      &:& Armando Pinto (01/06/2018 - )\\
+			    &:& Goncalo Vitor (15/06/2018 - )\\
+                            &:& Mariana Ramos (02/05/2018 - 21/05/2018)\\
 \textbf{Goal}               &:& Description of the problem of Secure Multi-Party Computation.\\
 \textbf{Directory}          &:& \\
 \end{tabular}
@@ -15,7 +16,13 @@
 
 \subsection{Problem definition}
 
-In \textit{Secure Multi-Party Computation} (SMC) the function to be computed is defined as $(y_1,y_2,...,y_N)=f(x_1,x_2,...,x_N)$ and each party $i$ must only know (before and after the computation) its $x_i$ and $y_i$ being unknown any information about the input or output of the other parties. \cite{Naumann16}.
+In \textit{Secure Multi-Party Computation} (SMC) the function to be computed is defined as $(y_1,y_2,y_3,y_4,...,y_N)=f(x_1,x_2,x_3,x_4,...,x_N)$ and each party $i$ must only know (before and after the computation) its $x_i$ and $y_i$ being unknown any information about the input or output of the other parties. \cite{Naumann16}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/smc_N.pdf}
+    \caption{N entities are able to jointly compute $(y_1,y_2,y_3,y_4,...,y_N)=f(x_1,x_2,x_3,x_4,...,x_N)$ making sure that each entity only have access its input/output pair, i.e. $\left( x_i, y_i\right)$.}\label0{fig:smcN}
+\end{figure}
 
 Thus, there are two ways of solving the problem of SMC:
 
@@ -79,7 +86,7 @@ where $x_1$ and $x_2$ are single bit values. Note that even if the input paramet
     \caption{Gate level implementation of $f_c$.}\label{fig:andGate}
 \end{figure}
 
-Figure \ref{fig:andGate} shows the logical boolean circuit representation of the function to be computed. In this particular case there are two parties, each with an input parameter $x_i$, where $i$ can be $1$ (Alice) or $2$ (Bob), and $x_i$ can take values $0$ or $1$. Alice will play the role of \textit{garbled circuit generator} so she will generate a garbled AND gate and send it to Bob. On the other hand, Bob will play the role of \textit{garbled circuit evaluator}.
+Figure \ref{fig:andGate} shows the logical boolean circuit representation of the function to be computed. In this particular case there are two parties, each with an input parameter $x_i$, where $i$ can be $1$ (Alice) or $2$ (Bob), and $x_i$ can take values $0$ or $1$. Alice will play the role of \textit{garbled circuit generator} so she will generate a garbled AND gate and send it to Bob. On the other hand, Bob will play the role of \textit{garbled circuit evaluator} \cite{Yakoubov}.
 
 \begin{figure}[H]
 	\centering
@@ -102,36 +109,30 @@ $x_1$           & $x_2$             & $y=x_1 \wedge x_2$       \\ \hline
 \caption{Truth table of $f_c(x_1,x_2)$.}\label{tb:truthtable}
 \end{table}
 
-Table \ref{tb:truthtable} shows the truth table of $f_c$.
-
-Initially, Alice generates an encryption key with length equals to the sum of the length of both input parameters, two bit length in this case. Then, she encrypts her two possible input parameters, $X_1 = x_1 \bigoplus e_g^f[1]$, as well as Bob's two possible input parameters, $X_2 = x_2 \bigoplus e_g^f[2]$. 
-
-Lets assume $e_g^f = 01$ the encryption key used by Alice. In this case, the encryption key has two bits and Alice will use the first bit to encrypt her input parameter $x_1$ and the second bit to encrypt Bob's input parameter $x_2$. We are defining the Alice encrypted input value with the label $W_1^0$ when it before encryption assumes the value $x_1 = 0$, and $W_1^1$ when it before encryption assumes the value $x_1 = 1$. The same happens for Bob, please see table \ref{tb:aliceinputs} and \ref{bobinputs}.
-Now, Alice performs the encryption operation for each $x_i$, where $i \in\{1,2\}$. Regarding with Alice's input parameter, where $i=1$:
+Table \ref{tb:truthtable} shows the truth table of $f_c$. Initially, Alice generates an encryption key with length equals to the sum of the length of both input parameters, two bit length in this case. Then, she encrypts her two possible input parameters, $X_1 = x_1 \bigoplus e_g^f[1]$, as well as Bob's two possible input parameters, $X_2 = x_2 \bigoplus e_g^f[2]$. Lets assume $e_g^f = 01$ the encryption key used by Alice. In this case, the encryption key has two bits and Alice will use the first bit to encrypt her input parameter $x_1$ and the second bit to encrypt Bob's input parameter $x_2$. We are defining the Alice encrypted input value with the label $W_1^0$ when it before encryption assumes the value $x_1 = 0$, and $W_1^1$ when it before encryption assumes the value $x_1 = 1$. The same happens for Bob, please see table \ref{tb:aliceinputs} and \ref{tb:bobinputs}.
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
 $x_1$           & $X_1 = W_1^{x_1}$                             \\ \hline
-0               & $W_1^0=x_1 \bigoplus e = 0$                   \\ \hline
-1               & $W_1^1=x_1 \bigoplus e = 1$                   \\ \hline
+0               & $W_1^0=x_1 \bigoplus e_g^f[1] = 0$                   \\ \hline
+1               & $W_1^1=x_1 \bigoplus e_g^f[1] = 1$                   \\ \hline
 \end{tabular}
-\caption{Encryption results for Alice's input parameter $x_1$ using the first bit of encryption key $e[1]=0$.} \label{tb:aliceinputs}
+\caption{Encryption results for Alice's input parameter $x_1$ using the first bit of encryption key $e_g^f[1]=0$.} \label{tb:aliceinputs}
 \end{table}
-and regarding with Bob's input parameter $x_2$:
 
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
 \hline
 $x_2$           & $X_2 = W_2^{x_2}$                             \\ \hline
-0               & $W_2^0=x_2 \bigoplus e = 1$                   \\ \hline
-1               & $W_2^1=x_2 \bigoplus e = 0$                   \\ \hline
+0               & $W_2^0=x_2 \bigoplus e_g^f[2] = 1$                   \\ \hline
+1               & $W_2^1=x_2 \bigoplus e_g^f[2] = 0$                   \\ \hline
 \end{tabular}
-\caption{Encryption results for Bob's input parameter $x_1$ using the second bit of encryption key $e[2]=1$.} \label{tb:bobinputs}
+\caption{Encryption results for Bob's input parameter $x_1$ using the second bit of encryption key $e_g^f[2]=1$.} \label{tb:bobinputs}
 \end{table}
-Alice computes an hash using the $W_1^i$, $W_2^i$, and $y=f_c(x_1, x_2)$. 
+Now, Alice computes an hash value for each combination $W_1^i$, $W_2^i$, and $y=f_c(x_1, x_2)$.
 Lets assume she computed the Hash Functions and the results are the following:
 
 \begin{table}[H]
@@ -148,7 +149,7 @@ Lets assume she computed the Hash Functions and the results are the following:
     \caption{Hash function computed and its result.}
 \end{table}
 
-Before forwarding these values to Bob, Alice also performs an encryption over these results using a key, $d_g^f = 1 1 1 0 0$, which she'll also send to Bob. Using this encryption key the values of $\textrm{Enc}(H(W_1^i,W_2^i,f_c )) = H(W_1^i,W_2^i,f_c) \bigoplus d_g^f $ are the following:
+Before forwarding these values to Bob, Alice also performs an encryption over these results using a decryption key with size equal to the length of the hash value, $d_g^f = 1 1 1 0 0$, $\textrm{Enc}(H(W_1^i,W_2^i,f_c )) = H(W_1^i,W_2^i,f_c) \bigoplus d_g^f $.
 
 \begin{table}[H]
     \centering
@@ -161,7 +162,7 @@ Before forwarding these values to Bob, Alice also performs an encryption over th
     \end{tabular}
     \caption{Encrypted hash results.} \label{tb:encryptedhash}
 \end{table}
- Now the rows of table \ref{tb:encryptedhash} must be permutated randomly \cite{Yakoubov}. 
+ Now the rows of table \ref{tb:encryptedhash} must be permutated randomly.
 
 \begin{table}[H]
     \centering
@@ -172,7 +173,7 @@ Before forwarding these values to Bob, Alice also performs an encryption over th
     Enc($H(W_1^0,W_2^0,0)$)             &    1 1 1 0 0                                     \\ \hline
     Enc($H(W_1^1,W_2^0,0)$)             &    0 1 1 0 0                                     \\ \hline
     \end{tabular}
-    \caption{Permutated Garbled Output}
+    \caption{Permutated Garbled Circuit Output}
 \end{table}
 
 
@@ -181,22 +182,159 @@ Before forwarding these values to Bob, Alice also performs an encryption over th
     \begin{tabular}{|cc|c|}
     \hline
     $W_1^i$ & $W_2^i$   & Enc(H($W_1^i$,$W_2^i$,f ))         \\ \hline
-    0       & 1         & 1 1 1 0 0                          \\
     0       & 0         & 1 0 1 0 0                          \\
-    1       & 1         & 0 1 1 0 0                          \\
-    1       & 0         & 0 0 0 0 0                          \\ \hline
+    1       & 0         & 0 0 0 0 0                          \\
+    0       & 1         & 1 1 1 0 0                          \\
+    1       & 1         & 0 1 1 0 0                          \\ \hline
     \end{tabular}
-    \caption{Garbled Circuit.}
+    \caption{Permutated Garbled Circuit.}
     \label{tb:summary}
 \end{table}
-Alice sends to Bob the garbled circuit, which is a circuit capable of generate the table \ref{tb:summary}. Alice also sends to Bob, $d_g^f$. With $W_1^i$  and $W_2^i$ that Bob already has, he computes the circuit output. He decrypts this output doing $\textrm{output} \bigoplus d_g^f$ . After, he also tries all possible outputs, doing $H(W_1^i, W_2^i, \textrm{guess Y})$ being the one that works, the right one.
+Alice is going to send to Bob the permuted Garbled Circuit to Bob, i.e. table \ref{tb:summary} or a circuit that implement that table. Alice is also going to send to Bob the decryption key. Using $X_1$, that Alice also sends to Bob, and $X_2$, that Bob obtains from OT, he obtains the circuit output for that input values $(X1, X2)$. He decrypts this obtaining $H=Y \bigoplus d_g^f$, i.e. a valid hash value. After, he tries all possible outputs, doing $H(W_1^i, W_2^i, \textrm{guess y})$. The triplet $X_1$,$X_2$, $\textrm{guess y}$ that generates the correct hash value H corresponds to the right y.
+After having y he send this value to Alice. Note that at the end Bob only knows $x_2$ and $y$, and Alice only knows $x_1$ and $y$.
 
-Both Alice and Bob must follow the \textit{oblivious transfer protocol} in order to Bob gets his garbled version of his input, $X_2$. In this case, lets assume that Bob's input parameter is $x_2=1$. This way, Alice sends to Bob using OT $W_2^1=0$.  With both inputs garbled versions, Bob can perform a \textrm{XOR} operation between the equivalent result of $\textrm{Enc}(H(W_1^i,W_2^i,f_c ))$ and the decryption key $d_g^f$:
+\newpage
 
-\begin{equation}\label{eq:decryptiongarbled}
-  \textrm{Enc}(H(W_1^i,W_2^i,f_c ))\oplus d_g^f = 0 1 0 0 0.
+
+\subsection{ANP - Problem definition}
+
+This is a rewritten version of the above sections. In \emph{Secure Multi-Party Computation} (SMC) a function $(y_1,y_2,y_3,y_4,...,y_N)=f(x_1,x_2,x_3,x_4,...,x_N)$ is computed, assuring that each party $i$ only know its $\left(x_i, y_i\right)$ pair, the input/output pair of all the other parties must remain unknown. \cite{Naumann16}.
+
+\begin{figure}[H]\label{fig:smcN}
+	\centering
+	\includegraphics[width=9cm, height=7cm]{./sdf/secure_multiparty_computation/figures/smc_N.pdf}
+    \caption{N entities are able to jointly compute $(y_1,y_2,y_3,y_4,...,y_N)=f(x_1,x_2,x_3,x_4,...,x_N)$ making sure that each entity only have access its input/output pair, i.e. $\left( x_i, y_i\right)$.}
+\end{figure}
+
+There are, at least, two different ways of computing this function:
+
+\begin{enumerate}
+  \item Using a trusted party, who has the trust of all the parties. This trusted party receives the all inputs, calculates the outputs and gives the the information to each party without any leak of information.
+  \item Using a SMC protocol.
+\end{enumerate}
+
+Here, we are only interest in the use of a SMC protocol and we are going to restrict our work to two-party computation, with a single output, i.e. $y = f(x_1, x_2)$. For this case there is a well known protocol named \emph{Yao's Garbled Circuit Protocol} (GCP), which we are going to describe.
+
+\subsection{ANP - Secure Two-Party Computation}
+
+The GCP starts with the implementation of the function $f(x_1,x_2)$ using a logical circuit, i.e. using logical gates. We are going to assume that the logical circuit is implemented using NAND gates. Note that a NAND gate is a universal gate, i.e. any logical circuit can be implemented using only NAND gates. From the logical implementation, $f_c$, Alice will generate a garbled circuit, $F_g^f$, as well as an encryption key $e_g^f$ and a decryption key $d_g^f$. Because we are going to assume AES-128 as the encrypting and decrypting, which is a symmetric algorithm, both keys are identical and correspond to 128 bits. Alice's input parameter ($x_1$) and Bob's input parameter ($x_2$) must both be encrypted using the key $e_g^f$. Note that the encryption of Bob's input, $x_2$, must be implemented with OT because Alice cannot know the Bob's input, $x_2$, and Bob cannot know the encryption key, $e_g^f$, used by Alice \cite{Naumann16}. Therefore after encryption Bob only gets $X_2$, which is its encrypted input. Next, Alice sends to Bob the garbled circuit, $F_g^f$, and its encrypted input, $X_1$. With $F_g^f$, $X_1$ and $X_2$ Bob computes, the garbled output $Y_g^f$. At this stage Alice is going to send to Bob enough information so that from $Y_g^f$ he can obtain $y$. To conclude the protocol Bob will send to Alice the result $y$. Figure \ref{fig:garbledcircuit} shows the diagram of \textit{garbled circuit protocol}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/secure_multiparty_computation/figures/garbled_circuit.png}
+    \caption{Block diagram of the garbled circuit protocol. Function to be computed $y~=~f(x_1, x_2)$. The blocks with label A are implemented by Alice and the blocks with label B are implemented by Bob.}\label{fig:garbledcircuit}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+
+\begin{tabular}{|c|c|}
+\hline
+$x_1$                   & Alice input parameter             \\ \hline
+$x_2$                   & Bob input parameter               \\ \hline
+$f$                     & Function to be computed           \\ \hline
+$f_c$                   & Logical implementation            \\ \hline
+$F_g^f$                 & Garbled circuit                   \\ \hline
+$X_1$                   & Alice encrypted input              \\ \hline
+$X_2$                   & Bob encrypted input               \\ \hline
+$e_g^f$                 & Encoding key                      \\ \hline
+$d_g^f$                 & Decoding key                      \\ \hline
+$Y_g^f$                 & Garbled output                    \\ \hline
+\end{tabular}
+\caption{Description of parameters of figure \ref{fig:garbledcircuit}.}
+\end{table}
+%
+Note that to implement the GCP, it is necessary an encryption protocol, usually AES, and an OT protocol, usually based on the RSA.
+
+
+\subsubsection{Lets consider the simplest possible circuit - a NAND gate}
+
+Lets assume:
+
+\begin{equation}\label{eq:f_to_be_computed}
+  y=f(x_1,x_2),
 \end{equation}
-Since Bob knows $X_1 = W_1^i$, $X_2=W_2^i$ and the result of $\textrm{Enc}(H(W_1^i,W_2^i,f_c ))$, he must introduce this information in the Hash Function in order to get $y=f_c(x_1,x_2)$. Thus, he will discover the output value $y=0$ without learning anything about the input parameter introduced by Alice. Nevertheless, since an oblivious transfer protocol was used to send to Bob his garbled version of his input parameter, Alice also knows anything about the input parameter introduced by Bob.
+with,
+
+\begin{equation}\label{eq:fc_to_be_computed}
+  y=f_c(x_1, x_2) = \sim \left( x_1 \wedge x_2 \right),
+\end{equation}
+where $x_1$ and $x_2$ are single bit values. Note that even if the input parameters of $f$ and $f_c$ are represented by the same symbols they are different. The input parameters of $f_c$ are logical representations of the input parameters of $f$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth, height=2.5cm]{./sdf/secure_multiparty_computation/figures/nand.png}
+    \caption{Gate level implementation of $f_c$.}\label{fig:andGate}
+\end{figure}
+
+Figure \ref{fig:andGate} shows the logical boolean circuit representation of the function to be computed. In this particular case there are two parties, each with an input parameter $x_i$, where $i$ can be $1$ (Alice) or $2$ (Bob), and $x_i$ can take the logical value $0$ or $1$. Alice will play the role of \textit{garbled circuit generator} so she will generate a garbled NAND gate and send it to Bob. On the other hand, Bob will play the role of \textit{garbled circuit evaluator} \cite{Yakoubov}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth, height=15cm]{./sdf/secure_multiparty_computation/figures/smc_with_ot_ANP.png}
+    \caption{Garbled Circuit Protocol with OT.}\label{fig:smcwithot}
+\end{figure}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$x_1$           & $x_2$             & $y=\sim \left(x_1 \wedge x_2\right)$  \\ \hline
+0               & 0                 & 1                                     \\ \hline
+0               & 1                 & 1                                     \\ \hline
+1               & 0                 & 1                                     \\ \hline
+1               & 1                 & 0                                     \\ \hline
+\end{tabular}
+\caption{Truth table of $f_c(x_1,x_2)$.}\label{tb:truthtable}
+\end{table}
+
+Table \ref{tb:truthtable} shows the truth table of $f_c$.
+
+Alice is going to use six random string, $W_0^A$, $W_1^A$, $W_0^B$, $W_1^B$, $W_0^C$, $W_1^C$ usually named labels. $W_0^A$, represents a logical zero for Alice, $W_1^A$ represents a logical one for Alice, $W_0^B$, represents a logical zero for Bob, $W_1^B$ represents a logical one for Bob.
+We are going to assume that the $W_0^A$, $W_1^A$, $W_0^B$, $W_1^B$ labels are 64 bits. By concatenating two 64-bit labels Alice is going to obtain four different keys, that we are going to assume to be 128-bits AES keys, $K00 = \left[ W_0^A W_0^B \right] $, $K01 = \left[ W_0^A W_1^B \right] $, $K10 = \left[ W_1^A W_0^B \right]$ and $K11 = \left[ W_1^A W_1^B \right]$. The labels $W_0^C$, $W_1^C$ are 128 labels and are used to represent the outputs 0 and 1. Alice is going to obtain the following table:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$X_1$                 & $X_2$                   & $Y$  \\ \hline
+$W_0^A$               & $W_0^B$                 & $enc_{K00} \left(W_1^C\right)$    \\ \hline
+$W_0^A$               & $W_1^B$                 & $enc_{K01} \left(W_1^C\right)$    \\ \hline
+$W_1^A$               & $W_0^B$                 & $enc_{K10} \left(W_1^C\right)$    \\ \hline
+$W_1^A$               & $W_1^B$                 & $enc_{K11} \left(W_0^C\right)$    \\ \hline
+\end{tabular}
+\caption{Truth table of $f_c(x_1,x_2)$.}\label{tb:truthtable}
+\end{table}
+
+Now she apply a random permutation to the table and send the table to Bob.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$X_1$                 & $X_2$                   & $Y$  \\ \hline
+$W_0^A$               & $W_0^B$                 & $enc_{K00} \left(W_1^C\right)$    \\ \hline
+$W_1^A$               & $W_1^B$                 & $enc_{K11} \left(W_0^C\right)$    \\ \hline
+$W_0^A$               & $W_1^B$                 & $enc_{K01} \left(W_1^C\right)$    \\ \hline
+$W_1^A$               & $W_0^B$                 & $enc_{K10} \left(W_1^C\right)$    \\ \hline
+\end{tabular}
+\caption{Truth table of $f_c(x_1,x_2)$.}\label{tb:truthtable}
+\end{table}
+
+She is also sending to Bob the output labels, $W_0^C$ and $W_1^C$.
+
+Finally, Alice sends to Bob her encrypted input, $W_{x_1}^A$. Note that from the label Bob cannot know nothing about $x_1$.
+
+Bob also knows its label $W_{x_2}^B$ that he obtained through OT, therefore he can build the right key $Kx_1x_2 = \left[ W_{x_1}^A W_{x_2}^B\right]$.
+
+He is going to apply the key to all the rows of the permuted column and he is going to obtain 4 decrypted words.
+Because only one of the four decrypted words equals $W_0^C$ or $W_1^C$ Bob knows which is the output of this gate, $W_0^C$ or $W_1^C$.
+Bob sends this label to Alice and Alice will tell him which was the result of the computation, 0 or 1.
+
+Note that this is scalable for any number of gates.
 
 \newpage
 

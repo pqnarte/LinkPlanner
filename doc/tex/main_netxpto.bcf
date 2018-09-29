@@ -1976,6 +1976,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -1994,6 +1995,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2016,6 +2018,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2042,6 +2045,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2069,6 +2073,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2082,8 +2087,11 @@
     <bcf:citekey order="1">Naumann16</bcf:citekey>
     <bcf:citekey order="2">Naumann16</bcf:citekey>
     <bcf:citekey order="3">Yakoubov</bcf:citekey>
-    <bcf:citekey order="4">Songhori</bcf:citekey>
-    <bcf:citekey order="5">Songhori</bcf:citekey>
+    <bcf:citekey order="4">Naumann16</bcf:citekey>
+    <bcf:citekey order="5">Naumann16</bcf:citekey>
+    <bcf:citekey order="6">Yakoubov</bcf:citekey>
+    <bcf:citekey order="7">Songhori</bcf:citekey>
+    <bcf:citekey order="8">Songhori</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2095,6 +2103,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2105,11 +2114,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="5">
-    <bcf:citekey order="1">Almeida16</bcf:citekey>
+    <bcf:citekey order="1">Songhori</bcf:citekey>
+    <bcf:citekey order="2">Songhori</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
-    <bcf:citekey order="1">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 6 -->
   <bcf:bibdata section="6">
@@ -2118,6 +2127,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2128,15 +2138,11 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="6">
-    <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">saleh1991</bcf:citekey>
-    <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">saleh1991</bcf:citekey>
-    <bcf:citekey order="5">saleh1991</bcf:citekey>
-    <bcf:citekey order="6">saleh1991</bcf:citekey>
+    <bcf:citekey order="1">Almeida16</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
+    <bcf:citekey order="1">probabilitySheldon</bcf:citekey>
   </bcf:section>
   <!-- SECTION 7 -->
   <bcf:bibdata section="7">
@@ -2145,6 +2151,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2156,9 +2163,11 @@
   </bcf:bibdata>
   <bcf:section number="7">
     <bcf:citekey order="1">saleh1991</bcf:citekey>
-    <bcf:citekey order="2">smith1997</bcf:citekey>
+    <bcf:citekey order="2">saleh1991</bcf:citekey>
     <bcf:citekey order="3">saleh1991</bcf:citekey>
-    <bcf:citekey order="4">george2011</bcf:citekey>
+    <bcf:citekey order="4">saleh1991</bcf:citekey>
+    <bcf:citekey order="5">saleh1991</bcf:citekey>
+    <bcf:citekey order="6">saleh1991</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2170,6 +2179,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2180,8 +2190,10 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="8">
-    <bcf:citekey order="1">Rao2010a</bcf:citekey>
-    <bcf:citekey order="2">Chu2000</bcf:citekey>
+    <bcf:citekey order="1">saleh1991</bcf:citekey>
+    <bcf:citekey order="2">smith1997</bcf:citekey>
+    <bcf:citekey order="3">saleh1991</bcf:citekey>
+    <bcf:citekey order="4">george2011</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2193,6 +2205,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2203,8 +2216,8 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="9">
-    <bcf:citekey order="1">Smith1999</bcf:citekey>
-    <bcf:citekey order="1">Blahut1985</bcf:citekey>
+    <bcf:citekey order="1">Rao2010a</bcf:citekey>
+    <bcf:citekey order="2">Chu2000</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2216,6 +2229,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2226,8 +2240,8 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="10">
-    <bcf:citekey order="1">Kuo</bcf:citekey>
-    <bcf:citekey order="1">Rappaport2002</bcf:citekey>
+    <bcf:citekey order="1">Smith1999</bcf:citekey>
+    <bcf:citekey order="1">Blahut1985</bcf:citekey>
   </bcf:section>
   <!-- SECTION 0 (cont.) -->
   <bcf:section number="0">
@@ -2239,6 +2253,7 @@
     <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
     <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
@@ -2249,6 +2264,30 @@
     <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="11">
+    <bcf:citekey order="1">Kuo</bcf:citekey>
+    <bcf:citekey order="1">Rappaport2002</bcf:citekey>
+  </bcf:section>
+  <!-- SECTION 0 (cont.) -->
+  <bcf:section number="0">
+  </bcf:section>
+  <!-- SECTION 12 -->
+  <bcf:bibdata section="12">
+    <bcf:datasource type="file" datatype="bibtex">./chapter/simulator_structure/simulator_structure.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bpsk_system/bpsk_system.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./sdf/tiny_garble/tiny_garble.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/bit_error_rate/bit_error_rate.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/photoelectron_generator/photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_estimator/snr_estimator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./lib/snr_photoelectron_generator/snr_photoelectron_generator.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/fft/fft.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/overlap_save/overlap_save.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/filter/filter.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">./algorithms/hilbert/hilbert.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="12">
     <bcf:citekey order="1">Marple</bcf:citekey>
     <bcf:citekey order="2">Oppenheim1999</bcf:citekey>
   </bcf:section>
@@ -2353,6 +2392,15 @@
                 labelalphanametemplatename="global">
   </bcf:datalist>
   <bcf:datalist section="11"
+                name="none/global//global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+  <bcf:datalist section="12"
                 name="none/global//global/global"
                 type="entry"
                 sortingtemplatename="none"
