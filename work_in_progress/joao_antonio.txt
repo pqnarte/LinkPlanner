@@ -1,0 +1,17 @@
+goals:
+	- mini-projeto => perceber como funciona o COW protocol (ID Qauntique)
+	- projeto => simular e obter alguns resultados
+
+TO BE DONE
+2018-01-10
+
+	- usar o git 
+
+	- estudar os artigos
+
+	- começar a escrever a documentação
+
+	- preparar uma apresentação 
+
+Next meeting: 15/10, 9h30m
+
