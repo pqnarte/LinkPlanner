@@ -1,8 +1,25 @@
 Sort term goal:	
-	- alterar as chaves do AES (ler de dois ficheiro)
-	- colocar o sistema a funcionar entre duas máquinas
-	- implementar um sistema QKD que escreva as chaves nos ficheiros (não é para o Gonçalo fazer)
-	- implementar funções mais complexas
+	- vai ler 2 entradas de um ficheiro (2 na Alice e 2 no Bob)
+	- implementar a função moda com 4 parametros de entradas
+	- colocar o sistema a funcionar entre duas máquinas no laboratoria
+
+Medium term:
+	- vai ler 2 entradas de um ficheiro (2 na Alice e 2 no Bob)
+	- implementar a função moda com 4 parametros de entradas
+	- colocar o sistema a funcionar entre duas máquinas no laboratoria
+	- alterar as chaves do AES (ler de um ficheiro)
+	- o ficheiro com as chaves tem que ser escrito usando o sistema de QRNG (não é para o Gonçalo fazer)
+
+
+2018-10-02
+TO BE DONE
+	- melhorar a documentação
+
+	- criar uma secção Open Issues (os problemas)
+
+	- implementar a moda
+
+next meeting: 8/10, 16h15m
 
 2018-09-21
 TO BE DONE
