@@ -11,6 +11,15 @@ Medium term:
 	- o ficheiro com as chaves tem que ser escrito usando o sistema de QRNG (não é para o Gonçalo fazer)
 
 
+2018-10-08
+TO BE DONE
+
+	- implementar a moda
+
+	- ANP - vou pedir a um aluno para impmementar o AND nas máquinas do laboratório
+
+next meeting: 16/10, 17h
+
 2018-10-02
 TO BE DONE
 	- melhorar a documentação
