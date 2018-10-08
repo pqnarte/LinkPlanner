@@ -66,7 +66,7 @@ $ sudo apt install yosys
     \caption{TinyGarble Global Flow\cite{Songhori}}\label{fig:tinygarble_flow}
 \end{figure}
 
-Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or Hardware Design Language (HDL) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly. This section mostly covers Verilog, since it's the most direct input, if VHDL input is needed, check the subsection UsingVHDL below.
+Following TinyGarble's global flow showed on the image above, it's possible to see that a C/C++ or Hardware Design Language (HDL) input is necessary. The former is slightly worse in terms of performance, since it needs an extra step of synthesis, with the help of a High Level Synthesis (HLS) tool, like Spart or Xilinx Vivado for C, to compile the C/C++ file into HDL, causing the end SCD file to have more logical gates than when using HDL input directly. This section mostly covers Verilog, since it's the most direct input, if VHDL input is needed, check the subsection UsingVHDL.
 
 When writting the input file, some attention to the circuit's ports is needed, since TinyGarble's V2SCD (Netlist Verilog to SCD converter) accepts netlist files with a special format.
 Below are the ports that can be used and what they represent.
@@ -102,6 +102,21 @@ yosys> write_verilog circuits/and_gate_netlist.v
 yosys> exit					
 \end{lstlisting}
 
+For more complex circuits that need more that one clock cycle to compute, flip flop mapping will also be needed, so the commands below have to be used, but in this case, the and\_gate described can be executed with only one clock cycle, so no flip flop mapping needed:
+\begin{lstlisting}[caption={Yosys instructions to compile the Verilog fiile into a Netlist one with fliip flop mapping}, language=bash, captionpos=b]
+$ ./yosys
+yosys> read_verilog circuits/circuit.v
+yosys> hierarchy -check -top module
+yosys> proc; opt; fsm; opt; memory; opt;
+yosys> techmap -map  TinyGarble/circuit_synthesis/lib/stdcells_S.v
+yosys> opt
+yosys> dfflibmap -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
+yosys> abc -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib -script  TinyGarble/circuit_synthesis/lib/script.abc
+yosys> opt; clean; opt;
+yosys> write_verilog module_net.v	
+yosys> exit	
+\end{lstlisting}
+
 Following these, the Netlist file below should be generated.
 
 \begin{lstlisting}[caption={and\_gate\_netlist.v}, language=Verilog, captionpos=b]
@@ -130,11 +145,11 @@ $ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_netlist.v
 -o circuits/and_gate.scd		
 \end{lstlisting}
 
-Before executing the SCD file, it can be tested with TinyGarble's SCD\_Evaluator\_Main located at TinyGarble/bin/scd, with the code below:
+Before executing the SCD file, it can be tested with TinyGarble's SCD\_Evaluator\_Main located at TinyGarble/bin/scd. The '-c' option is the number of cycles, and the output\_mode differs the way the output is shown, 0 for concatenated(from all clocks), 1 for separated(for each clock), and 2 to show only the last clock output.
 
 \begin{lstlisting}[caption={Testing a SCD file}, language=bash, captionpos=b]
-$ ./TinyGarble/bin/scd/SCD_Evaluator_Main -i 
-circuits/and_gate --g_input 1 --e_input 0
+$ ./TinyGarble/bin/scd/SCD_Evaluator_Main -i circuits/and_gate -c 1
+--g_input 1 --e_input 0 --output_mode 0
 \end{lstlisting}
 
 \newpage
@@ -162,22 +177,7 @@ The input is written in hexadecimal, and the log2std option is to show informati
     \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs 0 and F, respectively}\label{fig:tinygarble_xor_b}
 \end{figure}
 
-For more complex circuits that need more that one clock cycle to compute, flip flop mapping will also be needed, so instead of using the yosys commands shown before, these below have to be executes instead:
-\begin{lstlisting}[caption={Yosys instructions to compile the Verilog fiile into a Netlist one with fliip flop mapping}, language=bash, captionpos=b]
-$ ./yosys
-yosys> read_verilog circuits/circuit.v
-yosys> hierarchy -check -top module
-yosys> proc; opt; fsm; opt; memory; opt;
-yosys> techmap -map  TinyGarble/circuit_synthesis/lib/stdcells_S.v
-yosys> opt
-yosys> dfflibmap -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
-yosys> abc -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib -script  TinyGarble/circuit_synthesis/lib/script.abc
-yosys> opt; clean; opt;
-yosys> write_verilog module_net.v	
-yosys> exit	
-\end{lstlisting}
-
-\subsection{Using VHDL}
+\subsubsection{Using VHDL}
 
 If the desirable input is VHDL, this next tool, V2VHDL, will be necessary to translate it into Verilog, which is the input supported by the RTL Synthesis Tool mentioned before.
 Before cloning vhd2vl at \url{https://github.com/ldoolitt/vhd2vl} and building it, some dependencies have to be installed:
@@ -201,10 +201,10 @@ $ vhd2vl and_gate.vhd and_gate.v
 
 \subsection{Programming}
 
-\subsubsection{File Architecture}
+\subsubsection{Folder Layout}
 
 \begin{enumerate}
-\item a23: Algorithms wrote in C. No free HLS tool was found yet, so impossible to run examples.
+\item a23: Low level functions wrote in C.
 \item bin: Created when building TinyGarble. Holds executables and examples of netlist and scd files.
 \item circuit\_synthesis: Holds netlist and RTL Verilog files and the custom libs to use with Yosys. Examples below.
 \item crypto: Holds C++ files for the Oblivious Transfer and their data structure, 'block'.
@@ -214,7 +214,7 @@ $ vhd2vl and_gate.vhd and_gate.v
 \item util: Holds C++ support files.
 \end{enumerate}
 
-To show an example of a more complex circuit as mentioned above, some functions written in verilog can be found at circuit\_sythesis. This example in particular will be of the sum function.
+To show an example of a more complex circuit as mentioned before, some functions written in verilog can be found at circuit\_sythesis. This example in particular will be of the sum function.
 Inside the sum folder sum.v and sum.yos can be found. The verilog file is actually a synopsys template, but since yosys is used, uncommenting the assigns and commenting the module calls of AND and AND\_ made it work.
 Also to make sure the circuit is made for more that one clock cycle, the parameter CC has to be set higher than one, if set equal to N, each clock cycle will sum only a bit with another, passing the carry for the next sum. Doing this we assure that the circuit will need flipflops to work. Another value between 2 and N could have  been used, for example if two was used, each clock cycle would sum two 4 bit numbers, the first sum passing the carry to the second one.
 To compile this into netlist the latter yosys commands shown are needed, or simply run:
@@ -223,7 +223,7 @@ $ ./yosys
 yosys> script sum.yos
 yosys> exit
 \end{lstlisting}
-After that, the file has to be converted to SCD, with the help of TinyGarble's V2SCD\_Main executable mentioned above. When firstly executed it complained about port I missing. Adding the line at the netlist file above the red line on the picture below fixed the problem. Although when executed by TinyGarble, the outputs were wrong.
+After that, the file has to be converted to SCD, with the help of TinyGarble's V2SCD\_Main executable mentioned above. When firstly executed it complained about a port I missing. Adding the line at the netlist file above the red line on all the DFF(flip flop) cells should sobe the problem.  When executed by TinyGarble, the outputs were incorrect.
 
 \begin{figure}[H]
 	\centering
@@ -233,7 +233,7 @@ After that, the file has to be converted to SCD, with the help of TinyGarble's V
 
 \subsubsection{Running on seperate Hosts}
 
-To run Bob and Alices in different hosts, the host running Bob has to give an extra option '-s <Alice IP adress>'. To find the ip adress run 'hostname -I' on the terminal of Alice's host. The default port is 1234, to change it add the optionn -p <port> on both Hosts. The example below assumes Alice's IP adress is 192.168.1.3. The '--output\_mask arg <0 or 1>' can also be used, to determine which host shows the output, the default is 0 (Bob), and can be changed to 1 (Alice).
+To run Bob and Alices in different hosts, the host running Bob has to give an extra option '-s <Alice IP adress>'. To find the ip adress run 'hostname -I' or 'ifconfig' in Alice's terminal. The default port is 1234, to change it add the optionn -p <port> on both Hosts. The example below assumes Alice's IP adress is 192.168.1.3. The '--output\_mask arg <0 or 1>' can also be used, to determine which host shows the output, the default is 0 (Bob), and can be changed to 1 (Alice).
 \begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 15.04>}, language=bash, captionpos=b]
 Alice$ TinyGarble -a -i and.scd -p 3000 --input 1
 Bob$ TinyGarble -b -i and.scd -s 192.168.1.3 --p 3000 --input 1
@@ -393,17 +393,13 @@ When trying to converto to Scd it gives the error:
     \caption{Model SCD conversion fail}\label{fig:moda_scd_fail}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth, height=10cm]{./sdf/tiny_garble/figures/teste_sucess.png}
-    \caption{Test sucess}\label{fig:key_file}
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth, height=15cm]{./sdf/tiny_garble/figures/teste_failure.png}
-    \caption{Test faile}\label{fig:key_file}
-\end{figure}
+\subsection{Open Issues}
+
+\begin{enumerate}  
+\item No free High Level Synthesis was yet found, so impossible to run examples with C or C++ as input.
+\item The moda function netlist file in not compiling into SCD for unknown reasons.
+\end{enumerate}
 
 % bibliographic references for the section ----------------------------
 \clearpage
