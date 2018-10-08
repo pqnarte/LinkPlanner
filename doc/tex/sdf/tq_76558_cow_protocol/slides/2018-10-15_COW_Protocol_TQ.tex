@@ -101,7 +101,7 @@
 \vspace{6mm}
 \begin{center}
     \color{black}
-    \textbf{João António, Daniel Silva, Armando N. Pinto\\}
+    \textbf{João António, Daniel Pereira, Armando N. Pinto\\}
     {}
 \end{center}
 
@@ -130,11 +130,11 @@ Instituto de Telecomunica\c{c}\~{o}es, Aveiro, Portugal\\
 
 \begin{description}
   \item[Step 1] Alice produces:
-      $$|0\rangle = |\alpha\rangle_{2k} |0\rangle_{2k+1},$$
-      $$|1\rangle = |0\rangle_{2k} |\alpha\rangle_{2k+1}.$$
-      $$|d\rangle = |\alpha\rangle_{2k} |\alpha\rangle_{2k+1}.$$
+      $$|0\rangle = |\alpha\rangle |0\rangle$$
+      $$|1\rangle = |0\rangle |\alpha\rangle$$
+      $$|d\rangle = |\alpha\rangle |\alpha\rangle$$
 
-      where $|0\rangle$ is teh vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$.
+      where $|0\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$.
       
       Alice produces $|d\rangle$ with probability $f$ and the quantum signal cannot be divided bitwise (coherence of the laser).
       
@@ -162,21 +162,21 @@ Instituto de Telecomunica\c{c}\~{o}es, Aveiro, Portugal\\
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{COW - Protocol}\large
-\vspace*{0.5cm}
+\vspace*{0.1 cm}
 
-In the UMZI (Mach-Zehnder Interferometer) the delayed half of each pulse is recombined in the non-delayed half the next pulse.
+In the UMZI (Unbalanced Mach-Zehnder Interferometer) the delayed half of each pulse is recombined in the non-delayed half the next pulse.
 
-For example, the key $|0\rangle|0\rangle|1\rangle|d\rangle|1\rangle|1\rangle |0\rangle|1\rangle$
   \begin{figure}[hbt]
     	\centering
     	\includegraphics[width=0.75\textwidth, height=8cm]{./figures/DectedSignals.eps}
         	\label{cen}
     \end{figure}
+\tiny    Image based on the article 2017 - Roberts - Modulator-free coherent-one-way quantum key distribution
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
-\mysection{COW - Protocol - Attacks}\large
+\mysection{COW - Protocol}\large
 \vspace*{1cm}
 \begin{description}
 
@@ -195,7 +195,7 @@ reveal the presence of an eavesdropper, in which case the key is simply discarde
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{COW - Protocol - Attacks}\large
-%\vspace*{0.2cm}
+\vspace*{0.3 cm}
 \begin{itemize}
 \item Beam-splitting attack - Eve removes a small part from the intensity of the original message and send the rest to bob in a no-losses channel (symbolized by a red line). Eve introduces additional errors in order to make her information equal to the Bob information. 
 \item Active beam-splitting attack - Eve removes smaller intensities of the message and can make individual measurements and block some of it.
@@ -205,13 +205,14 @@ reveal the presence of an eavesdropper, in which case the key is simply discarde
     	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob2.pdf}
         	\label{bob2}
     \end{figure}
-    
+\end{itemize}
 
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
-\mysection{COW - Protocol}\large
+\mysection{COW - Protocol - Attacks}\large
 \vspace*{1cm}
+\begin{itemize}
 \item Unambiguous state discrimination (USD) - Alice and Bob only check for coherence in two successive pulses. 
 d
 So if Eve attacks while they don't check the coherence, she can do an unnoticed attack. But if systematically, they notice that no decoy is detected.

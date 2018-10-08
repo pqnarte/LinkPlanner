@@ -13,7 +13,7 @@ subplot(3,1,1)
 stem(x,A,'.','LineWidth',15)
 ylabel ({'SPD_1';'Counts (*10^3)'})
 grid
-
+title ('|0\rangle          |0\rangle           |1\rangle          |d\rangle           |1\rangle          |1\rangle           |0\rangle          |1\rangle')
 subplot(3,1,2)
 stem(x,B,'.','LineWidth',15)
 ylabel ({'SPD_2';'Counts (*10^3)'})
