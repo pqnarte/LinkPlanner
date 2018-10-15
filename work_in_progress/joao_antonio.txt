@@ -3,6 +3,13 @@ goals:
 	- projeto => simular e obter alguns resultados
 
 TO BE DONE
+2018-10-15
+
+	- melhorar a apresentação
+
+Next meeting: 22/10, 9h30m
+
+TO BE DONE
 2018-01-10
 
 	- usar o git 
