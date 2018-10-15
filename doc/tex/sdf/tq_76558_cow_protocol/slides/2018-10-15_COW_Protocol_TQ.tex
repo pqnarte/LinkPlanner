@@ -147,23 +147,37 @@ Message in 8bit Binary                                                         &
 
 To share/create the random key, they use two channels, one quantum channel and one Authenticated classic channel (can be eavesdropped but can't be modified).
 
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+
+\mysection{Quantum Key Distribution}\large
+\vspace*{0.5cm}
+The two main types of QKD are Polirization protocols and Time Bin protocols.
+
+The Coherent One Way (COW) protocol, uses the Time Bin properties.
+
+
 
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{COW - Protocol}\large
-\vspace*{1.0cm}
+\vspace*{0.3cm}
 
 \begin{description}
-  \item[Step 1] Alice produces:
+  \item[Step 1] Alice creates a random key using:
       $$|0\rangle = |\alpha\rangle |0\rangle$$
       $$|1\rangle = |0\rangle |\alpha\rangle$$
       $$|d\rangle = |\alpha\rangle |\alpha\rangle$$
 
-      where $|0\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$.
+      where $|0\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$ and spreads a few random decoy states ($|d\rangle$) in random locations during the creation of the key.
       
-      Alice produces $|d\rangle$ with probability $f$ and the quantum signal cannot be divided bitwise (coherence of the laser).
+  \begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.4\textwidth]{./figures/Simple.png}
+        	\label{Simple}
+    \end{figure}
       
       $$|...0d10...\rangle = |...:0\alpha:\alpha\alpha:\alpha0:0\alpha...\rangle$$
 
@@ -175,31 +189,42 @@ To share/create the random key, they use two channels, one quantum channel and o
 \mysection{COW - Protocol}\large
 
 \begin{description}
-  \item[Step 3] Bob uses a 90:10 beamsplitter making 90\% of the photons into the SPD{\tiny 1} to arrival time measurements, the remaining 10\% are used to measure phase coherence.
-  
-  In the UMZI (Unbalanced Mach-Zehnder Interferometer) the delayed half of each pulse is recombined in the non-delayed half the next pulse.
-  
-  \begin{figure}[hbt]
+  \item[Step 2] Bob uses a 90:10 beamsplitter making 90\% of the photons into the SPD{\tiny 1} to create the key by measuring time-bins, the remaining 10\% are used to measure phase coherence.
+    
+    \begin{figure}[hbt]
     	\centering
     	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob.pdf}
         	\label{bob}
     \end{figure}
-\end{description}
+    
+The UMZI (Unbalanced Mach-Zehnder Interferometer) delays by 0.5 ns the photon, measuring in the SPD{\tiny 2} the destructive interference.
+\end{description}  
+
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{COW - Protocol}\large
-\vspace*{0.1 cm}
 
-In the UMZI (Unbalanced Mach-Zehnder Interferometer) the delayed half of each pulse is recombined in the non-delayed half the next pulse.
+To better study what happens in the 10\% branch of the Bob Apparatus. The the top graph of the Figure is the single photons that arrive before the UZMI. The bottom one is the measures in the  SPD{\tiny 2}, where a photon in time t can interact with a photon in time t-0.5 ns.
+
+\begin{table}[hbt]
+\tiny
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+Time T & Time T - 0.5 & SPD{\tiny 2} \\ \hline
+1      & 0            & 1      \\ \hline
+0      & 1            & 1      \\ \hline
+1      & 1            & 0      \\ \hline
+0      & 0            & 0      \\ \hline
+\end{tabular}
+\end{table}
 
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.75\textwidth, height=8cm]{./figures/DectedSignals.eps}
-        	\label{cen}
+    	\includegraphics[width=0.55\textwidth]{./figures/DectedSignals.png}
     \end{figure}
-\tiny    Image based on the article 2017 - Roberts - Modulator-free coherent-one-way quantum key distribution
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -209,9 +234,9 @@ In the UMZI (Unbalanced Mach-Zehnder Interferometer) the delayed half of each pu
 \begin{description}
 
 
-\item [Step 4]Alice informs Bob when she sent a decoy pulse.
+\item [Step 3]Alice informs Bob when she sent a decoy pulse.
 
-\item [Step 5]They calculate the visibility (V) and the QBER (Q) of the key.
+\item [Step 4]They calculate the visibility (V) and the QBER (Q) of the key.
 $$ V = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}$$
 where the $I_{max}$ and $I_{min}$ are the average pulse intensities for constructive and destructive interference respectively.
 
@@ -226,6 +251,10 @@ reveal the presence of an eavesdropper, in which case the key is simply discarde
 \mysection{} \sffamily
 \vspace{-10mm}
 \large\centerline{E-mail: joaoantonio@ua.pt}
-
+\vspace*{8cm}
+\begin{itemize}
+	\item 2017 - Roberts - Modulator-free coherent-one-way quantum key distribution
+	\item 2006 - Branciard - Zero-Error Attacks and Detection Statistics in the Coherent One-Way Protocol for Quantum Cryptography
+\end{itemize}
 
 \end{document}
