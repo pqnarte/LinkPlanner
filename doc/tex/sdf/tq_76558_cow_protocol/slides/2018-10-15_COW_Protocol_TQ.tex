@@ -90,6 +90,7 @@
 \begin{titlepage}  \overlay{it_0.png}
 
 \color{itblue} \sffamily \noindent \small
+\hspace*{1cm}  Tecnologias Quânticas\\
 \hspace*{1cm}  Universidade de Aveiro\\ %Instituto\\ Superior T�cnico, Instituto de Telecomunica��es\\
 \hspace*{1cm}  2018-2019\\ 
 
@@ -101,16 +102,17 @@
 \vspace{6mm}
 \begin{center}
     \color{black}
-    \textbf{João António, Daniel Pereira, Armando N. Pinto\\}
+    \textbf{João António$^1$, Daniel Pereira$^{2,3}$, Armando N. Pinto$^{2,3}$\\}
     {}
 \end{center}
 
 \vspace{0.0mm}
 \scriptsize
 \begin{center}
-Department of Electronics, Telecommunications and Informatics,\\
+Physics Department$^1$,\\
+Department of Electronics, Telecommunications and Informatics$^2$,\\
 University of Aveiro, Aveiro, Portugal\\
-Instituto de Telecomunica\c{c}\~{o}es, Aveiro, Portugal\\
+Instituto de Telecomunica\c{c}\~{o}es,$^3$, Aveiro, Portugal\\
 \end{center}
 
 \vspace{1.0cm}
@@ -121,6 +123,31 @@ Instituto de Telecomunica\c{c}\~{o}es, Aveiro, Portugal\\
 
 \renewcommand{\headsep}{-25pt}
 \pagenumbering{arabic}
+
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+
+\mysection{Quantum Key Distribution}\large
+\vspace*{0.5cm}
+Quantum Key Distribution (QKD) is a secure way of sharing a unique random key (composed of 0 and 1) between two parties spatially distant. They later use this random key to encrypt and decrypt messages between them.
+
+\begin{table}[ht]
+\small
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+
+\cline{1-2} \cline{4-5}
+\multicolumn{2}{|c|}{Alice}                                                               &  & \multicolumn{2}{c|}{Bob}                                                                               \\ \cline{1-2} \cline{4-5} 
+Message                                                                        & 42       &  & Encrypted Message                                                                           & 10000001 \\ \cline{1-2} \cline{4-5} 
+Message in 8bit Binary                                                         & 00101010 &  & \textbf{Key}                                                                                         & \textbf{10101011} \\ \cline{1-2} \cline{4-5} 
+\textbf{Key}                                                                            & \textbf{10101011} &  & \begin{tabular}[c]{@{}c@{}}(Encrypted Message + Key mod 2)\\ Decrypted Message\end{tabular} & 00101010 \\ \cline{1-2} \cline{4-5} 
+\begin{tabular}[c]{@{}c@{}}(Key + 8bit mod 2)\\ Encrypted Message\end{tabular} & 10000001 &  & Message                                                                                     & 42       \\ \cline{1-2} \cline{4-5} 
+\end{tabular}
+\end{table}
+
+To share/create the random key, they use two channels, one quantum channel and one Authenticated classic channel (can be eavesdropped but can't be modified).
+
+
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -148,9 +175,10 @@ Instituto de Telecomunica\c{c}\~{o}es, Aveiro, Portugal\\
 \mysection{COW - Protocol}\large
 
 \begin{description}
-  \item[Step 2] Alice uses an attenuator to around 0.1 photons per pulse and then transmits through a quantum channel.
-
   \item[Step 3] Bob uses a 90:10 beamsplitter making 90\% of the photons into the SPD{\tiny 1} to arrival time measurements, the remaining 10\% are used to measure phase coherence.
+  
+  In the UMZI (Unbalanced Mach-Zehnder Interferometer) the delayed half of each pulse is recombined in the non-delayed half the next pulse.
+  
   \begin{figure}[hbt]
     	\centering
     	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob.pdf}
@@ -192,41 +220,7 @@ They also share a small part of the key in a public channel, to see if there are
 \vspace*{1cm}
 A loss of coherence and therefore a reduction of the visibility 
 reveal the presence of an eavesdropper, in which case the key is simply discarded
-%--------------------------------------------------------------------------------------------------
-%------------ SLIDE -------------------------------------------------------------------------------
-\mysection{COW - Protocol - Attacks}\large
-\vspace*{0.3 cm}
-\begin{itemize}
-\item Beam-splitting attack - Eve removes a small part from the intensity of the original message and send the rest to bob in a no-losses channel (symbolized by a red line). Eve introduces additional errors in order to make her information equal to the Bob information. 
-\item Active beam-splitting attack - Eve removes smaller intensities of the message and can make individual measurements and block some of it.
 
-  \begin{figure}[hbt]
-    	\centering
-    	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob2.pdf}
-        	\label{bob2}
-    \end{figure}
-\end{itemize}
-
-
-%--------------------------------------------------------------------------------------------------
-%------------ SLIDE -------------------------------------------------------------------------------
-\mysection{COW - Protocol - Attacks}\large
-\vspace*{1cm}
-\begin{itemize}
-\item Unambiguous state discrimination (USD) - Alice and Bob only check for coherence in two successive pulses. 
-d
-So if Eve attacks while they don't check the coherence, she can do an unnoticed attack. But if systematically, they notice that no decoy is detected.
-	\begin{table}[hbt]
-		\centering
-	\begin{tabular}{ll}
-
-	Name  & Discriminating                                     \\
-	USD3  & $|0\rangle|\alpha\rangle|0\rangle$                 \\
-	USD4a & $|0\rangle|\alpha\rangle:|\alpha\rangle|0\rangle$  \\
-	USD4b & $|0\rangle:|\alpha\rangle|\alpha\rangle:|0\rangle$
-	\end{tabular}
-	\end{table}
-\end{itemize}	
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
 \mysection{} \sffamily
