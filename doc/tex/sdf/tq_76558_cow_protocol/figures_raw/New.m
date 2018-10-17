@@ -72,3 +72,43 @@ title ('Measured in SPD_2')
 ax = gca; % current axes
 ax.FontSize = 10;
 xlabel('Time(ns)')
+%% COW Protocol
+x = 0:0.01:2;
+
+subplot(2,2,1)
+y = gaussmf(x,[0.075 0.25+1]);
+y2 = gaussmf(x,[0.075 0.25+0.5]);
+plot(x,y+y2,    'LineWidth',5)
+grid on
+title ('|1\rangle:|0\rangle')
+ax = gca; % current axes
+ax.FontSize = 20;
+ylim([0 1])
+subplot(2,2,2)
+plot(x,y,'r','LineWidth',5)
+grid on
+title ('S_M_2 for s=1:0')
+ax = gca; % current axes
+ax.FontSize = 20;
+xlabel('Time(ns)')
+ylim([0 1])
+
+
+
+subplot(2,2,3)
+y = gaussmf(x,[0.075 0.25+1]);
+y2 = gaussmf(x,[0.075 0.25+0.5+1]);
+plot(x,y+y2,'LineWidth',5)
+grid on
+title ('|d\rangle')
+ax = gca; % current axes
+ax.FontSize = 20;
+ylim([0 1])
+subplot(2,2,4)
+y2 = gaussmf(x,[0.075 0.25+0.5+1]);
+plot(x,y2,'r','LineWidth',5)
+grid on
+title ('S_M_2 for s=d')
+ax = gca; % current axes
+ax.FontSize = 20;
+ylim([0 1])

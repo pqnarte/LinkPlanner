@@ -131,30 +131,32 @@ Instituto de Telecomunica\c{c}\~{o}es,$^3$, Aveiro, Portugal\\
 \vspace*{0.5cm}
 Quantum Key Distribution (QKD) is a secure way of sharing a unique random key (composed of 0 and 1) between two parties spatially distant. They later use this random key to encrypt and decrypt messages between them.
 
-\begin{table}[ht]
-\small
-\centering
-\begin{tabular}{|c|c|c|c|c|}
 
-\cline{1-2} \cline{4-5}
-\multicolumn{2}{|c|}{Alice}                                                               &  & \multicolumn{2}{c|}{Bob}                                                                               \\ \cline{1-2} \cline{4-5} 
-Message                                                                        & 42       &  & Encrypted Message                                                                           & 10000001 \\ \cline{1-2} \cline{4-5} 
-Message in 8bit Binary                                                         & 00101010 &  & \textbf{Key}                                                                                         & \textbf{10101011} \\ \cline{1-2} \cline{4-5} 
-\textbf{Key}                                                                            & \textbf{10101011} &  & \begin{tabular}[c]{@{}c@{}}(Encrypted Message + Key mod 2)\\ Decrypted Message\end{tabular} & 00101010 \\ \cline{1-2} \cline{4-5} 
-\begin{tabular}[c]{@{}c@{}}(Key + 8bit mod 2)\\ Encrypted Message\end{tabular} & 10000001 &  & Message                                                                                     & 42       \\ \cline{1-2} \cline{4-5} 
-\end{tabular}
-\end{table}
 
 To share/create the random key, they use two channels, one quantum channel and one Authenticated classic channel (can be eavesdropped but can't be modified).
+
+  \begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.6\textwidth]{./figures/All.pdf}
+        	\label{All}
+    \end{figure}
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{Quantum Key Distribution}\large
-\vspace*{0.5cm}
+\vspace*{1cm}
 The two main types of QKD are Polirization protocols and Time Bin protocols.
 
-The Coherent One Way (COW) protocol, uses the Time Bin properties.
+The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004. 
+Uses time bin properties and the main principle is the \textbf{Quantum Entanglement}.
+\vspace*{1cm}
+
+The advantage of this system are that :
+\begin{itemize}
+\item the setup is experimentally simple
+\item tolerant to photon numbers splitting attacks
+\end{itemize}
 
 
 
@@ -166,20 +168,19 @@ The Coherent One Way (COW) protocol, uses the Time Bin properties.
 \vspace*{0.3cm}
 
 \begin{description}
-  \item[Step 1] Alice creates a random key using:
-      $$|0\rangle = |\alpha\rangle |0\rangle$$
-      $$|1\rangle = |0\rangle |\alpha\rangle$$
-      $$|d\rangle = |\alpha\rangle |\alpha\rangle$$
-
-      where $|0\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$ and spreads a few random decoy states ($|d\rangle$) in random locations during the creation of the key.
+  \item[Step 1] Alice creates a random key using:  
+    \small
+$$|0\rangle = |\alpha\rangle |\emptyset\rangle$$      
+  $$|1\rangle = |\emptyset\rangle |\alpha\rangle$$
+$$|d\rangle = |\alpha\rangle |\alpha\rangle$$
+\normalsize
+Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$ and spreads a few random decoy states ($|d\rangle$) in random locations during the creation of the key. The two photons are Quantum Entanglement.
       
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.4\textwidth]{./figures/Simple.png}
+    	\includegraphics[width=0.6\textwidth]{./figures/Simple.png}
         	\label{Simple}
     \end{figure}
-      
-      $$|...0d10...\rangle = |...:0\alpha:\alpha\alpha:\alpha0:0\alpha...\rangle$$
 
 \end{description}
 
@@ -189,15 +190,15 @@ The Coherent One Way (COW) protocol, uses the Time Bin properties.
 \mysection{COW - Protocol}\large
 
 \begin{description}
-  \item[Step 2] Bob uses a 90:10 beamsplitter making 90\% of the photons into the SPD{\tiny 1} to create the key by measuring time-bins, the remaining 10\% are used to measure phase coherence.
+  \item[Step 2] Bob's detection is completely passive. An asymmetric coupler sends a fraction $t_B$ of the photons into the data line. That consist of a single photon counter $D_B$, where the bits are discriminated by the time of arrival.
+
     
     \begin{figure}[hbt]
     	\centering
     	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob.pdf}
         	\label{bob}
     \end{figure}
-    
-The UMZI (Unbalanced Mach-Zehnder Interferometer) delays by 0.5 ns the photon, measuring in the SPD{\tiny 2} the destructive interference.
+In the other line half of each pulse interacts with the half of the previous pulse (delayed by 0.5 ns).
 \end{description}  
 
 
@@ -205,27 +206,17 @@ The UMZI (Unbalanced Mach-Zehnder Interferometer) delays by 0.5 ns the photon, m
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{COW - Protocol}\large
-
-To better study what happens in the 10\% branch of the Bob Apparatus. The the top graph of the Figure is the single photons that arrive before the UZMI. The bottom one is the measures in the  SPD{\tiny 2}, where a photon in time t can interact with a photon in time t-0.5 ns.
-
-\begin{table}[hbt]
-\tiny
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-Time T & Time T - 0.5 & SPD{\tiny 2} \\ \hline
-1      & 0            & 1      \\ \hline
-0      & 1            & 1      \\ \hline
-1      & 1            & 0      \\ \hline
-0      & 0            & 0      \\ \hline
-\end{tabular}
-\end{table}
-
+The $D_{M2}$ (constructive photon counter) should only click when:
+\begin{itemize}
+\item Decoy state where the coherence is within the bit sequence (s=d);
+\item A logical bit 1 followed by a logical bit 0 where the coherence is across the bit separation (s=1:0);
+\end{itemize}
+All the other photons should click the $D_{M1}$.
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.55\textwidth]{./figures/DectedSignals.png}
+    	\includegraphics[width=0.45\textwidth]{./figures/Simple2.png}
+        	\label{Simple2}
     \end{figure}
-
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
@@ -234,15 +225,13 @@ Time T & Time T - 0.5 & SPD{\tiny 2} \\ \hline
 \begin{description}
 
 
-\item [Step 3]Alice informs Bob when she sent a decoy pulse.
+\item [Step 3] Bob informs Alice when $D_{M1}$ and $D_{M2}$ clicked. Alice tell Bob which items of the data line must be discarded because they correspond to decoy sequences.
 
-\item [Step 4]They calculate the visibility (V) and the QBER (Q) of the key.
-$$ V = \frac{I_{max}-I_{min}}{I_{max}+I_{min}}$$
-where the $I_{max}$ and $I_{min}$ are the average pulse intensities for constructive and destructive interference respectively.
+\item [Step 4] They calculate the visibility (V) and the QBER (Q) of the key.
+$$V_s=\frac{P(D_{M1}|s)-P(D_{M2}|s)}{P(D_{M1}|s)+P(D_{M2}|s)}$$
 
-They also share a small part of the key in a public channel, to see if there are errors in the message.
+where $P(D_{M}|s)$ is the probability that detector $D_{M}$ has clicked at a time corresponding to a s sequence. After that Bob reveals some bits of the data line to calculate the Q.
 \end{description}
-\vspace*{1cm}
 A loss of coherence and therefore a reduction of the visibility 
 reveal the presence of an eavesdropper, in which case the key is simply discarded
 
@@ -251,10 +240,12 @@ reveal the presence of an eavesdropper, in which case the key is simply discarde
 \mysection{} \sffamily
 \vspace{-10mm}
 \large\centerline{E-mail: joaoantonio@ua.pt}
-\vspace*{8cm}
+\vspace*{6cm}
 \begin{itemize}
-	\item 2017 - Roberts - Modulator-free coherent-one-way quantum key distribution
+	\item 2014 - Singh - Quantum Key Distribuition Protocols A review
 	\item 2006 - Branciard - Zero-Error Attacks and Detection Statistics in the Coherent One-Way Protocol for Quantum Cryptography
+	\item 2017 - Kronberg - Analysis of coherent quantum cryptography protocol
+	\item 2017 - Roberts - Modulator-free coherent-one-way quantum key distribution
 \end{itemize}
 
 \end{document}
