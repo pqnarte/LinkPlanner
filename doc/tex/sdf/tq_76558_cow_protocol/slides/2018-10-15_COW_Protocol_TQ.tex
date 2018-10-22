@@ -15,6 +15,7 @@
 \usepackage{listings}
 \captionsetup{labelformat=empty,skip=-0.8cm}
 
+
 %\lstset{
 %    language=Matlab,                % choose the language of the code
 %    basicstyle=\ttfamily\tiny,       % the size of the fonts that are used for the code
@@ -90,8 +91,8 @@
 \begin{titlepage}  \overlay{it_0.png}
 
 \color{itblue} \sffamily \noindent \small
-\hspace*{1cm}  Quantic Technologies\\
-\hspace*{1cm}  University of Aveiro\\ %Instituto\\ Superior T�cnico, Instituto de Telecomunica��es\\
+\hspace*{1cm}  Quantum Technologies\\
+\hspace*{1cm}  Physics Department, University of Aveiro,\\ %Instituto\\ Superior T�cnico, Instituto de Telecomunica��es\\
 %
 \hspace*{1cm}  2018-2019\\ 
 
@@ -130,9 +131,7 @@ Instituto de Telecomunica\c{c}\~{o}es,$^3$, Aveiro, Portugal\\
 
 \mysection{Quantum Key Distribution}\large
 \vspace*{0.5cm}
-Quantum Key Distribution (QKD) is a secure way of sharing a unique random key (composed of 0 and 1) between two parties spatially distant. They later use this random key to encrypt and decrypt messages between them.
-
-
+Quantum Key Distribution (QKD) is a secure way of sharing a unique random key (composed of 0 and 1) between two parties spatially distant. They later use this symmetric key to encrypt and decrypt messages between them.
 
 To share/create the random key, they use two channels, one quantum channel and one Authenticated classic channel (can be eavesdropped but can't be modified).
 
@@ -147,18 +146,20 @@ To share/create the random key, they use two channels, one quantum channel and o
 
 \mysection{Quantum Key Distribution}\large
 \vspace*{1cm}
-The two main types of QKD are Polirization protocols and Time Bin protocols.
+The two main types of QKD are Polarization protocols and Time Bin protocols.
 
-The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004. 
-Uses time bin properties and the main principle is the \textbf{Quantum Entanglement}.
+The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004 [1]. 
+Uses time bin properties.
 
-It is also characterized by having a very simple experimental setup since Bob's apparatus e passive.
+It is also characterized by having a very simple experimental setup since Bob's apparatus is passive.
 
     \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Alice.pdf}
+    	\includegraphics[width=0.6\textwidth, height=5cm]{./figures/Alice.pdf}
         	\label{bob}
     \end{figure}
+
+[1] Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004).
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -173,11 +174,11 @@ $$|0\rangle = |\alpha\rangle |\emptyset\rangle$$
   $$|1\rangle = |\emptyset\rangle |\alpha\rangle$$
 $$|d\rangle = |\alpha\rangle |\alpha\rangle$$
 \normalsize
-Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$ and spreads a few random decoy states ($|d\rangle$) in random locations during the creation of the key. The two photons are Quantum Entanglement.
+Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2$ and spreads a few random decoy states ($|d\rangle$) in random locations during the creation of the key.
       
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.6\textwidth]{./figures/Simple.png}
+    	\includegraphics{./figures/Simple.png}
         	\label{Simple}
     \end{figure}
 
@@ -197,7 +198,7 @@ Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent
     	\includegraphics[width=0.6\textwidth, height=6cm]{./figures/Bob.pdf}
         	\label{bob}
     \end{figure}
-In the other line half of each pulse interacts with the half of the previous pulse (delayed by 0.5 ns).
+In the other line half of each pulse interacts with the half of the previous pulse (delayed by 0.5 $T_{bit}$).
 \end{description}  
 
 
@@ -207,13 +208,13 @@ In the other line half of each pulse interacts with the half of the previous pul
 \mysection{COW - Protocol}\large
 The $D_{M2}$ (constructive photon counter) should only click when:
 \begin{itemize}
-\item Decoy state where the coherence is within the bit sequence (s=d);
 \item A logical bit 1 followed by a logical bit 0 where the coherence is across the bit separation (s=1:0);
+\item Decoy state where the coherence is within the bit sequence (s=d);
 \end{itemize}
 All the other photons should click the $D_{M1}$.
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.45\textwidth]{./figures/Simple2.png}
+    	\includegraphics{./figures/Simple2.png}
         	\label{Simple2}
     \end{figure}
 %--------------------------------------------------------------------------------------------------
@@ -224,27 +225,26 @@ All the other photons should click the $D_{M1}$.
 \begin{description}
 
 
-\item [Step 3] Bob informs Alice when $D_{M1}$ and $D_{M2}$ clicked. Alice tell Bob which items of the data line must be discarded because they correspond to decoy sequences.
+\item [Step 3] Alice tell Bob the times of the decoy sequences ($2k_d \& 2k_d-1$). Bob also checks if the $D_{M2}$ has ever fired during a $2k_d$ time. Thus they estimate the break of coherence of decoy pulses.
 
-\item [Step 4] They calculate the visibility (V) and the QBER (Q) of the key.
-$$V_s=\frac{P(D_{M1}|s)-P(D_{M2}|s)}{P(D_{M1}|s)+P(D_{M2}|s)}$$
+\item [Step 4] Bob reveals the times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$, thus, Alice and Bob estimate the break of coherence across the bit separation.
 
-where $P(D_{M}|s)$ is the probability that detector $D_{M}$ has clicked at a time corresponding to a s sequence. After that Bob reveals some bits of the data line to calculate the Q.
+\item [Step 5] Finally, Bob reveals the items that he has detected in the data line. Alice and Bob run error correction and privacy amplification on these bits and end up with a secret key.
+
 \end{description}
-A loss of coherence and therefore a reduction of the visibility 
-reveal the presence of an eavesdropper, in which case the key is simply discarded
+
 
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
 \mysection{} \sffamily
 \vspace{-10mm}
 \large\centerline{E-mail: joaoantonio@ua.pt}
-\vspace*{5.5cm}
+\vspace*{2cm}
 \begin{itemize}
-	\item 2014 - Singh et al. - Quantum Key Distribuition Protocols A review
-	\item 2006 - Branciard et al. - Zero-Error Attacks and Detection Statistics in the Coherent One-Way Protocol for Quantum Cryptography
-	\item 2017 - Kronberg et al. - Analysis of coherent quantum cryptography protocol
-	\item 2017 - Roberts et al. - Modulator-free coherent-one-way quantum key distribution
+	\item Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004).
+	\item Branciard, Cyril, et al. "Zero-error attacks and detection statistics in the coherent one-way protocol for quantum cryptography." arXiv preprint quant-ph/0609090 (2006).
+	\item Kronberg, Dmitry Anatol'evich, et al. "Analysis of coherent quantum cryptography protocol vulnerability to an active beam-splitting attack." Quantum Electronics 47.2 (2017): 163.
+	\item Roberts, George L., et al. "Modulator‐Free Coherent‐One‐Way Quantum Key Distribution." Laser \& Photonics Reviews 11.4 (2017): 1700067.
 \end{itemize}
 
 \end{document}
