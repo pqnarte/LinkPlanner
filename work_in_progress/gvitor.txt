@@ -14,6 +14,16 @@ Medium term:
 2018-10-08
 TO BE DONE
 
+	- implementar a moda, assumindo valores entre 0 e 9999
+	- documentar
+
+	- corrigir a documentação
+
+next meeting: 30/10, 16h
+
+2018-10-08
+TO BE DONE
+
 	- implementar a moda
 
 	- ANP - vou pedir a um aluno para impmementar o AND nas máquinas do laboratório
