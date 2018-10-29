@@ -1,6 +1,6 @@
 %% File: pdfslide.dtx Copyright (c) 1999, C. V. Radhakrishnan
 %% <cvr@river-valley.com>
-%% This package may be distributed under the terms of the LaTeX Project
+%% This package may be distributed under the terms of the LaTeX Project 
 %%
 \ProvidesPackage{pdfslide}
           [1999/10/10 v0.50  slides with PDF (CVR)]
@@ -17,7 +17,7 @@
 \RequirePackage{colortbl}
 \RequirePackage{amssymb,amsbsy,fancybox}
 \RequirePackage[pdftex,pdfpagemode=none,colorlinks,%
-   pdfmenubar=true,%
+%   pdfmenubar=false,%
     pdfhighlight=/I,%
     pdftoolbar=false,%
 %   pdfpagemode=FullScreen,%
@@ -80,8 +80,8 @@
     \def\marginsize#1#2#3#4{}
     \setcounter{tocdepth}{1}
     \setcounter{secnumdepth}{1}
-    \setlength\paperwidth{8in}
-    \setlength\paperheight{5.85in} %5.5
+    \setlength\paperwidth{16in}
+    \setlength\paperheight{9in} %5.5
     \@Leftmargin=.3in
     \@Rightmargin=.3in
     \@Topmargin=.5in
@@ -111,7 +111,7 @@
     \def\@evenhead{\if@contnav\hspace*{-.3825in} %3375
        \else\hspace*{-.355in}\fi%
        \colorbox{white}{\begin{minipage}[t][1.025\pdfpageheight][c]{\textareawidth}%
-       {\color{white}\includegraphics[width=8in,height=5.84in]{\@overlay}}%7.175
+       {\color{white}\includegraphics[width=16in,height=9in]{\@overlay}}%7.175
        \end{minipage}}\null\hskip-1.5pt %6.5,6
        \hspace*{-3.5\@Rightmargin}\hfil}
     \def\@oddhead{\@evenhead}
@@ -146,16 +146,16 @@
      \pdfpageattr{%
         /Trans << /S /#1\space >>%
       }}%
-     \@@processme
+     \@@processme 
     }%
 
 \definecolor{dm}{rgb}{1,.894,.769}
-  \def\titlefont{\@setfontsize\titlefont{24}{26}\color{dm}\rmfamily\bfseries}
-  \def\authorfont{\@setfontsize\authorfont{17.28}{18}\rmfamily\color{dm}}
+  \def\titlefont{\@setfontsize\titlefont{40}{40}\color{dm}\rmfamily\bfseries}
+  \def\authorfont{\@setfontsize\authorfont{20}{20}\rmfamily\color{dm}}
   \def\capfont{\@setfontsize\capfont{40}{40}\sffamily\color{white}}
-  \def\addressfont{\@setfontsize\addressfont{12}{14}\sffamily\color{dm}}
-  \def\rcdfont{\@setfontsize\rcdfont{10}{12}\sffamily\color{white}}
-  \def\numfont{\@setfontsize\rcdfont{8}{7}\sffamily\color{white}}
+  \def\addressfont{\@setfontsize\addressfont{20}{20}\sffamily\color{dm}}
+  \def\rcdfont{\@setfontsize\rcdfont{20}{20}\sffamily\color{white}}
+  \def\numfont{\@setfontsize\rcdfont{20}{20}\sffamily\color{white}}
     \def\maketitle{\thispagestyle{title}
          \noindent\begin{minipage}[t][.95\textheight][c]{.975\textwidth}
          \begin{flushleft}
@@ -165,12 +165,12 @@
          \ifx\@orgurl\@empty\null\vskip72pt\else
          {\footnotesize\sffamily\@orgurl}\\[72pt]\fi
          {\titlefont \@title}\\[30pt]
-         {\authorfont \@author}\\[10pt]
+         {\authorfont \@author}\\[14pt]
          {\addressfont \strut\@address\par\strut}\\
           \vfill\par
-         {\rcdfont \ifx\@notes\@empty\relax\else\@notes\fi}
+         {\rcdfont \ifx\@notes\@empty\relax\else\@notes\fi} 
          \end{flushleft}
-       \end{minipage}
+       \end{minipage}          
        \vfill\par\clearpage
   }
   \long\def\author#1{\long\gdef\@author{#1}}\let\@author\@empty
