@@ -3,6 +3,14 @@ goals:
 	- projeto => simular e obter alguns resultados
 
 TO BE DONE
+2018-10-29
+
+	- melhorar a apresentação
+	- incluir o caso mais simples da EVE (detecta e retransmitir)
+
+Next meeting: 5/11, 9h30m
+
+TO BE DONE
 2018-10-15
 
 	- melhorar a apresentação
