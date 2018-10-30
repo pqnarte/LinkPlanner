@@ -185,21 +185,30 @@ All the other combinations of photons should click the $D_{M1}$:
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
-\mysection{\Huge\textbf{Intercept-Resend Attack - COW protocol}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{Intercept-Resend Attack - COW protocol}} \large \vspace*{1cm}
 \begin{itemize}
-	\item Eve detects the pulse flying to Bob (probability $\mu t$), and if the detector fires, she prepares a single-photon in the good time-bin and forwards it to Bob.
-	\item Eve breaks coherence everywhere with this attack.
+	\item Eve removes $1-t_E$.
+	\item The rest $t_E$ are in a lossless channel.
+	\item If $D_M2$ fires (probability $\mu \times t_E$), she prepares a single-photon in the good time-bin and forwards it.
+	\item Eve breaks coherence everywhere with this attack. ($V_{d|IR} = V_{10|IR} =0$)\footnote{ \centering Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)}
 \end{itemize}
-The size of the key is the sum of:
-\begin{itemize}	
-	\item Eve and Bob detected
-	\item Eve detected and Bob had a dark count
-	\item Eve has not detected and Bob had a dark count
-\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Eve          & Bob        \\ \hline
+Detected     & Detected   \\ \hline
+Detected     & Dark Count \\ \hline
+Not Detected & Dark Count \\ \hline
+\end{tabular}
+\end{table}
 	
-$$V_{d|IR} = V_{10|IR} =0$$
 
 
+\begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.35\textwidth]{./figures/E.pdf}
+    \end{figure}
 
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
