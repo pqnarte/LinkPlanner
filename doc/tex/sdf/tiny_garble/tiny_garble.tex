@@ -32,9 +32,9 @@ $ sudo apt install libboost-all-dev
 $ sudo apt install cmake
 \end{lstlisting}
 
-After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}, and build it.
+After this step i'ts necessary to clone TinyGarble's repository, at \url{https://github.com/esonghori/TinyGarble}, and build it. For this section it was cloned at the home directory '~'.
 
-\begin{lstlisting}[caption={Configuration and compilation of TinyGarble}, language=bash, captionpos=b]
+\begin{lstlisting}[caption={Configuration and compilation of TinyGarble. 'Sudo ./configure' and 'sudo make' may be needed.}, language=bash, captionpos=b]
 $ git clone https://github.com/esonghori/TinyGarble.git
 $ cd TinyGarble/
 $ ./configure
@@ -81,6 +81,8 @@ Below are the ports that can be used and what they represent.
 \item o: output, same as above, but TinyGarble executable has the option to show all the outputs of each clock concatenated, separated, or only show the last clock output
 \end{itemize}
 
+\newpage
+
 Below it's an example of an and\_gate written in verilog with the format above.
 
 \begin{lstlisting}[caption={and\_gate.v}, language=Verilog, captionpos=b]
@@ -89,45 +91,45 @@ module and_gate (input g_input, e_input, output o);
 endmodule
 \end{lstlisting}
 
-Using TinyGarble's custom library, asic\_cell\_yosys\_extended.lib", located at TinyGarble/ciruit\_synthesis/lib/, and assuming that the Verilog file is located at a folder named "circuits", the compilation can be done with the following instructions:
+Using TinyGarble's custom library, asic\_cell\_yosys\_extended.lib", located at TinyGarble/ciruit\_synthesis/lib/, and assuming that the Verilog file is in a folder named "circuits" located at the home directory '~', the compilation for the circuit can be done with the following instructions:
 
-\begin{lstlisting}[caption={Yosys instructions to compile the HDL file to a Netlist file}, language=bash, captionpos=b]
-$ ./yosys
-yosys> read_verilog circuits/and_gate.v
+\begin{lstlisting}[caption={Yosys instructions to compile the combinational circuit Verilog file into a Netlist File. 'Sudo yosys' may be needed.}, language=bash, captionpos=b]
+host@ubuntu:~$ yosys
+yosys> read_verilog TinyGarble/circuit_synthesis/syn_lib/*.v
+yosys> read_verilog circuits/and_gate.v 
 yosys> hierarchy -check -top and_gate
-yosys> proc; opt; memory; opt; fsm; opt; techmap; opt;
-yosys> abc -liberty TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
-yosys> clean
-yosys> write_verilog circuits/and_gate_netlist.v
-yosys> exit					
+yosys> proc; fsm; flatten; opt;
+yosys> techmap; opt; 
+yosys> dfflibmap 
+-liberty TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
+yosys> abc 
+-liberty TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib 
+-script TinyGarble/circuit_synthesis/lib/script.abc; 
+yosys> opt; clean; 
+yosys> opt_clean -purge
+yosys> stat
+-liberty TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
+yosys> write_verilog -noattr -noexpr sum_syn_yos.v				
 \end{lstlisting}
 
-For more complex circuits that need more that one clock cycle to compute, flip flop mapping will also be needed, so the commands below have to be used, but in this case, the and\_gate described can be executed with only one clock cycle, so no flip flop mapping needed:
-\begin{lstlisting}[caption={Yosys instructions to compile the Verilog fiile into a Netlist one with fliip flop mapping}, language=bash, captionpos=b]
-$ ./yosys
-yosys> read_verilog circuits/circuit.v
-yosys> hierarchy -check -top module
-yosys> proc; opt; fsm; opt; memory; opt;
-yosys> techmap -map  TinyGarble/circuit_synthesis/lib/stdcells_S.v
-yosys> opt
-yosys> dfflibmap -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib
-yosys> abc -liberty  TinyGarble/circuit_synthesis/lib/asic_cell_yosys_extended.lib -script  TinyGarble/circuit_synthesis/lib/script.abc
-yosys> opt; clean; opt;
-yosys> write_verilog module_net.v	
-yosys> exit	
+The first 'read\_verilog' command is optional, it loads some circuits described in Verilog modules, to see which modules are available check 'TinyGarble/circuit\_synthesis/syn\_lib'. For this case in particular no exterior module was needed, so the command won't really do anything.
+The 'stat' command is only used to show statistics of the final circuit configuration, optional as well.
+These instructions should work for any combinational or sequential circuit.
+
+The inscructions can be saved in a file ending with '.yos', and be used as a script in yosys, as the following shows:
+\begin{lstlisting}[caption={Running yosys instructions contained in a script file.}, language=bash, captionpos=b]
+host@ubuntu:~$ yosys
+yosys> script file.yos
 \end{lstlisting}
 
-Following these, the Netlist file below should be generated.
+\newpage
+
+Following the instructions the Netlist file below should be generated.
 
 \begin{lstlisting}[caption={and\_gate\_netlist.v}, language=Verilog, captionpos=b]
-(* top =  1  *)
-(* src = "and.v:1" *)
 module and_gate( g_input,  e_input, o);
-  (* src = "and.v:2" *)
   input g_input;
-  (* src = "and.v:2" *)
   input e_input;
-  (* src = "and.v:3" *)
   output o;
   AND _0_ (
     .A(e_input),
@@ -137,19 +139,18 @@ module and_gate( g_input,  e_input, o);
 endmodule
 \end{lstlisting}
 
-For some unkown reason, the output file has some noticeably weird lines, starting with "(*", that will cause Segmentation Fault error in the next step if not removed.
-After removing those lines, the Netlist file can be converted into a SCD file with the instruction below:
+The Netlist file can then be converted into a SCD file with the instruction below:
 
 \begin{lstlisting}[caption={Installation of Yosys-abc}, language=bash, captionpos=b]
-$ ./TinyGarble/bin/scd/V2SCD_Main -i circuits/and_gate_netlist.v
--o circuits/and_gate.scd		
+host@ubuntu~$ ./TinyGarble/bin/scd/V2SCD_Main 
+-i circuits/and_gate_netlist.v-o circuits/and_gate.scd		
 \end{lstlisting}
 
 Before executing the SCD file, it can be tested with TinyGarble's SCD\_Evaluator\_Main located at TinyGarble/bin/scd. The '-c' option is the number of cycles, and the output\_mode differs the way the output is shown, 0 for concatenated(from all clocks), 1 for separated(for each clock), and 2 to show only the last clock output.
 
 \begin{lstlisting}[caption={Testing a SCD file}, language=bash, captionpos=b]
-$ ./TinyGarble/bin/scd/SCD_Evaluator_Main -i circuits/and_gate -c 1
---g_input 1 --e_input 0 --output_mode 0
+host@ubuntu~$ ./TinyGarble/bin/scd/SCD_Evaluator_Main 
+-i circuits/and_gate -c 1 --g_input 1 --e_input 0 --output_mode 0
 \end{lstlisting}
 
 \newpage
@@ -159,22 +160,32 @@ For this examples the SCD file was located at TinyGarble/bin/garbled\_circuits, 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=7cm]{./sdf/tiny_garble/figures/tinygarble_and_a.png}
-    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively}\label{fig:tinygarble_and_a}
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_and_a.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively.}\label{fig:tinygarble_and_a}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=7cm]{./sdf/tiny_garble/figures/tinygarble_and_b.png}
-    \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively}\label{fig:tinygarble_and_b}
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_and_b.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 0, respectively.}\label{fig:tinygarble_and_b}
 \end{figure}
 
-The input is written in hexadecimal, and the log2std option is to show information of the computation on the terminal instead of creating a log file.
+The option 'output\_mask' allows to choose if the output will appear on Alice or Bob, 0 and 1, respectively, beeing the default value 0.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=7cm]{./sdf/tiny_garble/figures/tinygarble_xor_4bits_b.png}
-    \caption{"Xor" function with 4 bits, executed by Alice and Bob, with inputs 0 and F, respectively}\label{fig:tinygarble_xor_b}
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_and_c.png}
+    \caption{"And" function executed by Alice and Bob, with inputs 1 and 1, respectively. Example of output\_mask option.}\label{fig:tinygarble_and_c}
+\end{figure}
+
+\newpage
+
+By default the information about the computation is stored in a log file, in the same folder where the TinyGarble executable is located (also works for the V2SCD\_Main and SCD\_Evaluator\_Main programs) . The option 'log2std' allows to print the information in the terminal instead of creating the log file.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=6.25cm]{./sdf/tiny_garble/figures/tinygarble_xor_4bits.png}
+    \caption{"Xor" function with 4 bits executed by Alice and Bob, with inputs 0 and F, respectively. Example of option 'log2std'.}\label{fig:tinygarble_xor}
 \end{figure}
 
 \subsubsection{Using VHDL}
@@ -214,29 +225,38 @@ $ vhd2vl and_gate.vhd and_gate.v
 \item util: Holds C++ support files.
 \end{enumerate}
 
-To show an example of a more complex circuit as mentioned before, some functions written in verilog can be found at circuit\_sythesis. This example in particular will be of the sum function.
-Inside the sum folder sum.v and sum.yos can be found. The verilog file is actually a synopsys template, but since yosys is used, uncommenting the assigns and commenting the module calls of AND and AND\_ made it work.
-Also to make sure the circuit is made for more that one clock cycle, the parameter CC has to be set higher than one, if set equal to N, each clock cycle will sum only a bit with another, passing the carry for the next sum. Doing this we assure that the circuit will need flipflops to work. Another value between 2 and N could have  been used, for example if two was used, each clock cycle would sum two 4 bit numbers, the first sum passing the carry to the second one.
-To compile this into netlist the latter yosys commands shown are needed, or simply run:
-\begin{lstlisting}[caption={Yosys instructions to compile the sum.v file}, language=bash, captionpos=b]
-$ ./yosys
-yosys> script sum.yos
-yosys> exit
-\end{lstlisting}
-After that, the file has to be converted to SCD, with the help of TinyGarble's V2SCD\_Main executable mentioned above. When firstly executed it complained about a port I missing. Adding the line at the netlist file above the red line on all the DFF(flip flop) cells should sobe the problem.  When executed by TinyGarble, the outputs were incorrect.
+This subsection will show an example of a function described in a sequential circuit, more specifically the sum function located at TinyGarble/circuit\_synthesis/sum. For this example the CC parameter was set to the same as N, otherwise if kept at 1 it would be a combinational circuit. If CC is set to the same as N, each clock cycle will read one bit from the input, and also output 1 bit. So in this case if the 'clock\_cycle' option of TinyGarble is set to 8, it would read 8 bits total from 'g\_input' and 'e\_input', and would write 8 bits to 'o'. If CC was set to 2 for example, each cycle would read and write N/2 bits, if set to N/2, each cycle would read and write 2 bits. If the input given is smaller than expected size, it will be read as 0 on the clock cycles were the input is non existent.
+
+After doing the steps explained at 'Using' section, (with the respective names for the files), the sum.scd file can be be executed as showed before with the and\_gate.scd.
+
+When working with sequential circuits, we may want the output of each clock to be printed concatenated, separated (starting from the smallest bit), or print only the last clock output, and for that the option 'output\_mode' can be used, with values 0, 1 and 2, respectively, beeing the default 0 (it also works with SCD\_Evaluator\_Main program). The output is printed in hexadecimal format.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.25\textwidth, height=5.5cm]{./sdf/tiny_garble/figures/i_port_cell.png}
-    \caption{Adding the I port to the flip flop cell}\label{fig:key_file}
+	\includegraphics[width=1\textwidth, height=4cm]{./sdf/tiny_garble/figures/tinygarble_sum_0.png}
+    \caption{"Sum" function with 8 bits/clocks executed by Alice and Bob, with inputs 02 and 02, respectively. Printing output concatenated(8 bits).}\label{fig:tinygarble_sum_0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=7cm]{./sdf/tiny_garble/figures/tinygarble_sum_1.png}
+    \caption{"Sum" function with 8 bits/clocks executed by Alice and Bob, with inputs 02 and 02, respectively. Printing output separated(1 bit each cycle).}\label{fig:tinygarble_sum_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=4cm]{./sdf/tiny_garble/figures/tinygarble_sum_2.png}
+    \caption{"Sum" function with 8 bits/clocks executed by Alice and Bob, with inputs 02 and 02, respectively. Printing the last clock cycle output (last bit of output).}\label{fig:tinygarble_sum_2}
 \end{figure}
 
 \subsubsection{Running on seperate Hosts}
 
 To run Bob and Alices in different hosts, the host running Bob has to give an extra option '-s <Alice IP adress>'. To find the ip adress run 'hostname -I' or 'ifconfig' in Alice's terminal. The default port is 1234, to change it add the optionn -p <port> on both Hosts. The example below assumes Alice's IP adress is 192.168.1.3. The '--output\_mask arg <0 or 1>' can also be used, to determine which host shows the output, the default is 0 (Bob), and can be changed to 1 (Alice).
 \begin{lstlisting}[caption={Installation of Yosys-abc for Ubuntu 15.04>}, language=bash, captionpos=b]
-Alice$ TinyGarble -a -i and.scd -p 3000 --input 1
-Bob$ TinyGarble -b -i and.scd -s 192.168.1.3 --p 3000 --input 1
+alice@ubuntu:~$ ./TinyGarble/bin/garbled_circuit/TinyGarble -a 
+-i circuits/and.scd -p 3000 --input 1
+bob@ubuntu:~$ ./TinyGarble/bin/garbled_circuit/TinyGarble -b 
+-i  circuits/and.scd -s 192.168.1.3 --p 3000 --input 1
 \end{lstlisting}
 
 \subsubsection{Keys}
@@ -255,150 +275,95 @@ To apply any changes made to the file, go to TinyGarble/bin and run the "make" c
 
 \subsubsection{Moda function}
 
-Since the input of the function both for Alice and Bob is a series of numbers, and since TinyGarble's iinput is in hexadecimal, we can read each digit as bcd, and easily get the total by multiplying the current number by 10 and summing the digit. Instead of using a ',' any value beetween a and f can be used.
+The purpose of this function is to take two inputs from each host, and return 0 if the first inputs of each host summed are greater than the sum of the second inputs, and return 1 otherwise. It outputs 2 if both sums are equal.
+Examples:
+\begin{enumerate}
+\item a: \begin{lstlisting}[caption={Example of moda inputs and output}, captionpos=b]
+Alice -> 5,10   Bob -> 9, 1   Output -> 0
+\end{lstlisting}
+\item b: \begin{lstlisting}[caption={Example of moda inputs and output}, captionpos=b]
+Alice -> 1,3   Bob -> 6, 9   Output -> 1
+\end{lstlisting}
+\end{enumerate}
 
-The following fucntion was wriitten in VHDL:
+This function can be both implemented with a combinational and sequential circuit, although with the combinational the maximum size of the inputs has to be set, and cannot be changed between executions.
+The module 'ADD', which represents a full adder, located at 'TinyGarble/circuit\_synthesis/syn\_lib' (folder mentioned before) was used, so the command read\_verilog TinyGarble/circuit\_synthesis/syn\_lib/*.v has to be used.
 
-\begin{lstlisting}[caption={moda.vhd}, language=Verilog, captionpos=b]
+The following verilog module shows the combinationl circuit:
 
-module moda(clk,  rst, g_input, e_input, o);
+\newpage
 
-  input clk,  rst;
-  input [1023:0] g_input, e_input; // Up to 256 hexa chars, sent from the testbench
-  output [8:0] o; // With 256 hexa chars the max of different numbers is 512 (256 / 2 (commas) * 4)
+\begin{lstlisting}[caption={moda.v}, language=Verilog, captionpos=b]
+module moda(g_input, e_input, o);
 
-  wire clk,  rst;
-  reg [8:0] o;
+	input[31:0] g_input, e_input;
+	wire[16:0] tmp_0, tmp_1;
+	output [1:0] o;
 
-  reg [9:0] g_iterator, e_iterator; // Represent up to the number 1023, to iterate the inputs
-  wire [3:0] g_tmp, e_tmp; // To hold the current hexa char beeing checked
-  reg [29:0] g_number, e_number; // Maximum of around 1 trillion, (10 hexa digits, because in bcd)
-  reg g_end, e_end, g_start, e_start, g_blocked, e_blocked; // Control registers
+	ADD 
+	#(
+		.N(16)
+	)
+	input_0
+	(
+		.A(g_input[31:16]),
+		.B(e_input[31:16]),
+		.CI(),
+		.S(tmp_0[15:0]),
+		.CO(tmp_0[16:16])
+	);
+	ADD 
+	#(
+		.N(16)
+	)
+	input_1
+	(
+		.A(g_input[15:0]),
+		.B(e_input[15:0]),
+		.CI(),
+		.S(tmp_1[15:0]),
+		.CO(tmp_1[16:16])
+	);	
 
-  reg [30:0] bigger; // Hold the bigger number, one bit bigger than the biggest number for the inputs
-  reg [8:0] biggerKey, counter; // Same as output
-
-  reg [2:0] State;
-
-  // Wires, constantly receiving the current value of their corresponding input with the current interator
-  assign g_tmp = g_input[g_iterator -: 4]; // -: notacao SystemVerilog, ver se funcioa com yosys
-  assign e_tmp = e_input[e_iterator -: 4];
-
-
-always @(posedge clk) begin
-
-	
-    if ( rst) begin
-      State <= 0;
-      o = 0;
-    end else begin
-
-	    case(State)
-	    0 : begin
-
-		g_iterator <= 1023;
-		e_iterator <= 1023;
-		g_number <= 0;
-		e_number <= 0;
-		g_blocked <= 0;
-		e_blocked <= 0;
-
-		g_end <= 0;
-		e_end <= 0;
-
-		bigger <= 0;
-		biggerKey <= 0;
-		counter <= 0;
-
-		State <= 1;
-
-	    end
-	    1 : begin
-	      // Se ainda nao tiver chegado ao ultimo digito it ao proximo
-	      if(g_blocked == 0) begin
-		if(g_iterator < 4)
-		  g_end <= 1;
+	always@ *
+	begin
+		if(tmp_0 > tmp_1)
+			o <= 0;
+		else if(tmp_0 < tmp_1)
+			o <= 1;
 		else
-		  g_iterator <= g_iterator - 4;
-	      end
-	      if(e_blocked == 0) begin
-		if(e_iterator < 4)
-		  e_end <= 1;
-		else begin
-		  e_iterator <= e_iterator - 4;
-		end
-	      end
-	      State <= 2;
-	    end
-	    2 : begin
-	      if(g_blocked == 1 & e_blocked == 1)
-		State <= 3;
-	      else begin
-		if(g_tmp == 10 | g_end == 1)
-		  g_blocked <= 1;
-		else
-		  g_number <= (g_number * 10) + g_tmp;
-		if(e_tmp == 10 | e_end == 1)
-		  e_blocked <= 1;
-		else
-		  e_number <= (e_number * 10) + e_tmp;
-		State <= 1;
-	      end;
-	    end
-	    3 : begin
-	      if(g_number + e_number > bigger) begin
-		$display("Found bigger");
-		bigger <= g_number + e_number;
-		biggerKey <= counter;
-	      end
-	      counter <= counter + 1;
-	      g_number <= 0;
-	      g_blocked <= 0;
-	      e_number <= 0;
-	      e_blocked <= 0;
-	      if(g_end == 1 & e_end == 1) begin
-		State <= 4;
-	      end else
-		State <= 1;
-	    end
-	    4 : begin
-	      o <= biggerKey + 1;
-	      State <= 4;
-	    end
-	    default : begin
-	      State <= 0;
-	    end
-	    endcase
-	end			
-  end
-
+			o <= 2;
+	end
 endmodule
-
 \end{lstlisting}
 
-When running a testbench of the above with the g\_input = 80'h421a425a9a23a412a432, and e\_input = 80'h94a420a83a902a74a821,  the result is the below:
+\newpage
+Since the garblers and evaluator inputs have 32 bits, and TinyGarble inputs are in hexadecimals, the inputs have to be written together, and values between 0 and 9999 are accepted. Also, the sums will be made in hexadecimal even if the input is in decimal, but it should not affect anything.
+
+Examples:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=7cm]{./sdf/tiny_garble/figures/moda_execution_testbench.png}
-    \caption{Moda's testbench execution}\label{fig:moda_execution}
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_moda_0.png}
+    \caption{"Moda" function executed by Alice and Bob, with inputs 00010003(1,3) and 00200010(20,10), respectively.}\label{fig:tinygarble_moda_0}
 \end{figure}
-
-Converting the file to Netlist Verilog wasnt a problem besides having to delete all those weird lines mentioned above.
-When trying to converto to Scd it gives the error:
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth, height=4cm]{./sdf/tiny_garble/figures/tinygarble_moda_scd_fail.png}
-    \caption{Model SCD conversion fail}\label{fig:moda_scd_fail}
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_moda_1.png}
+    \caption{"Moda" function executed by Alice and Bob, with inputs 00010011(1,11) and 00110003(11,3), respectively.}\label{fig:tinygarble_moda_1}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/tinygarble_moda_2.png}
+    \caption{"Moda" function executed by Alice and Bob, with inputs 00010011(1,11) and 00200010(20,10), respectively.}\label{fig:tinygarble_moda_2}
+\end{figure}
 
 \subsection{Open Issues}
 
 \begin{enumerate}  
 \item No free High Level Synthesis was yet found, so impossible to run examples with C or C++ as input.
-\item The moda function netlist file in not compiling into SCD for unknown reasons.
 \end{enumerate}
 
 % bibliographic references for the section ----------------------------
