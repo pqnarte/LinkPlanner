@@ -15,6 +15,17 @@ Medium term:
 2018-10-30
 TO BE DONE
 
+	- colocar a funcionar no laboratório do IT, a moda com GUI
+
+	- documentar tudo detalhamente
+
+	- tentar resolver a questão dos bugs
+
+Next meeting: 13/11, 16h
+
+2018-10-30
+TO BE DONE
+
 	- fazer uma aplicação para a Alice e outra para o Bob, C++, ler de um ficheiro de texto
 
 	- tentar resolver a questão dos bugs
