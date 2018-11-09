@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{tabularx}
 \usepackage{braket}
+\usepackage{multicol}
 
 \definecolor{itblue}{rgb}{0.0,0.0,0.5}
 \definecolor{itred}{rgb}{0.82,0.18,0.24}
@@ -24,6 +25,15 @@
 \renewcommand{\labelitemii}{\textcolor{green}{$\star$}}
 \newcommand{\ave}[1]{\langle #1 \rangle}%
 \newcommand{\mysection}[1]{\section*{\color{black}\sffamily #1}}%
+
+\newcommand{\cref}[1]{{\fontsize{17pt}{0cm}\selectfont\color{black} #1}}%
+\renewcommand*\footnoterule{}
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
 
 \pagestyle{title}
 
@@ -61,11 +71,7 @@ Department of Electronics, Telecommunications and Informatics$^2$,\\
 University of Aveiro, Aveiro, Portugal\\
 Instituto de Telecomunica\c{c}\~{o}es,$^3$, Aveiro, Portugal
 \end{minipage}\
-\\
-\vspace*{2cm}
-\\[-1.5mm]
-\hspace*{11in}\large \copyright 2018, it - instituto de
-telecomunica\c{c}\~{o}es.
+
 
 \end{titlepage}
 
@@ -73,27 +79,38 @@ telecomunica\c{c}\~{o}es.
 \mysection{\Huge\textbf{ Quantum Key Distribution}} \Large \vspace*{1cm}
 \overlay{it_1.png}
 \begin{itemize}
-\item Quantum Key Distribution (QKD)\footnote {\centering Ouellette, Jennifer. "Quantum key distribution." Industrial Physicist 10.6 (2004): 22-25.} is a secure way of sharing a unique random key between two parties spatially distant. 
+\item Quantum Key Distribution (QKD) is a secure way of sharing a unique random key between two spatially distant parties. 
 \item Polarization QKD vs Time Bin QKD.
 \end{itemize}
 They use:
 \begin{itemize}
-\item One quantum channel (One way is this QKD)
+\item One quantum channel (with one way transmission)
 \item And one authenticated classic channel (can be eavesdropped but can't be modified).
 \end{itemize}
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.4\textwidth]{./figures/Full.pdf}
+    	\includegraphics[width=0.3\textwidth]{./figures/Full.pdf}
     \end{figure}
+    
+    
+\blfootnote{
+\hspace*{12cm}
+\begin{minipage}{26cm}
+\cref{
+Ouellette, Jennifer. "Quantum key distribution." Industrial Physicist 10.6 (2004): 22-25.
+}
+\end{minipage}
+
+}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------ SLIDE 1 -------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mysection{\Huge\textbf{Time Bin QKD}} \Large \vspace*{1cm}
 \begin{itemize}
 
-\item The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004 \footnote{ \centering Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)}. 
+\item The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004. 
 
-\item Uses time bin properties.
+\item Uses time bin encoding.
 
 \item It is has a very simple setup (Bob's apparatus is passive).
 \end{itemize}
@@ -102,28 +119,34 @@ They use:
     	\includegraphics[width=0.4\textwidth]{./figures/A.pdf}
         	\label{bob}
     \end{figure}
+    
+\blfootnote{
+\hspace*{12cm}
+\begin{minipage}{26cm}
+\cref{
+Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)
+}
+\end{minipage}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------ SLIDE x -------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mysection{\Huge\textbf{Alice - COW protocol}} \Large \vspace*{1cm}
-
+\begin{multicols}{2}
 \begin{description}
   \item[Step 1] Alice creates a random key using:  
-
+\end{description}
 $$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$      
   $$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
 $$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
 
 Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$.
-      
-  \begin{figure}[hbt]
-    	\centering
-    	\includegraphics[width=0.45\textwidth]{./figures/S1.pdf}
-        	\label{Simple}
-    \end{figure}
 
-\end{description}
+\columnbreak
+    	\includegraphics[width=0.7\textwidth]{./figures/S1A.pdf}
+\end{multicols}
+
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -133,13 +156,21 @@ Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent
 \begin{description}
   \item[Step 2] A fraction $t_B$ of the photons go into the photon counter $D_B$, where the bits are discriminated by the time of arrival.
 
+
+
+\begin{multicols}{2}
 Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half of non-delayed bits.
-    
-    \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.4\textwidth]{./figures/B.pdf}
-        	\label{bob}
-    \end{figure}
+    	\includegraphics[width=0.5\textwidth]{./figures/B.pdf}
+
+
+\columnbreak
+Therefore $D_{M2}$ (constructive photon counter) should only click when:
+    	\centering
+    	\includegraphics[width=0.5\textwidth]{./figures/S2.pdf}
+    
+\end{multicols}    
+
 
 \end{description}  
 
@@ -147,21 +178,11 @@ Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half
 %------------ SLIDE -------------------------------------------------------------------------------
 
 \mysection{\Huge\textbf{Monitoring line - COW protocol}} \Large \vspace*{1cm}
-The $D_{M2}$ (constructive photon counter) should only click when:
 
-%$$|1\rangle:|0\rangle$$
-%$$|d\rangle$$
 
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.3\textwidth]{./figures/S2.pdf}
-    \end{figure}
-
-All the other combinations of photons should click the $D_{M1}$:
-
-  \begin{figure}[hbt]
-    	\centering
-    	\includegraphics[width=0.35\textwidth]{./figures/S3.pdf}
+    	\includegraphics[width=0.75\textwidth]{./figures/DM3.pdf}
     \end{figure}
 
 %--------------------------------------------------------------------------------------------------
@@ -174,14 +195,16 @@ All the other combinations of photons should click the $D_{M1}$:
 
 \item [Step 4] Bob reveals the other times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
 
-\item [Step 5] Bob reveals some part of the key. Alice and Bob run error correction and privacy amplification on these bits and end up with a secret key.
+\item [Step 5] Bob reveals some part of the key. 
+
+\item [Step 6] Alice and Bob run error correction and privacy amplification and end up with a secret key.
 
 \begin{figure}[hbt]
     	\centering
     	\includegraphics[width=0.45\textwidth]{./figures/Full2.pdf}
     \end{figure}
 \end{description}
-
+\iffalse
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
@@ -190,8 +213,9 @@ All the other combinations of photons should click the $D_{M1}$:
 	\item Eve removes $1-t_E$.
 	\item The rest $t_E$ are in a lossless channel.
 	\item If $D_M2$ fires (probability $\mu \times t_E$), she prepares a single-photon in the good time-bin and forwards it.
-	\item Eve breaks coherence everywhere with this attack. ($V_{d|IR} = V_{10|IR} =0$)\footnote{ \centering Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)}
+	\item Eve breaks coherence everywhere with this attack. ($V_{d|IR} = V_{10|IR} =0$)
 \end{itemize}
+
 \begin{table}[hbt]
 \centering
 \begin{tabular}{|c|c|}
@@ -209,7 +233,16 @@ Not Detected & Dark Count \\ \hline
     	\centering
     	\includegraphics[width=0.35\textwidth]{./figures/E.pdf}
     \end{figure}
-
+    
+\blfootnote{
+\hspace*{12cm}
+\begin{minipage}{26cm}
+\cref{
+Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)
+}
+\end{minipage}
+}
+\fi
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
 \mysection{} \sffamily \Large
