@@ -5,6 +5,16 @@ goals:
 TO BE DONE
 2018-10-29
 
+	- concluir e realizar a apresentação
+	- projeto longo: analisar o caso mais simples da EVE (detecta e retransmitir)
+		- estimar a BER do sistema em função da percentagem de bits intersetados pela EVE
+
+Next meeting: 26/11, 17h30m
+
+
+TO BE DONE
+2018-10-29
+
 	- melhorar a apresentação
 	- incluir o caso mais simples da EVE (detecta e retransmitir)
 
