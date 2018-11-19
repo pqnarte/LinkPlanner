@@ -133,20 +133,27 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
 %------------ SLIDE x -------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mysection{\Huge\textbf{Alice - COW protocol}} \Large \vspace*{1cm}
+
 \begin{multicols}{2}
+
 \begin{description}
   \item[Step 1] Alice creates a random key using:  
 \end{description}
-$$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$      
+
+$$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$
   $$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
 $$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
 
 Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$.
 
-\columnbreak
-    	\includegraphics[width=0.7\textwidth]{./figures/S1A.pdf}
-\end{multicols}
+\vspace*{5cm}
 
+\columnbreak
+\hspace{-5cm}	
+\vspace*{-2cm}
+    	\includegraphics[width=0.7\textwidth]{./figures/S1A.pdf}
+\vspace*{1cm}
+\end{multicols} 
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -195,9 +202,9 @@ Therefore $D_{M2}$ (constructive photon counter) should only click when:
 
 \item [Step 4] Bob reveals the other times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
 
-\item [Step 5] Bob reveals some part of the key. 
+\item [Step 5] Bob reveals the times that $D_B$ fired, and they use those as key.
 
-\item [Step 6] Alice and Bob run error correction and privacy amplification and end up with a secret key.
+\item [Step 6] They calculate QBER and then run error correction and privacy amplification.
 
 \begin{figure}[hbt]
     	\centering
@@ -210,9 +217,7 @@ Therefore $D_{M2}$ (constructive photon counter) should only click when:
 
 \mysection{\Huge\textbf{Intercept-Resend Attack - COW protocol}} \large \vspace*{1cm}
 \begin{itemize}
-	\item Eve removes $1-t_E$.
-	\item The rest $t_E$ are in a lossless channel.
-	\item If $D_M2$ fires (probability $\mu \times t_E$), she prepares a single-photon in the good time-bin and forwards it.
+	\item If $D_E$ fires, she prepares a single-photon in the good time-bin and forwards it.
 	\item Eve breaks coherence everywhere with this attack. ($V_{d|IR} = V_{10|IR} =0$)
 \end{itemize}
 
@@ -226,13 +231,7 @@ Detected     & Dark Count \\ \hline
 Not Detected & Dark Count \\ \hline
 \end{tabular}
 \end{table}
-	
 
-
-\begin{figure}[hbt]
-    	\centering
-    	\includegraphics[width=0.35\textwidth]{./figures/E.pdf}
-    \end{figure}
     
 \blfootnote{
 \hspace*{12cm}
