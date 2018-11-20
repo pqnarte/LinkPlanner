@@ -360,6 +360,54 @@ Examples:
     \caption{"Moda" function executed by Alice and Bob, with inputs 00010011(1,11) and 00200010(20,10), respectively.}\label{fig:tinygarble_moda_2}
 \end{figure}
 
+\newpage
+\subsubsection{TinyGarble Interface}
+
+To ease the computation of the moda function between Alice and Bob, the interface 'STPC' was made. It can be found at sdf/tiny\_garble/STPC zip, which containts a folder with the src files, and the folder with the build project. The interface was made with QTCreator, so in case any changes have to be made to the interface itself or to the c++ files, it has to be installed to be able to build the project (Since it needs QT libraries). To build the project manually one has to run the following code at the folder with the src code.
+
+\begin{lstlisting}[caption={Manually building QT application}, language=bash, captionpos=b]
+$ export PATH=/pathToQt/version/Gcc/bin:$PATH
+$ qmake
+$ make
+\end{lstlisting}
+
+Building the project should generate some files and folders on the folder configured at QtCreator (default is named 'build\_...'), or in the same folder where the src code is, in case it was built manually.
+In order to make the app usable in any linux system, \url{https://github.com/probonopd/linuxdeployqt} was used. It essentialy creates a bundle with all the libraries and other necessary files to execute the app. To install it follow it's git Installation instructions. 
+
+\begin{lstlisting}[caption={Deploying QT application}, language=bash, captionpos=b]
+$ ./linuxdeployqt-x86_64.AppImage [pathToBuiltProject]
+\end{lstlisting}
+
+If no error ocurred, one should be able to go to the folder where the build project is, and run the app with './app', in this case './STPC'.
+When openning the interface, the user has to insert the path to TinyGarble, and the path to the folder containing the 'moda.scd' file, before choosing which host he will be (Alice or Bob).
+
+FIRST IMAGE
+
+If Alice was selected, the user will have to insert the PORT for TinyGarble's connection, and the IP Adress of the Key provider and the respective PORT for the connection.
+
+SECOND IMAGE
+
+In case of Bob, only the IP Adress of Alice and the respective PORT are needed.
+
+THIRD IMAGE
+
+After all configuration is done, the final window will appear. In this window the user can request the computation of the moda function, or accept it in case the other party requested it first.
+The blue frame shows warnings and information about the connection and current state of the application.
+
+FINAL IMAGES 
+
+\newpage
+
+\subsubsection{Server to provide Keys}
+
+This next program, 'key\_server', is a TCP server that provides a random number in binary with N bits, when receiving an 'N' from a client. It will respond with a error message in N is not a number.
+It is used in the Interface showed above, to retrieve the Key for Alice. Each time a computation is accepted by any of the hosts, Alice will connect to the key provider, send a message 'N', and receive the random number that can then be used as the Key to generate the Garbled Circuit.
+Qt network libraries were used, so Qt will need to be installed, and the app can be built and deployed the same way the interface app is.
+
+\begin{lstlisting}[caption={Deploying QT application}, language=bash, captionpos=b]
+$ ./key_server [pathToKeysTxt] [PORT]
+\end{lstlisting}
+
 \subsection{Open Issues}
 
 \begin{enumerate}  
