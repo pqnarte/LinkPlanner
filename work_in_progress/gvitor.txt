@@ -11,6 +11,18 @@ Medium term:
 	- o ficheiro com as chaves tem que ser escrito usando o sistema de QRNG (não é para o Gonçalo fazer)
 
 
+2018-11-13
+TO BE DONE
+
+	documentar tudo, o colocar o código fonte para se poder compilar (usando QT)
+
+	ligar à base dados da CoimbraGenomics (Nelson Muga)
+
+	alterar à chave do AES (ler de um ficheiro, ver quantos bits são necessários), interface com o QRNG (falar com o Daniel Pereira)
+	a Alice e o QRNG em duas máquinas distintas. (Alice vai haver um cliente que pede ao servidor que está no QRNG)  
+
+Next meeting: 20/11, 16h30m
+
 
 2018-10-30
 TO BE DONE
