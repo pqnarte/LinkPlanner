@@ -1,0 +1,13 @@
+Goal: Quantum computing code breaking
+
+2018-11-20
+
+	- criar uma conta no GitHub
+	- fazer o clone do repositorio netxpto/linkplanner
+	- fazer o pull para o portatil e depois fazer o push/pull request (duvidas: fala com o Daniel)
+	- ler o artigo
+	- preparar os slides
+	- apresentação na sexta-feira
+	- definir o trabalho longo
+
+Next meeting: 29/11, 14h
