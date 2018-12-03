@@ -1,95 +1,103 @@
-clc
 clear
-X=0:0.02:1;
+clc
 
-TQBER=zeros(length(X),1);
-TKeyLength=zeros(length(X),1);
-TKeyPercent=zeros(length(X),1);
-i=1;
-%for efficE=X*0.1
-
-NAlice=10^6; %Logical bits send by Alice
+AverageOver=5;
+NAlice=10^7; %Logical bits send by Alice to modulator
 probd=0.10; %Probability of bit being a decoy
-efficB=0.1*0.1*0.9; %Efficiency of Detetor from Bob
+efficB=0.1; %Efficiency of Detetor from Bob
 ProDarkCountBob=10^-5; %Probability of Dark count by Bob
 ProDarkCountEve=0; %Probability of Dark count by Eve
-QBERTest=10^3; %Amount of bits compared for QBER Test, in this simulation
-%they can use the same bit more than once
 
-%Alice Generate
-[SendA,DecoyTime]  = AliceGenerating(probd,NAlice);
+for efficE=[-1 1 0.75 0.5 0.25 0.1]
+    if efficE==-1
+        IRAttack=0;
+    else
+        IRAttack=1;
+    end
+    TQBER=zeros(AverageOver,1);
+    TKeyLength=zeros(AverageOver,1);
+    for i=1:AverageOver
+        
+        %Alice Generate
+        [SendA,DecoyTime]  = AliceGenerating(probd,NAlice);
+        
+        %Eve IR Attacks
+        if IRAttack==1
+            [SendA] = EveIRAttack(SendA,NAlice,ProDarkCountEve,efficE);
+        end
+        
+        %Bob receives
+        [ReceivedB,Dfired,DarkCounts]=BobReceiving(efficB,ProDarkCountBob,NAlice,SendA);
+        
+        %Calculate QBER
+        [QBER,KeyLength,KeyPercent]=CalculateQBER(DecoyTime,ReceivedB,SendA,NAlice,Dfired);
+        
+        TQBER(i)=QBER;
+        TKeyLength(i)=KeyLength;
+    end
+    if IRAttack==1
+        TextoX=['With IR the attack, Average over ',num2str(i),' times, QBER=',num2str(mean(TQBER)),', R_B=',num2str(mean(TKeyLength)),' and Eve Efficency=',num2str(efficE)];
+    else
+        TextoX=['Without attacks, Average over ',num2str(i),' times, QBER=',num2str(mean(TQBER)),', R_B=',num2str(mean(TKeyLength))];
+    end
+    disp(TextoX)
+end
 
-%Eve IR Attacks
-%[SendA] = EveIRAttack(SendA,NAlice,ProDarkCountEve,efficE);
 
-%Bob receives
-[ReceivedB,Dfired,DarkCounts]=BobReceiving(efficB,ProDarkCountBob,NAlice,SendA);
-
-%Calculate QBER
-[QBER,KeyLength,KeyPercent]=CalculateQBER(DecoyTime,ReceivedB,SendA,NAlice,QBERTest,Dfired);
-
-X=['Without the attack, QBER=',num2str(QBER),', Key Length=',num2str(KeyLength),' and KeyPercent=',num2str(KeyPercent)];
-disp(X)
-%TQBER(i)=QBER;
-%TKeyLength(i)=KeyLength;
-%TKeyPercent(i)=KeyPercent;
-%i=i+1;
-%end
-
-subplot(3,1,1)
-plot(X,TQBER)
-xlabel ('Eve Efficency')
-ylabel ('QBER')
-subplot(3,1,2)
-plot(X,TKeyLength)
-xlabel ('Eve Efficency')
-ylabel ('Key Length after QBER')
-subplot(3,1,3)
-plot(X,TKeyPercent)
-xlabel ('Eve Efficency')
-ylabel ('Key Percentage of the Alice Data')
 %% Functions
 
-function [SendA,DecoyTime]  = AliceGenerating(probd,NAlice)
-SendA=zeros(2*NAlice,1);
-DecoyTime=SendA;
+function [SendAT,DecoyTime]  = AliceGenerating(probd,NAlice)
+SendAinit=zeros(2*NAlice,1);
+DecoyTime=zeros(2*NAlice,1);
 RandomN=rand(NAlice,1);
 for i=1:NAlice
     if RandomN(i,1)<=probd
-        SendA(2*i-1)=1;
-        SendA(2*i)=1;
+        SendAinit(2*i-1)=1;
+        SendAinit(2*i)=1;
         DecoyTime(2*i-1)=1;
         DecoyTime(2*i)=1;
     elseif RandomN(i,1)<=probd+(1-probd)/2
-        SendA(2*i-1)=0;
-        SendA(2*i)=1;
+        SendAinit(2*i-1)=0;
+        SendAinit(2*i)=1;
     else
-        SendA(2*i-1)=1;
-        SendA(2*i)=0;
+        SendAinit(2*i-1)=1;
+        SendAinit(2*i)=0;
+    end
+end
+RandomN3=rand(NAlice*2,1);
+SendAT=zeros(2*NAlice,1);
+for j=1:NAlice*2
+    if RandomN3(j,1)<=0.1
+        if SendAinit(j)==1
+            SendAT(j)=1;
+        end
     end
 end
 end
 
-function [SendA] = EveIRAttack(SendA,NAlice,ProDarkCountEve,efficE)
-RandomN3=rand(NAlice*2,2);
+function [SendAT] = EveIRAttack(SendA,NAlice,ProDarkCountEve,efficE)
+RandomN3=rand(NAlice*2,3);
 ReceivedE=zeros(2*NAlice,1);
+SendAT=zeros(2*NAlice,1);
 DarkCounts=0;
 for j=1:NAlice*2
     if RandomN3(j,1)<=efficE
         if SendA(j)==1
             ReceivedE(j)=1;
+            if RandomN3(j,3)<=0.1
+                SendAT(j)=1;
+            end
         end
     end
     
     %DarkCounts
-    if ReceivedE(j)==0
+    if SendAT(j)==0
         if RandomN3(j,2)<=ProDarkCountEve
-            ReceivedE(j)=1;
+            SendAT(j)=1;
             DarkCounts=DarkCounts+1;
         end
     end
 end
-SendA=ReceivedE;
 
 end
 
@@ -118,7 +126,7 @@ for j=1:NAlice*2
 end
 end
 
-function [QBER,KeyLength,KeyPercent]=CalculateQBER(DecoyTime,ReceivedB,SendA,NAlice,QBERTest,Dfired)
+function [QBER,KeyLength,KeyPercent]=CalculateQBER(DecoyTime,ReceivedB,SendA,NAlice,Dfired)
 %Remove Decoy
 for i=1:NAlice*2
     if DecoyTime(i)==1
@@ -139,8 +147,9 @@ for j=1:NAlice*2
 end
 
 %Calculate QBER
+QBERTest=floor(sum(Dfired)*0.01);
 QberAux=0;
-Positions=randi(sum(Dfired),QBERTest,1);
+Positions=randperm(sum(Dfired),QBERTest);
 DfiredTimes=find(Dfired==1);
 for j=1:QBERTest
     i=DfiredTimes(Positions(j));
