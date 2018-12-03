@@ -2,6 +2,15 @@ goals:
 	- mini-projeto => perceber como funciona o COW protocol (ID Qauntique)
 	- projeto => simular e obter alguns resultados
 
+
+TO BE DONE
+
+	- começar escrever o relatório no docuemtno netxpto.pdf
+	- melhorar os slides, incluindo os novos resultados
+	- estudar o IR attack, com a Eve a enviar 0.1, verificar se a Eve pode melhor ajustando a taxa de fotões enviados (1)
+
+Next meeting: 10/12, 11h30m
+
 TO BE DONE
 2018-10-29
 
