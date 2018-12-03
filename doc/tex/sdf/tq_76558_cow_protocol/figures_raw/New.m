@@ -103,11 +103,12 @@ xlim([0 2])
 ax = gca; % current axes
 ax.FontSize = 25;
 %% Dm3
-figure('units','normalized','outerposition',[0 0 1 1])
+figure('units','normalized','outerposition',[0 0 0.82 1])
 p=0.1;
 size=10;
 x=0:0.01:size;
-A=rand(size,1);
+%A=rand(size,1);
+A=[0.6 0.6 0.4 0 0.6 0.4 0.6 0.4 0 0.4];
 Bdata=zeros(size,1);
 DM=zeros(2*size,1);
 DM1=zeros(2*size,1);
@@ -167,6 +168,7 @@ plot(x,yDM,'LineWidth',5)
 grid on
 xlabel('Time(ns)')
 ylabel('DM')
+title('0          0          1          d          0          1          0          1          d          1')
 ax = gca; % current axes
 ax.FontSize = 25;
 subplot(3,1,3)
