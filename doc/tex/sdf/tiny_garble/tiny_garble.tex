@@ -261,7 +261,24 @@ bob@ubuntu:~$ ./TinyGarble/bin/garbled_circuit/TinyGarble -b
 
 \subsubsection{Keys}
 
-Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES. If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
+Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES.
+Alice generates a random key, 'with the randomBlock() function', that will then be expanded 10 times (128bit AES), thus if a custom key is wanted, 128*11 bits are needed.
+
+Below is the struct used to represent the AES_KEY, present at TinyGarble/crypto/aes.h:
+
+\begin{lstlisting}[caption={AES_KEY struct}, language=C, captionpos=b]
+typedef struct {
+  __m128i rd_key[15];
+  int rounds;
+} AES_KEY;
+\end{lstlisting}
+
+The __m128i variable represents a 128bit register.
+
+The expansion function
+
+
+ If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
 
 \begin{figure}[H]
 	\centering
@@ -363,7 +380,9 @@ Examples:
 \newpage
 \subsubsection{TinyGarble Interface}
 
-To ease the computation of the moda function between Alice and Bob, the interface 'STPC' was made. It can be found at sdf/tiny\_garble/STPC zip, which containts a folder with the src files, and the folder with the build project. The interface was made with QTCreator, so in case any changes have to be made to the interface itself or to the c++ files, it has to be installed to be able to build the project (Since it needs QT libraries). To build the project manually one has to run the following code at the folder with the src code.
+To ease the computation of the moda function between Alice and Bob, the interface 'STPC' was made. It can be found at sdf/tiny\_garble/STPC zip, which containts a folder with the src files, and the folder with the build project. The interface was made with QTCreator, so in case any changes have to be made to the interface itself or to the c++ files, it has to be installed to be able to build the project (Since it needs QT libraries). QtCreator can be installed with 'sudo apt install qtcreator'. To open a project, select the .pro file on th src folder.
+After opening the project, the work and build folder can be (and should) configured in 'Projects'.
+To build the project without QtCreator, the following commands have to be executed:
 
 \begin{lstlisting}[caption={Manually building QT application}, language=bash, captionpos=b]
 $ export PATH=/pathToQt/version/Gcc/bin:$PATH
@@ -371,7 +390,7 @@ $ qmake
 $ make
 \end{lstlisting}
 
-Building the project should generate some files and folders on the folder configured at QtCreator (default is named 'build\_...'), or in the same folder where the src code is, in case it was built manually.
+Building the project should generate some files and folders on the build folder configured at QtCreator, or in the same folder where the src code is, in case it was built manually. 
 In order to make the app usable in any linux system, \url{https://github.com/probonopd/linuxdeployqt} was used. It essentialy creates a bundle with all the libraries and other necessary files to execute the app. To install it follow it's git Installation instructions. 
 
 \begin{lstlisting}[caption={Deploying QT application}, language=bash, captionpos=b]
@@ -381,26 +400,44 @@ $ ./linuxdeployqt-x86_64.AppImage [pathToBuiltProject]
 If no error ocurred, one should be able to go to the folder where the build project is, and run the app with './app', in this case './STPC'.
 When openning the interface, the user has to insert the path to TinyGarble, and the path to the folder containing the 'moda.scd' file, before choosing which host he will be (Alice or Bob).
 
-FIRST IMAGE
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/STPC_start.png}
+    \caption{Starting window of STPC interface.}\label{fig:STPC_start}
+\end{figure}
 
 If Alice was selected, the user will have to insert the PORT for TinyGarble's connection, and the IP Adress of the Key provider and the respective PORT for the connection.
 
-SECOND IMAGE
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/STPC_alice.png}
+    \caption{Alice network configuration.}\label{fig:STPC_alice}
+\end{figure}
 
 In case of Bob, only the IP Adress of Alice and the respective PORT are needed.
 
-THIRD IMAGE
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/STPC_bob.png}
+    \caption{Bob network configuration.}\label{fig:STPC_bob}
+\end{figure}
 
 After all configuration is done, the final window will appear. In this window the user can request the computation of the moda function, or accept it in case the other party requested it first.
 The blue frame shows warnings and information about the connection and current state of the application.
 
-FINAL IMAGES 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth, height=3.8cm]{./sdf/tiny_garble/figures/STPC_a.png}
+    \caption{STPC main window.}\label{fig:STPC_a}
+\end{figure}
 
 \newpage
 
-\subsubsection{Server to provide Keys}
+\subsubsection{Server to provide Random Number}
 
-This next program, 'key\_server', is a TCP server that provides a random number in binary with N bits, when receiving an 'N' from a client. It will respond with a error message in N is not a number.
+This next program, 'key\_server', is a TCP server that provides a random number in binary with N bits, when receiving a request 'N' from a client. It will respond with a error message if N is not an integer.
 It is used in the Interface showed above, to retrieve the Key for Alice. Each time a computation is accepted by any of the hosts, Alice will connect to the key provider, send a message 'N', and receive the random number that can then be used as the Key to generate the Garbled Circuit.
 Qt network libraries were used, so Qt will need to be installed, and the app can be built and deployed the same way the interface app is.
 
@@ -411,6 +448,7 @@ $ ./key_server [pathToKeysTxt] [PORT]
 \subsection{Open Issues}
 
 \begin{enumerate}  
+\item For some reason TinyGarble is failing to output the right value sometimes.
 \item No free High Level Synthesis was yet found, so impossible to run examples with C or C++ as input.
 \end{enumerate}
 
