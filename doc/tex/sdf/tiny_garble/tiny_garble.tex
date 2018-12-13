@@ -261,17 +261,63 @@ bob@ubuntu:~$ ./TinyGarble/bin/garbled_circuit/TinyGarble -b
 
 \subsubsection{Keys}
 
-Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES. If the user wants to use his own encryption and decryption keys, the "garbled\_circuit.cpp" file located at "TinyGarble/garbled\_circuit" has to be slightly changed. For this example, both the garbler and evaluator get their keys from their respective file, to accomplish this, on GarbleStr and EvaluateStr functions, change the line "block global\_key =  RandomBlock();" with the code below:
+Since TinyGarble is based on JustGarble, it's garbling scheme will be based on fixed-key AES.
+Alice generates a random key, 'with the randomBlock() function', that will then be expanded 10 times (128bit AES), thus if a custom key is wanted, 128*11 bits are needed.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth, height=5.5cm]{./sdf/tiny_garble/figures/key_file.png}
-    \caption{Reading Garbler's key from a file.}\label{fig:key_file}
-\end{figure}
+Below is the struct used to represent the AES\_KEY, present at TinyGarble/crypto/aes.h:
 
-The figure above is showing a piece of the modified GarbleStr function, the same would have to be done at the EvaluatorStr function with the respective path for the evaluator keys. The absolute(starting from the root) path has to be given. "\#Include <fstream>" is also needed at the top of the file. 
+\begin{lstlisting}[caption={AES\_KEY struct}, language=C, captionpos=b]
+typedef struct {
+  __m128i rd_key[15];
+  int rounds;
+} AES_KEY;
+\end{lstlisting}
 
-To apply any changes made to the file, go to TinyGarble/bin and run the "make" command.
+The \_\_m128i variable represents a 128bit register, the rd\_key[0] holds the global\_key, and rd\_key[10:1] will have the expanded keys. rd\_key[15:11] are only used for 192 or 256 bit AES. Rounds represent the number of times the key was expanded (10, in case of 128bit AES).
+
+The following function "AES128KeyExpansion" located at the same file, expands the 128 bit global\_key into more ten 128 bit keys, that are stored in rd\_key[10:1], as mentioned before.
+
+\begin{lstlisting}[caption={AES Expansion function}, language=C, captionpos=b]
+inline void AES128KeyExpansion(const unsigned char *userkey, void *key) {
+  __m128i x0, x1, x2;
+  __m128i *kp = (__m128i *) key;
+  kp[0] = x0 = _mm_loadu_si128((__m128i *) userkey);
+  x2 = _mm_setzero_si128();
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 1);
+  kp[1] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 2);
+  kp[2] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 4);
+  kp[3] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 8);
+  kp[4] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 16);
+  kp[5] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 32);
+  kp[6] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 64);
+  kp[7] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 128);
+  kp[8] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 27);
+  kp[9] = x0;
+  EXPAND_ASSIST(x0, x1, x2, x0, 255, 54);
+  kp[10] = x0;
+}
+\end{lstlisting}
+
+To use a non AES Key, instead of giving a global key and expand it, all 11 different keys have to be provided, and stored on rd\_key[10:0].
+To do that, the intrinsic function '\_mm\_loadu\_si128' can be used, as showed in the example below.
+
+\begin{lstlisting}[caption={Storing four ints into a 128bit register. It should ouput "50607080 10203040 0fedcba9 87654321".}, language=C, captionpos=b]
+  block keyBlock;
+  Str2Block("50607080 10203040 0fedcba9 87654391", &keyBlock);
+  __m128i teste = _mm_loadu_si128((__m128i *)((unsigned char *)&keyBlock));
+  int32_t *tmpl = (int32_t *) &teste;
+  printf("%.8x %.8x %.8x %.8x\n", tmp[3], tmp[2], tmp[1], tmp[0]);
+\end{lstlisting}
+
+The same process has to be repeated for the remaining 10 keys.
 
 \subsubsection{Moda function}
 
@@ -363,7 +409,9 @@ Examples:
 \newpage
 \subsubsection{TinyGarble Interface}
 
-To ease the computation of the moda function between Alice and Bob, the interface 'STPC' was made. It can be found at sdf/tiny\_garble/STPC zip, which containts a folder with the src files, and the folder with the build project. The interface was made with QTCreator, so in case any changes have to be made to the interface itself or to the c++ files, it has to be installed to be able to build the project (Since it needs QT libraries). To build the project manually one has to run the following code at the folder with the src code.
+To ease the computation of the moda function between Alice and Bob, the interface 'STPC' was made. It can be found at sdf/tiny\_garble/STPC zip, which containts a folder with the src files, and the folder with the build project. The interface was made with QTCreator, so in case any changes have to be made to the interface itself or to the c++ files, it has to be installed to be able to build the project (Since it needs QT libraries). QtCreator can be installed with 'sudo apt install qtcreator'. To open a project, select the .pro file on th src folder.
+After opening the project, the work and build folder can be (and should) configured in 'Projects'.
+To build the project without QtCreator, the following commands have to be executed:
 
 \begin{lstlisting}[caption={Manually building QT application}, language=bash, captionpos=b]
 $ export PATH=/pathToQt/version/Gcc/bin:$PATH
@@ -371,7 +419,7 @@ $ qmake
 $ make
 \end{lstlisting}
 
-Building the project should generate some files and folders on the folder configured at QtCreator (default is named 'build\_...'), or in the same folder where the src code is, in case it was built manually.
+Building the project should generate some files and folders on the build folder configured at QtCreator, or in the same folder where the src code is, in case it was built manually. 
 In order to make the app usable in any linux system, \url{https://github.com/probonopd/linuxdeployqt} was used. It essentialy creates a bundle with all the libraries and other necessary files to execute the app. To install it follow it's git Installation instructions. 
 
 \begin{lstlisting}[caption={Deploying QT application}, language=bash, captionpos=b]
@@ -381,22 +429,38 @@ $ ./linuxdeployqt-x86_64.AppImage [pathToBuiltProject]
 If no error ocurred, one should be able to go to the folder where the build project is, and run the app with './app', in this case './STPC'.
 When openning the interface, the user has to insert the path to TinyGarble, and the path to the folder containing the 'moda.scd' file, before choosing which host he will be (Alice or Bob).
 
-FIRST IMAGE
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth, height=6cm]{./sdf/tiny_garble/figures/STPC_start.png}
+    \caption{Starting window of STPC interface.}\label{fig:STPC_start}
+\end{figure}
 
 If Alice was selected, the user will have to insert the PORT for TinyGarble's connection, and the IP Adress of the Key provider and the respective PORT for the connection.
 
-SECOND IMAGE
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth, height=6cm]{./sdf/tiny_garble/figures/STPC_alice.png}
+    \caption{Alice network configuration.}\label{fig:STPC_alice}
+\end{figure}
 
 In case of Bob, only the IP Adress of Alice and the respective PORT are needed.
 
-THIRD IMAGE
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth, height=6cm]{./sdf/tiny_garble/figures/STPC_bob.png}
+    \caption{Bob network configuration.}\label{fig:STPC_bob}
+\end{figure}
 
 After all configuration is done, the final window will appear. In this window the user can request the computation of the moda function, or accept it in case the other party requested it first.
 The blue frame shows warnings and information about the connection and current state of the application.
 
-FINAL IMAGES 
-
-\newpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\textwidth, height=6cm]{./sdf/tiny_garble/figures/STPC_a.png}
+    \caption{STPC main window.}\label{fig:STPC_a}
+\end{figure}
 
 \subsubsection{Server to provide Keys}
 

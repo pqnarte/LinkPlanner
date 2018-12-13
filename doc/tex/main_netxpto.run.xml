@@ -53,8 +53,8 @@
       <file>blx-dm.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
-      <file>standard.bbx</file>
       <file>numeric.bbx</file>
+      <file>standard.bbx</file>
       <file>numeric.cbx</file>
       <file>biblatex.cfg</file>
       <file>english.lbx</file>
@@ -80,11 +80,6 @@
     </requires>
     <requires type="editable">
       <file>./chapter/simulator_structure/simulator_structure.bib</file>
-      <file>./sdf/bpsk_system/bpsk_system.bib</file>
-      <file>./sdf/quantum_random_number_generator/quantum_random_number_generator.bib</file>
-      <file>./sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib</file>
-      <file>./sdf/secure_multiparty_computation/secure_multiparty_computation.bib</file>
-      <file>./sdf/tiny_garble/tiny_garble.bib</file>
       <file>./lib/bit_error_rate/bit_error_rate.bib</file>
       <file>./lib/photoelectron_generator/photoelectron_generator.bib</file>
       <file>./lib/snr_estimator/snr_estimator.bib</file>
