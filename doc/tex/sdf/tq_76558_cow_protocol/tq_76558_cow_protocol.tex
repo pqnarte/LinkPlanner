@@ -91,7 +91,7 @@ For the simulation, I created a function ``Alice'' that generates a string with 
 
 In this ``Alice'' function the decoy state only has near 1\% of probability of having photons in both pulses, most of the decoy states will only have photon in one of the pulses (90 \%).
 
-(Note : that assuming that in the Alice attenuation (0.1), only 10 \% of the states generated have photons, and assuming that she can generate a state in one nanosecond \cite{roberts2017modulator}, would take $0.1$ seconds to have a string with the $10^7$ states that I'm using in this simulation, so for longer times, the effects will be even more noticeable, even if we say that the fibber dissipates 99 \% of the photons, we still only need 10 seconds to get to the string used in this work.)
+$10^7$ logical bits in a fiber with 90 \% looses and with a attenuation of 0.1 from Alice is 1 second of the protocol working.
 
 The second function called ``Eve'' captures all the information with her detector with a certain efficiency (the looses of the fibber were not simulated, wouldn't alter anything, would just make the simulation less efficient)  and then using a Poisson distribution generates the photons that sends to Bob in the same time bins that she has measured. The output of this function is once again a string with size $2\times10^7$, 
 
