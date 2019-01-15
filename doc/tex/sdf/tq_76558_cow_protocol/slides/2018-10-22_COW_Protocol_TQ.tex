@@ -87,20 +87,15 @@ Instituto de Telecomunica\c{c}\~{o}es,$^3$, Aveiro, Portugal
 \mysection{\Huge\textbf{ Quantum Key Distribution}} \Large \vspace*{1cm}
 \overlay{it_1.png}
 \begin{itemize}
-\item Quantum Key Distribution (QKD) is a secure way of create and share a unique random key between two spatially distant parties. 
-\item Polarization QKD vs Time Bin QKD.
-\end{itemize}
-They use:
-\begin{itemize}
-\item One quantum channel (with one way transmission)
-\item And one authenticated classic channel (can be eavesdropped but can't be modified).
+\item Quantum Key Distribution (QKD) is a secure way of create and share a unique random key between two spatially distant parties;
+\item Discrete vs Continuous QKD;
+\item Codification on polarization or time bins.
 \end{itemize}
   \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.3\textwidth]{./figures/Full.pdf}
+    	\includegraphics[width=0.6\textwidth]{./figures/Full.pdf}
     \end{figure}
-    
-    
+       
 \blfootnote{
 \hspace*{12cm}
 \begin{minipage}{26cm}
@@ -118,13 +113,13 @@ Ouellette, Jennifer. "Quantum key distribution." Industrial Physicist 10.6 (2004
 
 \item The Coherent One Way (COW) protocol was elaborated by Nicolas Gisin et al in 2004. 
 
-\item Uses time bin encoding.
+\item Uses discrete variables and time bin encoding.
 
 \item It is has a very simple setup.
 \end{itemize}
     \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.4\textwidth]{./figures/A.pdf}
+    	\includegraphics[width=0.6\textwidth]{./figures/A.pdf}
         	\label{bob}
     \end{figure}
     
@@ -140,60 +135,58 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %------------ SLIDE x -------%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mysection{\Huge\textbf{Alice - COW protocol}} \Large \vspace*{1cm}
-
-\begin{multicols}{2}
+\mysection{\Huge\textbf{Alice}} \Large \vspace*{1cm}
 
 \begin{description}
-  \item[Step 1] Alice creates a random key using:  
+
+\item[Step 1] Alice creates a random key using: 
+ 
 \end{description}
 
 $$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$
   $$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
 $$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
 
-Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$.
+Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light. The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$.
 
-\vspace*{5cm}
+    \begin{figure}[hbt]
+    	\centering
+\includegraphics[width=0.6\textwidth]{./figures/S1.pdf}
+        	\label{bob}
+    \end{figure}
 
-\columnbreak
-\hspace{-5cm}	
-\vspace*{-2cm}
-    	\includegraphics[width=0.7\textwidth]{./figures/S1A.pdf}
-\vspace*{1cm}
-\end{multicols} 
+
+
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
-\mysection{\Huge\textbf{Bob - COW protocol}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{Bob}} \Large \vspace*{1cm}
 
 \begin{description}
-  \item[Step 2] A fraction $t_B$ of the photons go into the photon counter $D_B$, where the bits are discriminated by the time of arrival.
-
-
-
-\begin{multicols}{2}
-Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half of non-delayed bits.
-    	\centering
-    	\includegraphics[width=0.5\textwidth]{./figures/B.pdf}
-
-
-\columnbreak
-Therefore $D_{M2}$ (constructive photon counter) should only click when:
-    	\centering
-    	\includegraphics[width=0.5\textwidth]{./figures/S2.pdf}
-    
-\end{multicols}    
-
-
+  \item[Step 2] A fraction $t_B$ of the photons go into the photon counter $D_B$, where the bits are discriminated by the time of arrival and are used to create the key.
 \end{description}  
 
+Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half of non-delayed bits.
+    \begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.6\textwidth]{./figures/B.pdf}
+    \end{figure}
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{Monitoring line clicks}} \Large \vspace*{1cm}
+
+Therefore $D_{M2}$ (constructive photon counter) should only click when, the two pulses go to the monitoring line and the first impulse is delayed:
+    \begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.7\textwidth]{./figures/S2.pdf}
+    \end{figure}
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
-\mysection{\Huge\textbf{Monitoring line - COW protocol}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{Monitoring line example}} \Large \vspace*{1cm}
 
+Supposing that all impulses have multiple photons, and all go to the monitoring line.
 
   \begin{figure}[hbt]
     	\centering
@@ -203,44 +196,35 @@ Therefore $D_{M2}$ (constructive photon counter) should only click when:
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 
-\mysection{\Huge\textbf{Testing Visibility and Errors - COW protocol}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{Testing Visibility and Errors}} \Large \vspace*{1cm}
+
 \begin{description}
 
-\item [Step 3] Alice tell the decoy times. Bob checks if the $D_{M2}$ has fired during those times.
+\item [Step 3] Alice tell the decoy times. Bob checks if the \textbf{$D_{M2}$} has fired during those times.
 
-\item [Step 4] Bob reveals the other times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
+\item [Step 4] Bob reveals the other times that he had a detection in \textbf{$D_{M2}$}, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
 
 \item [Step 5] Bob reveals the times that $D_B$ fired, and they use those as key.
 
 \item [Step 6] QBER, check the number of the detections for every detector.
 
-\item [Step 7] run error correction and privacy amplification.
+\item [Step 7] Run error correction and privacy amplification.
+\end{description}
+\begin{figure}[hbt]
+    	\centering
+    	\includegraphics[width=0.45\textwidth]{./figures/Full2.pdf}
+    \end{figure}
+
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{Intercept-Resend Attack}} \Large \vspace*{1cm}
+
+We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}. On this attack Eve captures all the information, measures and then resend it to Bob.
 
 \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.4\textwidth]{./figures/Full2.pdf}
-    \end{figure}
-\end{description}
-%--------------------------------------------------------------------------------------------------
-%------------ SLIDE -------------------------------------------------------------------------------
-\mysection{\Huge\textbf{Security}} \Large \vspace*{1cm}
-\begin{description}
-\item The two main security features of the model is the test of \textbf{coherence} and the \textbf{Length of the Key}.
-
-\item We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}. On this attack Eve captures all the information, measures and then resend it to Bob.
-\end{description}
-\begin{multicols}{2}
-Using the same representation as previously:
-
-    	\centering
-    	\includegraphics[width=0.5\textwidth]{./figures/E.pdf}
-    \columnbreak
-    
-Using a block Diagram:
-    	\centering
-    	\includegraphics[width=0.55\textwidth]{./figures/Diagrama_de_blocos.pdf}
-
-\end{multicols}    
+    	\includegraphics[width=0.7\textwidth]{./figures/E.pdf}
+\end{figure}
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{Simulation}} \Large \vspace*{1cm}
@@ -248,35 +232,46 @@ Using a block Diagram:
 For the Simulation, using a fiber without looses:
 \begin{table}[hbt!]
 \centering
-\Large
+\large
 \begin{tabular}{|c|c|}
 \hline
-\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7}$\\ \hline
+\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
 \cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Alice Attenuation & 0.1\\ \hline
+\cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
 \cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency  & 10 \% \\ \hline
 \cellcolor[HTML]{005288}\color{white} Bob DarkCount Probability & $10^{-5}$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Average Over & 200 times\\ \hline
+\cellcolor[HTML]{005288}\color{white} Run over & $50 \times$\\ \hline
 \cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
 
 \end{tabular}
 \end{table}
-
-Note that $10^7$ logical bits in a fiber with 90\% looses and with a attenuation from Alice equal to 0.1 is 1 second with the system working.
 
 In a simulation without attack, and with this variables, the final information that Bob and Alice have is:
 
 \begin{table}[hbt!]
 \centering
 \Large
-\begin{tabular}{c|c|c|c|}
-\cline{2-4}
-\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & 96288 & 97069 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 & 423898 & 425281 \\ \hline
+\begin{tabular}{c|c|c|}
+\cline{2-3}
+ & \cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{Mean}} & \cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{Std}} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF}QBER}} & 0.00013999 & 1.55492e-05 \\ \hline
+\rowcolor[HTML]{DAE8FC} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_B$}}} & {\color[HTML]{333333} 423890} & {\color[HTML]{333333} 414.286} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_{M1}$}}} & 96342.9 & 384.126 \\ \hline
+\rowcolor[HTML]{DAE8FC} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_{M2}$}}} & {\color[HTML]{333333} 60.24} & {\color[HTML]{333333} 9.03409} \\ \hline
 \end{tabular}
 \end{table}
+
+\blfootnote{
+\hspace*{12cm}
+\begin{minipage}{26cm}
+\cref{
+Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)
+}
+\end{minipage}
+}
+
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{1cm}
@@ -348,6 +343,14 @@ Simulation without attack again for comparison:
 \centering
 \item Eve presence increases the sum ($B_{M1}+B_{M2}$) when the Key Length is the correct, and lowers the Key Length when the Sum ($B_{M1}+B_{M2}$) is correct.
 \end{description}
+
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{Conclusion}} \Large \vspace*{1cm}
+\begin{itemize}
+\item It is a practical protocol, it's already being used by ID Quantic.
+\item And it is robust to a basic Intercept-resend attack as we just showed.
+\end{itemize}
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
 \mysection{} \sffamily \Large
