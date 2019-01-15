@@ -8,7 +8,7 @@
 \textbf{Student Name}  &:&  Jo\~ao Ant\'onio\\
 \textbf{}  & &  Daniel Pereira\\
 \textbf{Goal}          &:& Explain the Coherent One Way (COW) Protocol and test it's strength against a intercept resend attack.\\
-\textbf{Directory}              &:& sdf/tq_76558_cow_protocol
+\textbf{Directory}     &:& sdf/tq\_76558\_cow\_protocol
 \end{tabular}
 \end{tcolorbox}
 
@@ -93,7 +93,7 @@ In this ``Alice'' function the decoy state only has near 1\% of probability of h
 
 $10^7$ logical bits in a fiber with 90 \% looses and with a attenuation of 0.1 from Alice is 1 second of the protocol working.
 
-The second function called ``Eve'' captures all the information with her detector with a certain efficiency (the looses of the fibber were not simulated, wouldn't alter anything, would just make the simulation less efficient)  and then using a Poisson distribution generates the photons that sends to Bob in the same time bins that she has measured. The output of this function is once again a string with size $2\times10^7$, 
+The second function called ``Eve'' captures all the information with her detector with a certain efficiency (the looses of the fibber were not simulated, wouldn't alter anything, would just make the simulation less efficient)  and then using a Poisson distribution generates the photons that sends to Bob in the same time bins that she has measured. The output of this function is once again a string with size $2\times10^7$,
 
 Finally I have created a function called ``Bob'' that would measure the incoming photons in 3 detectors, all of them with the same efficiency, and with probability of dark counts. Any photon that enter as input can either go for the data line (10 \% of the photons), or for the monitoring line (90 \%), in the data line they are simply registered as they come, and only one photon is needed, more photons do not alter anything, if he doesn't receive any photon, it can still register due to dark counts. If the photon goes to monitoring line, then he goes to another beamsplitter, this time with 50 \% probability for every outcome, in the first, he is delayed by half time_bin (if he doesn't interact in the next unit of time fires the $D_{M1}$), on the other outcome he interacts with the delayed photon, if there is no delayed photon, he fires the $D_{M1}$, if there is he fires the $D_{M2}$.
 
@@ -146,7 +146,7 @@ With the IR attack and using the Attenuation of Eve equal to 0.1, by changing th
 \Large
 \begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
 \cline{2-10}
- & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.1}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.5}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 1}} \\ \cline{2-10} 
+ & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.1}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.5}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 1}} \\ \cline{2-10}
 \multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.0020583 & 0.73014 & 1 & 0.0016881 & 0.22776 & 1 & 0.001729 & 0.0023946 & 0.00032631 \\ \hline
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 0 & 1106 & 9261 & 0 & 4602 & 9383 & 8889 & 9173 & 9404 \\ \hline
@@ -161,7 +161,7 @@ With the IR attack and assuming that Eve has 100 \% efficiency. By altering the 
 \Large
 \begin{tabular}{c|c|c|c|c|c|c|}
 \cline{2-7}
- & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 1.101}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 2}} \\ \cline{2-7} 
+ & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 1.101}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 2}} \\ \cline{2-7}
 \multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.00011775 & 0.00017323 & 0.00022875 & $6.21\times 10^{-5}$ & $8.93\times 10^{-5}$ & 0.00011472 \\ \hline
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 99146 &\cellcolor[HTML]{E5EAF4} 100632 & 101557 & 181047 &\cellcolor[HTML]{E5EAF4} 182217 & 183986 \\ \hline
