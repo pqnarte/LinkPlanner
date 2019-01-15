@@ -206,19 +206,19 @@ Therefore $D_{M2}$ (constructive photon counter) should only click when:
 \mysection{\Huge\textbf{Testing Visibility and Errors - COW protocol}} \Large \vspace*{1cm}
 \begin{description}
 
-\item [Step 3] Alice tell the times of the decoy. Bob checks if the $D_{M2}$ has fired during a decoy time.
+\item [Step 3] Alice tell the decoy times. Bob checks if the $D_{M2}$ has fired during those times.
 
 \item [Step 4] Bob reveals the other times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
 
-(If someone created single photons and send it, this $D_{M2}$ would click on wrong times or don't click at all.)
-
 \item [Step 5] Bob reveals the times that $D_B$ fired, and they use those as key.
 
-\item [Step 6] They calculate QBER, check the number of the detections for every detector and if this two properties are within the expected they declared they run error correction and privacy amplification.
+\item [Step 6] QBER, check the number of the detections for every detector.
+
+\item [Step 7] run error correction and privacy amplification.
 
 \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.45\textwidth]{./figures/Full2.pdf}
+    	\includegraphics[width=0.4\textwidth]{./figures/Full2.pdf}
     \end{figure}
 \end{description}
 %--------------------------------------------------------------------------------------------------
