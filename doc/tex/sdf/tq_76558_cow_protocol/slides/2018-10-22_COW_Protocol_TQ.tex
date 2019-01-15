@@ -10,11 +10,19 @@
 \usepackage{tabularx}
 \usepackage{braket}
 \usepackage{multicol}
+\usepackage{xcolor,colortbl}
 
 \definecolor{itblue}{rgb}{0.0,0.0,0.5}
 \definecolor{itred}{rgb}{0.82,0.18,0.24}
+
+\definecolor{tab}{RGB}{0,82,136}
+\definecolor{tab2}{RGB}{173,193,222}
+
+
 \definecolor{title}{RGB}{68,85,95}
 \definecolor{author}{RGB}{120,144,159}
+\definecolor{author2}{RGB}{180,204,219}
+
 
 \newcommand{\half}{\textstyle \frac{1}{2}}%
 \newcommand{\fig}[2]{\colorbox{white}{\includegraphics[scale=#2]{#1}}}%
@@ -198,50 +206,148 @@ Therefore $D_{M2}$ (constructive photon counter) should only click when:
 \mysection{\Huge\textbf{Testing Visibility and Errors - COW protocol}} \Large \vspace*{1cm}
 \begin{description}
 
-\item [Step 3] Alice tell the times of the decoy. Bob checks if the $D_{M2}$ has fired during a decoy time.
+\item [Step 3] Alice tell the decoy times. Bob checks if the $D_{M2}$ has fired during those times.
 
 \item [Step 4] Bob reveals the other times that he had a detection in $D_{M2}$, Alice verifies if they belong to a $|1\rangle:|0\rangle$.
 
 \item [Step 5] Bob reveals the times that $D_B$ fired, and they use those as key.
 
-\item [Step 6] They calculate QBER and then run error correction and privacy amplification.
+\item [Step 6] QBER, check the number of the detections for every detector.
+
+\item [Step 7] run error correction and privacy amplification.
 
 \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.45\textwidth]{./figures/Full2.pdf}
+    	\includegraphics[width=0.4\textwidth]{./figures/Full2.pdf}
     \end{figure}
 \end{description}
-\iffalse
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{Security}} \Large \vspace*{1cm}
+\begin{description}
+\item The two main security features of the model is the test of \textbf{coherence} and the \textbf{Length of the Key}.
 
-\mysection{\Huge\textbf{Intercept-Resend Attack - COW protocol}} \large \vspace*{1cm}
-\begin{itemize}
-	\item If $D_E$ fires, she prepares a single-photon in the good time-bin and forwards it.
-	\item Eve breaks coherence everywhere with this attack. ($V_{d|IR} = V_{10|IR} =0$)
-\end{itemize}
+\item We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}. On this attack Eve captures all the information, measures and then resend it to Bob.
+\end{description}
+\begin{multicols}{2}
+Using the same representation as previously:
 
-\begin{table}[hbt]
+    	\centering
+    	\includegraphics[width=0.5\textwidth]{./figures/E.pdf}
+    \columnbreak
+    
+Using a block Diagram:
+    	\centering
+    	\includegraphics[width=0.55\textwidth]{./figures/Diagrama_de_blocos.pdf}
+
+\end{multicols}    
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{Simulation}} \Large \vspace*{1cm}
+
+For the Simulation, using a fiber without looses:
+\begin{table}[hbt!]
 \centering
+\Large
 \begin{tabular}{|c|c|}
 \hline
-Eve          & Bob        \\ \hline
-Detected     & Detected   \\ \hline
-Detected     & Dark Count \\ \hline
-Not Detected & Dark Count \\ \hline
+\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7}$\\ \hline
+\cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
+\cellcolor[HTML]{005288}\color{white} Alice Attenuation & 0.1\\ \hline
+\cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency  & 10 \% \\ \hline
+\cellcolor[HTML]{005288}\color{white} Bob DarkCount Probability & $10^{-5}$ \\ \hline
+\cellcolor[HTML]{005288}\color{white} Average Over & 200 times\\ \hline
+\cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
+
 \end{tabular}
 \end{table}
 
-    
-\blfootnote{
-\hspace*{12cm}
-\begin{minipage}{26cm}
-\cref{
-Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv preprint quant-ph/0411022 (2004)
-}
-\end{minipage}
-}
-\fi
+Note that $10^7$ logical bits in a fiber with 90\% looses and with a attenuation from Alice equal to 0.1 is 1 second with the system working.
+
+In a simulation without attack, and with this variables, the final information that Bob and Alice have is:
+
+\begin{table}[hbt!]
+\centering
+\Large
+\begin{tabular}{c|c|c|c|}
+\cline{2-4}
+\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & 96288 & 97069 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 & 423898 & 425281 \\ \hline
+\end{tabular}
+\end{table}
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{1cm}
+Using the Attenuation of Eve equal to 0.1, by changing the efficiency we get:
+
+\begin{table}[hbt!]
+\centering
+\Large
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
+\cline{2-10}
+ & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.1}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.5}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 1}} \\ \cline{2-10} 
+\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.0020583 & 0.73014 & 1 & 0.0016881 & 0.22776 & 1 & 0.001729 & 0.0023946 & 0.00032631 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 0 & 1106 & 9261 & 0 & 4602 & 9383 & 8889 & 9173 & 9404 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 85 & \cellcolor[HTML]{E5EAF4}4968 & 40642 & 91 &\cellcolor[HTML]{E5EAF4} 20361 & 40883 & 40034 &\cellcolor[HTML]{E5EAF4} 40438 & 40748 \\ \hline
+\end{tabular}
+\end{table}
+\vspace*{0.5cm}
+Simulation without attack again for comparison:
+\begin{table}[hbt!]
+\centering
+\Large
+\begin{tabular}{c|c|c|c|}
+\cline{2-4}
+\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & 96288 & 97069 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 &\cellcolor[HTML]{E5EAF4} 423898 & 425281 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{description}
+\centering
+\item Eve presence lowers the Key length.
+\end{description}
+
+%--------------------------------------------------------------------------------------------------
+%------------ SLIDE -------------------------------------------------------------------------------
+\mysection{\Huge\textbf{IR - Eve Attenuation}} \Large \vspace*{1cm}
+Assuming that Eve has 100 \% efficiency. By altering the value of her attenuation we get:
+
+\begin{table}[hbt!]
+\centering
+\Large
+\begin{tabular}{c|c|c|c|c|c|c|}
+\cline{2-7}
+ & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 1.101}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 2}} \\ \cline{2-7} 
+\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.00011775 & 0.00017323 & 0.00022875 & $6.21\times 10^{-5}$ & $8.93\times 10^{-5}$ & 0.00011472 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 99146 &\cellcolor[HTML]{E5EAF4} 100632 & 101557 & 181047 &\cellcolor[HTML]{E5EAF4} 182217 & 183986 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 423756 & 424850 & 426440 & 739744 & 741841 & 743701 \\ \hline
+\end{tabular}
+\end{table}
+\vspace*{0.5cm}
+Simulation without attack again for comparison:
+\begin{table}[hbt!]
+\centering
+\Large
+\begin{tabular}{c|c|c|c|}
+\cline{2-4}
+\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & \cellcolor[HTML]{E5EAF4}96288 & 97069 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 & 423898 & 425281 \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{description}
+\centering
+\item Eve presence increases the sum ($B_{M1}+B_{M2}$) when the Key Length is the correct, and lowers the Key Length when the Sum ($B_{M1}+B_{M2}$) is correct.
+\end{description}
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
 \mysection{} \sffamily \Large
