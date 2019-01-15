@@ -12,7 +12,11 @@
 \end{tabular}
 \end{tcolorbox}
 
-The Coherent One Way (COW) protocol is one Quantum Key Distribution (QKD) what uses Time Bin properties, a simple scheme can be seen in the figure \ref{fig:Scheme}.
+A Quantum Key Distribution (QKD) is a secure way of communicating between two parties spacialy distant using properties of quantum mechanics. Due to the grow in the technology and the appearance of theoretical quantum computers, the classical secure methods that we use quickly becoming in danger of loosing their security.
+
+The QKD creates a random key with one and zeros, this key that is symmetrical to both parties (Alice and Bob) can be used to encrypt and decrypt messages. The QKD protocols can use either discrete variables or continuous variables, and the ones that use discrete variables can use either polarization or time bin encoding \cite{singh}. The most well know QKD is the BB84 that uses discrete variables and polarization to codify information \cite{bennett1992quantum}.
+
+The Coherent One Way (COW) protocol is another QKD protocol that also uses discrete variables but uses time bin encoding, meaning that the information is passed in the time bins and not in the polarization like the BB84. The COW protocol was created by Nicolas Gisin et al in 2004 in \cite{gisin2004towards}, and as a very simple set-up, it was already very well tested against various attacks like \cite{branciard2006zero} and it is already being commercialized by companies like ID Quantic. A simple scheme of the COW protocol can be seen in the Figure \ref{fig:Scheme}.
 
 \begin{figure}[h]
 \centering
@@ -21,21 +25,20 @@ The Coherent One Way (COW) protocol is one Quantum Key Distribution (QKD) what u
 \label{fig:Scheme}
 \end{figure}
 
-\par
-It was created by Nicolas Gisin et al in 2004, and comparatively to the BB84 protocol has a much simpler set-up, since the Bob apparatus is passive, i.e. doesn't need to change basis, or anything actually.
-\par
-The purpose of this protocol is to create a secure key using quantum proprieties, just like any other QKD.
-
 \subsection{Theoretical Analysis}
 
-\begin{itemize}
-\item [Step 1] Alice creates a random key using:
+In the first step of the protocol, Alice creates a random key using:
+
 $$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$
-  $$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
+
+$$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
+
 $$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
 
 Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$. This can be seen in figure \ref{fig:sta}.
-The probability of creating a |0\rangle state and a |1\rangle is equal, the probability of creating a |d\rangle state is usually 10 \%, while the attenuation value is usually 0.1.
+The probability of creating a $|0\rangle$ state and a $|1\rangle$ is equal, the probability of creating a $|d\rangle$ state is usually 10 \%.
+
+The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$. With this is mind the probability of a decoy state having both the peaks with at least one photon each is 1\%.
 
 \begin{figure}[h]
 \centering
@@ -44,6 +47,7 @@ The probability of creating a |0\rangle state and a |1\rangle is equal, the prob
 \label{fig:sta}
 \end{figure}
 
+\begin{itemize}
 \item [Step 2]  In the Bob apparatus : a fraction $t_B$ of the photons go into the photon counter $D_B$, where the bits are discriminated by the time of arrival, usually 90 \%, while the rest go in to the monitoring line.
 
 In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ interacting with the non-delayed photons.
