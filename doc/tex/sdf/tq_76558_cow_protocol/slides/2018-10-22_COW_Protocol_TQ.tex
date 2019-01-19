@@ -177,9 +177,10 @@ Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half
 \mysection{\Huge\textbf{Monitoring line clicks}} \Large \vspace*{1cm}
 
 Therefore $D_{M2}$ (constructive photon counter) should only click when, the two pulses go to the monitoring line and the first impulse is delayed:
+\vspace*{0.5cm}
     \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.7\textwidth]{./figures/S2.pdf}
+    	\includegraphics[width=1\textwidth]{./figures/S2.pdf}
     \end{figure}
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -232,7 +233,7 @@ We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}.
 For the Simulation, using a fiber without looses:
 \begin{table}[hbt!]
 \centering
-\large
+\Large
 \begin{tabular}{|c|c|}
 \hline
 \cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
@@ -240,26 +241,22 @@ For the Simulation, using a fiber without looses:
 \cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
 \cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency  & 10 \% \\ \hline
 \cellcolor[HTML]{005288}\color{white} Bob DarkCount Probability & $10^{-5}$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Run over & $50 \times$\\ \hline
+\cellcolor[HTML]{005288}\color{white} Run over & $200 \times$\\ \hline
 \cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
 
 \end{tabular}
 \end{table}
 
-In a simulation without attack, and with this variables, the final information that Bob and Alice have is:
+\vspace*{0.5cm}
+The meaning of 0.1 seconds
+\vspace*{0.5cm}
 
 \begin{table}[hbt!]
 \centering
-\Large
-\begin{tabular}{c|c|c|}
-\cline{2-3}
- & \cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{Mean}} & \cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{Std}} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF}QBER}} & 0.00013999 & 1.55492e-05 \\ \hline
-\rowcolor[HTML]{DAE8FC} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_B$}}} & {\color[HTML]{333333} 423890} & {\color[HTML]{333333} 414.286} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_{M1}$}}} & 96342.9 & 384.126 \\ \hline
-\rowcolor[HTML]{DAE8FC} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{2F528F}{\color[HTML]{FFFFFF} \textbf{$D_{M2}$}}} & {\color[HTML]{333333} 60.24} & {\color[HTML]{333333} 9.03409} \\ \hline
+\large
+\begin{tabular}{ccccccc}
+$10^7$ & $\times 0.1$ & $\times 0.9$ & $\times 0.9$ & $\times 0.5$ & $\times 0.5$ & $=40 500$ \\
+\begin{tabular}[c]{@{}c@{}}0.1 seconds\\ Alice raw\\ characters\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average Nº\\ of photons by\\ impulse\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bits that go \\ to the Data\\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}Logical bits\\ that are not \\ decoy states\end{tabular} & \begin{tabular}[c]{@{}c@{}}Used to \\ calculate\\ QBER\end{tabular} & \begin{tabular}[c]{@{}c@{}}Efficiency\\ of Bob's\\ Detectors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Final bits in\\ in the end of\\ Stage 6\end{tabular}
 \end{tabular}
 \end{table}
 
@@ -274,32 +271,41 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
-\mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{0.5cm}
 Using the Attenuation of Eve equal to 0.1, by changing the efficiency we get:
+
+\begin{table}[hbt!]
+\Large
+\centering
+\begin{tabular}{c|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor[HTML]{005288} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 10 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 50 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 90 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 100 \%}} \\ \hline
+ & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.731298 & 0.417496 & 0.192879 & 0.345973 & 0.0049682 & 0.0103909 & 0.00232442 & 0.000224006 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 5191.22 & 13182.9 & 20815 & 19809.5 & 38151.9 & 9209.9 & 40459.6 & 122.252 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 1153.02 & 2986.12 & 4722.48 & 4519.43 & 8661.34 & 2098.9 & 9169.48 & 81.2168 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 0.04 & 0.197949 & 0.24 & 0.656521 & 0.36 & 0.525279 & 0.64 & 0.749422 \\ \hline
+\end{tabular}
+\end{table}
+
+\vspace*{0.5cm}
+Simulation without attack for comparison:
 
 \begin{table}[hbt!]
 \centering
 \Large
-\begin{tabular}{c|c|c|c|c|c|c|c|c|c|}
-\cline{2-10}
- & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.1}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 0.5}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Efficiency = 1}} \\ \cline{2-10} 
-\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.0020583 & 0.73014 & 1 & 0.0016881 & 0.22776 & 1 & 0.001729 & 0.0023946 & 0.00032631 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 0 & 1106 & 9261 & 0 & 4602 & 9383 & 8889 & 9173 & 9404 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 85 & \cellcolor[HTML]{E5EAF4}4968 & 40642 & 91 &\cellcolor[HTML]{E5EAF4} 20361 & 40883 & 40034 &\cellcolor[HTML]{E5EAF4} 40438 & 40748 \\ \hline
-\end{tabular}
-\end{table}
-\vspace*{0.5cm}
-Simulation without attack again for comparison:
-\begin{table}[hbt!]
-\centering
-\Large
-\begin{tabular}{c|c|c|c|}
-\cline{2-4}
-\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & 96288 & 97069 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 &\cellcolor[HTML]{E5EAF4} 423898 & 425281 \\ \hline
+\begin{tabular}{c|c|c|}
+\cline{2-3}
+ & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
 \end{tabular}
 \end{table}
 
@@ -325,19 +331,24 @@ Assuming that Eve has 100 \% efficiency. By altering the value of her attenuatio
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 423756 & 424850 & 426440 & 739744 & 741841 & 743701 \\ \hline
 \end{tabular}
 \end{table}
+
 \vspace*{0.5cm}
 Simulation without attack again for comparison:
 \begin{table}[hbt!]
 \centering
 \Large
-\begin{tabular}{c|c|c|c|}
-\cline{2-4}
-\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & $9.9 \times 10^{-5}$ & 0.0001366 & 0.00018906 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 95294 & \cellcolor[HTML]{E5EAF4}96288 & 97069 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 422730 & 423898 & 425281 \\ \hline
+\begin{tabular}{c|c|c|}
+\cline{2-3}
+ & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
+\rowcolor[HTML]{E5EAF4} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
 \end{tabular}
 \end{table}
+
 
 \begin{description}
 \centering
