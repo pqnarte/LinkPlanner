@@ -272,7 +272,7 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{0.5cm}
-Using the Attenuation of Eve equal to 0.1, by changing the efficiency we get:
+Using the average number of photons by impulse of Eve equal to 0.1 (same as Alice), by changing the efficiency we get:
 
 \begin{table}[hbt!]
 \Large
@@ -317,10 +317,11 @@ Simulation without attack for comparison:
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{IR - Eve Attenuation}} \Large \vspace*{1cm}
-Assuming that Eve has 100 \% efficiency. By altering the value of her attenuation we get:
+Assuming that Eve has 100 \% efficiency. By altering the values of average number of photons by impulse that she uses we get:
 
 \begin{table}[hbt!]
 \centering
+\Large
 \begin{tabular}{ccccccc}
 \rowcolor[HTML]{005288} 
 {\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
@@ -334,7 +335,6 @@ Assuming that Eve has 100 \% efficiency. By altering the value of her attenuatio
 \end{tabular}
 \end{table}
 
-\vspace*{0.5cm}
 Simulation without attack again for comparison:
 \begin{table}[hbt!]
 \centering
@@ -351,12 +351,28 @@ Simulation without attack again for comparison:
 \end{tabular}
 \end{table}
 
+\begin{table}[hbt!]
+\centering
+\large
+\begin{tabular}{ccccc}
+\rowcolor[HTML]{005288} 
+{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {\color[HTML]{FFFFFF} 1.0001} & {\color[HTML]{FFFFFF} 1.1} & {\color[HTML]{FFFFFF} 1.2} \\
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $\frac{$B\_\{M1\}+B\_\{M2\}$}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86
+\end{tabular}
+\end{table}
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{Conclusion}} \Large \vspace*{1cm}
 \begin{itemize}
-\item It is a practical protocol, it's already being used by ID Quantic.
-\item And it is robust to a basic Intercept-resend attack as we just showed.
+\item By having an efficiency lower than 100 \% Eve presence lowers the Key length ($D_B$) by one order of magnitude and increases the QBER.
+
+\vspace*{1cm}
+
+\item And even if her efficiency is of 100 \%, Eve presence still increases the ratio $\frac{$B_{M1}+B_{M2}$}{Key Length}$ (now 23.6\%, without attack is 22.7\%), besides also increase the QBER by nearly one order of magnitude.
+
+\vspace*{1cm}
+
+\item "Paranoid" properties Eve detectors having a 100\% efficiency, not very realistic if Bob's ones remain with 10 \%.
 \end{itemize}
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
