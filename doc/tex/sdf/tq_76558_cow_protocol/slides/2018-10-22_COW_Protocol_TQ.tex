@@ -321,14 +321,16 @@ Assuming that Eve has 100 \% efficiency. By altering the value of her attenuatio
 
 \begin{table}[hbt!]
 \centering
-\Large
-\begin{tabular}{c|c|c|c|c|c|c|}
-\cline{2-7}
- & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 1.101}} & \multicolumn{3}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Eve Attenuation = 2}} \\ \cline{2-7} 
-\multicolumn{1}{l|}{} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Min} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Averag.} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Max} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.00011775 & 0.00017323 & 0.00022875 & $6.21\times 10^{-5}$ & $8.93\times 10^{-5}$ & 0.00011472 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $B_{M1}+B_{M2}$}} & 99146 &\cellcolor[HTML]{E5EAF4} 100632 & 101557 & 181047 &\cellcolor[HTML]{E5EAF4} 182217 & 183986 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Key Length}} & 423756 & 424850 & 426440 & 739744 & 741841 & 743701 \\ \hline
+\begin{tabular}{ccccccc}
+\rowcolor[HTML]{005288} 
+{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
+ & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
+\rowcolor[HTML]{E5EAF4} 
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
+\rowcolor[HTML]{E5EAF4} 
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
 \end{tabular}
 \end{table}
 
@@ -348,12 +350,6 @@ Simulation without attack again for comparison:
 \multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
 \end{tabular}
 \end{table}
-
-
-\begin{description}
-\centering
-\item Eve presence increases the sum ($B_{M1}+B_{M2}$) when the Key Length is the correct, and lowers the Key Length when the Sum ($B_{M1}+B_{M2}$) is correct.
-\end{description}
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
