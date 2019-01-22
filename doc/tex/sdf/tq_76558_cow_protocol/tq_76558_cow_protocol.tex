@@ -12,9 +12,11 @@
 \end{tabular}
 \end{tcolorbox}
 
-A Quantum Key Distribution (QKD) is a secure way of communicating between two parties spatially distant using properties of quantum mechanics. Due to the grow in the technology and the appearance of theoretical quantum computers, the classical secure methods that we use, are quickly becoming insecure.
+A Quantum Key Distribution (QKD) is a secure way of communicating between two parties spatially distant using properties of quantum mechanics. This connection creates random key with ones and zeros, by doing a sum (mod 2), between the key and the message, we can encrypt a message, if we later use, again a sum (mod 2) in the encrypted message, we decrypt it, obtaining the original message allowing the person to read it. This is how the One Time Pad (OTP) works, that was patented by Vernam and well tested, for example, \cite{glover2005one}. This OTP is one of the protocols that can be used to encrypt and decrypt messages, where both users have the same key, the QKD is the protocol responsible to make sure that both parties (Alice and Bob, as they are usually called) have the same key, and that it is secure.
 
-The QKD creates a random key with one and zeros, this key that is symmetrical to both parties (Alice and Bob), can be used to encrypt and decrypt messages. The QKD protocols can use either discrete variables or continuous variables, and the ones that use discrete variables can use either polarization or time bin encoding \cite{singh}. The most well know QKD is the BB84 that uses discrete variables and polarization to codify information \cite{bennett1992quantum}.
+The importance of the "Quantum" in QKD arouses from the fact that the classic ways of creating and sharing the random secret key are quickly becoming unreliable, mostly due to the work in quantum computers.
+
+The QKD protocols can use either discrete variables or continuous variables, and the ones that use discrete variables can use either polarization or time bin encoding \cite{singh}. The most well know QKD is the BB84 that uses discrete variables and polarization to codify information \cite{bennett1992quantum}.
 
 \begin{figure}[h]
 \centering
@@ -33,15 +35,15 @@ In this article I explore the Cow protocol and do a simulation of a basic interc
 
 This protocol as the name implies (Coherent One Way) uses a one-directional quantum channel and an authenticated classic channel, authenticated meaning that can be eavesdropped but can't be modified.
 
-In the first step of the protocol, Alice creates a random key using and forwards it through the quantum channel to Bob:
+In the first step of the protocol, Alice creates a random key using and forwards it through the quantum channel to Bob, the notation used here is the same on the \cite{gisin2004towards} and to help visualize I have created Fig. \ref{fig:sta}.
 
-$$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$
+$$|0\rangle = |\alpha\rangle_{2K-1} |\emptyset\rangle_{2K} =\ \ Logical\ 0\ $$
 
-$$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
+$$|1\rangle = |\emptyset\rangle_{2K-1} |\alpha\rangle_{2K} =\ \ Logical\ 1\ $$
 
-$$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
+$$|d\rangle = |\alpha\rangle_{2K-1} |\alpha\rangle_{2K} = Decoy State$$
 
-Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$. This can be seen in figure \ref{fig:sta}.
+Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$.
 The probability of creating a $|0\rangle$ state and a $|1\rangle$ is equal, the probability of creating a $|d\rangle$ state is usually 10 \%.
 
 \begin{figure}[hbt!]
@@ -51,17 +53,11 @@ The probability of creating a $|0\rangle$ state and a $|1\rangle$ is equal, the 
 \label{fig:sta}
 \end{figure}
 
-The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$. With this is mind the probability of a decoy state having both the peaks with at least one photon each is 1\%.
-
-If instead we used a bigger average number of photons by impulse, it would make the protocol hazardous against the most basic kind of attacks, beam splitter attacks, where Eve would remove a portion of photons by impulse and Bob and Alice wouldn't even notice \cite{kronberg2017analysis}.
+The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$. With this is mind the probability of a decoy state having both the peaks with at least one photon each is 1\%. If instead we used a bigger average number of photons by impulse, it would make the protocol hazardous against the most basic kind of attacks, beam splitter attacks, where Eve would remove a portion of photons by impulse and Bob and Alice wouldn't even notice \cite{kronberg2017analysis}.
 
 On the second step, Bob receives the photons in his apparatus. Here a fraction $t_B$ of the photons go into the photon counter $D_B$ (data line), where the bits are discriminated by the time of arrival, while the rest of the photons go to the monitoring line. This fraction $t_B$ is usually 90\%, so 90\% of the photons go to the data line and are used to create the key, the other 10\% of photons go to the monitoring line and are used to test the security of the communication.
 
-Bob has three photons detectors in his apparatus, in \cite{gisin2004towards} they use 10\% efficiency and a probability of dark count of $10^-5$ for all photon detectors. A dark count is what happens when the detector falsely fires.
-
-Meaning that if an impulse as ten photons, in average, nine go to the data line and one goes in to the monitoring line. If the impulse as one photon 90\% of the time it goes to the data line and 10\% it goes to the monitoring line.
-
-In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed. 
+Bob has three photons detectors in his apparatus, in \cite{gisin2004towards} they use 10\% efficiency and a probability of dark count of $10^-5$ for all photon detectors. A dark count is what happens when the detector falsely fires.Meaning that if an impulse as ten photons, in average, nine go to the data line and one goes in to the monitoring line. If the impulse as one photon 90\% of the time it goes to the data line and 10\% it goes to the monitoring line. In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed. 
 
 If a photon that arrived at the monitoring line in $time=0$ is delayed to the $time=0.5$, and one photon on the $time=0.5$ is not delayed they will interact. When this happen the $D_{M2}$ (constructive photon counter) will try to click (not guaranteed due only to the efficiency of the detector). Based on this we know that are only two cases in which the $D_{M2}$ can click, or in a $|d\rangle$ state or in the $|1\rangle$ state followed by the $|0\rangle$ state, to having the $D_{M2}$ click we know that at least two impulses were consecutive, I represented this in Fig.\ref{fig:dm2}.
 
@@ -74,11 +70,7 @@ If a photon that arrived at the monitoring line in $time=0$ is delayed to the $t
 
 Note that if the impulses are generated by different lasers, they will not be coherent, so the $D_{M2}$ will not click, to click the two impulses need to be consecutive and coherent (generated by the same laser) \cite{rusca2018security}.
 
-In all the other cases were two photons don't interact, the $D_{M1}$ clicks (or tries to, due to the efficiency), meaning that if the impulse of $|1\rangle$ followed by another impulse $|1\rangle$ go into the monitoring line, the $D_{M1}$ will click twice (assuming 100\% efficiency), because they can't interact with each other, the impulses are distanced by 1 $t_{bit}$.
-
-In another example, analysing the Fig.\ref{fig:dm3}, in this Figure we have at blue the raw key that enters the monitoring line, supposing that all impulses have multiple photons, we have the $D_M2$ clicking six times just like is represented in the figure, if we assume that all impulses only have one photon we can have the $D_{M2}$ clicking between zero and five times. Zero times if all the photons that get to the monitoring line are delayed, they will never interact among them so the $D_{M2}$ will never click.
-
-Five times as the maximum if they are all single photons, because if they are all single photons the $D_{M2}$ will never click two times consecutively ($times=8.5$ and $9$), because a photon can't be delayed and not delayed at the same time interacting with both other photons.
+In all the other cases were two photons don't interact, the $D_{M1}$ clicks (or tries to, due to the efficiency), meaning that if the impulse of $|1\rangle$ followed by another impulse $|1\rangle$ go into the monitoring line, the $D_{M1}$ will click twice (assuming 100\% efficiency), because they can't interact with each other, the impulses are distanced by 1 $t_{bit}$. In another example, analysing the Fig.\ref{fig:dm3}, in this Figure we have at blue the raw key that enters the monitoring line, supposing that all impulses have multiple photons, we have the $D_M2$ clicking six times just like is represented in the figure, if we assume that all impulses only have one photon we can have the $D_{M2}$ clicking between zero and five times. Zero times if all the photons that get to the monitoring line are delayed, they will never interact among them so the $D_{M2}$ will never click. Five times as the maximum if they are all single photons, because if they are all single photons the $D_{M2}$ will never click two times consecutively ($times=8.5$ and $9$), because a photon can't be delayed and not delayed at the same time interacting with both other photons.
 
 But resuming conditions of the image (efficiency of 100\%, 0\% probability of dark count, multiples photons by impulse), we can see that all the situations where we have impulses or delayed impulses and the $D_{M2}$ hasn't clicked the $D_{M1}$ clicks. It's other noting that are times (like $time=6$ or $time=0$) that none of the detectors clicks.
 
@@ -91,11 +83,7 @@ But resuming conditions of the image (efficiency of 100\%, 0\% probability of da
 
 For the next step (3), Alice tells Bob the decoy times, he removes this times from the data Line, example cases where only the first impulse of the decoy state had a photon, Bob detected it as $|0\rangle$ and Alice had sent a decoy, so the key would have more errors if he didn't remove this from the data. Bob also checks if some of the times that the $D_{M2}$ clicked belong to the decoys.
 
-After he tells Alice all the other times that the $D_{M2}$ clicked, Alice checks that they belong to $|0\rangle$ followed by $|1\rangle$ states. I have called this step the forth.
-
-If they don't belong to this state (Bob has already removed the decoy states) means that someone introduced more impulses that the ones that she sent.
-
-If the $D_{M2}$ has clicked much lesser times than expected means that there is someone in the line that in generating the pulses in various lasers, breaking the coherence, reducing the $D_{M2}$ counts.
+After he tells Alice all the other times that the $D_{M2}$ clicked, Alice checks that they belong to $|0\rangle$ followed by $|1\rangle$ states. I have called this step the forth. If they don't belong to this state (Bob has already removed the decoy states) means that someone introduced more impulses that the ones that she sent. If the $D_{M2}$ has clicked much lesser times than expected means that there is someone in the line that in generating the pulses in various lasers, breaking the coherence, reducing the $D_{M2}$ counts.
 
 Afterwards, in step five, Bob reveals the times that he had a detection in the data line, this allows Alice to remove from her key all the times were the photon was absorbed by the fibber, or the impulse was to the monitoring line.
 
@@ -155,13 +143,13 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 \centering
 \begin{tabular}{|c|c|}
 \hline
-\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob Dark Count Probability & $10^{-5}$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Run over & $200 \times$\\ \hline
-\cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
+Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
+Probability of Decoy & 10 \% \\ \hline
+Alice- Nº of Photons per pulse & 0.1\\ \hline
+Bob Detectors Efficiency & 10 \% \\ \hline
+Bob Dark Count Probability & $10^{-5}$ \\ \hline
+Run over & $200 \times$\\ \hline
+Percentage of the Key for QBER & 50 \% \\ \hline
 \end{tabular}
 \caption{Inputs used in the simulation.}
 \label{Inputs}
@@ -176,13 +164,11 @@ In a simulation without attack, using the variables seen in Table \ref{Inputs}, 
 \centering
 \begin{tabular}{c|c|c|}
 \cline{2-3}
-& \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
+& Mean & FFFFFF Std} \\ \hline
+\multicolumn{1}{|c|}{QBER} & 1.366e-04 & 0.185e-04 \\ \hline
+\multicolumn{1}{|c|}{ $D_B$}} & 423899 & 432.5 \\ \hline
+\multicolumn{1}{|c|}{ $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
+\multicolumn{1}{|c|}{ $D_{M2}$}} & 59.615 & 8.531 \\ \hline
 \end{tabular}
 \caption{Results of a simulation without attack}
 \label{No IR}
@@ -196,15 +182,12 @@ If I now analyse the IR attack using the average number of photons by impulse us
 \scriptsize
 \begin{tabular}{c|c|c|c|c|c|c|c|c|}
 \hline
-\rowcolor[HTML]{005288} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 10 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 50 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 90 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 100 \%}} \\ \hline
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.800 & 0.363 & 0.223 & 0.367 & 0.0121 & 0.0595 & 0.00237 & 0.000213 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 3117.1 & 10273.8 & 21137 & 19737 & 36773 & 11334 & 40432.8 & 142.9 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 683.41 & 2327.39 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.31 & 99.13 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 0.045 & 0.2516 & 0.275 & 0.609 & 0.42 & 0.73 & 0.535 & 0.749 \\ \hline
+\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{10 \%}} & \multicolumn{2}{c|}{50 \%}} & \multicolumn{2}{c|}{{90 \%}} & \multicolumn{2}{c|}{{100 \%}} \\ \hline
+ &{Mean} &{ Std} & { Mean} & { Std} & {Mean} &{Std} & {Mean} & {Std} \\ \hline
+\multicolumn{1}{|c|}{ QBER}} & 0.800 & 0.363 & 0.223 & 0.367 & 0.012 & 0.060 & 24.0e-03 & 2.13e-03 \\ \hline
+\multicolumn{1}{|c|}{ $D_B$}} & 3117 & 10274 & 21137 & 19737 & 36773 & 11334 & 40433 & 143 \\ \hline
+\multicolumn{1}{|c|}{ $D_{M1}$}} & 683.4 & 2327.4 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.3 & 99.1 \\ \hline
+\multicolumn{1}{|c|}{ $D_{M2}$}} & 0.04 & 0.25 & 0.28 & 0.61 & 0.42 & 0.73 & 0.54 & 0.75 \\ \hline
 \end{tabular}
 \caption{Results of a simulation with attack changing the efficiency of Eve detector}
 \label{IR1}
@@ -214,34 +197,35 @@ The second value that we can change for Eve is the average number of photons by 
 
 \begin{table}[hbt!]
 \centering
-
 \begin{tabular}{ccccccc}
-\rowcolor[HTML]{005288} 
-{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
+{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{1.0001}} & \multicolumn{2}{c}{{1.1}} & \multicolumn{2}{c}{{1.2}} \\
+ & { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\
+{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\
+{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
+{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
+{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
 \end{tabular}
 \caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
 \label{IR2}
 \end{table}
 
+\begin{table}[]
+\begin{tabular}{ccccc}
+{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\
+{$\frac{$B\_\{M1\}+B\_\{M2\}$}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86
+\end{tabular}
+\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results}
+\label{IR3}
+\end{table}
+
 \pagebreak
-\subsection*{Conclusion - Simulation Results}
-By having an efficiency lower than 100 \% Eve presence lowers the Key length.
+\subsection{Conclusion - Simulation Results}
 
-And even if her efficiency is of 100 \%, Eve presence still increases the ratio \frac{$B_{M1}+B_{M2}$}{Key Length} (now 24\%, without attack is 22\%), besides also increase the QBER.
+By having an efficiency lower than 100 \% Eve presence lowers the Key length ($D_B$) by one order of magnitude and increases the QBER.
 
-\subsection{Comparative Analysis}
-
-As we can see the Intercept Resend attack from Eve was a complete failure, even admitting a 100 \% and 0 \% probability of Dark Counts, she still changes the values that Bob obtains when she is not present, if she sends a different value of the Poisson distribution she alters the ratio of the Sum ($B_{M1}+B_{M2}$) by Key Length.
+And even if her efficiency is of 100 \%, Eve presence still increases the ratio $\frac{$B_{M1}+B_{M2}$}{Key Length}$ (now 24\%, without attack is 22\%), besides also increase the QBER by nearly one order of magnitude.
 
 This allows us to see that the COW protocol is robust enough against a basic IR attack even in "paranoid" properties like her detectors having a 100\% efficiency and Dark Counts that is not very realistic while Bob's ones remain with 10 \% and with probabilities of Dark Counts.
-
 
 % bibliographic references for the section ----------------------------
 \clearpage
