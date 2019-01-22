@@ -9,21 +9,18 @@ probd=0.1; %Probability of bit being a decoy
 efficB=0.1; %Efficiency of Detetor from Bob
 ProDarkCountBob=10^-5; %Probability of Dark count by Bob
 ProDarkCountEve=0; %Probability of Dark count by Eve
-
-for efficE=[-1]
-    if efficE==-1
+for a=[-1 0.1 0.5 0.9 1 1.0001 1.1 1.2 1.5]
+    if a==-1
         IRAttack=0;
-    elseif efficE<=1
+        efficE=a;
+    elseif a<=1
         PoissonE=0.1;
         IRAttack=1;
-    elseif efficE==1.1
-        PoissonE=1.101;
-        IRAttack=1;
-        efficE=1;
-    elseif efficE==2
-        PoissonE=2;
-        IRAttack=1;
-        efficE=1;
+        efficE=a;
+  elseif a>1
+       PoissonE=efficE;
+       IRAttack=1;
+       efficE=1;
     end
     TQBER=zeros(AverageOver,1);
     TKeyLength=zeros(AverageOver,1);
@@ -64,16 +61,19 @@ for efficE=[-1]
         TextoX=['No attack, Average over ',num2str(i),' times, QBER=',num2str(mean(TQBER)),', R_B=',num2str(mean(TKeyLength)),', DM=',num2str(mean(TDMfired)),', DML=',num2str((mean(TDM1fired)))];
     end
     disp(TextoX)
-    TextoY=['Min and Max of DML=',num2str(min(TDM1fired)),' ,',num2str(max(TDM1fired))];
-    disp(TextoY)
-    TextoY=['Min and Max of DM2=',num2str(min(TDM2fired)),' ,',num2str(max(TDM2fired))];
-    disp(TextoY)
-    TextoY=['Min and Max of QBER=',num2str(min(TQBER)),' ,',num2str(max(TQBER))];
-    disp(TextoY)
-    TextoY=['Min and Max of KeyLength=',num2str(min(TKeyLength)),' ,',num2str(max(TKeyLength))];
-    disp(TextoY)
+    pd1 = fitdist(TQBER,'Normal');
+    pd2 = fitdist(TKeyLength,'Normal');
+    pd3 = fitdist(TDM1fired,'Normal');
+    pd4 = fitdist(TDM2fired,'Normal');
+    
+    disp(pd1)
+    disp(pd2)
+    disp(pd3)
+    disp(pd4)
+    
+    TextX=['file',num2str((efficE)),'PE',num2str(PoissonE),'.mat'];
+    save(TextX,'pd1','pd2','pd3','pd4','TextoX')
 end
-
 
 %% Functions
 function [Pulses]  = AliceGenerating(probd,PoissonA,Units)

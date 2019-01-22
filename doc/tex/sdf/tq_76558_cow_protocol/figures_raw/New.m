@@ -77,21 +77,21 @@ ax = gca; % current axes
 ax.FontSize = 10;
 xlabel('Time(ns)')
 %% COW Protocol
-figure('units','normalized','outerposition',[0 0 0.5 1])
+figure('units','normalized','outerposition',[0 0 1 0.5])
 x = 0:0.01:2;
 
-subplot(2,1,1)
+subplot(1,2,1)
 y = gaussmf(x,[0.005 0.25+1]);
 y2 = gaussmf(x,[0.005 0.25+0.5]);
 plot(x,y+y2,'LineWidth',5)
 grid on
-title ('|1\rangle:|0\rangle')
+title ('|1\rangle                         |0\rangle')
 ylim([0 1])
 xlim([0 2])
 ax = gca; % current axes
 ax.FontSize = 25;
 
-subplot(2,1,2)
+subplot(1,2,2)
 x = 0:0.01:2;
 y = gaussmf(x,[0.005 0.25+1]);
 y2 = gaussmf(x,[0.005 0.25+0.5+1]);
