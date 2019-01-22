@@ -212,17 +212,16 @@ The second value that we can change for Eve is the average number of photons by 
 
 \begin{table}[hbt!]
 \centering
-\begin{tabular}{c|c|c|c|c|c|c|c|c|}
-\hline
+\begin{tabular}{ccccccc}
 \rowcolor[HTML]{005288} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Avg. Num.\\ photons/Imp\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.5}} \\ \hline
-& \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & & & & & & & & \\ \hline
+{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
+ & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
 \rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & & & & & & & & \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & & & & & & & & \\ \hline
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
 \rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & & & & & & & & \\ \hline
+\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
 \end{tabular}
 \caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
 \label{IR2}
@@ -232,7 +231,7 @@ The second value that we can change for Eve is the average number of photons by 
 \subsection*{Conclusion - Simulation Results}
 By having an efficiency lower than 100 \% Eve presence lowers the Key length.
 
-And even if her efficiency is of 100 \%, Eve presence still increases the sum ($B_{M1}+B_{M2}$) when the Key Length is the correct and lowers the Key Length when the Sum ($B_{M1}+B_{M2}$) is correct.
+And even if her efficiency is of 100 \%, Eve presence still increases the ratio \frac{$B_{M1}+B_{M2}$}{Key Length} (now 24\%, without attack is 22\%), besides also increase the QBER.
 
 \subsection{Comparative Analysis}
 
