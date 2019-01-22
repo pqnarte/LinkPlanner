@@ -61,7 +61,7 @@ Bob has three photons detectors in his apparatus, in \cite{gisin2004towards} the
 
 Meaning that if an impulse as ten photons, in average, nine go to the data line and one goes in to the monitoring line. If the impulse as one photon 90\% of the time it goes to the data line and 10\% it goes to the monitoring line.
 
-In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed. 
+In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed.
 
 If a photon that arrived at the monitoring line in $time=0$ is delayed to the $time=0.5$, and one photon on the $time=0.5$ is not delayed they will interact. When this happen the $D_{M2}$ (constructive photon counter) will try to click (not guaranteed due only to the efficiency of the detector). Based on this we know that are only two cases in which the $D_{M2}$ can click, or in a $|d\rangle$ state or in the $|1\rangle$ state followed by the $|0\rangle$ state, to having the $D_{M2}$ click we know that at least two impulses were consecutive, I represented this in Fig.\ref{fig:dm2}.
 
@@ -121,7 +121,7 @@ With the protocol explained, I wanted to test his security, the most basic attac
 
 As Eve as aces to the classic channel, she can remove the decoys times from her data line (step 4), and after in step five, she can delete all the times that Bob didn't had a click in his data line. So, in the End of step five she as the same key as Alice and Bob, they after calculating QBER, and she can also know in which bits will they calculate the QBER and delete also those bits from their data line. So, Eve as the complete key in the final of step sixth, and if she is not caught, she can later decrypt messages.
 
-For the simulation, I created a function ``Alice'' that generates a string with $10^7$ characters, every one of this characters has a $10 \%$ chance of being a ``d'' - representing a decoy state ($|d\rangle$), and half of the rest ($45 \%$) of being a ``0'' and the same probability of being a ``1'' - representing a zero state ($|0\rangle$) and a one state ($|1\rangle$) correspondent. 
+For the simulation, I created a function ``Alice'' that generates a string with $10^7$ characters, every one of this characters has a $10 \%$ chance of being a ``d'' - representing a decoy state ($|d\rangle$), and half of the rest ($45 \%$) of being a ``0'' and the same probability of being a ``1'' - representing a zero state ($|0\rangle$) and a one state ($|1\rangle$) correspondent.
 
 The output of this function is a string with size $2\times10^7$ where all the states, have been replaced by ``1'' and ``0'' corresponding to the photons state and the vacuum state, the states where created using a Poisson distribution, but the completely empty states were removed. So, this output variable has only the number of photons for every time bin, note that two-time bin is needed for any state.
 
@@ -151,90 +151,90 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 
 \subsection*{Inputs}
 
-\begin{table}[hbt!]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob Dark Count Probability & $10^{-5}$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Run over & $200 \times$\\ \hline
-\cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
-\end{tabular}
-\caption{Inputs used in the simulation.}
-\label{Inputs}
-\end{table}
+%\begin{table}[hbt!]
+%\centering
+%\begin{tabular}{|c|c|}
+%\hline
+%\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
+%\cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
+%\cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
+%\cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency & 10 \% \\ \hline
+%\cellcolor[HTML]{005288}\color{white} Bob Dark Count Probability & $10^{-5}$ \\ \hline
+%\cellcolor[HTML]{005288}\color{white} Run over & $200 \times$\\ \hline
+%\cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
+%\end{tabular}
+%\caption{Inputs used in the simulation.}
+%\label{Inputs}
+%\end{table}
 
 \subsection*{Outputs}
 This system outputs the following objects:
 
 In a simulation without attack, using the variables seen in Table \ref{Inputs}, I obtain the results present in Table \ref{No IR}.
 
-\begin{table}[hbt!]
-\centering
-\begin{tabular}{c|c|c|}
-\cline{2-3}
-& \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
-\end{tabular}
-\caption{Results of a simulation without attack}
-\label{No IR}
-\end{table}
+%\begin{table}[hbt!]
+%\centering
+%\begin{tabular}{c|c|c|}
+%\cline{2-3}
+%& \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
+%\rowcolor[HTML]{E5EAF4}
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
+%\rowcolor[HTML]{E5EAF4}
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
+%\end{tabular}
+%\caption{Results of a simulation without attack}
+%\label{No IR}
+%\end{table}
 
 If I now analyse the IR attack using the average number of photons by impulse used by Eve equal to the same as used by Alice (modulated by a Poisson distribution with $\lambda=0.1$) and altering the values of her detector Efficiency. The results of this can be seen in Table \ref{IR1}
 
-\begin{table}[hbt!]
-\centering
-
-\scriptsize
-\begin{tabular}{c|c|c|c|c|c|c|c|c|}
-\hline
-\rowcolor[HTML]{005288} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 10 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 50 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 90 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 100 \%}} \\ \hline
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.800 & 0.363 & 0.223 & 0.367 & 0.0121 & 0.0595 & 0.00237 & 0.000213 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 3117.1 & 10273.8 & 21137 & 19737 & 36773 & 11334 & 40432.8 & 142.9 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 683.41 & 2327.39 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.31 & 99.13 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 0.045 & 0.2516 & 0.275 & 0.609 & 0.42 & 0.73 & 0.535 & 0.749 \\ \hline
-\end{tabular}
-\caption{Results of a simulation with attack changing the efficiency of Eve detector}
-\label{IR1}
-\end{table}
+%\begin{table}[hbt!]
+%\centering
+%
+%\scriptsize
+%\begin{tabular}{c|c|c|c|c|c|c|c|c|}
+%\hline
+%\rowcolor[HTML]{005288}
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 10 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 50 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 90 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 100 \%}} \\ \hline
+% & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.800 & 0.363 & 0.223 & 0.367 & 0.0121 & 0.0595 & 0.00237 & 0.000213 \\ \hline
+%\rowcolor[HTML]{E5EAF4}
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 3117.1 & 10273.8 & 21137 & 19737 & 36773 & 11334 & 40432.8 & 142.9 \\ \hline
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 683.41 & 2327.39 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.31 & 99.13 \\ \hline
+%\rowcolor[HTML]{E5EAF4}
+%\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 0.045 & 0.2516 & 0.275 & 0.609 & 0.42 & 0.73 & 0.535 & 0.749 \\ \hline
+%\end{tabular}
+%\caption{Results of a simulation with attack changing the efficiency of Eve detector}
+%\label{IR1}
+%\end{table}
 
 The second value that we can change for Eve is the average number of photons by impulse that she uses, of course this allows attacks of other Eves by beam splitters but supposing that she has a way of guarantying that no one else does attacks to the line. And, if she has a 100 \% efficiency or her detector (while Bob remains with the usual 10\%). The results of this case can be seen in Table \ref{IR2}.
 
-\begin{table}[hbt!]
-\centering
-
-\begin{tabular}{ccccccc}
-\rowcolor[HTML]{005288} 
-{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
-\end{tabular}
-\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
-\label{IR2}
-\end{table}
+%\begin{table}[hbt!]
+%\centering
+%
+%\begin{tabular}{ccccccc}
+%\rowcolor[HTML]{005288}
+%{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
+% & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
+%\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
+%\rowcolor[HTML]{E5EAF4}
+%\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
+%\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
+%\rowcolor[HTML]{E5EAF4}
+%\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
+%\end{tabular}
+%\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
+%\label{IR2}
+%\end{table}
 
 \pagebreak
 \subsection*{Conclusion - Simulation Results}
 By having an efficiency lower than 100 \% Eve presence lowers the Key length.
 
-And even if her efficiency is of 100 \%, Eve presence still increases the ratio \frac{$B_{M1}+B_{M2}$}{Key Length} (now 24\%, without attack is 22\%), besides also increase the QBER.
+And even if her efficiency is of 100 \%, Eve presence still increases the ratio $\frac{B_{M1}+B_{M2}}{Key Length}$ (now 24\%, without attack is 22\%), besides also increase the QBER.
 
 \subsection{Comparative Analysis}
 
@@ -249,4 +249,4 @@ This allows us to see that the COW protocol is robust enough against a basic IR 
 \end{refsection}
 \addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
-% --------------------------------------------------------------------- 
+% ---------------------------------------------------------------------
