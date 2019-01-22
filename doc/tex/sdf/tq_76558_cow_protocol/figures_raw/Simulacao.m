@@ -1,10 +1,9 @@
 clear
 clc
 
-Units=10^7;
-AverageOver=200;
-PoissonA=0.1;
-PoissonE=0.1;%1.101;
+Units=10^7;     %Charachters that Alice tries to transfer
+AverageOver=200; %Run X times
+PoissonA=0.1; %Num. Aver. Phothons by Impulse of Alice
 probd=0.1; %Probability of bit being a decoy
 efficB=0.1; %Efficiency of Detetor from Bob
 ProDarkCountBob=10^-5; %Probability of Dark count by Bob
@@ -13,12 +12,13 @@ for a=[-1 0.1 0.5 0.9 1 1.0001 1.1 1.2 1.5]
     if a==-1
         IRAttack=0;
         efficE=a;
+        PoissonE=0.1;
     elseif a<=1
         PoissonE=0.1;
         IRAttack=1;
         efficE=a;
   elseif a>1
-       PoissonE=efficE;
+       PoissonE=a;
        IRAttack=1;
        efficE=1;
     end
@@ -61,16 +61,17 @@ for a=[-1 0.1 0.5 0.9 1 1.0001 1.1 1.2 1.5]
         TextoX=['No attack, Average over ',num2str(i),' times, QBER=',num2str(mean(TQBER)),', R_B=',num2str(mean(TKeyLength)),', DM=',num2str(mean(TDMfired)),', DML=',num2str((mean(TDM1fired)))];
     end
     disp(TextoX)
+    %Obtain mean and std for every variable
     pd1 = fitdist(TQBER,'Normal');
     pd2 = fitdist(TKeyLength,'Normal');
     pd3 = fitdist(TDM1fired,'Normal');
     pd4 = fitdist(TDM2fired,'Normal');
-    
+    %Print the normal distribuitons
     disp(pd1)
     disp(pd2)
     disp(pd3)
     disp(pd4)
-    
+    %Save eveyrthing
     TextX=['file',num2str((efficE)),'PE',num2str(PoissonE),'.mat'];
     save(TextX,'pd1','pd2','pd3','pd4','TextoX')
 end
