@@ -140,19 +140,19 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 \subsection*{Inputs}
 
 \begin{table}[hbt!]
-\centering
-\begin{tabular}{|c|c|}
-\hline
-Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
-Probability of Decoy & 10 \% \\ \hline
-Alice- Nº of Photons per pulse & 0.1\\ \hline
-Bob Detectors Efficiency & 10 \% \\ \hline
-Bob Dark Count Probability & $10^{-5}$ \\ \hline
-Run over & $200 \times$\\ \hline
-Percentage of the Key for QBER & 50 \% \\ \hline
-\end{tabular}
-\caption{Inputs used in the simulation.}
-\label{Inputs}
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
+		Probability of Decoy & 10 \% \\ \hline
+		Alice- Nº of Photons per pulse & 0.1\\ \hline
+		Bob Detectors Efficiency & 10 \% \\ \hline
+		Bob Dark Count Probability & $10^{-5}$ \\ \hline
+		Run over & $200 \times$\\ \hline
+		Percentage of the Key for QBER & 50 \% \\ \hline
+	\end{tabular}
+	\caption{Inputs used in the simulation.}
+	\label{Inputs}
 \end{table}
 
 \subsection*{Outputs}
@@ -161,61 +161,60 @@ This system outputs the following objects:
 In a simulation without attack, using the variables seen in Table \ref{Inputs}, I obtain the results present in Table \ref{No IR}.
 
 \begin{table}[hbt!]
-\centering
-\begin{tabular}{c|c|c|}
-\cline{2-3}
-& Mean & Std \\ \hline
-\multicolumn{1}{|c|}{QBER} & 1.366e-04 & 0.185e-04 \\ \hline
-\multicolumn{1}{|c|}{ $D_B$}} & 423899 & 432.5 \\ \hline
-\multicolumn{1}{|c|}{ $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
-\multicolumn{1}{|c|}{ $D_{M2}$}} & 59.615 & 8.531 \\ \hline
-\end{tabular}
-\caption{Results of a simulation without attack}
-\label{No IR}
+	\centering
+	\begin{tabular}{c|c|c|}
+		\cline{2-3}
+		& Mean & Std \\ \hline
+		\multicolumn{1}{|c|}{QBER} & 1.366e-04 & 0.185e-04 \\ \hline
+		\multicolumn{1}{|c|}{ $D_B$} & 423899 & 432.5 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M1}$} & 96288.8 & 329.216 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M2}$} & 59.615 & 8.531 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation without attack}
+	\label{No IR}
 \end{table}
 
 If I now analyse the IR attack using the average number of photons by impulse used by Eve equal to the same as used by Alice (modulated by a Poisson distribution with $\lambda=0.1$) and altering the values of her detector Efficiency. The results of this can be seen in Table \ref{IR1}
 
 \begin{table}[hbt!]
-\centering
-
-\scriptsize
-\begin{tabular}{c|c|c|c|c|c|c|c|c|}
-\hline
-\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{10 \%}} & \multicolumn{2}{c|}{50 \%}} & \multicolumn{2}{c|}{{90 \%}} & \multicolumn{2}{c|}{{100 \%}} \\ \hline
- &{Mean} &{ Std} & { Mean} & { Std} & {Mean} &{Std} & {Mean} & {Std} \\ \hline
-\multicolumn{1}{|c|}{ QBER}} & 0.800 & 0.363 & 0.223 & 0.367 & 0.012 & 0.060 & 24.0e-03 & 2.13e-03 \\ \hline
-\multicolumn{1}{|c|}{ $D_B$}} & 3117 & 10274 & 21137 & 19737 & 36773 & 11334 & 40433 & 143 \\ \hline
-\multicolumn{1}{|c|}{ $D_{M1}$}} & 683.4 & 2327.4 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.3 & 99.1 \\ \hline
-\multicolumn{1}{|c|}{ $D_{M2}$}} & 0.04 & 0.25 & 0.28 & 0.61 & 0.42 & 0.73 & 0.54 & 0.75 \\ \hline
-\end{tabular}
-\caption{Results of a simulation with attack changing the efficiency of Eve detector}
-\label{IR1}
+	\centering
+	\scriptsize
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}} & \multicolumn{2}{c|}{10 \%} & \multicolumn{2}{c|}{50 \%} & \multicolumn{2}{c|}{{90 \%}} & \multicolumn{2}{c|}{{100 \%}} \\ \hline
+		&{Mean} &{ Std} & { Mean} & { Std} & {Mean} &{Std} & {Mean} & {Std} \\ \hline
+		\multicolumn{1}{|c|}{ QBER} & 0.800 & 0.363 & 0.223 & 0.367 & 0.012 & 0.060 & 24.0e-03 & 2.13e-03 \\ \hline
+		\multicolumn{1}{|c|}{ $D_B$} & 3117 & 10274 & 21137 & 19737 & 36773 & 11334 & 40433 & 143 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M1}$} & 683.4 & 2327.4 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.3 & 99.1 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M2}$} & 0.04 & 0.25 & 0.28 & 0.61 & 0.42 & 0.73 & 0.54 & 0.75 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the efficiency of Eve detector}
+	\label{IR1}
 \end{table}
 
 The second value that we can change for Eve is the average number of photons by impulse that she uses, of course this allows attacks of other Eves by beam splitters but supposing that she has a way of guarantying that no one else does attacks to the line. And, if she has a 100 \% efficiency or her detector (while Bob remains with the usual 10\%). The results of this case can be seen in Table \ref{IR2}.
 
 \begin{table}[hbt!]
-\centering
-\begin{tabular}{ccccccc}
-{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{1.0001}} & \multicolumn{2}{c}{{1.1}} & \multicolumn{2}{c}{{1.2}} \\
- & { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\
-{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\
-{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
-{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
-{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
-\end{tabular}
-\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
-\label{IR2}
+	\centering
+	\begin{tabular}{ccccccc}
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{1.0001} & \multicolumn{2}{c}{{1.1}} & \multicolumn{2}{c}{{1.2}} \\
+		& { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\
+		{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\
+		{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
+		{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
+		{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
+	\label{IR2}
 \end{table}
 
-\begin{table}[]
-\begin{tabular}{ccccc}
-{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\
-{$\frac{$B\_\{M1\}+B\_\{M2\}$}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86
-\end{tabular}
-\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results}
-\label{IR3}
+\begin{table}[hbt!]
+	\begin{tabular}{ccccc}
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\
+		{$\frac{$B\_\{M1\}+B\_\{M2\}$}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results}
+	\label{IR3}
 \end{table}
 
 \pagebreak
