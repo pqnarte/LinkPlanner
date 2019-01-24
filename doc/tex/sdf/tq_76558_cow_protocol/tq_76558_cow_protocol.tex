@@ -126,7 +126,7 @@ The Eve apparatus is composed of a photon detector that is connected to a comput
 
 As Eve has aces to the classic channel, she can remove the decoys times from her data line (step 4), and after in step five, she can delete all the times that Bob didn't have a click in his data line. So, at the End of step five she as the same key as Alice and Bob, they after calculating QBER, and she can also know in which bits will they calculate the QBER and delete also those bits from their data line. So, Eve as the complete key in the final of step sixth, and if she is not caught, she can later decrypt messages.
 
-For the simulation, I created a function ``Alice'' that generates a string with $10^7$ characters, every one of this characters has a $10 \%$ chance of being a ``d'' - representing a decoy state ($|d\rangle$), and half of the rest ($45 \%$) of being a ``0'' and the same probability of being a ``1'' - representing a zero state ($|0\rangle$) and a one state ($|1\rangle$) correspondent. 
+For the simulation, I created a function ``Alice'' that generates a string with $10^7$ characters, every one of this characters has a $10 \%$ chance of being a ``d'' - representing a decoy state ($|d\rangle$), and half of the rest ($45 \%$) of being a ``0'' and the same probability of being a ``1'' - representing a zero state ($|0\rangle$) and a one state ($|1\rangle$) correspondent.
 
 The output of this function is a string with size $2\times10^7$ where all the states, have been replaced by ``1'' and ``0'' corresponding to the photons state and the vacuum state, the states where created using a Poisson distribution, but the completely empty states were removed. So, this output variable has only the number of photons for every time bin, note that two-time bin is needed for any state.
 
@@ -155,8 +155,6 @@ For the final function ``QBER'', a simple function that removes the decoy times 
 I have run the simulation 200 times and then studied the average (Mean), and the standard deviation (Std), the values that I've used as Inputs can be seen in Table \ref{Inputs}.
 
 \subsection*{Inputs}
-
-
 
 \begin{table}[hbt!]
 	\centering
@@ -296,4 +294,3 @@ In general, as far as I know and also based on the results, the COW protocol is 
 \end{refsection}
 \addcontentsline{toc}{subsection}{Bibliography}
 \cleardoublepage
-% --------------------------------------------------------------------- 
