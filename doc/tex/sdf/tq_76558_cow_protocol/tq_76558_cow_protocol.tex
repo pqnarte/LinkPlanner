@@ -12,11 +12,17 @@
 \end{tabular}
 \end{tcolorbox}
 
-A Quantum Key Distribution (QKD) is a secure way of communicating between two parties spatially distant using properties of quantum mechanics. This connection creates random key with ones and zeros, by doing a sum (mod 2), between the key and the message, we can encrypt a message, if we later use, again a sum (mod 2) in the encrypted message, we decrypt it, obtaining the original message allowing the person to read it. This is how the One Time Pad (OTP) works, that was patented by Vernam and well tested, for example, \cite{glover2005one}. This OTP is one of the protocols that can be used to encrypt and decrypt messages, where both users have the same key, the QKD is the protocol responsible to make sure that both parties (Alice and Bob, as they are usually called) have the same key, and that it is secure.
+\subsection{Quantum Key Distributions}
 
-The importance of the "Quantum" in QKD arouses from the fact that the classic ways of creating and sharing the random secret key are quickly becoming unreliable, mostly due to the work in quantum computers.
+A Quantum Key Distribution (QKD) is a secure way of communicating between two parties spatially distant using properties of quantum mechanics. This connection creates a random key with ones and zeros, by doing a sum (mod 2) between the key and the message we can encrypt a message, if we later use again a sum (mod 2) with key and the encrypted message it's decrypted obtaining the original message and allowing the person to read it. This is how the One Time Pad (OTP) works, that was patented by Vernam and well tested, for example in \cite{glover2005one}.
 
-The QKD protocols can use either discrete variables or continuous variables, and the ones that use discrete variables can use either polarization or time bin encoding \cite{singh}. The most well know QKD is the BB84 that uses discrete variables and polarization to codify information \cite{bennett1992quantum}.
+This OTP is one of the protocols that can be used to encrypt and decrypt messages, where both users have the same key. The QKD is the protocol responsible to make sure that both parties (Alice and Bob, sender and receiver respectively, sometimes also refered as A and B) have the same key, and that it is secure.
+
+The importance of the "Quantum" in QKD arises from the fact that the classic ways of creating and sharing random secret keys are quickly becoming unreliable, mostly due to the work in quantum computers.
+
+The QKD protocols can use either discrete variables or continuous variables, and the ones that use discrete variables can use either polarization or time bin encoding \cite{singh}. The most well known QKD is the BB84 that uses discrete variables and polarization to codify information \cite{bennett1984advances}.
+
+\subsection{Cow Protocol Fundamentals}
 
 \begin{figure}[h]
 \centering
@@ -25,17 +31,21 @@ The QKD protocols can use either discrete variables or continuous variables, and
 \label{fig:Scheme}
 \end{figure}
 
-The Coherent One Way (COW) protocol is another QKD protocol that also uses discrete variables but uses time bin encoding, meaning that the information is passed in the time bins and not in the polarization like the BB84.
+The Coherent One Way (COW) protocol is another QKD protocol that also uses discrete variables but uses time bin encoding, meaning that the information is passed in the time bins and not through polarization like in the BB84.
 
-The COW protocol was created by Nicolas Gisin et al in 2004 in \cite{gisin2004towards}, and as a very simple set-up, it was already very well tested against various attacks like \cite{branciard2006zero}, tested with some real prototypes \cite{stucki2009continuous} and it is already being commercialized by companies like ID Quantic. A simple scheme of the COW protocol can be seen in the Figure \ref{fig:Scheme} (it is worth noting that a few modifications experimental set up was already proposed \cite{roberts2017modulator} to reduce cost and sometimes to increase the quantity of information by second, not altering in anything the protocol, I remained with the most common, the original)
+The COW protocol was created by Nicolas Gisin \textit{et al}. in 2004 \cite{gisin2004towards}, and as a very simple set-up. It was already highly tested against various attacks, some examples can be seen in \cite{branciard2006zero}. Furthermore it was tested with some real prototypes \cite{stucki2009continuous} and it is already being commercialized by companies like ID Quantic. A simple scheme of the COW protocol is exhibit in the Figure \ref{fig:Scheme}. (It is noteworthy that a few modifications in the experimental set up were already proposed \cite{roberts2017modulator} in order to reduce costs, and/or to increase the quantity of information by second without altering the fundamentals of the protocol. I maintained the most common set up, the original one.)
 
-In this article I explore the Cow protocol and do a simulation of a basic intercept-resend attack. In the quantum cryptography world is common to do attacks on the protocol to test their security, this attack is one of the simplest one where Eve (an eavesdropping) collects all the information and sends it to the Bob.
+The protocol has two different apparatus relative to Alice and Bob. On Alice's apparatus, we have a laser connect to an intensity modulator and afterwards connect to an optical attenuator. These two components, controlled by a computer, subdivide the beam into impulses and enforce the average number of 0.1 photons by impulse. According to \cite{gisin2004towards} a time bin, is one nanosecond and every time bin requires two impulses. For the 4 most plausible cases, we have a 90 \% probability of having a given impulse empty (so it can't be detected), a 9 \% probability of having one photon in the impulse, a 0.4 \% of having two photons in the same impulse and 0.01 \% of having three photons by impulse, so most impulses with photons will have only one. The optical attenuator is connected to the quantum channel (an optical fibre).
+
+In Bob's apparatus, we have a beam splitter that divides the data line and the monitoring line, it is a 90-10 beam splitter respectively. In the date line, we only have one photon detector. In the monitoring line, we have a beam splitter 50-50 and in one of the outputs of the beamsplitter we have a delay of 0.5 time bin and afterwards, we have the reunion between the two outputs of the beamsplitter 50-50 and two photon detectors, one in the constructive output and another in the destructive output. In the next section, I explain the monitoring line. The efficiency of these detectors is 10 \% and the probability of dark counts is 0.01 \%, a dark count happens when the detector falsely detectes a photon, detects a photon that is not there.
+
+In this article I explore the Cow protocol and throught Matlab (from MathWorks) I created a code to simulate a basic intercept-resend attack. The code is explained and presented in the article as well. The analyses and the results obtained in this simulation are discussed, revealing that the attack is detectable.  In the quantum cryptography world is common to do attacks on the protocol to test their security, this attack is one of the simplest one where Eve (an eavesdropping, also represented as E) collects all the information and sends it to the Bob.
 
 \subsection{Theoretical Analysis}
 
-This protocol as the name implies (Coherent One Way) uses a one-directional quantum channel and an authenticated classic channel, authenticated meaning that can be eavesdropped but can't be modified.
+This protocol, as the name implies (Coherent One Way), uses a one-directional quantum channel and an authenticated classic channel, authenticated means that can be eavesdropped but can't be modified.
 
-In the first step of the protocol, Alice creates a random key using and forwards it through the quantum channel to Bob, the notation used here is the same on the \cite{gisin2004towards} and to help visualize I have created Fig. \ref{fig:sta}.
+In the first step of the protocol, Alice creates a random key and sends it to Bob through the quantum channel. The notation used here is the same on the \cite{gisin2004towards}, and for a better understanding the equations can be visualized in Fig. \ref{fig:sta}.
 
 $$|0\rangle = |\alpha\rangle_{2K-1} |\emptyset\rangle_{2K} =\ \ Logical\ 0\ $$
 
@@ -43,23 +53,22 @@ $$|1\rangle = |\emptyset\rangle_{2K-1} |\alpha\rangle_{2K} =\ \ Logical\ 1\ $$
 
 $$|d\rangle = |\alpha\rangle_{2K-1} |\alpha\rangle_{2K} = Decoy State$$
 
-Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$.
-The probability of creating a $|0\rangle$ state and a $|1\rangle$ is equal, the probability of creating a $|d\rangle$ state is usually 10 \%.
+Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light with intensity $\mu=|\alpha|^2<<1$. The probability of creating a $|0\rangle$ state and a $|1\rangle$ is equal and the probability of creating a $|d\rangle$ state is usually 10 \%.
 
 \begin{figure}[hbt!]
 \centering
-\includegraphics[width=1\linewidth]{./sdf/tq_76558_cow_protocol/slides/figures/S1A.pdf}
+\includegraphics[width=1\linewidth]{./sdf/tq_76558_cow_protocol/slides/figures/S1.pdf}
 \caption{Representation of the possible states.}
 \label{fig:sta}
 \end{figure}
 
-The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$. With this is mind the probability of a decoy state having both the peaks with at least one photon each is 1\%. If instead we used a bigger average number of photons by impulse, it would make the protocol hazardous against the most basic kind of attacks, beam splitter attacks, where Eve would remove a portion of photons by impulse and Bob and Alice wouldn't even notice \cite{kronberg2017analysis}.
+The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$. With this is mind the probability of a decoy state having both the peaks with at least one photon each, is 1\%. If instead we used a higher average number of photons by impulse, it would make the protocol hazardous against the most basic kind of attacks, beam splitter attacks, where Eve would remove a portion of photons by impulse and Bob and Alice wouldn't even notice \cite{kronberg2017analysis}.
 
-On the second step, Bob receives the photons in his apparatus. Here a fraction $t_B$ of the photons go into the photon counter $D_B$ (data line), where the bits are discriminated by the time of arrival, while the rest of the photons go to the monitoring line. This fraction $t_B$ is usually 90\%, so 90\% of the photons go to the data line and are used to create the key, the other 10\% of photons go to the monitoring line and are used to test the security of the communication.
+On the second step, Bob receives the photons in his apparatus. Here, a fraction $t_B$ of the photons go into the photon counter $D_B$ (data line), where the bits are discriminated by the time of arrival while the rest of the photons go to the monitoring line. This fraction $t_B$ is usually 90\%, so 90\% of the photons go to the data line and are used to create the key, the others 10\% of the photons go to the monitoring line and are used to test the security of the communication.
 
-Bob has three photons detectors in his apparatus, in \cite{gisin2004towards} they use 10\% efficiency and a probability of dark count of $10^-5$ for all photon detectors. A dark count is what happens when the detector falsely fires.Meaning that if an impulse as ten photons, in average, nine go to the data line and one goes in to the monitoring line. If the impulse as one photon 90\% of the time it goes to the data line and 10\% it goes to the monitoring line. In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed. 
+Bob has three photons detectors in his apparatus, in \cite{gisin2004towards} they use 10\% efficiency and a probability of dark count of $10^-5$ for all photon detectors. A dark count is what happens when the detector falsely fires. If the impulse has one photon 90\% of the time it goes to the data line and 10\% it goes to the monitoring line. In this monitoring line, the photons have a 50 \% probability of being delayed by 0.5 $t_{bit}$ and 50\% of not being delayed.  In annother example, a impulse with 20 photons (not very "quantum" but good for understanding probabilities), in average, 18 go to the data line, 2 go to the monitoring line, and 1 of this 2 gets delayed while the other is not delayed.
 
-If a photon that arrived at the monitoring line in $time=0$ is delayed to the $time=0.5$, and one photon on the $time=0.5$ is not delayed they will interact. When this happen the $D_{M2}$ (constructive photon counter) will try to click (not guaranteed due only to the efficiency of the detector). Based on this we know that are only two cases in which the $D_{M2}$ can click, or in a $|d\rangle$ state or in the $|1\rangle$ state followed by the $|0\rangle$ state, to having the $D_{M2}$ click we know that at least two impulses were consecutive, I represented this in Fig.\ref{fig:dm2}.
+If a photon that arrived at the monitoring line in $time=0$ is delayed to the $time=0.5$, and one photon on the $time=0.5$ is not delayed they will interact. When this happen the $D_{M2}$ (constructive photon counter) will try to triger the detector (not guaranteed due only to the efficiency of the detector). Based on this we know that are only two cases in which the $D_{M2}$ can click, or in a $|d\rangle$ state or in the $|1\rangle$ followed by the $|0\rangle$ states, to having the $D_{M2}$ click we know that at least two impulses were consecutive. This two possible events are represented in Fig.\ref{fig:dm2}.
 
 \begin{figure}[hbt!]
 \centering
@@ -107,7 +116,9 @@ With the protocol explained, I wanted to test his security, the most basic attac
 \label{fig:E}
 \end{figure}
 
-As Eve as aces to the classic channel, she can remove the decoys times from her data line (step 4), and after in step five, she can delete all the times that Bob didn't had a click in his data line. So, in the End of step five she as the same key as Alice and Bob, they after calculating QBER, and she can also know in which bits will they calculate the QBER and delete also those bits from their data line. So, Eve as the complete key in the final of step sixth, and if she is not caught, she can later decrypt messages.
+The Eve apparatus is composed of a photon detector that is connected to a computer and the same devices that Alice has. When the detector of Eve detects an impulse, the computer and devices quickly create the same impulse and send it to Bob. If she takes too long to generate the same impulse it can delay all the line by a certain time, making her immediately discovered by Alice and Bob, since they can calculate the time that the impulses take to travel the distance. In the simulation, I will change the values of the efficiency of her detector and the average number of photons by impulse that she uses, but for the first simulation I will use the same values that Alice and Bob have, 0.1 as average number of photon by impulse and 10 \% efficiency in the photon detector respectively, and I will also assume that her detector has a 0 \% probability of having a dark count.
+
+As Eve has aces to the classic channel, she can remove the decoys times from her data line (step 4), and after in step five, she can delete all the times that Bob didn't have a click in his data line. So, at the End of step five she as the same key as Alice and Bob, they after calculating QBER, and she can also know in which bits will they calculate the QBER and delete also those bits from their data line. So, Eve as the complete key in the final of step sixth, and if she is not caught, she can later decrypt messages.
 
 For the simulation, I created a function ``Alice'' that generates a string with $10^7$ characters, every one of this characters has a $10 \%$ chance of being a ``d'' - representing a decoy state ($|d\rangle$), and half of the rest ($45 \%$) of being a ``0'' and the same probability of being a ``1'' - representing a zero state ($|0\rangle$) and a one state ($|1\rangle$) correspondent. 
 
@@ -145,7 +156,7 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 		\hline
 		Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
 		Probability of Decoy & 10 \% \\ \hline
-		Alice- Nº of Photons per pulse & 0.1\\ \hline
+		Alice- Avg. Num. of Photons /Imp. & 0.1\\ \hline
 		Bob Detectors Efficiency & 10 \% \\ \hline
 		Bob Dark Count Probability & $10^{-5}$ \\ \hline
 		Run over & $200 \times$\\ \hline
@@ -196,22 +207,25 @@ The second value that we can change for Eve is the average number of photons by 
 
 \begin{table}[hbt!]
 	\centering
-	\begin{tabular}{ccccccc}
-		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{1.0001} & \multicolumn{2}{c}{{1.1}} & \multicolumn{2}{c}{{1.2}} \\
-		& { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\
-		{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\
-		{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
-		{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
-		{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c|}{1.0001} & \multicolumn{2}{c|}{{1.1}} & \multicolumn{2}{c|}{{1.2}} \\ \hline
+		& { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\		\hline
+		{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\		\hline
+		{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\		\hline
+		{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\		\hline
+		{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64	\\ \hline
 	\end{tabular}
 	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve}
 	\label{IR2}
 \end{table}
 
 \begin{table}[hbt!]
-	\begin{tabular}{ccccc}
-		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\
-		{$\frac{B_{M1}+B_{M2}}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86
+\centering
+	\begin{tabular}{|c|c|c|c|c|}
+\hline
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\ \hline
+		{$\frac{B_{M1}+B_{M2}}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86 \\ \hline
 	\end{tabular}
 	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results}
 	\label{IR3}
@@ -225,6 +239,35 @@ By having an efficiency lower than 100 \% Eve presence lowers the Key length ($D
 And even if her efficiency is of 100 \%, Eve presence still increases the ratio $\frac{B_{M1}+B_{M2}}{Key Length}$ (now 24\%, without attack is 22\%), besides also increase the QBER by nearly one order of magnitude.
 
 This allows us to see that the COW protocol is robust enough against a basic IR attack even in "paranoid" properties like her detectors having a 100\% efficiency and Dark Counts that is not very realistic while Bob's ones remain with 10 \% and with probabilities of Dark Counts.
+
+\section*{APPENDICES}
+\subsection{A. Main Matlab Script}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+{\scriptsize \lstinputlisting{./sdf/tq_76558_cow_protocol/figures_raw/simulacao.m}}
+
+\subsection{B. Matlab Functions Created}
+
+{\scriptsize \lstinputlisting{./sdf/tq_76558_cow_protocol/figures_raw/fun.m}}
 
 % bibliographic references for the section ----------------------------
 \clearpage
