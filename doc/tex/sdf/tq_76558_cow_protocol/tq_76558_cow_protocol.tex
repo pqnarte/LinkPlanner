@@ -140,7 +140,7 @@ To generate this $10^7$ initial string, the protocol needs to be running for 0.1
 \scriptsize
 \begin{tabular}{ccccccc}
 $10^7$ & $\times 0.1$ & $\times 0.9$ & $\times 0.9$ & $\times 0.5$ & $\times 0.5$ & $=40 500$ \\
-\begin{tabular}[c]{@{}c@{}}0.1 seconds\\ Alice raw\\ characters\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average Nº\\ of photons by\\ impulse\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bits that go \\ to the Data\\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}Logical bits\\ that are not \\ decoy states\end{tabular} & \begin{tabular}[c]{@{}c@{}}Used to \\ calculate\\ QBER\end{tabular} & \begin{tabular}[c]{@{}c@{}}Efficiency\\ of Bob's\\ Detectors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Final bits in\\ in the end of\\ Stage 6\end{tabular}
+\begin{tabular}[c]{@{}c@{}}0.1 seconds\\ Alice raw\\ characters\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average num.\\ of photons \\ /impulse\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bits that go \\ to the data\\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}Logical bits\\ that are not \\ decoy states\end{tabular} & \begin{tabular}[c]{@{}c@{}}Used to \\ calculate\\ QBER\end{tabular} & \begin{tabular}[c]{@{}c@{}}Efficiency\\ of Bob's\\ detectors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Final bits in\\ in the end of\\ Stage 6\end{tabular}
 \end{tabular}
 \caption{How much key is produced in 0.1 seconds.}
 \label{Meaning}
@@ -156,6 +156,8 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 
 \subsection*{Inputs}
 
+
+
 \begin{table}[hbt!]
 	\centering
 	\begin{tabular}{|c|c|}
@@ -164,7 +166,7 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 		Probability of Decoy & 10 \% \\ \hline
 		Alice- Avg. Num. of Photons /Imp. & 0.1\\ \hline
 		Bob Detectors Efficiency & 10 \% \\ \hline
-		Bob Dark Count Probability & $10^{-5}$ \\ \hline
+		Bob Dark Count Probability & 0.01 \% \\ \hline
 		Run over & $200 \times$\\ \hline
 		Percentage of the Key for QBER & 50 \% \\ \hline
 	\end{tabular}
@@ -176,6 +178,8 @@ I have run the simulation 200 times and then studied the average (Mean), and the
 This system outputs the following objects:
 
 In a simulation without attack, using the variables seen in Table \ref{Inputs}, I obtain the results present in Table \ref{No IR}.
+
+\vspace{0.3cm}
 
 \begin{table}[hbt!]
 	\centering
@@ -193,9 +197,10 @@ In a simulation without attack, using the variables seen in Table \ref{Inputs}, 
 
 If I now analyse the IR attack using the average number of photons by impulse used by Eve equal to the same as used by Alice (modulated by a Poisson distribution with $\lambda=0.1$) and altering the values of her detector Efficiency. The results of this can be seen in Table \ref{IR1}
 
+\vspace{0.3cm}
+
 \begin{table}[hbt!]
 	\centering
-	\scriptsize
 	\begin{tabular}{c|c|c|c|c|c|c|c|c|}
 		\hline
 		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}} & \multicolumn{2}{c|}{10 \%} & \multicolumn{2}{c|}{50 \%} & \multicolumn{2}{c|}{{90 \%}} & \multicolumn{2}{c|}{{100 \%}} \\ \hline
@@ -209,7 +214,11 @@ If I now analyse the IR attack using the average number of photons by impulse us
 	\label{IR1}
 \end{table}
 
+If she remains with the average number of photons by impulse equal to the value that Alice uses she is detected mostly due to the increase in QBER and by lowering by at least one order of magnitude all the others parameters ($D_B$, $D_{M1}$ and $D_{M2}$).
+
 The second value that we can change for Eve is the average number of photons by impulse that she uses, of course this allows attacks of other Eves by beam splitters but supposing that she has a way of guarantying that no one else does attacks to the line. And, if she has a 100 \% efficiency or her detector (while Bob remains with the usual 10\%). The results of this case can be seen in Table \ref{IR2}.
+
+\vspace{0.3cm}
 
 \begin{table}[hbt!]
 	\centering
@@ -226,27 +235,31 @@ The second value that we can change for Eve is the average number of photons by 
 	\label{IR2}
 \end{table}
 
+And even if her efficiency is of 100 \%, Eve presence still increases the ratio $(D_{M1}+D_{M2})/(D_B)$ by almost one percent, as can be seen in Table \ref{IR3}, besides also increases the QBER by nearly one order of magnitude.
+
+\vspace{0.3cm}
+
 \begin{table}[hbt!]
 \centering
 	\begin{tabular}{|c|c|c|c|c|}
 \hline
 		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\ \hline
-		{$\frac{B_{M1}+B_{M2}}{Key Length}$} & 22.73 & 23.60 & 23.60 & 23.86 \\ \hline
+		{$(D_{M1}+D_{M2})/(D_B)$ (\%)} & 22.73 & 23.60 & 23.60 & 23.86 \\ \hline
 	\end{tabular}
 	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results.}
 	\label{IR3}
 \end{table}
 
 \pagebreak
-\subsection{Conclusion - Simulation Results}
+\subsection{Conclusions}
 
-By having an efficiency lower than 100 \% Eve presence lowers the Key length ($D_B$) by one order of magnitude and increases the QBER.
+In this work was simulated a basic intercept-resend attack, I tested for different conditions in Eve's efficiency detector and in her average number of photons by impulse. 
 
-And even if her efficiency is of 100 \%, Eve presence still increases the ratio $\frac{B_{M1}+B_{M2}}{Key Length}$ (now 24\%, without attack is 22\%), besides also increase the QBER by nearly one order of magnitude.
+The results allow us to conclude that the COW protocol, although being a relatively simple protocol, is robust enough against a basic IR attack even in "paranoid" properties like her detectors having a 100\% efficiency and Dark Counts that is not very realistic while Bob's ones remain with 10 \% and with probabilities of Dark Counts.
 
-This allows us to conclude that the COW protocol is robust enough against a basic IR attack even in "paranoid" properties like her detectors having a 100\% efficiency and Dark Counts that is not very realistic while Bob's ones remain with 10 \% and with probabilities of Dark Counts.
+It is also worth noting that all these simulations are tested only for 0.1 seconds of the protocol running if we increase the time the effects of Eve are even more evident and noticeable.
 
-It is also worth notting that all this simulations are tested only for 0.1 seconds of the protocol running, if we increase the time the effects of Eve are even more evident.
+In general, as far as I know and also based on the results, the COW protocol is a very good choice for a quantum key distribution, that justifies the reason why it is already being commercialized.
 
 \section*{APPENDICES}
 \subsection{A. Main Matlab Script}
