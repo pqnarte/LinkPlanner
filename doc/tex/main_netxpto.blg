@@ -1,37 +1,18 @@
-[0] Config.pm:302> INFO - This is Biber 2.11
-[1] Config.pm:305> INFO - Logfile is 'main_netxpto.blg'
-[49] biber-MSWIN64:313> INFO - === 
-[86] Biber.pm:371> INFO - Reading 'main_netxpto.bcf'
-[181] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[182] Biber.pm:857> INFO - Found 1 citekeys in bib section 1
-[182] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[182] Biber.pm:857> INFO - Found 3 citekeys in bib section 2
-[182] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[182] Biber.pm:857> INFO - Found 5 citekeys in bib section 3
-[182] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[182] Biber.pm:857> INFO - Found 8 citekeys in bib section 4
-[182] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[183] Biber.pm:857> INFO - Found 1 citekeys in bib section 5
-[183] Biber.pm:857> INFO - Found 1 citekeys in bib section 0
-[183] Biber.pm:857> INFO - Found 1 citekeys in bib section 6
-[183] Biber.pm:857> INFO - Found 0 citekeys in bib section 0
-[183] Biber.pm:857> INFO - Found 3 citekeys in bib section 7
-[183] Biber.pm:857> INFO - Found 8 citekeys in bib section 0
-[238] Biber.pm:3976> INFO - Processing section 0
-[251] Biber.pm:4136> INFO - Looking for bibtex format file './chapter/simulator_structure/simulator_structure.bib' for section 0
-[254] bibtex.pm:1500> INFO - LaTeX decoding ...
-[259] bibtex.pm:1316> INFO - Found BibTeX data source './chapter/simulator_structure/simulator_structure.bib'
-[270] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bpsk_system/bpsk_system.bib' for section 0
-[275] bibtex.pm:1500> INFO - LaTeX decoding ...
-[281] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bpsk_system/bpsk_system.bib'
-[282] Utils.pm:193> WARN - Duplicate entry key: 'thorlabs' in file './sdf/bpsk_system/bpsk_system.bib', skipping ...
-[286] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/quantum_random_number_generator/quantum_random_number_generator.bib' for section 0
-[291] bibtex.pm:1500> INFO - LaTeX decoding ...
-[307] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/quantum_random_number_generator/quantum_random_number_generator.bib'
-[312] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib' for section 0
-[318] bibtex.pm:1500> INFO - LaTeX decoding ...
-[331] bibtex.pm:1316> INFO - Found BibTeX data source './sdf/bb84_with_discrete_variables/bb84_with_discrete_variables.bib'
-[334] Biber.pm:4136> INFO - Looking for bibtex format file './sdf/tq_76558_cow_protocol/tq_76558_cow_protocol.bib' for section 0
-[502] Utils.pm:209> ERROR - Cannot find './sdf/tq_76558_cow_protocol/tq_76558_cow_protocol.bib'!
-[502] Biber.pm:110> INFO - WARNINGS: 1
-[502] Biber.pm:114> INFO - ERRORS: 1
+This is BibTeX, Version 0.99dThe top-level auxiliary file: main_netxpto.aux
+A level-1 auxiliary file: chapter/preface.aux
+A level-1 auxiliary file: chapter/introduction.aux
+A level-1 auxiliary file: chapter/simulator_structure/simulator_structure.aux
+A level-1 auxiliary file: chapter/development_cycle.aux
+A level-1 auxiliary file: chapter/visualizer.aux
+A level-1 auxiliary file: chapter/case_studies.aux
+A level-1 auxiliary file: chapter/library.aux
+A level-1 auxiliary file: chapter/mtools.aux
+A level-1 auxiliary file: chapter/algorithms.aux
+A level-1 auxiliary file: chapter/code_development_guidelines.aux
+A level-1 auxiliary file: chapter/msbuild.aux
+A level-1 auxiliary file: chapter/git/git_helper.aux
+A level-1 auxiliary file: chapter/ghdl.aux
+I found no \citation commands---while reading file main_netxpto.aux
+I found no \bibdata command---while reading file main_netxpto.aux
+I found no \bibstyle command---while reading file main_netxpto.aux
+(There were 3 error messages)
