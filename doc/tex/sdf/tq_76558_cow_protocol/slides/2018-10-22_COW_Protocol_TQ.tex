@@ -143,15 +143,17 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
  
 \end{description}
 
-$$|0\rangle = |\alpha\rangle |\emptyset\rangle =\ \ Logical\ 0\ $$
-  $$|1\rangle = |\emptyset\rangle |\alpha\rangle =\ \ Logical\ 1\ $$
-$$|d\rangle = |\alpha\rangle |\alpha\rangle = Decoy State$$
+$$|0\rangle = |\alpha\rangle_{2K-1} |\emptyset\rangle_{2K} =\ \ Logical\ 0\ $$
+
+$$|1\rangle = |\emptyset\rangle_{2K-1} |\alpha\rangle_{2K} =\ \ Logical\ 1\ $$
+
+$$|d\rangle = |\alpha\rangle_{2K-1} |\alpha\rangle_{2K} = Decoy State$$
 
 Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent state of light. The average number of photons by impulse is modulated by a Poisson distribution with $\lambda=0.1$.
 
     \begin{figure}[hbt]
     	\centering
-\includegraphics[width=0.6\textwidth]{./figures/S1.pdf}
+\includegraphics[width=0.5\textwidth]{./figures/S1.pdf}
         	\label{bob}
     \end{figure}
 
@@ -170,7 +172,7 @@ Where $|\emptyset\rangle$ is the vacuum state and $|\alpha\rangle$ is a coherent
 Half of the other photons are delayed by 0.5 $t_{bit}$ interacting with the half of non-delayed bits.
     \begin{figure}[hbt]
     	\centering
-    	\includegraphics[width=0.6\textwidth]{./figures/B.pdf}
+    	\includegraphics[width=0.5\textwidth]{./figures/B.pdf}
     \end{figure}
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
@@ -220,7 +222,7 @@ Supposing that all impulses have multiple photons, and all go to the monitoring 
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{Intercept-Resend Attack}} \Large \vspace*{1cm}
 
-We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}. On this attack Eve captures all the information, measures and then resend it to Bob.
+We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}. On this attack Eve captures all the information, copies and then resends it to Bob.
 
 \begin{figure}[hbt]
     	\centering
@@ -230,21 +232,21 @@ We want to see how robust is the protocol to a \textbf{Intercept-Resend Attack}.
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{Simulation}} \Large \vspace*{1cm}
 
-For the Simulation, using a fiber without looses:
-\begin{table}[hbt!]
-\centering
-\Large
-\begin{tabular}{|c|c|}
-\hline
-\cellcolor[HTML]{005288}\color{white} Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Probability of Decoy & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Alice- Nº of Photons per pulse & 0.1\\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob Detectors Efficiency  & 10 \% \\ \hline
-\cellcolor[HTML]{005288}\color{white} Bob DarkCount Probability & $10^{-5}$ \\ \hline
-\cellcolor[HTML]{005288}\color{white} Run over & $200 \times$\\ \hline
-\cellcolor[HTML]{005288}\color{white} Percentage of the Key for QBER & 50 \% \\ \hline
+For the Simulation, using a lossless fiber:
 
-\end{tabular}
+\begin{table}[hbt!]
+	\centering
+	\Large
+	\begin{tabular}{|c|c|}
+		\hline
+		Logical Bits from Alice & $10^{7} (0.1 s)$ \\ \hline
+		Probability of Decoy & 10 \% \\ \hline
+		Alice- Avg. Num. of Photons /Imp. & 0.1\\ \hline
+		Bob Detectors Efficiency & 10 \% \\ \hline
+		Bob Dark Count Probability & 0.01 \% \\ \hline
+		Run over & $200 \times$\\ \hline
+		Percentage of the Key for QBER & 50 \% \\ \hline
+	\end{tabular}
 \end{table}
 
 \vspace*{0.5cm}
@@ -256,7 +258,7 @@ The meaning of 0.1 seconds
 \large
 \begin{tabular}{ccccccc}
 $10^7$ & $\times 0.1$ & $\times 0.9$ & $\times 0.9$ & $\times 0.5$ & $\times 0.5$ & $=40 500$ \\
-\begin{tabular}[c]{@{}c@{}}0.1 seconds\\ Alice raw\\ characters\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average Nº\\ of photons by\\ impulse\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bits that go \\ to the Data\\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}Logical bits\\ that are not \\ decoy states\end{tabular} & \begin{tabular}[c]{@{}c@{}}Used to \\ calculate\\ QBER\end{tabular} & \begin{tabular}[c]{@{}c@{}}Efficiency\\ of Bob's\\ Detectors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Final bits in\\ in the end of\\ Stage 6\end{tabular}
+\begin{tabular}[c]{@{}c@{}}0.1 seconds\\ Alice raw\\ characters\end{tabular} & \begin{tabular}[c]{@{}c@{}}Average num\\ of photons by\\ impulse\end{tabular} & \begin{tabular}[c]{@{}c@{}}Bits that go \\ to the data\\ line\end{tabular} & \begin{tabular}[c]{@{}c@{}}Logical bits\\ that are not \\ decoy states\end{tabular} & \begin{tabular}[c]{@{}c@{}}Used to \\ calculate\\ QBER\end{tabular} & \begin{tabular}[c]{@{}c@{}}Efficiency\\ of Bob's\\ Detectors\end{tabular} & \begin{tabular}[c]{@{}c@{}}Final bits in\\ in the end of\\ Stage 6\end{tabular}
 \end{tabular}
 \end{table}
 
@@ -272,91 +274,99 @@ Gisin, Nicolas, et al. "Towards practical and fast quantum cryptography." arXiv 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
 \mysection{\Huge\textbf{IR - Eve Efficiency}} \Large \vspace*{0.5cm}
-Using the Attenuation of Eve equal to 0.1, by changing the efficiency we get:
+Using the average number of photons by impulse of Eve equal to 0.1 (same as Alice), by changing the efficiency we get:
 
 \begin{table}[hbt!]
-\Large
-\centering
-\begin{tabular}{c|c|c|c|c|c|c|c|c|}
-\hline
-\rowcolor[HTML]{005288} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 10 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 50 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 90 \%}} & \multicolumn{2}{c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 100 \%}} \\ \hline
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 0.731298 & 0.417496 & 0.192879 & 0.345973 & 0.0049682 & 0.0103909 & 0.00232442 & 0.000224006 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 5191.22 & 13182.9 & 20815 & 19809.5 & 38151.9 & 9209.9 & 40459.6 & 122.252 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 1153.02 & 2986.12 & 4722.48 & 4519.43 & 8661.34 & 2098.9 & 9169.48 & 81.2168 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 0.04 & 0.197949 & 0.24 & 0.656521 & 0.36 & 0.525279 & 0.64 & 0.749422 \\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{c|c|c|c|c|c|c|c|c|}
+		\hline
+		\multicolumn{1}{|c|}{\begin{tabular}[c]{@{}c@{}}Eve\\ Efficiency\end{tabular}} & \multicolumn{2}{c|}{10 \%} & \multicolumn{2}{c|}{50 \%} & \multicolumn{2}{c|}{{90 \%}} & \multicolumn{2}{c|}{{100 \%}} \\ \hline
+		&{Mean} &{ Std} & { Mean} & { Std} & {Mean} &{Std} & {Mean} & {Std} \\ \hline
+		\multicolumn{1}{|c|}{ QBER} & 0.800 & 0.363 & 0.223 & 0.367 & 0.012 & 0.060 & 24.0e-03 & 2.13e-03 \\ \hline
+		\multicolumn{1}{|c|}{ $D_B$} & 3117 & 10274 & 21137 & 19737 & 36773 & 11334 & 40433 & 143 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M1}$} & 683.4 & 2327.4 & 4788.8 & 4494.7 & 8340 & 2580 & 9166.3 & 99.1 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M2}$} & 0.04 & 0.25 & 0.28 & 0.61 & 0.42 & 0.73 & 0.54 & 0.75 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the efficiency of Eve detector.}
+	\label{IR1}
 \end{table}
 
 \vspace*{0.5cm}
 Simulation without attack for comparison:
 
 \begin{table}[hbt!]
-\centering
-\Large
-\begin{tabular}{c|c|c|}
-\cline{2-3}
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
-\end{tabular}
+	\centering
+	\begin{tabular}{c|c|c|}
+		\cline{2-3}
+		& Mean & Std \\ \hline
+		\multicolumn{1}{|c|}{QBER} & 1.366e-04 & 0.185e-04 \\ \hline
+		\multicolumn{1}{|c|}{ $D_B$} & 423899 & 432.5 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M1}$} & 96288.8 & 329.216 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M2}$} & 59.615 & 8.531 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation without attack}
+	\label{No IR}
 \end{table}
 
-\begin{description}
-\centering
-\item Eve presence lowers the Key length.
-\end{description}
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
-\mysection{\Huge\textbf{IR - Eve Attenuation}} \Large \vspace*{1cm}
-Assuming that Eve has 100 \% efficiency. By altering the value of her attenuation we get:
+\mysection{\Huge\textbf{IR - Eve Attenuation}} \Large
+Assuming that Eve has 100 \% efficiency. By altering the values of average number of photons by impulse that she uses we get:
 
 \begin{table}[hbt!]
-\centering
-\begin{tabular}{ccccccc}
-\rowcolor[HTML]{005288} 
-{\color[HTML]{FFFFFF} \begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.0001}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.1}} & \multicolumn{2}{c}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} 1.2}} \\
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER} & 0.000171 & 0.000015 & 0.000162117 & 0.000020 & 0.000151815 & 0.000017 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\
-\rowcolor[HTML]{E5EAF4} 
-\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64
-\end{tabular}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & \multicolumn{2}{c|}{1.0001} & \multicolumn{2}{c|}{{1.1}} & \multicolumn{2}{c|}{{1.2}} \\ \hline
+		& { Mean} & { Std} & { Mean} & { Std} & { Mean} & { Std} \\		\hline
+		{ QBER} & 1.71e-03 & 0.15e-03 & 1.62e-03 & 0.20e-03 & 1.52e-03 & 0.17e-03 \\		\hline
+		{$D_B$} & 387664 & 665 & 424371 & 380.8 & 461107 & 569.7 \\		\hline
+		{$D_{M1}$} & 91434 & 232.5 & 100067 & 183.6 & 109942 & 614.0 \\		\hline
+		{$D_{M2}$} & 52 & 7.04 & 65.4 & 10.41 & 70.4 & 5.64	\\ \hline
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve.}
+	\label{IR2}
 \end{table}
 
-\vspace*{0.5cm}
-Simulation without attack again for comparison:
 \begin{table}[hbt!]
 \centering
-\Large
-\begin{tabular}{c|c|c|}
-\cline{2-3}
- & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Mean} & \cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} Std} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} QBER}} & 1.366e-04 & 0.185e-04 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_B$}} & 423899 & 432.52 \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M1}$}} & 96288.8 & 329.216 \\ \hline
-\rowcolor[HTML]{E5EAF4} 
-\multicolumn{1}{|c|}{\cellcolor[HTML]{005288}{\color[HTML]{FFFFFF} $D_{M2}$}} & 59.615 & 8.531 \\ \hline
-\end{tabular}
+	\begin{tabular}{|c|c|c|c|c|}
+\hline
+		{\begin{tabular}[c]{@{}c@{}}Eve Avg. Num.\\  photons/Imp\end{tabular}} & {\begin{tabular}[c]{@{}c@{}}No IR\\ Atack\end{tabular}} & {1.0001} & {1.1} & {1.2} \\ \hline
+		{$(D_{M1}+D_{M2})/(D_B)$ (\%)} & 22.73 & 23.60 & 23.60 & 23.86 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation with attack changing the average number of photons by impulse used by Eve analizing the results.}
+	\label{IR3}
+\end{table}
+
+\begin{table}[hbt!]
+	\centering
+	\begin{tabular}{c|c|c|}
+		\cline{2-3}
+		& Mean & Std \\ \hline
+		\multicolumn{1}{|c|}{QBER} & 1.366e-04 & 0.185e-04 \\ \hline
+		\multicolumn{1}{|c|}{ $D_B$} & 423899 & 432.5 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M1}$} & 96288.8 & 329.216 \\ \hline
+		\multicolumn{1}{|c|}{ $D_{M2}$} & 59.615 & 8.531 \\ \hline
+	\end{tabular}
+	\caption{Results of a simulation without attack}
+	\label{No IR}
 \end{table}
 
 %--------------------------------------------------------------------------------------------------
 %------------ SLIDE -------------------------------------------------------------------------------
-\mysection{\Huge\textbf{Conclusion}} \Large \vspace*{1cm}
+\mysection{\Huge\textbf{Conclusions}} \LARGE \vspace*{1cm}
 \begin{itemize}
-\item It is a practical protocol, it's already being used by ID Quantic.
-\item And it is robust to a basic Intercept-resend attack as we just showed.
+
+\item The results allow us to conclude that the COW protocol is robust enough against a basic IR attack.
+
+\item Even in "paranoid" properties like Eve detectors having a 100\% efficiency.
+
+\item Is not very realistic if Bob's ones remain with 10 \%.
+
+\item All these simulations are tested only for 0.1 seconds of the protocol running for more time, eve is even more evident.
+
 \end{itemize}
 %-------------------------------------------------------------------
 %------------ SLIDE ------------------------------------------------
