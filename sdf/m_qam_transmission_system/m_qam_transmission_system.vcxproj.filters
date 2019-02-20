@@ -39,6 +39,9 @@
     <ClCompile Include="..\..\lib\pulse_shaper_20180815.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="m_qam_transmission_system_sdf.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\netxpto_20180815.h">

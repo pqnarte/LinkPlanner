@@ -123,6 +123,7 @@
     <ClCompile Include="..\..\lib\netxpto_20180815.cpp" />
     <ClCompile Include="..\..\lib\pulse_shaper_20180815.cpp" />
     <ClCompile Include="..\..\lib\sink_20180815.cpp" />
+    <ClCompile Include="m_qam_transmission_system_sdf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\binary_source_20180815.h" />
