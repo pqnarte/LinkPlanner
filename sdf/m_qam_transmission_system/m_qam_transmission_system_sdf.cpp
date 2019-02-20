@@ -13,6 +13,8 @@
 // ################################### System Input Parameters #########################################
 // #####################################################################################################
 
+double symbolPeriod{ 2e-11 };
+int samplesPerSymbol{ 8 };
 
 int main() {
 
@@ -62,6 +64,9 @@ int main() {
 	PulseShaper B6{ { &S5 }, { &S7 } };
 
 	Laser B7{ {}, { &S8 } };
+	B7.setSymbolPeriod(symbolPeriod);
+	B7.setSamplingPeriod(symbolPeriod / samplesPerSymbol);
+
 
 	IqModulator B8{ { &S6, &S7, &S8 }, { &S9 } };
 
