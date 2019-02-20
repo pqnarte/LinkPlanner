@@ -30,9 +30,6 @@
     <ClCompile Include="..\..\lib\sink_20180815.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\qpsk_transmission_system\qpsk_transmission_system_sdf.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\lib\laser_20180815.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
